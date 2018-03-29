@@ -1,0 +1,323 @@
+<div class="article-intro" id="content">
+<h1>Swift 函数</h1>
+<p>Swift 函数用来完成特定任务的独立的代码块。</p>
+<p>Swift使用一个统一的语法来表示简单的C语言风格的函数到复杂的Objective-C语言风格的方法。</p>
+<ul>
+<li><p> 函数声明: 告诉编译器函数的名字，返回类型及参数。</p></li>
+<li><p>	函数定义: 提供了函数的实体。</p></li>
+</ul>
+<p>Swift 函数包含了参数类型及返回值类型：</p>
+<hr/>
+<h2>函数定义</h2>
+<p>Swift 定义函数使用关键字 <b>func</b>。</p>
+<p>定义函数的时候，可以指定一个或多个输入参数和一个返回值类型。</p>
+<p>每个函数都有一个函数名来描述它的功能。通过函数名以及对应类型的参数值来调用这个函数。函数的参数传递的顺序必须与参数列表相同。</p>
+<p>函数的实参传递的顺序必须与形参列表相同，<b>-&gt;</b> 后定义函数的返回值类型。</p>
+<h3>语法</h3>
+<pre>
+func funcname(形参) -&gt; returntype
+{
+   Statement1
+   Statement2
+   ……
+   Statement N
+   return parameters
+}
+</pre>
+<h3>实例</h3>
+<p>以下我们定义了一个函数名为 runoob 的函数，形参的数据类型为 String，返回值也为 String：</p>
+<pre>
+import Cocoa
+
+func runoob(site: String) -&gt; String {
+    return (site)
+}
+print(runoob(site: "www.runoob.com"))
+</pre>
+<p>以上程序执行输出结果为：</p>
+<pre>
+www.runoob.com
+</pre>
+<hr/>
+<h2>函数调用</h2>
+<p>
+我们可以通过函数名以及对应类型的参数值来调用函数，函数的参数传递的顺序必须与参数列表相同。</p>
+<p>以下我们定义了一个函数名为 runoob 的函数，形参 site 的数据类型为 String，之后我们调用函数传递的实参也必须 String 类型，实参传入函数体后，将直接返回，返回的数据类型为 String。</p>
+<pre>
+import Cocoa
+
+func runoob(site: String) -&gt; String {
+    return (site)
+}
+print(runoob(site: "www.runoob.com"))
+</pre>
+<p>以上程序执行输出结果为：</p>
+<pre>
+www.runoob.com
+</pre>
+<hr/>
+<h2>函数参数</h2>
+<p>函数可以接受一个或者多个参数，这些参数被包含在函数的括号之中，以逗号分隔。</p>
+<p>以下实例向函数 runoob 传递站点名 name 和站点地址 site：</p>
+<pre>
+import Cocoa
+
+func runoob(name: String, site: String) -&gt; String {
+    return name + site
+}
+print(runoob(name: "菜鸟教程：", site: "www.runoob.com"))
+print(runoob(name: "Google：", site: "www.google.com"))
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+菜鸟教程：www.runoob.com
+Google：www.google.com
+</pre>
+<hr/>
+<h2>不带参数函数</h2>
+<p>我们可以创建不带参数的函数。</p>
+<h3>语法：</h3>
+<pre>
+func funcname() -&gt; datatype {
+   return datatype
+}
+</pre>
+<h3>实例</h3>
+<pre>
+import Cocoa
+
+func sitename() -&gt; String {
+    return "菜鸟教程"
+}
+print(sitename())
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+菜鸟教程
+</pre>
+<hr/>
+<h2>元组作为函数返回值</h2>
+<p>函数返回值类型可以是字符串，整型，浮点型等。</p>
+<p>元组与数组类似，不同的是，元组中的元素可以是任意类型，使用的是圆括号。</p>
+<p>你可以用元组（tuple）类型让多个值作为一个复合值从函数中返回。</p>
+<p>下面的这个例子中，定义了一个名为minMax(_:)的函数，作用是在一个Int数组中找出最小值与最大值。</p>
+<pre>
+import Cocoa
+
+func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+
+let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
+print("最小值为 \(bounds.min) ，最大值为 \(bounds.max)")
+</pre>
+<p>minMax(_:)函数返回一个包含两个Int值的元组，这些值被标记为min和max，以便查询函数的返回值时可以通过名字访问它们。</p>
+<p>以上程序执行输出结果为：</p>
+<pre>
+最小值为 -6 ，最大值为 109
+</pre>
+<p>如果你不确定返回的元组一定不为nil，那么你可以返回一个可选的元组类型。</p>
+<p>你可以通过在元组类型的右括号后放置一个问号来定义一个可选元组，例如(Int, Int)?或(String, Int, Bool)?</p>
+<blockquote>
+<p>注意<br/>
+可选元组类型如<code>(Int, Int)?</code>与元组包含可选类型如<code>(Int?, Int?)</code>是不同的.可选的元组类型，整个元组是可选的，而不只是元组中的每个元素值。</p>
+</blockquote>
+<p>前面的<code>minMax(_:)</code>函数返回了一个包含两个<code>Int</code>值的元组。但是函数不会对传入的数组执行任何安全检查，如果<code>array</code>参数是一个空数组，如上定义的<code>minMax(_:)</code>在试图访问<code>array[0]</code>时会触发一个运行时错误。</p>
+<p>为了安全地处理这个"空数组"问题，将<code>minMax(_:)</code>函数改写为使用可选元组返回类型，并且当数组为空时返回<code>nil</code>：</p>
+<pre>
+import Cocoa
+
+func minMax(array: [Int]) -&gt; (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
+    print("最小值为 \(bounds.min)，组大值为 \(bounds.max)")
+}
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+最小值为 -6，组大值为 109
+</pre>
+<hr/>
+<h2>没有返回值函数</h2>
+<p>下面是 runoob(_:) 函数的另一个版本，这个函数接收菜鸟教程官网网址参数，没有指定返回值类型，并直接输出 String 值，而不是返回它：</p>
+<pre>
+import Cocoa
+
+func runoob(site: String) {
+    print("菜鸟教程官网：\(site)")
+}
+runoob(site: "http://www.runoob.com")
+</pre>
+<p>以上程序执行输出结果为：</p>
+<pre>
+菜鸟教程官网：http://www.runoob.com
+</pre>
+<hr/>
+<h2>函数参数名称</h2>
+<p>函数参数都有一个外部参数名和一个局部参数名。</p>
+<h3>局部参数名</h3>
+<p>局部参数名在函数的实现内部使用。</p>
+<pre>
+func sample(number: Int) {
+   println(number)
+}
+</pre>
+<p>以上实例中 number 为局部参数名，只能在函数体内使用。</p>
+<pre>
+import Cocoa
+
+func sample(number: Int) {
+    print(number)
+}
+sample(number: 1)
+sample(number: 2)
+sample(number: 3)
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+1
+2
+3
+</pre><h3>外部参数名</h3>
+<p>你可以在局部参数名前指定外部参数名，中间以空格分隔，外部参数名用于在函数调用时传递给函数的参数。</p>
+<p>如下你可以定义以下两个函数参数名并调用它：</p>
+<pre>
+import Cocoa
+
+func pow(firstArg a: Int, secondArg b: Int) -&gt; Int {
+   var res = a
+   for _ in 1..&lt;b {
+      res = res * a
+   }
+   print(res)
+   return res
+}
+pow(firstArg:5, secondArg:3)
+</pre><p>以上程序执行输出结果为：</p><pre>125
+</pre><blockquote>
+<p>注意<br/>
+如果你提供了外部参数名，那么函数在被调用时，必须使用外部参数名。</p>
+</blockquote>
+<hr/>
+<h2>可变参数</h2>
+<p>可变参数可以接受零个或多个值。函数调用时，你可以用可变参数来指定函数参数，其数量是不确定的。</p>
+<p>可变参数通过在变量类型名后面加入（...）的方式来定义。</p>
+<pre>
+import Cocoa
+
+func vari&lt;N&gt;(members: N...){
+    for i in members {
+        print(i)
+    }
+}
+vari(members: 4,3,5)
+vari(members: 4.5, 3.1, 5.6)
+vari(members: "Google", "Baidu", "Runoob")
+</pre><p>以上程序执行输出结果为：</p><pre>
+4
+3
+5
+4.5
+3.1
+5.6
+Google
+Baidu
+Runoob
+</pre>
+<hr/>
+<h2>常量，变量及 I/O 参数</h2>
+<p>
+一般默认在函数中定义的参数都是常量参数，也就是这个参数你只可以查询使用，不能改变它的值。
+</p>
+<p>如果想要声明一个变量参数，可以在参数定义前加 inout 关键字，这样就可以改变这个参数的值了。</p>
+<p>例如：</p>
+<pre>
+func  getName(_ name: inout String).........
+</pre>
+<p>此时这个 name 值可以在函数中改变。</p>
+<p>一般默认的参数传递都是传值调用的，而不是传引用。所以传入的参数在函数内改变，并不影响原来的那个参数。传入的只是这个参数的副本。</p>
+<p>当传入的参数作为输入输出参数时，需要在参数名前加 &amp; 符，表示这个值可以被函数修改。</p>
+<h3>实例</h3>
+<pre>
+import Cocoa
+
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+
+var x = 1
+var y = 5
+swapTwoInts(&amp;x, &amp;y)
+print("x 现在的值 \(x), y 现在的值 \(y)")
+</pre>
+<p>swapTwoInts(_:_:) 函数简单地交换 a 与 b 的值。该函数先将 a 的值存到一个临时常量 temporaryA 中，然后将 b 的值赋给 a，最后将 temporaryA 赋值给 b。</p>
+<p>需要注意的是，someInt 和 anotherInt 在传入 swapTwoInts(_:_:) 函数前，都加了 &amp; 的前缀。</p>
+<p>以上程序执行输出结果为：</p>
+<pre>
+x 现在的值 5, y 现在的值 1
+</pre>
+<hr/>
+<h2>函数类型及使用</h2>
+<p>每个函数都有种特定的函数类型，由函数的参数类型和返回类型组成。</p>
+<pre>
+func inputs(no1: Int, no2: Int) -&gt; Int {
+   return no1/no2
+}
+</pre>
+<p>inputs 函数类型有两个 Int 型的参数(no1、no2)并返回一个 Int 型的值。</p>
+<p>实例如下：</p>
+<pre>
+import Cocoa
+
+func inputs(no1: Int, no2: Int) -&gt; Int {
+    return no1/no2
+}
+print(inputs(no1: 20, no2: 10))
+print(inputs(no1: 36, no2: 6))
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+2
+6
+</pre>
+<p>以上函数定义了两个 Int  参数类型，返回值也为 Int 类型。</p>
+<p>接下来我们看下如下函数，函数定义了参数为 String 类型，返回值为 String 类型。</p>
+<pre>
+func inputstr(name: String) -&gt; String {
+   return name
+}
+</pre>
+<p>函数也可以定义一个没有参数，也没有返回值的函数，如下所示：</p>
+<pre>
+import Cocoa
+
+func inputstr() {
+   print("菜鸟教程")
+   print("www.runoob.com")
+}
+inputstr()
+</pre>
+<p>以上程序执行输出结果为：</p>
+<pre>
+菜鸟教程
+www.runoob.com
+</pre>
+<h3>使用函数类型</h3></div>

@@ -1,0 +1,75 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">注释</span>
+</h1>
+<hr/>
+<p class="intro">JavaScript 注释可用于提高代码的可读性。</p>
+<hr/>
+<h2>JavaScript 注释</h2>
+<p>JavaScript 不会执行注释。</p>
+<p>我们可以添加注释来对 JavaScript 进行解释，或者提高代码的可读性。</p>
+<p>单行注释以 // 开头。</p>
+<p>本例用单行注释来解释代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+//  输出标题：<br/>
+document.getElementById("myH1").innerHTML="欢迎来到我的主页";<br/>
+//  输出段落：<br/>
+document.getElementById("myP").innerHTML="这是我的第一个段落。";
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_comments1" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>JavaScript 多行注释</h2>
+<p>多行注释以 /* 开始，以 */ 结尾。
+</p>
+<p>下面的例子使用多行注释来解释代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+/*<br/>
+下面的这些代码会输出<br/>
+一个标题和一个段落<br/>
+并将代表主页的开始<br/>
+*/<br/>
+document.getElementById("myH1").innerHTML="欢迎来到我的主页";<br/>
+document.getElementById("myP").innerHTML="这是我的第一个段落。";
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_comments2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>使用注释来阻止执行</h2>
+<p>在下面的例子中，注释用于阻止其中一条代码行的执行（可用于调试）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+//document.getElementById("myH1").innerHTML="欢迎来到我的主页";<br/>
+document.getElementById("myP").innerHTML="这是我的第一个段落。";
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_comments3" target="_blank">尝试一下 »</a>
+</div>
+<p>在下面的例子中，注释用于阻止代码块的执行（可用于调试）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+
+/*<br/>
+document.getElementById("myH1").innerHTML="欢迎来到我的主页";<br/>
+document.getElementById("myP").innerHTML="这是我的第一个段落。";<br/>
+*/
+
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_comments4" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>在行末使用注释</h2>
+<p>在下面的例子中，我们把注释放到代码行的结尾处：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var x=5;    // 声明 x 并把 5 赋值给它<br/>
+var y=x+2;  // 声明 y 并把 x+2 赋值给它
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_comments5" target="_blank">尝试一下 »</a>
+</div>
+</div>

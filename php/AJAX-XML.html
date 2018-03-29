@@ -1,0 +1,156 @@
+<div class="article-intro" id="content">
+<h1>PHP 实例 - <span class="color_h1">AJAX 与 XML</span>
+</h1>
+<hr/>
+<p class="intro">AJAX 可用来与 XML 文件进行交互式通信。</p>
+<hr/>
+<h2>AJAX XML 实例</h2>
+<p>下面的实例将演示网页如何通过 AJAX 从 XML 文件读取信息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_result notranslate">
+<script>
+function showCD(str)
+{
+if (str=="")
+  {
+  document.getElementById("txtHint").innerHTML="";
+  return;
+  }  
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","/try/demo_source/getcd.php?q="+str,true);
+xmlhttp.send();
+}
+</script>
+<form action="">
+<select name="cds" onchange="showCD(this.value)">
+<option value="">Select a CD:</option>
+<option value="Bob Dylan">Bob Dylan</option>
+<option value="Bee Gees">Bee Gees</option>
+<option value="Cat Stevens">Cat Stevens</option>
+</select>
+</form>
+<br/><div id="txtHint">CD info will be listed here...</div>
+</div>
+<br/>
+</div>
+<br/><hr/>
+<h2>实例解释 - HTML 页面</h2>
+<p>当用户在上面的下拉列表中选择某张 CD 时，会执行名为 "showCD()" 的函数。该函数由 "onchange" 事件触发：</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+function showCD(str)
+{
+    if (str=="")
+    {
+        document.getElementById("txtHint").innerHTML="";
+        return;
+    } 
+    if (window.XMLHttpRequest)
+    {
+        // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        // IE6, IE5 浏览器执行
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+        {
+            document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","getcd.php?q="+str,true);
+    xmlhttp.send();
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form&gt;
+Select a CD:
+&lt;select name="cds" onchange="showCD(this.value)"&gt;
+&lt;option value=""&gt;Select a CD:&lt;/option&gt;
+&lt;option value="Bob Dylan"&gt;Bob Dylan&lt;/option&gt;
+&lt;option value="Bonnie Tyler"&gt;Bonnie Tyler&lt;/option&gt;
+&lt;option value="Dolly Parton"&gt;Dolly Parton&lt;/option&gt;
+&lt;/select&gt;
+&lt;/form&gt;
+&lt;div id="txtHint"&gt;&lt;b&gt;CD info will be listed here...&lt;/b&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>showCD() 函数会执行以下步骤：</p>
+<ul>
+<li>检查是否有 CD 被选择</li>
+<li>创建 XMLHttpRequest 对象</li>
+<li>创建在服务器响应就绪时执行的函数</li>
+<li>向服务器上的文件发送请求</li>
+<li>请注意添加到 URL 末端的参数（q）（包含下拉列表的内容）</li>
+</ul>
+<hr/>
+<h2>PHP 文件</h2>
+<p>上面这段通过 JavaScript 调用的服务器页面是名为 "getcd.php" 的 PHP 文件。</p>
+<p>PHP 脚本加载 XML 文档，"<a href="/try/demo_source/cd_catalog.xml" target="_blank">cd_catalog.xml</a>"，运行针对 XML 文件的查询，并以 HTML 返回结果：</p>
+<pre>
+&lt;?php
+$q=$_GET["q"];
+
+$xmlDoc = new DOMDocument();
+$xmlDoc-&gt;load("cd_catalog.xml");
+
+$x=$xmlDoc-&gt;getElementsByTagName('ARTIST');
+
+for ($i=0; $i&lt;=$x-&gt;length-1; $i++)
+{
+    // 处理元素节点
+    if ($x-&gt;item($i)-&gt;nodeType==1)
+    {
+        if ($x-&gt;item($i)-&gt;childNodes-&gt;item(0)-&gt;nodeValue == $q)
+        {
+            $y=($x-&gt;item($i)-&gt;parentNode);
+        }
+    }
+}
+
+$cd=($y-&gt;childNodes);
+
+for ($i=0;$i&lt;$cd-&gt;length;$i++)
+{ 
+    // 处理元素节点
+    if ($cd-&gt;item($i)-&gt;nodeType==1)
+    {
+        echo("&lt;b&gt;" . $cd-&gt;item($i)-&gt;nodeName . ":&lt;/b&gt; ");
+        echo($cd-&gt;item($i)-&gt;childNodes-&gt;item(0)-&gt;nodeValue);
+        echo("&lt;br&gt;");
+    }
+}
+?&gt;
+</pre>
+<p>当 CD 查询从 JavaScript 发送到 PHP 页面时，将发生：</p>
+<ol>
+<li>PHP 创建 XML DOM 对象</li>
+<li>查找所有 &lt;artist&gt; 元素中与 JavaScript 所传数据相匹配的名字</li>
+<li>输出 album 的信息，并发送回 "txtHint" 占位符</li>
+</ol>
+</div>

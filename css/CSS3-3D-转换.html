@@ -1,0 +1,270 @@
+<div class="article-intro" id="content">
+<style> 
+#rotate2D,#rotate3D {
+    width: 80px;
+    height: 70px;
+    color: white;
+    position:relative;
+    font-weight:bold;
+    font-size:15px;
+    padding:10px;
+    float:left;
+    margin-right:50px;
+    border-radius:5px;
+    border:1px solid #000000;
+    background:red;
+    margin:10px;
+}
+
+</style>
+<script>
+<!--
+var x,y,n=0,ny=0,rotINT,rotYINT
+function rotateDIV()
+{
+x=document.getElementById("rotate2D")
+clearInterval(rotINT)
+rotINT=setInterval("startRotate()",10)
+}
+function rotateYDIV()
+{
+y=document.getElementById("rotate3D")
+clearInterval(rotYINT)
+rotYINT=setInterval("startYRotate()",10)
+}
+function startRotate()
+{
+n=n+1
+x.style.transform="rotate(" + n + "deg)"
+x.style.webkitTransform="rotate(" + n + "deg)"
+x.style.OTransform="rotate(" + n + "deg)"
+x.style.MozTransform="rotate(" + n + "deg)"
+if (n==180 || n==360)
+	{
+	clearInterval(rotINT)
+	if (n==360){n=0}
+	}
+}
+function startYRotate()
+{
+ny=ny+1
+y.style.transform="rotateY(" + ny + "deg)"
+y.style.webkitTransform="rotateY(" + ny + "deg)"
+y.style.OTransform="rotateY(" + ny + "deg)"
+y.style.MozTransform="rotateY(" + ny + "deg)"
+if (ny==180 || ny>=360)
+	{
+	clearInterval(rotYINT)
+	if (ny>=360){ny=0}
+	}
+}
+//-->
+</script>
+<h1>CSS3 <span class="color_h1">3D 转换</span>
+</h1>
+<hr/>
+<h2>3D 转换</h2>
+<p>CSS3 允许您使用 3D 转换来对元素进行格式化。</p>
+<p>在本章中，您将学到其中的一些 3D 转换方法：</p>
+<ul>
+<li>rotateX()</li>
+<li>rotateY()</li>
+</ul>
+<p class="example">点击下面的元素，来查看 2D 转换与 3D 转换之间的不同之处：</p>
+<div style="height:80px;">
+<div id="rotate2D" onmouseover="rotateDIV()">2D rotate</div>
+<div id="rotate3D" onmouseover="rotateYDIV()">3D rotate</div>
+</div>
+<br/><hr/>
+<h2>浏览器支持</h2>
+<p>表格中的数字表示支持该属性的第一个浏览器版本号。</p>
+<p>紧跟在 -webkit-, -ms- 或 -moz- 前的数字为支持该前缀属性的第一个浏览器版本号。</p>
+<table class="browserref notranslate">
+<tbody><tr>
+<th style="width:25%;font-size:16px;text-align:left">属性</th>
+<th class="bsChrome" style="width:15%" title="Chrome"></th>
+<th class="bsEdge" style="width:15%" title="Internet Explorer / Edge"></th>
+<th class="bsFirefox" style="width:15%" title="Firefox"></th>
+<th class="bsSafari" style="width:15%" title="Safari"></th>
+<th class="bsOpera" style="width:15%" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left">transform</td>
+<td>36.0<br/>12.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>10.0 -moz-</td>
+<td>4.0 -webkit-</td>
+<td>23.0<br/>15.0 -webkit-</td>
+</tr>
+<tr>
+<td style="text-align:left">transform-origin<br/>(three-value syntax)</td>
+<td>36.0<br/>12.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>10.0 -moz-</td>
+<td>4.0 -webkit-</td>
+<td>23.0<br/>15.0 -webkit-</td>
+</tr>
+<tr>
+<td style="text-align:left">transform-style</td>
+<td>36.0<br/>12.0 -webkit-</td>
+<td>11.0</td>
+<td>16.0<br/>10.0 -moz-</td>
+<td>4.0 -webkit-</td>
+<td>23.0<br/>15.0 -webkit-</td>
+</tr>
+<tr>
+<td style="text-align:left">perspective</td>
+<td>36.0<br/>12.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>10.0 -moz-</td>
+<td>4.0 -webkit-</td>
+<td>23.0<br/>15.0 -webkit-</td>
+</tr>
+<tr>
+<td style="text-align:left">perspective-origin</td>
+<td>36.0<br/>12.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>10.0 -moz-</td>
+<td>4.0 -webkit-</td>
+<td>23.0<br/>15.0 -webkit-</td>
+</tr>
+<tr>
+<td style="text-align:left">backface-visibility</td>
+<td>36.0<br/>12.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>10.0 -moz-</td>
+<td>4.0 -webkit-</td>
+<td>23.0<br/>15.0 -webkit-</td>
+</tr>
+</tbody></table>
+<h2>rotateX() 方法</h2>
+<img alt="Rotate X" src="/images/transform_rotatex.gif"/><p>rotateX()方法，围绕其在一个给定度数X轴旋转的元素。</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/incompatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">transform:</span><span class="hl-code"> </span><span class="hl-code">rotateX</span><span class="hl-code">(</span><span class="hl-number">120</span><span class="hl-code">deg</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transform:</span><span class="hl-code"> </span><span class="hl-code">rotateX</span><span class="hl-code">(</span><span class="hl-number">120</span><span class="hl-code">deg</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> Safari 与 Chrome </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_transform_rotateX" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2> rotateY() 方法</h2>
+<img alt="Rotate Y" src="/images/transform_rotatey.gif"/><p>rotateY()方法，围绕其在一个给定度数Y轴旋转的元素。</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/incompatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">transform:</span><span class="hl-code"> </span><span class="hl-code">rotateY</span><span class="hl-code">(</span><span class="hl-number">130</span><span class="hl-code">deg</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transform:</span><span class="hl-code"> </span><span class="hl-code">rotateY</span><span class="hl-code">(</span><span class="hl-number">130</span><span class="hl-code">deg</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> Safari 与 Chrome </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_transform_rotateY" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>转换属性</h2>
+<p>下表列出了所有的转换属性：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">属性</th>
+<th>描述</th>
+<th style="width:5%">CSS</th>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transform.html" title="CSS3 transform 属性">transform</a></td>
+<td>向元素应用 2D 或 3D 转换。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transform-origin.html" title="CSS3 transform-origin 属性">transform-origin</a></td>
+<td>允许你改变被转换元素的位置。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transform-style.html" title="CSS3 transform-style 属性">transform-style</a></td>
+<td>规定被嵌套元素如何在 3D 空间中显示。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-perspective.html" title="CSS3 perspective 属性">perspective</a></td>
+<td>规定 3D 元素的透视效果。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-perspective-origin.html" title="CSS3 perspective-origin 属性">perspective-origin</a></td>
+<td>规定 3D 元素的底部位置。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-backface-visibility.html" title="CSS3 backface-visibility 属性">backface-visibility</a></td>
+<td>定义元素在不面对屏幕时是否可见。</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2>3D 转换方法</h2>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">函数</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>matrix3d(<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<br/><i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>,<i>n</i>)</td>
+<td>定义 3D 转换，使用 16 个值的 4x4 矩阵。</td>
+</tr>
+<tr>
+<td>translate3d(<i>x</i>,<i>y</i>,<i>z</i>)</td>
+<td>定义 3D 转化。</td>
+</tr>
+<tr>
+<td>translateX(<i>x</i>)</td>
+<td>定义 3D 转化，仅使用用于 X 轴的值。</td>
+</tr>
+<tr>
+<td>translateY(<i>y</i>)</td>
+<td>定义 3D 转化，仅使用用于 Y 轴的值。</td>
+</tr>
+<tr>
+<td>translateZ(<i>z</i>)</td>
+<td>定义 3D 转化，仅使用用于 Z 轴的值。</td>
+</tr>
+<tr>
+<td>scale3d(<i>x</i>,<i>y</i>,<i>z</i>)</td>
+<td>定义 3D 缩放转换。</td>
+</tr>
+<tr>
+<td>scaleX(<i>x</i>)</td>
+<td>定义 3D 缩放转换，通过给定一个 X 轴的值。</td>
+</tr>
+<tr>
+<td>scaleY(<i>y</i>)</td>
+<td>定义 3D 缩放转换，通过给定一个 Y 轴的值。</td>
+</tr>
+<tr>
+<td>scaleZ(<i>z</i>)</td>
+<td>定义 3D 缩放转换，通过给定一个 Z 轴的值。</td>
+</tr>
+<tr>
+<td>rotate3d(<i>x</i>,<i>y</i>,<i>z</i>,<i>angle</i>)</td>
+<td>定义 3D 旋转。</td>
+</tr>
+<tr>
+<td>rotateX(<i>angle</i>)</td>
+<td>定义沿 X 轴的 3D 旋转。</td>
+</tr>
+<tr>
+<td>rotateY(<i>angle</i>)</td>
+<td>定义沿 Y 轴的 3D 旋转。</td>
+</tr>
+<tr>
+<td>rotateZ(<i>angle</i>)</td>
+<td>定义沿 Z 轴的 3D 旋转。</td>
+</tr>
+<tr>
+<td>perspective(<i>n</i>)</td>
+<td>定义 3D 转换元素的透视视图。</td>
+</tr>
+</tbody></table>
+</div>

@@ -1,0 +1,171 @@
+<div class="article-intro" id="content">
+<h1>DTD - <span class="color_h1">属性</span>
+</h1>
+<hr/>
+<p class="intro">在 DTD 中，属性通过 ATTLIST 声明来进行声明。</p>
+<hr/>
+<h2>声明属性</h2>
+<p>属性声明使用下列语法：</p>
+<div class="code notranslate"><div>
+
+&lt;!ATTLIST element-name attribute-name attribute-type attribute-value&gt;<br/><br/>
+DTD 实例:<br/><br/>
+&lt;!ATTLIST payment type CDATA "check"&gt;<br/><br/>
+XML 实例:<br/><br/>
+&lt;payment type="check" /&gt;
+
+</div></div>
+<p>以下是 <b>属性类型</b>的选项：</p>
+<table class="reference notranslate">
+<tr>
+<th style="width:35%;">类型</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>CDATA</td>
+<td>值为字符数据 (character data)</td>
+</tr>
+<tr>
+<td>(<i>en1</i>|<i>en2</i>|..)</td>
+<td>此值是枚举列表中的一个值</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>值为唯一的 id</td>
+</tr>
+<tr>
+<td>IDREF</td>
+<td>值为另外一个元素的 id</td>
+</tr>
+<tr>
+<td>IDREFS</td>
+<td>值为其他 id 的列表</td>
+</tr>
+<tr>
+<td>NMTOKEN</td>
+<td>值为合法的 XML 名称</td>
+</tr>
+<tr>
+<td>NMTOKENS</td>
+<td>值为合法的 XML 名称的列表</td>
+</tr>
+<tr>
+<td>ENTITY</td>
+<td>值是一个实体</td>
+</tr>
+<tr>
+<td>ENTITIES</td>
+<td>值是一个实体列表</td>
+</tr>
+<tr>
+<td>NOTATION</td>
+<td>此值是符号的名称</td>
+</tr>
+<tr>
+<td>xml:</td>
+<td>值是一个预定义的 XML 值</td>
+</tr>
+</table>
+<p>默认<b>属性值</b>可使用下列值 :</p>
+<table class="reference notranslate">
+<tr>
+<th style="width:35%;">值</th>
+<th>解释</th>
+</tr>
+<tr>
+<td>值</td>
+<td>属性的默认值</td>
+</tr>
+<tr>
+<td>#REQUIRED</td>
+<td>属性值是必需的</td>
+</tr>
+<tr>
+<td>#IMPLIED</td>
+<td>属性不是必需的</td>
+</tr>
+<tr>
+<td>#FIXED value</td>
+<td>属性值是固定的</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>默认属性值</h2>
+<div class="code notranslate"><div>
+
+DTD:<br/>
+&lt;!ELEMENT square EMPTY&gt;<br/>
+&lt;!ATTLIST square width CDATA "0"&gt;<br/><br/>
+合法的 XML:<br/>
+&lt;square width="100" /&gt;
+</div></div>
+<p>在上面的例子中，"square" 被定义为带有 CDATA 类型的 "width" 属性的空元素。如果宽度没有被设定，其默认值为0 。</p>
+<hr/>
+<h2>#REQUIRED</h2>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;!ATTLIST element-name attribute-name attribute-type #REQUIRED&gt;
+</div></div>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+DTD:<br/>
+&lt;!ATTLIST person number CDATA #REQUIRED&gt;<br/><br/>
+合法的 XML:<br/>
+&lt;person number="5677" /&gt;<br/><br/>
+非法的 XML:<br/>
+&lt;person /&gt;
+</div></div>
+<p>假如您没有默认值选项，但是仍然希望强制作者提交属性的话，请使用关键词 #REQUIRED。</p>
+<hr/>
+<h2>#IMPLIED</h2>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;!ATTLIST element-name attribute-name attribute-type #IMPLIED&gt;
+</div></div>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+DTD:<br/>
+&lt;!ATTLIST contact fax CDATA #IMPLIED&gt;<br/><br/>
+合法的 XML:<br/>
+&lt;contact fax="555-667788" /&gt;<br/><br/>
+合法的 XML:<br/>
+&lt;contact /&gt;
+</div></div>
+<p>假如您不希望强制作者包含属性，并且您没有默认值选项的话，请使用关键词 #IMPLIED。</p>
+<hr/>
+<h2>#FIXED</h2>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;!ATTLIST element-name attribute-name attribute-type #FIXED "value"&gt;
+</div></div>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+DTD:<br/>
+&lt;!ATTLIST sender company CDATA #FIXED "Microsoft"&gt;<br/><br/>
+合法的 XML:<br/>
+&lt;sender company="Microsoft" /&gt;<br/><br/>
+非法的 XML:<br/>
+&lt;sender company="W3Schools" /&gt;
+</div></div>
+<p>如果您希望属性拥有固定的值，并不允许作者改变这个值，请使用 #FIXED 关键词。如果作者使用了不同的值，XML 解析器会返回错误。</p>
+<hr/>
+<h2>列举属性值</h2>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;!ATTLIST element-name attribute-name (en1|en2|..) default-value&gt;
+</div></div>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+DTD:<br/>
+&lt;!ATTLIST payment type (check|cash) "cash"&gt;<br/><br/>
+XML 例子:<br/>
+&lt;payment type="check" /&gt;<br/>
+或<br/>
+&lt;payment type="cash" /&gt;
+</div></div>
+<p>如果您希望属性值为一系列固定的合法值之一，请使用列举属性值。</p>
+</div>

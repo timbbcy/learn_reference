@@ -1,0 +1,87 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- WebMail 帮助器</span>
+</h1>
+<hr/>
+<p class="intro">WebMail 帮助器 - 众多有用的 ASP.NET Web 帮助器之一。</p>
+<hr/>
+<h2>WebMail 帮助器</h2>
+<p>WebMail 帮助器让发送邮件变得更简单，它按照 SMTP（Simple Mail Transfer Protocol 简单邮件传输协议）从 Web 应用程序发送邮件。</p>
+<hr/>
+<h2>
+前提：电子邮件支持</h2>
+<p>
+为了演示如何使用电子邮件，我们将创建一个输入页面，让用户提交一个页面到另一个页面，并发送一封关于支持问题的邮件。</p>
+<hr/>
+<h2>
+第一：编辑您的 AppStart 页面</h2>
+<p>
+如果在本教程中您已经创建了 Demo 应用程序，那么您已经有一个名为 _AppStart.cshtml 的页面，内容如下：</p>
+<div class="example">
+<h2 class="example">_AppStart.cshtml</h2>
+<div class="example_code notranslate">
+@{<br/>WebSecurity.InitializeDatabaseConnection("Users", "UserProfile", "UserId", 
+"Email", true);<br/>}</div>
+<br/>
+</div>
+<p>
+要启动 WebMail 帮助器，向您的 AppStart 页面中增加如下所示的 WebMail 属性：</p>
+<div class="example">
+<h2 class="example">_AppStart.cshtml</h2>
+<div class="example_code notranslate">
+@{<br/>WebSecurity.InitializeDatabaseConnection("Users", "UserProfile", "UserId", 
+"Email", true);<br/><span class="marked">WebMail.SmtpServer = "smtp.example.com";<br/>WebMail.SmtpPort = 25;<br/>
+WebMail.EnableSsl = false;<br/>WebMail.UserName = "support@example.com";<br/>
+WebMail.Password = "password-goes-here";<br/>WebMail.From = "john@example.com";</span><br/>}</div>
+<br/>
+</div>
+<p>属性解释：</p>
+<p><strong>SmtpServer:</strong> 用于发送电子邮件的 SMTP 服务器的名称。</p>
+<p><strong>SmtpPort:</strong> 服务器用来发送 SMTP 事务（电子邮件）的端口。</p>
+<p><strong>EnableSsl:</strong> 如果服务器使用 SSL（Secure Socket Layer 安全套接层）加密，则值为 true。</p>
+<p><strong>UserName:</strong> 用于发送电子邮件的 SMTP 电子邮件账户的名称。</p>
+<p><strong>Password:</strong> SMTP 电子邮件账户的密码。</p>
+<p><strong>From:</strong> 在发件地址栏显示的电子邮件（通常与 UserName 相同）。</p>
+<hr/>
+<h2>
+第二：创建一个电子邮件输入页面</h2>
+<p>
+接着创建一个输入页面，并将它命名为 Email_Input：</p>
+<div class="example">
+<h2 class="example">Email_Input.cshtml</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt; <br/>&lt;html&gt; <br/>&lt;body&gt; <br/>&lt;h1&gt;Request for 
+Assistance&lt;/h1&gt; <br/><br/>&lt;form method="post" action="EmailSend.cshtml"&gt; <br/>
+&lt;label&gt;Username:&lt;/label&gt;<br/>&lt;input type="text name="customerEmail" /&gt;<br/>
+&lt;label&gt;Details about the problem:&lt;/label&gt; <br/>&lt;textarea name="customerRequest" 
+cols="45" rows="4"&gt;&lt;/textarea&gt; <br/>&lt;p&gt;&lt;input type="submit" value="Submit" 
+/&gt;&lt;/p&gt; <br/>&lt;/form&gt; <br/><br/>&lt;/body&gt; <br/>&lt;/html&gt;</div>
+<br/>
+</div>
+<p>输入页面的目的是手机信息，然后提交数据到可以将信息作为电子邮件发送的一个新的页面。</p>
+<hr/>
+<h2>
+第三：创建一个电子邮件发送页面</h2>
+<p>
+接着创建一个用来发送电子邮件的页面，并将它命名为 Email_Send：</p>
+<div class="example">
+<h2 class="example">Email_Send.cshtml</h2>
+<div class="example_code notranslate">
+@{ // Read input<br/>
+var customerEmail = Request["customerEmail"];<br/>
+var customerRequest = Request["customerRequest"];<br/>
+try<br/>
+{<br/>
+// Send email <br/>
+WebMail.Send(to:"someone@example.com", subject: "Help request from - " + customerEmail, body: 
+customerRequest ); <br/>
+}<br/>
+catch (Exception ex )<br/>
+{<br/>
+&lt;text&gt;@ex&lt;/text&gt;
+<br/>
+}<br/>}
+</div>
+</div>
+<p>想了解更多关于 ASP.NET Web Pages 应用程序发送电子邮件的信息，请查阅：<a href="webpages-ref-webmail.html">WebMail 对象参考手册</a>。</p>
+<br/>
+</div>

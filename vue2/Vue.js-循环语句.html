@@ -1,0 +1,122 @@
+<div class="article-intro" id="content">
+<h2>循环语句</h2>
+<p>循环使用 v-for 指令。</p><p>
+v-for 指令需要以 <strong>site in sites</strong> 形式的特殊语法， sites 是源数据数组并且 site 是数组元素迭代的别名。</p><p>
+v-for 可以绑定数据到数组来渲染一个列表：</p>
+<div class="example">
+<h2 class="example">v-for 指令</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ol</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">v-for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">site in sites</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      {{ site.name }}
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ol</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app',
+  data: {
+    sites: [
+      { name: 'Runoob' },
+      { name: 'Google' },
+      { name: 'Taobao' }
+    ]
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-for" target="_blank">尝试一下 »</a>
+</div>
+<p>模板中使用 v-for：</p>
+<div class="example">
+<h2 class="example">v-for</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">template</span><span class="hl-code"> </span><span class="hl-var">v-for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">site in sites</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ site.name }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">--------------</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-for2" target="_blank">尝试一下 »</a>
+</div>
+<h3>v-for 迭代对象</h3>
+<p>v-for 可以通过一个对象的属性来迭代数据：</p>
+<div class="example">
+<h2 class="example">v-for</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">v-for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">value in object</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    {{ value }}
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app',
+  data: {
+    object: {
+      name: '菜鸟教程',
+      url: 'http://www.runoob.com',
+      slogan: '学的不仅是技术，更是梦想！'
+    }
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-for-obj" target="_blank">尝试一下 »</a>
+</div>
+<p>你也可以提供第二个的参数为键名：</p>
+<div class="example">
+<h2 class="example">v-for</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">v-for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">(value, key) in object</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    {{ key }} : {{ value }}
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-for-obj2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+第三个参数为索引：</p>
+<div class="example">
+<h2 class="example">v-for</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">v-for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">(value, key, index) in object</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+     {{ index }}. {{ key }} : {{ value }}
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-for-obj3" target="_blank">尝试一下 »</a>
+</div>
+<h3>v-for 迭代整数</h3>
+<p>
+v-for 也可以循环整数</p>
+<div class="example">
+<h2 class="example">v-for</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">v-for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">n in 10</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+     {{ n }}
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-for-int" target="_blank">尝试一下 »</a>
+</div>
+</div>

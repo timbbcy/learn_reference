@@ -1,0 +1,63 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">设置排序</span></h1>
+<p>本实例演示如何通过点击列表头来排序数据网格（DataGrid）。</p>
+<img src="/wp-content/uploads/2013/12/datagrid8.png"/>
+<p>数据网格（DataGrid）的所有列可以通过点击列表头来排序。您可以定义哪列可以排序。默认的，列是不能排序的，除非您设置 sortable 属性为 true。</p>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" class="easyui-datagrid" style="width:600px;height:250px"
+            url="datagrid8_getdata.php"
+            title="Load Data" iconCls="icon-save"
+            rownumbers="true" pagination="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80" sortable="true"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80" sortable="true"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right" sortable="true"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right" sortable="true"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>我们定义一些可排序的列，包含 itemid、productid、listprice、unitcost 等等。'attr1' 列和 'status' 列不能排序。</p>
+<p>当排序时，数据网格（DataGrid）将发送两个参数到远程服务器：</p>
+<ul>
+<li>sort：排序列字段名。</li>
+<li>order：排序方式，可以是 'asc' 或者 'desc'，默认值是 'asc'。</li>
+</ul>
+<h4>服务器端代码</h4>
+<pre style="color:#006600">
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+    $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'itemid';
+    $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+    $offset = ($page-1)*$rows;
+    
+    $result = array();
+    
+    include 'conn.php';
+    
+    $rs = mysql_query("select count(*) from item");
+    $row = mysql_fetch_row($rs);
+    $result["total"] = $row[0];
+    
+    $rs = mysql_query("select * from item order by $sort $order limit $offset,$rows");
+    
+    $items = array();
+    while($row = mysql_fetch_object($rs)){
+        array_push($items, $row);
+    }
+    $result["rows"] = $items;
+    
+    echo json_encode($result);
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid8.zip">jeasyui-datagrid-datagrid8.zip</a></p>
+</div>

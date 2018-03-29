@@ -1,0 +1,76 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">HTML DOM</span>
+</h1>
+<hr/>
+<p class="intro">通过 HTML DOM，可访问 JavaScript HTML 文档的所有元素。</p>
+<hr/>
+<h2>HTML DOM (文档对象模型)</h2>
+<p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。 </p>
+<p><strong>HTML DOM</strong> 模型被构造为<strong>对象</strong>的树：</p>
+<div class="example">
+<h2 class="example_head"> HTML DOM 树</h2>
+<div class="example_code notranslate" style="text-align:center">
+<img alt="DOM HTML tree" border="0" height="266" src="/images/pic_htmltree.gif" width="486"/>
+</div>
+</div>
+<p>通过可编程的对象模型，JavaScript 获得了足够的能力来创建动态的 HTML。 </p>
+<ul>
+<li>JavaScript 能够改变页面中的所有 HTML 元素</li>
+<li>JavaScript 能够改变页面中的所有 HTML 属性</li>
+<li>JavaScript 能够改变页面中的所有 CSS 样式</li>
+<li>JavaScript 能够对页面中的所有事件做出反应</li>
+</ul>
+<hr/>
+<h2>查找 HTML 元素</h2>
+<p>通常，通过 JavaScript，您需要操作 HTML 元素。</p>
+<p>为了做到这件事情，您必须首先找到该元素。有三种方法来做这件事：</p>
+<ul>
+<li>通过 id 找到 HTML 元素</li>
+<li>通过标签名找到 HTML 元素</li>
+<li>通过类名找到 HTML 元素</li>
+</ul>
+<hr/>
+<h2>通过 id 查找 HTML 元素</h2>
+<p>在 DOM 中查找 HTML 元素的最简单的方法，是通过使用元素的 id。</p>
+<p>本例查找 id="intro" 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	var x=document.getElementById("intro");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getelementbyid" target="_blank">尝试一下 »</a>
+</div>
+<p>如果找到该元素，则该方法将以对象（在 x 中）的形式返回该元素。</p>
+<p>如果未找到该元素，则 x 将包含 null。</p>
+<hr/>
+<h2>通过标签名查找 HTML 元素</h2>
+<p>本例查找 id="main" 的元素，然后查找 id="main" 元素中的所有 &lt;p&gt;  元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	var x=document.getElementById("main");<br/>var y=x.getElementsByTagName("p");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getelementsbytagname" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>通过类名找到 HTML 元素</h2>
+<p>本例通过 <b><a href="/jsref/met-document-getelementsbyclassname.html" target="_blank">getElementsByClassName</a></b> 函数来查找 class="intro" 的元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	var x=document.getElementsByClassName("intro");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getelementsbyclassname" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>HTML DOM 教程</h2>
+<p>在本教程接下来的篇幅中，您将学到：</p>
+<ul>
+<li>如何改变 HTML 元素的内容 (innerHTML)</li>
+<li>如何改变 HTML 元素的样式 (CSS)</li>
+<li>如何对 HTML DOM 事件做出反应</li>
+<li>如何添加或删除 HTML 元素</li>
+</ul>
+</div>

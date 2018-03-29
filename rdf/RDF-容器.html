@@ -1,0 +1,107 @@
+<div class="article-intro" id="content">
+<h1>RDF <span class="color_h1">容器</span>元素</h1>
+<hr/>
+<p><strong>RDF 容器用于描述一组事物。举个例子，把某本书的作者列在一起。</strong></p>
+<p><strong>下面的 RDF 元素用于描述这些的组：&lt;Bag&gt;、&lt;Seq&gt; 以及 &lt;Alt&gt;。</strong></p>
+<hr/>
+<h2>&lt;rdf:Bag&gt; 元素</h2>
+<p>&lt;rdf:Bag&gt; 元素用于描述一个规定为无序的值的列表。</p>
+<p>&lt;rdf:Bag&gt; 元素可包含重复的值。</p>
+<h3>实例</h3>
+<div class="code"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://www.recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Description<br/>
+ rdf:about="http://www.recshop.fake/cd/Beatles"&gt;<br/>
+  
+ &lt;cd:artist&gt;<br/>
+      
+   &lt;rdf:Bag&gt;<br/>
+          
+     &lt;rdf:li&gt;John&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;Paul&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;George&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;Ringo&lt;/rdf:li&gt;<br/>
+      
+   &lt;/rdf:Bag&gt;<br/>
+   
+  &lt;/cd:artist&gt;<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<br/><hr/>
+<h2>&lt;rdf:Seq&gt; 元素</h2>
+<p>&lt;rdf:Seq&gt; 元素用于描述一个规定为有序的值的列表（比如一个字母顺序的排序）。</p>
+<p>&lt;rdf:Bag&gt; 元素可包含重复的值。</p>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://www.recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Description<br/>
+ rdf:about="http://www.recshop.fake/cd/Beatles"&gt;<br/>
+  
+ &lt;cd:artist&gt;<br/>
+      
+   &lt;rdf:Seq&gt;<br/>
+          
+     &lt;rdf:li&gt;George&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;John&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;Paul&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;Ringo&lt;/rdf:li&gt;<br/>
+      
+   &lt;/rdf:Seq&gt;<br/>
+   
+  &lt;/cd:artist&gt;<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<br/><hr/>
+<h2>&lt;rdf:Alt&gt; 元素</h2>
+<p>&lt;rdf:Alt&gt; 元素用于一个可替换的值的列表（用户仅可选择这些值的其中之一）。</p>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://www.recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Descriptio<br/>
+ rdf:about="http://www.recshop.fake/cd/Beatles"&gt;<br/>
+  
+ &lt;cd:format&gt;<br/>
+      
+   &lt;rdf:Alt&gt;<br/>
+          
+     &lt;rdf:li&gt;CD&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;Record&lt;/rdf:li&gt;<br/>
+          
+     &lt;rdf:li&gt;Tape&lt;/rdf:li&gt;<br/>
+      
+   &lt;/rdf:Alt&gt;<br/>
+   
+  &lt;/cd:format&gt;<br/>
+&lt;/rdf:Descriptio&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<br/><hr/>
+<h2>RDF 术语</h2>
+<p>在上面的例子中，我们在描述容器元素时已经讨论了"值的列表"。在 RDF 中，这些"值的列表"被称为成员（members）。</p>
+<p>因此，我们可以这么说：</p>
+<ul>
+<li>一个容器是一个包含事物的资源</li>
+<li>被包含的事物被称为成员（不能称为"值的列表"）。</li>
+</ul>
+</div>

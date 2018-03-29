@@ -1,0 +1,34 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 菜单与按钮 - <span class="color_h1">创建菜单按钮（Menu Button）</span></h1>
+<p>菜单按钮（Menu Button）包含一个按钮（button）和一个菜单（menu）组件，当点击或移动鼠标到按钮上，将显示一个对应的菜单。</p>
+<img src="/wp-content/uploads/2013/12/menubutton.png"/>
+<p>为了定义一个菜单按钮（Menu Button），您应该定义一个链接按钮（Link Button）和一个菜单（menu），下面是一个实例：</p>
+<pre style="color:#006600">
+    &lt;div style="background:#fafafa;padding:5px;width:200px;border:1px solid #ccc"&gt;
+        &lt;a href="#" class="easyui-menubutton" menu="#mm1" iconCls="icon-edit"&gt;Edit&lt;/a&gt;
+        &lt;a href="#" class="easyui-menubutton" menu="#mm2" iconCls="icon-help"&gt;Help&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="mm1" style="width:150px;"&gt;
+        &lt;div iconCls="icon-undo"&gt;Undo&lt;/div&gt;
+        &lt;div iconCls="icon-redo"&gt;Redo&lt;/div&gt;
+        &lt;div class="menu-sep"&gt;&lt;/div&gt;
+        &lt;div&gt;Cut&lt;/div&gt;
+        &lt;div&gt;Copy&lt;/div&gt;
+        &lt;div&gt;Paste&lt;/div&gt;
+        &lt;div class="menu-sep"&gt;&lt;/div&gt;
+        &lt;div iconCls="icon-remove"&gt;Delete&lt;/div&gt;
+        &lt;div&gt;Select All&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="mm2" style="width:100px;"&gt;
+        &lt;div&gt;Help&lt;/div&gt;
+        &lt;div&gt;Update&lt;/div&gt;
+        &lt;div&gt;About&lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<p>现在已经定义好了一个菜单按钮（Menu Button），您不需要写任何的 javascript 代码。</p>
+</div>

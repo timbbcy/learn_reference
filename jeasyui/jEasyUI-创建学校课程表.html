@@ -1,0 +1,89 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 拖放 - <span class="color_h1">创建学校课程表</span></h1>
+<p>
+本教程将向您展示如何使用 jQuery EasyUI 创建一个学校课程表。
+我们将创建两个表格：在左侧显示学校科目，在右侧显示时间表。
+您可以拖动学校科目并放置到时间表单元格上。
+学校科目是一个 &lt;div class="item"&gt; 元素，时间表单元格是一个 &lt;td class="drop"&gt; 元素。
+</p>
+<img src="/wp-content/uploads/2013/12/timetable.png"/>
+<h4>显示学校科目</h4>
+<pre style="color:#006600">
+    &lt;div class="left"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;div class="item"&gt;English&lt;/div&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;div class="item"&gt;Science&lt;/div&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;!-- other subjects --&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+</pre>
+<h4>显示时间表</h4>
+<pre style="color:#006600">
+    &lt;div class="right"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td class="blank"&gt;&lt;/td&gt;
+                &lt;td class="title"&gt;Monday&lt;/td&gt;
+                &lt;td class="title"&gt;Tuesday&lt;/td&gt;
+                &lt;td class="title"&gt;Wednesday&lt;/td&gt;
+                &lt;td class="title"&gt;Thursday&lt;/td&gt;
+                &lt;td class="title"&gt;Friday&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="time"&gt;08:00&lt;/td&gt;
+                &lt;td class="drop"&gt;&lt;/td&gt;
+                &lt;td class="drop"&gt;&lt;/td&gt;
+                &lt;td class="drop"&gt;&lt;/td&gt;
+                &lt;td class="drop"&gt;&lt;/td&gt;
+                &lt;td class="drop"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;!-- other cells --&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+</pre>
+<h4>拖动在左侧的学校科目</h4>
+<pre style="color:#006600">
+    $('.left .item').draggable({
+        revert:true,
+        proxy:'clone'
+    });
+</pre>
+<h4>放置学校科目在时间表单元格上</h4>
+<pre style="color:#006600">
+    $('.right td.drop').droppable({
+        onDragEnter:function(){
+            $(this).addClass('over');
+        },
+        onDragLeave:function(){
+            $(this).removeClass('over');
+        },
+        onDrop:function(e,source){
+            $(this).removeClass('over');
+            if ($(source).hasClass('assigned')){
+                $(this).append(source);
+            } else {
+                var c = $(source).clone().addClass('assigned');
+                $(this).empty().append(c);
+                c.draggable({
+                    revert:true
+                });
+            }
+        }
+    });
+</pre>
+<p>
+正如您所看到的上面的代码，当用户拖动在左侧的学校科目并放置到时间表单元格中时，onDrop 回调函数将被调用。我们克隆从左侧拖动的源元素并把它附加到时间表单元格上。
+当把学校科目从时间表的某个单元格拖动到其他单元格，只需简单地移动它即可。
+<p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-dd-timetable.zip">jeasyui-dd-timetable.zip</a></p>
+</p></p></div>

@@ -1,0 +1,292 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- Repeater 控件</span>
+</h1>
+<hr/>
+<p class="intro">Repeater 控件用于显示被绑定在该控件上的项目的重复列表。</p>
+<hr/>
+<h2>绑定 DataSet 到 Repeater 控件</h2>
+<p>Repeater 控件用于显示被绑定在该控件上的项目的重复列表。Repeater 控件可被绑定到数据库表、XML 文件或者其他项目列表。在这里，我们将演示如何绑定 XML 文件到 Repeater 控件。</p>
+<p>在我们的实例中，我们将使用下面的 XML 文件（"cdcatalog.xml"）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;catalog&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Empire Burlesque&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Bob Dylan&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;USA&lt;/country&gt;<br/>
+ 
+&lt;company&gt;Columbia&lt;/company&gt;<br/>
+ 
+&lt;price&gt;10.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1985&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Hide your heart&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Bonnie Tyler&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;UK&lt;/country&gt;<br/>
+ 
+&lt;company&gt;CBS Records&lt;/company&gt;<br/>
+ 
+&lt;price&gt;9.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1988&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Greatest Hits&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Dolly Parton&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;USA&lt;/country&gt;<br/>
+ 
+&lt;company&gt;RCA&lt;/company&gt;<br/>
+ 
+&lt;price&gt;9.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1982&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Still got the blues&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Gary Moore&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;UK&lt;/country&gt;<br/>
+ 
+&lt;company&gt;Virgin records&lt;/company&gt;<br/>
+ 
+&lt;price&gt;10.20&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1990&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Eros&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Eros Ramazzotti&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;EU&lt;/country&gt;<br/>
+ 
+&lt;company&gt;BMG&lt;/company&gt;<br/>
+ 
+&lt;price&gt;9.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1997&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;/catalog&gt;</div></div>
+<p>查看这个 XML 文件：<a href="/try/demo_source/cdcatalog.xml" target="_blank">cdcatalog.xml</a></p>
+<p>首先，导入 "System.Data" 命名空间。我们需要该命名空间与 DataSet 对象一起工作。 把下面这条指令包含在 .aspx 页面的顶部：</p>
+<div class="code notranslate"><div>
+&lt;%@ Import Namespace="System.Data" %&gt;</div></div>
+<p>接着，为 XML 文件创建一个 DataSet，并在页面第一次加载时把这个 XML 文件载入 DataSet：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+   
+  dim mycdcatalog=New DataSet<br/>
+   
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+end if<br/>
+end sub</div></div>
+<p>然后我们在 .aspx 页面中创建一个 Repeater 控件。&lt;HeaderTemplate&gt; 元素中的内容被首先呈现，并且在输出中仅出现一次，而 &lt;ItemTemplate&gt; 元素中的内容会对应 DataSet 中的每条 "record" 重复出现，最后，&lt;FooterTemplate&gt; 元素中的内容在输出中仅出现一次：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Repeater id="cdcatalog" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+...<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+...<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+...<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:Repeater&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>然后我们添加创建 DataSet 的脚本，并且绑定 mycdcatalog DataSet 到 Repeater 控件。然后
+ 使用 HTML 标签来填充 Repeater 控件，并通过 &lt;%#Container.DataItem("fieldname")%&gt; 绑定数据项目到 &lt;ItemTemplate&gt; 区域内的单元格中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  dim mycdcatalog=New DataSet<br/>
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+  cdcatalog.DataSource=mycdcatalog<br/>
+  cdcatalog.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Repeater id="cdcatalog" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+&lt;table border="1" width="100%"&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;th&gt;Title&lt;/th&gt;<br/>
+&lt;th&gt;Artist&lt;/th&gt;<br/>
+&lt;th&gt;Country&lt;/th&gt;<br/>
+&lt;th&gt;Company&lt;/th&gt;<br/>
+&lt;th&gt;Price&lt;/th&gt;<br/>
+&lt;th&gt;Year&lt;/th&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("title")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("artist")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("country")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("company")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("price")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("year")%&gt;&lt;/td&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+&lt;/table&gt;<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:Repeater&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_repeater1" target="_blank">演示实例 »</a>
+</div>
+<hr/>
+<h2>使用 &lt;AlternatingItemTemplate&gt;</h2>
+<p>您可以在 &lt;ItemTemplate&gt; 元素后添加 &lt;AlternatingItemTemplate&gt; 元素，用来描述输出中交替行的外观。在下面的实例中，表格每隔一行就会显示为浅灰色的背景：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  dim mycdcatalog=New DataSet<br/>
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+  cdcatalog.DataSource=mycdcatalog<br/>
+  cdcatalog.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Repeater id="cdcatalog" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+&lt;table border="1" width="100%"&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;th&gt;Title&lt;/th&gt;<br/>
+&lt;th&gt;Artist&lt;/th&gt;<br/>
+&lt;th&gt;Country&lt;/th&gt;<br/>
+&lt;th&gt;Company&lt;/th&gt;<br/>
+&lt;th&gt;Price&lt;/th&gt;<br/>
+&lt;th&gt;Year&lt;/th&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("title")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("artist")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("country")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("company")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("price")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("year")%&gt;&lt;/td&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;AlternatingItemTemplate&gt;<br/>
+&lt;tr bgcolor="#e8e8e8"&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("title")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("artist")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("country")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("company")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("price")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("year")%&gt;&lt;/td&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/AlternatingItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+&lt;/table&gt;<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:Repeater&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_repeater2" target="_blank">演示实例 »</a>
+</div>
+<hr/>
+<h2>使用 &lt;SeparatorTemplate&gt;</h2>
+<p>&lt;SeparatorTemplate&gt; 元素用于描述每个记录之间的分隔符。在下面的实例中，每个表格行之间插入了一条水平线：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  dim mycdcatalog=New DataSet<br/>
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+  cdcatalog.DataSource=mycdcatalog<br/>
+  cdcatalog.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Repeater id="cdcatalog" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+&lt;table border="0" width="100%"&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;th&gt;Title&lt;/th&gt;<br/>
+&lt;th&gt;Artist&lt;/th&gt;<br/>
+&lt;th&gt;Country&lt;/th&gt;<br/>
+&lt;th&gt;Company&lt;/th&gt;<br/>
+&lt;th&gt;Price&lt;/th&gt;<br/>
+&lt;th&gt;Year&lt;/th&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("title")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("artist")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("country")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("company")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("price")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("year")%&gt;&lt;/td&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;SeparatorTemplate&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;td colspan="6"&gt;&lt;hr /&gt;&lt;/td&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/SeparatorTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+&lt;/table&gt;<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:Repeater&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_repeater3" target="_blank">演示实例 »</a>
+</div>
+<br/>
+</div>

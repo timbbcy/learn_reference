@@ -1,0 +1,46 @@
+<div class="article-intro" id="content">
+<h1>DTD - <span class="color_h1">实体</span>
+</h1>
+<hr/>
+<p class="intro">实体是用于定义引用普通文本或特殊字符的快捷方式的变量。</p>
+<ul>
+<li>
+<p class="intro">实体引用是对实体的引用。</p>
+</li>
+<li>
+<p class="intro">实体可在内部或外部进行声明。</p>
+</li>
+</ul>
+<hr/>
+<h2>一个内部实体声明</h2>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;!ENTITY entity-name "entity-value"&gt;
+</div></div>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+DTD 实例:<br/><br/>
+&lt;!ENTITY writer "Donald Duck."&gt;<br/>
+&lt;!ENTITY copyright "Copyright runoob.com"&gt;<br/><br/>
+XML 实例：<br/><br/>
+&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;
+</div></div>
+<p><b>注意：</b> 一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)。</p>
+<hr/>
+<h2>一个外部实体声明</h2>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;!ENTITY entity-name SYSTEM "URI/URL"&gt;
+</div></div>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+DTD 实例:<br/><br/>
+&lt;!ENTITY writer SYSTEM "http://www.runoob.com/entities.dtd"&gt;<br/>
+&lt;!ENTITY copyright SYSTEM "http://www.runoob.com/entities.dtd"&gt;<br/><br/>
+XML example:<br/><br/>
+&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;
+
+</div></div>
+</div>

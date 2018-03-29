@@ -1,0 +1,45 @@
+<div class="article-intro" id="content">
+<h1>SOAP <span class="color_h1">Body</span> 元素</h1>
+<hr/>
+<p class="intro">强制使用的 SOAP Body 元素包含实际的 SOAP 消息。</p>
+<hr/>
+<h2>SOAP Body 元素</h2>
+<p>必需的 SOAP Body 元素可包含打算传送到消息最终端点的实际 SOAP 消息。
+ </p>
+<p>SOAP Body 元素的直接子元素可以是合格的命名空间。</p>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/>
+&lt;soap:Envelope<br/>
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope"<br/>
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;<br/><br/>
+&lt;soap:Body&gt;<br/>
+    
+   &lt;m:GetPrice xmlns:m="http://www.w3schools.com/prices"&gt;<br/>
+         
+      &lt;m:Item&gt;Apples&lt;/m:Item&gt;<br/>
+    
+   &lt;/m:GetPrice&gt;<br/>
+&lt;/soap:Body&gt;<br/><br/>
+&lt;/soap:Envelope&gt;
+</div></div>
+<p>上面的例子请求苹果的价格。请注意，上面的 m:GetPrice 和 Item 元素是应用程序专用的元素。它们并不是 SOAP 标准的一部分。 </p>
+<p>而一个 SOAP 响应应该类似这样：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/>
+&lt;soap:Envelope<br/>
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope"<br/>
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;<br/><br/>
+&lt;soap:Body&gt;<br/>
+    
+   &lt;m:GetPriceResponse xmlns:m="http://www.w3schools.com/prices"&gt;<br/>
+         
+      &lt;m:Price&gt;1.90&lt;/m:Price&gt;<br/>
+    
+   &lt;/m:GetPriceResponse&gt;<br/>
+&lt;/soap:Body&gt;<br/><br/>
+&lt;/soap:Envelope&gt;
+</div></div>
+</div>

@@ -1,0 +1,46 @@
+<div class="article-intro" id="content">
+<h1>Memcached add 命令</h1>
+<p>Memcached add 命令用于将 <b>value(数据值)</b> 存储在指定的 <b>key(键)</b> 中。</p><p> 如果 add 的 key 已经存在，则不会更新数据(过期的 key 会更新)，之前的值将仍然保持相同，并且您将获得响应 <b>NOT_STORED</b>。</p>
+<h3>语法：</h3>
+<p>add 命令的基本语法格式如下：</p>
+<pre>
+add key flags exptime bytes [noreply]
+value
+</pre>
+<p>参数说明如下：</p>
+<ul><li><b>key：</b>键值 key-value 结构中的 key，用于查找缓存值。</li>
+<li><b>flags</b>：可以包括键值对的整型参数，客户机使用它存储关于键值对的额外信息
+。</li>
+<li><b>exptime</b>：在缓存中保存键值对的时间长度（以秒为单位，0 表示永远）</li>
+<li><b>bytes</b>：在缓存中存储的字节数</li>
+<li><b>noreply（可选）</b>： 该参数告知服务器不需要返回数据</li>
+<li><b>value</b>：存储的值（始终位于第二行）（可直接理解为key-value结构中的value）</li></ul>
+<h3>实例</h3>
+<p>以下实例中我们设置：</p>
+<ul><li>
+key → new_key
+</li><li>
+flag → 0
+</li><li>
+exptime → 900 (以秒为单位)
+</li><li>
+bytes → 10 (数据存储的字节数)
+</li><li>
+value → data_value</li></ul>
+<pre>
+add new_key 0 900 10
+data_value
+STORED
+get new_key
+VALUE new_key 0 10
+data_value
+END
+</pre>
+<h3>输出</h3>
+<p>如果数据添加成功，则输出：</p>
+<pre>
+STORED
+</pre>
+<p>输出信息说明：</p>
+<ul><li><b>STORED</b>：保存成功后输出。</li><li><b>NOT_STORED </b>：在保持失败后输出。</li></ul>
+</div>

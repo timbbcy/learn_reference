@@ -1,0 +1,145 @@
+<div class="article-intro" id="content">
+<h1>XML DOM - <span class="color_h1">访问节点</span>
+</h1>
+<hr/>
+<p class="intro">通过 DOM，您能够访问 XML 文档中的每个节点。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_index" target="_blank">使用节点列表中的索引号来访问节点</a><br/>
+本例使用 getElementsByTagname() 方法来获取 "books.xml" 中的第三个 &lt;title&gt; 元素。</p>
+<p><a href="/try/try.php?filename=try_dom_list_loop" target="_blank">使用 length 属性来遍历节点</a><br/>
+本例使用 length 属性来遍历 "books.xml" 中的所有 &lt;title&gt; 元素。</p>
+<p><a href="/try/try.php?filename=try_dom_root" target="_blank">查看元素的节点类型</a><br/>
+本例使用 nodeType 属性来获取 "books.xml" 中根元素的节点类型。</p>
+<p><a href="/try/try.php?filename=try_dom_loop" target="_blank">遍历元素节点</a><br/>
+本例使用 nodeType 属性来处理 "books.xml" 中的元素节点。</p>
+<p><a href="/try/try.php?filename=try_dom_navigate" target="_blank">使用节点的关系来遍历元素节点</a><br/>
+本例使用 nodeType 属性和 nextSibling 属性来处理 "books.xml" 中的元素节点。</p>
+<hr/>
+<h2>访问节点</h2>
+<p>您可以通过三种方式来访问节点：</p>
+<p>1. 通过使用 getElementsByTagName() 方法。</p>
+<p>2. 通过循环（遍历）节点树。</p>
+<p>3. 通过利用节点的关系在节点树中导航。</p>
+<hr/>
+<h2>getElementsByTagName() 方法</h2>
+<p>getElementsByTagName() 返回拥有指定标签名的所有元素。</p>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+<i>node</i>.getElementsByTagName(<i>"tagname"</i>);
+</div></div>
+<h3>实例</h3>
+<p>下面的实例返回 x 元素下的所有 &lt;title&gt; 元素：</p>
+<div class="code notranslate"><div>
+x.getElementsByTagName("title");
+</div></div>
+<p>请注意，上面的实例仅返回 x 节点下的 &lt;title&gt; 元素。如需返回 XML 文档中的所有 &lt;title&gt; 元素，请使用：</p>
+<div class="code notranslate"><div>
+xmlDoc.getElementsByTagName("title");
+</div></div>
+<p>在这里，xmlDoc 就是文档本身（文档节点）。</p>
+<hr/>
+<h2>DOM 节点列表（Node List）</h2>
+<p>getElementsByTagName() 方法返回节点列表。节点列表是节点的数组。</p>
+<p>下面的代码使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中，然后在变量 x 中存储 &lt;title&gt; 节点的一个列表：</p>
+<div class="code notranslate"><div>
+
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title");
+</div></div>
+<p>可通过索引号访问 x 中的 &lt;title&gt; 元素。如需访问第三个 &lt;title&gt;，您可以编写：</p>
+<div class="code notranslate"><div>
+y=x[2];
+</div></div>
+<p><b>注意：</b>该索引从 0 开始。</p>
+<p>在本教程后面的章节中，您将学习更多有关节点列表（Node List）的知识。</p>
+<hr/>
+<h2>DOM 节点列表长度（Node List Length）</h2>
+<p>length 属性定义节点列表的长度（即节点的数量）。</p>
+<p>您可以通过使用 length 属性来遍历节点列表：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_list_loop" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取所有 &lt;title&gt; 元素节点</li>
+<li>输出每个 &lt;title&gt; 元素的文本节点的值</li>
+</ol>
+<hr/>
+<h2>节点类型（Node Types）</h2>
+<p>XML 文档的 <b>documentElement</b> 属性是根节点。</p>
+<p>节点的 <b>nodeName</b> 属性是节点的名称。</p>
+<p>节点的 <b>nodeType</b> 属性是节点的类型。</p>
+<p>您将在本教程的下一章中学习更多有关节点属性的知识。</p>
+<p><a href="/try/try.php?filename=try_dom_root" target="_blank">尝试一下</a></p>
+<hr/>
+<h2>遍历节点</h2>
+<p>下面的代码遍历根节点的子节点，同时也是元素节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">documentElement</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeType</span><span class="hl-code">==</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 执行一次</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeName</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_loop" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取根元素的子节点</li>
+<li>检查每个子节点的节点类型。如果节点类型是 "1"，则是元素节点</li>
+<li>如果是元素节点，则输出节点的名称</li>
+</ol>
+<hr/>
+<h2>导航节点的关系</h2>
+<p>下面的代码使用节点关系导航节点树：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">book</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-code">;
+</span><span class="hl-identifier">y</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">book</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">firstChild</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">y</span><span class="hl-code">.</span><span class="hl-identifier">nodeType</span><span class="hl-code">==</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 输出节点名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">y</span><span class="hl-code">.</span><span class="hl-identifier">nodeName</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">y</span><span class="hl-code">=</span><span class="hl-identifier">y</span><span class="hl-code">.</span><span class="hl-identifier">nextSibling</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_navigate" target="_blank">尝试一下 »</a>
+</div>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li></ol></div>

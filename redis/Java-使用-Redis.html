@@ -1,0 +1,126 @@
+<div class="article-intro" id="content">
+<h1>Java 使用 Redis</h1>
+<h2>安装</h2>
+<p>开始在 Java 中使用 Redis 前，
+我们需要确保已经安装了 redis 服务及 Java redis 驱动，且你的机器上能正常使用 Java。
+Java的安装配置可以参考我们的 <a href="java-environment-setup.html" target="_top" title="Java开发环境配置"> Java开发环境配置 </a>
+接下来让我们安装 Java redis 驱动：
+<ul>
+<li>首先你需要下载驱动包 <a href="https://mvnrepository.com/artifact/redis.clients/jedis" rel="nofollow" target="_blank"><b>下载 jedis.jar</b></a>，确保下载最新驱动包。
+</li><li>在你的 classpath 中包含该驱动包。</li></ul>
+<blockquote><p>本站提供了 2.9.0 jar 版本下载：
+<a download="" href="//static.runoob.com/download/jedis-2.9.0.jar" target="_blank">jedis-2.9.0.jar</a></p></blockquote>
+<hr/>
+<h2>连接到 redis 服务</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">redis</span><span class="hl-code">.</span><span class="hl-identifier">clients</span><span class="hl-code">.</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">Jedis</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">RedisJava</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">连接本地的 Redis 服务</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Jedis</span><span class="hl-code"> </span><span class="hl-identifier">jedis</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Jedis</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-comment">//</span><span class="hl-comment">查看服务是否运行</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">服务正在运行: </span><span class="hl-quotes">"</span><span class="hl-code">+</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">ping</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>编译以上 Java 程序，确保驱动包的路径是正确的。</p>
+<pre>
+连接成功
+服务正在运行: PONG
+</pre>
+<hr/>
+<h2>Redis Java String(字符串) 实例</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">redis</span><span class="hl-code">.</span><span class="hl-identifier">clients</span><span class="hl-code">.</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">Jedis</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">RedisStringJava</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">连接本地的 Redis 服务</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Jedis</span><span class="hl-code"> </span><span class="hl-identifier">jedis</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Jedis</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-comment">//</span><span class="hl-comment">设置 redis 字符串数据</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">set</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">runoobkey</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-comment">//</span><span class="hl-comment"> 获取存储的数据并输出</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">redis 存储的字符串为: </span><span class="hl-quotes">"</span><span class="hl-code">+ </span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">get</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">runoobkey</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>编译以上程序。</p>
+<pre>
+连接成功
+redis 存储的字符串为: www.runoob.com
+</pre>
+<hr/>
+<h2>Redis Java List(列表) 实例</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">java</span><span class="hl-code">.</span><span class="hl-identifier">util</span><span class="hl-code">.</span><span class="hl-identifier">List</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">redis</span><span class="hl-code">.</span><span class="hl-identifier">clients</span><span class="hl-code">.</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">Jedis</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">RedisListJava</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">连接本地的 Redis 服务</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Jedis</span><span class="hl-code"> </span><span class="hl-identifier">jedis</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Jedis</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-comment">//</span><span class="hl-comment">存储数据到列表中</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">lpush</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">site-list</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">lpush</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">site-list</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">lpush</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">site-list</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-comment">//</span><span class="hl-comment"> 获取存储的数据并输出</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">List</span><span class="hl-code">&lt;</span><span class="hl-identifier">String</span><span class="hl-code">&gt; </span><span class="hl-identifier">list</span><span class="hl-code"> = </span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">lrange</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">site-list</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code"> ,</span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">for</span><span class="hl-brackets">(</span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">list</span><span class="hl-code">.</span><span class="hl-identifier">size</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">列表项为: </span><span class="hl-quotes">"</span><span class="hl-code">+</span><span class="hl-identifier">list</span><span class="hl-code">.</span><span class="hl-identifier">get</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>编译以上程序。</p>
+<pre>
+连接成功
+列表项为: Taobao
+列表项为: Google
+列表项为: Runoob
+</pre>
+<hr/>
+<h2>Redis Java Keys 实例</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">java</span><span class="hl-code">.</span><span class="hl-identifier">util</span><span class="hl-code">.</span><span class="hl-identifier">Iterator</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">java</span><span class="hl-code">.</span><span class="hl-identifier">util</span><span class="hl-code">.</span><span class="hl-identifier">Set</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">redis</span><span class="hl-code">.</span><span class="hl-identifier">clients</span><span class="hl-code">.</span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">Jedis</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">RedisKeyJava</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">连接本地的 Redis 服务</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Jedis</span><span class="hl-code"> </span><span class="hl-identifier">jedis</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Jedis</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+        </span><span class="hl-comment">//</span><span class="hl-comment"> 获取数据并输出</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Set</span><span class="hl-code">&lt;</span><span class="hl-identifier">String</span><span class="hl-code">&gt; </span><span class="hl-identifier">keys</span><span class="hl-code"> = </span><span class="hl-identifier">jedis</span><span class="hl-code">.</span><span class="hl-identifier">keys</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">*</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+        </span><span class="hl-identifier">Iterator</span><span class="hl-code">&lt;</span><span class="hl-identifier">String</span><span class="hl-code">&gt; </span><span class="hl-identifier">it</span><span class="hl-code">=</span><span class="hl-identifier">keys</span><span class="hl-code">.</span><span class="hl-identifier">iterator</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> ;   
+        </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-identifier">it</span><span class="hl-code">.</span><span class="hl-identifier">hasNext</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">String</span><span class="hl-code"> </span><span class="hl-identifier">key</span><span class="hl-code"> = </span><span class="hl-identifier">it</span><span class="hl-code">.</span><span class="hl-identifier">next</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;   
+            </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-identifier">key</span><span class="hl-brackets">)</span><span class="hl-code">;   
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>编译以上程序。</p>
+<pre>
+连接成功
+runoobkey
+site-list
+</pre>
+</p></div>

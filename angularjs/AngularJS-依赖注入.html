@@ -1,0 +1,173 @@
+<div class="article-intro" id="content">
+<h1>AngularJS 依赖注入</h1>
+<hr/>
+<h2>什么是依赖注入</h2>
+<p>wiki 上的解释是：依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。
+</p><p>该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖
+</p>
+<blockquote>
+<p>一句话 --- 没事你不要来找我，有事我会去找你。</p>
+</blockquote>
+<p>AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：</p>
+<ul class="list">
+<li>value</li>
+<li>factory</li>
+<li>service</li>
+<li>provider</li>
+<li>constant</li>
+</ul>
+<hr/>
+<h2>value
+</h2>
+<p>
+Value 是一个简单的 javascript 对象，用于向控制器传递值（配置阶段）：
+</p>
+<pre>
+// 定义一个模块
+var mainApp = angular.module("mainApp", []);
+
+// 创建 value 对象 "defaultInput" 并传递数据
+mainApp.value("defaultInput", 5);
+...
+
+// 将 "defaultInput" 注入到控制器
+mainApp.controller('CalcController', function($scope, CalcService, defaultInput) {
+   $scope.number = defaultInput;
+   $scope.result = CalcService.square($scope.number);
+   
+   $scope.square = function() {
+      $scope.result = CalcService.square($scope.number);
+   }
+});
+</pre>
+<hr/>
+<h2>factory</h2>
+<p>factory 是一个函数用于返回值。在 service 和 controller 需要时创建。</p>
+<p>通常我们使用 factory 函数来计算或返回值。</p>
+<pre>
+// 定义一个模块
+var mainApp = angular.module("mainApp", []);
+
+// 创建 factory "MathService" 用于两数的乘积 provides a method multiply to return multiplication of two numbers
+mainApp.factory('MathService', function() {
+   var factory = {};
+   
+   factory.multiply = function(a, b) {
+      return a * b
+   }
+   return factory;
+}); 
+
+// 在 service 中注入 factory "MathService"
+mainApp.service('CalcService', function(MathService){
+   this.square = function(a) {
+      return MathService.multiply(a,a);
+   }
+});
+...
+</pre>
+<hr/>
+<h2>provider</h2>
+<p>
+AngularJS 中通过 provider 创建一个 service、factory等(配置阶段)。</p>
+<p>Provider 中提供了一个 factory 方法 get()，它用于返回 value/service/factory。</p>
+<pre>
+// 定义一个模块
+var mainApp = angular.module("mainApp", []);
+...
+
+// 使用 provider 创建 service 定义一个方法用于计算两数乘积
+mainApp.config(function($provide) {
+   $provide.provider('MathService', function() {
+      this.$get = function() {
+         var factory = {};  
+         
+         factory.multiply = function(a, b) {
+            return a * b; 
+         }
+         return factory;
+      };
+   });
+});
+</pre>
+<hr/>
+<h2>constant</h2>
+<p>constant(常量)用来在配置阶段传递数值，注意这个常量在配置阶段是不可用的。</p>
+<pre>
+mainApp.constant("configParam", "constant value");
+</pre>
+<hr/>
+<h2>实例</h2>
+<p>以下实例提供了以上几个依赖注入机制的演示。</p>
+<div class="example">
+<h2 class="example">AngularJS 实例 - factory</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">mainApp</span><span class="hl-code"> = </span><span class="hl-identifier">angular</span><span class="hl-code">.</span><span class="hl-identifier">module</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">mainApp</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">defaultInput</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">factory</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">MathService</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">factory</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-brackets">}</span><span class="hl-code">;
+ 
+    </span><span class="hl-identifier">factory</span><span class="hl-code">.</span><span class="hl-identifier">multiply</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">factory</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">service</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CalcService</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">MathService</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">MathService</span><span class="hl-code">.</span><span class="hl-identifier">multiply</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">,</span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">controller</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CalcController</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-code">, </span><span class="hl-identifier">CalcService</span><span class="hl-code">, </span><span class="hl-identifier">defaultInput</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-code"> = </span><span class="hl-identifier">defaultInput</span><span class="hl-code">;
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">result</span><span class="hl-code"> = </span><span class="hl-identifier">CalcService</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">result</span><span class="hl-code"> = </span><span class="hl-identifier">CalcService</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_dependency_injection" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h2 class="example">AngularJS 实例 - provider</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">mainApp</span><span class="hl-code"> = </span><span class="hl-identifier">angular</span><span class="hl-code">.</span><span class="hl-identifier">module</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">mainApp</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">;
+         
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">config</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">provide</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-identifier">provide</span><span class="hl-code">.</span><span class="hl-identifier">provider</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">MathService</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.$</span><span class="hl-identifier">get</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">factory</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-brackets">}</span><span class="hl-code">;
+ 
+            </span><span class="hl-identifier">factory</span><span class="hl-code">.</span><span class="hl-identifier">multiply</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-code">;
+            </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">factory</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+            
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">defaultInput</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">;
+         
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">service</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CalcService</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">MathService</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">MathService</span><span class="hl-code">.</span><span class="hl-identifier">multiply</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">,</span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+         
+</span><span class="hl-identifier">mainApp</span><span class="hl-code">.</span><span class="hl-identifier">controller</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CalcController</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-code">, </span><span class="hl-identifier">CalcService</span><span class="hl-code">, </span><span class="hl-identifier">defaultInput</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-code"> = </span><span class="hl-identifier">defaultInput</span><span class="hl-code">;
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">result</span><span class="hl-code"> = </span><span class="hl-identifier">CalcService</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">result</span><span class="hl-code"> = </span><span class="hl-identifier">CalcService</span><span class="hl-code">.</span><span class="hl-identifier">square</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_dependency_injection_provider" target="_blank">尝试一下 »</a>
+</div>
+</div>

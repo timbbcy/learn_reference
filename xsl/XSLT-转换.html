@@ -1,0 +1,132 @@
+<div class="article-intro" id="content">
+<h1>XSLT - <span class="color_h1">转换</span>
+</h1>
+<hr/>
+<p class="intro">实例研究：如何使用 XSLT 将 XML 转换为 XHTML。</p>
+<p class="intro">我们会在下一章对本实例的细节进行解释。</p>
+<hr/>
+<h2>正确的样式表声明</h2>
+<p>把文档声明为 XSL 样式表的根元素是 &lt;xsl:stylesheet&gt; 或 &lt;xsl:transform&gt;。</p>
+<p><b>注意：</b>&lt;xsl:stylesheet&gt; 和 &lt;xsl:transform&gt; 是完全同义的，均可被使用！</p>
+<p>根据 W3C 的 XSLT 标准，声明 XSL 样式表的正确方法是：</p>
+<div class="code notranslate"><div>
+&lt;xsl:stylesheet version="1.0"<br/>
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+</div></div>
+<p>或者：</p>
+<div class="code notranslate"><div>
+&lt;xsl:transform version="1.0"<br/>
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+</div></div>
+<p>如需访问 XSLT 的元素、属性以及特性，我们必须在文档顶端声明 XSLT 命名空间。</p>
+<p>xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 指向了官方的 W3C XSLT 命名空间。如果您使用此命名空间，就必须包含属性 version="1.0"。</p>
+<hr/>
+<h2>从一个原始的 XML 文档开始</h2>
+<p>我们现在要把下面这个 XML 文档（"cdcatalog.xml"）<b>转换</b>为 XHTML：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;catalog&gt;<br/>
+   
+  &lt;cd&gt;<br/>
+       
+    &lt;title&gt;Empire Burlesque&lt;/title&gt;<br/>
+       
+    &lt;artist&gt;Bob Dylan&lt;/artist&gt;<br/>
+       
+    &lt;country&gt;USA&lt;/country&gt;<br/>
+       
+    &lt;company&gt;Columbia&lt;/company&gt;<br/>
+       
+    &lt;price&gt;10.90&lt;/price&gt;<br/>
+       
+    &lt;year&gt;1985&lt;/year&gt;<br/>
+   
+  &lt;/cd&gt;<br/>
+.<br/>
+.<br/>
+&lt;/catalog&gt;
+</div></div>
+<p><b>在 Firefox 和 Internet Explorer 中查看 XML 文件：</b>打开 XML 文件（通常通过点击某个链接） - XML 文档会以颜色化的代码方式来显示根元素及子元素。点击元素左侧的加号（+）或减号（-）可展开或收缩元素的结构。如需查看原始的 XML 源文件（不带有加号和减号），请在浏览器菜单中选择"查看页面源代码"或"查看源代码"。</p>
+<p><b>在 Netscape 6 中查看 XML 文件：</b>打开 XML 文件，然后在 XML 文件中右击，并选择"查看页面源代码"。XML 文档会以颜色化的代码方式来显示根元素及子元素。</p>
+<p><b>在 Opera 7 中查看 XML 文件：</b>打开 XML 文件，然后在 XML 文件中右击，选择"框架"/"查看源代码"。XML 文档将显示为纯文本。</p>
+<p><a href="/try/xml/cdcatalog.xml" target="_blank">查看 "cdcatalog.xml"</a></p>
+<hr/>
+<h2>创建 XSL 样式表</h2>
+<p>然后创建一个带有转换模板的 XSL 样式表（"cdcatalog.xsl"）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;xsl:stylesheet version="1.0"<br/>
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<br/><br/>
+&lt;xsl:template match="/"&gt;<br/>
+   
+  &lt;html&gt;<br/>
+   
+  &lt;body&gt;<br/>
+     
+    &lt;h2&gt;My CD Collection&lt;/h2&gt;<br/>
+     
+    &lt;table border="1"&gt;<br/>
+       
+    &lt;tr bgcolor="#9acd32"&gt;<br/>
+           
+      &lt;th&gt;Title&lt;/th&gt;<br/>
+           
+      &lt;th&gt;Artist&lt;/th&gt;<br/>
+       
+    &lt;/tr&gt;<br/>
+       
+    &lt;xsl:for-each select="catalog/cd"&gt;<br/>
+       
+    &lt;tr&gt;<br/>
+           
+      &lt;td&gt;&lt;xsl:value-of select="title"/&gt;&lt;/td&gt;<br/>
+           
+      &lt;td&gt;&lt;xsl:value-of select="artist"/&gt;&lt;/td&gt;<br/>
+       
+    &lt;/tr&gt;<br/>
+       
+    &lt;/xsl:for-each&gt;<br/>
+     
+    &lt;/table&gt;<br/>
+   
+  &lt;/body&gt;<br/>
+   
+  &lt;/html&gt;<br/>
+&lt;/xsl:template&gt;<br/><br/>
+&lt;/xsl:stylesheet&gt;
+</div></div>
+<p><a href="/try/xml/cdcatalog.xsl" target="_blank">查看 "cdcatalog.xsl"</a></p>
+<hr/>
+<h2>把 XSL 样式表链接到 XML 文档</h2>
+<p>向 XML 文档（"cdcatalog.xml"）添加 XSL 样式表引用：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><span class="marked">&lt;?xml-stylesheet type="text/xsl" href="cdcatalog.xsl"?&gt;</span><br/>
+&lt;catalog&gt;<br/>
+   
+  &lt;cd&gt;<br/>
+       
+    &lt;title&gt;Empire Burlesque&lt;/title&gt;<br/>
+       
+    &lt;artist&gt;Bob Dylan&lt;/artist&gt;<br/>
+       
+    &lt;country&gt;USA&lt;/country&gt;<br/>
+       
+    &lt;company&gt;Columbia&lt;/company&gt;<br/>
+       
+    &lt;price&gt;10.90&lt;/price&gt;<br/>
+       
+    &lt;year&gt;1985&lt;/year&gt;<br/>
+   
+  &lt;/cd&gt;<br/>
+.<br/>
+.<br/>
+&lt;/catalog&gt;
+</div></div>
+<p>如果您使用的浏览器兼容 XSLT，它会很顺利地把您的 XML <b>转换</b>为 XHTML。</p>
+<p> <a href="/try/xml/cdcatalog_with_xsl.xml" target="_blank">查看结果</a></p>
+<p>我们会在下一章对上面的例子中的细节进行解释。</p>
+<br/>
+</div>

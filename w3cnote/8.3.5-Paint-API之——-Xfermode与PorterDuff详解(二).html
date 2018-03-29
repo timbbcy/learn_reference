@@ -1,0 +1,209 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>上一节，我们学习了Xfermode两个已经过世(过时)的儿子：<strong>AvoidXfermode</strong>， <strong>PixelXorXfermode</strong>，
+虽然说有点用，但是终归是被淘汰的了，本节我们来学习Xfermode还健在的三儿子：<strong>PorterDuffXfermode</strong>；</p><p>
+先祭上官方API文档：<a href="http://androiddoc.qiniudn.com/reference/android/graphics/PorterDuffXfermode.html">PorterDuffXfermode</a>！文档内容很少，我们可以看到他的构造方法：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/69068891.jpg"/></p>
+<p>参数只有一个：<strong>PorterDuff.Mode</strong> mode，而Android给我们提供了16种图片混排模式，简单点可以
+理解为两个图层按照不同模式，可以组合成不同的结果显示出来！16种混排模式的结果图如下：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/31597067.jpg"/></p>
+<p>这里两个图层：先绘制的图是<strong>目标图(DST)</strong>，后绘制的图是<strong>源图(SRC)</strong>！</p><p>
+当然，在文档中我们发现可供使用的模式并不是16种，而是18种，新增了<strong>ADD</strong>和<strong>OVERLAY</strong>两种模式!</p><p>
+嗯，说多也白说，代码最实际，本节我们写下代码来验证下这18种模式吧！<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/14286018.jpg"/></p><p>
+PS:这个PorterDuff的命名其实是两个人名的组合：Tomas Proter和 Tom Duff组成的，他们是最早在
+最早在SIGGRAPH上提出图形混合概念的大神级人物，有兴趣的自行百度~</p></blockquote>
+<hr/>
+<h2>写个例子来验证上面的这个图：</h2>
+<blockquote><p>好的，我们来写个例子验证下上面这个图，通过修改不同的模式，来对结果进行对比分析！</p></blockquote>
+<p><strong>代码实现</strong>：</p>
+<p><strong>Step 1</strong>：我们先写个获取屏幕宽高的工具类吧！<strong>ScreenUtil.java</strong>：</p>
+<pre>
+/**
+ * Created by Jay on 2015/10/23 0023.
+ */
+public class ScreenUtil {
+    /**
+     * 获取屏幕宽高，sdk17后不建议采用
+     *
+     * @param context
+     */
+    public static int[] getScreenHW(Context context) {
+        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = manager.getDefaultDisplay();
+        int width = display.getWidth();
+        int height = display.getHeight();
+        int[] HW = new int[] { width, height };
+        return HW;
+    }
+
+    /**
+     * 获取屏幕宽高，建议采用
+     *
+     * @param context
+     */
+    public static int[] getScreenHW2(Context context) {
+        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        int[] HW = new int[] { width, height };
+        return HW;
+    }
+
+    /**
+     * 获取屏幕的宽度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenW(Context context) {
+        return getScreenHW2(context)[0];
+    }
+
+    /**
+     * 获取屏幕的高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenH(Context context) {
+        return getScreenHW2(context)[1];
+    }
+}
+</pre>
+<p>Step 2：编写我们的自定义View类，在这里做试验！<strong>XfermodeView.java</strong>：</p>
+<pre>
+/**
+ * Created by Jay on 2015/10/23 0023.
+ */
+public class XfermodeView extends View {
+
+    private PorterDuffXfermode pdXfermode;   //定义PorterDuffXfermode变量
+    //定义MODE常量，等下直接改这里即可进行测试
+    private static PorterDuff.Mode PD_MODE = PorterDuff.Mode.ADD;
+    private int screenW, screenH; //屏幕宽高
+    private int width = 200;      //绘制的图片宽高
+    private int height = 200;
+    private Bitmap srcBitmap, dstBitmap;     //上层SRC的Bitmap和下层Dst的Bitmap
+
+    public XfermodeView(Context context) {
+        this(context, null);
+    }
+
+    public XfermodeView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        screenW = ScreenUtil.getScreenW(context);
+        screenH = ScreenUtil.getScreenH(context);
+        //创建一个PorterDuffXfermode对象
+        pdXfermode = new PorterDuffXfermode(PD_MODE);
+        //实例化两个Bitmap
+        srcBitmap = makeSrc(width, height);
+        dstBitmap = makeDst(width, height);
+    }
+
+    public XfermodeView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+
+    //定义一个绘制圆形Bitmap的方法
+    private Bitmap makeDst(int w, int h) {
+        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setColor(0xFF26AAD1);
+        c.drawOval(new RectF(0, 0, w * 3 / 4, h * 3 / 4), p);
+        return bm;
+    }
+
+    //定义一个绘制矩形的Bitmap的方法
+    private Bitmap makeSrc(int w, int h) {
+        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setColor(0xFFFFCE43);
+        c.drawRect(w / 3, h / 3, w * 19 / 20, h * 19 / 20, p);
+        return bm;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setFilterBitmap(false);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawBitmap(srcBitmap, (screenW / 3 - width) / 2, (screenH / 2 - height) / 2, paint);
+        canvas.drawBitmap(dstBitmap, (screenW / 3 - width) / 2 + screenW / 3, (screenH / 2 - height) / 2, paint);
+
+        //创建一个图层，在图层上演示图形混合后的效果
+        int sc = canvas.saveLayer(0, 0, screenW, screenH, null, Canvas.MATRIX_SAVE_FLAG |
+                Canvas.CLIP_SAVE_FLAG |
+                Canvas.HAS_ALPHA_LAYER_SAVE_FLAG |
+                Canvas.FULL_COLOR_LAYER_SAVE_FLAG |
+                Canvas.CLIP_TO_LAYER_SAVE_FLAG);
+
+        canvas.drawBitmap(dstBitmap, (screenW / 3 - width) / 2 + screenW / 3 * 2,
+                (screenH / 2 - height) / 2, paint);     //绘制i
+        //设置Paint的Xfermode
+        paint.setXfermode(pdXfermode);
+        canvas.drawBitmap(srcBitmap, (screenW / 3 - width) / 2 + screenW / 3 * 2,
+                (screenH / 2 - height) / 2, paint);
+        paint.setXfermode(null);
+        // 还原画布
+        canvas.restoreToCount(sc);
+    }
+}
+</pre>
+<p>代码看起来好复杂是吧，其实不然，无非就是获取了屏幕宽高，然后画了一个矩形一个圆形，
+计算了一下他们的位置，然后设置下图层(固定写法)，接着设下下画笔setXfermode，接着
+绘制到canvas上而已，你看不懂的可能是绘制位置的计算吧，其实不然，位置你喜欢怎么定
+都可以！那么接下来我们来一个个看下解果咯，你只需修改<strong>PD_MODE</strong>的值设置为不同模式即可！</p>
+<p><strong>运行效果图</strong>：</p>
+<h3>1）PorterDuff.Mode.ADD：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/75793644.jpg"/> 饱和度叠加</p>
+<h3>2）PorterDuff.Mode.CLEAR：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/95509811.jpg"/>  所绘制不会提交到画布上，嗯结果...不知道是为什么了，正常是没东西的..</p>
+<h3>3）PorterDuff.Mode.DARKEN：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/45132148.jpg"/> 取两图层全部区域，交集部分颜色加深</p>
+<h3>4）PorterDuff.Mode.DST：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/8021927.jpg"/> 只保留目标图的alpha和color，所以绘制出来只有目标图</p>
+<h3>5）PorterDuff.Mode.DST_ATOP：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/5366249.jpg"/> 源图和目标图相交处绘制目标图，不相交的地方绘制源图</p>
+<h3>6）PorterDuff.Mode.DST_IN：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/79208765.jpg"/> 两者相交的地方绘制目标图，绘制的效果会受到原图处的透明度影响</p>
+<h3>7）PorterDuff.Mode.DST_OUT：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/21369612.jpg"/> 在不相交的地方绘制目标图</p>
+<h3>8）PorterDuff.Mode.DST_OVER：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/30561339.jpg"/> 目标图绘制在上方</p>
+<h3>9）PorterDuff.Mode.LIGHTEN：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/54185887.jpg"/> 取两图层全部区域，点亮交集部分颜色</p>
+<h3>10）PorterDuff.Mode.MULTIPLY：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/20793772.jpg"/> 取两图层交集部分叠加后颜色</p>
+<h3>11）PorterDuff.Mode.OVERLAY：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/63325846.jpg"/> 叠加</p>
+<h3>12）PorterDuff.Mode.SCREEN：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/57107428.jpg"/> 取两图层全部区域，交集部分变为透明色</p>
+<h3>13）PorterDuff.Mode.SRC：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/17842157.jpg"/> 只保留源图像的alpha和color，所以绘制出来只有源图</p>
+<h3>14）PorterDuff.Mode.SRC_ATOP：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/6807626.jpg"/> 源图和目标图相交处绘制源图，不相交的地方绘制目标图</p>
+<h3>15）PorterDuff.Mode.SRC_IN：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/12982127.jpg"/> 两者相交的地方绘制源图</p>
+<h3>16）PorterDuff.Mode.SRC_OUT：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/35265700.jpg"/> 不相交的地方绘制源图</p>
+<h3>17）PorterDuff.Mode.SRC_OVER：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/93526997.jpg"/> 把源图绘制在上方</p>
+<h3>18）PorterDuff.Mode.XOR：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/55225083.jpg"/> 不相交的地方按原样绘制源图和目标图</p>
+<hr/>
+<h2>本节示例代码下载：</h2>
+<p><a href="http://static.runoob.com/download/PorterDuffXfermodeDemo.zip">PorterDuffXfermodeDemo.zip</a></p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>嗯，本节就写了一个简单的View来验证这18种不同PorterDuff.Mode下的不同效果，
+嘿嘿，蛮耗时间的，不过，读者看起来肯定清晰多了是吧~当然，这只是一些初步的见解！</p><p>
+<strong>PorterDuffXfermode</strong>的<strong>PorterDuff.Mode</strong>对于我们自定义控件是非常重要的！
+本节我们初步了解，下节我们挑几个例子来练练手！</p><p>
+如果你想看关于PorterDuff.Mode更加详细的介绍可见：
+<a href="http://blog.csdn.net/tianjian4592/article/details/44783283">Android Paint之 setXfermode PorterDuffXfermode 讲解</a>，别人写的不错的一篇文章！
+嗯，就到这里，明早体检，今天就写这么多~<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/5393163.jpg"/></p></blockquote> </div>

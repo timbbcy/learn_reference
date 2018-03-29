@@ -1,0 +1,40 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 拖放 - <span class="color_h1">基本的拖动和放置</span></h1>
+<p>
+本教程向您展示如何使 HTML 元素可拖动，在本例中，我们将创建三个 DIV 元素然后启用他们的拖动和放置。
+</p>
+<img src="/wp-content/uploads/2013/12/dd1.png"/>
+<p>首先，我们创建三个 &lt;div&gt; 元素：</p>
+<pre style="color:#006600">
+    &lt;div id="dd1" class="dd-demo"&gt;&lt;/div&gt;
+    &lt;div id="dd2" class="dd-demo"&gt;&lt;/div&gt;
+    &lt;div id="dd3" class="dd-demo"&gt;&lt;/div&gt;
+</pre>
+<p>对于第一个 &lt;div&gt; 元素，我们通过默认值让其可以拖动。</p>
+<pre style="color:#006600">
+    $('#dd1').draggable();
+</pre>
+<p>对于第二个 &lt;div&gt; 元素，我们通过创建一个克隆（clone）了原来元素的代理（proxy）让其可以拖动。</p>
+<pre style="color:#006600">
+    $('#dd2').draggable({
+        proxy:'clone'
+    });
+</pre>
+<p>对于第三个 &lt;div&gt; 元素，我们通过创建自定义代理（proxy）让其可以拖动。</p>
+<pre style="color:#006600">
+    $('#dd3').draggable({
+        proxy:function(source){
+            var p = $('&lt;div class="proxy"&gt;proxy&lt;/div&gt;');
+            p.appendTo('body');
+            return p;
+        }
+    });
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-dd-basic.zip">jeasyui-dd-basic.zip</a></p>
+</div>

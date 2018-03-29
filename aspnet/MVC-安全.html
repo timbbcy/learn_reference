@@ -1,0 +1,52 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET MVC <span class="color_h1">- 安全</span>
+</h1>
+<hr/>
+<p class="intro">为了学习 ASP.NET MVC，我们将构建一个 Internet 应用程序。</p>
+<p class="intro">第 8 部分：添加安全。</p>
+<hr/>
+<h2>MVC 应用程序安全</h2>
+<p><strong>Models 文件夹</strong>包含表示应用程序模型的类。</p>
+<p>Visual Web Developer 自动创建 <strong>AccountModels.cs</strong> 文件，该文件包含用于应用程序认证的模型。</p>
+<p><strong>AccountModels</strong> 
+包含 <strong>LogOnModel</strong>、<strong>ChangePasswordModel</strong> 和 <strong>RegisterModel</strong>：</p>
+<p><img alt="Model" height="336px" src="/wp-content/uploads/2013/08/10.jpg" width="632px"/></p>
+<hr/>
+<h2>Change Password 模型</h2>
+<div class="code notranslate">
+<div>public class ChangePasswordModel<br/>{<br/><br/>[Required]<br/>[DataType(DataType.Password)]<br/>
+		[Display(Name = "Current password")]<br/>public string OldPassword { get; 
+		set; }<br/><br/>[Required]<br/>[StringLength(100, ErrorMessage = "The {0} 
+		must be at least {2}      characters long.", 
+		MinimumLength = 6)]<br/>[DataType(DataType.Password)]<br/>[Display(Name = 
+		"New password")]<br/>public string NewPassword { get; set; }<br/><br/>[DataType(DataType.Password)]<br/>
+		[Display(Name = "Confirm new password")]<br/>[Compare("NewPassword", 
+		ErrorMessage = "The new password and confirmation password do not 
+		match.")]<br/>public string ConfirmPassword { get; set; }<br/><br/>}<br/>
+</div>
+</div>
+<br/><hr/>
+<h2>Logon 模型</h2>
+<div class="code notranslate">
+<div>public class LogOnModel<br/>{<br/><br/>[Required]<br/>[Display(Name = "User 
+		name")]<br/>public string UserName { get; set; }<br/><br/>[Required]<br/>[DataType(DataType.Password)]<br/>
+		[Display(Name = "Password")]<br/>public string Password { get; set; }<br/><br/>[Display(Name = "Remember me?")]<br/>public bool RememberMe { get; 
+		set; }<br/><br/>}</div>
+</div>
+<br/><hr/>
+<h2>Register 模型</h2>
+<div class="code notranslate">
+<div>public class RegisterModel<br/>{<br/><br/>[Required]<br/>[Display(Name = 
+		"User name")]<br/>public string UserName { get; set; }<br/><br/>[Required]<br/>
+		[DataType(DataType.EmailAddress)]<br/>[Display(Name = "Email address")]<br/>
+		public string Email { get; set; }<br/><br/>[Required]<br/>[StringLength(100, 
+		ErrorMessage = "The {0} must be at least {2} characters long.", 
+		MinimumLength = 6)]<br/>[DataType(DataType.Password)]<br/>[Display(Name = 
+		"Password")]<br/>public string Password { get; set; }<br/><br/>[DataType(DataType.Password)]<br/>
+		[Display(Name = "Confirm password")]<br/>[Compare("Password", 
+		ErrorMessage = "The password and confirmation password do not match.")]<br/>
+		public string ConfirmPassword { get; set; }<br/><br/>}<br/>
+</div>
+</div>
+<br/><br/>
+</div>

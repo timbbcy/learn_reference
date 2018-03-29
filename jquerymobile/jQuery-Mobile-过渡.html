@@ -1,0 +1,117 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">过渡</span>
+</h1>
+<hr/>
+<p class="intro">jQuery Mobile 包含 CSS3 效果让您选择页面打开的方式。</p>
+<hr/>
+<h2>jQuery Mobile 页面切换效果</h2>
+<p>jQuery Mobile 提供了各种页面切换到下一个页面的效果。</p>
+<p><strong>注意：</strong>为了实现页面切换效果，浏览器必须支持 CSS3 3D 切换：</p>
+<table class="browserref">
+<tbody><tr>
+<th class="bsChrome" style="width:20%;" title="Chrome"></th>
+<th class="bsIE" style="width:20%;" title="Internet Explorer"></th>
+<th class="bsFirefox" style="width:20%;" title="Firefox"></th>
+<th class="bsSafari" style="width:20%;" title="Safari"></th>
+<th class="bsOpera" style="width:20%;" title="Opera"></th>
+</tr>
+<tr>
+<td>12.0</td>
+<td>10.0</td>
+<td>16.0</td>
+<td>4.0</td>
+<td>15.0</td>
+</tr>
+</tbody></table>
+<p>
+表格中的数字为支持 3D 旋转的最小浏览器版本号。</p>
+<p>
+页面过渡效果可被应用于任何使用 data-transition 属性的链接或表单：
+</p>
+<p>页面切换效果可被应用于任何使用 data-transition 属性的链接或表单提交：</p>
+<pre>
+&lt;a href="#anylink" data-transition="slide"&gt;切换到第二个页面&lt;/a&gt;
+</pre>
+<p>下面的表格显示了通过使用 data-transition 属性后可用的页面切换：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:15%">过渡</th>
+<th>描述</th>
+<th style="width:14%">页面</th>
+<th style="width:14%">对话框</th>
+</tr>
+<tr>
+<td>fade</td>
+<td>默认。淡入到下一页</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_fade" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_fade2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>flip</td>
+<td>从后向前翻转到下一页</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_flip" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_flip2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>flow</td>
+<td>抛出当前页，进入下一页</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_flow" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_flow2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>pop</td>
+<td>像弹出窗口那样转到下一页。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_pop" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_pop2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>slide</td>
+<td>从右向左滑动到下一页。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slide" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slide2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>slidefade</td>
+<td>从右向左滑动并淡入到下一页。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slidefade" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slidefade2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>slideup</td>
+<td>从下到上滑动到下一页。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slideup" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slideup2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>slidedown</td>
+<td>从上到下滑动到下一页。 </td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slidedown" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_slidedown2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>turn</td>
+<td>转向下一页。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_turn" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_turn2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>none</td>
+<td>无过渡效果。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_none" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_trans_none2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>在 jQuery Mobile 的所有链接上，默认使用淡入淡出的效果（如果浏览器支持）。
+    </td>
+</tr></table>
+<p><strong>提示：</strong>上面的所有效果支持后退行为。例如，如果您想要页面从左向右滑动，而不是从右向左滑动，请使用带有 "reverse" 值的 data-direction 属性。在后退按钮上这是默认的。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;a href="#pagetwo" data-transition="slide" 
+	<span class="marked">data-direction="reverse"</span>&gt;切换&lt;/a&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_trans_reverse" target="_blank">尝试一下 »</a>
+</div>
+</div>

@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>MySQL 删除数据表</h1>
+<p>
+MySQL中删除数据表是非常容易操作的，
+但是你再进行删除表操作时要非常小心，因为执行删除命令后所有数据都会消失。</p>
+<h3>语法</h3>
+<p>以下为删除MySQL数据表的通用语法：</p>
+<pre>
+DROP TABLE table_name ;
+</pre>
+<hr/>
+<h2>在命令提示窗口中删除数据表</h2>
+<p>
+在mysql&gt;命令提示窗口中删除数据表SQL语句为<strong> DROP TABLE </strong>：</p>
+<h3>实例</h3>
+<p>以下实例删除了数据表runoob_tbl:
+</p>
+<pre>
+root@host# mysql -u root -p
+Enter password:*******
+mysql&gt; use RUNOOB;
+Database changed
+mysql&gt; DROP TABLE runoob_tbl
+Query OK, 0 rows affected (0.8 sec)
+mysql&gt;
+</pre>
+<hr/>
+<h2>使用PHP脚本删除数据表</h2><p>
+PHP使用 mysqli_query 函数来删除 MySQL 数据表。
+</p><p>
+该函数有两个参数，在执行成功时返回 TRUE，否则返回 FALSE。</p>
+<h3>
+语法</h3>
+<pre>
+mysqli_query(connection,query,resultmode);
+</pre>
+<table class="reference">
+<tbody><tr>
+<th width="20%">参数</th>
+<th width="80%">描述</th>
+</tr>
+<tr>
+<td><em>connection</em></td>
+<td>必需。规定要使用的 MySQL 连接。</td>
+</tr>
+<tr>
+<td><em>query</em></td>
+<td>必需，规定查询字符串。</td>
+</tr>
+<tr>
+<td><em>resultmode</em></td>
+<td>
+<p>可选。一个常量。可以是下列值中的任意一个：</p>
+<ul>
+<li>MYSQLI_USE_RESULT（如果需要检索大量数据，请使用这个）</li>
+<li>MYSQLI_STORE_RESULT（默认）</li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<h3>实例</h3>
+<p>以下实例使用了PHP脚本删除数据表 runoob_tbl:
+</p>
+<div class="example">
+<h2 class="example">删除数据库</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$dbhost</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">localhost:3306</span><span class="hl-quotes">'</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> mysql服务器主机地址</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbuser</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">;            </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbpass</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名密码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$dbhost</span><span class="hl-code">, </span><span class="hl-var">$dbuser</span><span class="hl-code">, </span><span class="hl-var">$dbpass</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$conn</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">连接失败: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">连接成功&lt;br /&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">DROP TABLE runoob_tbl</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">数据表删除失败: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">数据表删除成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div></div>
+<p>执行成功后，我们使用以下命令，就看不到 runoob_tbl 表了：</p>
+<pre>
+mysql&gt; show tables;
+Empty set (0.01 sec)
+</pre>
+</div>

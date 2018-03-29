@@ -1,0 +1,119 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">AdRotator</span> 组件</h1>
+<hr/>
+<h2>ASP AdRotator 组件</h2>
+<p>每当用户进入网站或刷新页面时，ASP AdRotator 组件就会创建一个 AdRotator 对象来显示一幅不同的图像。有关图像的信息是包含在一个文本文件中。</p>
+<p><strong>注释：</strong>AdRotator 在 Internet Information Server 7 (IIS7) 中不起作用。</p>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+set adrotator=server.createobject("MSWC.AdRotator")<br/>
+adrotator.GetAdvertisement("textfile.txt")<br/>
+%&gt;</div></div>
+<br/><hr/>
+<h2>ASP AdRotator 实例</h2>
+<p>假设我们有一个名为 "ads.txt" 的文件，如下所示：</p>
+<div class="code notranslate"><div>
+
+REDIRECT banners.asp<br/>
+*<br/>
+runoob.gif<br/>
+http://www.runoob.com<br/>
+Free Tutorials from RUNOOB<br/>
+50<br/>
+xmlspy.gif<br/>
+http://www.altova.com<br/>
+XML Editor from Altova<br/>
+50
+</div></div>
+<p>在上面的文本文件中型号下面的行规定了要显示的图像的名称、超链接地址、图像的替换文本和每百次点击中的显示几率。</p>
+<p>上述文本文件的第一行指定当访客点击图像时进行的动作。重定向页（banners.asp）将收到一个带有重定向 URL 的查询字符串。</p>
+<p><b>提示：</b>如需规定图像的高度、宽度和边框，您可以在 REDIRECT 下面插入如下代码：</p>
+<div class="code notranslate"><div>
+  
+    
+      REDIRECT banners.asp<br/>
+      WIDTH 468 <br/>
+      HEIGHT 60 <br/>
+      BORDER 0 <br/>
+      *<br/>
+      runoob.gif<br/>
+      ...
+    
+  
+</div></div>
+<p>"banners.asp" 文件如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%<br/>
+url=Request.QueryString("url")<br/>
+If url&lt;&gt;"" then Response.Redirect(url)<br/>
+%&gt;<br/><br/>
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;%<br/>
+set adrotator=Server.CreateObject("MSWC.AdRotator")<br/>
+response.write(adrotator.GetAdvertisement("textfile.txt"))<br/>
+%&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showasp.php?filename=demo_adrotator" target="_blank">演示实例 »</a>
+</div>
+<p>好了，以上就是全部的内容！</p>
+<hr/>
+<h2>ASP AdRotator 属性</h2>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="20%">属性</th>
+<th align="left" width="25%">描述</th>
+<th align="left" width="55%">实例</th>
+</tr>
+<tr valign="top">
+<td>Border</td>
+<td>规定围绕广告的边框的尺寸。</td>
+<td>&lt;%<br/>
+    set adrot=Server.CreateObject("MSWC.AdRotator")<br/>
+    adrot.Border="2"<br/>
+    Response.Write(adrot.GetAdvertisement("ads.txt"))<br/>
+    %&gt;</td>
+</tr>
+<tr valign="top">
+<td>Clickable</td>
+<td>规定广告本身是否是超链接。</td>
+<td>&lt;%<br/>
+    set adrot=Server.CreateObject("MSWC.AdRotator")<br/>
+    adrot.Clickable=false<br/>
+    Response.Write(adrot.GetAdvertisement("ads.txt"))<br/>
+    %&gt;</td>
+</tr>
+<tr>
+<td valign="top">TargetFrame</td>
+<td valign="top">显示广告的框架名称。</td>
+<td valign="top">&lt;%<br/>
+    set adrot=Server.CreateObject("MSWC.AdRotator")<br/>
+    adrot.TargetFrame="target='_blank'"<br/>
+    Response.Write(adrot.GetAdvertisement("ads.txt"))<br/>
+    %&gt;</td>
+</tr>
+</table>
+<h2>ASP AdRotator 方法</h2>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="20%">方法</th>
+<th align="left" width="25%">描述</th>
+<th align="left" width="55%">实例</th>
+</tr>
+<tr valign="top">
+<td>GetAdvertisement</td>
+<td>返回在页面中显示广告的 HTML。</td>
+<td>&lt;%<br/>
+    set adrot=Server.CreateObject("MSWC.AdRotator")<br/>
+    Response.Write(adrot.GetAdvertisement("ads.txt"))<br/>
+    %&gt;</td>
+</tr>
+</table>
+<br/>
+</div>

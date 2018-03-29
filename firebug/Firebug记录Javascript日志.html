@@ -1,0 +1,33 @@
+<div class="article-intro" id="content">
+<h1>Firebug记录Javascript日志</h1>
+<hr/>
+<blockquote>
+<p style="font-size:16px;">
+<span class="deprecated">
+<i aria-hidden="true" class="fa fa-thumbs-o-down"></i> 
+Firebug 官网宣布已停止继续开发、更新维护 Firebug 的通知，邀请大家使用 Firefox 内置工具 <a href="https://developer.mozilla.org/en-US/docs/Tools" target="_blank">DevTools</a>。 </span>
+</p></blockquote>
+<p>你可以使用Firebug来生成日志。</p>
+<p>这有助于我们调试web页面并发现页面的错误。</p>
+<p>在Firefox浏览器中执行以下代码：</p>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Firefox测试页面 - w3cschool菜鸟教程&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type="text/javascript"&gt;
+var a = "w3cschool";
+var b = ".cc";
+
+document.write(a,b);
+console.log(a + b);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>使用Firefox浏览器打开以上代码文件firefox-test.html,执行结果及日志记录如下：</p>
+<p><img alt="firedug-console" class="alignnone size-full wp-image-4829" height="251" sizes="(max-width: 646px) 100vw, 646px" src="http://www.runoob.com/wp-content/uploads/2013/12/firedug-console.jpg" srcset="http://www.runoob.com/wp-content/uploads/2013/12/firedug-console.jpg 646w, http://www.runoob.com/wp-content/uploads/2013/12/firedug-console-300x116.jpg 300w" width="646"/></p>
+</div>

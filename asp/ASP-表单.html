@@ -1,0 +1,73 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">表单</span>和<span class="color_h1">用户输入</span>
+</h1>
+<hr/>
+<p class="intro">Request.QueryString 和 Request.Form 命令用于从表单取回信息，比如用户的输入。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_reqquery" target="_blank">使用 method="get" 的表单</a><br/>
+本例演示如何使用 Request.QueryString 命令与用户进行交互。</p>
+<p><a href="/try/showasp.php?filename=demo_simpleform" target="_blank">使用 method="post" 的表单</a><br/>
+本例演示如何使用 Request.Form 命令与用户进行交互。</p>
+<p><a href="/try/showasp.php?filename=demo_radiob" target="_blank">使用单选按钮的表单</a><br/>
+本例演示如何使用 Request.Form 命令通过单选按钮与用户进行交互。</p>
+<hr/>
+<h2>用户输入</h2>
+<p>Request 对象可用于从表单取回用户信息。</p>
+<h3>HTML 表单实例</h3>
+<div class="code notranslate"><div>
+
+&lt;form method="get" action="simpleform.asp"&gt;<br/>
+First Name: &lt;input type="text" name="fname"&gt;&lt;br&gt;<br/>
+Last Name: &lt;input type="text" name="lname"&gt;&lt;br&gt;&lt;br&gt;<br/>
+&lt;input type="submit" value="Submit"&gt;<br/>
+&lt;/form&gt;</div></div>
+<p>用户输入可通过 Request.QueryString 或 Request.Form 命令取回。</p>
+<hr/>
+<h2>Request.QueryString</h2>
+<p>Request.QueryString 命令用于收集使用 method="get" 的表单中的值。</p>
+<p>使用 GET 方法从表单传送的信息对所有的用户都是可见的（出现在浏览器的地址栏），并且对所发送信息的量也有限制。</p>
+<p>如果用户在上面的 HTML 表单中输入 "Bill" 和 "Gates"，发送至服务器的 URL 会类似这样：</p>
+<div class="code notranslate"><div>
+http://www.w3cschool.cc/simpleform.asp?fname=Bill&amp;lname=Gates</div></div>
+<p>假设 "simpleform.asp" 文件包含下面的 ASP 脚本：</p>
+<div class="code notranslate"><div>
+
+&lt;body&gt;<br/>
+Welcome<br/>
+&lt;%<br/>
+response.write(request.querystring("fname"))<br/>
+response.write(" " &amp; request.querystring("lname"))<br/>
+%&gt;<br/>
+&lt;/body&gt;</div></div>
+<p>浏览器将把文档的 body 部分显示如下：</p>
+<div class="code notranslate"><div>
+Welcome Bill Gates</div></div>
+<br/><hr/>
+<h2>Request.Form </h2>
+<p>Request.Form 命令用于收集使用 method="post" 的表单中的值。</p>
+<p>使用 POST 方法从表单传送的信息对用户是不可见的，并且对所发送信息的量没有限制。</p>
+<p>如果用户在上面的 HTML 表单中输入 "Bill" 和 "Gates"，发送至服务器的 URL 会类似这样：</p>
+<div class="code notranslate"><div>
+http://www.w3cschool.cc/simpleform.asp</div></div>
+<p>假设 "simpleform.asp" 文件包含下面的 ASP 脚本：</p>
+<div class="code notranslate"><div>
+
+&lt;body&gt;<br/>
+Welcome<br/>
+&lt;%<br/>
+response.write(request.form("fname"))<br/>
+response.write(" " &amp; request.form("lname"))<br/>
+%&gt;<br/>
+&lt;/body&gt;</div></div>
+<p>浏览器将把文档的 body 部分显示如下：</p>
+<div class="code notranslate"><div>
+Welcome Bill Gates</div></div>
+<br/><hr/>
+<h2>表单验证</h2>
+<p>只要有可能，就尽量在浏览器上对用户的输入进行验证（通过客户端脚本）。浏览器的验证速度更快，并可以减少服务器的负载。</p>
+<p>如果用户输入会保存到数据库中，那么您应该考虑使用服务器端验证。有一种在服务器端验证表单的好方法，就是将（验证过的）表单传回表单页面，而不是转至不同的页面。用户随后就可以在同一个页面中得到错误的信息。这样做更易于用户发现错误。</p>
+<br/>
+</div>

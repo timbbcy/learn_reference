@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<h1>React State(状态)</h1>
+<p>React 把组件看成是一个状态机（State Machines）。通过与用户的交互，实现不同状态，然后渲染 UI，让用户界面和数据保持一致。</p>
+<p>React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）。</p>
+<p>以下实例中创建了 <b>LikeButton</b> 组件，getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
+
+
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-identifier">liked</span><span class="hl-code">: !</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">liked</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+  },
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">liked</span><span class="hl-code"> ? </span><span class="hl-quotes">'</span><span class="hl-string">喜欢</span><span class="hl-quotes">'</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">不喜欢</span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">
+      &lt;</span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-builtin">onClick</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">handleClick</span><span class="hl-brackets">}</span><span class="hl-code">&gt;
+        你&lt;</span><span class="hl-identifier">b</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">text</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">b</span><span class="hl-code">&gt;我。点我切换状态。
+      &lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+    </span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+});
+ 
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">LikeButton</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_state" target="_blank">尝试一下 »</a>
+</div>
+</p></div>

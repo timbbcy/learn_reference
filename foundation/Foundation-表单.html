@@ -1,0 +1,74 @@
+<div class="article-intro" id="content">
+<h1>Foundation 表单</h1>
+<p>Foundation 表单控制会自动设置为全局样式:</p>
+<p>所有 <code>&lt;textarea&gt;</code>, <code>
+&lt;select&gt;</code> 及 <code>&lt;input&gt;</code> 元素宽度都为 100%，且带有外边距、内边距、阴影和鼠标移动效果。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">form</span><span class="highGT">&gt;</span><br/> 
+	Input:<br/>  <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">placeholder=</span><span class="highVAL">"Name"</span><span class="highGT">&gt;</span><br/><br/>  Textarea:<br/>  <span class="highLT">&lt;</span><span class="highELE">textarea</span>
+<span class="highATT">rows=</span><span class="highVAL">"4"</span> <span class="highATT">placeholder=</span><span class="highVAL">"Address"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/textarea</span><span class="highGT">&gt;</span><br/><br/>  Select:<br/>  <span class="highLT">&lt;</span><span class="highELE">select</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>1<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>2<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>3<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>4<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/select</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_forms" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>标签</h2><p>在表单中使用 <code>&lt;label&gt;</code> 元素来设置标签，标签可以添加 for 属性和 id 属性。用户在点击标签或输入域时获取输入框焦点：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">form</span><span class="highGT">&gt;</span><br/> 
+	<span class="highLT">&lt;</span><span class="highELE">label</span> <span class="highATT">for=</span><span class="highVAL">"name"</span><span class="highGT">&gt;</span>Input<br/>    <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">placeholder=</span><span class="highVAL">"Name"</span>
+<span class="highATT">id=</span><span class="highVAL">"name"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/><br/>  <span class="highLT">&lt;</span><span class="highELE">label</span>
+<span class="highATT">for=</span><span class="highVAL">"adr"</span><span class="highGT">&gt;</span>Label<br/>    <span class="highLT">&lt;</span><span class="highELE">textarea</span>
+<span class="highATT">rows=</span><span class="highVAL">"4"</span> <span class="highATT">placeholder=</span><span class="highVAL">"Address"</span> <span class="highATT">id=</span><span class="highVAL">"adr"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/textarea</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/><br/>  <span class="highLT">&lt;</span><span class="highELE">label</span>
+<span class="highATT">for=</span><span class="highVAL">"num"</span><span class="highGT">&gt;</span>Select<br/>    <span class="highLT">&lt;</span><span class="highELE">select</span> <span class="highATT">id=</span><span class="highVAL">"num"</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>1<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>2<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>3<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">option</span><span class="highGT">&gt;</span>4<span class="highLT">&lt;</span><span class="highELE">/option</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/select</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_forms_label" target="_blank">尝试一下 »</a>
+</div>
+<p>如果需要设置标签右对齐，可以使用 <code>.right</code> 类:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">label</span> <span class="highATT">class=</span><span class="highVAL">"right"</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_forms_label_right" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>Fieldset</h2>
+<p>Foundation 渲染 <code>&lt;fieldset&gt;</code> 元素的样式如下：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">form</span><span class="highGT">&gt;</span><br/> 
+	<span class="highLT">&lt;</span><span class="highELE">fieldset</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">legend</span><span class="highGT">&gt;</span>Fieldset Legend<span class="highLT">&lt;</span><span class="highELE">/legend</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Name<br/>      
+	<span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">placeholder=</span><span class="highVAL">"First Name.."</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Email<br/>      <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">placeholder=</span><span class="highVAL">"Enter 
+	email.."</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/fieldset</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_forms_fieldset" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>错误状态</h2>
+<p>使用 <code>.error</code> 类来设置错误的标签、输入框、文本框样式:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">form</span><span class="highGT">&gt;</span><br/> 
+	<span class="highLT">&lt;</span><span class="highELE">label</span> <span class="highATT">class=</span><span class="highVAL">"error"</span><span class="highGT">&gt;</span>Error<br/>    <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span>
+<span class="highATT">placeholder=</span><span class="highVAL">"Name.."</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">small</span> <span class="highATT">class=</span><span class="highVAL">"error"</span><span class="highGT">&gt;</span>Wrong 
+	input<span class="highLT">&lt;</span><span class="highELE">/small</span><span class="highGT">&gt;</span><br/><br/>  <span class="highLT">&lt;</span><span class="highELE">textarea</span> <span class="highATT">rows=</span><span class="highVAL">"4"</span> <span class="highATT">placeholder=</span><span class="highVAL">"Address"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/textarea</span><span class="highGT">&gt;</span><br/>
+	 
+	<span class="highLT">&lt;</span><span class="highELE">small</span> <span class="highATT">class=</span><span class="highVAL">"error"</span><span class="highGT">&gt;</span>Wrong input<span class="highLT">&lt;</span><span class="highELE">/small</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_forms_error" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>你需要使用 JavaScript 来更新用户输入的错误状态。</td>
+</tr></tbody></table>
+</div>

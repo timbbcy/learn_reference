@@ -1,0 +1,118 @@
+<div class="article-intro" id="content">
+<h1>Perl 目录操作</h1>
+<p>以下列出了一些操作目录的标准函数：</p>
+<pre>
+opendir DIRHANDLE, EXPR  # 打开目录
+readdir DIRHANDLE        # 读取目录
+rewinddir DIRHANDLE      # 定位指针到开头
+telldir DIRHANDLE        # 返回目录的当前位置
+seekdir DIRHANDLE, POS   # 定位指定到目录的 POS 位置
+closedir DIRHANDLE       # 关闭目录
+</pre>
+<hr/>
+<h2>显示所有的文件</h2>
+<p>显示目录下的所有文件，以下实例使用了 glob 操作符，演示如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 显示 /tmp 目录下的所有文件</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/tmp/*</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">@files</span><span class="hl-code"> = </span><span class="hl-reserved">glob</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">@files</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 显示 /tmp 目录下所有以 .c 结尾的文件</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/tmp/*.c</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">@files</span><span class="hl-code"> = </span><span class="hl-reserved">glob</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">@files</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 显示所有隐藏文件</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/tmp/.*</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">@files</span><span class="hl-code"> = </span><span class="hl-reserved">glob</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">@files</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 显示 /tmp 和 /home 目录下的所有文件</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/tmp/* /home/*</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">@files</span><span class="hl-code"> = </span><span class="hl-reserved">glob</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">@files</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以下实例可以列出当前目录下的所有文件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">opendir</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">DIR</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">.</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">无法打开目录, </span><span class="hl-var">$!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$file</span><span class="hl-code"> = </span><span class="hl-reserved">readdir</span><span class="hl-code"> </span><span class="hl-identifier">DIR</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$file</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">closedir</span><span class="hl-code"> </span><span class="hl-identifier">DIR</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>如果你要显示 /tmp 目录下所有以 .c 结尾的文件，可以使用以下代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">opendir</span><span class="hl-brackets">(</span><span class="hl-identifier">DIR</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">.</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">无法打开目录, </span><span class="hl-var">$!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-reserved">sort</span><span class="hl-code"> </span><span class="hl-reserved">grep</span><span class="hl-brackets">(</span><span class="hl-code">/^.*\.</span><span class="hl-identifier">c</span><span class="hl-code">$/,</span><span class="hl-reserved">readdir</span><span class="hl-brackets">(</span><span class="hl-identifier">DIR</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$_</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">closedir</span><span class="hl-code"> </span><span class="hl-identifier">DIR</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<hr/>
+<h2>创建一个新目录</h2>
+<p>我们可以使用 <b>mkdir</b> 函数来创建一个新目录，执行前你需要有足够的权限来创建目录：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/tmp/perl</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 在 /tmp 目录下创建 perl 目录</span><span class="hl-code">
+</span><span class="hl-reserved">mkdir</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">无法创建 </span><span class="hl-var">$dir</span><span class="hl-string"> 目录, </span><span class="hl-var">$!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">目录创建成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<hr/>
+<h2>删除目录</h2>
+<p>我们可以使用 <b>rmdir</b> 函数来删除目录，执行该操作需要有足够权限。另外要删除的目录必须的空目录：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/tmp/perl</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 删除 /tmp 目录下的 perl 目录</span><span class="hl-code">
+</span><span class="hl-reserved">rmdir</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">无法删除 </span><span class="hl-var">$dir</span><span class="hl-string"> 目录, </span><span class="hl-var">$!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">目录删除成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<hr/>
+<h2>切换目录</h2>
+<p>我们可以使用<b>chdir</b> 函数来切换当期目录，执行该操作需要有足够权限。实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$dir</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/home</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 将当期目录移动到 /home 目录下</span><span class="hl-code">
+</span><span class="hl-reserved">chdir</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$dir</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">无法切换目录到 </span><span class="hl-var">$dir</span><span class="hl-string"> , </span><span class="hl-var">$!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">你现在所在的目录为 </span><span class="hl-var">$dir</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+你现在所在的目录为 /home
+</pre>
+</div>

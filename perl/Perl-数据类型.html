@@ -1,0 +1,217 @@
+<div class="article-intro" id="content">
+<h1>Perl 数据类型</h1>
+<p>Perl 是一种弱类型语言，所以变量不需要指定类型，Perl 解释器会根据上下文自动选择匹配类型。</p>
+<p>Perl 有三个基本的数据类型：标量、数组、哈希。以下是这三种数据类型的说明：</p>
+<table class="reference">
+<tbody><tr>
+<th>序号</th>
+<th>类型和描述</th>
+</tr>
+<tr>
+<td>1</td>
+<td><b>标量</b>
+<p>标量是Perl语言中最简单的一种数据类型。这种数据类型的变量可以是数字，字符串，浮点数，不作严格的区分。在使用时在变量的名字前面加上一个"$",表示是标量。例如：</p>
+<pre>
+$myfirst=123;　    #数字123　
+
+$mysecond="123";   #字符串123　
+</pre>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td><b>数组</b>
+<p>数组变量以字符"@"开头，索引从0开始，如：@arr=(1,2,3)</p>
+<pre>
+@arr=(1,2,3)
+</pre>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td><b>哈希</b>
+<p>哈希是一个无序的 key/value 对集合。可以使用键作为下标获取值。哈希变量以字符"%"开头。</p>
+<pre>
+%h=('a'=&gt;1,'b'=&gt;2); 
+</pre>
+</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>数字字面量</h2>
+<h3>一、整型 </h3>
+<p>PERL实际上把整数存在你的计算机中的浮点寄存器中，所以实际上被当作浮点数看待。
+</p><p>
+在多数计算机中，浮点寄存器可以存贮约16位数字，长于此的被丢弃。整数实为浮点数的特例。</p>
+<p>整型变量及运算：</p>
+<pre>
+$x = 12345;
+if (1217 + 116 == 1333) {
+    # 执行代码语句块
+}
+</pre>
+<p>8进制和16进制数：8进制以0开始，16进制以0x开始。例如：</p>
+<pre>
+$var1 = 047;    # 等于十进制的39
+$var2 = 0x1f;   # 等于十进制的31
+</pre>
+<h3>二、浮点数 </h3>
+<p>浮点数数据如：11.4 、 -0.3 、.3 、 3. 、 54.1e+02 、 5.41e03。</p>
+<p>浮点寄存器通常不能精确地存贮浮点数，从而产生误差，在运算和比较中要特别注意。指数的范围通常为-309到+308。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl </span><span class="hl-code">
+</span><span class="hl-var">$value</span><span class="hl-code"> = </span><span class="hl-number">9.01</span><span class="hl-identifier">e</span><span class="hl-code">+</span><span class="hl-number">21</span><span class="hl-code"> + </span><span class="hl-number">0.01</span><span class="hl-code"> - </span><span class="hl-number">9.01</span><span class="hl-identifier">e</span><span class="hl-code">+</span><span class="hl-number">21</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">第一个值为：</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$value</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$value</span><span class="hl-code"> = </span><span class="hl-number">9.01</span><span class="hl-identifier">e</span><span class="hl-code">+</span><span class="hl-number">21</span><span class="hl-code"> - </span><span class="hl-number">9.01</span><span class="hl-identifier">e</span><span class="hl-code">+</span><span class="hl-number">21</span><span class="hl-code"> + </span><span class="hl-number">0.01</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">第二个值为:</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$value</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+第一个值为：0
+第二个值为:0.01
+</pre>
+<h3>三、字符串</h3><p>
+Perl中的字符串使用一个标量来表示，定义方式和c很像，但是在Perl里面字符串不是用0来表示结束的。</p>
+<p>
+Perl双引号和单引号的区别: 双引号可以正常解析一些转义字符与变量，而单引号无法解析会原样输出。<p>
+但是用单引号定义可以使用多行文本，如下所示：</p>
+<pre>
+#!/usr/bin/perl 
+
+$var='这是一个使用
+
+多行字符串文本
+
+的例子';
+
+print($var);
+</pre>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+这是一个使用
+
+多行字符串文本
+
+的例子
+</pre>
+<p>Perl 语言中常用的一些转义字符如下表所示：</p>
+<table class="reference">
+<tbody><tr>
+<th>转义字符</th>
+<th>含义</th>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜线</td>
+</tr>
+<tr>
+<td>\'</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\"</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>系统响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\0nn</td>
+<td>创建八进制格式的数字</td>
+</tr>
+<tr>
+<td>\xnn</td>
+<td>创建十六进制格式的数字</td>
+</tr>
+<tr>
+<td>\cX</td>
+<td>控制字符，x可以是任何字符</td>
+</tr>
+<tr>
+<td>\u</td>
+<td>强制下一个字符为大写</td>
+</tr>
+<tr>
+<td>\l</td>
+<td>强制下一个字符为小写</td>
+</tr>
+<tr>
+<td>\U</td>
+<td>强制将所有字符转换为大写</td>
+</tr>
+<tr>
+<td>\L</td>
+<td>强制将所有的字符转换为小写</td>
+</tr>
+<tr>
+<td>\Q</td>
+<td>将到\E为止的非单词（non-word）字符加上反斜线</td>
+</tr>
+<tr>
+<td>\E</td>
+<td>结束\L、\U、\Q</td>
+</tr>
+</tbody></table>
+<h3>实例</h3>
+<p>接下来让我们来具体看看单引号和双引号及转义字符的使用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 换行 \n 位于双引号内，有效</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程  </span><span class="hl-special">\n</span><span class="hl-string">www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 换行 \n 位于单引号内，无效</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程  \nwww.runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 只有 R 会转换为大写</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">\urunoob</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 所有的字母都会转换为大写</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">\Urunoob</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 指定部分会转换为大写</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Welcome to \Urunoob\E.com!</span><span class="hl-quotes">"</span><span class="hl-code">; 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 将到\E为止的非单词（non-word）字符加上反斜线</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">\QWelcome to runoob's family</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>以上实例执行输出结果为：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/06/57846A1E-EABF-4BCA-BE76-8EB22B831779.jpg" width="50%"/>
+</p>
+</p></div>

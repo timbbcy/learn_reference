@@ -1,0 +1,83 @@
+<div class="article-intro" id="content">
+<h1>Servlet <span class="color_h1">表单数据</span></h1>
+<p>很多情况下，需要传递一些信息，从浏览器到 Web 服务器，最终到后台程序。浏览器使用两种方法可将这些信息传递到 Web 服务器，分别为 GET 方法和 POST 方法。</p>
+<h2>GET 方法</h2>
+<p>GET 方法向页面请求发送已编码的用户信息。页面和已编码的信息中间用 ? 字符分隔，如下所示：</p>
+<pre class="prettyprint">
+http://www.test.com/hello?key1=value1&amp;key2=value2
+</pre>
+<p>GET 方法是默认的从浏览器向 Web 服务器传递信息的方法，它会产生一个很长的字符串，出现在浏览器的地址栏中。如果您要向服务器传递的是密码或其他的敏感信息，请不要使用 GET 方法。GET 方法有大小限制：请求字符串中最多只能有 1024 个字符。</p>
+<p>这些信息使用 QUERY_STRING  头传递，并可以通过 QUERY_STRING 环境变量访问，Servlet 使用 <b>doGet()</b> 方法处理这种类型的请求。</p>
+<h2>POST 方法</h2>
+<p>另一个向后台程序传递信息的比较可靠的方法是 POST 方法。POST 方法打包信息的方式与 GET 方法基本相同，但是 POST 方法不是把信息作为 URL 中 ? 字符后的文本字符串进行发送，而是把这些信息作为一个单独的消息。消息以标准输出的形式传到后台程序，您可以解析和使用这些标准输出。Servlet 使用 doPost() 方法处理这种类型的请求。</p>
+<h2>使用 Servlet 读取表单数据</h2>
+<p>Servlet 处理表单数据，这些数据会根据不同的情况使用不同的方法自动解析：</p>
+<ul class="list">
+<li><b>getParameter()：</b>您可以调用 request.getParameter() 方法来获取表单参数的值。</li>
+<li><b>getParameterValues()：</b>如果参数出现一次以上，则调用该方法，并返回多个值，例如复选框。</li>
+<li><b>getParameterNames()：</b>如果您想要得到当前请求中的所有参数的完整列表，则调用该方法。</li>
+</ul>
+<h2>使用 URL 的 GET 方法实例</h2>
+<p>下面是一个简单的 URL，将使用 GET 方法向 HelloForm 程序传递两个值。</p>
+<p><b><strong>http://localhost:8080/TomcatTest/HelloForm?name=菜鸟教程&amp;url;=www.runoob.com</strong></b></p>
+<p>下面是处理 Web 浏览器输入的 <b>HelloForm.java</b> Servlet 程序。我们将使用 <b>getParameter()</b>  方法，可以很容易地访问传递的信息：</p>
+<pre>
+package com.runoob.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class HelloForm
+ */
+@WebServlet("/HelloForm")
+public class HelloForm extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HelloForm() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 设置响应内容类型
+        response.setContentType("text/html;charset=UTF-8");
+
+        PrintWriter out = response.getWriter();
+        String title = "使用 GET 方法读取表单数据";
+        // 处理中文
+        String name =new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
+        String docType = "&lt;!DOCTYPE html&gt; \n";
+        out.println(docType +
+            "&lt;html&gt;\n" +
+            "&lt;head&gt;&lt;title&gt;" + title + "&lt;/title&gt;&lt;/head&gt;\n" +
+            "&lt;body bgcolor=\"#f0f0f0\"&gt;\n" +
+            "&lt;h1 align=\"center\"&gt;" + title + "&lt;/h1&gt;\n" +
+            "&lt;ul&gt;\n" +
+            "  &lt;li&gt;&lt;b&gt;站点名&lt;/b&gt;："
+            + name + "\n" +
+            "  &lt;li&gt;&lt;b&gt;网址&lt;/b&gt;："
+            + request.getParameter("url") + "\n" +
+            "&lt;/ul&gt;\n" +
+            "&lt;/body&gt;&lt;/html&gt;");
+    }
+    
+    // 处理 POST 方法请求的方法
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+}
+</pre>
+然后我们在 <b>web.xml</b> 文件中创建以下条目：</div>

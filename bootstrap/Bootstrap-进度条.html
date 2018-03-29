@@ -1,0 +1,178 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">进度条</span></h1>
+<div class="tutintro">
+<p>本章将讲解 Bootstrap 进度条。在本教程中，您将看到如何使用 Bootstrap 创建加载、重定向或动作状态的进度条。</p>
+<blockquote><img src="/images/quote.png"/>Bootstrap 进度条使用 CSS3 过渡和动画来获得该效果。Internet Explorer 9 及之前的版本和旧版的 Firefox 不支持该特性，Opera 12 不支持动画。</blockquote>
+</div>
+<h2>默认的进度条</h2>
+<p>创建一个基本的进度条的步骤如下：</p>
+<ul class="list">
+<li>添加一个带有 class <b>.progress</b> 的 &lt;div&gt;。</li>
+<li>接着，在上面的 &lt;div&gt; 内，添加一个带有 class <b>.progress-bar</b> 的空的 &lt;div&gt;。</li>
+<li>添加一个带有百分比表示的宽度的 style 属性，例如 style="width: 60%"; 表示进度条在 60% 的位置。</li>
+</ul>
+<p>让我们看看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 40%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">40% 完成</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-progressbar" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="进度条" src="/wp-content/uploads/2014/06/progressbar_demo.jpg">
+</img></div>
+<h2>交替的进度条</h2>
+<p>创建不同样式的进度条的步骤如下：</p>
+<ul class="list">
+<li>添加一个带有 class <b>.progress</b> 的 &lt;div&gt;。</li>
+<li>接着，在上面的 &lt;div&gt; 内，添加一个带有 class <b>.progress-bar</b> 和 class <b>progress-bar-*</b> 的空的 &lt;div&gt;。其中，* 可以是 <b>success、info、warning、danger</b>。</li>
+<li>添加一个带有百分比表示的宽度的 style 属性，例如 style="60%"; 表示进度条在 60% 的位置。</li>
+</ul>
+<p>让我们看看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-success</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 90%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">90% 完成（成功）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-info</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 30%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">30% 完成（信息）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-warning</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 20%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">20% 完成（警告）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-danger</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 10%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">10% 完成（危险）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-progressbar-alternate" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="交替的进度条" src="/wp-content/uploads/2014/06/alternateprogressbar_demo.jpg"/>
+</div>
+<h2>条纹的进度条</h2>
+<p>创建一个条纹的进度条的步骤如下：</p>
+<ul class="list">
+<li>添加一个带有 class <b>.progress</b> 和 <b>.progress-striped</b> 的 &lt;div&gt;。</li>
+<li>接着，在上面的 &lt;div&gt; 内，添加一个带有 class <b>.progress-bar</b> 和 class <b>progress-bar-*</b> 的空的 &lt;div&gt;。其中，* 可以是 <b>success、info、warning、danger</b>。</li>
+<li>添加一个带有百分比表示的宽度的 style 属性，例如 style="60%"; 表示进度条在 60% 的位置。</li>
+</ul>
+<p>让我们看看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress progress-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-success</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 90%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">90% 完成（成功）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress progress-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-info</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 30%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">30% 完成（信息）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress progress-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-warning</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 20%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">20% 完成（警告）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress progress-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-danger</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 10%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">10% 完成（危险）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-progressbar-striped" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="条纹的进度条" src="/wp-content/uploads/2014/06/stripedprogressbar_demo.jpg"/>
+</div>
+<h2>动画的进度条</h2>
+<p>创建一个动画的进度条的步骤如下：</p>
+<ul class="list">
+<li>添加一个带有 class <b>.progress</b> 和 <b>.progress-striped</b> 的 &lt;div&gt;。同时添加 class <b>.active</b>。</li>
+<li>接着，在上面的 &lt;div&gt; 内，添加一个带有 class <b>.progress-bar</b> 的空的 &lt;div&gt;。</li>
+<li>添加一个带有百分比表示的宽度的 style 属性，例如 style="60%"; 表示进度条在 60% 的位置。</li>
+</ul>
+<p>这将会使条纹具有从右向左的运动感。</p>
+<p>让我们看看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress progress-striped active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-success</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 40%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">40% 完成</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-progressbar-animated" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="动画的进度条" src="/wp-content/uploads/2014/06/animatedprogressbar_demo.jpg"/>
+</div>
+<h2>堆叠的进度条</h2>
+<p>您甚至可以堆叠多个进度条。把多个进度条放在相同的 <b>.progress</b> 中即可实现堆叠，如下面的实例所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-success</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 40%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">40% 完成</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-info</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 30%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">30% 完成（信息）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progress-bar progress-bar-warning</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">progressbar</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-valuenow</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">60</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemin</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-valuemax</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width: 20%;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sr-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">20% 完成（警告）</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-progressbar-stacked" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="堆叠的进度条" src="/wp-content/uploads/2014/06/stackedprogressbar_demo.jpg"/>
+</div>
+</div>

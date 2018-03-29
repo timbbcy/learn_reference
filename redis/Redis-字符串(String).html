@@ -1,0 +1,43 @@
+<div class="article-intro" id="content">
+<h1>Redis 字符串(String)</h1>
+<p>
+Redis 字符串数据类型的相关命令用于管理 redis 字符串值，基本语法如下：</p>
+<h3>语法</h3>
+<pre>
+redis 127.0.0.1:6379&gt; COMMAND KEY_NAME
+</pre>
+<h3>实例</h3><pre>
+redis 127.0.0.1:6379&gt; SET runoobkey redis
+OK
+redis 127.0.0.1:6379&gt; GET runoobkey
+"redis"
+</pre>
+<p>在以上实例中我们使用了 <b>SET</b> 和 <b>GET</b> 命令，键为 <strong>runoobkey</strong>。</p>
+<hr/>
+<h2>Redis 字符串命令</h2>
+<p>下表列出了常用的 redis 字符串命令：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/strings-set.html">SET key value</a> <br/>设置指定 key 的值</td></tr>
+<tr><td>2</td><td><a href="/redis/strings-get.html">GET key</a> <br/>获取指定 key 的值。</td></tr>
+<tr><td>3</td><td><a href="/redis/strings-getrange.html">GETRANGE key start end</a> <br/>返回 key 中字符串值的子字符</td></tr>
+<tr><td>4</td><td><a href="/redis/strings-getset.html">GETSET key value</a><br/>将给定 key 的值设为 value ，并返回 key 的旧值(old value)。</td></tr>
+<tr><td>5</td><td><a href="/redis/strings-getbit.html">GETBIT key offset</a><br/>对 key 所储存的字符串值，获取指定偏移量上的位(bit)。</td></tr>
+<tr><td>6</td><td><a href="/redis/strings-mget.html">MGET key1 [key2..]</a><br/>获取所有(一个或多个)给定 key 的值。 </td></tr>
+<tr><td>7</td><td><a href="/redis/strings-setbit.html">SETBIT key offset value</a><br/>对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。</td></tr>
+<tr><td>8</td><td><a href="/redis/strings-setex.html">SETEX key seconds value</a><br/>将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。</td></tr>
+<tr><td>9</td><td><a href="/redis/strings-setnx.html">SETNX key value</a><br/>只有在 key 不存在时设置 key 的值。</td></tr>
+<tr><td>10</td><td><a href="/redis/strings-setrange.html">SETRANGE key offset value</a><br/>用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始。 </td></tr>
+<tr><td>11</td><td><a href="/redis/strings-strlen.html">STRLEN key</a><br/>返回 key 所储存的字符串值的长度。</td></tr>
+<tr><td>12</td><td><a href="/redis/strings-mset.html">MSET key value [key value ...]</a><br/>同时设置一个或多个 key-value 对。</td></tr>
+<tr><td>13</td><td><a href="/redis/strings-msetnx.html">MSETNX key value [key value ...]</a> <br/>同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在。</td></tr>
+<tr><td>14</td><td><a href="/redis/strings-psetex.html">PSETEX key milliseconds value</a><br/>这个命令和 SETEX 命令相似，但它以毫秒为单位设置 key 的生存时间，而不是像 SETEX 命令那样，以秒为单位。</td></tr>
+<tr><td>15</td><td><a href="/redis/strings-incr.html">INCR key</a><br/>将 key 中储存的数字值增一。</td></tr>
+<tr><td>16</td><td><a href="/redis/strings-incrby.html">INCRBY key increment</a><br/>将 key 所储存的值加上给定的增量值（increment） 。</td></tr>
+<tr><td>17</td><td><a href="/redis/strings-incrbyfloat.html">INCRBYFLOAT key increment</a><br/>将 key 所储存的值加上给定的浮点增量值（increment） 。 </td></tr>
+<tr><td>18</td><td><a href="/redis/strings-decr.html">DECR key</a><br/>将 key 中储存的数字值减一。</td></tr>
+<tr><td>19</td><td><a href="/redis/strings-decrby.html">DECRBY key decrement</a><br/> key 所储存的值减去给定的减量值（decrement） 。 </td></tr>
+<tr><td>20</td><td><a href="/redis/strings-append.html">APPEND key value</a><br/>如果 key 已经存在并且是一个字符串， APPEND 命令将 指定value 追加到改 key 原来的值（value）的末尾。 </td></tr>
+</tbody></table>
+<p>更多命令请参考：<a href="https://redis.io/commands" target="_blank">https://redis.io/commands</a></p>
+</div>

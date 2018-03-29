@@ -1,0 +1,39 @@
+<div class="article-intro" id="content">
+<h1>Redis 数据备份与恢复</h1>
+<p>
+Redis <b>SAVE</b> 命令用于创建当前数据库的备份。</p>
+<h3>语法</h3>
+<p> redis Save 命令基本语法如下：</p>
+<pre>
+redis 127.0.0.1:6379&gt; SAVE 
+</pre>
+<h3>实例</h3>
+<pre>
+redis 127.0.0.1:6379&gt; SAVE 
+OK
+</pre>
+<p>
+该命令将在 redis 安装目录中创建dump.rdb文件。</p>
+<hr/>
+<h2>恢复数据</h2>
+如果需要恢复数据，只需将备份文件 (dump.rdb) 移动到 redis 安装目录并启动服务即可。获取 redis 目录可以使用 <b>CONFIG</b> 命令，如下所示：
+<pre> 
+redis 127.0.0.1:6379&gt; CONFIG GET dir
+1) "dir"
+2) "/usr/local/redis/bin"
+
+</pre>
+<p>以上命令 <b>CONFIG GET dir</b> 输出的 redis 安装目录为 /usr/local/redis/bin。
+</p>
+<hr/>
+<h2>
+Bgsave</h2>
+<p>
+创建 redis 备份文件也可以使用命令 <b>BGSAVE</b>，该命令在后台执行。</p>
+<h3>实例</h3>
+<pre>
+127.0.0.1:6379&gt; BGSAVE
+
+Background saving started
+</pre>
+</div>

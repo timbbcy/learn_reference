@@ -1,0 +1,388 @@
+<div class="article-intro" id="content">
+<h1>PHP 5 <span class="color_h1">Filesystem</span> 函数</h1>
+<hr/>
+<h2>PHP Filesystem 简介</h2>
+<p>Filesystem 函数允许您访问和操作文件系统。</p>
+<hr/>
+<h2>安装</h2>
+<p>Filesystem 函数是 PHP 核心的组成部分。无需安装即可使用这些函数。</p>
+<hr/>
+<h2>Runtime 配置</h2>
+<p>Filesystem 函数的行为受到 php.ini 中设置的影响。</p>
+<p>Filesystem 配置选项：</p>
+<table class="reference notranslate">
+<tr>
+<th width="20%">名称</th>
+<th width="10%">默认</th>
+<th width="50%">描述</th>
+<th width="20%">可改变</th>
+</tr>
+<tr>
+<td>allow_url_fopen</td>
+<td>"1"</td>
+<td>允许 fopen()-type 函数使用 URL。（PHP 4.0.4 版以后可用）</td>
+<td>PHP_INI_SYSTEM </td>
+</tr>
+<tr>
+<td>user_agent</td>
+<td>NULL</td>
+<td>定义 PHP 发送的用户代理。（PHP 4.3 版以后可用）</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>default_socket_timeout</td>
+<td>"60"</td>
+<td>设置基于 socket 流的默认的超时时间（秒）。（PHP 4.3 版以后可用）</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>from</td>
+<td>""</td>
+<td>定义匿名 FTP 的密码（您的 email 地址）。</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>auto_detect_line_endings</td>
+<td>"0"</td>
+<td>当设置为 "1" 时，PHP 将检查通过 fgets() 和 file() 取得的数据中的行结束符号是符合 Unix、MS-Dos 还是 Mac 的习惯。（PHP 4.3 版以后可用）</td>
+<td>PHP_INI_ALL</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>Unix / Windows 兼容性</h2>
+<p>当在 Unix 平台上规定路径时，正斜杠 (/) 用作目录分隔符。而在 Windows 平台上，正斜杠 (/) 和反斜杠 (\) 均可使用。</p>
+<hr/>
+<h2>PHP 5 Filesystem 函数</h2>
+<table class="reference notranslate">
+<tr>
+<th width="30%">函数</th>
+<th width="70%">描述</th>
+</tr>
+<tr>
+<td><a href="func-filesystem-basename.html">basename()</a></td>
+<td>返回路径中的文件名部分。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-chgrp.html">chgrp()</a></td>
+<td>改变文件组。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-chmod.html">chmod()</a></td>
+<td>改变文件模式。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-chown.html">chown()</a></td>
+<td>改变文件所有者。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-clearstatcache.html">clearstatcache()</a></td>
+<td>清除文件状态缓存。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-copy.html">copy()</a></td>
+<td>复制文件。</td>
+</tr>
+<tr>
+<td>delete()</td>
+<td>参见 unlink() 或 unset()</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-dirname.html">dirname()</a></td>
+<td>返回路径中的目录名称部分。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-disk-free-space.html">disk_free_space()</a></td>
+<td>返回目录的可用空间。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-disk-total-space.html">disk_total_space()</a></td>
+<td>返回一个目录的磁盘总容量。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-diskfreespace.html">diskfreespace()</a></td>
+<td>disk_free_space() 的别名。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fclose.html">fclose()</a></td>
+<td>关闭打开的文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-feof.html">feof()</a></td>
+<td>测试文件指针是否到了文件末尾。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fflush.html">fflush()</a></td>
+<td>向打开的文件刷新缓冲输出。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fgetc.html">fgetc()</a></td>
+<td>从打开的文件中返回字符。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fgetcsv.html">fgetcsv()</a></td>
+<td>从打开的文件中解析一行，校验
+<span lang="en-us">CSV 字段</span>。
+</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fgets.html">fgets()</a></td>
+<td>从打开的文件中返回一行。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fgetss.html">fgetss()</a></td>
+<td>从打开的文件中返回一行，并过滤掉 HTML 和 PHP 标签。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-file.html">file()</a></td>
+<td>把文件读入一个数组中。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-file-exists.html">file_exists()</a></td>
+<td>检查文件或目录是否存在。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-file-get-contents.html">file_get_contents()</a></td>
+<td>把文件读入字符串。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-file-put-contents.html">file_put_contents()</a></td>
+<td>把字符串写入文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fileatime.html">fileatime()</a></td>
+<td>返回文件的上次访问时间。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-filectime.html">filectime()</a></td>
+<td>返回文件的上次修改时间。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-filegroup.html">filegroup()</a></td>
+<td>返回文件的组 ID。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fileinode.html">fileinode()</a></td>
+<td>返回文件的 inode 编号。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-filemtime.html">filemtime()</a></td>
+<td>返回文件内容的上次修改时间。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fileowner.html">fileowner()</a></td>
+<td>返回文件的用户 ID （所有者）。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fileperms.html">fileperms()</a></td>
+<td>返回文件的权限。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-filesize.html">filesize()</a></td>
+<td>返回文件大小。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-filetype.html">filetype()</a></td>
+<td>返回文件类型。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-flock.html">flock()</a></td>
+<td>锁定或释放文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fnmatch.html">fnmatch()</a></td>
+<td>根据指定的模式来匹配文件名或字符串。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fopen.html">fopen()</a></td>
+<td>打开一个文件或 URL。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fpassthru.html">fpassthru()</a></td>
+<td>从打开的文件中读数据，直到文件末尾（EOF），并向输出缓冲写结果。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fputcsv.html">fputcsv()</a></td>
+<td>把行格式化为 CSV 并写入一个打开的文件中。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fputs.html">fputs()</a></td>
+<td>fwrite() 的别名。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fread.html">fread()</a></td>
+<td>读取打开的文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fscanf.html">fscanf()</a></td>
+<td>根据指定的格式对输入进行解析。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fseek.html">fseek()</a></td>
+<td>在打开的文件中定位。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fstat.html">fstat()</a></td>
+<td>返回关于一个打开的文件的信息。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-ftell.html">ftell()</a></td>
+<td>返回在打开文件中的当前位置。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-ftruncate.html">ftruncate()</a></td>
+<td>把打开文件截断到指定的长度。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-fwrite.html">fwrite()</a></td>
+<td>写入打开的文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-glob.html">glob()</a></td>
+<td>返回一个包含匹配指定模式的文件名/目录的数组。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-dir.html">is_dir()</a></td>
+<td>判断文件是否是一个目录。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-executable.html">is_executable()</a></td>
+<td>判断文件是否可执行。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-file.html">is_file()</a></td>
+<td>判断文件是否是常规的文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-link.html">is_link()</a></td>
+<td>判断文件是否是连接。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-readable.html">is_readable()</a></td>
+<td>判断文件是否可读。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-uploaded-file.html">is_uploaded_file()</a></td>
+<td>判断文件是否是通过 HTTP POST 上传的。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-writable.html">is_writable()</a></td>
+<td>判断文件是否可写。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-is-writeable.html">is_writeable()</a></td>
+<td>is_writable() 的别名。</td>
+</tr>
+<tr>
+<td>lchgrp()</td>
+<td>改变符号连接的组所有权。</td>
+</tr>
+<tr>
+<td>lchown()</td>
+<td>改变符号连接的用户所有权。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-link.html">link()</a></td>
+<td>创建一个硬连接。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-linkinfo.html">linkinfo()</a></td>
+<td>返回有关一个硬连接的信息。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-lstat.html">lstat()</a></td>
+<td>返回关于文件或符号连接的信息。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-mkdir.html">mkdir()</a></td>
+<td>创建目录。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-move-uploaded-file.html">move_uploaded_file()</a></td>
+<td>把上传的文件移动到新位置。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-parse-ini-file.html">parse_ini_file()</a></td>
+<td>解析一个配置文件。</td>
+</tr>
+<tr>
+<td>parse_ini_string()</td>
+<td>解析一个配置字符串。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-pathinfo.html">pathinfo()</a></td>
+<td>返回关于文件路径的信息。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-pclose.html">pclose()</a></td>
+<td>关闭由 popen() 打开的进程。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-popen.html">popen()</a></td>
+<td>打开一个进程。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-readfile.html">readfile()</a></td>
+<td>读取一个文件，并写入到输出缓冲。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-readlink.html">readlink()</a></td>
+<td>返回符号连接的目标。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-realpath.html">realpath()</a></td>
+<td>返回绝对路径名。</td>
+</tr>
+<tr>
+<td>realpath_cache_get()</td>
+<td>返回高速缓存条目。</td>
+</tr>
+<tr>
+<td>realpath_cache_size()</td>
+<td>返回高速缓存大小。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-rename.html">rename()</a></td>
+<td>重命名文件或目录。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-rewind.html">rewind()</a></td>
+<td>倒回文件指针的位置。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-rmdir.html">rmdir()</a></td>
+<td>删除空的目录。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-set-file-buffer.html">set_file_buffer()</a></td>
+<td>设置已打开文件的缓冲大小。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-stat.html">stat()</a></td>
+<td>返回关于文件的信息。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-symlink.html">symlink()</a></td>
+<td>创建符号连接。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-tempnam.html">tempnam()</a></td>
+<td>创建唯一的临时文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-tmpfile.html">tmpfile()</a></td>
+<td>创建唯一的临时文件。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-touch.html">touch()</a></td>
+<td>设置文件的访问和修改时间。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-umask.html">umask()</a></td>
+<td>改变文件的文件权限。</td>
+</tr>
+<tr>
+<td><a href="func-filesystem-unlink.html">unlink()</a></td>
+<td>删除文件。</td>
+</tr>
+</table>
+</div>

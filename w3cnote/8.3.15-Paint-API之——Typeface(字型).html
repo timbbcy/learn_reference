@@ -1,0 +1,108 @@
+<div class="article-intro">
+<blockquote><p>本节带来Paint API系列的最后一个API，<strong>Typeface(字型)</strong>，由字义，我们大概可以猜到，这个
+API是用来设置字体以及字体风格的，使用起来也非常的简单！下面我们来学习下Typeface的一些相关
+的用法！</p><p>官方API文档：<a href="http://androiddoc.qiniudn.com/reference/android/graphics/Typeface.html">Typeface</a>~</p><p> <img alt="" src="http://www.runoob.com/wp-content/uploads/2015/11/98427188.jpg"/></p></blockquote>
+<hr/>
+<h2>1.字体的可选风格</h2>
+<blockquote><p>四个整型常量：</p>
+<ul>
+<li><strong>BOLD</strong>：加粗</li>
+<li><strong>ITALIC</strong>：斜体</li>
+<li><strong>BOLD_ITALIC</strong>：粗斜体</li>
+<li><strong>NORMAL</strong>：正常</li>
+</ul>
+</blockquote>
+<hr/>
+<h2>2.可选字体对象(Typeface)</h2>
+<blockquote><p>Android系统默认支持三种字体，分别为：<strong>sans</strong>，<strong>serif</strong>，<strong>monospace</strong>
+而提供的可选静态对象值有五个：</p>
+<ul>
+<li><strong>DEFAULT</strong>：默认正常字体对象</li>
+<li><strong>DEFAULT_BOLD</strong>：默认的字体对象，注意:这实际上不可能是粗体的,这取决于字体设置。
+由getStyle()来确定</li>
+<li><strong>MONOSPACE</strong>：monospace 字体风格</li>
+<li><strong>SANS_SERIF</strong>：sans serif字体风格</li>
+<li><strong>SERIF</strong>：serif字体风格</li>
+</ul>
+</blockquote>
+<hr/>
+<h2>3.自定义创建字型</h2>
+<blockquote><p>可能默认的三种字体并不能满足你，可能你喜欢MAC的字体——<strong>Monaco字体</strong>，你想让你APP
+里的文字可以用这种字体，首先准备好我们的TTF文件，然后丢到<strong>assets/font/</strong>目录下
+然后创建对应对象，关键代码如下：</p><p>
+<strong>Typeface typeFace =Typeface.createFromAsset(getAssets(),"font/MONACO.ttf");</strong></p></blockquote>
+<hr/>
+<h2>4.使用代码示例：</h2>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/11/69781721.jpg"/></p>
+<p>自定义的View类：<strong>MyView.java</strong>：</p>
+<pre>
+/**
+ * Created by Jay on 2015/11/5 0005.
+ */
+public class MyView extends View{
+
+    private Paint mPaint1,mPaint2,mPaint3,mPaint4,mPaint5;
+    private Context mContext;
+
+    public MyView(Context context) {
+        this(context,null);
+    }
+
+    public MyView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mContext = context;
+        init();
+    }
+
+    public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    private void init(){
+        mPaint1 = new Paint();
+        mPaint2 = new Paint();
+        mPaint3 = new Paint();
+        mPaint4 = new Paint();
+        mPaint5 = new Paint();
+
+        mPaint1.setColor(Color.RED);
+        mPaint2.setColor(Color.BLUE);
+        mPaint3.setColor(Color.BLACK);
+        mPaint4.setColor(Color.YELLOW);
+        mPaint5.setColor(Color.GRAY);
+
+
+        mPaint1.setTextSize(100);
+        mPaint2.setTextSize(100);
+        mPaint3.setTextSize(100);
+        mPaint4.setTextSize(100);
+        mPaint5.setTextSize(100);
+
+
+        mPaint1.setTypeface(Typeface.DEFAULT_BOLD);
+        mPaint2.setTypeface(Typeface.MONOSPACE);
+        mPaint3.setTypeface(Typeface.SANS_SERIF);
+        mPaint4.setTypeface(Typeface.SERIF);
+        mPaint5.setTypeface(Typeface.createFromAsset(mContext.getAssets(), "font/MONACO.ttf"));
+
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        canvas.drawText("Coder-pig", 100, 100, mPaint1);
+        canvas.drawText("Coder-pig", 100, 200, mPaint2);
+        canvas.drawText("Coder-pig", 100, 300, mPaint3);
+        canvas.drawText("Coder-pig", 100, 400, mPaint4);
+        canvas.drawText("Coder-pig", 100, 500, mPaint5);
+    }
+}
+</pre>
+<p>恩呢，非常简单~就不解释了，要字体的可以自己百度或者下载示例代码~</p>
+<hr/>
+<h2>本节示例代码下载：</h2>
+<p><a href="http://static.runoob.com/download/TypefaceDemo.zip">TypefaceDemo.zip</a></p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>好的，一连十几节的Paint API详解就到这里了，应该已经涵盖大部分的可能会用到的API了，
+不知道你都Get了没，这些都是为我们进阶部分的自定义控件做铺垫~嗯，就说这么多，谢谢~</p></blockquote> </div>

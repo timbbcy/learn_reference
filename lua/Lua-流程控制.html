@@ -1,0 +1,25 @@
+<div class="article-intro" id="content">
+<h1>Lua 流程控制</h1>
+<p>
+Lua 编程语言流程控制语句通过程序设定一个或多个条件语句来设定。在条件为 true 时执行指定程序代码，在条件为 false 时执行其他指定代码。</p>
+<p>以下是典型的流程控制流程图：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/12/if.png" title="Lua 流程控制"/>
+<p>控制结构的条件表达式结果可以是任何值，Lua认为false和nil为假，true和非nil为真。</p>
+<p>要注意的是Lua中 0 为 true：</p>
+<pre>
+--[ 0 为 true ]
+if(0)
+then
+    print("0 为 true")
+end
+</pre>
+<p>以上代码输出结果为：</p>
+<pre>0 为 true</pre>
+<p>Lua 提供了以下控制结构语句：</p>
+<table class="reference">
+<tbody><tr><th style="width:28%">语句</th><th>描述</th></tr>
+<tr><td><a href="/lua/if-statement-in-lua.html" title="Lua if 语句">if 语句</a></td><td> <b>if 语句</b> 由一个布尔表达式作为条件判断，其后紧跟其他语句组成。</td></tr>
+<tr><td><a href="/lua/if-else-statement-in-lua.html" title="Lua if...else 语句">if...else 语句</a></td><td> <b>if 语句</b> 可以与 <b>else 语句</b>搭配使用, 在 if 条件表达式为 false 时执行 else 语句代码。</td></tr>
+<tr><td><a href="/lua/nested-if-statements-in-lua.html" title="Lua if 嵌套语句">if 嵌套语句</a></td><td>你可以在<b>if</b> 或 <b>else if</b>中使用一个或多个 <b>if</b> 或 <b>else if</b> 语句 。</td></tr>
+</tbody></table>
+</div>

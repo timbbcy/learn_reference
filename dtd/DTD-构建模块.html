@@ -1,0 +1,78 @@
+<div class="article-intro" id="content">
+<h1>DTD - <span class="color_h1">XML 构建模块</span>
+</h1>
+<hr/>
+<p class="intro"> XML 和 HTML文档的主要的构建模块是元素标签。</p>
+<hr/>
+<h2>XML 文档构建模块</h2>
+<p>所有的 XML 文档（以及 HTML 文档）均由以下简单的构建模块构成：</p>
+<ul>
+<li>元素</li>
+<li>属性</li>
+<li>实体</li>
+<li>PCDATA</li>
+<li>CDATA</li>
+</ul>
+<hr/>
+<h2>元素</h2>
+<p>元素是 XML 以及 HTML 文档的<strong>主要构建模块</strong>。</p>
+<p>HTML 元素的例子是 "body" 和 "table"。XML 元素的例子是 "note" 和 "message" 。元素可包含文本、其他元素或者是空的。空的 HTML 元素的例子是 "hr"、"br" 以及 "img"。</p>
+<p>实例:</p>
+<div class="code notranslate"><div>
+  
+    &lt;body&gt;some text&lt;/body&gt;<br/><br/>
+	&lt;message&gt;some text&lt;/message&gt;
+  
+</div></div>
+<br/><hr/>
+<p>属性可提供<strong>有关元素的额外信息</strong>。</p>
+<p>属性总是被置于某元素的开始标签中。属性总是以<strong>名称/值</strong>的形式成对出现的。下面的 "img" 元素拥有关于源文件的额外信息：</p>
+<div class="code notranslate"><div>
+  
+    &lt;img src="computer.gif" /&gt;
+  
+</div></div>
+<p>元素的名称是 "img"。属性的名称是 "src"。属性的值是 "computer.gif"。由于元素本身为空，它被一个 " /" 关闭。</p>
+<hr/>
+<h2>实体</h2>
+<p>实体是用来定义普通文本的变量。实体引用是对实体的引用。</p>
+<p>大多数同学都了解这个 HTML 实体引用："&amp;nbsp;"。这个"无折行空格"实体在 HTML 中被用于在某个文档中插入一个额外的空格。</p>
+<p>当文档被 XML 解析器解析时，实体就会被展开。</p>
+<table class="reference">
+<tr>
+<th>实体引用</th>
+<th>字符</th>
+</tr>
+<tr>
+<td>&amp;lt;</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>&amp;gt;</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>&amp;amp;</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td>&amp;quot;</td>
+<td>"</td>
+</tr>
+<tr>
+<td>&amp;apos;</td>
+<td>'</td>
+</tr>
+</table> 
+<hr/>
+<h2>PCDATA</h2>
+<p>PCDATA 的意思是被解析的字符数据（parsed character data）。</p>
+<p>可把字符数据想象为 XML 元素的开始标签与结束标签之间的文本。</p>
+<p><strong>PCDATA 是会被解析器解析的文本。这些文本将被解析器检查实体以及标记。</strong></p>
+<p>文本中的标签会被当作标记来处理，而实体会被展开。</p>
+<p>不过，被解析的字符数据不应当包含任何 &amp;、&lt; 或者 &gt; 字符；需要使用 &amp;amp;、&amp;lt; 以及 &amp;gt; 实体来分别替换它们。</p>
+<hr/>
+<h2>CDATA</h2>
+<p>CDATA 的意思是字符数据（character data）。</p>
+<p><strong>CDATA 是不会被解析器解析的文本。</strong>在这些文本中的标签不会被当作标记来对待，其中的实体也不会被展开。</p>
+</div>

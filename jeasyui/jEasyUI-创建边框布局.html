@@ -1,0 +1,44 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 布局 - <span class="color_h1">为网页创建边框布局</span></h1>
+<p>边框布局（border layout）提供五个区域：east、west、north、south、center。以下是一些通常用法：</p>
+<ul>
+<li>north 区域可以用来显示网站的标语。</li>
+<li>south 区域可以用来显示版权以及一些说明。</li>
+<li>west 区域可以用来显示导航菜单。</li>
+<li>east 区域可以用来显示一些推广的项目。</li>
+<li>center 区域可以用来显示主要的内容。</li>
+</ul>
+<img src="/wp-content/uploads/2013/12/layout.png"/>
+<p>为了应用布局（layout），您应该确定一个布局（layout）容器，然后定义一些区域。布局（layout）必须至少需要一个 center 区域，以下是一个布局（layout）实例：</p>
+<pre style="color:#006600">
+    &lt;div class="easyui-layout" style="width:400px;height:200px;"&gt;
+        &lt;div region="west" split="true" title="Navigator" style="width:150px;"&gt;
+            &lt;p style="padding:5px;margin:0;"&gt;Select language:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="javascript:void(0)" onclick="showcontent('java')"&gt;Java&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascript:void(0)" onclick="showcontent('cshape')"&gt;C#&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascript:void(0)" onclick="showcontent('vb')"&gt;VB&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascript:void(0)" onclick="showcontent('erlang')"&gt;Erlang&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div id="content" region="center" title="Language" style="padding:5px;"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<p>
+我们在一个 &lt;div&gt; 容器中创建了一个边框布局（border layout），布局（layout）把容器切割为两个部分，左边是导航菜单，右边是主要内容。
+</p>
+<p>最后我们写一个 onclick 事件处理函数来检索数据，'showcontent' 函数非常简单：</p>
+<pre style="color:#006600">
+    function showcontent(language){
+        $('#content').html('Introduction to ' + language + ' language');
+    }
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-layout-layout.zip">jeasyui-layout-layout.zip</a></p>
+</div>

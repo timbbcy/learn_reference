@@ -1,0 +1,285 @@
+<div class="article-intro" id="content">
+<h1>CSS <span class="color_h1">伪类(Pseudo-classes)</span>
+</h1>
+<hr/>
+<p class="intro">CSS伪类是用来添加一些选择器的特殊效果。</p>
+<hr/>
+<h2>语法</h2>
+<p>伪类的语法：</p>
+<div class="code"><div>
+selector:pseudo-class {property:value;}</div></div>
+<p>CSS类也可以使用伪类：</p>
+<div class="code"><div>
+selector.class:pseudo-class {property:value;}</div></div>
+<br/><hr/>
+<h2>anchor伪类</h2>
+<p>在支持 CSS 的浏览器中，链接的不同状态都可以以不同的方式显示</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">a</span><span class="hl-special">:link</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">color:</span><span class="hl-var">#FF0000</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-comment">/*</span><span class="hl-comment"> 未访问的链接 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-special">:visited</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">color:</span><span class="hl-var">#00FF00</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-comment">/*</span><span class="hl-comment"> 已访问的链接 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">color:</span><span class="hl-var">#FF00FF</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-comment">/*</span><span class="hl-comment"> 鼠标划过链接 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-special">:active</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">color:</span><span class="hl-var">#0000FF</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-comment">/*</span><span class="hl-comment"> 已选中的链接 </span><span class="hl-comment">*/</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_link" target="_blank">尝试一下 »</a>
+<br/>
+</div>
+<p><b>注意：</b> 在CSS定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。</p>
+<p><b>注意：</b> 在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。</p>
+<p><b>注意：</b>伪类的名称不区分大小写。</p>
+<hr/>
+<h2>伪类和CSS类</h2>
+<p>伪类可以与 CSS 类配合使用：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">a</span><span class="hl-identifier">.red</span><span class="hl-special">:visited</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">color:</span><span class="hl-var">#FF0000</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+&lt;</span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-identifier">class</span><span class="hl-code">="</span><span class="hl-identifier">red</span><span class="hl-code">" </span><span class="hl-identifier">href</span><span class="hl-code">="</span><span class="hl-identifier">css-syntax</span><span class="hl-identifier">.html</span><span class="hl-code">"&gt;</span><span class="hl-identifier">CSS</span><span class="hl-code"> 语法&lt;/</span><span class="hl-identifier">a</span><span class="hl-code">&gt;</span></div>
+</div></div>
+<p>如果在上面的例子的链接已被访问，它会显示为红色。</p>
+<hr/>
+<h2>CSS - :first - child伪类</h2>
+<p>您可以使用 :first-child 伪类来选择元素的第一个子元素</p>
+<p><b>注意：</b>在IE8的之前版本必须声明<a href="/tags/tag-doctype.html">&lt;!DOCTYPE&gt;</a> ，这样 :first-child 才能生效。</p>
+<h2>匹配第一个 &lt;p&gt; 元素</h2>
+<p>在下面的例子中，选择器匹配作为任何元素的第一个子元素的 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-special">:first-child</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">blue</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_first-child1" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>匹配所有&lt;p&gt; 元素中的第一个 &lt;i&gt; 元素</h2>
+<p>在下面的例子中，选择相匹配的所有&lt;p&gt;元素的第一个  &lt;i&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-code"> &gt; </span><span class="hl-identifier">i</span><span class="hl-special">:first-child</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">blue</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_first-child2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>匹配所有作为第一个子元素的 &lt;p&gt; 元素中的所有 &lt;i&gt; 元素</h2>
+<p>在下面的例子中，选择器匹配所有作为元素的第一个子元素的 &lt;p&gt; 元素中的所有 &lt;i&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-special">:first-child</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">blue</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_first-child3" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>CSS - :lang 伪类</h2>
+<p>:lang 伪类使你有能力为不同的语言定义特殊的规则</p>
+<p><b>注意：</b>IE8必须声明<a href="/tags/tag-doctype.html">&lt;!DOCTYPE&gt;</a>才能支持;lang伪类。</p>
+<p>在下面的例子中，:lang 类为属性值为 no 的q元素定义引号的类型：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-identifier">q</span><span class="hl-special">:lang</span><span class="hl-code">(</span><span class="hl-identifier">no</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-reserved">quotes:</span><span class="hl-code"> "~" "~"</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_lang" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/try.php?filename=trycss_link2" target="_blank">为超链接添加不同样式</a><br/>
+这个例子演示了如何为超链接添加其他样式。</p>
+<p><a href="/try/try.php?filename=trycss_link_focus" target="_blank">使用 :focus</a><br/>
+这个例子演示了如何使用 :focus伪类。 </p>
+<hr/>
+<h2>所有CSS伪类/元素</h2>
+<table border="1" cellpadding="0" cellspacing="0" class="reference" id="table13" width="100%">
+<tbody><tr>
+<th align="left" width="20%">选择器</th>
+<th align="left" width="17%">示例</th>
+<th align="left" width="63%">示例说明</th>
+</tr>
+<tr>
+<td><a href="/cssref/sel-checked.html">:checked</a></td>
+<td>input:checked</td>
+<td>选择所有选中的表单元素</td>
+</tr>
+<tr>
+<td><a href="cssref/sel-disabled.html">:disabled</a></td>
+<td>input:disabled</td>
+<td>选择所有禁用的表单元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-empty.html">:empty</a></td>
+<td>p:empty</td>
+<td>选择所有没有子元素的p元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-enable.html">:enabled</a></td>
+<td>input:enabled</td>
+<td>选择所有启用的表单元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-first-of-type.html">:first-of-type</a></td>
+<td>p:first-of-type</td>
+<td>选择每个父元素是p元素的第一个p子元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-in-range.html">:in-range</a></td>
+<td>input:in-range</td>
+<td>选择元素指定范围内的值</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-invalid.html">:invalid</a></td>
+<td>input:invalid</td>
+<td>选择所有无效的元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-last-child.html">:last-child</a></td>
+<td>p:last-child</td>
+<td>选择所有p元素的最后一个子元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-last-of-type.html">:last-of-type</a></td>
+<td>p:last-of-type</td>
+<td>选择每个p元素是其母元素的最后一个p元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-not.html">:not(selector)</a></td>
+<td>:not(p)</td>
+<td>选择所有p以外的元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-nth-child.html">:nth-child(n)</a></td>
+<td>p:nth-child(2)</td>
+<td>选择所有p元素的第二个子元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-nth-last-child.html">:nth-last-child(n)</a></td>
+<td>p:nth-last-child(2)</td>
+<td>选择所有p元素倒数的第二个子元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-nth-last-of-type.html">:nth-last-of-type(n)</a></td>
+<td>p:nth-last-of-type(2)</td>
+<td>选择所有p元素倒数的第二个为p的子元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-nth-of-type.html">:nth-of-type(n)</a></td>
+<td>p:nth-of-type(2)</td>
+<td>选择所有p元素第二个为p的子元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-only-of-type.html">:only-of-type</a></td>
+<td>p:only-of-type</td>
+<td>选择所有仅有一个子元素为p的元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-only-child.html">:only-child</a></td>
+<td>p:only-child</td>
+<td>选择所有仅有一个子元素的p元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-optional.html">:optional</a></td>
+<td>input:optional</td>
+<td>选择没有"required"的元素属性</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-out-of-range.html">:out-of-range</a></td>
+<td>input:out-of-range</td>
+<td>选择指定范围以外的值的元素属性</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-read-only.html">:read-only</a></td>
+<td>input:read-only</td>
+<td>选择只读属性的元素属性</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-read-write.html">:read-write</a></td>
+<td>input:read-write</td>
+<td>选择没有只读属性的元素属性</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-required.html">:required</a></td>
+<td>input:required</td>
+<td>选择有"required"属性指定的元素属性</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-root.html">:root</a></td>
+<td>root</td>
+<td>选择文档的根元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-target.html">:target</a></td>
+<td>#news:target</td>
+<td>选择当前活动#news元素(点击URL包含锚的名字)</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-valid.html">:valid</a></td>
+<td>input:valid</td>
+<td>选择所有有效值的属性</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-link.html">:link</a></td>
+<td>a:link</td>
+<td>选择所有未访问链接</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-visited.html">:visited</a></td>
+<td>a:visited</td>
+<td>选择所有访问过的链接</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-active.html">:active</a></td>
+<td>a:active</td>
+<td>选择正在活动链接</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-hover.html">:hover</a></td>
+<td>a:hover</td>
+<td>把鼠标放在链接上的状态</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-focus.html">:focus</a></td>
+<td>input:focus</td>
+<td>选择元素输入后具有焦点</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-firstletter.html">:first-letter</a></td>
+<td>p:first-letter</td>
+<td>选择每个&lt;p&gt; 元素的第一个字母</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-firstline.html">:first-line</a></td>
+<td>p:first-line</td>
+<td>选择每个&lt;p&gt; 元素的第一行</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-firstchild.html">:first-child</a></td>
+<td>p:first-child</td>
+<td>选择器匹配属于任意元素的第一个子元素的 &lt;p&gt; 元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-before.html">:before</a></td>
+<td>p:before</td>
+<td>在每个&lt;p&gt;元素之前插入内容</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-after.html">:after</a></td>
+<td>p:after</td>
+<td>在每个&lt;p&gt;元素之后插入内容</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-lang.html">:lang(<i>language</i>)</a></td>
+<td>p:lang(it)</td>
+<td>为&lt;p&gt;元素的lang属性选择一个开始值</td>
+</tr>
+</tbody></table>
+</div>

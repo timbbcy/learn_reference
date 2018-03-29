@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">ASPError</span> 对象</h1>
+<hr/>
+<p class="intro">ASPError 对象用于显示在 ASP 文件的脚本中发生的错误信息。</p>
+<hr/>
+<h2>ASPError 对象</h2>
+<p>ASPError 对象在 ASP 3.0 中生效，且在 IIS5 及更高版本中可用。</p>
+<p>ASPError 对象用于显示在 ASP 文件的脚本中发生的任何错误的详细信息。</p>
+<p><b>注释：</b>当 Server.GetLastError 被调用时，ASPError 对象就会被创建，因此只能通过使用 Server.GetLastError 方法来访问错误信息。</p>
+<p>ASPError 对象的属性描述如下（所有属性都是可读的）：</p>
+<h3>属性</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">属性</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">ASPCode</a></td>
+<td>返回由 IIS 生成的错误代码。</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">ASPDescription</a></td>
+<td>返回错误的详细信息（如果错误和 ASP 相关）。</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">Category</a></td>
+<td>返回错误来源。(错误是由 ASP、脚本语言还是对象引起的？）</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">Column</a></td>
+<td>返回在出错文件中的列位置。</td>
+</tr>
+<tr>
+<td><a href="prop-asperrorobject.html">Description</a></td>
+<td>返回关于错误的简短描述。</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">File</a></td>
+<td>返回出错 ASP 文件的名称。</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">Line</a></td>
+<td>返回错误所在的行数。</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-asperrorobject.html">Number</a></td>
+<td>返回关于错误的标准 COM 错误代码。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-asperrorobject.html">Source</a></td>
+<td valign="top">返回错误所在行的实际的源代码。</td>
+</tr>
+</table>
+<br/>
+</div>

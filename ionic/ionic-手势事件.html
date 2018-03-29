@@ -1,0 +1,301 @@
+<div class="article-intro" id="content">
+<h1>ionic 手势事件</h1>
+<table class="reference">
+<thead>
+<tr>
+<th width="10%">事件 </th>
+<th width="20%">描述 </th>
+<th width="50%"> 用法 </th>
+<th> 实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>on-hold </td>
+<td> 长按的时间是500毫秒。  </td>
+<td><pre>
+&lt;button 
+    on-hold="onHold()" 
+    class="button"&gt;
+    Test
+    &lt;/button&gt;
+</pre></td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-hold" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-tap </td>
+<td> 这个是手势轻击事件，如果长按时间超过250毫秒，那就不是轻击了。。  </td>
+<td><pre>
+&lt;button 
+    on-tap="onTap()" 
+    class="button"&gt;
+    Test
+    &lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-tap" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-double-tap </td>
+<td> 手双击屏幕事件  </td>
+<td> <pre>
+&lt;button 
+    on-double-tap="onDoubleTap()" 
+    class="button"&gt;
+    Test
+    &lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-double-tap" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-touch </td>
+<td> 这个和 on-tap 还是有区别的，这个是立即执行，而且是用户点击立马执行。不用等待 touchend/mouseup 。  </td>
+<td> <pre>
+    &lt;button on-touch="onTouch()" 
+    class="button"&gt;
+    Test
+    &lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-touch" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-release </td>
+<td> 当用户结束触摸事件时触发。  </td>
+<td> <pre>
+&lt;button 
+    on-release="onRelease()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-release" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-drag </td>
+<td> 这个有点类似于PC端的拖拽。当你一直点击某个物体，并且手开始移动，都会触发 on-drag。  </td>
+<td> <pre>
+&lt;button 
+    on-drag="onDrag()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-drag" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-drag-up</td>
+<td> 向上拖拽。  </td>
+<td> <pre>
+&lt;button 
+    on-drag-up="onDragUp()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;
+</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-drag-up" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-drag-right</td>
+<td> 向右拖拽。  </td>
+<td> <pre>
+&lt;button 
+    on-drag-right="onDragRight()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-drag-up" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-drag-down</td>
+<td> 向下拖拽。  </td>
+<td> <pre>
+&lt;button 
+    on-drag-down="onDragDown()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-drag-up" target="_blank">尝试一下 »</a></td>
+</tr>
+</tbody>
+<tr>
+<td>on-drag-left</td>
+<td> 向左边拖拽。  </td>
+<td> <pre>
+&lt;button 
+    on-drag-left="onDragLeft()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-drag-up" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-swipe</td>
+<td> 指手指滑动效果，可以是任何方向上的。而且也和 on-drag 类似，都有四个方向上单独的事件。  </td>
+<td> <pre>
+&lt;button 
+    on-swipe="onSwipe()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-swipe" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-swipe-up</td>
+<td> 向上的手指滑动效果。  </td>
+<td> <pre>
+&lt;button 
+    on-swipe-up="onSwipeUp()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-swipe" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-swipe-right</td>
+<td> 向右的手指滑动效果。  </td>
+<td> <pre>
+&lt;button 
+    on-swipe-right="onSwipeRight()" 
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-swipe" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-swipe-down</td>
+<td> 向下的手指滑动效果。  </td>
+<td> <pre>&lt;button
+    on-swipe-down="onSwipeDown()"
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-swipe" target="_blank">尝试一下 »</a></td>
+</tr>
+<tr>
+<td>on-swipe-left</td>
+<td> 向左的手指滑动效果。  </td>
+<td> <pre>&lt;button 
+    on-swipe-left="onSwipeLeft()"
+    class="button"&gt;
+    Test
+&lt;/button&gt;</pre></td>
+<td> <a class="tryitbtn" href="/try/tryit.php?filename=ionic_on-swipe" target="_blank">尝试一下 »</a></td>
+</tr>
+</table>
+<hr/>
+<h2>$ionicGesture</h2>
+<p>一个angular服务展示ionicionic.EventController手势。</p>
+<h3>方法</h3>
+<pre>
+on(eventType, callback, $element)</pre>
+<p>
+在一个元素上添加一个事件监听器。</p>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        eventType
+      </td>
+<td>
+<code>string</code>
+</td>
+<td>
+<p>监听的手势事件。</p>
+</td>
+</tr>
+<tr>
+<td>
+        callback
+        
+        
+      </td>
+<td>
+<code>function(e)</code>
+</td>
+<td>
+<p>当手势事件发生时触发的事件。</p>
+</td>
+</tr>
+<tr>
+<td>
+        $element
+        
+        
+      </td>
+<td>
+<code>element</code>
+</td>
+<td>
+<p>angular元素监听的事件。</p>
+</td>
+</tr>
+<tr>
+<td>
+        options
+        
+        
+      </td>
+<td>
+<code>object</code>
+</td>
+<td>
+<p>对象。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<pre>
+off(eventType, callback, $element)</pre>
+<p>在一个元素上移除一个手势事件监听器。</p>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        eventType
+        
+        
+      </td>
+<td>
+<code>string</code>
+</td>
+<td>
+<p>移除监听的手势事件。</p>
+</td>
+</tr>
+<tr>
+<td>
+        callback
+        
+        
+      </td>
+<td>
+<code>function(e)</code>
+</td>
+<td>
+<p>移除监听器。</p>
+</td>
+</tr>
+<tr>
+<td>
+        $element
+        
+        
+      </td>
+<td>
+<code>element</code>
+</td>
+<td>
+<p>被监听事件的angular元素。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,40 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 菜单与按钮 - <span class="color_h1">创建分割按钮（Split Button）</span></h1>
+<p>
+分割按钮（Split Button）包含一个链接按钮（Link Button）和一个菜单（Menu）。当用户点击或者鼠标悬停在向下箭头区域，将会显示一个对应的菜单。本实例演示了如何创建和使用分割按钮（Split Button）。
+</p>
+<img src="/wp-content/uploads/2013/12/splitbutton.png"/>
+<p>我们创建一个分割按钮（Split Button）和一个链接按钮（Link Button）：</p>
+<pre style="color:#006600">
+    &lt;div style="border:1px solid #ccc;background:#fafafa;padding:5px;width:120px;"&gt;
+        &lt;a href="#" class="easyui-splitbutton" menu="#mm" iconCls="icon-edit"&gt;Edit&lt;/a&gt;
+        &lt;a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-help"&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="mm" style="width:150px;"&gt;
+        &lt;div iconCls="icon-undo"&gt;Undo&lt;/div&gt;
+        &lt;div iconCls="icon-redo"&gt;Redo&lt;/div&gt;
+        &lt;div class="menu-sep"&gt;&lt;/div&gt;
+        &lt;div&gt;Cut&lt;/div&gt;
+        &lt;div&gt;Copy&lt;/div&gt;
+        &lt;div&gt;Paste&lt;/div&gt;
+        &lt;div class="menu-sep"&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;span&gt;Open&lt;/span&gt;
+            &lt;div style="width:150px;"&gt;
+                &lt;div&gt;Firefox&lt;/div&gt;
+                &lt;div&gt;Internet Explorer&lt;/div&gt;
+                &lt;div class="menu-sep"&gt;&lt;/div&gt;
+                &lt;div&gt;Select Program...&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div iconCls="icon-remove"&gt;Delete&lt;/div&gt;
+        &lt;div&gt;Select All&lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<p>现在已经定义好了一个分割按钮（Split Button），您不需要写任何的 javascript 代码。</p>
+</div>

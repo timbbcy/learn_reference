@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">HTTP 状态码</span></h1>
+<p>HTTP请求与HTTP响应的格式相近，都有着如下结构：</p>
+<ul>
+<li>
+		以状态行+CRLF（回车换行）开始</li>
+<li>
+		零行或多行头模块+CRLF</li>
+<li>
+		一个空行，比如CRLF</li>
+<li>
+		可选的消息体比如文件，查询数据，查询输出</li>
+</ul> <p>
+举例来说，一个服务器响应头看起来就像下面这样： </p>
+<pre>
+HTTP/1.1 200 OK
+Content-Type: text/html
+Header2: ...
+...
+HeaderN: ...
+  (Blank Line)
+&lt;!doctype ...&gt;
+&lt;html&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+...
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>

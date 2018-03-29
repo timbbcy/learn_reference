@@ -1,0 +1,116 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">If...Else</span> 语句</h1>
+<hr/>
+<p class="intro">条件语句用于根据不同条件执行不同动作。</p>
+<hr/>
+<h2>PHP 条件语句</h2>
+<p>当您编写代码时，您常常需要为不同的判断执行不同的动作。您可以在代码中使用条件语句来完成此任务。</p>
+<p>在 PHP 中，提供了下列条件语句：</p>
+<ul>
+<li>
+<b>if 语句</b> - 在条件成立时执行代码</li>
+<li>
+<b>if...else 语句</b> - 在条件成立时执行一块代码，条件不成立时执行另一块代码</li>
+<li>
+<b>if...elseif....else 语句</b>  - 在若干条件之一成立时执行一个代码块</li>
+<li>
+<b>switch 语句</b> - 在若干条件之一成立时执行一个代码块</li>
+</ul>
+<hr/>
+<h2>PHP - if 语句</h2>
+<p>if 语句用于<strong>仅当指定条件成立时执行代码</strong>。</p>
+<h3>语法</h3>
+<pre>
+if (条件)
+{
+    条件成立时要执行的代码;
+}
+</pre>
+<p>如果当前时间小于 20，下面的实例将输出 "Have a good day!"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$t</span><span class="hl-code">=</span><span class="hl-identifier">date</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">H</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$t</span><span class="hl-code">&lt;</span><span class="hl-quotes">"</span><span class="hl-string">20</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Have a good day!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_if" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>PHP - if...else 语句</h2>
+<p><strong>在条件成立时执行一块代码，条件不成立时执行另一块代码</strong>，请使用 if....else 语句。</p>
+<h3>语法</h3>
+<div class="code"><div>
+if (<i>条件</i>)<br/>
+ {<br/>
+<i>条件成立时执行的代码;</i><br/>
+ }<br/>
+else<br/>
+ {<br/>
+<i>条件不成立时执行的代码;<br/>
+</i>}
+</div></div>
+<p>如果当前时间小于 20，下面的实例将输出 "Have a good day!"，否则输出 "Have a good night!"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$t</span><span class="hl-code">=</span><span class="hl-identifier">date</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">H</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$t</span><span class="hl-code">&lt;</span><span class="hl-quotes">"</span><span class="hl-string">20</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Have a good day!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Have a good night!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_if_else" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>PHP - if...elseif....else 语句</h2>
+<p><strong>在若干条件之一成立时执行一个代码块</strong>，请使用 if....elseif...else 语句。.</p>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+if (<i>条件</i>)<br/>
+  {<br/>
+<i>if 条件成立时执行的代码;<br/>
+</i>}<br/>
+elseif (<i>条件</i>)<br/>
+  {<br/>
+<i>elseif 条件成立时执行的代码;<br/>
+</i>}<i><br/></i>else<br/>
+  {<br/>
+<i>条件不成立时执行的代码;<br/></i> }
+</div></div>
+<p>如果当前时间小于 10，下面的实例将输出 "Have a good morning!"，如果当前时间不小于 10 且小于 20，则输出 "Have a good day!"，否则输出 "Have a good night!"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$t</span><span class="hl-code">=</span><span class="hl-identifier">date</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">H</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$t</span><span class="hl-code">&lt;</span><span class="hl-quotes">"</span><span class="hl-string">10</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Have a good morning!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">elseif</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$t</span><span class="hl-code">&lt;</span><span class="hl-quotes">"</span><span class="hl-string">20</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Have a good day!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Have a good night!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_if_elseif" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>PHP - switch 语句</h2>
+<p>switch 语句将在下一章进行讲解。</p>
+</div>

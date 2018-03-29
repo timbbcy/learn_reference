@@ -1,0 +1,123 @@
+<div class="article-intro" id="content">
+<h1>PHP7 MongDB 安装与使用</h1>
+<p>本文教程只适合在 PHP7 的环境，如果你是 PHP5 环境，你可以参阅 <a href="/mongodb/mongodb-php.html" target="_blank">PHP MongDB 安装与使用</a>。</p>
+<h2>PHP7 Mongdb 扩展安装</h2>
+<p>我们使用 pecl 命令来安装：</p>
+<pre>
+$ /usr/local/php7/bin/pecl install mongodb
+</pre>
+<p>执行成功后，会输出以下结果：</p>
+<pre>
+……
+Build process completed successfully
+Installing '/usr/local/php7/lib/php/extensions/no-debug-non-zts-20151012/mongodb.so'
+install ok: channel://pecl.php.net/mongodb-1.1.7
+configuration option "php_ini" is not set to php.ini location
+You should add "extension=mongodb.so" to php.ini
+</pre>
+<p>接下来我们打开 php.ini 文件，添加 <b>extension=mongodb.so</b> 配置。</p>
+<p>可以直接执行以下命令来添加。</p>
+<pre>
+$ echo "extension=mongodb.so" &gt;&gt; `/usr/local/php7/bin/php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+</pre>
+<blockquote>
+<p><b>注意：</b>以上执行的命令中 php7 的安装目录为 /usr/local/php7/，如果你安装在其他目录，需要相应修改 pecl 与 php 命令的路径。</p>
+</blockquote>
+<hr/>
+<h2>Mongodb 使用</h2>
+<p>PHP7 连接 MongoDB 语法如下：</p>
+<pre>
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+</pre>
+<h3>插入数据</h3>
+<p>将 name 为"菜鸟教程" 的数据插入到 test 数据库的 runoob 集合中。</p>
+<pre>
+&lt;?php
+$bulk = new MongoDB\Driver\BulkWrite;
+$document = ['_id' =&gt; new MongoDB\BSON\ObjectID, 'name' =&gt; '菜鸟教程'];
+
+$_id= $bulk-&gt;insert($document);
+
+var_dump($_id);
+
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");  
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
+$result = $manager-&gt;executeBulkWrite('test.runoob', $bulk, $writeConcern);
+?&gt;
+</pre>
+<h3>读取数据</h3>
+<p>这里我们将三个网址数据插入到 test 数据库的  sites 集合，并读取迭代出来：</p>
+<pre>
+&lt;?php
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");  
+
+// 插入数据
+$bulk = new MongoDB\Driver\BulkWrite;
+$bulk-&gt;insert(['x' =&gt; 1, 'name'=&gt;'菜鸟教程', 'url' =&gt; 'http://www.runoob.com']);
+$bulk-&gt;insert(['x' =&gt; 2, 'name'=&gt;'Google', 'url' =&gt; 'http://www.google.com']);
+$bulk-&gt;insert(['x' =&gt; 3, 'name'=&gt;'taobao', 'url' =&gt; 'http://www.taobao.com']);
+$manager-&gt;executeBulkWrite('test.sites', $bulk);
+
+$filter = ['x' =&gt; ['$gt' =&gt; 1]];
+$options = [
+    'projection' =&gt; ['_id' =&gt; 0],
+    'sort' =&gt; ['x' =&gt; -1],
+];
+
+// 查询数据
+$query = new MongoDB\Driver\Query($filter, $options);
+$cursor = $manager-&gt;executeQuery('test.sites', $query);
+
+foreach ($cursor as $document) {
+    print_r($document);
+}
+?&gt;
+</pre>
+<p>输出结果为：</p>
+<pre>
+stdClass Object
+(
+    [x] =&gt; 3
+    [name] =&gt; taobao
+    [url] =&gt; http://www.taobao.com
+)
+stdClass Object
+(
+    [x] =&gt; 2
+    [name] =&gt; Google
+    [url] =&gt; http://www.google.com
+)
+</pre>
+<h3>更新数据</h3>
+<p>接下来我们将更新 test 数据库 sites 集合中 x 为 2 的数据：</p>
+<pre>
+&lt;?php
+$bulk = new MongoDB\Driver\BulkWrite;
+$bulk-&gt;update(
+    ['x' =&gt; 2],
+    ['$set' =&gt; ['name' =&gt; '菜鸟工具', 'url' =&gt; 'tool.runoob.com']],
+    ['multi' =&gt; false, 'upsert' =&gt; false]
+);
+
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");  
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
+$result = $manager-&gt;executeBulkWrite('test.sites', $bulk, $writeConcern);
+?&gt;
+</pre>
+<p>接下来我们使用 "db.sites.find()" 命令查看数据的变化，x 为 2 的数据已经变成了菜鸟工具：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/06/EFFDBCDE-1E7E-40AD-BE88-37CD57070E25.jpg"/></p>
+<h3>删除数据</h3>
+<p>以下实例删除了 x 为 1 和 x 为 2的数据，注意 limit 参数的区别：</p>
+<pre>
+&lt;?php
+$bulk = new MongoDB\Driver\BulkWrite;
+$bulk-&gt;delete(['x' =&gt; 1], ['limit' =&gt; 1]);   // limit 为 1 时，删除第一条匹配数据
+$bulk-&gt;delete(['x' =&gt; 2], ['limit' =&gt; 0]);   // limit 为 0 时，删除所有匹配数据
+
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");  
+$writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
+$result = $manager-&gt;executeBulkWrite('test.sites', $bulk, $writeConcern);
+?&gt;
+</pre>
+<p>更多使用方法请参考：<a href="http://php.net/manual/en/book.mongodb.php" target="_blank">http://php.net/manual/en/book.mongodb.php</a>。</p>
+</div>

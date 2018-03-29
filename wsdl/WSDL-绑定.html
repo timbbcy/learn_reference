@@ -1,0 +1,47 @@
+<div class="article-intro" id="content">
+<h1>WSDL <span class="color_h1">绑定</span>
+</h1>
+<hr/>
+<p class="intro">WSDL 绑定可为 web service 定义消息格式和协议细节。</p>
+<hr/>
+<h2>绑定到 SOAP</h2>
+<p>一个 请求 - 响应 操作的例子：</p>
+<div class="code notranslate"><div>
+
+&lt;message name="getTermRequest"&gt;<br/>
+    
+   &lt;part name="term" type="xs:string"/&gt;<br/>
+&lt;/message&gt;<br/><br/>
+&lt;message name="getTermResponse"&gt;<br/>
+    
+   &lt;part name="value" type="xs:string"/&gt;<br/>
+&lt;/message&gt;<br/><br/>
+&lt;portType name="glossaryTerms"&gt;<br/>
+   
+  &lt;operation name="getTerm"&gt;<br/>
+           
+        &lt;input message="getTermRequest"/&gt;<br/>
+                 
+              &lt;output message="getTermResponse"/&gt;<br/>
+                 
+                &lt;/operation&gt;<br/>
+                &lt;/portType&gt;<br/><br/>
+&lt;binding type="glossaryTerms" name="b1"&gt;<br/>
+   &lt;soap:binding style="document"<br/>
+   transport="http://schemas.xmlsoap.org/soap/http" /&gt;<br/>
+     &lt;operation&gt;<br/>
+         &lt;soap:operation
+     soapAction="http://example.com/getTerm"/&gt;<br/>
+         &lt;input&gt;&lt;soap:body use="literal"/&gt;&lt;/input&gt;<br/>
+         &lt;output&gt;&lt;soap:body use="literal"/&gt;&lt;/output&gt;<br/>
+   
+  &lt;/operation&gt;<br/>
+&lt;/binding&gt;
+</div></div>
+<p><em>binding</em> 元素有两个属性 - name 属性和 type 属性。</p>
+<p>name 属性定义 binding 的名称，而 type 属性指向用于 binding 的端口，在这个例子中是 "glossaryTerms" 端口。</p>
+<p><em>soap:binding</em> 元素有两个属性 -  style 属性和 transport 属性。</p>
+<p>style 属性可取值 "rpc" 或 "document"。在这个例子中我们使用 document。transport 属性定义了要使用的 SOAP 协议。在这个例子中我们使用 HTTP。</p>
+<p><em>operation</em> 元素定义了每个端口提供的操作符。</p>
+<p>对于每个操作，相应的 SOAP 行为都需要被定义。同时您必须如何对输入和输出进行编码。在这个例子中我们使用了 "literal"。</p>
+</div>

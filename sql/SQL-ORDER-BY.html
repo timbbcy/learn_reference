@@ -1,0 +1,73 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">ORDER BY</span> 关键字</h1>
+<hr/>
+<p class="intro">ORDER BY 关键字用于对结果集进行排序。</p>
+<hr/>
+<h2>SQL ORDER BY 关键字</h2>
+<p>ORDER BY 关键字用于对结果集按照一个列或者多个列进行排序。</p>
+<p>ORDER BY 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。</p>
+<h3>SQL ORDER BY 语法</h3>
+<div class="code notranslate"><div>
+SELECT <em>column_name</em>,<em>column_name</em><br/>
+FROM <em>table_name</em><br/>
+ORDER BY <em>column_name</em>,<em>column_name</em> ASC|DESC;</div></div>
+<br/><hr/>
+<h2>演示数据库</h2>
+<p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 "Websites" 表的数据：</p>
+<pre>
++----+--------------+---------------------------+-------+---------+
+| id | name         | url                       | alexa | country |
++----+--------------+---------------------------+-------+---------+
+| 1  | Google       | https://www.google.cm/    | 1     | USA     |
+| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
+| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
+| 4  | 微博          | http://weibo.com/         | 20    | CN      |
+| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
++----+--------------+---------------------------+-------+---------+
+</pre>
+<hr/>
+<h2>ORDER BY 实例</h2>
+<p>下面的 SQL 语句从 "Websites" 表中选取所有网站，并按照 "alexa" 列排序：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">ORDER</span><span class="hl-code"> </span><span class="hl-reserved">BY</span><span class="hl-code"> </span><span class="hl-identifier">alexa</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<img src="http://www.runoob.com/wp-content/uploads/2013/09/orderby1.jpg" width="70%"/>
+</div>
+</div>
+<br/>
+<hr/>
+<h2>ORDER BY DESC 实例</h2>
+<p>下面的 SQL 语句从 "Websites" 表中选取所有网站，并按照 "alexa" 列降序排序：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">ORDER</span><span class="hl-code"> </span><span class="hl-reserved">BY</span><span class="hl-code"> </span><span class="hl-identifier">alexa</span><span class="hl-code"> </span><span class="hl-reserved">DESC</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<img src="http://www.runoob.com/wp-content/uploads/2013/09/orderby2.jpg" width="70%"/>
+</div>
+</div>
+<br/>
+<hr/>
+<h2>ORDER BY 多列</h2>
+<p>下面的 SQL 语句从 "Websites" 表中选取所有网站，并按照 "country" 和 "alexa" 列排序：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">ORDER</span><span class="hl-code"> </span><span class="hl-reserved">BY</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">,</span><span class="hl-identifier">alexa</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<img src="http://www.runoob.com/wp-content/uploads/2013/09/orderby3.jpg" width="70%"/>
+</div>
+</div>
+</div>

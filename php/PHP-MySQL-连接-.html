@@ -1,0 +1,152 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">连接 MySQL</span></h1>
+<hr/>
+<p class="intro">PHP 5 及以上版本建议使用以下方式连接 MySQL :</p>
+<ul>
+<li><strong>MySQLi extension</strong> ("i" 意为 improved)</li>
+<li><strong>PDO (PHP Data Objects)</strong></li>
+</ul>
+<p class="intro">在 PHP 早期版本中我们使用 MySQL 扩展。但该扩展在 2012 年开始不建议使用。</p>
+<hr/>
+<h2>我是该用 MySQLi ，还是 PDO?</h2>
+<p>如果你需要一个简短的回答，即 "你习惯哪个就用哪个"。</p>
+<p> MySQLi 和 PDO 有它们自己的优势：</p>
+<p>PDO 应用在 12 种不同数据库中， MySQLi 只针对 MySQL 数据库。</p>
+<p>所以，如果你的项目需要在多种数据库中切换，建议使用 PDO ，这样你只需要修改连接字符串和部分查询语句即可。
+使用 MySQLi, 如果不同数据库，你需要重新编写所有代码，包括查询。</p>
+<p>两者都是面向对象, 但 MySQLi 还提供了 API 接口。</p>
+<p>两者都支持预处理语句。 预处理语句可以防止 SQL 注入，对于 web 项目的安全性是非常重要的。</p>
+<hr/>
+<h2>MySQLi 和 PDO 连接 MySQL 实例</h2>
+<p>在本章节及接下来的章节中，我们会使用以下三种方式来演示 PHP 操作 MySQL:</p>
+<ul>
+<li>MySQLi (面向对象)</li>
+<li>MySQLi (面向过程)</li>
+<li>PDO</li>
+</ul>
+<hr/>
+<h2>MySQLi 安装</h2>
+<p> Linux 和 Windows:  在 php5 mysql 包安装时 MySQLi 扩展多数情况下是自动安装的。</p>
+<p>安装详细信息，请查看：
+<a href="http://php.net/manual/en/mysqli.installation.php" target="_blank">
+http://php.net/manual/en/mysqli.installation.php</a></p>
+<p>可以通过 phpinfo() 查看是否安装成功：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/08/mysqli.jpg" width="80%"/></p>
+<hr/>
+<h2>PDO 安装</h2>
+<p>For 安装详细信息，请查看：
+<a href="http://php.net/manual/en/pdo.installation.php" target="_blank">
+http://php.net/manual/en/pdo.installation.php</a></p>
+<p>可以通过 phpinfo() 查看是否安装成功：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/08/pdo.jpg" width="80%"/></p>
+<hr/>
+<h2>连接 MySQL</h2>
+<p>在我们访问 MySQL 数据库前，我们需要先连接到数据库服务器：</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">mysqli</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 检测连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>注意在以上面向对象的实例中 $connect_error 是在 PHP 5.2.9 和 5.3.0 中添加的。如果你需要兼容更早版本
+请使用以下代码替换:<br/><br/>
+// 检测连接<br/>if (mysqli_connect_error()) {<br/>    
+die("数据库连接失败: " . mysqli_connect_error());<br/>}</td>
+</tr></tbody></table>
+<br/>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向过程)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 检测连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">!</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Connection failed: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_connect_error</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (PDO)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">PDO</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">mysql:host=</span><span class="hl-var">$servername</span><span class="hl-string">;dbname=myDB</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">连接成功</span><span class="hl-quotes">"</span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">PDOException</span><span class="hl-code"> </span><span class="hl-var">$e</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$e</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getMessage</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>注意在以上 PDO 实例中我们已经指定了数据库 (myDB)。PDO 在连接过程需要设置数据库名。如果没有指定，则会抛出异常。</td>
+</tr></tbody></table>
+<p></p>
+<hr/>
+<h2>关闭连接</h2>
+<p>连接在脚本执行完后会自动关闭。你也可以使用以下代码来关闭连接：</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+
+$conn-&gt;close();
+
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向过程)</h2>
+<div class="example_code">
+
+mysqli_close($conn);
+
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (PDO)</h2>
+<div class="example_code">
+
+$conn = null;
+</div>
+<br/>
+</div>
+</div>

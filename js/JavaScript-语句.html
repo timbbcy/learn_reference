@@ -1,0 +1,161 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">语句</span>
+</h1>
+<hr/>
+<p class="intro">JavaScript 语句向浏览器发出的命令。语句的作用是告诉浏览器该做什么。</p>
+<hr/>
+<h2>JavaScript 语句</h2>
+<p>JavaScript 语句是发给浏览器的命令。</p>
+<p>这些命令的作用是告诉浏览器要做的事情。</p>
+<p>下面的 JavaScript 语句向 id="demo" 的 HTML 元素输出文本 "你好 Dolly" ：
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">你好 Dolly</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryjs_statement" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>分号 ;</h2>
+<p>分号用于分隔 JavaScript 语句。</p>
+<p>通常我们在每条可执行的语句结尾添加分号。</p>
+<p>使用分号的另一用处是在一行中编写多条语句。</p>
+<div class="example">
+实例:<br/><br/>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">;
+</span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-number">6</span><span class="hl-code">;
+</span><span class="hl-identifier">c</span><span class="hl-code"> = </span><span class="hl-identifier">a</span><span class="hl-code"> + </span><span class="hl-identifier">b</span><span class="hl-code">;</span></div>
+</div>
+<p>以上实例也可以这么写:</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">; </span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-number">6</span><span class="hl-code">; </span><span class="hl-identifier">c</span><span class="hl-code"> = </span><span class="hl-identifier">a</span><span class="hl-code"> + </span><span class="hl-identifier">b</span><span class="hl-code">;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_semicolon" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+您也可能看到不带有分号的案例。
+<br/>在 JavaScript 中，用分号来结束语句是可选的。</td>
+</tr></table>
+<br/><hr/>
+<h2>JavaScript 代码</h2>
+<p>JavaScript 代码是 JavaScript 语句的序列。</p>
+<p>浏览器按照编写顺序依次执行每条语句。</p>
+<p>本例向网页输出一个标题和两个段落：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">你好 Dolly</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">myDIV</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">你最近怎么样?</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_statements" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>JavaScript 代码块</h2>
+<p>JavaScript 可以分批地组合起来。</p>
+<p>代码块以左花括号开始，以右花括号结束。</p>
+<p>代码块的作用是一并地执行语句序列。</p>
+<p>本例向网页输出一个标题和两个段落：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">你好Dolly</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">myDIV</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">你最近怎么样?</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_blocks" target="_blank">尝试一下 »</a>
+</div>
+<p>您将在稍后的章节学到更多有关函数的知识。</p><hr/>
+<h2>JavaScript 语句标识符</h2>
+<p>JavaScript 语句通常以一个 <strong>语句标识符</strong> 为开始，并执行该语句。</p>
+<p>语句标识符是保留关键字不能作为变量名使用。</p>
+<p>下表列出了 JavaScript 语句标识符 (关键字) ： </p>
+<table "style="width: 100%" class="reference">
+<tr>
+<th>语句</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>break</td>
+<td>用于跳出循环。</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>语句块，在 try 语句块执行出错时执行 catch 语句块。</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>跳过循环中的一个迭代。</td>
+</tr>
+<tr>
+<td>do ... while</td>
+<td>执行一个语句块，在条件语句为 true 时继续执行该语句块。</td>
+</tr>
+<tr>
+<td>for</td>
+<td>在条件语句为 true 时，可以将代码块执行指定的次数。 </td>
+</tr>
+<tr>
+<td>for ... in </td>
+<td>用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）。</td>
+</tr>
+<tr>
+<td>function</td>
+<td>定义一个函数</td>
+</tr>
+<tr>
+<td>if ... else</td>
+<td>用于基于不同的条件来执行不同的动作。</td>
+</tr>
+<tr>
+<td>return</td>
+<td>退出函数</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>用于基于不同的条件来执行不同的动作。</td>
+</tr>
+<tr>
+<td>throw</td>
+<td>抛出（生成）错误 。 </td>
+</tr>
+<tr>
+<td>try</td>
+<td>实现错误处理，与 catch 一同使用。 </td>
+</tr>
+<tr>
+<td>var</td>
+<td>声明一个变量。</td>
+</tr>
+<tr>
+<td>while</td>
+<td>当条件语句为 true 时，执行语句块。 </td>
+</tr>
+</table>
+<hr/>
+<h2>空格</h2>
+<p>JavaScript 会忽略多余的空格。您可以向脚本添加空格，来提高其可读性。下面的两行代码是等效的：</p>
+<div class="code notranslate"><div>
+
+var person="Hege";<br/>
+var person = "Hege";</div></div>
+<br/><hr/>
+<h2>对代码行进行折行</h2>
+<p>您可以在文本字符串中使用反斜杠对代码行进行换行。下面的例子会正确地显示：</p>
+<div class="code"><div>
+
+document.write("你好 \<br/>
+世界!");</div></div>
+<p>不过，您不能像这样折行：</p>
+<div class="code"><div>
+
+document.write \ <br/>
+("你好世界!");</div></div>
+<br/><hr/><h2>您知道吗？</h2>
+<p class="tip"><span>提示：</span>JavaScript 是脚本语言。浏览器会在读取代码时，逐行地执行脚本代码。而对于传统编程来说，会在执行前对所有代码进行编译。</p>
+</div>

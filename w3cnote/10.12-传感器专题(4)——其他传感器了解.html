@@ -1,0 +1,52 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<p>在上一节的结尾说了，传感器部分因为笔者没怎么玩过，本节就简单的把剩下的几个常用的
+传感器介绍一遍，当作科普，以后用到再慢慢研究~</p>
+<h2>1.磁场传感器(Magnetic field sensor)</h2>
+<p><strong>作用</strong>：该传感器主要用于读取手机附近的磁场变化</p>
+<p><strong>传感器的值采集到的值</strong>：有三个，分别是：X，Y，Z轴上方向上的磁场值</p>
+<p><strong>数值单位</strong>：T，微特斯拉</p>
+<p><strong>传感器获取</strong>：Sensor.<strong>TYPE_MAGNETIC_FIELD</strong></p>
+<hr/>
+<h2>2.距离传感器(Proximity sensor)</h2>
+<p><strong>作用</strong>：用于感应手机与人体的距离，用得最多的就是手机通话时候，脸部贴近屏幕时，
+屏幕会熄灭，当脸部离开屏幕一段距离后，屏幕又会亮起，这样可以避免通过过程脸部误碰
+挂断按钮，从而导致通话中断~我们可以利用这个传感器来做一些交互型的App~</p>
+<p><strong>传感器的值采集到的值</strong>：有一个，物体与设备间的距离</p>
+<p><strong>数值单位</strong>：cm，厘米</p>
+<p><strong>传感器获取</strong>：Sensor.<strong>TYPE_PROXIMITY</strong></p>
+<p><strong>其他</strong>：</p>
+<ul>
+<li><p>①关于距离传感器可能有两种，一种是能直接给出距离的，而另一种则是给出靠近或者远离！
+就是只返回两个值，0.0或者最大值！我们可以通过对比解析度和最大值是否相等进行判断！
+假如相等说明是后者，假如不等说明是前者！</p></li>
+<li><p>②调用sensor.getResolution()方法获得解析度，调用getMaximumRange()获得最大值！</p></li>
+</ul>
+<hr/>
+<h2>3.光线传感器(Light sensor)</h2>
+<p><strong>作用</strong>：用来读取光度值，即光线强度</p>
+<p><strong>传感器的值采集到的值</strong>：有一个，光亮度值</p>
+<p><strong>数值单位</strong>：lux，1流明每平方米面积，就是1勒克斯(lux)，最大值是：120000.0f，Android
+中把光线强度分了不同的等级，可以自行查看SensorManager类~</p>
+<p><strong>传感器获取</strong>：Sensor.<strong>TYPE_LIGHT</strong></p>
+<hr/>
+<h2>4.气压传感器(Pressure sensor)</h2>
+<p><strong>作用</strong>：用于测量大气压力，常用于测量海拔高度</p>
+<p><strong>传感器的值采集到的值</strong>：有一个，大气压值</p>
+<p><strong>数值单位</strong>：hPa，百帕</p>
+<p><strong>传感器获取</strong>：Sensor.<strong>TYPE_PRESSURE</strong></p>
+<hr/>
+<h2>5.温度传感器（Temperature sensor）</h2>
+<p><strong>作用</strong>：测量手机内部的温度或者外部环境的问题</p>
+<p><strong>传感器的值采集到的值</strong>：有一个，温度值</p>
+<p><strong>数值单位</strong>：℃，摄氏度</p>
+<p><strong>传感器获取</strong>：Sensor.<strong>TYPE_TEMPERATURE</strong>(手机内部)/<strong>TYPE_AMBIENT_TEMPERATURE</strong>(手机外部)</p>
+<hr/>
+<h2>6.传感器模拟工具——SensorSimulator</h2>
+<p>如题，当我们的真机不具备某种传感器的时候，而又需要进行开发~关于具体用法可见下面的文章：
+<a href="http://www.cnblogs.com/mengdd/archive/2013/05/18/3085703.html">Android设备上的传感器模拟工具：SensorSimulator</a></p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>好的，本节应该是基础入门系列里最鸡肋的一节了吧，本来不想写的，不过还是写下吧，
+上面的东西知道下就好~还是那句话，以后要用到再深入研究~谢谢
+<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/11/13551285.jpg"/></p></blockquote> </div>

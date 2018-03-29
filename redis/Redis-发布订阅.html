@@ -1,0 +1,49 @@
+<div class="article-intro" id="content">
+<h1>Redis 发布订阅</h1>
+<p>Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。</p>
+<p>Redis 客户端可以订阅任意数量的频道。</p>
+<p>下图展示了频道 channel1 ， 以及订阅这个频道的三个客户端 —— client2 、 client5 和 client1 之间的关系：</p>
+<img alt="pubsub1" class="alignnone size-full wp-image-10296" height="198" sizes="(max-width: 319px) 100vw, 319px" src="http://www.runoob.com/wp-content/uploads/2014/11/pubsub1.png" srcset="http://www.runoob.com/wp-content/uploads/2014/11/pubsub1.png 319w, http://www.runoob.com/wp-content/uploads/2014/11/pubsub1-300x186.png 300w" width="319"/>
+<p>当有新消息通过 PUBLISH 命令发送给频道 channel1 时， 这个消息就会被发送给订阅它的三个客户端：</p>
+<img alt="pubsub2" class="alignnone size-full wp-image-10297" height="285" sizes="(max-width: 315px) 100vw, 315px" src="http://www.runoob.com/wp-content/uploads/2014/11/pubsub2.png" srcset="http://www.runoob.com/wp-content/uploads/2014/11/pubsub2.png 315w, http://www.runoob.com/wp-content/uploads/2014/11/pubsub2-300x271.png 300w" width="315"/>
+<hr/>
+<h2>实例</h2>
+<p>以下实例演示了发布订阅是如何工作的。在我们实例中我们创建了订阅频道名为 <b>redisChat</b>:</p>
+<pre>
+redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat
+
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "redisChat"
+3) (integer) 1
+</pre>
+<p>现在，我们先重新开启个 redis 客户端，然后在同一个频道 redisChat 发布两次消息，订阅者就能接收到消息。</p>
+<pre>
+redis 127.0.0.1:6379&gt; PUBLISH redisChat "Redis is a great caching technique"
+
+(integer) 1
+
+redis 127.0.0.1:6379&gt; PUBLISH redisChat "Learn redis by runoob.com"
+
+(integer) 1
+
+# 订阅者的客户端会显示如下消息
+1) "message"
+2) "redisChat"
+3) "Redis is a great caching technique"
+1) "message"
+2) "redisChat"
+3) "Learn redis by runoob.com"
+</pre>
+<hr/><h2>Redis 发布订阅命令</h2>
+<p>下表列出了 redis 发布订阅常用命令：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/pub-sub-psubscribe.html">PSUBSCRIBE pattern [pattern ...]</a> <br/>订阅一个或多个符合给定模式的频道。</td></tr>
+<tr><td>2</td><td><a href="/redis/pub-sub-pubsub.html">PUBSUB subcommand [argument [argument ...]]</a> <br/>查看订阅与发布系统状态。</td></tr>
+<tr><td>3</td><td><a href="/redis/pub-sub-publish.html">PUBLISH channel message</a> <br/>将信息发送到指定的频道。</td></tr>
+<tr><td>4</td><td><a href="/redis/pub-sub-punsubscribe.html">PUNSUBSCRIBE [pattern [pattern ...]]</a> <br/>退订所有给定模式的频道。 </td></tr>
+<tr><td>5</td><td><a href="/redis/pub-sub-subscribe.html">SUBSCRIBE channel [channel ...]</a> <br/>订阅给定的一个或多个频道的信息。</td></tr>
+<tr><td>6</td><td><a href="/redis/pub-sub-unsubscribe.html">UNSUBSCRIBE [channel [channel ...]]</a> <br/>指退订给定的频道。</td></tr>
+</tbody></table>
+</div>

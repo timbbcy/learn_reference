@@ -1,0 +1,232 @@
+<div class="article-intro" id="content">
+<h1>Ruby XML, XSLT 和 XPath 教程</h1>
+<hr/>
+<h2>什么是 XML ?</h2>
+<p>XML 指可扩展标记语言（eXtensible Markup Language）。</p><p>
+可扩展标记语言，标准通用标记语言的子集，一种用于标记电子文件使其具有结构性的标记语言。</p><p>
+它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 它非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。
+</p>
+<p>更多内容请查看我们的 <a href="http://www.w3cschool.cc/xml/xml-tutorial.html" target="_blank">XML 教程</a></p>
+<hr/>
+<h2>XML解析器结构和API</h2>
+<p>XML的解析器主要有DOM和SAX两种。</p>
+<ul>
+<li>SAX解析器是基于事件处理的，需要从头到尾把XML文档扫描一遍，在扫描的过程中，每次遇到一个语法结构时，就会调用这个特定语法结构的事件处理程序，向应用程序发送一个事件。
+ </li><li>
+DOM是文档对象模型解析，构建文档的分层语法结构，在内存中建立DOM树，DOM树的节点以对象的形式来标识，文档解析文成以后，文档的整个DOM树都会放在内存中。</li>
+</ul>
+<hr/>
+<h2>Ruby 中解析及创建 XML</h2>
+<p>RUBY中对XML的文档的解析可以使用这个库REXML库。
+</p><p>
+REXML库是ruby的一个XML工具包，是使用纯Ruby语言编写的，遵守XML1.0规范。</p><p>
+在Ruby1.8版本及其以后，RUBY标准库中将包含REXML。</p><p>
+
+REXML库的路径是： rexml/document</p><p>
+
+所有的方法和类都被封装到一个REXML模块内。</p>
+<p>REXML解析器比其他的解析器有以下优点：</p>
+<ul class="list">
+<li>100% 由 Ruby 编写。</li>
+<li>可适用于 SAX 和 DOM 解析器。</li>
+<li>它是轻量级的,不到2000行代码。</li>
+<li>很容易理解的方法和类。</li>
+<li>基于 SAX2 API 和完整的 XPath 支持。</li>
+<li>使用 Ruby 安装，而无需单独安装。</li>
+</ul>
+<p>以下为实例的 XML 代码，保存为movies.xml:
+</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">collection</span><span class="hl-code"> </span><span class="hl-var">shelf</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">New Arrivals</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">movie</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Enemy Behind</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">War, Thriller</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">DVD</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">PG</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">10</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">Talk about a US-Japan war</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">movie</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">movie</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Transformers</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">Anime, Science Fiction</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">DVD</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">1989</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">R</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">8</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">A schientific fiction</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">movie</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">movie</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Trigun</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">Anime, Action</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">DVD</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">episodes</span><span class="hl-brackets">&gt;</span><span class="hl-code">4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">episodes</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">PG</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">10</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">Vash the Stampede!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">movie</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">movie</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Ishtar</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">Comedy</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">type</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">VHS</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">format</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">PG</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">rating</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">2</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">stars</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">Viewable boredom</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">description</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">movie</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">collection</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<hr/>
+<h2>DOM 解析器</h2>
+<p>让我们先来解析 XML 数据，首先我们先引入 rexml/document 库，通常我们可以将 REXML 在顶级的命名空间中引入：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">rexml/document</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">REXML</span><span class="hl-code">
+</span><span class="hl-identifier">xmlfile</span><span class="hl-code"> = </span><span class="hl-identifier">File</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">movies.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">xmldoc</span><span class="hl-code"> = </span><span class="hl-identifier">Document</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-identifier">xmlfile</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 获取 root 元素</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">root</span><span class="hl-code"> = </span><span class="hl-identifier">xmldoc</span><span class="hl-code">.</span><span class="hl-identifier">root</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Root element : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">root</span><span class="hl-code">.</span><span class="hl-identifier">attributes</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">shelf</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 以下将输出电影标题</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">xmldoc</span><span class="hl-code">.</span><span class="hl-identifier">elements</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">collection/movie</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">{ 
+   |</span><span class="hl-identifier">e</span><span class="hl-code">| </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Movie Title : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">e</span><span class="hl-code">.</span><span class="hl-identifier">attributes</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code"> 
+}
+ 
+</span><span class="hl-comment">#</span><span class="hl-comment"> 以下将输出所有电影类型</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">xmldoc</span><span class="hl-code">.</span><span class="hl-identifier">elements</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">collection/movie/type</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code"> {
+   |</span><span class="hl-identifier">e</span><span class="hl-code">| </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Movie Type : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">e</span><span class="hl-code">.</span><span class="hl-identifier">text</span><span class="hl-code"> 
+}
+ 
+</span><span class="hl-comment">#</span><span class="hl-comment"> 以下将输出所有电影描述</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">xmldoc</span><span class="hl-code">.</span><span class="hl-identifier">elements</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">collection/movie/description</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code"> {
+   |</span><span class="hl-identifier">e</span><span class="hl-code">| </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Movie Description : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">e</span><span class="hl-code">.</span><span class="hl-identifier">text</span><span class="hl-code"> 
+}</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+Root element : New Arrivals
+Movie Title : Enemy Behind
+Movie Title : Transformers
+Movie Title : Trigun
+Movie Title : Ishtar
+Movie Type : War, Thriller
+Movie Type : Anime, Science Fiction
+Movie Type : Anime, Action
+Movie Type : Comedy
+Movie Description : Talk about a US-Japan war
+Movie Description : A schientific fiction
+Movie Description : Vash the Stampede!
+Movie Description : Viewable boredom
+SAX-like Parsing:
+</pre>
+<hr/>
+<h2>SAX 解析器</h2>
+<p>处理相同的数据文件：movies.xml，不建议SAX的解析为一个小文件，以下是个简单的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">rexml/document</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">rexml/streamlistener</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">REXML</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">MyListener</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">REXML</span><span class="hl-code">::</span><span class="hl-identifier">StreamListener</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">tag_start</span><span class="hl-brackets">(</span><span class="hl-code">*</span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">tag_start: #{args.map {|x| x.inspect}.join(', ')}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-brackets">(</span><span class="hl-identifier">data</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">data</span><span class="hl-code"> =~</span><span class="hl-quotes"> /</span><span class="hl-string">^</span><span class="hl-special">\w</span><span class="hl-string">*$</span><span class="hl-quotes">/</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> whitespace only</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">abbrev</span><span class="hl-code"> = </span><span class="hl-identifier">data</span><span class="hl-brackets">[</span><span class="hl-number">0.</span><span class="hl-number">.40</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code"> &gt; </span><span class="hl-number">40</span><span class="hl-code"> ? </span><span class="hl-quotes">"</span><span class="hl-string">...</span><span class="hl-quotes">"</span><span class="hl-code"> : </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">  text   :   #{abbrev.inspect}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">list</span><span class="hl-code"> = </span><span class="hl-identifier">MyListener</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">xmlfile</span><span class="hl-code"> = </span><span class="hl-identifier">File</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">movies.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">Document</span><span class="hl-code">.</span><span class="hl-identifier">parse_stream</span><span class="hl-brackets">(</span><span class="hl-identifier">xmlfile</span><span class="hl-code">, </span><span class="hl-identifier">list</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>以上输出结果为：</p>
+<pre>
+tag_start: "collection", {"shelf"=&gt;"New Arrivals"}
+tag_start: "movie", {"title"=&gt;"Enemy Behind"}
+tag_start: "type", {}
+  text   :   "War, Thriller"
+tag_start: "format", {}
+tag_start: "year", {}
+tag_start: "rating", {}
+tag_start: "stars", {}
+tag_start: "description", {}
+  text   :   "Talk about a US-Japan war"
+tag_start: "movie", {"title"=&gt;"Transformers"}
+tag_start: "type", {}
+  text   :   "Anime, Science Fiction"
+tag_start: "format", {}
+tag_start: "year", {}
+tag_start: "rating", {}
+tag_start: "stars", {}
+tag_start: "description", {}
+  text   :   "A schientific fiction"
+tag_start: "movie", {"title"=&gt;"Trigun"}
+tag_start: "type", {}
+  text   :   "Anime, Action"
+tag_start: "format", {}
+tag_start: "episodes", {}
+tag_start: "rating", {}
+tag_start: "stars", {}
+tag_start: "description", {}
+  text   :   "Vash the Stampede!"
+tag_start: "movie", {"title"=&gt;"Ishtar"}
+tag_start: "type", {}
+tag_start: "format", {}
+tag_start: "rating", {}
+tag_start: "stars", {}
+tag_start: "description", {}
+  text   :   "Viewable boredom"
+</pre>
+<hr/>
+<h2>XPath 和 Ruby</h2>
+<p>我们可以使用XPath来查看XML ,XPath 是一门在 XML 文档中查找信息的语言(查看：<a href="http://www.w3cschool.cc/xpath/xpath-tutorial.html" target="_blank">XPath 教程</a>)。</p>
+<p>XPath即为XML路径语言，它是一种用来确定XML（标准通用标记语言的子集）文档中某部分位置的语言。XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力。</p>
+<p>Ruby 通过 REXML 的 XPath 类支持 XPath，它是基于树的分析（文档对象模型）。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">rexml/document</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">REXML</span><span class="hl-code">
+</span><span class="hl-identifier">xmlfile</span><span class="hl-code"> = </span><span class="hl-identifier">File</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">movies.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">xmldoc</span><span class="hl-code"> = </span><span class="hl-identifier">Document</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-identifier">xmlfile</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 第一个电影的信息</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">movie</span><span class="hl-code"> = </span><span class="hl-identifier">XPath</span><span class="hl-code">.</span><span class="hl-identifier">first</span><span class="hl-brackets">(</span><span class="hl-identifier">xmldoc</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">//movie</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-identifier">movie</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 打印所有电影类型</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">XPath</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-brackets">(</span><span class="hl-identifier">xmldoc</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">//type</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code"> { |</span><span class="hl-identifier">e</span><span class="hl-code">| </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">e</span><span class="hl-code">.</span><span class="hl-identifier">text</span><span class="hl-code"> }
+ 
+</span><span class="hl-comment">#</span><span class="hl-comment"> 获取所有电影格式的类型，返回数组</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">names</span><span class="hl-code"> = </span><span class="hl-identifier">XPath</span><span class="hl-code">.</span><span class="hl-identifier">match</span><span class="hl-brackets">(</span><span class="hl-identifier">xmldoc</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">//format</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">map</span><span class="hl-code"> {|</span><span class="hl-identifier">x</span><span class="hl-code">| </span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">text</span><span class="hl-code"> }
+</span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-identifier">names</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+&lt;movie title='Enemy Behind'&gt; ... &lt;/&gt;
+War, Thriller
+Anime, Science Fiction
+Anime, Action
+Comedy
+["DVD", "DVD", "DVD", "VHS"]
+</pre>
+<hr/>
+<h2>XSLT 和 Ruby</h2>
+<p>Ruby 中有两个 XSLT  解析器，以下给出简要描述：</p>
+<h3>Ruby-Sablotron</h3>
+<p>这个解析器是由正义Masayoshi Takahash编写和维护。这主要是为Linux操作系统编写的，需要以下库：</p>
+<ul>
+<li>Sablot</li>
+<li>Iconv</li>
+<li>Expat</li>
+</ul>
+<p>你可以在 <a href="http://www.rubycolor.org/sablot" target="_blank" title="Ruby Sablotron">Ruby-Sablotron</a> 找到这些库。</p>
+<h3>XSLT4R</h3>
+XSLT4R 由 Michael Neumann 编写。 XSLT4R 用于简单的命令行交互，可以被第三方应用程序用来转换XML文档。</div>

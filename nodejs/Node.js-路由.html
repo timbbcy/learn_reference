@@ -1,0 +1,113 @@
+<div class="article-intro" id="content">
+<h1>Node.js 路由</h1>
+<p>我们要为路由提供请求的 URL 和其他需要的 GET 及 POST 参数，随后路由需要根据这些数据来执行相应的代码。</p>
+<p>
+因此，我们需要查看 HTTP 请求，从中提取出请求的 URL 以及 GET/POST 参数。这一功能应当属于路由还是服务器（甚至作为一个模块自身的功能）确实值得探讨，但这里暂定其为我们的HTTP服务器的功能。
+</p>
+<p>
+我们需要的所有数据都会包含在 request 对象中，该对象作为 onRequest() 回调函数的第一个参数传递。但是为了解析这些数据，我们需要额外的 Node.JS 模块，它们分别是 url 和 querystring 模块。
+</p>
+<pre>
+                   url.parse(string).query
+                                           |
+           url.parse(string).pathname      |
+                       |                   |
+                       |                   |
+                     ------ -------------------
+http://localhost:8888/start?foo=bar&amp;hello=world
+                                ---       -----
+                                 |          |
+                                 |          |
+              querystring.parse(queryString)["foo"]    |
+                                            |
+                         querystring.parse(queryString)["hello"]
+</pre>
+<p>
+当然我们也可以用 querystring 模块来解析 POST 请求体中的参数，稍后会有演示。
+</p>
+<p>
+现在我们来给 onRequest() 函数加上一些逻辑，用来找出浏览器请求的 URL 路径：
+</p>
+<div class="example">
+<h2 class="example">server.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">http</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">http</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">url</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">start</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">onRequest</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-identifier">response</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">pathname</span><span class="hl-code"> = </span><span class="hl-identifier">url</span><span class="hl-code">.</span><span class="hl-identifier">parse</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">pathname</span><span class="hl-code">;
+    </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Request for </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">pathname</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string"> received.</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">writeHead</span><span class="hl-brackets">(</span><span class="hl-number">200</span><span class="hl-code">, </span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">Content-Type</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">text/plain</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Hello World</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">http</span><span class="hl-code">.</span><span class="hl-identifier">createServer</span><span class="hl-brackets">(</span><span class="hl-identifier">onRequest</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">listen</span><span class="hl-brackets">(</span><span class="hl-number">8888</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Server has started.</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">exports</span><span class="hl-code">.</span><span class="hl-identifier">start</span><span class="hl-code"> = </span><span class="hl-identifier">start</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>
+好了，我们的应用现在可以通过请求的 URL 路径来区别不同请求了--这使我们得以使用路由（还未完成）来将请求以 URL 路径为基准映射到处理程序上。
+</p>
+<p>
+在我们所要构建的应用中，这意味着来自 /start 和 /upload 的请求可以使用不同的代码来处理。稍后我们将看到这些内容是如何整合到一起的。
+</p>
+<p>
+现在我们可以来编写路由了，建立一个名为 <strong>router.js</strong> 的文件，添加以下内容：
+</p>
+<div class="example">
+<h2 class="example">router.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">route</span><span class="hl-brackets">(</span><span class="hl-identifier">pathname</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">About to route a request for </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">pathname</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">exports</span><span class="hl-code">.</span><span class="hl-identifier">route</span><span class="hl-code"> = </span><span class="hl-identifier">route</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>
+如你所见，这段代码什么也没干，不过对于现在来说这是应该的。在添加更多的逻辑以前，我们先来看看如何把路由和服务器整合起来。
+</p><p>
+我们的服务器应当知道路由的存在并加以有效利用。我们当然可以通过硬编码的方式将这一依赖项绑定到服务器上，但是其它语言的编程经验告诉我们这会是一件非常痛苦的事，因此我们将使用依赖注入的方式较松散地添加路由模块。</p>
+<p>
+首先，我们来扩展一下服务器的 start() 函数，以便将路由函数作为参数传递过去，<strong>server.js</strong> 文件代码如下
+</p>
+<div class="example">
+<h2 class="example">server.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">http</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">http</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">url</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">start</span><span class="hl-brackets">(</span><span class="hl-identifier">route</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">onRequest</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-identifier">response</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">pathname</span><span class="hl-code"> = </span><span class="hl-identifier">url</span><span class="hl-code">.</span><span class="hl-identifier">parse</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">pathname</span><span class="hl-code">;
+    </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Request for </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">pathname</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string"> received.</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-identifier">route</span><span class="hl-brackets">(</span><span class="hl-identifier">pathname</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">writeHead</span><span class="hl-brackets">(</span><span class="hl-number">200</span><span class="hl-code">, </span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">Content-Type</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">text/plain</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Hello World</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">http</span><span class="hl-code">.</span><span class="hl-identifier">createServer</span><span class="hl-brackets">(</span><span class="hl-identifier">onRequest</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">listen</span><span class="hl-brackets">(</span><span class="hl-number">8888</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Server has started.</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">exports</span><span class="hl-code">.</span><span class="hl-identifier">start</span><span class="hl-code"> = </span><span class="hl-identifier">start</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>
+同时，我们会相应扩展 index.js，使得路由函数可以被注入到服务器中：
+</p>
+<div class="example">
+<h2 class="example">index.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">server</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">./server</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">router</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">./router</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">server</span><span class="hl-code">.</span><span class="hl-identifier">start</span><span class="hl-brackets">(</span><span class="hl-identifier">router</span><span class="hl-code">.</span><span class="hl-identifier">route</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>
+在这里，我们传递的函数依旧什么也没做。
+</p></div>

@@ -1,0 +1,39 @@
+<div class="article-intro" id="content">
+<h1>PHP EOF(heredoc) 使用说明</h1>
+<p>PHP EOF(heredoc)是一种在命令行shell（如sh、csh、ksh、bash、PowerShell和zsh）和程序语言（像Perl、PHP、Python和Ruby）里定义一个字串的方法。</p>
+<p>使用概述：</p>
+<ul><li>
+1.必须后接分号，否则编译通不过。</li><li>
+2.END可以用任意其它字符代替，只需保证结束标识与开始标识一致。</li><li>
+<strong>3.结束标识必须顶格独自占一行(即必须从行首开始，前后不能衔接任何空白和字符)。</strong></li><li>
+4.开始标识可以不带引号或带单双引号，不带引号与带双引号效果一致，解释内嵌的变量和转义符号，带单引号则不解释内嵌的变量和转义符号。</li><li>
+5.当内容需要内嵌引号（单引号或双引号）时，不需要加转义符，本身对单双引号转义，此处相当与q和qq的用法。</li></ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">&lt;&lt;&lt;EOF</span><span class="hl-string">
+    &lt;h1&gt;我的第一个标题&lt;/h1&gt;
+    &lt;p&gt;我的第一个段落。&lt;/p&gt;
+</span><span class="hl-quotes">EOF;</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 结束需要独立一行且前后不能空格</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div></div>
+<p><strong>注意：</strong></p>
+<p>1.以 <span class="marked">&lt;&lt;&lt;EOF</span> 开始标记开始，以 <span class="marked">EOF</span> 结束标记结束，结束标记必须顶头写，不能有缩进和空格，且在结束标记末尾要有分号 。</p>
+<p>2.开始标记和结束标记相同，比如常用大写的 <span class="marked">EOT、EOD、EOF</span> 来表示，但是不只限于那几个(也可以用：JSON、HTML等)，只要保证开始标记和结束标记不在正文中出现即可。</p>
+<p>3.位于开始标记和结束标记之间的变量可以被正常解析，但是函数则不可以。在heredoc中，变量不需要用连接符.或,来拼接，如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$a</span><span class="hl-code">= </span><span class="hl-quotes">&lt;&lt;&lt;EOF</span><span class="hl-string">
+    "abc"</span><span class="hl-var">$name</span><span class="hl-string">
+    "123"
+</span><span class="hl-quotes">EOF;</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 结束需要独立一行且前后不能空格</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$a</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div></div>
+</div>

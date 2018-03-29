@@ -1,0 +1,332 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">表达式语言</span></h1>
+<p>JSP表达式语言（EL）使得访问存储在JavaBean中的数据变得非常简单。JSP EL既可以用来创建算术表达式也可以用来创建逻辑表达式。在JSP EL表达式内可以使用整型数，浮点数，字符串，常量true、false，还有null。</p>
+<hr/><h2>
+	一个简单的语法</h2><p>
+典型的，当您需要在JSP标签中指定一个属性值时，只需要简单地使用字符串即可：</p>
+<pre>
+&lt;jsp:setProperty name="box" property="perimeter" value="100"/&gt;
+</pre>
+<p>
+JSP EL允许您指定一个表达式来表示属性值。一个简单的表达式语法如下：</p>
+<pre>
+${expr}
+</pre>
+<p>
+其中，expr指的是表达式。在JSP EL中通用的操作符是 <span class="marked">.</span> 和 <span class="marked">{}</span> 。这两个操作符允许您通过内嵌的JSP对象访问各种各样的JavaBean属性。</p>
+<p>
+举例来说，上面的&lt;jsp:setProperty&gt;标签可以使用表达式语言改写成如下形式：</p>
+<pre>
+&lt;jsp:setProperty name="box" property="perimeter" 
+                 value="${2*box.width+2*box.height}"/&gt;
+</pre>
+<p>
+当JSP编译器在属性中见到"${}"格式后，它会产生代码来计算这个表达式，并且产生一个替代品来代替表达式的值。</p>
+<p>
+您也可以在标签的模板文本中使用表达式语言。比如&lt;jsp:text&gt;标签简单地将其主体中的文本插入到JSP输出中：</p>
+<pre>
+&lt;jsp:text&gt;
+&lt;h1&gt;Hello JSP!&lt;/h1&gt;
+&lt;/jsp:text&gt;
+</pre>
+<p>
+现在，在&lt;jsp:text&gt;标签主体中使用表达式，就像这样：</p>
+<pre>
+&lt;jsp:text&gt;
+Box Perimeter is: ${2*box.width + 2*box.height}
+&lt;/jsp:text&gt;
+</pre>
+<p>
+在EL表达式中可以使用圆括号来组织子表达式。比如${(1 + 2) * 3}等于9，但是${1 + (2 * 3)} 等于7。</p>
+<p>
+想要停用对EL表达式的评估的话，需要使用page指令将isELIgnored属性值设为true：</p>
+<pre>
+&lt;%@ page isELIgnored ="true|false" %&gt;
+</pre>
+<p>
+这样，EL表达式就会被忽略。若设为false，则容器将会计算EL表达式。</p><hr/>
+<h2>
+	EL中的基础操作符</h2><p>
+EL表达式支持大部分Java所提供的算术和逻辑操作符：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>操作符</strong></th>
+<th>
+<strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+				.</td>
+<td>
+				访问一个Bean属性或者一个映射条目</td>
+</tr>
+<tr>
+<td>
+				[]</td>
+<td>
+				访问一个数组或者链表的元素</td>
+</tr>
+<tr>
+<td>
+				( )</td>
+<td>
+				组织一个子表达式以改变优先级</td>
+</tr>
+<tr>
+<td>
+				+</td>
+<td>
+				加</td>
+</tr>
+<tr>
+<td>
+				-</td>
+<td>
+				减或负</td>
+</tr>
+<tr>
+<td>
+				*</td>
+<td>
+				乘</td>
+</tr>
+<tr>
+<td>
+				/ or div</td>
+<td>
+				除</td>
+</tr>
+<tr>
+<td>
+				% or mod</td>
+<td>
+				取模</td>
+</tr>
+<tr>
+<td>
+				== or eq</td>
+<td>
+				测试是否相等</td>
+</tr>
+<tr>
+<td>
+				!= or ne</td>
+<td>
+				测试是否不等</td>
+</tr>
+<tr>
+<td>
+				&lt; or lt</td>
+<td>
+				测试是否小于</td>
+</tr>
+<tr>
+<td>
+				&gt; or gt</td>
+<td>
+				测试是否大于</td>
+</tr>
+<tr>
+<td>
+				&lt;= or le</td>
+<td>
+				测试是否小于等于</td>
+</tr>
+<tr>
+<td>
+				&gt;= or ge</td>
+<td>
+				测试是否大于等于</td>
+</tr>
+<tr>
+<td>
+				&amp;&amp; or and</td>
+<td>
+				测试逻辑与</td>
+</tr>
+<tr>
+<td>
+				|| or or</td>
+<td>
+				测试逻辑或</td>
+</tr>
+<tr>
+<td>
+				! or not</td>
+<td>
+				测试取反</td>
+</tr>
+<tr>
+<td>
+				empty</td>
+<td>
+				测试是否空值</td>
+</tr>
+</tbody>
+</table><hr/>
+<h2>
+	JSP EL中的函数</h2><p>
+JSP EL允许您在表达式中使用函数。这些函数必须被定义在自定义标签库中。函数的使用语法如下：</p>
+<pre>
+${ns:func(param1, param2, ...)}
+</pre>
+<p>
+ns指的是命名空间（namespace），func指的是函数的名称，param1指的是第一个参数，param2指的是第二个参数，以此类推。比如，有函数fn:length，在JSTL库中定义，可以像下面这样来获取一个字符串的长度：
+</p>
+<pre>
+${fn:length("Get my length")}
+</pre><p>
+要使用任何标签库中的函数，您需要将这些库安装在服务器中，然后使用&lt;taglib&gt;标签在JSP文件中包含这些库。</p><hr/>
+<h2>
+	JSP EL隐含对象</h2><p>
+JSP EL支持下表列出的隐含对象：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>隐含对象</strong></th>
+<th>
+<strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+				pageScope</td>
+<td>
+				page 作用域</td>
+</tr>
+<tr>
+<td>
+				requestScope</td>
+<td>
+				request 作用域</td>
+</tr>
+<tr>
+<td>
+				sessionScope</td>
+<td>
+				session 作用域</td>
+</tr>
+<tr>
+<td>
+				applicationScope</td>
+<td>
+				application 作用域</td>
+</tr>
+<tr>
+<td>
+				param</td>
+<td>
+				Request 对象的参数，字符串</td>
+</tr>
+<tr>
+<td>
+				paramValues</td>
+<td>
+				Request对象的参数，字符串集合</td>
+</tr>
+<tr>
+<td>
+				header</td>
+<td>
+				HTTP 信息头，字符串</td>
+</tr>
+<tr>
+<td>
+				headerValues</td>
+<td>
+				HTTP 信息头，字符串集合</td>
+</tr>
+<tr>
+<td>
+				initParam</td>
+<td>
+				上下文初始化参数</td>
+</tr>
+<tr>
+<td>
+				cookie</td>
+<td>
+				Cookie值</td>
+</tr>
+<tr>
+<td>
+				pageContext</td>
+<td>
+				当前页面的pageContext</td>
+</tr>
+</tbody>
+</table>
+<p>
+您可以在表达式中使用这些对象，就像使用变量一样。接下来会给出几个例子来更好的理解这个概念。</p><hr/>
+<h2>
+	pageContext对象</h2><p>
+pageContext对象是JSP中pageContext对象的引用。通过pageContext对象，您可以访问request对象。比如，访问request对象传入的查询字符串，就像这样：</p>
+<pre>
+${pageContext.request.queryString}
+</pre><hr/>
+<h2>
+	Scope对象</h2><p>
+pageScope，requestScope，sessionScope，applicationScope变量用来访问存储在各个作用域层次的变量。</p>
+<p>
+举例来说，如果您需要显式访问在applicationScope层的box变量，可以这样来访问：applicationScope.box。</p><hr/>
+<h2>
+	param和paramValues对象</h2><p>
+param和paramValues对象用来访问参数值，通过使用request.getParameter方法和request.getParameterValues方法。</p>
+<p>
+举例来说，访问一个名为order的参数，可以这样使用表达式：${param.order}，或者${param["order"]}。</p>
+<p>
+接下来的例子表明了如何访问request中的username参数：</p>
+<pre>
+&lt;%@ page import="java.io.*,java.util.*" %&gt;
+&lt;%
+    String title = "Accessing Request Param";
+%&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;% out.print(title); %&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;h1&gt;&lt;% out.print(title); %&gt;&lt;/h1&gt;
+&lt;/center&gt;
+&lt;div align="center"&gt;
+&lt;p&gt;${param["username"]}&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p>
+param对象返回单一的字符串，而paramValues对象则返回一个字符串数组。</p>
+<hr/>
+<h2>
+	header和headerValues对象</h2><p>
+header和headerValues对象用来访问信息头，通过使用 request.getHeader方法和request.getHeaders方法。</p>
+<p>
+举例来说，要访问一个名为user-agent的信息头，可以这样使用表达式：${header.user-agent}，或者${header["user-agent"]}。</p>
+<p>
+接下来的例子表明了如何访问user-agent信息头：</p>
+<pre>
+&lt;%@ page import="java.io.*,java.util.*" %&gt;
+&lt;%
+    String title = "User Agent Example";
+%&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;% out.print(title); %&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;h1&gt;&lt;% out.print(title); %&gt;&lt;/h1&gt;
+&lt;/center&gt;
+&lt;div align="center"&gt;
+&lt;p&gt;${header["user-agent"]}&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p>
+运行结果如下：</p>
+<p><img alt="jsp-expression-language" src="http://www.runoob.com/wp-content/uploads/2014/01/jsp-expression-language.jpg"/>
+</p><p>
+header对象返回单一值，而headerValues则返回一个字符串数组。</p>
+</div>

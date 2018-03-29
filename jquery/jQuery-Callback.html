@@ -1,0 +1,35 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">Callback</span> 方法</h1>
+<hr/>
+<p class="intro">Callback 函数在当前动画 100% 完成之后执行。</p>
+<hr/>
+<h2>jQuery 动画的问题</h2>
+<p>许多 jQuery 函数涉及动画。这些函数也许会将 <i>speed</i> 或 <i>duration</i> 作为可选参数。</p>
+<p>例子：<em>$("p").hide("slow")</em></p>
+<p><i>speed</i> 或 <i>duration</i> 参数可以设置许多不同的值，比如 "slow", "fast", "normal" 或毫秒。</p>
+<p><b>实例</b></p>
+<p>以下实例在隐藏效果完全实现后回调函数:</p>
+<div class="example">
+<h2 class="example">使用 callback 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">slow</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">段落现在被隐藏了</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_callback" target="_blank">尝试一下 </a>
+</div>
+<p>以下实例没有回调函数，警告框会在隐藏效果完成前弹出：</p>
+<div class="example">
+<h2 class="example">没有 callback(回调)</h2>
+<div class="example_code notranslate">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-number">1000</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">段落现在被隐藏了</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_no_callback" target="_blank">在线实例 »</a>
+</div>
+</div>

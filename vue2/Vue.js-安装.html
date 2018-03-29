@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<h1>Vue.js 安装</h1>
+<h2>1、独立版本</h2>
+<p>我们可以在 Vue.js 的官网上直接下载 vue.min.js 并用 <b>&lt;script&gt;</b> 标签引入。</p>
+<p>
+<a class="download" download="" href="http://vuejs.org/js/vue.min.js" rel="external" target="_blank">下载 Vue.js</a>
+</p>
+<hr/>
+<h2>2、使用 CDN 方法</h2>
+<p>以下推荐国外比较稳定的两个 CDN，国内还没发现哪一家比较好，目前还是建议下载到本地。</p>
+<ul>
+<li>
+<p><strong>BootCDN（国内）</strong> : <a href="https://cdn.bootcss.com/vue/2.2.2/vue.min.js" rel="external" target="_blank">https://cdn.bootcss.com/vue/2.2.2/vue.min.js</a></p></li>
+<li>
+<p><strong>unpkg</strong>：<a href="https://unpkg.com/vue/dist/vue.js" rel="external" target="_blank">https://unpkg.com/vue/dist/vue.js</a>, 会保持和 npm 发布的最新的版本一致。</p></li><li>
+<p><strong>cdnjs</strong> : <a href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js" rel="external" target="_blank">https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js</a></p></li>
+</ul>
+<div class="example">
+<h2 class="example">BootCDN（国内）</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ message }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-bc" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h2 class="example">unpkg（推荐）</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ message }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-hw" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h2 class="example">cdnjs</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ message }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-hw-cdnjs" target="_blank">尝试一下 »</a>
+</div>
+<p>
+<hr/>
+<h2>3、NPM 方法</h2>
+<p>由于 npm 安装速度慢，本教程使用了淘宝的镜像及其命令 cnpm，安装使用介绍参照：<a href="/nodejs/nodejs-npm.html#taobaonpm" target="_blank">使用淘宝 NPM 镜像</a>。</p>
+<p>npm 版本需要大于 3.0，如果低于此版本需要升级它：</p>
+<pre>
+# 查看版本
+$ npm -v
+2.3.0
+
+#升级 npm
+cnpm install npm -g
+</pre>
+<p>在用 Vue.js 构建大型应用时推荐使用 NPM 安装：</p>
+<pre>
+# 最新稳定版
+$ cnpm install vue
+</pre>
+<hr/>
+<h2>命令行工具</h2>
+<p>Vue.js 提供一个官方命令行工具，可用于快速搭建大型单页应用。</p>
+<pre>
+# 全局安装 vue-cli
+$ cnpm install --global vue-cli
+# 创建一个基于 webpack 模板的新项目
+$ vue init webpack my-project
+# 这里需要进行一些配置，默认回车即可
+This will install Vue 2.x version of the template.
+
+For Vue 1.x use: vue init webpack#1.0 my-project
+
+? Project name my-project
+? Project description A Vue.js project
+? Author runoob &lt;test@runoob.com&gt;
+? Vue build standalone
+? Use ESLint to lint your code? Yes
+? Pick an ESLint preset Standard
+? Setup unit tests with Karma + Mocha? Yes
+? Setup e2e tests with Nightwatch? Yes
+
+   vue-cli · Generated "my-project".
+
+   To get started:
+   
+     cd my-project
+     npm install
+     npm run dev
+   
+   Documentation can be found at https://vuejs-templates.github.io/webpack
+</pre>
+<p>
+进入项目，安装并运行：</p></p></div>

@@ -1,0 +1,116 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">- 测试 Prototype</span>
+</h1>
+<hr/>
+<p class="intro">测试 JavaScript 框架库 - Prototype</p>
+<hr/>
+<h2>引用 Prototype</h2>
+<p>如需测试 JavaScript 库，您需要在网页中引用它。</p>
+<p>为了引用某个库，请使用 &lt;script&gt; 标签，其 src 属性设置为库的 URL：</p>
+<div class="example">
+<h2 class="example">引用 Prototype</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script<br/>
+src="http://apps.bdimg.com/libs/prototype/1.7.1.0/prototype.js"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+</div>
+<br/><hr/>
+<h2>
+Prototype 描述</h2>
+<p>Prototype 提供的函数可使 HTML DOM 编程更容易。</p>
+<p>与 jQuery 类似，Prototype 也有自己的 $() 函数。</p>
+<p>$() 函数接受 HTML DOM 元素的 id 值（或 DOM 元素），并会向 DOM 对象添加新的功能。</p>
+<p>与 jQuery 不同，Prototype 没有用以取代 window.onload() 的 ready() 方法。相反，Prototype 会向浏览器及 HTML DOM 添加扩展。</p>
+<p>在 JavaScript 中，您可以分配一个函数以处理窗口加载事件：</p>
+<div class="example">
+<h2 class="example">JavaScript 方式：</h2>
+<div class="example_code notranslate">
+function myFunction()<br/>
+{<br/>
+var obj=document.getElementById("h01");<br/>
+obj.innerHTML="Hello Prototype";<br/>
+}<br/>
+onload=myFunction;</div>
+</div>
+<p>等价的 Prototype 是不同的：</p>
+<div class="example">
+<h2 class="example">Prototype 方式：</h2>
+<div class="example_code notranslate">
+function myFunction()<br/>
+{<br/>
+$("h01").insert("Hello Prototype!");<br/>
+}<br/>
+Event.observe(window,"load",myFunction);</div>
+</div>
+<p>Event.observe() 接受三个参数： </p>
+<ul>
+<li>您希望处理的 HTML DOM 或 BOM（浏览器对象模型）对象</li>
+<li>您希望处理的事件</li>
+<li>您希望调用的函数</li>
+</ul>
+<hr/>
+<h2>测试 Prototype</h2>
+<p>
+请试一下下面这个例子：</p>
+<div class="example">
+<h2 class="example">Example</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>
+&lt;script<br/>
+src="http://apps.bdimg.com/libs/prototype/1.7.1.0/prototype.js"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;script&gt;<br/>
+function myFunction()<br/>
+{<br/>
+$("h01").insert("Hello Prototype!");<br/>
+}<br/>
+Event.observe(window,"load",myFunction);<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1 id="h01"&gt;&lt;/h1&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_lib_prototype" target="_blank">尝试一下 »</a>
+</div>
+<p>
+请再试一下这个例子：</p>
+<div class="example">
+<h2 class="example">Example</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>
+&lt;script<br/>
+src="http://apps.bdimg.com/libs/prototype/1.7.1.0/prototype.js"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;script&gt;<br/>
+function myFunction()<br/>
+{<br/>
+$("h01").writeAttribute("style","color:red").insert("Hello Prototype!");<br/>
+}<br/>
+Event.observe(window,"load",myFunction);<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1 id="h01"&gt;&lt;/h1&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_lib_prototype2" target="_blank">测试一下 »</a>
+</div>
+<p>
+正如您在上面的例子中看到的，与 jQuery 相同，Prototype 允许链式语法。</p>
+<p>
+链接（Chaining）是一种在同一对象上执行多个任务的便捷方法。</p>
+</div>

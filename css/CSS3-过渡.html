@@ -1,0 +1,222 @@
+<div class="article-intro" id="content">
+<style>
+.animated_div
+{
+width:60px;
+height:40px;
+background:#92B901;
+color:#ffffff;
+position:absolute;
+font-weight:bold;
+font-size:15px;
+padding:10px;
+float:left;
+margin:5px;
+-webkit-transition:-webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s,font-size 1s;
+-webkit-border-radius:5px;
+-o-transition-property:width,height,-o-transform,background,font-size,opacity;
+-o-transition-duration:1s,1s,1s,1s,1s,1s;
+-moz-transition-property:width,height,-o-transform,background,font-size,opacity;
+-moz-transition-duration:1s,1s,1s,1s,1s,1s;
+transition-property:width,height,transform,background,font-size,opacity;
+transition-duration:1s,1s,1s,1s,1s,1s;
+border-radius:5px;
+opacity:0.4;
+}
+
+.animated_div:hover
+{
+-moz-transform: rotate(360deg);
+-webkit-transform: rotate(360deg);
+-o-transform: rotate(360deg);
+transform: rotate(360deg);
+opacity:1;
+background:#1ec7e6;
+width:90px;
+height:60px;
+font-size:30px;
+}
+  </style>
+<h1>CSS3 <span class="color_h1">过渡</span>
+</h1>
+<hr/>
+<h2>CSS3 过渡</h2>
+<p>CSS3中，我们为了添加某种效果可以从一种样式转变到另一个的时候，无需使用Flash动画或JavaScript。用鼠标移过下面的元素：</p>
+<hr/>
+<p>用鼠标移过下面的元素：</p>
+<div style="height:70px">
+<div class="animated_div">CSS3<br/><span style="font-size:50%">过渡</span>
+</div>
+</div>
+<hr/>
+<h2>浏览器支持</h2>
+<p>表格中的数字表示支持该属性的第一个浏览器版本号。</p>
+<p>紧跟在 -webkit-, -ms- 或 -moz- 前的数字为支持该前缀属性的第一个浏览器版本号。</p>
+<table class="browserref notranslate">
+<tbody><tr>
+<th style="width:25%;font-size:16px;text-align:left">属性</th>
+<th class="bsChrome" style="width:15%" title="Chrome"></th>
+<th class="bsEdge" style="width:15%" title="Internet Explorer / Edge"></th>
+<th class="bsFirefox" style="width:15%" title="Firefox"></th>
+<th class="bsSafari" style="width:15%" title="Safari"></th>
+<th class="bsOpera" style="width:15%" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left">transition</td>
+<td>26.0<br/>4.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>4.0 -moz-</td>
+<td>6.1<br/>3.1 -webkit-</td>
+<td>12.1<br/>10.5 -o-</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-delay</td>
+<td>26.0<br/>4.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>4.0 -moz-</td>
+<td>6.1<br/>3.1 -webkit-</td>
+<td>12.1<br/>10.5 -o-</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-duration</td>
+<td>26.0<br/>4.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>4.0 -moz-</td>
+<td>6.1<br/>3.1 -webkit-</td>
+<td>12.1<br/>10.5 -o-</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-property</td>
+<td>26.0<br/>4.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>4.0 -moz-</td>
+<td>6.1<br/>3.1 -webkit-</td>
+<td>12.1<br/>10.5 -o-</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-timing-function</td>
+<td>26.0<br/>4.0 -webkit-</td>
+<td>10.0</td>
+<td>16.0<br/>4.0 -moz-</td>
+<td>6.1<br/>3.1 -webkit-</td>
+<td>12.1<br/>10.5 -o-</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>它是如何工作？</h2>
+<p>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。</p>
+<p>要实现这一点，必须规定两项内容：</p>
+<ul>
+<li>指定要添加效果的CSS属性</li>
+<li>指定效果的持续时间。</li>
+</ul>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p class="example">应用于宽度属性的过渡效果，时长为 2 秒：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">transition:</span><span class="hl-code"> </span><span class="hl-code">width</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transition:</span><span class="hl-code"> </span><span class="hl-code">width</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> Safari </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+</div>
+<p><b>注意：</b> 如果未指定的期限，transition将没有任何效果，因为默认值是0。</p>
+<p>指定的CSS属性的值更改时效果会发生变化。一个典型CSS属性的变化是用户鼠标放在一个元素上时：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>规定当鼠标指针悬浮(:hover)于 &lt;div&gt;元素上时：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-special">:hover</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-number">300</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_transition1" target="_blank">尝试一下 »</a>
+</div>
+<p><b>注意：</b> 当鼠标光标移动到该元素时，它逐渐改变它原有样式</p>
+<hr/>
+<h2>多项改变</h2>
+<p>要添加多个样式的变换效果，添加的属性由逗号分隔：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>添加了宽度，高度和转换效果：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">transition:</span><span class="hl-code"> </span><span class="hl-code">width</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-code">, </span><span class="hl-code">height</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-code">, </span><span class="hl-code">transform</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transition:</span><span class="hl-code"> </span><span class="hl-code">width</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-code">, </span><span class="hl-code">height</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-code">, -</span><span class="hl-code">webkit-transform</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_transition2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>过渡属性</h2>
+<p>下表列出了所有的过渡属性:</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%">属性</th>
+<th>描述</th>
+<th style="width:5%">CSS</th>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transition.html" title="CSS3 transition 属性">transition</a></td>
+<td>简写属性，用于在一个属性中设置四个过渡属性。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transition-property.html" title="CSS3 transition-property 属性">transition-property</a></td>
+<td>规定应用过渡的 CSS 属性的名称。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transition-duration.html" title="CSS3 transition-duration 属性">transition-duration</a></td>
+<td>定义过渡效果花费的时间。默认是 0。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transition-timing-function.html" title="CSS3 transition-timing-function 属性">transition-timing-function</a></td>
+<td>规定过渡效果的时间曲线。默认是 "ease"。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-transition-delay.html" title="CSS3 transition-delay 属性">transition-delay</a></td>
+<td>规定过渡效果何时开始。默认是 0。</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>下面的两个例子设置所有过渡属性：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>在一个例子中使用所有过渡属性：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">transition-property:</span><span class="hl-code"> </span><span class="hl-code">width</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">transition-duration:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">transition-timing-function:</span><span class="hl-code"> </span><span class="hl-code">linear</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">transition-delay:</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-comment">/*</span><span class="hl-comment"> Safari </span><span class="hl-comment">*/</span><span class="hl-code">
+    -</span><span class="hl-reserved">webkit-transition-property:</span><span class="hl-code">width</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transition-duration:</span><span class="hl-number">1</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transition-timing-function:</span><span class="hl-code">linear</span><span class="hl-reserved"></span><span class="hl-code">;
+    -</span><span class="hl-reserved">webkit-transition-delay:</span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_transition4" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>与上面的例子相同的过渡效果，但是使用了简写的 transition 属性：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">transition:</span><span class="hl-code"> </span><span class="hl-code">width</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">s</span><span class="hl-code"> </span><span class="hl-code">linear</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-comment">/*</span><span class="hl-comment"> Safari </span><span class="hl-comment">*/</span><span class="hl-code">
+    -</span><span class="hl-reserved">webkit-transition:</span><span class="hl-code">width</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">s</span><span class="hl-code"> </span><span class="hl-code">linear</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_transition5" target="_blank">尝试一下 »</a>
+</div>
+</div>

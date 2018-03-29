@@ -1,0 +1,28 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 树形菜单 - <span class="color_h1">创建基础树形网格</span></h1>
+<p>树形网格（TreeGrid）组件从数据网格（DataGrid）继承，但是允许在行之间存在父/子节点关系。许多属性继承至数据网格（DataGrid），可以用在树形网格（TreeGrid）中。为了使用树形网格（TreeGrid），用户必须定义 'treeField' 属性，指明哪个字段作为树节点。</p>
+<p>本教程将向您展示如何使用树形网格（TreeGrid）组件设置一个文件夹浏览。</p>
+<img src="/wp-content/uploads/2013/12/treegrid1_1.png"/>
+<h4>创建树形网格（TreeGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="test" title="Folder Browser" class="easyui-treegrid" style="width:400px;height:300px"
+            url="data/treegrid_data.json"
+            rownumbers="true"
+            idField="id" treeField="name"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="name" width="160"&gt;Name&lt;/th&gt;
+                &lt;th field="size" width="60" align="right"&gt;Size&lt;/th&gt;
+                &lt;th field="date" width="100"&gt;Modified Date&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-tree-treegrid1.zip">jeasyui-tree-treegrid1.zip</a></p>
+</div>

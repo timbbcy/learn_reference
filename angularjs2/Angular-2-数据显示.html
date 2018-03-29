@@ -1,0 +1,153 @@
+<div class="article-intro" id="content">
+<h1>Angular 2 数据显示</h1>
+<p>本章节我们将为大家介绍如何将数据显示到用户界面上，可以使用以下三种方式：</p>
+<ul><li>
+通过插值表达式显示组件的属性</li><li>
+通过 NgFor 显示数组型属性</li><li>
+通过 NgIf 实现按条件显示</li>
+</ul>
+<hr/>
+<h2>通过插值表达式显示组件的属性</h2>
+<p>要显示组件的属性，插值是最简单的方式，格式为：<b>{{属性名}}</b>。</p>
+<p>以下代码基于 <a href="/angularjs2/angularjs2-typescript-setup.html" target="_blank">Angular 2 TypeScript 环境配置</a> 来创建，你可以再该章节上下载源码，并修改以下提到的几个文件。</p>
+<div class="example">
+<h2 class="example">app/app.component.ts 文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">@angular/core</span><span class="hl-quotes">'</span><span class="hl-code">;
+@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">my-app</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">title</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;我喜欢的网站: </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">mySite</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;
+    `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">AppComponent</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">title</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">站点列表</span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-identifier">mySite</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>Angular 会自动从组件中提取 title 和 mySite 属性的值，并显示在浏览器中，显示信息如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/09/BAD05521-3124-426C-8A6B-5AF28613557A.jpg" width="40%"/></p>
+<blockquote>
+<p>
+<b>注意：</b>模板是包在反引号 (`) 中的一个多行字符串，而不是单引号 (')。
+</p>
+</blockquote>
+<hr/>
+<h2>使用 ngFor 显示数组属性
+</h2>
+<p>我们也可以循环输出多个站点，修改以下文件：</p>
+<div class="example">
+<h2 class="example">app/app.component.ts  文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">@angular/core</span><span class="hl-quotes">'</span><span class="hl-code">;
+@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">my-app</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">title</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;我喜欢的网站: </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">mySite</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;网站列表:&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">ul</span><span class="hl-code">&gt;
+      &lt;</span><span class="hl-identifier">li</span><span class="hl-code"> *</span><span class="hl-identifier">ngFor</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">let site of sites</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+        </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">site</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">
+      &lt;/</span><span class="hl-identifier">li</span><span class="hl-code">&gt;
+    &lt;/</span><span class="hl-identifier">ul</span><span class="hl-code">&gt;
+    `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">AppComponent</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">title</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">站点列表</span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-identifier">sites</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Taobao</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Facebook</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">;
+  </span><span class="hl-identifier">mySite</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>代码中我们在模板使用 Angular 的 ngFor 指令来显示 sites 列表中的每一个条目，不要忘记 *ngFor 中的前导星号 (*) 。。</p>
+<p>修改后，浏览器显示如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/09/588F2110-7BAC-40A3-B8A9-6A8DD097BBF0.jpg" width="50%"/></p>
+<p>实例中 ngFor 循环了一个数组， 事实上 ngFor 可以迭代任何可迭代的对象。</p>
+<p>接下来我们在 app 目录下创建 site.ts 的文件，代码如下：</p>
+<div class="example">
+<h2 class="example">app/site.ts  文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">constructor</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-identifier">id</span><span class="hl-code">: </span><span class="hl-identifier">number</span><span class="hl-code">,
+    </span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-identifier">name</span><span class="hl-code">: </span><span class="hl-identifier">string</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以上代码中定义了一个带有构造函数和两个属性： id 和 name 的类。</p>
+<p>接着我们循环输出 Site 类的 name 属性：</p>
+<div class="example">
+<h2 class="example">app/app.component.ts  文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">@angular/core</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">./site</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">my-app</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">title</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;我喜欢的网站: </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">mySite</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;网站列表:&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">ul</span><span class="hl-code">&gt;
+      &lt;</span><span class="hl-identifier">li</span><span class="hl-code"> *</span><span class="hl-identifier">ngFor</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">let site of sites</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+        </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">site</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">
+      &lt;/</span><span class="hl-identifier">li</span><span class="hl-code">&gt;
+    &lt;/</span><span class="hl-identifier">ul</span><span class="hl-code">&gt;
+    `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">AppComponent</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">title</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">站点列表</span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-identifier">sites</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">,
+      </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">,
+      </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">3</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Taobao</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">,
+      </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">4</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Facebook</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">;
+  </span><span class="hl-identifier">mySite</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>修改后，浏览器显示如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/09/588F2110-7BAC-40A3-B8A9-6A8DD097BBF0.jpg" width="50%"/></p>
+<hr/>
+<h2>通过 NgIf 进行条件显示</h2>
+<p>我们可以使用 NgIf 来设置输出指定条件的数据。</p>
+<p>以下实例中我们判断如果网站数 3 个以上，输出提示信息：修改以下 app.component.ts  文件，代码如下：</p>
+<div class="example">
+<h2 class="example">app/app.component.ts  文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">@angular/core</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">./site</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">my-app</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">title</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;我喜欢的网站: </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">mySite</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;网站列表:&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">ul</span><span class="hl-code">&gt;
+      &lt;</span><span class="hl-identifier">li</span><span class="hl-code"> *</span><span class="hl-identifier">ngFor</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">let site of sites</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+       </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">site</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">
+      &lt;/</span><span class="hl-identifier">li</span><span class="hl-code">&gt;
+    &lt;/</span><span class="hl-identifier">ul</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code"> *</span><span class="hl-identifier">ngIf</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sites.length &gt; 3</span><span class="hl-quotes">"</span><span class="hl-code">&gt;你有很多个喜欢的网站!&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+    `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">AppComponent</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">title</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">站点列表</span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-identifier">sites</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">,
+      </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">,
+      </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">3</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Taobao</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">,
+      </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-number">4</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Facebook</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">;
+  </span><span class="hl-identifier">mySite</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>修改后，浏览器显示如下所示，底部多了个提示信息：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/09/7931418A-C914-46D3-9EF6-85CAF666FA9B.jpg" width="50%"/></p>
+</div>

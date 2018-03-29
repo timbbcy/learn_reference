@@ -1,0 +1,43 @@
+<div class="article-intro" id="content">
+<h1>jQuery - <span class="color_h1">删除元素</span>
+</h1>
+<hr/>
+<p class="intro">通过 jQuery，可以很容易地删除已有的 HTML 元素。</p>
+<hr/>
+<h2>删除元素/内容</h2>
+<p>如需删除元素和内容，一般可使用以下两个 jQuery 方法：</p>
+<ul>
+<li>remove() - 删除被选元素（及其子元素）</li>
+<li>empty() - 从被选元素中删除子元素</li>
+</ul>
+<hr/>
+<h2>jQuery remove() 方法</h2>
+<p>jQuery remove() 方法删除被选元素及其子元素。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">remove</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dom_remove" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery empty() 方法</h2>
+<p>jQuery empty() 方法删除被选元素的子元素。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">empty</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dom_empty" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>过滤被删除的元素</h2>
+<p>jQuery remove() 方法也可接受一个参数，允许您对被删元素进行过滤。</p>
+<p>该参数可以是任何 jQuery 选择器的语法。</p>
+<p>下面的例子删除 class="italic" 的所有 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">remove</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.italic</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dom_remove2" target="_blank">尝试一下 »</a>
+</div>
+</div>

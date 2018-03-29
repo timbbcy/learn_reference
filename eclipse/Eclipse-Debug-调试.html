@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<h1>Eclipse Debug 调试</h1>
+<hr/>
+<h2>Debug 调试 Java 程序</h2>
+<p>我们可以在 Package Explorer 视图调试 Java 程序，操作步骤如下：</p>
+<ul>
+<li>鼠标右击包含 main 函数的 java 类</li>
+<li>选择 Debug As &gt; Java Application</li>
+</ul>
+<p>该操作也可以通过快捷键来完成，快捷键组合为 Alt + Shift + D, J。<p></p>
+<p>以上操作会创建一个新的 <a href="eclipse-debug-configuration.htm">Debug Configuration（调试配置）</a> ，并使用该配置来启动 Java 应用。</p>
+<p>如果 Debug Configuration（调试配置）已经创建，你可以通过 Run 菜单选择 Debug Configurations 选取对应的类并点击 Debug 按钮来启动 Java 应用。</p>
+<img alt="debug_program_1" class="attachment-full" height="374" src="http://www.runoob.com/wp-content/uploads/2014/12/debug_program_1.jpg" width="560"/>
+<p>Run 菜单的 Debug 菜单项可以重新加载之前使用了调试模式的 java 应用。</p>
+<img alt="debug_program_menu" class="attachment-full" height="133" src="http://www.runoob.com/wp-content/uploads/2014/12/debug_program_menu.jpg" width="560"/>
+<p>重新加载之前使用了调试模式的 java 应用快捷键为 F11。</p>
+<p>当使用调试模式开启java程序时，会提示用户切换到调试的透视图。调试透视图提供了其他的视图用于排查应用程序的故障。</p>
+<p>java 编辑器可以设置断点调试。
+在编辑器中右击标记栏并选择 Toggle Breakpoint 来设置断点调试。</p>
+<img alt="debug_program_2" class="attachment-full" height="515" src="http://www.runoob.com/wp-content/uploads/2014/12/debug_program_2.jpg" width="560"/>
+<p>断点可以在标记栏中看到。也可以在 Breakpoints View（断点视图）中看到。</p>
+<p>当程序执行到断点标记的代码时 JVM 会挂起程序，这时你可以查看内存使用情况及控制程序执行。</p>
+<p>程序挂起时，Debug(调试)视图可以检查调用堆栈。</p>
+<img alt="debug_program_3" class="attachment-full" height="278" src="http://www.runoob.com/wp-content/uploads/2014/12/debug_program_3.jpg" width="560"/>
+<p>variables(变量)视图可以查看变量的值。</p>
+<img alt="debug_program_4" class="attachment-full" height="269" src="http://www.runoob.com/wp-content/uploads/2014/12/debug_program_4.jpg" width="560"/>
+<p>Run 菜单中有继续执行(Resume)菜单项，跳过(Step Over)一行代码，进入函数(Step Into)等。</p>
+<img alt="debug_program_5" class="attachment-full" height="236" src="http://www.runoob.com/wp-content/uploads/2014/12/debug_program_5.jpg" width="560"/>
+<p>以上图片中显示了 Resume, Step Into 和 Step Over 等关联的快捷键操作。</p>
+</p></div>

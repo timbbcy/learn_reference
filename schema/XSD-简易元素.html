@@ -1,0 +1,57 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">简易元素</span>
+</h1>
+<hr/>
+<p class="intro">XML Schema 可定义 XML 文件的元素。</p>
+<p class="intro">简易元素指那些只包含文本的元素。它不会包含任何其他的元素或属性。</p>
+<hr/>
+<h2>什么是简易元素？</h2>
+<p>简易元素指那些仅包含文本的元素。它不会包含任何其他的元素或属性。</p>
+<p>不过，"仅包含文本"这个限定却很容易造成误解。文本有很多类型。它可以是 XML Schema 定义中包括的类型中的一种（布尔、字符串、数据等等），或者它也可以是您自行定义的定制类型。</p>
+<p>您也可向数据类型添加限定（即 facets），以此来限制它的内容，或者您可以要求数据匹配某种特定的模式。</p>
+<hr/>
+<h2>定义简易元素
+</h2>
+<p>定义简易元素的语法： </p>
+<div class="code notranslate"><div>
+&lt;xs:element name="xxx" type="yyy"/&gt;
+</div></div>
+<p>此处 xxx 指元素的名称，yyy 指元素的数据类型。XML Schema 拥有很多内建的数据类型。</p>
+<h3>最常用的类型是：</h3>
+<ul>
+<li>xs:string</li>
+<li>xs:decimal</li>
+<li>xs:integer</li>
+<li>xs:boolean</li>
+<li>xs:date</li>
+<li>xs:time</li>
+</ul>
+<h3>实例</h3>
+<p>这是一些 XML 元素：</p>
+<div class="code notranslate"><div>
+
+&lt;lastname&gt;Refsnes&lt;/lastname&gt;<br/>
+&lt;age&gt;36&lt;/age&gt;<br/>
+&lt;dateborn&gt;1970-03-27&lt;/dateborn&gt;
+</div></div>
+<p>这是相应的简易元素定义：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="lastname" type="xs:string"/&gt;<br/>
+&lt;xs:element name="age" type="xs:integer"/&gt;<br/>
+&lt;xs:element name="dateborn" type="xs:date"/&gt;
+</div></div>
+<br/><hr/>
+<h2>简易元素的默认值和固定值</h2>
+<p>简易元素可拥有指定的默认值或固定值。</p>
+<p>当没有其他的值被规定时，默认值就会自动分配给元素。</p>
+<p>在下面的例子中，缺省值是 "red"：</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="color" type="xs:string" default="red"/&gt;
+</div></div>
+<p>固定值同样会自动分配给元素，并且您无法规定另外一个值。</p>
+<p>在下面的例子中，固定值是 "red"：</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="color" type="xs:string" fixed="red"/&gt;
+</div></div>
+</div>

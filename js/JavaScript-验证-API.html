@@ -1,0 +1,156 @@
+<div class="article-intro" id="content">
+<h1>JavaScript 验证 API</h1>
+<hr/>
+<h2>约束验证 DOM 方法</h2><table class="reference">
+<tbody><tr>
+<th style="width:25%">Property</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>checkValidity()</td>
+<td>如果 input 元素中的数据是合法的返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td>setCustomValidity()</td>
+<td><p>设置 input 元素的 validationMessage 属性，用于自定义错误提示信息的方法。</p><p>
+使用 setCustomValidity 设置了自定义提示后，validity.customError 就会变成true，则 checkValidity 总是会返回false。如果要重新判断需要取消自定义提示，方式如下：</p>
+<pre>
+setCustomValidity('') 
+setCustomValidity(null) 
+setCustomValidity(undefined)
+</pre>
+</td>
+</tr>
+</tbody></table>
+<p>以下实例如果输入信息不合法，则返回错误信息：</p>
+<div class="example">
+<h2 class="example">checkValidity() 方法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">id1</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">number</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">min</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">max</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">required</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myFunction()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">验证</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">inpObj</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">id1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">inpObj</span><span class="hl-code">.</span><span class="hl-identifier">checkValidity</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> == </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-identifier">inpObj</span><span class="hl-code">.</span><span class="hl-identifier">validationMessage</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_validation_check" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>约束验证 DOM 属性</h2>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>validity</td>
+<td>布尔属性值，返回 input 输入值是否合法</td>
+</tr>
+<tr>
+<td>validationMessage</td>
+<td>浏览器错误提示信息</td>
+</tr>
+<tr>
+<td>willValidate</td>
+<td>指定 input 是否需要验证</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>Validity 属性</h2>
+<p>input 元素的 <strong>validity 属性</strong>包含一系列关于 validity 数据属性: </p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>customError</td>
+<td>设置为 true, 如果设置了自定义的 validity 信息。</td>
+</tr>
+<tr>
+<td>patternMismatch</td>
+<td>设置为 true,  如果元素的值不匹配它的模式属性。</td>
+</tr>
+<tr>
+<td>rangeOverflow</td>
+<td>设置为 true,  如果元素的值大于设置的最大值。</td>
+</tr>
+<tr>
+<td>rangeUnderflow</td>
+<td>设置为 true,  如果元素的值小于它的最小值。</td>
+</tr>
+<tr>
+<td>stepMismatch</td>
+<td>设置为 true, 如果元素的值不是按照规定的 step 属性设置。</td>
+</tr>
+<tr>
+<td>tooLong</td>
+<td>设置为 true, 如果元素的值超过了 maxLength 属性设置的长度。</td>
+</tr>
+<tr>
+<td>typeMismatch</td>
+<td>设置为 true, 如果元素的值不是预期相匹配的类型。</td>
+</tr>
+<tr>
+<td>valueMissing</td>
+<td>设置为 true，如果元素 (required 属性) 没有值。</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>设置为 true，如果元素的值是合法的。</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>实例</h2>
+<p>
+如果输入的值大于 100，显示一个信息：</p>
+<div class="example">
+<h2 class="example">rangeOverflow 属性</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">id1</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">number</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">max</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myFunction()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">验证</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">id1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">validity</span><span class="hl-code">.</span><span class="hl-identifier">rangeOverflow</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">输入的值太大了</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-identifier">txt</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_validation_rangeOverflow" target="_blank">尝试一下 »</a>
+</div>
+<p>
+如果输入的值小于 100，显示一个信息：</p>
+<div class="example">
+<h2 class="example">rangeUnderflow 属性</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">id1</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">number</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">min</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">required</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myFunction()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">OK</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">inpObj</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">id1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">!</span><span class="hl-identifier">isNumeric</span><span class="hl-brackets">(</span><span class="hl-identifier">inpObj</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">你输入的不是数字</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">inpObj</span><span class="hl-code">.</span><span class="hl-identifier">validity</span><span class="hl-code">.</span><span class="hl-identifier">rangeUnderflow</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">输入的值太小了</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">输入正确</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-identifier">txt</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 判断输入是否为数字</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">isNumeric</span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> !</span><span class="hl-identifier">isNaN</span><span class="hl-brackets">(</span><span class="hl-identifier">parseFloat</span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> &amp;&amp; </span><span class="hl-identifier">isFinite</span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_validation_rangeUnderflow" target="_blank">尝试一下 »</a>
+</div>
+</div>

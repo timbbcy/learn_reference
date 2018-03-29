@@ -1,0 +1,73 @@
+<div class="article-intro">
+<h2>本节引言</h2>
+<blockquote><p>从本节开始我们要讲的UI控件都是跟Adapter(适配器)打交道的，了解并学会使用这个Adapter很重要，
+Adapter是用来帮助填充数据的中间桥梁，简单点说就是：将各种数据以合适的形式显示到view上,提供
+给用户看！</p></blockquote>
+<hr/>
+<h2>1.MVC模式的简单理解</h2>
+<blockquote><p>在开始学习Adapter之前我们要来了解下这个MVC模式概念：
+举个例子：大型的商业程序通常由多人一同开发完成,比如有人负责操作接口的规划与设计,
+有人负责程序代码的编写如果要能够做到程序项目的分工就必须在程序的结构上做适合的安排
+,如果,接口设计与修改都涉及到程序代码的改变的话,那么两者的分工就会造成执行上的困难
+良好的程序架构师将整个程序项目划分为如图的三个部分:</p></blockquote>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/11147289.jpg"/></p>
+<p><strong>关系图解析：</strong></p>
+<blockquote><ul>
+<li><strong>Model</strong>：通常可以理解为数据,负责执行程序的核心运算与判断逻辑,,通过view获得用户
+输入的数据,然后根据从数据库查询相关的信息,最后进行运算和判断,再将得到的结果交给view来显示</li>
+<li><strong>view</strong>:用户的操作接口,说白了就是GUI,应该使用哪种接口组件,组件间的排列位置与顺序都需要设计</li>
+<li><strong>Controller</strong>:控制器,作为model与view之间的枢纽,负责控制程序的执行流程以及对象之间的一个互动</li>
+</ul>
+</blockquote>
+<p>而这个Adapter则是中间的这个Controller的部分：
+<strong>Model</strong>(数据)  ---&gt;  <strong>Controller</strong>(以什么方式显示到)---&gt; <strong>View</strong>(用户界面)
+这就是简单MVC组件的简单理解！</p>
+<hr/>
+<h2>2.Adapter概念解析</h2>
+<p>官方文档：<a href="http://androiddoc.qiniudn.com/reference/android/widget/Adapter.html">Adapter</a></p>
+<p>首先我们来看看他的继承结构图：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/77919389.jpg"/></p>
+<p>上面就是Adapter以及继承结构图了，接着我们介绍一下实际开发中还用到的几个Adapter吧！</p>
+<blockquote><ul>
+<li><strong>BaseAdapter</strong>：抽象类，实际开发中我们会继承这个类并且重写相关方法，用得最多的一个Adapter！</li>
+<li><strong>ArrayAdapter<t></t></strong>：支持泛型操作，最简单的一个Adapter，只能展现一行文字~</li>
+<li><strong>SimpleAdapter</strong>：同样具有良好扩展性的一个Adapter，可以自定义多种效果！</li>
+<li><strong>SimpleCursorAdapter</strong>：用于显示简单文本类型的listView，一般在数据库那里会用到，不过有点过时，
+不推荐使用！</li>
+</ul>
+</blockquote>
+<p>其实一个BaseAdapter就够玩的了，至于其他的，实际开发中用得不多，后面用到在讲解~</p>
+<hr/>
+<h2>3.代码示例：</h2>
+<p>好的，多说无益，写代码最实际，接下来我们来用写几个简单的Adapter实例，
+帮助我们了解Adapter给我们带来的便利，另外，因为Adapter需要结合ListView，
+GridView等等控件讲解，一些高级一点的用法我们都放在ListView那里讲！
+这里就简单演示下效果，另外这里用到的控件是ListView，下一节就会讲解，
+现在看不懂也没关系！</p>
+<hr/>
+<h3>1）ArrayAdapter使用示例：</h3>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/16258493.jpg"/></p>
+<p><strong>代码实现：</strong></p>
+<pre>
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //要显示的数据
+        String[] strs = {"基神","B神","翔神","曹神","J神"};
+        //创建ArrayAdapter
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;
+                (this,android.R.layout.simple_expandable_list_item_1,strs);
+        //获取ListView对象，通过调用setAdapter方法为ListView设置Adapter设置适配器
+        ListView list_test = (ListView) findViewById(R.id.list_test);
+        list_test.setAdapter(adapter);
+    }
+}
+</pre>
+<p><strong>一些相关的东西：</strong></p>
+<p><strong>1.</strong>除了通过数组外，我们还可以写到一个数组资源文件中：</p><p>
+比如：在res\valuse下创建一个数组资源的xml文件：<strong>arrays.xml</strong>：</p>
+</div>

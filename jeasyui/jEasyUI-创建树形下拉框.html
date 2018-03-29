@@ -1,0 +1,41 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 表单 - <span class="color_h1">创建树形下拉框</span></h1>
+<p>树形下拉框（ComboTree）是一个带有下列树形结构（Tree）的下拉框（ComboBox）。它可以作为一个表单字段进行使用，可以提交给远程服务器。</p>
+<p>在本教程中，我们将要创建一个注册表单，带有 name、address、city 字段。city 字段是一个树形下拉框（ComboTree）字段，在里面用户可以下拉树面板（tree panel），并选择一个特定的城市。</p>
+<img src="/wp-content/uploads/2013/12/form2.png"/>
+<h4>创建表单（Form）</h4>
+<pre style="color:#006600">
+    &lt;div id="dlg" class="easyui-dialog" style="width:500px;height:250px;padding:10px 30px;"
+            title="Register" buttons="#dlg-buttons"&gt;
+        &lt;h2&gt;Account Information&lt;/h2&gt;
+        &lt;form id="ff" method="post"&gt;
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Name:&lt;/td&gt;
+                    &lt;td&gt;&lt;input type="text" name="name" style="width:350px;"/&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Address:&lt;/td&gt;
+                    &lt;td&gt;&lt;input type="text" name="address" style="width:350px;"/&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;City:&lt;/td&gt;
+                    &lt;td&gt;&lt;select class="easyui-combotree" url="data/city_data.json" name="city" style="width:156px;"/&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;div id="dlg-buttons"&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="savereg()"&gt;Submit&lt;/a&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')"&gt;Cancel&lt;/a&gt;
+    &lt;/div&gt;
+</pre>
+<p>从上面的代码可以看到，我们为一个名为 'city' 的树形下拉框（ComboTree）字段设置了一个 url 属性，这个字段可以从远程服务器检索树形结构（Tree）数据。请注意，这个字段有一个样式名字叫 'easyui-combotree'，所以我们不需要写任何的 js 代码，树形下拉框（ComboTree）字段将自动渲染。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-form-form2.zip">jeasyui-form-form2.zip</a></p>
+</div>

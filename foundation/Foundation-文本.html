@@ -1,0 +1,115 @@
+<div class="article-intro" id="content">
+<h1>Foundation 文本</h1>
+<h2>Foundation 默认设置</h2>
+<p>Foundation 使用浏览器默认字体大小 (<code>font-size:100%</code>)。对于大多数桌面浏览器来说，字体默认为 16px。对于大多数移动端浏览器来说，字体默认为 12px。默认的字体为 <code>"Helvetica Neue"</code>， line-height 默认为 <code>1.5</code>。</p>
+<p>以上默认的设置均是针对 <code>&lt;body&gt;</code> 元素。</p>
+<hr/>
+<h2>Foundation 文字排列设计</h2>
+<p>本章节我们将讨论 Foundation 的文字排列设计。</p>
+<p><strong>以下实例的真实样式请通过点击"尝试一下"按钮查看。</strong></p>
+<hr/>
+<h2>&lt;h1&gt; - &lt;h6&gt;</h2>
+<p>Foundation 渲染的 HTML 标题 (<code>&lt;h1&gt;</code> 到
+<code>&lt;h6&gt;</code>) 如下所示:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">h1 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">h2 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">h3 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">h4 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">h5 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span><span class="hl-code">h6 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_hn" target="_blank">尝试一下 »</a></div>
+<p><strong>提示：</strong> 如果需要创建一个浅色的标题，可以在元素上添加 <code>.subheader</code> 类:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">subheader</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">h1.subheader</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">subheader</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">h2.subheader</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">subheader</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">h3.subheader</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">subheader</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">h4.subheader</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h5</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">subheader</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">h5.subheader</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h6</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">subheader</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">h6.subheader</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_subheader" target="_blank">尝试一下 »</a>
+</div><hr/><h2>&lt;small&gt;</h2>
+<p>在 Foundation 中， HTML <code>&lt;small&gt;</code> 元素用于创建一个浅色的副标题：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">h1 heading </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">secondary text</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">h2 heading </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">secondary text</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">h3 heading </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">secondary text</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">h4 heading </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">secondary text</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">h5 heading </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">secondary text</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span><span class="hl-code">h6 heading </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">secondary text</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_small" target="_blank">尝试一下 »</a>
+</div><hr/>
+<h2>&lt;a&gt;</h2>
+<p>Foundation <code>&lt;a&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是一个 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">a</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">链接</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_links&amp;basepath=0" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;abbr&gt;</h2>
+<p>Foundation <code>&lt;abbr&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">The </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">abbr</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">World Health Organization</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">WHO</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">abbr</span><span class="hl-brackets">&gt;</span><span class="hl-code"> was founded in 1948.</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_abbr" target="_blank">尝试一下 »</a>
+</div><hr/><h2>&lt;blockquote&gt;</h2>
+<p>Foundation <code>&lt;blockquote&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">blockquote</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">学的不仅是技术，更是梦想！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">cite</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">cite</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">blockquote</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_blockquote" target="_blank">尝试一下 »</a></div>
+<hr/><h2>&lt;dl&gt;</h2>
+<p>Foundation <code>&lt;dl&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">dl</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">Coffee</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">- black hot drink</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">Milk</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">- white cold drink</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dl</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_dl" target="_blank">尝试一下 »</a></div>
+<hr/><h2>&lt;code&gt;</h2><p>Foundation <code>&lt;code&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">以下 HTML 元素: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">span</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">section</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">, 和 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">div</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 是文档的一部分。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_code" target="_blank">尝试一下 »</a></div>
+<hr/><h2>&lt;kbd&gt;</h2>
+<p>Foundation <code>&lt;kbd&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">按下 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">kbd</span><span class="hl-brackets">&gt;</span><span class="hl-code">ctrl + p</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">kbd</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 键打开打印窗口。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_kbd" target="_blank">尝试一下 »</a></div>
+<hr/><h2>&lt;hr&gt;</h2>
+<p>Foundation <code>&lt;hr&gt;</code> 元素的样式如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">hr</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_hr" target="_blank">尝试一下 »</a></div>
+</div>

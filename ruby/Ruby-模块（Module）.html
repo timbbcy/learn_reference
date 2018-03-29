@@ -1,0 +1,172 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">模块（Module）</span></h1>
+<div class="tutintro">
+<p>模块（Module）是一种把方法、类和常量组合在一起的方式。模块（Module）为您提供了两大好处。</p>
+<ul class="list">
+<li>模块提供了一个<i>命名空间</i>和避免名字冲突。</li>
+<li>模块实现了 <i>mixin</i> 装置。</li>
+</ul>
+<p>模块（Module）定义了一个命名空间，相当于一个沙盒，在里边您的方法和常量不会与其他地方的方法常量冲突。</p>
+<p>模块类似与类，但有一下不同：</p>
+<ul><li>
+模块不能实例化</li><li>
+模块没有子类</li><li>
+模块只能被另一个模块定义</li></ul>
+</div>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">module</span><span class="hl-code"> </span><span class="hl-identifier">Identifier</span><span class="hl-code">
+</span><span class="hl-identifier">statement1</span><span class="hl-code">
+</span><span class="hl-identifier">statement2</span><span class="hl-code">
+   ...........
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>模块常量命名与类常量命名类似，以大写字母开头。方法定义看起来也相似：模块方法定义与类方法定义类似。</p>
+<p>通过类方法，您可以在类方法名称前面放置模块名称和一个点号来调用模块方法，您可以使用模块名称和两个冒号来引用一个常量。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 定义在 trig.rb 文件中的模块</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">module</span><span class="hl-code"> </span><span class="hl-identifier">Trig</span><span class="hl-code">
+</span><span class="hl-identifier">PI</span><span class="hl-code"> = </span><span class="hl-number">3.141592654</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">Trig</span><span class="hl-code">.</span><span class="hl-identifier">sin</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> ..</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">Trig</span><span class="hl-code">.</span><span class="hl-identifier">cos</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> ..</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>我们可以定义多个函数名称相同但是功能不同的模块：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 定义在 moral.rb 文件中的模块</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">module</span><span class="hl-code"> </span><span class="hl-identifier">Moral</span><span class="hl-code">
+</span><span class="hl-identifier">VERY_BAD</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-identifier">BAD</span><span class="hl-code"> = </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">Moral</span><span class="hl-code">.</span><span class="hl-identifier">sin</span><span class="hl-brackets">(</span><span class="hl-identifier">badness</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> ...</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>就像类方法，当您在模块中定义一个方法时，您可以指定在模块名称后跟着一个点号，点号后跟着方法名。</p>
+<h2 class="tutheader">Ruby <i>require</i> 语句</h2>
+<p>require 语句类似于 C 和 C++ 中的 include 语句以及 Java 中的 import 语句。如果一个第三方的程序想要使用任何已定义的模块，则可以简单地使用 Ruby <i>require</i> 语句来加载模块文件：</p>
+<h3>语法</h3>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-identifier">filename</span></div>
+</div>
+</div>
+<p>在这里，文件扩展名 <b>.rb</b> 不是必需的。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-var">$LOAD_PATH</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">'</span><span class="hl-string">.</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">trig.rb</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">moral</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">y</span><span class="hl-code"> = </span><span class="hl-identifier">Trig</span><span class="hl-code">.</span><span class="hl-identifier">sin</span><span class="hl-brackets">(</span><span class="hl-identifier">Trig</span><span class="hl-code">::</span><span class="hl-identifier">PI</span><span class="hl-quotes">/</span><span class="hl-string">4)
+wrongdoing = Moral.sin(Moral::VERY_BAD)</span></div>
+</div>
+</div>
+<p>在这里，我们使用 <b>$LOAD_PATH &lt;&lt; '.'</b> 让 Ruby 知道必须在当前目录中搜索被引用的文件。如果您不想使用 $LOAD_PATH，那么您可以使用 <b>require_relative</b> 来从一个相对目录引用文件。</p>
+<p><b>注意：</b>在这里，文件包含相同的函数名称。所以，这会在引用调用程序时导致代码模糊，但是模块避免了这种代码模糊，而且我们可以使用模块的名称调用适当的函数。</p>
+<h2 class="tutheader">Ruby <i>include</i> 语句</h2>
+<p>您可以在类中嵌入模块。为了在类中嵌入模块，您可以在类中使用 <i>include</i> 语句：</p>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">modulename</span></div>
+</div>
+</div>
+<p>如果模块是定义在一个单独的文件中，那么在嵌入模块之前就需要使用 <i>require</i> 语句引用该文件。</p>
+<h3>实例</h3>
+<p>假设下面的模块写在 <i>support.rb</i> 文件中。
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">module</span><span class="hl-code"> </span><span class="hl-identifier">Week</span><span class="hl-code">
+</span><span class="hl-identifier">FIRST_DAY</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Sunday</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">Week</span><span class="hl-code">.</span><span class="hl-identifier">weeks_in_month</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">You have four weeks in a month</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">Week</span><span class="hl-code">.</span><span class="hl-identifier">weeks_in_year</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">You have 52 weeks in a year</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>现在，您可以在类中引用该模块，如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$LOAD_PATH</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">'</span><span class="hl-string">.</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">support</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Decade</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">Week</span><span class="hl-code">
+</span><span class="hl-identifier">no_of_yrs</span><span class="hl-code">=</span><span class="hl-number">10</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">no_of_months</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">Week</span><span class="hl-code">::</span><span class="hl-identifier">FIRST_DAY</span><span class="hl-code">
+</span><span class="hl-identifier">number</span><span class="hl-code">=</span><span class="hl-number">10</span><span class="hl-code">*</span><span class="hl-number">12</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">number</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">d1</span><span class="hl-code">=</span><span class="hl-identifier">Decade</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">Week</span><span class="hl-code">::</span><span class="hl-identifier">FIRST_DAY</span><span class="hl-code">
+</span><span class="hl-identifier">Week</span><span class="hl-code">.</span><span class="hl-identifier">weeks_in_month</span><span class="hl-code">
+</span><span class="hl-identifier">Week</span><span class="hl-code">.</span><span class="hl-identifier">weeks_in_year</span><span class="hl-code">
+</span><span class="hl-identifier">d1</span><span class="hl-code">.</span><span class="hl-identifier">no_of_months</span></div>
+</div>
+</div>
+<p>这将产生以下结果：</p>
+<pre>
+Sunday
+You have four weeks in a month
+You have 52 weeks in a year
+Sunday
+120
+</pre>
+<h2 class="tutheader">Ruby 中的 Mixins</h2>
+<p>在阅读本节之前，您需要初步了解面向对象的概念。</p>
+<p>当一个类可以从多个父类继承类的特性时，该类显示为多重继承。</p>
+<p>Ruby 不直接支持多重继承，但是 Ruby 的模块（Module）有另一个神奇的功能。它几乎消除了多重继承的需要，提供了一种名为 <i>mixin</i> 的装置。</p>
+<p>Ruby 没有真正实现多重继承机制，而是采用成为mixin技术作为替代品。将模块include到类定义中，模块中的方法就mix进了类中。</p>
+<p>让我们看看下面的示例代码，深入了解 mixin：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">module</span><span class="hl-code"> </span><span class="hl-identifier">A</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">a1</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">a2</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">module</span><span class="hl-code"> </span><span class="hl-identifier">B</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">b1</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">b2</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Sample</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">A</span><span class="hl-code">
+</span><span class="hl-identifier">include</span><span class="hl-code"> </span><span class="hl-identifier">B</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">s1</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">samp</span><span class="hl-code">=</span><span class="hl-identifier">Sample</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">samp</span><span class="hl-code">.</span><span class="hl-identifier">a1</span><span class="hl-code">
+</span><span class="hl-identifier">samp</span><span class="hl-code">.</span><span class="hl-identifier">a2</span><span class="hl-code">
+</span><span class="hl-identifier">samp</span><span class="hl-code">.</span><span class="hl-identifier">b1</span><span class="hl-code">
+</span><span class="hl-identifier">samp</span><span class="hl-code">.</span><span class="hl-identifier">b2</span><span class="hl-code">
+</span><span class="hl-identifier">samp</span><span class="hl-code">.</span><span class="hl-identifier">s1</span></div>
+</div>
+</div>
+<ul><li>模块 A 由方法 a1 和 a2 组成。</li><li>模块 B 由方法 b1 和 b2 组成。</li><li>类 Sample 包含了模块 A 和 B。</li><li>类 Sample 可以访问所有四个方法，即 a1、a2、b1 和 b2。</li></ul></p></div>

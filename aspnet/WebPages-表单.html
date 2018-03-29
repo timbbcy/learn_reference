@@ -1,0 +1,77 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- HTML 表单</span>
+</h1>
+<hr/>
+<p class="intro">表单是 HTML 文档中放置输入控件（文本框、复选框、单选按钮、下拉列表）的部分。</p>
+<hr/>
+<h2>创建一个 HTML 输入页面</h2>
+<div class="example">
+<h2 class="example">Razor 实例</h2>
+<div class="example_code notranslate">
+	&lt;html&gt;<br/>
+&lt;body&gt; <br/><span class="marked">@{<br/>
+if (IsPost) { <br/>
+string companyname = Request["companyname"]; <br/>
+string contactname = Request["contactname"]; <br/></span>&lt;p&gt;You entered: &lt;br /&gt;<br/>
+Company Name: <span class="marked">@companyname</span> &lt;br /&gt;<br/>
+Contact Name: <span class="marked">@contactname</span> &lt;/p&gt;<span class="marked"><br/>
+}<br/>
+else<br/>
+{<br/></span>&lt;form method="post" action=""&gt;<br/>
+	Company Name:&lt;br /&gt;<br/>
+&lt;input type="text" name="CompanyName" value="" /&gt;&lt;br /&gt;<br/>
+	Contact Name:&lt;br /&gt;<br/>
+&lt;input type="text" name="ContactName" value="" /&gt;&lt;br /&gt;&lt;br /&gt;<br/>
+	&lt;input type="submit" value="Submit" class="submit" /&gt;<br/>
+&lt;/form&gt;<br/><span class="marked">}</span><br/><span class="marked">}</span> <br/>
+&lt;/body&gt; <br/>
+&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_009" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>Razor 实例 - 显示图像</h2>
+<p>假设在您的图像文件夹中有 3 张图像，您想根据用户的选择动态地显示图像。</p>
+<p>这可以通过一段简单的 Razor 代码来实现。</p>
+<p>如果在您的网站的图像文件夹中有一个名为 "Photo1.jpg" 的图像，您可以使用 HTML 的 &lt;img&gt; 元素来显示图像，如下所示：</p>
+<div class="code notranslate"><div>
+&lt;img src="images/Photo1.jpg" alt="Sample" /&gt;
+</div></div>
+<p>下面的例子演示了如何显示用户从下列列表中选择的图像：</p>
+<div class="example">
+<h2 class="example">Razor 实例</h2>
+<div class="example_code notranslate">
+<span class="marked">
+@{<br/>
+var imagePath=""; <br/>
+if (Request["Choice"] != null)<br/>
+   {imagePath="images/" + Request["Choice"];} <br/>
+} <br/></span>&lt;!DOCTYPE html&gt; <br/>
+&lt;html&gt; <br/>
+&lt;body&gt; <br/>
+&lt;h1&gt;Display Images&lt;/h1&gt; <br/>
+&lt;form method="post" action=""&gt; <br/>
+I want to see: <br/>
+&lt;select name="Choice"&gt; <br/>
+	 
+&lt;option value="Photo1.jpg"&gt;Photo 1&lt;/option&gt; <br/>
+	 
+&lt;option value="Photo2.jpg"&gt;Photo 2&lt;/option&gt; <br/>
+	 
+&lt;option value="Photo3.jpg"&gt;Photo 3&lt;/option&gt; <br/>
+&lt;/select&gt; <br/>
+&lt;input type="submit" value="Submit" /&gt; <br/><span class="marked">
+	@if (imagePath != "")<br/>
+{<br/></span>&lt;p&gt;<br/>&lt;img src="<span class="marked">@imagePath</span>" alt="Sample" /&gt;<br/>&lt;/p&gt;<span class="marked"><br/>}</span> <br/>
+&lt;/form&gt; <br/>
+&lt;/body&gt; <br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_010" target="_blank">运行实例 »</a>
+</div>
+<h2>实例解释</h2>
+<p>服务器创建了一个叫 <b>imagePath</b> 的变量。</p>
+<p>HTML 页面有一个名为 <b>Choice</b> 的<b>下拉列表</b>（&lt;select&gt; 元素）。它允许用户根据自己的意愿选择一个名称（如 <b>Photo 1</b>），当页面被提交到 Web 服务器时，则传递了一个文件名（如 <b>Photo1.jpg</b>）。</p>
+<p>Razor 代码通过 <b>Request["Choice"]</b> 读取 Choice 的值。如果通过代码构建的图像路径（images/Photo1.jpg）有效，就把图像路径赋值给变量 <b>imagePath</b>。</p>
+<p>在 HTML 页面中，&lt;img&gt; 元素用来显示图像。当页面显示时，src 属性用来设置 imagePath 变量的值。</p>
+<p>&lt;img&gt; 元素是在一个 if 块中，这是为了防止显示没有名称的图像，比如页面第一次被加载显示的时候。</p>
+</div>

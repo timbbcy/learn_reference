@@ -1,0 +1,32 @@
+<div class="article-intro">
+<p>不要问我为什么标题这么长，怎么不写短点，我觉得你是</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/12/1513929732-2075-c1rh9kum13ls1r3517onbap1vg2l.png"/></p>
+<p>代码虽然写完了，但是发布的后续操作还是挺多的，如标题，
+本节讲述的内容依次是：<strong>应用图标的制作</strong>，<strong>混淆</strong>，<strong>签名打包APK</strong>，<strong>Apk瘦身</strong>，
+以及<strong>发布应用</strong>到酷安市场。内容较多就不唠叨了，直接开始~</p>
+<hr/>
+<h2>1.图标制作</h2>
+<p>本来想着自己用Sketch做一枚的，摸索了10分钟不到就放弃了...
+还是直接利用<strong>AS自带的图标生成工具</strong>一键生成算了，步骤如下：
+<strong>右键drawable文件夹</strong> -&gt; <strong>new</strong> -&gt; <strong>Image Asset</strong>，选择自己喜欢
+的图片做图标，比如我最喜欢的<strong>过气女二蕾姆</strong>，然后Next，接着
+的弹窗无脑下一步就好：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/12/1513929733-4065-a9p841mst2wexebw8mxshe74.png"/></p>
+<p>然后AS帮我们生成了一堆文件：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/12/1513929733-1791-1c1ri3ufc5qh17mf1nars9ocnm3a.png"/></p>
+<p>看到这里你可能会黑人问号？？？
+这个<strong>mipmap-anydpi-v26</strong>文件夹是什么鬼？
+还有为什么每个mipmap文件夹都多了<strong>ic<em>launcher</em>foreground</strong> 和 <strong>ic<em>lanucher</em>round</strong></p>
+<p><strong>原因是</strong>：
+<blockquote>Android 8.0(API 26) 引入了自适应的启动器图标，它可以在不同的设备模型
+中显示各种形状；其实就是把原本一层的图标分成了两个图层：<strong>背景</strong>与<strong>前景</strong>
+然后不同的启动器有<strong>Mask</strong>(译作面具，不过感觉<strong>遮罩层</strong>更加贴切)然后，不同
+的遮罩层能裁剪出不同的图形，比如示例中的圆形：</blockquote></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2017/12/1513929735-1771-11a4uu1jjfhts8amc5zof7w9.gif"/></p>
+<p>除了这种玩法外还有<strong>支持动画效果</strong>，比如两层采用不一样的滑动速度：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/12/1513929735-7017-lux8zvdif5n0h298pqsv0pyc.gif"/></p>
+<p>网上说Android 8.0可以长按桌面修改图标形状，试了下8.0的模拟器
+并没有找到相关选项；有人说是Pixel Launcher，下了好几个版本发现
+也没有，猜测应该是亲儿子Pixel系列自带的Launcher才能修改吧。
+我用Nova Launcher和8.0的启动器对比也能看出差别：</p>
+<img src="//www.runoob.com/wp-content/uploads/2017/12/1513929736-9880-unwujl73b0ljbhsdgoj30kto.png"/></div>

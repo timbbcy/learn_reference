@@ -1,0 +1,364 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">表格</span></h1>
+<div class="tutintro">
+<p>Bootstrap 提供了一个清晰的创建表格的布局。下表列出了 Bootstrap 支持的一些表格元素：</p>
+<table class="reference">
+<tr><th>标签</th><th>描述</th></tr>
+<tr><td>&lt;table&gt;</td><td>为表格添加基础样式。</td></tr>
+<tr><td>&lt;thead&gt;</td><td>表格标题行的容器元素（&lt;tr&gt;），用来标识表格列。</td></tr>
+<tr><td>&lt;tbody&gt;</td><td>表格主体中的表格行的容器元素（&lt;tr&gt;）。</td></tr>
+<tr><td>&lt;tr&gt;</td><td>一组出现在单行上的表格单元格的容器元素（&lt;td&gt; 或 &lt;th&gt;）。</td></tr>
+<tr><td>&lt;td&gt;</td><td>默认的表格单元格。</td></tr>
+<tr><td>&lt;th&gt;</td><td>特殊的表格单元格，用来标识列或行（取决于范围和位置）。必须在 &lt;thead&gt; 内使用。</td></tr>
+<tr><td>&lt;caption&gt;</td><td>关于表格存储内容的描述或总结。</td></tr>
+</table>
+</div>
+<h3>表格类</h3>
+<p>下表样式可用于表格中：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%;">类</th>
+<th style="width:68%;">描述</th>
+<th style="width:7%;">实例</th>
+</tr>
+<tr>
+<td>.table</td>
+<td>为任意 &lt;table&gt; 添加基本样式 (只有横向分隔线) </td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_table&amp;" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.table-striped</td>
+<td>在 &lt;tbody&gt; 内添加斑马线形式的条纹 ( IE8 不支持)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_table-striped" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.table-bordered</td>
+<td>为所有表格的单元格添加边框</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_table-bordered" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.table-hover</td>
+<td>在 &lt;tbody&gt; 内的任一行启用鼠标悬停状态</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_table-hover" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.table-condensed</td>
+<td>让表格更加紧凑</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_table-condensed" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td colspan="2"><em>联合使用所有表格类</em></td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_table-all" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<h3>&lt;tr&gt;, &lt;th&gt; 和 &lt;td&gt; 类</h3>
+<p>下表的类可用于表格的行或者单元格：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%;">类</th>
+<th style="width:68%;">描述</th>
+<th style="width:7%;">实例</th>
+</tr>
+<tr>
+<td>.active</td>
+<td>将悬停的颜色应用在行或者单元格上</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_tr_active" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.success</td>
+<td>表示成功的操作</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_tr_success" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.info</td>
+<td>表示信息变化的操作</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_tr_info" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.warning</td>
+<td>表示一个警告的操作</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_tr_warning" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.danger</td>
+<td>表示一个危险的操作</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_tr_danger" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<h2 class="tutheader">基本的表格</h2>
+<p>如果您想要一个只带有内边距（padding）和水平分割的基本表，请添加 class <i>.table</i>，如下面实例所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">基本的表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">名称</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">城市</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tanmay</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Bangalore</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Sachin</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mumbai</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-basic" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="基本的表格" src="/wp-content/uploads/2014/06/basictable_demo.jpg"/>
+</div>
+<br>
+<h2 class="tutheader">可选的表格类</h2>
+<p>除了基本的表格标记和 .table class，还有一些可以用来为标记定义样式的类。下面将向您介绍这些类。</p>
+<h3>条纹表格</h3>
+<p>通过添加 <i>.table-striped</i> class，您将在 &lt;tbody&gt; 内的行上看到条纹，如下面的实例所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">条纹表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">名称</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">城市</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">邮编</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tanmay</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Bangalore</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">560001</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Sachin</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mumbai</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">400003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Uma</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Pune</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">411027</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-striped" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="条纹表格" src="//www.runoob.com/wp-content/uploads/2014/06/18444836-F51F-4F09-8EC4-F5239AFDD1F5.jpg"/>
+</div>
+<h3>边框表格</h3>
+<p>通过添加 <i>.table-bordered</i> class，您将看到每个元素周围都有边框，且占整个表格是圆角的，如下面的实例所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-bordered</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">边框表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">名称</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">城市</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">邮编</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tanmay</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Bangalore</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">560001</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Sachin</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mumbai</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">400003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Uma</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Pune</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">411027</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-bodered" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="边框表格" src="//www.runoob.com/wp-content/uploads/2014/06/8E9EA630-DDD7-4A27-A638-70A9586E185F.jpg"/>
+</div>
+<h3>悬停表格</h3>
+<p>通过添加 <i>.table-hover</i> class，当指针悬停在行上时会出现浅灰色背景，如下面的实例所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-hover</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">悬停表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">名称</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">城市</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">邮编</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tanmay</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Bangalore</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">560001</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Sachin</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mumbai</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">400003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Uma</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Pune</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">411027</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-hover" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="悬停表格" src="//www.runoob.com/wp-content/uploads/2014/06/87CF7351-2AA4-4375-9ED1-5017B0B4610B.jpg"/>
+</div>
+<h3>精简表格</h3>
+<p>通过添加 <i>.table-condensed </i> class，行内边距（padding）被切为两半，以便让表看起来更紧凑，如下面的实例所示。这在想让信息看起来更紧凑时非常有用。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-condensed</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">精简表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">名称</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">城市</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">邮编</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tanmay</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Bangalore</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">560001</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Sachin</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mumbai</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">400003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Uma</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Pune</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">411027</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-condensed" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="精简表格" src="//www.runoob.com/wp-content/uploads/2014/06/F32D49C5-2EF8-42A6-ACF4-5205B6B0C6DD.jpg"/>
+</div>
+<br>
+<h2 class="tutheader">上下文类</h2>
+<p>下表中所列出的上下文类允许您改变表格行或单个单元格的背景颜色。</p>
+<table class="reference notranslate">
+<tr><th>类</th><th>描述</th></tr>
+<tr><td>.active</td><td>对某一特定的行或单元格应用悬停颜色</td></tr>
+<tr><td>.success</td><td>表示一个成功的或积极的动作</td></tr>
+<tr><td>.warning</td><td>表示一个需要注意的警告</td></tr>
+<tr><td>.danger</td><td>表示一个危险的或潜在的负面动作</td></tr>
+</table>
+<p>这些类可被应用到 &lt;tr&gt;、&lt;td&gt; 或 &lt;th&gt;。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">上下文表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">付款日期</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">状态</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">23/11/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">待发货</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品2</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">10/11/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">发货中</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">20/10/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">待确认</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">danger</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">20/10/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">已退货</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-contextual" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="上下文类" src="/wp-content/uploads/2014/06/contextualtable_demo.jpg"/>
+</div>
+<br>
+<h2 class="tutheader">响应式表格</h2>
+<p>通过把任意的 <i>.table</i> 包在 <i>.table-responsive</i> class 内，您可以让表格水平滚动以适应小型设备（小于 768px）。当在大于 768px 宽的大型设备上查看时，您将看不到任何的差别。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">响应式表格布局</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">caption</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">付款日期</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">状态</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">23/11/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">待发货</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品2</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">10/11/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">发货中</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">20/10/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">待确认</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">产品4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">20/10/2013</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">已退货</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-table-responsive" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="响应式表格" src="/wp-content/uploads/2014/06/responsive_demo.jpg"/>
+</div>
+</br></br></br></div>

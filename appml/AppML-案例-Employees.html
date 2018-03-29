@@ -1,0 +1,52 @@
+<div class="article-intro" id="content">
+<link href="http://www.runoob.com/try/appml/appml.css" rel="stylesheet" type="text/css"/>
+<h1>
+<span class="color_h1">&lt;AppML&gt; </span>Employees - 完整的应用程序</h1>
+<hr/>
+<div id="Form01"></div>
+<div id="List01"></div>
+<br/>
+<table class="appmltable" id="Template01" style="width:100%;display:none">
+<tr>
+<th></th>
+<th>Last Name</th>
+<th>First Name</th>
+<th>Date of Birth</th>
+</tr>
+<tr id="appml_row">
+<td onclick="employeesForm.run('Form01','Template02','#EmployeeID#')" style="cursor:pointer">
+<img src="/try/appml/Images/appmlPlus.png"/></td>
+<td>#LastName#</td>
+<td>#FirstName#</td>
+<td>#BirthDate#</td>
+</tr>
+</table>
+<div class="appmlform" id="Template02" style="width:100%;display:none">
+<label>Last Name:</label><input id="LastName"/>
+<label>First Name:</label><input id="FirstName"/>
+<label>Date of Birth:</label><input id="BirthDate"/>
+<label>Photo:</label><input id="Photo"/>
+<label>Notes:</label><input id="Notes"/>
+</div>
+<br/><hr/>
+<h2>源代码</h2>
+<div class="example">
+<h2 class="example">HTML 源代码</h2>
+<div class="example_code notranslate">
+	&lt;html&gt;<br/>&lt;body&gt;<br/><br/>&lt;h1&gt;Employees&lt;/h1&gt;<br/><br/>
+	&lt;div id="Form01"&gt;&lt;/div&gt;<br/>&lt;div id="List01"&gt;&lt;/div&gt;<br/>&lt;br&gt;<br/><br/>&lt;table 
+	id="Template01" class="appmltable" style="width:100%;display:none"&gt;<br/>&lt;tr&gt;<br/>
+	&lt;th&gt;&lt;/th&gt;<br/>&lt;th&gt;Last Name&lt;/th&gt;<br/>&lt;th&gt;First Name&lt;/th&gt;<br/>&lt;th&gt;Date of 
+	Birth&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr id="appml_row"&gt;<br/>&lt;td style="cursor:pointer" 
+	onclick="employeesForm.run('Form01','Template02','#EmployeeID#')"&gt;<br/>&lt;img 
+	src="Images/appmlPlus.png"&gt;&lt;/td&gt;<br/>&lt;td&gt;#LastName#&lt;/td&gt;<br/>
+	&lt;td&gt;#FirstName#&lt;/td&gt;<br/>&lt;td&gt;#BirthDate#&lt;/td&gt;<br/>&lt;/tr&gt;<br/>&lt;/table&gt;<br/><br/>
+	&lt;div id="Template02" class="appmlform" style="width:100%;display:none"&gt;<br/>
+	&lt;label&gt;Last Name:&lt;/label&gt;&lt;input id="LastName"&gt;<br/>&lt;label&gt;First 
+	Name:&lt;/label&gt;&lt;input id="FirstName"&gt;<br/>&lt;label&gt;Date of Birth:&lt;/label&gt;&lt;input 
+	id="BirthDate"&gt;<br/>&lt;label&gt;Photo:&lt;/label&gt;&lt;input id="Photo"&gt;<br/>
+	&lt;label&gt;Notes:&lt;/label&gt;&lt;input id="Notes"&gt;<br/>&lt;/div&gt;<br/><br/>&lt;script src="appml.js"&gt;&lt;/script&gt;<br/>&lt;script&gt;<br/>
+	var employees,employeesForm<br/>employees=new 
+	AppML("appml.php","Models/Employees");<br/>
+	employees.run("List01","Template01");<br/>employeesForm=new 
+	AppML("appml.php","Models/Employees");<br/>employeesForm.displayType="form";<br/>&lt;/script&gt;<br/><br/>&lt;/body&gt;<br/>&lt;/html&gt;</div></div></div>

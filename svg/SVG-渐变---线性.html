@@ -1,0 +1,122 @@
+<div class="article-intro" id="content">
+<h1>SVG 渐变 - <span class="color_h1">线性</span>
+</h1>
+<hr/>
+<h2>SVG 渐变 </h2>
+<p>渐变是一种从一种颜色到另一种颜色的平滑过渡。另外，可以把多个颜色的过渡应用到同一个元素上。</p>
+<p>SVG渐变主要有两种类型：</p>
+<ul>
+<li>Linear</li>
+<li>Radial</li>
+</ul>
+<hr/>
+<h2>SVG 线性渐变 - &lt;linearGradient&gt;</h2>
+<p>&lt;linearGradient&gt;元素用于定义线性渐变。</p>
+<p>&lt;linearGradient&gt;标签必须嵌套在&lt;defs&gt;的内部。&lt;defs&gt;标签是definitions的缩写，它可对诸如渐变之类的特殊元素进行定义。</p>
+<p>线性渐变可以定义为水平，垂直或角渐变：</p>
+<ul class="dd">
+<li>当y1和y2相等，而x1和x2不同时，可创建水平渐变</li>
+<li>当x1和x2相等，而y1和y2不同时，可创建垂直渐变</li>
+<li>当x1和x2不同，且y1和y2不同时，可创建角形渐变</li>
+</ul>
+<hr/>
+<h2>实例 1</h2>
+<p>定义水平线性渐变从黄色到红色的椭圆形：</p>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+ 
+&lt;defs&gt;<br/>
+   
+&lt;linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"&gt;<br/>
+     
+&lt;stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" /&gt;<br/>
+     
+&lt;stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" /&gt;<br/>
+   
+&lt;/linearGradient&gt;<br/>
+ 
+&lt;/defs&gt;<br/>
+ 
+&lt;ellipse cx="200" cy="70" rx="85" ry="55"
+fill="url(#grad1)" /&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_linear" target="_blank">尝试一下 »</a>
+</div>
+<p>
+对于Opera用户：<a href="/try/demo_source/linear1.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。
+</p>
+<p><b>代码解析：</b></p>
+<ul class="dd">
+<li>&lt;linearGradient&gt;标签的id属性可为渐变定义一个唯一的名称</li>
+<li>&lt;linearGradient&gt;标签的X1，X2，Y1，Y2属性定义渐变开始和结束位置</li>
+<li>渐变的颜色范围可由两种或多种颜色组成。每种颜色通过一个&lt;stop&gt;标签来规定。offset属性用来定义渐变的开始和结束位置。</li>
+<li>填充属性把 ellipse 元素链接到此渐变</li>
+</ul>
+<hr/>
+<h2>实例 2</h2>
+<p>定义一个垂直线性渐变从黄色到红色的椭圆形：</p>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+ 
+&lt;defs&gt;<br/>
+   
+&lt;linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%"&gt;<br/>
+     
+&lt;stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" /&gt;<br/>
+     
+&lt;stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" /&gt;<br/>
+   
+&lt;/linearGradient&gt;<br/>
+ 
+&lt;/defs&gt;<br/>
+ 
+&lt;ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" /&gt;<br/><br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_linear2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+对于Opera用户：<a href="/try/demo_source/linear2.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。
+</p><hr/>
+<h2>实例 3</h2>
+<p>定义一个椭圆形，水平线性渐变从黄色到红色并添加一个椭圆内文本：</p>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+ 
+&lt;defs&gt;<br/>
+   
+&lt;linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"&gt;<br/>
+     
+&lt;stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" /&gt;<br/>
+     
+&lt;stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" /&gt;<br/>
+   
+&lt;/linearGradient&gt;<br/>
+ 
+&lt;/defs&gt;<br/>
+ 
+&lt;ellipse cx="200" cy="70" rx="85" ry="55"
+fill="url(#grad1)" /&gt;<br/>
+  &lt;text fill="#ffffff" font-size="45" font-family="Verdana" x="150" y="86"&gt;<br/>
+  SVG&lt;/text&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_linear3" target="_blank">尝试一下 »</a>
+</div>
+<p>
+对于Opera用户：<a href="/try/demo_source/linear3.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。
+</p><p><b>代码解析：</b></p>
+<ul>
+<li>&lt;text&gt; 元素是用来添加一个文本</li>
+</ul>
+</div>

@@ -1,0 +1,85 @@
+<div class="article-intro" id="content">
+<h1>C# <span class="color_h1">类型转换</span></h1>
+<div class="tutintro">
+<p>类型转换从根本上说是类型铸造，或者说是把数据从一种类型转换为另一种类型。在 C# 中，类型铸造有两种形式：</p>
+<ul class="list">
+<li><b>隐式类型转换</b> - 这些转换是 C# 默认的以安全方式进行的转换, 不会导致数据丢失。例如，从小的整数类型转换为大的整数类型，从派生类转换为基类。</li>
+<li><b>显式类型转换</b> - 显式类型转换，即强制类型转换。显式转换需要强制转换运算符，而且强制转换会造成数据丢失。</li>
+</ul>
+<p>下面的实例显示了一个显式的类型转换：</p>
+<pre>
+namespace TypeConversionApplication
+{
+    class ExplicitConversion
+    {
+        static void Main(string[] args)
+        {
+            double d = 5673.74;
+            int i;
+
+            // 强制转换 double 为 int
+            i = (int)d;
+            Console.WriteLine(i);
+            Console.ReadKey();
+            
+        }
+    }
+}
+</pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre>
+5673
+</pre>
+</div>
+<h2 class="tutheader">C# 类型转换方法</h2>
+<p>C# 提供了下列内置的类型转换方法：</p>
+<table class="reference notranslate">
+<tr><th style="width:5%;">序号</th><th>方法 &amp; 描述</th></tr>
+<tr><td>1</td><td><b>ToBoolean</b><br/>如果可能的话，把类型转换为布尔型。</td></tr>
+<tr><td>2</td><td><b>ToByte</b><br/>把类型转换为字节类型。</td></tr>
+<tr><td>3</td><td><b>ToChar</b><br/>如果可能的话，把类型转换为单个 Unicode 字符类型。</td></tr>
+<tr><td>4</td><td><b>ToDateTime</b><br/>把类型（整数或字符串类型）转换为 日期-时间 结构。</td></tr>
+<tr><td>5</td><td><b>ToDecimal</b><br/>把浮点型或整数类型转换为十进制类型。</td></tr>
+<tr><td>6</td><td><b>ToDouble</b><br/>把类型转换为双精度浮点型。</td></tr>
+<tr><td>7</td><td><b>ToInt16</b><br/>把类型转换为 16 位整数类型。</td></tr>
+<tr><td>8</td><td><b>ToInt32</b><br/>把类型转换为 32 位整数类型。</td></tr>
+<tr><td>9</td><td><b>ToInt64</b><br/>把类型转换为 64 位整数类型。</td></tr>
+<tr><td>10</td><td><b>ToSbyte</b><br/>把类型转换为有符号字节类型。</td></tr>
+<tr><td>11</td><td><b>ToSingle</b><br/>把类型转换为小浮点数类型。</td></tr>
+<tr><td>12</td><td><b>ToString</b><br/>把类型转换为字符串类型。</td></tr>
+<tr><td>13</td><td><b>ToType</b><br/>把类型转换为指定类型。</td></tr>
+<tr><td>14</td><td><b>ToUInt16</b><br/>把类型转换为 16 位无符号整数类型。</td></tr>
+<tr><td>15</td><td><b>ToUInt32</b><br/>把类型转换为 32 位无符号整数类型。</td></tr>
+<tr><td>16</td><td><b>ToUInt64</b><br/>把类型转换为 64 位无符号整数类型。</td></tr>
+</table>
+<p>下面的实例把不同值的类型转换为字符串类型：</p>
+<pre class="prettyprint">
+namespace TypeConversionApplication
+{
+    class StringConversion
+    {
+        static void Main(string[] args)
+        {
+            int i = 75;
+            float f = 53.005f;
+            double d = 2345.7652;
+            bool b = true;
+
+            Console.WriteLine(i.ToString());
+            Console.WriteLine(f.ToString());
+            Console.WriteLine(d.ToString());
+            Console.WriteLine(b.ToString());
+            Console.ReadKey();
+            
+        }
+    }
+}
+</pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre class="result">
+75
+53.005
+2345.7652
+True
+</pre>
+</div>

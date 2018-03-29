@@ -1,0 +1,48 @@
+<div class="article-intro" id="content">
+<h1>SQLite <span class="color_h1">日期 &amp; 时间</span></h1>
+<p>SQLite 支持以下五个日期和时间函数：</p>
+<table class="reference">
+<tr><th>序号</th><th style="width:39%">函数</th><th style="width:59%">实例</th></tr>
+<tr><td>1</td><td>date(timestring, modifier, modifier, ...)</td><td>以 YYYY-MM-DD 格式返回日期。</td></tr>
+<tr><td>2</td><td>time(timestring, modifier, modifier, ...)</td><td>以 HH:MM:SS 格式返回时间。</td></tr>
+<tr><td>3</td><td>datetime(timestring, modifier, modifier, ...)</td><td>以 YYYY-MM-DD HH:MM:SS 格式返回。</td></tr>
+<tr><td>4</td><td>julianday(timestring, modifier, modifier, ...)</td><td>这将返回从格林尼治时间的公元前 4714 年 11 月 24 日正午算起的天数。</td></tr>
+<tr><td>5</td><td>strftime(format, timestring, modifier, modifier, ...)</td><td>这将根据第一个参数指定的格式字符串返回格式化的日期。具体格式见下边讲解。</td></tr>
+</table>
+<p>上述五个日期和时间函数把时间字符串作为参数。时间字符串后跟零个或多个 modifier 修饰符。strftime() 函数也可以把格式字符串 format 作为其第一个参数。下面将为您详细讲解不同类型的时间字符串和修饰符。</p>
+<h2>时间字符串</h2>
+<p>一个时间字符串可以采用下面任何一种格式：</p>
+<table class="reference notranslate">
+<tr><th>序号</th><th style="width:39%">时间字符串</th><th style="width:59%">实例</th></tr>
+<tr><td>1</td><td>YYYY-MM-DD</td><td>2010-12-30</td></tr>
+<tr><td>2</td><td>YYYY-MM-DD HH:MM</td><td>2010-12-30 12:10</td></tr>
+<tr><td>3</td><td>YYYY-MM-DD HH:MM:SS.SSS</td><td>2010-12-30 12:10:04.100</td></tr>
+<tr><td>4</td><td>MM-DD-YYYY HH:MM</td><td>30-12-2010 12:10</td></tr>
+<tr><td>5</td><td>HH:MM</td><td>12:10</td></tr>
+<tr><td>6</td><td>YYYY-MM-DD<b>T</b>HH:MM</td><td>2010-12-30 12:10</td></tr>
+<tr><td>7</td><td>HH:MM:SS</td><td>12:10:01</td></tr>
+<tr><td>8</td><td>YYYYMMDD HHMMSS</td><td>20101230 121001</td></tr>
+<tr><td>9</td><td>now</td><td>2013-05-07</td></tr>
+</table>
+<p>您可以使用 "T" 作为分隔日期和时间的文字字符。</p>
+<h2>修饰符（Modifier）</h2>
+<p>时间字符串后边可跟着零个或多个的修饰符，这将改变有上述五个函数返回的日期和/或时间。任何上述五大功能返回时间。修饰符应从左到右使用，下面列出了可在 SQLite 中使用的修饰符：</p>
+<ul class="list">
+<li><p>NNN days</p></li>
+<li><p>NNN hours</p></li>
+<li><p>NNN minutes</p></li>
+<li><p>NNN.NNNN seconds</p></li>
+<li><p>NNN months</p></li>
+<li><p>NNN years</p></li>
+<li><p>start of month</p></li>
+<li><p>start of year</p></li>
+<li><p>start of day</p></li>
+<li><p>weekday N</p></li>
+<li><p>unixepoch</p></li>
+<li><p>localtime</p></li>
+<li><p>utc</p></li>
+</ul>
+<h2>格式化</h2>
+<p>SQLite 提供了非常方便的函数 <b>strftime()</b> 来格式化任何日期和时间。您可以使用以下的替换来格式化日期和时间：</p>
+<table class="reference notranslate">
+<th style="width:39%">替换</th><th style="width:61%">描述</th></table></div>

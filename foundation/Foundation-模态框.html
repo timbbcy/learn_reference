@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>Foundation 模态框</h1>
+<p>模态框是一个显示在页面头部的弹窗。</p>
+<p>
+我们可以在容器元素上(如 <code>&lt;div id="myModal"</code>)使用唯一 ID，并添加 <code>.reveal-modal</code> 类和 <code>data-reveal</code> 属性来添加模态框。我们可以在任何元素上使用 <code>data-reveal-id="<em>id</em>"</code> 属性阿里打开模态框。  <em>id</em> 必须与容器 id 一致(实例为 "myModal")。
+</p>
+<p>如果你希望在点击模态框之外的区域来关闭模态框。你可以在模态框的关闭按钮  <code>&lt;a&gt;</code> 标签上添加 <code>.close-reveal-modal</code> 类来实现。</p>
+<p><strong>注意:</strong> 滑块需要使用 JavaScript。所以你需要初始化
+oundation JS:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- Trigger the Modal --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span> <span class="highATT">data-reveal-id=</span><span class="highVAL">"myModal"</span><span class="highGT">&gt;</span>Click To Open Modal<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- The Modal Content --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"myModal"</span> <span class="highATT">class=</span><span class="highVAL">"reveal-modal"</span> <span class="highATT">data-reveal</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">h2</span><span class="highGT">&gt;</span>Heading in 
+	Modal.<span class="highLT">&lt;</span><span class="highELE">/h2</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text in the modal.<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text in the 
+	modal.<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">class=</span><span class="highVAL">"close-reveal-modal"</span><span class="highGT">&gt;</span>&amp;times;<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_modal" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>模态框大小</h2>
+<p>可以在模态框容器上添加以下类来设置模态框的大小：</p>
+<ul>
+<li><code>.tiny</code>: 30% 宽度</li>
+<li><code>.small</code>: 40% 宽度</li>
+<li><code>.medium</code>: 60% 宽度</li>
+<li><code>.large</code>: 70% 宽度</li>
+<li><code>.xlarge</code>: 95% 宽度</li>
+<li><code>.full</code>: 100% 宽度和高度</li>
+</ul>
+<p><strong>注意:</strong> 在平板、笔记本、PC 电脑上默认为 80% 宽度，在小屏幕设备上是 100% 宽度。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"myModal"</span> <span class="highATT">class=</span><span class="highVAL">"reveal-modal tiny|small|medium|large|xlarge|full"</span> <span class="highATT">data-reveal</span><span class="highGT">&gt;</span></div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_modal_size" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>内嵌模态框</h2>
+<p>你可以在模态框内嵌入模态框，可以在第一个模态框上添加新的触发按钮。你必须为内嵌模态框设置一个唯一的 id：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- Trigger the modal --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span> <span class="highATT">data-reveal-id=</span><span class="highVAL">"myModal"</span><span class="highGT">&gt;</span>Click 
+	To Open Modal<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><br/><span class="highCOM">&lt;!-- The First Modal --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"myModal"</span> <span class="highATT">class=</span><span class="highVAL">"reveal-modal"</span> <span class="highATT">data-reveal</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">h2</span><span class="highGT">&gt;</span>First Modal<span class="highLT">&lt;</span><span class="highELE">/h2</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text..<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span>
+<span class="highATT">data-reveal-id=</span><span class="highVAL">"secondModal"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Open Second Modal<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">class=</span><span class="highVAL">"close-reveal-modal"</span><span class="highGT">&gt;</span>&amp;times;<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- The Second Modal --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"secondModal"</span> <span class="highATT">class=</span><span class="highVAL">"reveal-modal"</span>
+<span class="highATT">data-reveal</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">h2</span><span class="highGT">&gt;</span>Tada! Second Modal<span class="highLT">&lt;</span><span class="highELE">/h2</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text..<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">class=</span><span class="highVAL">"close-reveal-modal"</span><span class="highGT">&gt;</span>&amp;times;<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_modal_nested" target="_blank">尝试一下 »</a>
+</div>
+<p>第二个模态框会取代第一个模态框。如果你希望在打开第二个模态框时，不关闭第一个模态框。可以在第二个模态框上添加 <code>data-options="multiple_opened:true;"</code> 属性：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"secondModal"</span> <span class="highATT">class=</span><span class="highVAL">"reveal-modal"</span> <span class="highATT">data-reveal data-options=</span><span class="highVAL">"multiple_opened:true;"</span><span class="highGT">&gt;</span></div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_modal_nested2" target="_blank">尝试一下 »</a>
+</div>
+</div>

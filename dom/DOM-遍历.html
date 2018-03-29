@@ -1,0 +1,54 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">遍历节点树</span>
+</h1>
+<hr/>
+<p class="intro">遍历（Traverse）意味着在节点树中进行循环或移动。</p>
+<hr/>
+<h2>遍历节点树</h2>
+<p>通常您想要循环 XML 文档，比如：当您需要提取每个元素的值时。</p>
+<p>这叫做"遍历节点树"。</p>
+<p>下面的实例遍历 &lt;book&gt; 的所有子节点，并显示他们的名称和值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code">, </span><span class="hl-identifier">i</span><span class="hl-code"> ,</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;book&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> + 
+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;title&gt;Everyday Italian&lt;/title&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> +
+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;author&gt;Giada De Laurentiis&lt;/author&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> +
+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;year&gt;2005&lt;/year&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> +
+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;/book&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">parser</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">DOMParser</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">xmlDoc</span><span class="hl-code"> = </span><span class="hl-identifier">parser</span><span class="hl-code">.</span><span class="hl-identifier">parseFromString</span><span class="hl-brackets">(</span><span class="hl-identifier">text</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">text/xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> documentElement 表示根节点</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">documentElement</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code"> ;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code"> += </span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeName</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-identifier">txt</span><span class="hl-code">;</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<p>输出：</p>
+<div class="example_code">
+title: Everyday Italian<br/>
+author: Giada De Laurentiis<br/>
+year: 2005
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_parsertest3" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>
+将 XML 字符串载入 xmlDoc 中</li>
+<li>获取根元素的子节点</li>
+<li>输出每个子节点的节点名称以及文本节点的节点值</li>
+</ol>
+<br/>
+</div>

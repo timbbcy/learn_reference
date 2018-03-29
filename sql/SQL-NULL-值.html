@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">NULL 值</span>
+</h1>
+<hr/>
+<p class="intro">NULL 值代表遗漏的未知数据。</p>
+<p class="intro">默认地，表的列可以存放 NULL 值。</p>
+<p class="intro">本章讲解 IS NULL 和 IS NOT NULL 操作符。</p>
+<hr/>
+<h2>SQL NULL 值</h2>
+<p>如果表中的某个列是可选的，那么我们可以在不向该列添加值的情况下插入新记录或更新已有的记录。这意味着该字段将以 NULL 值保存。</p>
+<p>NULL 值的处理方式与其他值不同。</p>
+<p>NULL 用作未知的或不适用的值的占位符。</p>
+<p><img alt="Note" src="/images/lamp.gif"/><b>注释：</b>无法比较 NULL 和 0；它们是不等价的。</p>
+<hr/>
+<h2>SQL 的 NULL 值处理</h2>
+<p>请看下面的 "Persons" 表：</p>
+<table class="reference notranslate">
+<tr>
+<th align="left">P_Id</th>
+<th align="left">LastName</th>
+<th align="left">FirstName</th>
+<th align="left">Address</th>
+<th align="left">City</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Hansen</td>
+<td>Ola</td>
+<td> </td>
+<td>Sandnes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Svendson</td>
+<td>Tove</td>
+<td>Borgvn 23</td>
+<td>Sandnes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pettersen</td>
+<td>Kari</td>
+<td> </td>
+<td>Stavanger</td>
+</tr>
+</table>
+<p>假如 "Persons" 表中的 "Address" 列是可选的。这意味着如果在 "Address" 列插入一条不带值的记录，"Address" 列会使用 NULL 值保存。</p>
+<p>那么我们如何测试 NULL 值呢？</p>
+<p>无法使用比较运算符来测试 NULL 值，比如 =、&lt; 或 &lt;&gt;。</p>
+<p>我们必须使用 IS NULL 和 IS NOT NULL 操作符。</p>
+<hr/>
+<h2>SQL IS NULL</h2>
+<p>我们如何仅仅选取在 "Address" 列中带有 NULL 值的记录呢？</p>
+<p>我们必须使用 IS NULL 操作符：</p>
+<div class="code notranslate"><div>
+SELECT LastName,FirstName,Address FROM Persons<br/>
+WHERE Address IS NULL</div></div>
+<p>结果集如下所示：</p>
+<table class="reference notranslate">
+<tr>
+<th align="left">LastName</th>
+<th align="left">FirstName</th>
+<th align="left">Address</th>
+</tr>
+<tr>
+<td>Hansen</td>
+<td>Ola</td>
+<td> </td>
+</tr>
+<tr>
+<td>Pettersen</td>
+<td>Kari</td>
+<td> </td>
+</tr>
+</table>
+<p><img alt="Note" src="/images/lamp.gif"/><b>提示：</b>请始终使用 IS NULL 来查找 NULL 值。</p>
+<hr/>
+<h2>SQL IS NOT NULL</h2>
+<p>我们如何仅仅选取在 "Address" 列中不带有 NULL 值的记录呢？</p>
+<p>我们必须使用 IS NOT NULL 操作符：</p>
+<div class="code notranslate"><div>
+SELECT LastName,FirstName,Address FROM Persons<br/>
+WHERE Address IS NOT NULL</div></div>
+<p>结果集如下所示：</p>
+<table class="reference notranslate">
+<tr>
+<th align="left">LastName</th>
+<th align="left">FirstName</th>
+<th align="left">Address</th>
+</tr>
+<tr>
+<td>Svendson</td>
+<td>Tove</td>
+<td>Borgvn 23</td>
+</tr>
+</table>
+<p>在下一节中，我们了解 ISNULL()、NVL()、IFNULL() 和 COALESCE() 函数。</p>
+<br/>
+</div>

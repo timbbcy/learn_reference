@@ -1,0 +1,70 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">表单验证</span>
+</h1>
+<hr/>
+<h2>JavaScript 表单验证</h2>
+<p>JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。</p>
+<p>表单数据经常需要使用 JavaScript 来验证其正确性：</p>
+<ul>
+<li>验证表单数据是否为空？</li>
+<li>验证输入是否是一个正确的email地址？</li>
+<li>验证日期是否输入正确？</li>
+<li>验证表单输入内容是否为数字型？</li>
+</ul>
+<hr/>
+<h2>必填（或必选）项目</h2>
+<p>下面的函数用来检查用户是否已填写表单中的必填（或必选）项目。假如必填或必选项为空，那么警告框会弹出，并且函数的返回值为 false，否则函数的返回值则为 true（意味着数据没有问题）：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">validateForm</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">forms</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">myForm</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">fname</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+  </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code">==</span><span class="hl-reserved">null</span><span class="hl-code"> || </span><span class="hl-identifier">x</span><span class="hl-code">==</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">姓必须填写</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">false</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以上函数在 form 表单提交时被调用:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myForm</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">action</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo-form.php</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onsubmit</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">return validateForm()</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">method</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">post</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+姓: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fname</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">提交</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_form_validation" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>E-mail 验证</h2>
+<p>下面的函数检查输入的数据是否符合电子邮件地址的基本语法。
+</p>
+<p>意思就是说，输入的数据必须包含 @ 符号和点号(.)。同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">validateForm</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">forms</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">myForm</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">email</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+  </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">atpos</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">indexOf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">@</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">dotpos</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">lastIndexOf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">atpos</span><span class="hl-code">&lt;</span><span class="hl-number">1</span><span class="hl-code"> || </span><span class="hl-identifier">dotpos</span><span class="hl-code">&lt;</span><span class="hl-identifier">atpos</span><span class="hl-code">+</span><span class="hl-number">2</span><span class="hl-code"> || </span><span class="hl-identifier">dotpos</span><span class="hl-code">+</span><span class="hl-number">2</span><span class="hl-code">&gt;=</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">不是一个有效的 e-mail 地址</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">false</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>下面是连同 HTML 表单的完整代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myForm</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">action</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo-form.php</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onsubmit</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">return validateForm();</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">method</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">post</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    Email: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">email</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">提交</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_form_validate_email" target="_blank">尝试一下 »</a>
+</div>
+</div>

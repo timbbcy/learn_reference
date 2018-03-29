@@ -1,0 +1,138 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI <span class="color_h1">插件</span></h1>
+<br/>
+<div class="tutintro">
+<p>
+jQuery EasyUI 提供了用于创建跨浏览器网页的完整的组件集合，包括功能强大的 datagrid（数据网格）、treegrid（树形表格）、 panel（面板）、combo（下拉组合）等等。
+用户可以组合使用这些组件，也可以单独使用其中一个。 
+</p>
+</div>
+<h2 class="tutheader">插件列表</h2>
+<h3>Base（基础）</h3>
+<ul>
+<li><a href="/jeasyui/plugins-base-parser.html">Parser 解析器</a></li>
+<li><a href="/jeasyui/plugins-base-easyloader.html">Easyloader 加载器</a></li>
+<li><a href="/jeasyui/plugins-base-draggable.html">Draggable 可拖动</a></li>
+<li><a href="/jeasyui/plugins-base-droppable.html">Droppable 可放置</a></li>
+<li><a href="/jeasyui/plugins-base-resizable.html">Resizable 可调整尺寸</a></li>
+<li><a href="/jeasyui/plugins-base-pagination.html">Pagination 分页</a></li>
+<li><a href="/jeasyui/plugins-base-searchbox.html">Searchbox 搜索框</a></li>
+<li><a href="/jeasyui/plugins-base-progressbar.html">Progressbar 进度条</a></li>
+<li><a href="/jeasyui/plugins-base-tooltip.html">Tooltip 提示框</a></li>
+</ul>
+<h3>Layout（布局）</h3>
+<ul>
+<li><a href="/jeasyui/plugins-layout-panel.html">Panel 面板</a></li>
+<li><a href="/jeasyui/plugins-layout-tabs.html">Tabs 标签页/选项卡</a></li>
+<li><a href="/jeasyui/plugins-layout-accordion.html">Accordion 折叠面板</a></li>
+<li><a href="/jeasyui/plugins-layout-layout.html">Layout 布局</a></li>
+</ul>
+<h3>Menu（菜单）与 Button（按钮）</h3>
+<ul>
+<li><a href="/jeasyui/plugins-mb-menu.html">Menu 菜单</a></li>
+<li><a href="/jeasyui/plugins-mb-linkbutton.html">Linkbutton 链接按钮</a></li>
+<li><a href="/jeasyui/plugins-mb-menubutton.html">Menubutton 菜单按钮</a></li>
+<li><a href="/jeasyui/plugins-mb-splitbutton.html">Splitbutton 分割按钮</a></li>
+</ul>
+<h3>Form（表单）</h3>
+<ul>
+<li><a href="/jeasyui/plugins-form-form.html">Form 表单</a></li>
+<li><a href="/jeasyui/plugins-form-validatebox.html">Validatebox 验证框</a></li>
+<li><a href="/jeasyui/plugins-form-combo.html">Combo 组合</a></li>
+<li><a href="/jeasyui/plugins-form-combobox.html">Combobox 组合框</a></li>
+<li><a href="/jeasyui/plugins-form-combotree.html">Combotree 组合树</a></li>
+<li><a href="/jeasyui/plugins-form-combogrid.html">Combogrid 组合网格</a></li>
+<li><a href="/jeasyui/plugins-form-numberbox.html">Numberbox 数字框</a></li>
+<li><a href="/jeasyui/plugins-form-datebox.html">Datebox 日期框</a></li>
+<li><a href="/jeasyui/plugins-form-datetimebox.html">Datetimebox 日期时间框</a></li>
+<li><a href="/jeasyui/plugins-form-calendar.html">Calendar 日历</a></li>
+<li><a href="/jeasyui/plugins-form-spinner.html">Spinner 微调器</a></li>
+<li><a href="/jeasyui/plugins-form-numberspinner.html">Numberspinner 数值微调器</a></li>
+<li><a href="/jeasyui/plugins-form-timespinner.html">Timespinner 时间微调器</a></li>
+<li><a href="/jeasyui/plugins-form-slider.html">Slider 滑块</a></li>
+</ul>
+<h3>Window（窗口）</h3>
+<ul>
+<li><a href="/jeasyui/plugins-window-window.html">Window 窗口</a></li>
+<li><a href="/jeasyui/plugins-window-dialog.html">Dialog 对话框</a></li>
+<li><a href="/jeasyui/plugins-window-messager.html">Messager 消息框</a></li>
+</ul>
+<h3>DataGrid（数据网格）与 Tree（树）</h3>
+<ul>
+<li><a href="/jeasyui/plugins-dt-datagrid.html">Datagrid 数据网格</a></li>
+<li><a href="/jeasyui/plugins-dt-propertygrid.html">Propertygrid 属性网格</a></li>
+<li><a href="/jeasyui/plugins-dt-tree.html">Tree 树</a></li>
+<li><a href="/jeasyui/plugins-dt-treegrid.html">Treegrid 树形网格</a></li>
+</ul>
+<h2 class="tutheader">插件</h2>
+<p>easyui 的每个组件都有属性、方法和事件。用户可以很容易地对这些组件进行扩展。</p>
+<h3>属性</h3>
+<p>属性是定义在 jQuery.fn.{plugin}.defaults。比如，dialog 的属性是定义在 jQuery.fn.dialog.defaults。</p>
+<h3>事件</h3>
+<p>事件（回调函数）也是定义在 jQuery.fn.{plugin}.defaults。</p>
+<h3>方法</h3>
+<p>调用方法的语法：$('selector').plugin('method', parameter); </p>
+<p>其中：</p>
+<ul>
+<li>selector 是 jquery 对象选择器。</li>
+<li>plugin 是插件名称。</li>
+<li>method 是与插件相匹配的已存在方法。</li>
+<li>parameter 是参数对象，可以是对象、字符串...</li>
+</ul>
+<p>方法是定义在 jQuery.fn.{plugin}.methods。每个方法有两个参数：jq 和 param。第一个参数 'jq' 是必需的，引用 jQuery 对象。第二个参数 'param' 引用方法传递的实际参数。比如，要扩展 dialog 组件的方法名为 'mymove' 的方法，代码如下：</p>
+<pre style="color:#006600">
+$.extend($.fn.dialog.methods, {
+    mymove: function(jq, newposition){
+        return jq.each(function(){
+            $(this).dialog('move', newposition);
+        });
+    }
+});
+</pre>
+<p>现在您可以调用 'mymove' 方法来移动对话框（dialog）到指定的位置：</p>
+<pre style="color:#006600">
+$('#dd').dialog('mymove', {
+    left: 200,
+    top: 100
+});
+</pre>
+<h2 class="tutheader">开始使用 jQuery EasyUI</h2>
+<p>下载库，并在您的页面中引用 EasyUI CSS 和 JavaScript 文件。</p>
+<pre style="color:#006600">
+&lt;link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css"&gt;
+&lt;link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"&gt;
+&lt;script type="text/javascript" src="easyui/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="easyui/jquery.easyui.min.js"&gt;&lt;/script&gt;
+</pre>
+<p>一旦您引用了 EasyUI 必要的文件，您就可以通过标记或者使用 JavaScript 来定义一个 EasyUI 组件。比如，要顶一个带有可折叠功能的面板，您需要编写如下 HTML 代码：</p>
+<pre style="color:#006600">
+&lt;div id="p" class="easyui-panel" style="width:500px;height:200px;padding:10px;"
+    title="My Panel" iconCls="icon-save" collapsible="true"&gt;
+    The panel content
+&lt;/div&gt;
+</pre>
+<p>当通过标记创建组件，'data-options' 属性被用来支持自版本 1.3 以来 HTML5 兼容的属性名称。所以您可以如下重写上面的代码：</p>
+<pre style="color:#006600">
+&lt;div id="p" class="easyui-panel" style="width:500px;height:200px;padding:10px;"
+    title="My Panel" data-options="iconCls:'icon-save',collapsible:true"&gt;
+    The panel content
+&lt;/div&gt;
+</pre>
+<p>下面的代码演示了如何创建一个绑定 'onSelect' 事件的组合框。</p>
+<pre style="color:#006600">
+&lt;input class="easyui-combobox" name="language"
+    data-options="
+    url:'combobox_data.json',
+    valueField:'id',
+    textField:'text',
+    panelHeight:'auto',
+    onSelect:function(record){
+    alert(record.text)
+    }"&gt;
+</pre>
+</div>

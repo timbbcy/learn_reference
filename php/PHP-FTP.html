@@ -1,0 +1,252 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">FTP</span> 函数</h1>
+<hr/>
+<h2>PHP FTP 简介</h2>
+<p>FTP 函数通过文件传输协议 (FTP) 提供对文件服务器的客户端访问。</p>
+<p>FTP 函数用于打开、登录以及关闭连接，同时用于上传、下载、重命名、删除及获取文件服务器上的文件信息。不是所有的 FTP 函数对每个服务器都起作用或返回相同的结果。自 PHP 3 起，FTP 函数可用。</p>
+<p>这些函数用于对 FTP 服务器进行细致的访问。如果您仅仅需要对 FTP 服务器进行读写操作，建议使用 Filesystem 函数中的 ftp:// wrapper。</p>
+<hr/>
+<h2>安装</h2>
+<p>PHP 的 Windows 版本内置了对 FTP 扩展的支持。无需加载任何附加扩展库即可使用 FTP 函数。 </p>
+<p>然而，如果您运行的是 PHP 的 Linux 版本，在编译 PHP 的时候请添加 <i>--enable-ftp </i> 选项（PHP4 或以上版本）或者 <i>--with-ftp</i> 选项（PHP3 版本）。</p>
+<hr/>
+<h2>PHP FTP 函数</h2>
+<p><b>PHP</b>：指示支持该函数的最早的 PHP 版本。</p>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="30%">函数</th>
+<th align="left" width="65%">描述</th>
+<th align="left" width="5%">PHP</th>
+</tr>
+<tr>
+<td><a href="func-ftp-alloc.html">ftp_alloc()</a></td>
+<td>为要上传到 FTP 服务器的文件分配空间。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-ftp-cdup.html">ftp_cdup()</a></td>
+<td>把当前目录改变为 FTP 服务器上的父目录。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-chdir.html">ftp_chdir()</a></td>
+<td>改变 FTP 服务器上的当前目录。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-chmod.html">ftp_chmod()</a></td>
+<td>通过 FTP 设置文件上的权限。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-ftp-close.html">ftp_close()</a></td>
+<td>关闭 FTP 连接。</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-connect.html">ftp_connect()</a></td>
+<td>打开 FTP 连接。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-delete.html">ftp_delete()</a></td>
+<td>删除 FTP 服务器上的一个文件。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-exec.html">ftp_exec()</a></td>
+<td>在 FTP 服务器上执行一个程序/命令。</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-fget.html">ftp_fget()</a></td>
+<td>从 FTP 服务器上下载一个文件并保存到本地一个已经打开的文件中。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-fput.html">ftp_fput()</a></td>
+<td>上传一个已经打开的文件，并在 FTP 服务器上把它保存为一个文件。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-get-option.html">ftp_get_option()</a></td>
+<td>返回 FTP 连接的各种运行时选项。</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-get.html">ftp_get()</a></td>
+<td>从 FTP 服务器上下载文件。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-login.html">ftp_login()</a></td>
+<td>登录 FTP 服务器。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-mdtm.html">ftp_mdtm()</a></td>
+<td>返回指定文件的最后修改时间。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-mkdir.html">ftp_mkdir()</a></td>
+<td>在 FTP 服务器上创建一个新目录。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-nb-continue.html">ftp_nb_continue()</a></td>
+<td>连续获取/发送文件。（无阻塞）</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-nb-fget.html">ftp_nb_fget()</a></td>
+<td>从 FTP 服务器上下载一个文件并保存到本地一个已经打开的文件中。（无阻塞）</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-nb-fput.html">ftp_nb_fput()</a></td>
+<td>上传一个已经打开的文件，并在 FTP 服务器上把它保存为一个文件。（无阻塞）</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-nb-get.html">ftp_nb_get()</a></td>
+<td>从 FTP 服务器上下载文件。（无阻塞）</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-nb-put.html">ftp_nb_put()</a></td>
+<td>把文件上传到 FTP 服务器上。（无阻塞）</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-nlist.html">ftp_nlist()</a></td>
+<td>返回 FTP 服务器上指定目录的文件列表。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-pasv.html">ftp_pasv()</a></td>
+<td>把被动模式设置为打开或关闭。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-put.html">ftp_put()</a></td>
+<td>把文件上传到 FTP 服务器上。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-pwd.html">ftp_pwd()</a></td>
+<td>返回当前目录名称。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-quit.html">ftp_quit()</a></td>
+<td>ftp_close() 的别名。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-raw.html">ftp_raw()</a></td>
+<td>向 FTP 服务器发送一个 raw 命令。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-ftp-rawlist.html">ftp_rawlist()</a></td>
+<td>返回指定目录中文件的详细列表。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-rename.html">ftp_rename()</a></td>
+<td>重命名 FTP 服务器上的文件或目录。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-rmdir.html">ftp_rmdir()</a></td>
+<td>删除 FTP 服务器上的一个目录。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-set-option.html">ftp_set_option()</a></td>
+<td>设置 FTP 连接的各种运行时选项。</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-site.html">ftp_site()</a></td>
+<td>向服务器发送 SITE 命令。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-size.html">ftp_size()</a></td>
+<td>返回指定文件的大小。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="func-ftp-ssl-connect.html">ftp_ssl_connect()</a></td>
+<td>打开一个安全的 SSL-FTP 连接。</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="func-ftp-systype.html">ftp_systype()</a></td>
+<td>返回 FTP 服务器的系统类型标识符。</td>
+<td>3</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>PHP FTP 常量</h2>
+<p><b>PHP</b>：指示支持该常量的最早的 PHP 版本。</p>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="30%">常量</th>
+<th align="left" width="65%">描述</th>
+<th align="left" width="5%">PHP</th>
+</tr>
+<tr>
+<td>FTP_ASCII</td>
+<td> </td>
+<td>3</td>
+</tr>
+<tr>
+<td>FTP_TEXT</td>
+<td> </td>
+<td>3</td>
+</tr>
+<tr>
+<td>FTP_BINARY</td>
+<td> </td>
+<td>3</td>
+</tr>
+<tr>
+<td>FTP_IMAGE</td>
+<td> </td>
+<td>3</td>
+</tr>
+<tr>
+<td>FTP_TIMEOUT_SEC</td>
+<td> </td>
+<td>3</td>
+</tr>
+<tr>
+<td>FTP_AUTOSEEK</td>
+<td> </td>
+<td>4</td>
+</tr>
+<tr>
+<td>FTP_AUTORESUME</td>
+<td>为 GET 和 PUT 请求自动决定恢复和开始的位置</td>
+<td>4</td>
+</tr>
+<tr>
+<td>FTP_FAILED</td>
+<td>异步传输失败</td>
+<td>4</td>
+</tr>
+<tr>
+<td>FTP_FINISHED</td>
+<td>异步传输成功</td>
+<td>4</td>
+</tr>
+<tr>
+<td>FTP_MOREDATA</td>
+<td>异步传输是活动状态的</td>
+<td>4</td>
+</tr>
+</table>
+</div>

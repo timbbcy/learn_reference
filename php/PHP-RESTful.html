@@ -1,0 +1,269 @@
+<div class="article-intro" id="content">
+<h1>PHP RESTful</h1>
+<p>REST（英文：Representational State Transfer，简称REST) ，指的是一组架构约束条件和原则。</p>
+<p>符合REST设计风格的Web API称为RESTful API。它从以下三个方面资源进行定义：</p>
+<ul>
+<li>直观简短的资源地址：URI，比如：<code>http://example.com/resources/</code>。</li>
+<li>传输的资源：Web服务接受与返回的互联网媒体类型，比如：JSON，XML，YAM等。</li>
+<li>对资源的操作：Web服务在该资源上所支持的一系列请求方法（比如：POST，GET，PUT或DELETE）。</li>
+</ul>
+<p>本教程我们将使用 PHP(不用框架) 来创建一个 RESTful web service，在文章末尾你可以下载本章节使用到的代码。</p>
+<p>通过本教程你将学习到以下内容：</p>
+<ul>
+<li>创建一个 RESTful Webservice。</li>
+<li>使用原生 PHP, 不依赖任何框架。</li>
+<li>URI 模式需要遵循 REST 规则。</li>
+<li>RESTful service 接受与返回的格式可以是 JSON, XML等。</li>
+<li>根据不同情况响应对应的 HTTP 状态码。</li>
+<li>演示请求头的使用。</li>
+<li>使用 REST 客户端来测试 RESTful web service。</li>
+</ul>
+<hr/>
+<h2>RESTful Webservice 实例</h2>
+<p>以下代码是 RESTful 服务类 <strong>Site.php</strong>：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-comment">/*</span><span class="hl-comment"> 
+ * 菜鸟教程 RESTful 演示实例
+ * RESTful 服务类
+ </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">Class</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">private</span><span class="hl-code"> </span><span class="hl-var">$sites</span><span class="hl-code"> = </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-number">1</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">TaoBao</span><span class="hl-quotes">'</span><span class="hl-code">,  
+        </span><span class="hl-number">2</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-code">,  
+        </span><span class="hl-number">3</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">,              
+        </span><span class="hl-number">4</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Baidu</span><span class="hl-quotes">'</span><span class="hl-code">,              
+        </span><span class="hl-number">5</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Weibo</span><span class="hl-quotes">'</span><span class="hl-code">,  
+        </span><span class="hl-number">6</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Sina</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;
+        
+    
+    </span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">getAllSite</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">sites</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">getSite</span><span class="hl-brackets">(</span><span class="hl-var">$id</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$site</span><span class="hl-code"> = </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-var">$id</span><span class="hl-code"> =&gt; </span><span class="hl-brackets">(</span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-var">$id</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> ? </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-var">$id</span><span class="hl-brackets">]</span><span class="hl-code"> : </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$site</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div></div></div>
+<hr/>
+<h2>RESTful Services URI 映射</h2>
+<p>RESTful Services URI 应该设置为一个直观简短的资源地址。Apache 服务器的 .htaccess 应设置好对应的 Rewrite 规则。
+<p>本实例我们将使用两个 URI 规则：</p>
+<p>1、获取所有站点列表：</p>
+<pre>
+http://localhost/restexample/site/list/
+</pre>
+<p>2、使用 id 获取指定的站点，以下 URI 为获取 id 为 3 的站点：</p>
+<pre>
+http://localhost/restexample/site/list/3/
+</pre>
+<p>项目的 <b> .htaccess</b> 文件配置规则如下所示：</p>
+<pre>
+# 开启 rewrite 功能
+Options +FollowSymlinks
+RewriteEngine on
+
+# 重写规则
+RewriteRule ^site/list/$   RestController.php?view=all [nc,qsa]
+RewriteRule ^site/list/([0-9]+)/$   RestController.php?view=single&amp;id=$1 [nc,qsa]
+</pre>
+<hr/>
+<h2>RESTful Web Service 控制器</h2>
+<p>在 <b>.htaccess</b> 文件中，我们通过设置参数 'view' 来获取 RestController.php 文件中对应的请求，通过获取 'view' 不同的参数来分发到不同的方法上。<strong>RestController.php </strong>文件代码如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">require_once</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SiteRestHandler.php</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        
+</span><span class="hl-var">$view</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-reserved">isset</span><span class="hl-brackets">(</span><span class="hl-var">$_GET</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">view</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">$view</span><span class="hl-code"> = </span><span class="hl-var">$_GET</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">view</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-comment">/*</span><span class="hl-comment">
+ * RESTful service 控制器
+ * URL 映射
+</span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">switch</span><span class="hl-brackets">(</span><span class="hl-var">$view</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">all</span><span class="hl-quotes">"</span><span class="hl-code">:
+        </span><span class="hl-comment">//</span><span class="hl-comment"> 处理 REST Url /site/list/</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$siteRestHandler</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">SiteRestHandler</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-var">$siteRestHandler</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getAllSites</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">break</span><span class="hl-code">;
+        
+    </span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">single</span><span class="hl-quotes">"</span><span class="hl-code">:
+        </span><span class="hl-comment">//</span><span class="hl-comment"> 处理 REST Url /site/show/&lt;id&gt;/</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$siteRestHandler</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">SiteRestHandler</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-var">$siteRestHandler</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getSite</span><span class="hl-brackets">(</span><span class="hl-var">$_GET</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">id</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">break</span><span class="hl-code">;
+ 
+    </span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code"> :
+        </span><span class="hl-comment">//</span><span class="hl-comment">404 - not found;</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">break</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div></div></div>
+<h3>简单的 RESTful 基础类</h3>
+<p>以下提供了 RESTful 的一个基类，用于处理响应请求的 HTTP 状态码，<strong>SimpleRest.php</strong> 文件代码如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-comment">/*</span><span class="hl-comment">
+ * 一个简单的 RESTful web services 基类
+ * 我们可以基于这个类来扩展需求
+</span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">SimpleRest</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">private</span><span class="hl-code"> </span><span class="hl-var">$httpVersion</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">HTTP/1.1</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+    </span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">setHttpHeaders</span><span class="hl-brackets">(</span><span class="hl-var">$contentType</span><span class="hl-code">, </span><span class="hl-var">$statusCode</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$statusMessage</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code"> -&gt; </span><span class="hl-identifier">getHttpStatusMessage</span><span class="hl-brackets">(</span><span class="hl-var">$statusCode</span><span class="hl-brackets">)</span><span class="hl-code">;
+        
+        </span><span class="hl-identifier">header</span><span class="hl-brackets">(</span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">httpVersion</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-code">. </span><span class="hl-var">$statusCode</span><span class="hl-code"> .</span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-code">. </span><span class="hl-var">$statusMessage</span><span class="hl-brackets">)</span><span class="hl-code">;        
+        </span><span class="hl-identifier">header</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Content-Type:</span><span class="hl-quotes">"</span><span class="hl-code">. </span><span class="hl-var">$contentType</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">getHttpStatusMessage</span><span class="hl-brackets">(</span><span class="hl-var">$statusCode</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$httpStatus</span><span class="hl-code"> = </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-number">100</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Continue</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">101</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Switching Protocols</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">200</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">OK</span><span class="hl-quotes">'</span><span class="hl-code">,
+            </span><span class="hl-number">201</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Created</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">202</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Accepted</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">203</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Non-Authoritative Information</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">204</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">No Content</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">205</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Reset Content</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">206</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Partial Content</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">300</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Multiple Choices</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">301</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Moved Permanently</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">302</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Found</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">303</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">See Other</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">304</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Not Modified</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">305</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Use Proxy</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">306</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">(Unused)</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">307</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Temporary Redirect</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">400</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Bad Request</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">401</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Unauthorized</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">402</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Payment Required</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">403</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Forbidden</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">404</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Not Found</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">405</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Method Not Allowed</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">406</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Not Acceptable</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">407</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Proxy Authentication Required</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">408</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Request Timeout</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">409</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Conflict</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">410</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Gone</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">411</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Length Required</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">412</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Precondition Failed</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">413</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Request Entity Too Large</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">414</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Request-URI Too Long</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">415</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Unsupported Media Type</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">416</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Requested Range Not Satisfiable</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">417</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Expectation Failed</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">500</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Internal Server Error</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">501</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Not Implemented</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">502</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Bad Gateway</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">503</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Service Unavailable</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">504</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">Gateway Timeout</span><span class="hl-quotes">'</span><span class="hl-code">,  
+            </span><span class="hl-number">505</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">HTTP Version Not Supported</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$httpStatus</span><span class="hl-brackets">[</span><span class="hl-var">$statusCode</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> ? </span><span class="hl-var">$httpStatus</span><span class="hl-brackets">[</span><span class="hl-var">$statusCode</span><span class="hl-brackets">]</span><span class="hl-code"> : </span><span class="hl-var">$status</span><span class="hl-brackets">[</span><span class="hl-number">500</span><span class="hl-brackets">]</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div></div></div>
+<h3>RESTful Web Service 处理类</h3>
+<p>以下是一个 RESTful Web Service 处理类 SiteRestHandler.php，继承了上面我们提供的 RESTful 基类，类中通过判断请求的参数来决定返回的 HTTP 状态码及数据格式，实例中我们提供了三种数据格式： "application/json" 、 "application/xml" 或 "text/html"：
+</p>
+<p><strong>SiteRestHandler.php</strong> 文件代码如下:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">require_once</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SimpleRest.php</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">require_once</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Site.php</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">SiteRestHandler</span><span class="hl-code"> </span><span class="hl-reserved">extends</span><span class="hl-code"> </span><span class="hl-identifier">SimpleRest</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">getAllSites</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$site</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-var">$rawData</span><span class="hl-code"> = </span><span class="hl-var">$site</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getAllSite</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-reserved">empty</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$statusCode</span><span class="hl-code"> = </span><span class="hl-number">404</span><span class="hl-code">;
+            </span><span class="hl-var">$rawData</span><span class="hl-code"> = </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">error</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">No sites found!</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;        
+        </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$statusCode</span><span class="hl-code"> = </span><span class="hl-number">200</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$requestContentType</span><span class="hl-code"> = </span><span class="hl-var">$_SERVER</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">HTTP_ACCEPT</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">;
+        </span><span class="hl-var">$this</span><span class="hl-code"> -&gt;</span><span class="hl-identifier">setHttpHeaders</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">, </span><span class="hl-var">$statusCode</span><span class="hl-brackets">)</span><span class="hl-code">;
+                
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">strpos</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">application/json</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> !== </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$response</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">encodeJson</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-code">;
+            </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$response</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">strpos</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">text/html</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> !== </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$response</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">encodeHtml</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-code">;
+            </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$response</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">strpos</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">application/xml</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> !== </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$response</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">encodeXml</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-code">;
+            </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$response</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">encodeHtml</span><span class="hl-brackets">(</span><span class="hl-var">$responseData</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$htmlResponse</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;table border='1'&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-reserved">foreach</span><span class="hl-brackets">(</span><span class="hl-var">$responseData</span><span class="hl-code"> </span><span class="hl-reserved">as</span><span class="hl-code"> </span><span class="hl-var">$key</span><span class="hl-code">=&gt;</span><span class="hl-var">$value</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$htmlResponse</span><span class="hl-code"> .= </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">. </span><span class="hl-var">$key</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">. </span><span class="hl-var">$value</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$htmlResponse</span><span class="hl-code"> .= </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/table&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$htmlResponse</span><span class="hl-code">;        
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">encodeJson</span><span class="hl-brackets">(</span><span class="hl-var">$responseData</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$jsonResponse</span><span class="hl-code"> = </span><span class="hl-identifier">json_encode</span><span class="hl-brackets">(</span><span class="hl-var">$responseData</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$jsonResponse</span><span class="hl-code">;        
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">encodeXml</span><span class="hl-brackets">(</span><span class="hl-var">$responseData</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建 SimpleXMLElement 对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$xml</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">SimpleXMLElement</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">&lt;?xml version="1.0"?&gt;&lt;site&gt;&lt;/site&gt;</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">foreach</span><span class="hl-brackets">(</span><span class="hl-var">$responseData</span><span class="hl-code"> </span><span class="hl-reserved">as</span><span class="hl-code"> </span><span class="hl-var">$key</span><span class="hl-code">=&gt;</span><span class="hl-var">$value</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$xml</span><span class="hl-code">-&gt;</span><span class="hl-identifier">addChild</span><span class="hl-brackets">(</span><span class="hl-var">$key</span><span class="hl-code">, </span><span class="hl-var">$value</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$xml</span><span class="hl-code">-&gt;</span><span class="hl-identifier">asXML</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">getSite</span><span class="hl-brackets">(</span><span class="hl-var">$id</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$site</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Site</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-var">$rawData</span><span class="hl-code"> = </span><span class="hl-var">$site</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getSite</span><span class="hl-brackets">(</span><span class="hl-var">$id</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-reserved">empty</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$statusCode</span><span class="hl-code"> = </span><span class="hl-number">404</span><span class="hl-code">;
+            </span><span class="hl-var">$rawData</span><span class="hl-code"> = </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">error</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">No sites found!</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;        
+        </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$statusCode</span><span class="hl-code"> = </span><span class="hl-number">200</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$requestContentType</span><span class="hl-code"> = </span><span class="hl-var">$_SERVER</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">HTTP_ACCEPT</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">;
+        </span><span class="hl-var">$this</span><span class="hl-code"> -&gt;</span><span class="hl-identifier">setHttpHeaders</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">, </span><span class="hl-var">$statusCode</span><span class="hl-brackets">)</span><span class="hl-code">;
+                
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">strpos</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">application/json</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> !== </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$response</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">encodeJson</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-code">;
+            </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$response</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">strpos</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">text/html</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> !== </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$response</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">encodeHtml</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-code">;
+            </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$response</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">strpos</span><span class="hl-brackets">(</span><span class="hl-var">$requestContentType</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">application/xml</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> !== </span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$response</span><span class="hl-code"> = </span><span class="hl-var">$this</span><span class="hl-code">-&gt;</span><span class="hl-identifier">encodeXml</span><span class="hl-brackets">(</span><span class="hl-var">$rawData</span><span class="hl-brackets">)</span><span class="hl-code">;
+            </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$response</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div></div></div>
+<p>接下来我们通过 http://localhost/restexample/site/list/ 访问，输出结果如下：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2016/03/restful1.jpg"/>
+<hr/>
+<h2>RESTful Web Service 客户端</h2>
+<p>接下来我们可以使用 Google Chrome 浏览器的 "Advance Rest Client" 作为 RESTful Web Service 客户端来请求我们的服务。</p>
+<p>实例中请求 http://localhost/restexample/site/list/ 地址，接收数据类似为 <b>Accept: application/json</b>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/03/restful2.jpg"/>
+</p>
+<p>请求 id 为 3 的站点 Runoob(菜鸟教程)，访问地址为 http://localhost/restexample/site/list/3/，</p><p>
+<img src="http://www.runoob.com/wp-content/uploads/2016/03/restful3.jpg"/></p>
+<h3>源码下载</h3>
+<p>实例中使用到的代码可点击以下按钮下载：</p>
+<p><a class="download" href="http://static.runoob.com/download/restexample.zip">源码下载</a></p>
+</p></p></div>

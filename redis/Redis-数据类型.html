@@ -1,0 +1,36 @@
+<div class="article-intro" id="content">
+<h1>Redis 数据类型</h1>
+<p>Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。
+</p>
+<hr/>
+<h2>String（字符串）</h2>
+<p>string是redis最基本的类型，你可以理解成与Memcached一模一样的类型，一个key对应一个value。</p>
+<p>string类型是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象
+。</p>
+<p>string类型是Redis最基本的数据类型，一个键最大能存储512MB。
+</p>
+<h3>实例</h3>
+<pre>
+redis 127.0.0.1:6379&gt; SET name "runoob"
+OK
+redis 127.0.0.1:6379&gt; GET name
+"runoob"
+</pre>
+<p>在以上实例中我们使用了 Redis 的 <b>SET</b> 和 <b>GET</b> 命令。键为 name，对应的值为 <strong>runoob</strong>。</p>
+<p><b>注意：</b>一个键最大能存储512MB。</p>
+<hr/>
+<h2>Hash（哈希）</h2>
+<p>Redis hash 是一个键值(key=&gt;value)对集合。</p>
+<p>Redis hash是一个string类型的field和value的映射表，hash特别适合用于存储对象。</p>
+<h3>实例</h3>
+<pre>
+redis&gt; HMSET myhash field1 "Hello" field2 "World"
+"OK"
+redis&gt; HGET myhash field1
+"Hello"
+redis&gt; HGET myhash field2
+"World"
+</pre>
+<p>以上实例中 hash 数据类型存储了包含用户脚本信息的用户对象。
+实例中我们使用了 Redis <strong>HMSET, HGETALL</strong> 命令，<b>user:1</b> 为键值。
+</p>每个 hash 可以存储 2<sup>32</sup> -1 键值对（40多亿）。</div>

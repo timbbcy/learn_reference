@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">MySQL 简介</span>
+</h1>
+<hr/>
+<p class="intro">通过 PHP，您可以连接和操作数据库。</p>
+<p class="intro">MySQL 是跟 PHP 配套使用的最流行的开源数据库系统。</p>
+<p class="intro">如果想学习更多 MySQL 知识可以查看本站<a href="/mysql/mysql-tutorial.html" title="MySQL 教程"> MySQL 教程</a>。</p>
+<hr/>
+<h2>MySQL 是什么？</h2>
+<ul>
+<li>MySQL 是一种在 Web 上使用的数据库系统。</li>
+<li>MySQL 是一种在服务器上运行的数据库系统。</li>
+<li>MySQL 不管在小型还是大型应用程序中，都是理想的选择。</li>
+<li>MySQL 是非常快速，可靠，且易于使用的。</li>
+<li>MySQL 支持标准的 SQL。</li>
+<li>MySQL 在一些平台上编译。</li>
+<li>MySQL 是免费下载使用的。</li>
+<li>MySQL 是由 Oracle 公司开发、发布和支持的。</li>
+<li>MySQL 是以公司创始人 Monty Widenius's daughter: My 命名的。</li>
+</ul>
+<p>MySQL 中的数据存储在表中。表格是一个相关数据的集合，它包含了列和行。</p>
+<p>在分类存储信息时，数据库非常有用。一个公司的数据库可能拥有以下表：</p>
+<ul>
+<li>Employees</li>
+<li>Products</li>
+<li>Customers</li>
+<li>Orders</li>
+</ul>
+<hr/>
+<h2>PHP + MySQL</h2>
+<ul>
+<li>PHP 与 MySQL 结合是跨平台的。（您可以在 Windows 上开发，在 Unix 平台上应用。）</li>
+</ul>
+<hr/>
+<h2>查询</h2>
+<p>查询是一种询问或请求。</p>
+<p>通过 MySQL，我们可以向数据库查询具体的信息，并得到返回的记录集。</p>
+<p>请看下面的查询（使用标准 SQL）：</p>
+<pre>
+mysql&gt; set names utf8;
+mysql&gt; SELECT name FROM websites;
++---------------+
+| name          |
++---------------+
+| Google        |
+| 淘宝        |
+| 菜鸟教程  |
+| 微博        |
+| Facebook      |
+| stackoverflow |
++---------------+
+6 rows in set (0.00 sec)
+</pre>
+<p>语句 <b>set names utf8;</b>用于设定数据库编码，让中文可以正常显示。</p>
+<p>上面的查询选取了 "websites" 表中 "name" 列的所有数据。</p>
+<p>如需学习更多关于 SQL 的知识，请访问我们的 <a href="/sql/sql-tutorial.html">SQL 教程</a>。</p>
+<hr/>
+<h2>下载 MySQL 数据库</h2>
+<p>如果您的 PHP 服务器没有 MySQL 数据库，可以在此免费下载 MySQL：<a href="http://www.mysql.com" target="_blank">
+http://www.mysql.com</a>。<br/></p>
+<hr/>
+<h2>关于 MySQL 数据库的事实</h2>
+<p>关于 MySQL 的一点很棒的特性是，可以对它进行缩减，来支持嵌入的数据库应用程序。也许正因为如此，许多人认为 MySQL 仅仅能处理中小型的系统。</p>
+<p>事实上，对于那些支持巨大数据和访问量的网站（比如 Friendster、Yahoo、Google），MySQL 是事实上的标准数据库。</p>
+<p>这个地址提供了使用 MySQL 的公司的概览：<a href="http://www.mysql.com/customers/" target="_blank">
+http://www.mysql.com/customers/</a>。</p>
+</div>

@@ -1,0 +1,82 @@
+<div class="article-intro" id="content">
+<h1>
+<span class="color_h1">SQL</span> 指南</h1>
+<hr/>
+<h2>SQL - 结构化查询语言 (Structured Query Language)</h2>
+<p>SQL 是用于访问和处理数据库的标准的计算机语言。</p>
+<p>常用的数据库管理系统： MySQL, SQL Server, Access, Oracle, 
+Sybase, 和 DB2</p>
+<p>对于那些希望在数据库中存储数据并从中获取数据的人来说，SQL 的知识是价值无法衡量的。</p>
+<hr/>
+<h2>什么是 SQL?</h2>
+<ul>
+<li>SQL 指结构化查询语言 (<em>S</em>tructured <em>Q</em>uery <em>L</em>anguage)</li>
+<li>SQL 使我们有能力访问数据库</li>
+<li>SQL 是一种 ANSI 的标准计算机语言</li>
+<li>SQL 面向数据库执行查询</li>
+<li>SQL 可从数据库取回数据</li>
+<li>SQL 可在数据库中插入新的记录</li>
+<li>SQL 可从数据库删除记录</li>
+<li>SQL 很容易学习</li>
+</ul>
+<hr/>
+<h2>SQL  数据库表</h2>
+<p>一个数据库通常包含一个或多个表。每个表由一个名字标识（例如"客户"或者"订单"）。表包含带有数据的记录（行）。
+</p>
+<p>下面的例子是一个名为 "Persons" 的表：</p>
+<table class="reference notranslate">
+<tr>
+<th align="left">LastName</th>
+<th align="left">FirstName</th>
+<th align="left">Address</th>
+<th align="left">City</th>
+</tr>
+<tr>
+<td>Hansen</td>
+<td>Ola</td>
+<td>Timoteivn 10</td>
+<td>Sandnes</td>
+</tr>
+<tr>
+<td>Svendson</td>
+<td>Tove</td>
+<td>Borgvn 23</td>
+<td>Sandnes</td>
+</tr>
+<tr>
+<td>Pettersen</td>
+<td>Kari</td>
+<td>Storgt 20</td>
+<td>Stavanger</td>
+</tr>
+</table>
+<p>上面的表包含三条记录（每一条对应一个人）和四个列（姓、名、地址和城市）。</p>
+<hr/>
+<h2>SQL 查询程序</h2>
+<p>通过 SQL，我们可以查询某个数据库，并获得返回的一个结果集。
+</p>
+<p>查询程序类似这样：</p>
+<div class="code notranslate"><div>
+
+SELECT LastName FROM Persons
+
+</div></div>
+<p>结果集类似这样：</p>
+<table class="reference notranslate" style="width:50%">
+<tr>
+<th align="left">LastName</th>
+</tr>
+<tr>
+<td>Hansen</td>
+</tr>
+<tr>
+<td>Svendson</td>
+</tr>
+<tr>
+<td>Pettersen</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>如何学习SQL？</h2>
+<p>访问我们 <a href="/sql/sql-tutorial.html">完整的 SQL 教程</a></p>
+</div>

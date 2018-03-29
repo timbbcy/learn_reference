@@ -1,0 +1,60 @@
+<div class="article-intro" id="content">
+<h1><span class="color_h1">XMLHttpRequest</span> 对象</h1>
+<hr/>
+<h2>XMLHttpRequest 对象</h2>
+<p>XMLHttpRequest 对象用于在后台与服务器交换数据。</p>
+<p>XMLHttpRequest 对象是<b>开发者的梦想</b>，因为您能够：</p>
+<ul>
+<li>在不重新加载页面的情况下更新网页</li>
+<li>在页面已加载后从服务器请求数据</li>
+<li>在页面已加载后从服务器接收数据</li>
+<li>在后台向服务器发送数据</li>
+</ul>
+<p>
+如需学习更多关于 XMLHttpRequest 对象的知识，请学习我们的 <a href="/dom/dom-tutorial.html" target="_blank">XML DOM 教程</a>。</p>
+<hr/>
+<h2>XMLHttpRequest 实例</h2>
+<p>当你在下面的输入字段中键入一个字符，一个 XMLHttpRequest 发送到服务器 - 返回名称的建议（从服务器上的文件）：</p>
+<table id="table18" style="border:1px solid #d4d4d4;background-color:#e5eecc;background-image:url('/images/bgfadegreen.gif');background-repeat:repeat-x" width="100%">
+<tbody><tr><td align="center">
+<p class="intro">在输入框中键入一个字母：</p>
+<p class="intro">首字母</p>
+<input id="txt1" onkeyup="showHint(this.value)" type="text"/>
+<br/>
+<p class="intro">建议:</p>
+<p class="intro"><span id="txtHint"></span></p>
+</td></tr></tbody></table>
+<br/><hr/>
+<h2>创建一个 XMLHttpRequest 对象</h2>
+<p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 和 Opera）都有内建的 XMLHttpRequest 对象。</p>
+<p>创建 XMLHttpRequest 对象的语法：</p>
+<div class="code notranslate"><div>
+xmlhttp=new XMLHttpRequest();</div></div>
+<p>旧版本的Internet Explorer（IE5和IE6）中使用 ActiveX 对象：</p>
+<div class="code notranslate"><div>
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");</div></div>
+<p>在下一章中，我们将使用 XMLHttpRequest 对象从服务器取回 XML 信息。</p>
+<script>
+function showHint(str)
+{
+if (str.length==0)
+  { 
+  document.getElementById("txtHint").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {
+  xmlHttp=new XMLHttpRequest();
+  }
+else // for older IE 5/6
+  {
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+var url="/try/ajax/gethint.php?q=" + str;
+url=url+"&amp;sid="+Math.random();
+xmlHttp.open("GET",url,false);
+xmlHttp.send();
+document.getElementById("txtHint").innerHTML=xmlHttp.responseText;
+}
+</script>
+</div>

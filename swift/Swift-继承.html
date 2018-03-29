@@ -1,0 +1,43 @@
+<div class="article-intro" id="content">
+<h1>Swift 继承</h1>
+<p>继承我们可以理解为一个类获取了另外一个类的方法和属性。</p>
+<p>当一个类继承其它类时，继承类叫子类，被继承类叫超类（或父类)</p>
+<p>在 Swift 中，类可以调用和访问超类的方法，属性和下标脚本，并且可以重写它们。</p>
+<p>我们也可以为类中继承来的属性添加属性观察器。</p>
+<hr/>
+<h2>基类</h2>
+<p>没有继承其它类的类，称之为基类（Base Class）。</p>
+<p>以下实例中我们定义了基类 StudDetails ，描述了学生（stname）及其各科成绩的分数(mark1、mark2、mark3)：</p>
+<pre>
+class StudDetails {
+    var stname: String!
+    var mark1: Int!
+    var mark2: Int!
+    var mark3: Int!
+    init(stname: String, mark1: Int, mark2: Int, mark3: Int) {
+        self.stname = stname
+        self.mark1 = mark1
+        self.mark2 = mark2
+        self.mark3 = mark3
+    }
+}
+let stname = "swift"
+let mark1 = 98
+let mark2 = 89
+let mark3 = 76
+
+let sds = StudDetails(stname:stname, mark1:mark1, mark2:mark2, mark3:mark3);
+
+print(sds.stname)
+print(sds.mark1)
+print(sds.mark2)
+print(sds.mark3)
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+swift
+98
+89
+76
+</pre>
+<hr/>
+<h2>子类</h2></div>

@@ -1,0 +1,121 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">列表组</span></h1>
+<p>本章我们将讲解列表组。列表组件用于以列表形式呈现复杂的和自定义的内容。创建一个基本的列表组的步骤如下：</p>
+<ul class="list">
+<li>向元素 &lt;ul&gt; 添加 class <b>.list-group</b>。</li>
+<li>向 &lt;li&gt; 添加 class <b>.list-group-item</b>。</li>
+</ul>
+<p>下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">免费域名注册</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">免费 Window 空间托管</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">图像的数量</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">24*7 支持</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">每年更新成本</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-listgroup-basic" target="_blank">尝试一下 »</a></div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="基本的列表组" src="/wp-content/uploads/2014/06/basiclistgroup_demo.jpg"/>
+</div>
+<h2>向列表组添加徽章</h2>
+<p>我们可以向任意的列表项添加徽章组件，它会自动定位到右边。只需要在 &lt;li&gt; 元素中添加 <b>&lt;span class="badge"&gt;</b> 即可。下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">免费域名注册</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">免费 Window 空间托管</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">图像的数量</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">新</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        24*7 支持
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">每年更新成本</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">新</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        折扣优惠
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-listgroup-badges" target="_blank">尝试一下 »</a></div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="列表组中的徽章" src="/wp-content/uploads/2014/06/badgeslistgroup_demo.jpg"/>
+</div>
+<h2>向列表组添加链接</h2>
+<p>通过使用锚标签代替列表项，我们可以向列表组添加链接。我们需要使用 &lt;div&gt; 代替 &lt;ul&gt; 元素。下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    免费域名注册
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">24*7 支持</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">免费 Window 空间托管</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">图像的数量</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">每年更新成本</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-listgroup-links" target="_blank">尝试一下 »</a></div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="列表组中的链接" src="/wp-content/uploads/2014/06/linkslistgroup_demo.jpg"/>
+</div>
+<h2>向列表组添加自定义内容</h2>
+<p>我们可以向上面已添加链接的列表组添加任意的 HTML 内容。下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            入门网站包
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            免费域名注册
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-text</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            您将通过网页进行免费域名注册。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            24*7 支持
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-text</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            我们提供 24*7 支持。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            商务网站包
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            免费域名注册
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-text</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            您将通过网页进行免费域名注册。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">24*7 支持</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">list-group-item-text</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">我们提供 24*7 支持。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-listgroup-customcontent" target="_blank">尝试一下 »</a></div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="列表组中的自定义内容" src="/wp-content/uploads/2014/06/customcontentlistgroup_demo.jpg"/>
+</div>
+</div>

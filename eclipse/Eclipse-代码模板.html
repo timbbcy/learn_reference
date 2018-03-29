@@ -1,0 +1,37 @@
+<div class="article-intro" id="content">
+<h1>Eclipse 代码模板
+</h1>
+<h2>使用代码模板</h2>
+<p>Eclipse 提供了通过定义和使用代码模板来提高工作效率与代码可预测性的能力。</p>
+<p>我们在开发 Java 程序过程中经常需要编写 main 方法：</p>
+<pre>
+public static void main(String[]args) {
+
+}
+</pre>
+<p>如果我们一个字母一个字母去编写，将是一个重复而又毫无意义的事情，这是我们就可以使用 Eclipse 代码模板来快速完成这些工作。</p>
+<p>我们只需在类体中键入main，然后使用Eclipse的代码提示快捷键(默认为Alt+/)，回车后，就可以看到Eclipse自动帮我们完成了main函数的完整定义：
+</p>
+<img alt="tmp1" class="alignnone size-full wp-image-10887" height="356" sizes="(max-width: 761px) 100vw, 761px" src="http://www.runoob.com/wp-content/uploads/2014/12/tmp1.jpg" srcset="http://www.runoob.com/wp-content/uploads/2014/12/tmp1.jpg 761w, http://www.runoob.com/wp-content/uploads/2014/12/tmp1-300x140.jpg 300w" width="761"/>
+<p>如果我们要使用 System.out.println()，我们只需要输入 syso 然后按下 Alt+/ 即可：</p>
+<img alt="tmp2" class="alignnone size-full wp-image-10888" height="331" sizes="(max-width: 722px) 100vw, 722px" src="http://www.runoob.com/wp-content/uploads/2014/12/tmp2.jpg" srcset="http://www.runoob.com/wp-content/uploads/2014/12/tmp2.jpg 722w, http://www.runoob.com/wp-content/uploads/2014/12/tmp2-300x138.jpg 300w" width="722"/>
+<hr/>
+<h2>自定义代码模板</h2>
+<p>Eclipse 还提供了非常多的代码模板，我们可以通过 Windows-&gt;Preferences-&gt;Java-&gt;Editor-&gt;Templates (你可以在搜索框中输入Templates查找)看到所有已定义的代码模板列表。</p>
+<img alt="tmp3" class="alignnone size-full wp-image-10885" height="487" sizes="(max-width: 725px) 100vw, 725px" src="http://www.runoob.com/wp-content/uploads/2014/12/tmp3.jpg" srcset="http://www.runoob.com/wp-content/uploads/2014/12/tmp3.jpg 725w, http://www.runoob.com/wp-content/uploads/2014/12/tmp3-300x202.jpg 300w" width="725"/>
+<p>我们在弹窗口选中 sysout 模板并点击右侧Edit，显示如下：</p>
+<img alt="tmp4" class="alignnone size-full wp-image-10886" height="355" sizes="(max-width: 618px) 100vw, 618px" src="http://www.runoob.com/wp-content/uploads/2014/12/tmp4.jpg" srcset="http://www.runoob.com/wp-content/uploads/2014/12/tmp4.jpg 618w, http://www.runoob.com/wp-content/uploads/2014/12/tmp4-300x172.jpg 300w" width="618"/>
+<p>编辑面板是核心关注对象，因为一切东西都在这里面配置。先来熟悉下这个面板中关键的五项分别是什么。</p>
+<ul>
+<li><strong>Name：</strong>名称，其实就是以后可以用到的代码缩写</li>
+<li><strong>Context：</strong>模板上下文，指定该代码模板在什么地方才能生效，对于Java至少包含这么四个：
+	<ul>
+<li>
+       Java type members，模板对应的代码是类成员，psvm模板严格来说应该选择这个</li>
+</ul></li><li>
+       Java statements，模板对应的代码是语句块
+	</li><li>
+       Java，最通用的，只要是Java代码就行
+	</li><li>
+       Java doc，顾名思义了</li></ul>
+</div>

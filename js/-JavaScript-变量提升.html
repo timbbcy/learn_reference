@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>JavaScript 变量提升</h1>
+<p>JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。 </p>
+<p>JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明。</p>
+<p>以下两个实例将获得相同的结果：</p>
+<div class="example">
+<h3>实例 1</h3>
+<div class="example_code"><span style="color:black">
+x = <span style="color:red">5</span>; <span style="color:green">// 变量 x 设置为 5<br/></span><span style="color:red">
+</span><br/>
+elem = document.getElementById(<span style="color:brown">"demo"</span>); <span style="color:green">// 查找元素 <br/></span>
+elem.innerHTML = x;                     <span style="color:red">
+</span><span style="color:green">// 在元素中显示 x<br/></span><br/><span style="color:mediumblue">var</span> x; <span style="color:green">// 声明 x
+</span></span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_hoisting1" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<div class="example">
+<h3>实例 2</h3>
+<div class="example_code"><span style="color:black">
+<span style="color:mediumblue">var</span> x; <span style="color:green">// 声明 x<br/></span>
+x = <span style="color:red">5</span>; <span style="color:green">// 变量 x 设置为 5<br/></span><br/>
+elem = document.getElementById(<span style="color:brown">"demo"</span>); <span style="color:green">// 查找元素 <br/></span>elem.innerHTML = x;                     <span style="color:red">
+</span><span style="color:green">// 在元素中显示 x<br/></span>
+</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_hoisting2" target="_blank">尝试一下 »</a>
+</div>
+<p>要理解以上实例就需要理解 "hoisting(变量提升)"。</p>
+<p>变量提升：函数声明和变量声明总是会被解释器悄悄地被"提升"到方法体的最顶部。</p>
+<hr/>
+<h2>JavaScript 初始化不会提升</h2>
+<p>JavaScript 只有声明的变量会提升，初始化的不会。</p>
+<p>以下两个实例结果结果不相同：</p>
+<div class="example">
+<h3>实例 1</h3>
+<div class="example_code"><span style="color:black">
+<span style="color:mediumblue">var</span> x = <span style="color:red">5</span>; <span style="color:green">// 初始化 x<br/></span><span style="color:mediumblue">var</span> y = <span style="color:red">7</span>; <span style="color:green">// 初始化 y<br/></span><br/>elem = document.getElementById(<span style="color:brown">"demo"</span>); <span style="color:green">// 查找元素 <br/></span>
+elem.innerHTML = x + <span style="color:brown">" "</span> + y;           <span style="color:green">// 显示 x 和 y
+</span></span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_hoisting4" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<div class="example">
+<h3>实例 2</h3>
+<div class="example_code"><span style="color:black">
+<span style="color:mediumblue">var</span> x = <span style="color:red">5</span>; <span style="color:green">// 初始化 x<br/></span><span style="color:red">
+</span><br/>
+elem = document.getElementById(<span style="color:brown">"demo"</span>); <span style="color:green">// 查找元素 <br/></span>
+elem.innerHTML = x + <span style="color:brown">" "</span> + y;           <span style="color:green">// 显示 x 和 y<br/></span><span style="color:red">
+</span><br/>
+<span style="color:mediumblue">var</span> y = <span style="color:red">7</span>; <span style="color:green">// 初始化 y
+</span></span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_hoisting3" target="_blank">尝试一下 »</a>
+</div>
+<p>实例 2 的 y 输出了 <b>undefined</b>，这是因为变量声明 (var y) 提升了，但是初始化(y = 7) 并不会提升，所以 y 变量是一个未定义的变量。 </p>
+<p>实例 2 类似以下代码:</p>
+<pre>
+var x = 5; // 初始化 x
+var y;     // 声明 y
+
+elem = document.getElementById("demo"); // 查找元素
+elem.innerHTML = x + " " + y;           // 显示 x 和 y
+
+y = 7;    // 设置 y 为 7
+</pre>
+<hr/>
+<h2>在头部声明你的变量</h2>
+<p>对于大多数程序员来说并不知道 JavaScript 变量提升。</p>
+<p>
+如果程序员不能很好的理解变量提升，他们写的程序就容易出现一些问题。</p>
+<p>为了避免这些问题，通常我们在每个作用域开始前声明这些变量，这也是正常的 JavaScript 解析步骤，易于我们理解。</p>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>JavaScript 严格模式(strict mode)不允许使用未声明的变量。<br/>在下一个章节中我们将会学习到 <strong>"严格模式(strict mode)"</strong> 。</td>
+</tr></tbody></table>
+</div>

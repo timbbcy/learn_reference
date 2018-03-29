@@ -1,0 +1,103 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">添加节点</span>
+</h1>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_createelement2" target="_blank">在最后一个子节点之后添加一个节点</a><br/>
+本例使用 appendChild() 方法向一个已有的节点添加一个子节点。</p>
+<p><a href="/try/try.php?filename=try_dom_insertbefore" target="_blank">在指定的子节点之前添加一个节点</a><br/>
+本例使用 insertBefore() 方法在一个指定的子节点之前插入一个节点。</p>
+<p><a href="/try/try.php?filename=try_dom_createattribute3" target="_blank">添加一个新属性</a><br/>
+本例使用 setAttribute() 方法添加一个新的属性。</p>
+<p><a href="/try/try.php?filename=try_dom_insertdata" target="_blank">向文本节点添加数据</a><br/>
+本例使用 insertData() 把数据插入一个已有的文本节点中。</p>
+<hr/>
+<h2>添加节点 - appendChild()</h2>
+<p>appendChild() 方法向一个已有的节点添加一个子节点。</p>
+<p>新节点会添加（追加）到任何已有的子节点之后。</p>
+<p><b>注意：</b>如果节点的位置很重要，请使用 insertBefore() 方法。</p>
+<p>下面的代码片段创建一个元素（&lt;edition&gt;），并把它添加到第一个 &lt;book&gt; 元素的最后一个子节点后面：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+newel=xmlDoc.createElement("edition");<br/><br/>
+x=xmlDoc.getElementsByTagName("book")[0];<br/>
+x.appendChild(newel);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_createelement2" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>创建一个新节点 &lt;edition&gt;</li>
+<li>把这个节点追加到第一个 &lt;book&gt; 元素</li>
+</ol>
+<p>遍历并向所有 &lt;book&gt; 元素追加一个元素：<a href="/try/try.php?filename=try_dom_createelement" target="_blank">尝试一下</a>
+</p>
+<hr/>
+<h2>插入节点 - insertBefore()</h2>
+<p>insertBefore()方法用于在指定的子节点之前插入节点。</p>
+<p>在被添加的节点的位置很重要时，此方法很有用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+newNode=xmlDoc.createElement("book");<br/><br/>
+x=xmlDoc.documentElement;<br/>
+y=xmlDoc.getElementsByTagName("book")[3];<br/><br/>
+x.insertBefore(newNode,y);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_insertbefore" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>创建一个新的元素节点 &lt;book&gt;</li>
+<li>把这个新节点插到最后一个 &lt;book&gt; 元素节点之前</li>
+</ol>
+<p>如果 insertBefore() 的第二个参数是 null，新节点将被添加到最后一个已有的子节点之后。</p>
+<p><b>x.insertBefore(newNode,null)</b> 和 <b>x.appendChild(newNode)</b> 都可以向 x 追加一个新的子节点。</p>
+<hr/>
+<h2>添加新属性</h2>
+<p>addAtribute() 这个方法是不存在的。</p>
+<p>如果属性不存在，则 setAttribute() 可创建一个新的属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName('book');<br/>
+x[0].setAttribute("edition","first");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_createattribute3" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>把第一个 &lt;book&gt; 元素的 "edition" 属性的值设置（创建）为 "first"</li>
+</ol>
+<p><b>注意：</b>如果属性已存在，setAttribute() 方法将覆盖已有的值。</p>
+<hr/>
+<h2>向文本节点添加文本 - insertData()</h2>
+<p>insertData() 方法将数据插入已有的文本节点中。</p>
+<p>insertData() 方法有两个参数：</p>
+<ul>
+<li>offset - 在何处开始插入字符（以 0 开始）</li>
+<li>string - 要插入的字符串</li>
+</ul>
+<p>下面的代码片段将把 "Easy" 添加到已加载的 XML 的第一个 &lt;title&gt; 元素的文本节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0].childNodes[0];<br/><br/>
+x.insertData(0,"Easy ");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_insertdata" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+</div>

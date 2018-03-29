@@ -1,0 +1,348 @@
+<div class="article-intro" id="content">
+<h1>ionic 滚动条</h1>
+<hr/>
+<h2>ion-scroll </h2>
+<p>ion-scroll  用于创建一个可滚动的容器。</p>
+<h3>用法</h3>
+<pre>
+&lt;ion-scroll
+    [delegate-handle=""]
+    [direction=""]
+    [paging=""]
+    [on-refresh=""]
+    [on-scroll=""]
+    [scrollbar-x=""]
+    [scrollbar-y=""]
+    [zooming=""]
+    [min-zoom=""]
+    [max-zoom=""]&gt;
+    ...
+&lt;/ion-scroll&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        delegate-handle
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>该句柄利用<code>$ionicScrollDelegate</code>指定滚动视图。</p>
+</td>
+</tr>
+<tr>
+<td>
+        direction
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>滚动的方向。 'x' 或 'y'。 默认 'y'。</p>
+</td>
+</tr>
+<tr>
+<td>
+        paging
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>分页是否滚动。</p>
+</td>
+</tr>
+<tr>
+<td>
+        on-refresh
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>调用下拉刷新， 由<code>ionRefresher</code>触发。</p>
+</td>
+</tr>
+<tr>
+<td>
+        on-scroll
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>当用户滚动时触发。</p>
+</td>
+</tr>
+<tr>
+<td>
+        scrollbar-x
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否显示水平滚动条。默认为false。</p>
+</td>
+</tr>
+<tr>
+<td>
+        scrollbar-y
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否显示垂直滚动条。默认为true。</p>
+</td>
+</tr>
+<tr>
+<td>
+        zooming
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否支持双指缩放。</p>
+</td>
+</tr>
+<tr>
+<td>
+        min-zoom
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>整数</code>
+</td>
+<td>
+<p>允许的最小缩放量（默认为0.5）</p>
+</td>
+</tr>
+<tr>
+<td>
+        max-zoom
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>整数</code>
+</td>
+<td>
+<p>允许的最大缩放量（默认为3）</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>实例</h3>
+<h3>HTML 代码</h3>
+<pre>
+&lt;ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px"&gt;
+    &lt;div style="width: 5000px; height: 5000px; background: url('http://www.runoob.com/try/demo_source/Europe_geological_map-en.jpg') repeat"&gt;&lt;/div&gt;
+&lt;/ion-scroll&gt;
+</pre>
+<h3>CSS 代码</h3>
+<pre>
+body {
+  cursor: url('http://www.runoob.com/try/demo_source/finger.png'), auto;
+}
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('ionicApp', ['ionic']);
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-scroll" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<hr/>
+<h2>ion-infinite-scroll </h2>
+<p>当用户到达页脚或页脚附近时，ionInfiniteScroll指令允许你调用一个函数 。</p><p>
+
+当用户滚动的距离超出底部的内容时，就会触发你指定的on-infinite。
+</p>
+<h3>用法</h3>
+<pre>
+&lt;ion-content ng-controller="MyController"&gt;
+  &lt;ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="1%"&gt;
+  &lt;/ion-infinite-scroll&gt;
+&lt;/ion-content&gt;
+</pre>
+<pre>
+function MyController($scope, $http) {
+  $scope.items = [];
+  $scope.loadMore = function() {
+    $http.get('/more-items').success(function(items) {
+      useItems(items);
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
+
+  $scope.$on('stateChangeSuccess', function() {
+    $scope.loadMore();
+  });
+}
+</pre>
+<p>当没有更多数据加载时，就可以用一个简单的方法阻止无限滚动，那就是angular的ng-if 指令:</p>
+<pre>
+&lt;ion-infinite-scroll
+  ng-if="moreDataCanBeLoaded()"
+  icon="ion-loading-c"
+  on-infinite="loadMoreData()"&gt;
+&lt;/ion-infinite-scroll&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        on-infinite
+        
+      </td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>当滚动到底部时触发的事件。</p>
+</td>
+</tr>
+<tr>
+<td>
+        distance
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>从底部滚动到触发on-infinite表达式的距离。默认: 1%。</p>
+</td>
+</tr>
+<tr>
+<td>
+        icon
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>当加载时显示的图标。默认: 'ion-loading-d'。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>$ionicScrollDelegate</h2>
+<p>授权控制滚动视图（通过ion-content 和 ion-scroll指令创建）。
+</p><p>
+该方法直接被$ionicScrollDelegate服务触发，来控制所有滚动视图。用 $getByHandle方法控制特定的滚动视图。
+</p>
+<h3>用法</h3>
+<pre>
+&lt;body ng-controller="MainCtrl"&gt;
+  &lt;ion-content&gt;
+    &lt;button ng-click="scrollTop()"&gt;滚动到顶部!&lt;/button&gt;
+  &lt;/ion-content&gt;
+&lt;/body&gt;
+</pre>
+<pre>
+function MainCtrl($scope, $ionicScrollDelegate) {
+  $scope.scrollTop = function() {
+    $ionicScrollDelegate.scrollTop();
+  };
+}
+</pre>
+<h3>方法</h3><pre>
+resize()</pre><p>
+告诉滚动视图重新计算它的容器大小。</p>
+<pre>
+scrollTop([shouldAnimate])
+</pre>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        shouldAnimate
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否应用滚动动画。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<pre>
+scrollBottom([shouldAnimate])
+</pre>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        shouldAnimate
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否应用滚动动画。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,137 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">表单</span>
+</h1>
+<hr/>
+<p class="intro">jQuery Mobile 会自动为 HTML 表单自动添加样式，让它们看起来更具吸引力，触摸起来更具友好性。</p>
+<hr/>
+<iframe frameborder="0" height="530px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_forms.htm" width="100%"></iframe>
+<br/><hr/>
+<h2>jQuery Mobile 表单结构</h2>
+<p>jQuery Mobile 使用 CSS 为 HTML 表单元素添加样式，让它们更具吸引力，更易于使用。</p>
+<p>在 jQuery Mobile 中，您可以使用下列表单控件：</p>
+<ul>
+<li>文本输入框</li>
+<li>搜索输入框</li>
+<li>单选按钮</li>
+<li>复选框</li>
+<li>选择菜单</li>
+<li>滑动条</li>
+<li>翻转拨动开关</li>
+</ul>
+<p>当使用 jQuery Mobile 表单时，您应当知道：</p>
+<ul>
+<li>&lt;form&gt; 元素必须有一个 method 和一个 action 属性</li>
+<li>每个表单元素必须有一个唯一的 "id" 属性。id 必须是整个站点所有页面上唯一的。这是因为 jQuery Mobile 的单页导航机制使得多个不同页面在同一时间被呈现</li>
+<li>每个表单元素必须有一个标签。设置标签的 <strong>for</strong> 属性来匹配元素的 id</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;form <span class="marked">method="post" action="demoform.html"</span>&gt;<br/><span class="marked">  &lt;label for="fname"&gt;</span>姓名:<span class="marked">&lt;/label&gt;</span><br/>  &lt;input 
+	type="text" name="fname" <span class="marked">id="fname"</span>&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_label" target="_blank">尝试一下 »</a>
+</div>
+<p>如需隐藏标签，请使用 class ui-hidden-accessible。这在您把元素的 placeholder 属性作为标签时经常用到：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;form method="post" action="demoform.html"&gt;<br/>  &lt;label for="fname" 
+		<span class="marked">class="ui-hidden-accessible"</span>&gt;姓名:&lt;/label&gt;<br/>  &lt;input 
+		type="text" name="fname" id="fname" placeholder="姓名..."&gt;<br/>
+		&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_label_placeholder" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示：</strong>  我们可以使用
+ data-clear-btn="true" 属性来添加清除输入框内容的按钮 (一个在输入框右侧的 X 图标):</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code">
+&lt;label for="fname"&gt;姓名:&lt;/label&gt;<br/>&lt;input type="text" name="fname" 
+	id="fname" <span class="marked">data-clear-btn="true"</span>&gt;
+ <br/> </div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_clear" target="_blank">尝试一下 »</a> </div>
+<table class="lamp" id="table1"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>清除输入框的按钮可以在 &lt;input&gt; 元素中使用，但不能在 &lt;textarea&gt; 中使用。 搜索框中 data-clear-btn 默认值为 "true" ，你可以使用 data-clear-btn="false" 移除该图标。</td>
+</tr></tbody></table>
+<hr/>
+<h2>jQuery Mobile 表单图标</h2>
+<p>表单中的按钮代码是标准的 HTML &lt;input&gt; 元素 (button, 
+reset, submit)。他们会自动渲染样式，可以自动适配移动设备与桌面设备：</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code">
+&lt;input type="button" value="按钮"&gt;<br/>&lt;input type="reset" value="重置按钮"&gt;<br/>&lt;input type="submit" value="提交按钮"&gt;
+ <br/> </div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_buttons" target="_blank">尝试一下 »</a> </div>
+<p>如果需要在 &lt;input&gt; 按钮中添加额外的样式，可以使用下表中的 data-* 属性：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:22%">属性</th>
+<th style="width:21%">值</th>
+<th style="width:57%">描述</th>
+</tr>
+<tr>
+<td>data-corners</td>
+<td><strong>true</strong> | false</td>
+<td>指定按钮是否有圆角</td>
+</tr>
+<tr>
+<td>data-icon</td>
+<td><a href="jquerymobile-ref-icons.html">图标参考手册</a></td>
+<td>指定按钮图标</td>
+</tr>
+<tr>
+<td>data-iconpos</td>
+<td><strong>left</strong> | right | top | bottom | notext</td>
+<td>指定图标位置</td>
+</tr>
+<tr>
+<td>data-inline</td>
+<td>true | <strong>false</strong></td>
+<td>指定是否内联按钮</td>
+</tr>
+<tr>
+<td>data-mini</td>
+<td>true | <strong>false</strong></td>
+<td>指定是否为迷你按钮</td>
+</tr>
+<tr>
+<td>data-shadow</td>
+<td><strong>true</strong> | false</td>
+<td>指定按钮是否添加阴影效果</td>
+</tr>
+</tbody></table>
+<div class="example"> <h2 class="example">按钮添加图标：</h2> <div class="example_code">
+&lt;input type="button" value="按钮"&gt;<br/>&lt;input type="reset" value="重置按钮"&gt;<br/>&lt;input type="submit" value="提交按钮"&gt;
+ <br/> </div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_buttons2" target="_blank">尝试一下 »</a> </div>
+<hr/>
+<h2>字段容器</h2>
+<p>如需让标签和表单元素看起来更适应宽屏，请用带有 "ui-field-contain" 类的 &lt;div&gt; 或 &lt;fieldset&gt; 元素包围 label/form 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;form method="post" action="demoform.php"&gt;<br/> 
+	&lt;div <span class="marked">class="ui-field-contain"</span>&gt;<br/>    
+	&lt;label for="fname"&gt;姓:&lt;/label&gt;<br/>    &lt;input 
+	type="text" name="fname" id="fname"&gt;<br/>    &lt;label for="lname"&gt;姓:&lt;/label&gt;<br/>    &lt;input type="text" name="lname" id="lname"&gt;<br/>
+	  &lt;/div&gt;<br/>
+	&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_fieldcontain" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>ui-field-contain 类基于页面的宽度为标签和表单控件添加样式。当页面的宽度大于 480px 时，它会自动把标签放置在与表单控件同一线上。当页面的宽度小于 480px 时，标签会被放置在表单元素的上面。</td>
+</tr></table>
+<p><strong>提示：</strong>为了防止 jQuery Mobile 为可点击元素自动添加样式，请使用 data-role="none" 属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;label for="fname"&gt;姓名:&lt;/label&gt;<br/>&lt;input type="text" name="fname" 
+	id="fname" <span class="marked">data-role="none"</span>&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_none" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<strong>jQuery Mobile 中的表单提交</strong><br/><br/>jQuery Mobile 通过 AJAX 自动处理表单提交，并将试图集成服务器响应到应用程序的 DOM 中。</td>
+</tr></table>
+</div>

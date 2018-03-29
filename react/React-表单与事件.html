@@ -1,0 +1,132 @@
+<div class="article-intro" id="content">
+<h1>React 表单与事件</h1>
+<p>本章节我们将讨论如何在 React 中使用表单。</p>
+<h3>一个简单的实例</h3>
+<p>在实例中我们设置了输入框 input 值<b>value = {this.state.data}</b>。在输入框值发生变化时我们可以更新 state。我们可以使用 <b>onChange</b> 事件来监听 input 的变化，并修改 state。</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">getInitialState</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">Hello Runoob!</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">handleChange</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">setState</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">target</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+            &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-builtin">onChange</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">handleChange</span><span class="hl-brackets">}</span><span class="hl-code"> /&gt; 
+            &lt;</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;
+           &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_form" target="_blank">尝试一下 »</a>
+</div>
+<p>
+上面的代码将渲染出一个值为 Hello Runoob! 的 input 元素，并通过 onChange 事件响应更新用户输入的值。</p>
+<h3>实例 2</h3>
+<p>在以下实例中我们将为大家演示如何在子组件上使用表单。
+<b>onChange</b> 方法将触发 state 的更新并将更新的值传递到子组件的输入框的 <b>value</b> 上来重新渲染界面。</p>
+<p>你需要在父组件通过创建事件句柄 (<b>handleChange</b>) ，并作为 prop (<b>updateStateProp</b>) 传递到你的子组件上。</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">Content</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code">  &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+            &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">myDataProp</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-builtin">onChange</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">updateStateProp</span><span class="hl-brackets">}</span><span class="hl-code"> /&gt; 
+            &lt;</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">myDataProp</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;
+            &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">getInitialState</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">Hello Runoob!</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">handleChange</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">setState</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">target</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+            &lt;</span><span class="hl-identifier">Content</span><span class="hl-code"> </span><span class="hl-identifier">myDataProp</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">updateStateProp</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">handleChange</span><span class="hl-brackets">}</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">Content</span><span class="hl-code">&gt;
+           &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_form2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>React 事件</h2>
+<p>以下实例演示通过 onClick 事件来修改数据：</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">getInitialState</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">Hello Runoob!</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">handleChange</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">setState</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+            &lt;</span><span class="hl-identifier">button</span><span class="hl-code"> </span><span class="hl-builtin">onClick</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">handleChange</span><span class="hl-brackets">}</span><span class="hl-code">&gt;点我&lt;/</span><span class="hl-identifier">button</span><span class="hl-code">&gt;
+            &lt;</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;
+           &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_click" target="_blank">尝试一下 »</a>
+</div>
+<p>当你需要从子组件中更新父组件的 <b>state</b> 时，你需要在父组件通过创建事件句柄 (<b>handleChange</b>) ，并作为 prop (<b>updateStateProp</b>) 传递到你的子组件上。实例如下：</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">Content</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code">  &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+              &lt;</span><span class="hl-identifier">button</span><span class="hl-code"> </span><span class="hl-builtin">onClick</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">updateStateProp</span><span class="hl-brackets">}</span><span class="hl-code">&gt;点我&lt;/</span><span class="hl-identifier">button</span><span class="hl-code">&gt;
+              &lt;</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">myDataProp</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h4</span><span class="hl-code">&gt;
+           &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">getInitialState</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">Hello Runoob!</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">handleChange</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">setState</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code"> = </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+            &lt;</span><span class="hl-identifier">Content</span><span class="hl-code"> </span><span class="hl-identifier">myDataProp</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">updateStateProp</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">handleChange</span><span class="hl-brackets">}</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">Content</span><span class="hl-code">&gt;
+           &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_click2" target="_blank">尝试一下 »</a>
+</div>
+</div>

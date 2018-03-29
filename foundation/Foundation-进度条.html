@@ -1,0 +1,91 @@
+<div class="article-intro" id="content">
+<h1>Foundation 进度条</h1>
+<p>
+Foundation 进度条可以作为程序处理的程度来显示：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/11/progress.jpg"/>
+<p>我们可以在 <code>&lt;div&gt;</code> 元素中使用 <code>.progress</code> 类来创建进度条，
+<code>.meter</code> 类用于子元素(&lt;span&gt;)。我们可以在 &lt;span&gt; 元素中设置进度百分比，如下所示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:70%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_progressbar" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>进度条颜色</h2>
+<p>默认情况下，进度条颜色为蓝色。不同颜色的类为：<code>.secondary</code>, <code>.success</code>, 或 <code>
+.alert</code>:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	secondary"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	success"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	alert"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_progressbar_contextual" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>圆角进度条</h2>
+<p> <code>.radius</code> 和 <code>.round</code> 类用于为进度条添加圆角效果：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress radius"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"meter"</span> <span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"progress round"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_progressbar_rounded" target="_blank">尝试一下 »</a>
+</div>
+<hr/><h2>进度条尺寸</h2>
+<p>可以使用 <code>.small-<em>num</em></code> 或 <code>.large-<em>num</em></code> 来修改进度条的宽度，
+<em>num</em> 是一个数字在 1(8.33%) 和 12(default (100%)) 之间:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress large-1"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	large-6"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	large-9"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	large-11"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highCOM">&lt;!-- 
+	Default width --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress 
+	large-12"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"width:50%"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_progressbar_width" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>进度条标签</h2>
+<p>可以使用 CSS 为进度条添加标签。以下实例中我们添加了&lt;span&gt; 
+元素来显示百分比：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+	
+		 <span class="highLT">&lt;</span><span class="highELE">style</span><span class="highGT">&gt;</span><br/>.percentage {<br/>  position: absolute;<br/>  top: 50%;<br/>  left: 
+		50%;<br/>  color: 
+		white; <br/>  transform: translate(-50%, -50%);<br/>  font-size: 12px;<br/>}<br/><span class="highLT">&lt;</span><span class="highELE">/style</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"progress"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"position:relative;width:75%"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"percentage"</span><span class="highGT">&gt;</span>75%<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"progress success"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"position:relative;width:50%"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"percentage"</span><span class="highGT">&gt;</span>50%<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"progress alert"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"meter"</span>
+<span class="highATT">style=</span><span class="highVAL">"position:relative;width:25%"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"percentage"</span><span class="highGT">&gt;</span>25%<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_progressbar_css" target="_blank">尝试一下 »</a>
+</div>
+</div>

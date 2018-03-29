@@ -1,0 +1,91 @@
+<div class="article-intro" id="content">
+<h1>XQuery <span class="color_h1">添加元素</span> 和<span class="color_h1">属性</span>
+</h1>
+<hr/>
+<h2>XML 实例文档</h2>
+<p>我们将在下面的例子中继续使用这个 "books.xml" 文档（和上面的章节所使用的 XML 文件相同）。</p>
+<p><a href="/try/xml/books.xml" target="_blank">在您的浏览器中查看 "books.xml" 文件</a>。</p>
+<hr/>
+<h2>向结果添加元素和属性</h2>
+<p>正如在前面一节看到的，我们可以在结果中引用输入文件中的元素和属性：</p>
+<div class="code notranslate"><div>
+
+for $x in doc("books.xml")/bookstore/book/title<br/>
+order by $x<br/>
+return $x<br/>
+</div></div>
+<p>上面的 XQuery 表达式会在结果中引用 title 元素和 lang 属性，就像这样：</p>
+<div class="code notranslate"><div>
+
+&lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Learning XML&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;
+</div></div>
+<p>以上 XQuery 表达式返回 title 元素的方式和它们在输入文档中被描述的方式的相同的。</p>
+<p>现在我们要向结果添加我们自己的元素和属性！</p>
+<h3>添加 HTML 元素和文本</h3>
+<p>现在，我们要向结果添加 HTML 元素。我们会把结果放在一个 HTML 列表中：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;h1&gt;Bookstore&lt;/h1&gt;<br/><br/>
+&lt;ul&gt;<br/>
+{<br/>
+for $x in doc("books.xml")/bookstore/book<br/>
+order by $x/title<br/>
+return &lt;li&gt;{data($x/title)}. Category: {data($x/@category)}&lt;/li&gt;<br/>
+}<br/>
+&lt;/ul&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div></div>
+<p>以上 XQuery 表达式会生成下面的结果：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;h1&gt;Bookstore&lt;/h1&gt;<br/><br/>
+&lt;ul&gt;<br/>
+&lt;li&gt;Everyday Italian. Category: COOKING&lt;/li&gt;<br/>
+&lt;li&gt;Harry Potter. Category: CHILDREN&lt;/li&gt;<br/>
+&lt;li&gt;Learning XML. Category: WEB&lt;/li&gt;<br/>
+&lt;li&gt;XQuery Kick Start. Category: WEB&lt;/li&gt;<br/>
+&lt;/ul&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div></div>
+<h3>向 HTML 元素添加属性</h3>
+<p>接下来，我们要把 category 属性作为 HTML 列表中的 class 属性来使用：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;h1&gt;Bookstore&lt;/h1&gt;<br/><br/>
+&lt;ul&gt;<br/>
+{<br/>
+for $x in doc("books.xml")/bookstore/book<br/>
+order by $x/title<br/>
+return &lt;li class="{data($x/@category)}"&gt;{data($x/title)}&lt;/li&gt;<br/>
+}<br/>
+&lt;/ul&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div></div>
+<p>上面的 XQuery 表达式可生成以下结果：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1&gt;Bookstore&lt;/h1&gt;<br/><br/>
+&lt;ul&gt;<br/>
+&lt;li class="COOKING"&gt;Everyday Italian&lt;/li&gt;<br/>
+&lt;li class="CHILDREN"&gt;Harry Potter&lt;/li&gt;<br/>
+&lt;li class="WEB"&gt;Learning XML&lt;/li&gt;<br/>
+&lt;li class="WEB"&gt;XQuery Kick Start&lt;/li&gt;<br/>
+&lt;/ul&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div></div>
+</div>

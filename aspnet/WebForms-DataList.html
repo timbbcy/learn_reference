@@ -1,0 +1,275 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- DataList 控件</span>
+</h1>
+<hr/>
+<p class="intro">DataList 控件，类似于 Repeater 控件，用于显示绑定在该控件上的项目的重复列表。不过，DataList 控件会默认地在数据项目上添加表格。</p>
+<hr/>
+<h2>绑定 DataSet 到 DataList 控件</h2>
+<p>DataList 控件，类似于 Repeater 控件，用于显示绑定在该控件上的项目的重复列表。不过，DataList 控件会默认地在数据项目上添加表格。DataList 控件可被绑定到数据库表、XML 文件或者其他项目列表。在这里，我们将演示如何绑定 XML 文件到 DataList 控件。</p>
+<p>在我们的实例中，我们将使用下面的 XML 文件（"cdcatalog.xml"）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;catalog&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Empire Burlesque&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Bob Dylan&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;USA&lt;/country&gt;<br/>
+ 
+&lt;company&gt;Columbia&lt;/company&gt;<br/>
+ 
+&lt;price&gt;10.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1985&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Hide your heart&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Bonnie Tyler&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;UK&lt;/country&gt;<br/>
+ 
+&lt;company&gt;CBS Records&lt;/company&gt;<br/>
+ 
+&lt;price&gt;9.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1988&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Greatest Hits&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Dolly Parton&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;USA&lt;/country&gt;<br/>
+ 
+&lt;company&gt;RCA&lt;/company&gt;<br/>
+ 
+&lt;price&gt;9.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1982&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Still got the blues&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Gary Moore&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;UK&lt;/country&gt;<br/>
+ 
+&lt;company&gt;Virgin records&lt;/company&gt;<br/>
+ 
+&lt;price&gt;10.20&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1990&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;cd&gt;<br/>
+ 
+&lt;title&gt;Eros&lt;/title&gt;<br/>
+ 
+&lt;artist&gt;Eros Ramazzotti&lt;/artist&gt;<br/>
+ 
+&lt;country&gt;EU&lt;/country&gt;<br/>
+ 
+&lt;company&gt;BMG&lt;/company&gt;<br/>
+ 
+&lt;price&gt;9.90&lt;/price&gt;<br/>
+ 
+&lt;year&gt;1997&lt;/year&gt;<br/>
+&lt;/cd&gt;<br/>
+&lt;/catalog&gt;</div></div>
+<p>查看这个 XML 文件：<a href="/try/demo_source/cdcatalog.xml" target="_blank">cdcatalog.xml</a></p>
+<p>首先，导入 "System.Data" 命名空间。我们需要该命名空间与 DataSet 对象一起工作。 把下面这条指令包含在 .aspx 页面的顶部：</p>
+<div class="code notranslate"><div>
+&lt;%@ Import Namespace="System.Data" %&gt;</div></div>
+<p>接着，为 XML 文件创建一个 DataSet，并在页面第一次加载时把这个 XML 文件载入 DataSet：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+   
+  dim mycdcatalog=New DataSet<br/>
+   
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+end if<br/>
+end sub</div></div>
+<p>然后我们在 .aspx 页面中创建一个 DataList 控件。&lt;HeaderTemplate&gt; 元素中的内容被首先呈现，并且在输出中仅出现一次，而 &lt;ItemTemplate&gt; 元素中的内容会对应 DataSet 中的每条 "record" 重复出现，最后，&lt;FooterTemplate&gt; 元素中的内容在输出中仅出现一次：
+</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:DataList id="cdcatalog" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+...<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+...<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+...<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:DataList&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>然后我们添加创建 DataSet 的脚本，并且绑定 mycdcatalog DataSet 到 DataList 控件。然后
+ 使用包含表头的 &lt;HeaderTemplate&gt;、包含要显示的数据项的 &lt;ItemTemplate&gt; 和包含文本的 &lt;FooterTemplate&gt; 来填充 DataList 控件。请注意，可设置 DataList 的 gridlines 属性为 "both" 来显示表格边框：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  dim mycdcatalog=New DataSet<br/>
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+  cdcatalog.DataSource=mycdcatalog<br/>
+  cdcatalog.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:DataList id="cdcatalog"<br/>
+gridlines="both" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+My CD Catalog<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+"&lt;%#Container.DataItem("title")%&gt;" of<br/>
+&lt;%#Container.DataItem("artist")%&gt; -<br/>
+$&lt;%#Container.DataItem("price")%&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+Copyright Hege Refsnes<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:DataList&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_datalist1" target="_blank">演示实例 »</a>
+</div>
+<hr/>
+<h2>使用样式</h2>
+<p>您也可以向 DataList 控件添加样式，让输出更加花哨：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  dim mycdcatalog=New DataSet<br/>
+  mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+  cdcatalog.DataSource=mycdcatalog<br/>
+  cdcatalog.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:DataList id="cdcatalog"<br/>
+runat="server"<br/>
+cellpadding="2"<br/>
+cellspacing="2"<br/>
+borderstyle="inset"<br/>
+backcolor="#e8e8e8"<br/>
+width="100%"<br/>
+headerstyle-font-name="Verdana"<br/>
+headerstyle-font-size="12pt"<br/>
+headerstyle-horizontalalign="center"<br/>
+headerstyle-font-bold="true"<br/>
+itemstyle-backcolor="#778899"<br/>
+itemstyle-forecolor="#ffffff"<br/>
+footerstyle-font-size="9pt"<br/>
+footerstyle-font-italic="true"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+My CD Catalog<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+"&lt;%#Container.DataItem("title")%&gt;" of<br/>
+&lt;%#Container.DataItem("artist")%&gt; -<br/>
+$&lt;%#Container.DataItem("price")%&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+Copyright Hege Refsnes<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:DataList&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_datalist2" target="_blank">演示实例 »</a>
+</div>
+<hr/>
+<h2>使用 &lt;AlternatingItemTemplate&gt;</h2>
+<p>您可以在 &lt;ItemTemplate&gt; 元素后添加 &lt;AlternatingItemTemplate&gt; 元素，用来描述输出中交替行的外观。您可以在 DataList 控件内部对 &lt;AlternatingItemTemplate&gt; 区域的数据添加样式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+dim mycdcatalog=New DataSet<br/>
+mycdcatalog.ReadXml(MapPath("cdcatalog.xml"))<br/>
+cdcatalog.DataSource=mycdcatalog<br/>
+cdcatalog.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:DataList id="cdcatalog"<br/>
+runat="server"<br/>
+cellpadding="2"<br/>
+cellspacing="2"<br/>
+borderstyle="inset"<br/>
+backcolor="#e8e8e8"<br/>
+width="100%"<br/>
+headerstyle-font-name="Verdana"<br/>
+headerstyle-font-size="12pt"<br/>
+headerstyle-horizontalalign="center"<br/>
+headerstyle-font-bold="True"<br/>
+itemstyle-backcolor="#778899"<br/>
+itemstyle-forecolor="#ffffff"<br/>
+alternatingitemstyle-backcolor="#e8e8e8"<br/>
+alternatingitemstyle-forecolor="#000000"<br/>
+footerstyle-font-size="9pt"<br/>
+footerstyle-font-italic="True"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+My CD Catalog<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+"&lt;%#Container.DataItem("title")%&gt;" of<br/>
+&lt;%#Container.DataItem("artist")%&gt; -<br/>
+$&lt;%#Container.DataItem("price")%&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;AlternatingItemTemplate&gt;<br/>
+"&lt;%#Container.DataItem("title")%&gt;" of<br/>
+&lt;%#Container.DataItem("artist")%&gt; -<br/>
+$&lt;%#Container.DataItem("price")%&gt;<br/>
+&lt;/AlternatingItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+&amp;copy; Hege Refsnes<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:DataList&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_datalist3" target="_blank">演示实例 »</a>
+</div>
+<br/>
+</div>

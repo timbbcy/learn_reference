@@ -1,0 +1,52 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- Database 对象</span>
+</h1>
+<h2>ASP.NET Database 对象参考手册</h2>
+<hr/>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="50%">方法</th>
+<th align="left" width="50%">描述</th>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.Execute(<em>SQLstatement [</em>,
+<em>parameters])</em>
+</td>
+<td valign="top">执行 SQL 语句 <em>
+SQLstatement</em>（带可选参数），比如 INSERT、DELETE 或者 UPDATE， 并且返回受影响的记录统计。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.GetLastInsertId()</td>
+<td valign="top">
+返回最近插入行的标识列。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.Open(<em>filename</em>) <br/>
+Database.Open(<em>connectionStringName</em>)</td>
+<td valign="top">
+使用 <em>Web.config</em> 文件中的连接字符串打开指定的数据库文件或者指定的数据库。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.OpenConnectionString(<em>connectionString</em>)</td>
+<td valign="top">
+使用连接字符串打开一个数据库。（与 Database.Open 的差异是，Database.Open 使用的是连接字符串的名称，连接字符串的值在其他地方配置。）</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.Query(<em>SQLstatement[, 
+parameters]</em>)</td>
+<td valign="top">使用 SQL 语句 <em>SQLstatement</em>（带可选参数）查询数据库，并返回结果集合。
+</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.QuerySingle(<em>SQLstatement</em>
+<em>[, parameters]</em>)</td>
+<td valign="top">执行 SQL 语句 <em>SQLstatement</em>（带可选参数），并返回单条记录。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Database.QueryValue(<em>SQLstatement</em>
+<em>[, parameters]</em>)</td>
+<td valign="top">执行 SQL 语句 <em>SQLstatement</em>（带可选参数），并返回单个值。</td>
+</tr>
+</table>
+<br/><br/>
+</div>

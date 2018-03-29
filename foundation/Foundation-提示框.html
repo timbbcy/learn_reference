@@ -1,0 +1,50 @@
+<div class="article-intro" id="content">
+<h1>Foundation 提示框</h1>
+<p>提示框在鼠标移动到元素上后显示：</p>
+<iframe src="/try/demo_source/tryfoundation_tooltips_iframe.htm" style="border:0;width:100%;height:120px;overflow-y:hidden;"></iframe>
+<p>我们可以在任何元素上添加 <code>data-tooltip</code> 属性来创建提示信息。使用 <code>title</code> 属性来设置提示信息的文本。 </p>
+<p><strong>注意:</strong> 滑块需要使用 JavaScript。所以你需要初始化
+Foundation JS:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Hover over me!<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tooltips" target="_blank">尝试一下 »</a>
+</div>
+<p> <code>.has-tip</code> 类可以加粗鼠标移动的文本:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Hover over me!<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span></div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tooltips_hastip" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>提示框显示位置</h2>
+<p>默认情况下，提示框会出现在元素的底部。</p>
+<p>可以使用 <code>.tip-top</code>, <code>.tip-left</code>, <code>.tip-right</code> or <code>.tip-bottom</code> (默认) 来设置提示框的位置。</p>
+<p><strong>注意:</strong> 在小尺寸的屏幕上，提示框的宽带是 100%。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip tip-top"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Top<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip tip-bottom"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Bottom<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip tip-left"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Left<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip tip-right"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Right<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span></div><br/><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tooltips_pos" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>圆角提示框</h2>
+<p> <code>.radius</code> 和 <code>.round</code> 类用于设置圆角提示框：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Default<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip radius"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Radius<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">data-tooltip class=</span><span class="highVAL">"has-tip round"</span> <span class="highATT">title=</span><span class="highVAL">"Hooray!"</span><span class="highGT">&gt;</span>Round<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tooltips_rounded" target="_blank">尝试一下 »</a>
+</div>
+</div>

@@ -1,0 +1,130 @@
+<div class="article-intro" id="content">
+<h1>React 安装</h1>
+<p>React 可以直接下载使用，下载包中也提供了很多学习的实例。</p>
+<p>本教程使用了 React 的版本为 15.4.2，你可以在官网 <a href="http://facebook.github.io/react/" target="_blank">http://facebook.github.io/react/</a> 下载最新版。</p>
+<p>你也可以直接使用 BootCDN 的 React CDN 库，地址如下：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/react/15.4.2/react.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/react/15.4.2/react-dom.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<h3>使用实例</h3>
+<p>以下实例输出了 Hello, world!</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello React!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/react/15.4.2/react.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/react/15.4.2/react-dom.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">example</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text/babel</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      ReactDOM.render(
+        </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello, world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">,
+        document.getElementById('example')
+      );
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_hw" target="_blank">尝试一下 »</a>
+</div>
+<p><b>实例解析：</b></p>
+<p>实例中我们引入了三个库： react.min.js 、react-dom.min.js 和 babel.min.js：</p>
+<ul><li>
+<strong>react.min.js</strong> - React 的核心库</li><li>
+<strong>react-dom.min.js</strong> -  提供与 DOM 相关的功能</li><li>
+<strong>babel.min.js</strong> - Babel 可以将 ES6 代码转为 ES5 代码，这样我们就能在目前不支持 ES6 浏览器上执行 React 代码。Babel 内嵌了对 JSX 的支持。通过将 Babel 和 babel-sublime 包（package）一同使用可以让源码的语法渲染上升到一个全新的水平。</li></ul>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+    &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-identifier">Hello</span><span class="hl-code">, </span><span class="hl-identifier">world</span><span class="hl-code">!&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;,
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>以上代码将一个 h1 标题，插入 id="example" 节点中。</p>
+<blockquote>
+<p><b>注意：</b></p>
+<p>如果我们需要使用 JSX，则 &lt;script&gt; 标签的 type 属性需要设置为 text/babel。</p>
+</blockquote>
+<hr/>
+<h2>通过 npm 使用 React</h2>
+<p>如果你的系统还不支持 Node.js 及 NPM 可以参考我们的 <a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_balnk">Node.js 教程</a>。</p>
+<p>我们建议在 React 中使用 CommonJS 模块系统，比如 browserify 或 webpack，本教程使用 webpack。</p>
+<p>
+国内使用 npm 速度很慢，你可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:</p><pre>
+$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+$ npm config set registry https://registry.npm.taobao.org
+</pre><p>
+这样就可以使用 cnpm 命令来安装模块了：</p><pre>
+$ cnpm install [name]</pre>
+<p>更多信息可以查阅：<a href="http://npm.taobao.org/" target="_blank">http://npm.taobao.org/</a>。</p>
+<hr/>
+<h2>使用 create-react-app 快速构建 React 开发环境</h2>
+<p>create-react-app 是来自于 Facebook，通过该命令我们无需配置就能快速构建 React 开发环境。</p>
+<p>create-react-app 自动创建的项目是基于 Webpack + ES6 。</p>
+<p>执行以下命令创建项目：</p>
+<pre>
+$ cnpm install -g create-react-app
+$ create-react-app my-app
+$ cd my-app/
+$ npm start
+</pre>
+<p>在浏览器中打开 <strong>http://localhost:3000/</strong> ，结果如下图所示：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/02/0FBC219D-EFF6-4F0D-BB9D-2A97BD177770.jpg" width="70%"/></p>
+<p>项目的目录结构如下：</p>
+<pre>
+my-app/
+  README.md
+  node_modules/
+  package.json
+  .gitignore
+  public/
+    favicon.ico
+    index.html
+  src/
+    App.css
+    App.js
+    App.test.js
+    index.css
+    index.js
+    logo.svg
+</pre>
+<p>尝试修改 src/App.js 文件代码：</p>
+<div class="example">
+<h2 class="example">src/App.js</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">React</span><span class="hl-code">, </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">react</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">logo</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">./logo.svg</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">./App.css</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">App</span><span class="hl-code"> </span><span class="hl-reserved">extends</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">
+      &lt;</span><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-identifier">className</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">App</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+        &lt;</span><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-identifier">className</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">App-header</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+          &lt;</span><span class="hl-identifier">img</span><span class="hl-code"> </span><span class="hl-identifier">src</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-identifier">logo</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">className</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">App-logo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-identifier">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">logo</span><span class="hl-quotes">"</span><span class="hl-code"> /&gt;
+          &lt;</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;欢迎来到菜鸟教程&lt;/</span><span class="hl-identifier">h2</span><span class="hl-code">&gt;
+        &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+        &lt;</span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-identifier">className</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">App-intro</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+          你可以在 &lt;</span><span class="hl-identifier">code</span><span class="hl-code">&gt;</span><span class="hl-identifier">src</span><span class="hl-code">/</span><span class="hl-identifier">App</span><span class="hl-code">.</span><span class="hl-identifier">js</span><span class="hl-code">&lt;/</span><span class="hl-identifier">code</span><span class="hl-code">&gt; 文件中修改。
+        &lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+      &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+    </span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">default</span><span class="hl-code"> </span><span class="hl-identifier">App</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>修改后，打开 http://localhost:3000/ （一般自动刷新），输出结果如下：</p><p>
+<img src="https://www.runoob.com/wp-content/uploads/2016/02/629B9FC4-7FD7-42A4-BBA0-B108B3F83BD9.jpg" width="70%"/></p>
+</div>

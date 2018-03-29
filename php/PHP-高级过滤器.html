@@ -1,0 +1,57 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">高级过滤器</span></h1>
+<hr/>
+<h2>检测一个数字是否在一个范围内</h2>
+<p>以下实例使用了 filter_var() 函数来检测一个 INT 型的变量是否在  1 到 200 内:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php<br/>$int = 122;<br/>$min = 1;<br/>$max = 200;<br/><br/>if (filter_var($int, 
+	FILTER_VALIDATE_INT, array("options" =&gt; array("min_range"=&gt;$min, "max_range"=&gt;$max))) 
+	=== false) {<br/>    echo("变量值不在合法范围内");<br/>} else {<br/>    echo("变量值在合法范围内");<br/>}<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/runcode.php?filename=demo_filter_adv1&amp;type=php" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>检测 IPv6 地址</h2>
+<p>以下实例使用了 filter_var() 函数来检测一个 $ip 变量是否是
+IPv6 地址:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php<br/>$ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";<br/><br/>if (!filter_var($ip, 
+	FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {<br/>    
+	echo("$ip 是一个 IPv6 地址");<br/>} else {<br/>    
+	echo("$ip 不是一个 IPv6 地址");<br/>}<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/runcode.php?filename=demo_filter_adv2&amp;type=php" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>检测 URL - 必须包含QUERY_STRING（查询字符串）</h2>
+<p>以下实例使用了 filter_var() 函数来检测 $url 是否包含查询字符串：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php<br/>$url = "http://www.runoob.com";<br/><br/>if (!filter_var($url, 
+	FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {<br/>    
+	echo("$url 是一个合法的 URL");<br/>} else {<br/>    echo("$url 不是一个合法的 URL");<br/>}<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/runcode.php?filename=demo_filter_adv3&amp;type=php" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>移除 ASCII 值大于 127 的字符</h2>
+<p>以下实例使用了 filter_var() 函数来移除字符串中 ASCII 值大于 127 的字符，同样它也能移除 HTML 标签：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php<br/>$str = "&lt;h1&gt;Hello WorldÆØÅ!&lt;/h1&gt;";<br/><br/>$newstr = 
+	filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);<br/>echo $newstr;<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/runcode.php?filename=demo_filter_adv4&amp;type=php" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>PHP 过滤器参考手册</h2>
+<p>你也可以通过访问本站的
+<a href="php-ref-filter.html">PHP 过滤器参考手册</a> 来查看过滤器的具体应用。</p>
+<p>参考手册中包含了过滤器参数的简要说明和使用例子！</p>
+</div>

@@ -1,0 +1,103 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM <span class="color_h1">方法</span>
+</h1>
+<hr/>
+<p class="intro">HTML DOM 方法是我们可以在节点（HTML 元素）上执行的动作。</p>
+<p class="intro">HTML DOM 属性是我们可以在节点（HTML 元素）设置和修改的值。</p>
+<hr/>
+<h2>编程接口</h2>
+<p>可通过 JavaScript （以及其他编程语言）对 HTML DOM 进行访问。</p>
+<p>所有 HTML 元素被定义为对象，而编程接口则是对象方法和对象属性。</p>
+<p>方法是您能够执行的动作（比如添加或修改元素）。</p>
+<p>属性是您能够获取或设置的值（比如节点的名称或内容）。</p>
+<hr/>
+<h2>getElementById() 方法</h2>
+<p>getElementById() 方法返回带有指定 ID 的元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">element</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">intro</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_getelementbyid" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>HTML DOM 对象 - 方法和属性</h2>
+<p>一些常用的 HTML DOM 方法：</p>
+<ul>
+<li>getElementById(id) - 获取带有指定 id 的节点（元素）</li>
+<li>appendChild(node) - 插入新的子节点（元素）</li>
+<li>removeChild(node) - 删除子节点（元素）</li>
+</ul>
+<p>一些常用的 HTML DOM 属性：</p>
+<ul>
+<li>innerHTML - 节点（元素）的文本值</li>
+<li>parentNode - 节点（元素）的父节点</li>
+<li>childNodes - 节点（元素）的子节点</li>
+<li>attributes - 节点（元素）的属性节点</li>
+</ul>
+<p>您将在本教程的下一章中学到更多有关属性的知识。</p>
+<hr/>
+<h2>现实生活中的对象</h2>
+<p>某个人是一个对象。</p>
+<p>人的方法可能是 eat(), sleep(), work(), play() 等等。</p>
+<p>所有人都有这些方法，但会在不同时间执行它们。</p>
+<p>一个人的属性包括姓名、身高、体重、年龄、性别等等。</p>
+<p>所有人都有这些属性，但它们的值因人而异。</p>
+<hr/>
+<h2>一些 DOM 对象方法</h2>
+<p>这里提供一些您将在本教程中学到的常用方法：</p>
+<table class="reference ">
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>getElementById()</td>
+<td>返回带有指定 ID 的元素。</td>
+</tr>
+<tr>
+<td>getElementsByTagName()</td>
+<td>返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。</td>
+</tr>
+<tr>
+<td>getElementsByClassName()</td>
+<td>返回包含带有指定类名的所有元素的节点列表。</td>
+</tr>
+<tr>
+<td>appendChild()</td>
+<td>把新的子节点添加到指定节点。</td>
+</tr>
+<tr>
+<td>removeChild()</td>
+<td>删除子节点。</td>
+</tr>
+<tr>
+<td>replaceChild()</td>
+<td>替换子节点。</td>
+</tr>
+<tr>
+<td>insertBefore()</td>
+<td>在指定的子节点前面插入新的子节点。</td>
+</tr>
+<tr>
+<td>createAttribute()</td>
+<td>创建属性节点。</td>
+</tr>
+<tr>
+<td>createElement()</td>
+<td>创建元素节点。</td>
+</tr>
+<tr>
+<td>createTextNode()</td>
+<td>创建文本节点。</td>
+</tr>
+<tr>
+<td>getAttribute()</td>
+<td>返回指定的属性值。</td>
+</tr>
+<tr>
+<td>setAttribute()</td>
+<td>把指定属性设置或修改为指定的值。</td>
+</tr>
+</table>
+</div>

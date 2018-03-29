@@ -1,0 +1,189 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">事件</span>
+</h1>
+<hr/>
+<p class="intro">jQuery 是为事件处理特别设计的。</p>
+<hr/>
+<h2>什么是事件？</h2>
+<p>页面对不同访问者的响应叫做事件。</p>
+<p>事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。</p>
+<p>实例：</p>
+<ul>
+<li>在元素上移动鼠标。</li>
+<li>选取单选按钮</li>
+<li>点击元素</li>
+</ul>
+<p>在事件中经常使用术语"触发"（或"激发"）例如：
+"当您按下按键时触发 keypress 事件"。</p>
+<p>常见 DOM 事件：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:23%">鼠标事件</th>
+<th style="width:25%">键盘事件</th>
+<th style="width:22%">表单事件</th>
+<th>文档/窗口事件</th>
+</tr>
+<tr>
+<td><a href="/jquery/event-click.html" rel="noopener" target="_blank">click</a></td>
+<td><a href="/jquery/event-keypress.html" rel="noopener" target="_blank">keypress</a></td>
+<td><a href="/jquery/event-submit.html" rel="noopener" target="_blank">submit</a></td>
+<td><a href="/jquery/event-load.html" rel="noopener" target="_blank">load</a></td>
+</tr>
+<tr>
+<td><a href="/jquery/event-dblclick.html" rel="noopener" target="_blank">dblclick</a></td>
+<td><a href="/jquery/event-keydown.html" rel="noopener" target="_blank">keydown</a></td>
+<td><a href="/jquery/event-change.html" rel="noopener" target="_blank">change</a></td>
+<td><a href="/jquery/event-resize.html" rel="noopener" target="_blank">resize</a></td>
+</tr>
+<tr>
+<td><a href="/jquery/event-mouseenter.html" rel="noopener" target="_blank">mouseenter</a></td>
+<td><a href="/jquery/event-keyup.html" rel="noopener" target="_blank">keyup</a></td>
+<td><a href="/jquery/event-focus.html" rel="noopener" target="_blank">focus</a></td>
+<td><a href="/jquery/event-scroll.html" rel="noopener" target="_blank">scroll</a></td>
+</tr>
+<tr>
+<td><a href="/jquery/event-mouseleave.html" rel="noopener" target="_blank">mouseleave</a></td>
+<td> </td>
+<td><a href="/jquery/event-blur.html" rel="noopener" target="_blank">blur</a></td>
+<td><a href="/jquery/event-unload.html" rel="noopener" target="_blank">unload</a></td>
+</tr>
+</tbody></table>
+<br/><hr/>
+<h2>jQuery 事件方法语法</h2>
+<p>在 jQuery 中，大多数 DOM 事件都有一个等效的 jQuery 方法。</p>
+<p>页面中指定一个点击事件：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>下一步是定义什么时间触发事件。您可以通过一个事件函数实现：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 动作触发后执行的代码!!</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<br/><hr/>
+<h2>常用的 jQuery 事件方法</h2>
+<h3>$(document).ready()</h3>
+<p>$(document).ready() 方法允许我们在文档完全加载完后执行函数。该事件方法在
+<a href="jquery-syntax.html">jQuery 语法</a> 章节中已经提到过。 </p>
+<h3>click()</h3>
+<p>click() 方法是当按钮点击事件被触发时会调用一个函数。</p>
+<p>该函数在用户点击 HTML 元素时执行。</p>
+<p>在下面的实例中，当点击事件在某个 &lt;p&gt; 元素上触发时，隐藏当前的 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-reserved">this</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_click" target="_blank">尝试一下 »</a>
+</div>
+<h3>dblclick()</h3>
+<p>当双击元素时，会发生 dblclick 事件。</p>
+<p>dblclick() 方法触发 dblclick 事件，或规定当发生 dblclick 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">dblclick</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-reserved">this</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dblclick" target="_blank">尝试一下 »</a>
+</div>
+<h3>mouseenter()</h3>
+<p>当鼠标指针穿过元素时，会发生 mouseenter 事件。</p>
+<p>mouseenter() 方法触发 mouseenter 事件，或规定当发生 mouseenter 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#p1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">mouseenter</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">您的鼠标移到了 id="p1" 的元素上!</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_mouseenter" target="_blank">尝试一下 »</a>
+</div>
+<h3>mouseleave()</h3>
+<p>当鼠标指针离开元素时，会发生 mouseleave 事件。</p>
+<p>mouseleave() 方法触发 mouseleave 事件，或规定当发生 mouseleave 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#p1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">mouseleave</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">再见，您的鼠标离开了该段落。</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_mouseleave" target="_blank">尝试一下 »</a>
+</div>
+<h3>mousedown()</h3>
+<p>当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件。</p>
+<p>mousedown() 方法触发 mousedown 事件，或规定当发生 mousedown 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#p1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">mousedown</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">鼠标在该段落上按下！</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_mousedown" target="_blank">尝试一下 »</a>
+</div>
+<h3>mouseup()</h3>
+<p>当在元素上松开鼠标按钮时，会发生 mouseup 事件。</p>
+<p>mouseup() 方法触发 mouseup 事件，或规定当发生 mouseup 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#p1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">mouseup</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">鼠标在段落上松开。</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_mouseup" target="_blank">尝试一下 »</a>
+</div>
+<h3>hover()</h3>
+<p>hover()方法用于模拟光标悬停事件。</p>
+<p>当鼠标移动到元素上时，会触发指定的第一个函数(mouseenter);当鼠标移出这个元素时，会触发指定的第二个函数(mouseleave)。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#p1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hover</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">你进入了 p1!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">,
+    </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">拜拜! 现在你离开了 p1!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hover" target="_blank">尝试一下 »</a>
+</div>
+<h3>focus()</h3>
+<p>当元素获得焦点时，发生 focus 事件。</p>
+<p>当通过鼠标点击选中元素或通过 tab 键定位到元素时，该元素就会获得焦点。</p>
+<p>focus() 方法触发 focus 事件，或规定当发生 focus 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">input</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">focus</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-reserved">this</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">css</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">background-color</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">#cccccc</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_focus_blur" target="_blank">尝试一下 »</a>
+</div>
+<h3>blur()</h3>
+<p>当元素失去焦点时，发生 blur 事件。</p>
+<p>blur() 方法触发 blur 事件，或规定当发生 blur 事件时运行的函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">input</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">blur</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-reserved">this</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">css</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">background-color</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">#ffffff</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_focus_blur" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+</div>

@@ -1,0 +1,49 @@
+<div class="article-intro" id="content">
+<h1>RDF <span class="color_h1">规则</span>
+</h1>
+<hr/>
+<p class="intro">RDF 使用 Web 标识符 (URIs) 来标识资源。
+</p>
+<p class="intro">RDF 使用属性和属性值来描述资源。</p>
+<hr/>
+<h2>RDF 资源、属性和属性值</h2>
+<p>RDF 使用 Web 标识符来标识事物，并通过属性和属性值来描述资源。</p>
+<p>对资源、属性和属性值的解释：</p>
+<ul>
+<li><em>资源</em>是可拥有 URI 的任何事物，比如 "http://www.runoob.com/rdf"</li>
+<li><em>属性</em>是拥有名称的资源，比如 "author" 或 "homepage"</li>
+<li><em>属性值</em>是某个属性的值，比如 "David" 或 "http://www.runoob.com" （请注意一个属性值可以是另外一个资源）</li>
+</ul>
+<p>下面的 RDF 文档可描述资源 "http://www.runoob.com/rdf"：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;RDF&gt;<br/>
+   
+  &lt;Description about="http://www.runoob.com/rdf"&gt;<br/>
+       
+    &lt;author&gt;Jan Egil Refsnes&lt;/author&gt;<br/>
+       
+    &lt;homepage&gt;http://www.runoob.com&lt;/homepage&gt;<br/>
+   
+  &lt;/Description&gt;<br/>
+&lt;/RDF&gt;
+</div></div>
+<p><img alt="lamp" border="0" src="/images/lamp.gif"/> 上面是一个简化的例子。命名空间被忽略了。</p>
+<hr/>
+<h2>RDF 陈述</h2>
+<p>资源、属性和属性值的组合可形成一个<em>陈述</em>（被称为陈述的<em>主体</em>、<em>谓语</em>和<em>客体</em>）。</p>
+<p>请看一些陈述的具体例子，来加深理解：</p>
+<p>陈述："The author of http://www.runoob.com/rdf is David."</p>
+<ul>
+<li>陈述的主体是：http://www.runoob.com/rdf</li>
+<li>谓语是：author</li>
+<li>客体是：David</li>
+</ul>
+<p>陈述："The homepage of http://www.runoob.com/rdf is http://www.runoob.com".</p>
+<ul>
+<li>陈述的主体是：http://www.runoob.com/rdf</li>
+<li>谓语是：homepage</li>
+<li>客体是：http://www.runoob.com</li>
+</ul>
+</div>

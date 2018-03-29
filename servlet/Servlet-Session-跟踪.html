@@ -1,0 +1,173 @@
+<div class="article-intro" id="content">
+<h1>Servlet <span class="color_h1">Session 跟踪</span></h1>
+<div class="tutintro">
+<p>HTTP 是一种"无状态"协议，这意味着每次客户端检索网页时，客户端打开一个单独的连接到 Web 服务器，服务器会自动不保留之前客户端请求的任何记录。</p>
+<p>但是仍然有以下三种方式来维持 Web 客户端和 Web 服务器之间的 session 会话：</p>
+</div>
+<h2>Cookies</h2>
+<p>一个 Web 服务器可以分配一个唯一的 session 会话 ID 作为每个 Web 客户端的 cookie，对于客户端的后续请求可以使用接收到的 cookie 来识别。</p>
+<p>这可能不是一个有效的方法，因为很多浏览器不支持 cookie，所以我们建议不要使用这种方式来维持 session 会话。</p>
+<h2>隐藏的表单字段</h2>
+<p>一个 Web 服务器可以发送一个隐藏的 HTML 表单字段，以及一个唯一的 session 会话 ID，如下所示：</p>
+<pre class="prettyprint">
+&lt;input type="hidden" name="sessionid" value="12345"&gt;
+</pre>
+<p>该条目意味着，当表单被提交时，指定的名称和值会被自动包含在 GET 或 POST 数据中。每次当 Web 浏览器发送回请求时，session_id 值可以用于保持不同的 Web 浏览器的跟踪。</p>
+<p>这可能是一种保持 session 会话跟踪的有效方式，但是点击常规的超文本链接（&lt;A HREF...&gt;）不会导致表单提交，因此隐藏的表单字段也不支持常规的 session 会话跟踪。</p>
+<h2>URL 重写</h2>
+<p>您可以在每个 URL 末尾追加一些额外的数据来标识 session 会话，服务器会把该 session 会话标识符与已存储的有关 session 会话的数据相关联。</p>
+<p>例如，http://w3cschool.cc/file.htm;sessionid=12345，session 会话标识符被附加为 sessionid=12345，标识符可被 Web 服务器访问以识别客户端。</p>
+<p>URL 重写是一种更好的维持 session 会话的方式，它在浏览器不支持 cookie 时能够很好地工作，但是它的缺点是会动态生成每个 URL 来为页面分配一个 session 会话 ID，即使是在很简单的静态 HTML 页面中也会如此。</p>
+<h2 class="tutheader">HttpSession 对象</h2>
+<p>除了上述的三种方式，Servlet 还提供了 HttpSession 接口，该接口提供了一种跨多个页面请求或访问网站时识别用户以及存储有关用户信息的方式。</p>
+<p>Servlet 容器使用这个接口来创建一个 HTTP 客户端和 HTTP 服务器之间的 session 会话。会话持续一个指定的时间段，跨多个连接或页面请求。</p>
+<p>您会通过调用 HttpServletRequest 的公共方法 <b>getSession()</b> 来获取 HttpSession 对象，如下所示：</p>
+<pre class="prettyprint">
+HttpSession session = request.getSession();
+</pre>
+<p>你需要在向客户端发送任何文档内容之前调用 <i>request.getSession()</i>。下面总结了 HttpSession 对象中可用的几个重要的方法：</p>
+<table class="reference notranslate">
+<tr><th style="width:5%">序号</th><th>方法 &amp; 描述</th></tr>
+<tr><td>1</td><td><b>public Object getAttribute(String name)</b><br>该方法返回在该 session 会话中具有指定名称的对象，如果没有指定名称的对象，则返回 null。</br></td></tr>
+<tr><td>2</td><td><b>public Enumeration getAttributeNames()</b><br/>该方法返回 String 对象的枚举，String 对象包含所有绑定到该 session 会话的对象的名称。</td></tr>
+<tr><td>3</td><td><b>public long getCreationTime()</b><br/>该方法返回该 session 会话被创建的时间，自格林尼治标准时间 1970 年 1 月 1 日午夜算起，以毫秒为单位。</td></tr>
+<tr><td>4</td><td><b>public String getId()</b><br/>该方法返回一个包含分配给该 session 会话的唯一标识符的字符串。</td></tr>
+<tr><td>5</td><td><b>public long getLastAccessedTime()</b><br/>该方法返回客户端最后一次发送与该 session 会话相关的请求的时间自格林尼治标准时间 1970 年 1 月 1 日午夜算起，以毫秒为单位。</td></tr>
+<tr><td>6</td><td><b>public int getMaxInactiveInterval()</b><br/>该方法返回 Servlet 容器在客户端访问时保持 session 会话打开的最大时间间隔，以秒为单位。</td></tr>
+<tr><td>7</td><td><b>public void invalidate()</b><br/>该方法指示该 session 会话无效，并解除绑定到它上面的任何对象。</td></tr>
+<tr><td>8</td><td><b>public boolean isNew()</b><br/>如果客户端还不知道该 session 会话，或者如果客户选择不参入该 session 会话，则该方法返回 true。</td></tr>
+<tr><td>9</td><td><b>public void removeAttribute(String name)</b><br/>该方法将从该 session 会话移除指定名称的对象。</td></tr>
+<tr><td>10</td><td><b>public void setAttribute(String name, Object value) </b><br/>该方法使用指定的名称绑定一个对象到该 session 会话。</td></tr>
+<tr><td>11</td><td><b>public void setMaxInactiveInterval(int interval)</b><br/>该方法在 Servlet 容器指示该 session 会话无效之前，指定客户端请求之间的时间，以秒为单位。</td></tr>
+</table>
+<br/>
+<h2 class="tutheader">Session 跟踪实例</h2>
+<p>本实例说明了如何使用 HttpSession 对象获取 session 会话创建时间和最后访问时间。如果不存在 session 会话，我们将通过请求创建一个新的 session 会话。</p>
+<pre>
+package com.runoob.test;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class SessionTrack
+ */
+@WebServlet("/SessionTrack")
+public class SessionTrack extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        // 如果不存在 session 会话，则创建一个 session 对象
+        HttpSession session = request.getSession(true);
+        // 获取 session 创建时间
+        Date createTime = new Date(session.getCreationTime());
+        // 获取该网页的最后一次访问时间
+        Date lastAccessTime = new Date(session.getLastAccessedTime());
+         
+        //设置日期输出的格式  
+        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+    
+        String title = "Servlet Session 实例 - 菜鸟教程";
+        Integer visitCount = new Integer(0);
+        String visitCountKey = new String("visitCount");
+        String userIDKey = new String("userID");
+        String userID = new String("Runoob");
+    
+        // 检查网页上是否有新的访问者
+        if (session.isNew()){
+            title = "Servlet Session 实例 - 菜鸟教程";
+             session.setAttribute(userIDKey, userID);
+        } else {
+             visitCount = (Integer)session.getAttribute(visitCountKey);
+             visitCount = visitCount + 1;
+             userID = (String)session.getAttribute(userIDKey);
+        }
+        session.setAttribute(visitCountKey,  visitCount);
+    
+        // 设置响应内容类型
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+    
+        String docType = "&lt;!DOCTYPE html&gt;\n";
+        out.println(docType +
+                "&lt;html&gt;\n" +
+                "&lt;head&gt;&lt;title&gt;" + title + "&lt;/title&gt;&lt;/head&gt;\n" +
+                "&lt;body bgcolor=\"#f0f0f0\"&gt;\n" +
+                "&lt;h1 align=\"center\"&gt;" + title + "&lt;/h1&gt;\n" +
+                 "&lt;h2 align=\"center\"&gt;Session 信息&lt;/h2&gt;\n" +
+                "&lt;table border=\"1\" align=\"center\"&gt;\n" +
+                "&lt;tr bgcolor=\"#949494\"&gt;\n" +
+                "  &lt;th&gt;Session 信息&lt;/th&gt;&lt;th&gt;值&lt;/th&gt;&lt;/tr&gt;\n" +
+                "&lt;tr&gt;\n" +
+                "  &lt;td&gt;id&lt;/td&gt;\n" +
+                "  &lt;td&gt;" + session.getId() + "&lt;/td&gt;&lt;/tr&gt;\n" +
+                "&lt;tr&gt;\n" +
+                "  &lt;td&gt;创建时间&lt;/td&gt;\n" +
+                "  &lt;td&gt;" +  df.format(createTime) + 
+                "  &lt;/td&gt;&lt;/tr&gt;\n" +
+                "&lt;tr&gt;\n" +
+                "  &lt;td&gt;最后访问时间&lt;/td&gt;\n" +
+                "  &lt;td&gt;" + df.format(lastAccessTime) + 
+                "  &lt;/td&gt;&lt;/tr&gt;\n" +
+                "&lt;tr&gt;\n" +
+                "  &lt;td&gt;用户 ID&lt;/td&gt;\n" +
+                "  &lt;td&gt;" + userID + 
+                "  &lt;/td&gt;&lt;/tr&gt;\n" +
+                "&lt;tr&gt;\n" +
+                "  &lt;td&gt;访问统计：&lt;/td&gt;\n" +
+                "  &lt;td&gt;" + visitCount + "&lt;/td&gt;&lt;/tr&gt;\n" +
+                "&lt;/table&gt;\n" +
+                "&lt;/body&gt;&lt;/html&gt;"); 
+    }
+}
+</pre>
+<p>编译上面的 Servlet <b>SessionTrack</b>，并在 web.xml 文件中创建适当的条目。
+</p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app&gt;
+  &lt;servlet&gt; 
+    &lt;!-- 类名 --&gt;  
+    &lt;servlet-name&gt;SessionTrack&lt;/servlet-name&gt;
+    &lt;!-- 所在的包 --&gt;
+    &lt;servlet-class&gt;com.runoob.test.SessionTrack&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;SessionTrack&lt;/servlet-name&gt;
+    &lt;!-- 访问的网址 --&gt;
+    &lt;url-pattern&gt;/TomcatTest/SessionTrack&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre><p>
+在浏览器地址栏输入 <i>http://localhost:8080/TomcatTest/SessionTrack</i>，当您第一次运行时将显示如下结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/07/servlet-session.jpg" width="70%"/></p>
+<p>再次尝试运行相同的 Servlet，它将显示如下结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/07/servlet-session2.jpg" width="70%"/></p>
+<br/>
+<h2 class="tutheader">删除 Session 会话数据</h2>
+<p>当您完成了一个用户的 session 会话数据，您有以下几种选择：</p>
+<ul class="list">
+<li><b>移除一个特定的属性：</b>您可以调用 <i>public void removeAttribute(String name)</i> 方法来删除与特定的键相关联的值。</li>
+<li><b>删除整个 session 会话：</b>您可以调用 <i>public void invalidate()</i> 方法来丢弃整个 session 会话。</li>
+<li><b>设置 session 会话过期时间：</b>您可以调用 <i>public void setMaxInactiveInterval(int interval)</i> 方法来单独设置 session 会话超时。</li>
+<li><b>注销用户：</b>如果使用的是支持 servlet 2.4 的服务器，您可以调用 <b>logout</b> 来注销 Web 服务器的客户端，并把属于所有用户的所有 session 会话设置为无效。</li>
+<li><b>web.xml 配置：</b>如果您使用的是 Tomcat，除了上述方法，您还可以在 web.xml 文件中配置 session 会话超时，如下所示：</li>
+</ul>
+<pre>
+  &lt;session-config&gt;
+    &lt;session-timeout&gt;15&lt;/session-timeout&gt;
+  &lt;/session-config&gt;
+</pre>
+<p>上面实例中的超时时间是以分钟为单位，将覆盖 Tomcat 中默认的 30 分钟超时时间。</p>
+<p>在一个 Servlet 中的 getMaxInactiveInterval() 方法会返回 session 会话的超时时间，以秒为单位。所以，如果在 web.xml 中配置 session 会话超时时间为 15 分钟，那么 getMaxInactiveInterval() 会返回 900。</p>
+</div>

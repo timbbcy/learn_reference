@@ -1,0 +1,92 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">仅含文本</span>
+</h1>
+<hr/>
+<p class="intro">仅含文本的复合元素可包含文本和属性。</p>
+<hr/>
+<h2>仅含文本的复合元素
+</h2>
+<p>此类型仅包含简易的内容（文本和属性），因此我们要向此内容添加 simpleContent 元素。当使用简易内容时，我们就必须在 simpleContent 元素内定义扩展或限定，就像这样：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="somename"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:simpleContent&gt;<br/>
+           
+      &lt;xs:extension base="basetype"&gt;<br/>
+               
+        ....<br/>
+               
+        ....<br/>
+           
+      &lt;/xs:extension&gt;<br/>
+       
+    &lt;/xs:simpleContent&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;<br/><br/>
+或者：<br/><br/>
+&lt;xs:element name="somename"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:simpleContent&gt;<br/>
+           
+      &lt;xs:restriction base="basetype"&gt;<br/>
+               
+        ....<br/>
+               
+        ....<br/>
+           
+      &lt;/xs:restriction&gt;<br/>
+       
+    &lt;/xs:simpleContent&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p><b>提示：</b> 请使用 extension 或 restriction 元素来扩展或限制元素的基本简易类型。
+这里有一个 XML 元素的例子，"shoesize"，其中仅包含文本：</p>
+<div class="code notranslate"><div>
+&lt;shoesize country="france"&gt;35&lt;/shoesize&gt;
+</div></div>
+<p>下面这个例子声明了一个复合类型，其内容被定义为整数值，并且 "shoesize" 元素含有名为 "country" 的属性：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="shoesize"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:simpleContent&gt;<br/>
+           
+      &lt;xs:extension base="xs:integer"&gt;<br/>
+               
+        &lt;xs:attribute name="country" type="xs:string" /&gt;<br/>
+           
+      &lt;/xs:extension&gt;<br/>
+       
+    &lt;/xs:simpleContent&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p>我们也可为 complexType 元素设定一个名称，并让 "shoesize" 元素的 type 属性来引用此名称（通过使用此方法，若干元素均可引用相同的复合类型）：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="shoesize" type="shoetype"/&gt;<br/><br/>
+&lt;xs:complexType name="shoetype"&gt;<br/>
+   
+  &lt;xs:simpleContent&gt;<br/>
+       
+    &lt;xs:extension base="xs:integer"&gt;<br/>
+           
+      &lt;xs:attribute name="country" type="xs:string" /&gt;<br/>
+       
+    &lt;/xs:extension&gt;<br/>
+   
+  &lt;/xs:simpleContent&gt;<br/>
+&lt;/xs:complexType&gt;
+</div></div>
+</div>

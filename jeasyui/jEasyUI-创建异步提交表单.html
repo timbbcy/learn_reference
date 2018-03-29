@@ -1,0 +1,53 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 表单 - <span class="color_h1">创建异步提交表单</span></h1>
+<p>本教程向您展示如何通过 easyui 提交一个表单（Form）。我们创建一个带有 name、email 和 phone 字段的表单。通过使用 easyui 表单（form）插件来改变表单（form）为 ajax 表单（form）。表单（form）提交所有字段到后台服务器，服务器处理和发送一些数据返回到前端页面。我们接收返回数据，并将它显示出来。</p>
+<img src="/wp-content/uploads/2013/12/form1.png"/>
+<h4>创建表单（Form）</h4>
+<pre style="color:#006600">
+    &lt;div style="padding:3px 2px;border-bottom:1px solid #ccc"&gt;Ajax Form&lt;/div&gt;
+    &lt;form id="ff" action="form1_proc.php" method="post"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Name:&lt;/td&gt;
+                &lt;td&gt;&lt;input name="name" type="text"&gt;&lt;/input&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Email:&lt;/td&gt;
+                &lt;td&gt;&lt;input name="email" type="text"&gt;&lt;/input&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Phone:&lt;/td&gt;
+                &lt;td&gt;&lt;input name="phone" type="text"&gt;&lt;/input&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;input type="submit" value="Submit"&gt;&lt;/input&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/form&gt;
+</pre>
+<h4>改变为 Ajax 表单</h4>
+<pre style="color:#006600">
+    $('#ff').form({
+        success:function(data){
+            $.messager.alert('Info', data, 'info');
+        }
+    });
+</pre>
+<h4>服务器端代码</h4>
+<div>form1_proc.php</div>
+<pre style="color:#006600">
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    echo "Your Name: $name &lt;br/&gt; Your Email: $email &lt;br/&gt; Your Phone: $phone";
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-form-form1.zip">jeasyui-form-form1.zip</a></p>
+</div>

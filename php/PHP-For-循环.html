@@ -1,0 +1,78 @@
+<div class="article-intro" id="content">
+<h1>PHP 循环 - <span class="color_h1">For 循环</span>
+</h1>
+<hr/>
+<p class="intro">循环执行代码块指定的次数，或者当指定的条件为真时循环执行代码块。</p>
+<hr/>
+<h2>for 循环</h2>
+<p>for 循环用于您预先知道脚本需要运行的次数的情况。</p>
+<h3>语法</h3>
+<pre>
+for (初始值; 条件; 增量)
+{
+    要执行的代码;
+}</pre>
+<p>参数：</p>
+<ul>
+<li>
+<i>初始值</i>：主要是初始化一个变量值，用于设置一个计数器（但可以是任何在循环的开始被执行一次的代码）。</li>
+<li>
+<i>条件</i>：循环执行的限制条件。如果为 TRUE，则循环继续。如果为 FALSE，则循环结束。</li>
+<li>
+<i>增量</i>：主要用于递增计数器（但可以是任何在循环的结束被执行的代码）。</li>
+</ul>
+<p><b>注释：</b>上面的<i>初始值</i>和<i>增量</i>参数可为空，或者有多个表达式（用逗号分隔）。</p>
+<h3>实例</h3>
+<p>下面的实例定义一个初始值为 i=1 的循环。只要变量 <i>i</i> 小于或者等于 5，循环将继续运行。循环每运行一次，变量 <i>i</i> 就会递增 1：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$i</span><span class="hl-code">=</span><span class="hl-number">1</span><span class="hl-code">; </span><span class="hl-var">$i</span><span class="hl-code">&lt;=</span><span class="hl-number">5</span><span class="hl-code">; </span><span class="hl-var">$i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">The number is </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$i</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>输出：</p>
+<div class="code"><div>
+
+The number is 1<br/>
+The number is 2<br/>
+The number is 3<br/>
+The number is 4<br/>
+The number is 5
+</div></div>
+<br/><hr/>
+<h2>foreach 循环</h2>
+<p>foreach 循环用于遍历数组。</p>
+<h3>语法</h3>
+<pre>
+foreach ($array as $value)
+{
+    要执行代码;
+}</pre>
+<p>每进行一次循环，当前数组元素的值就会被赋值给 $value 变量（数组指针会逐一地移动），在进行下一次循环时，您将看到数组中的下一个值。</p>
+<h3>实例</h3>
+<p>下面的实例演示了一个输出给定数组的值的循环：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$x</span><span class="hl-code">=</span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">one</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">two</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">three</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$x</span><span class="hl-code"> </span><span class="hl-reserved">as</span><span class="hl-code"> </span><span class="hl-var">$value</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$value</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>输出：</p>
+<div class="code notranslate"><div>
+
+one<br/>
+two<br/>
+three
+</div></div>
+</div>

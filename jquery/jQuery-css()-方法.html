@@ -1,0 +1,45 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">css() 方法</span>
+</h1>
+<hr/>
+<h2>jQuery css() 方法</h2>
+<p>css() 方法设置或返回被选元素的一个或多个样式属性。</p>
+<hr/>
+<h2>返回 CSS 属性</h2>
+<p>如需返回指定的 CSS 属性的值，请使用如下语法：</p>
+<div class="code"><div>
+css("<i>propertyname</i>");</div></div>
+<p>下面的例子将返回首个匹配元素的 background-color 值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">css</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">background-color</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_css_getcolor" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>设置 CSS 属性</h2>
+<p>如需设置指定的 CSS 属性，请使用如下语法：</p>
+<div class="code"><div>
+css("<i>propertyname</i>","<i>value</i>");</div></div>
+<p>下面的例子将为所有匹配元素设置 background-color 值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">css</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">background-color</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">yellow</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_css_setcolor" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>设置多个 CSS 属性</h2>
+<p>如需设置多个 CSS 属性，请使用如下语法：</p>
+<div class="code"><div>
+css({"<i>propertyname</i>":"<i>value</i>","<i>propertyname</i>":"<i>value</i>",...});</div></div>
+<p>下面的例子将为所有匹配元素设置 background-color 和 font-size：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">css</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">background-color</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">yellow</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">font-size</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">200%</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_css_set_multiple" target="_blank">尝试一下 »</a>
+</div>
+</div>

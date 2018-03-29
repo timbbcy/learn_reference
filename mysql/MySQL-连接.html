@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>MySQL 连接</h1>
+<hr/>
+<h2>
+使用mysql二进制方式连接</h2>
+<p>
+您可以使用MySQL二进制方式进入到mysql命令提示符下来连接MySQL数据库。
+</p>
+<h3>
+实例</h3>
+<p>
+以下是从命令行中连接mysql服务器的简单实例：</p>
+<pre>
+[root@host]# mysql -u root -p
+Enter password:******
+</pre><p>
+在登录成功后会出现 mysql&gt; 命令提示窗口，你可以在上面执行任何 SQL 语句。</p><p>以上命令执行后，登录成功输出结果如下:</p>
+<pre>
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2854760 to server version: 5.0.9
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+</pre><p>
+在以上实例中，我们使用了root用户登录到mysql服务器，当然你也可以使用其他mysql用户登录。</p><p>
+如果用户权限足够，任何用户都可以在mysql的命令提示窗口中进行SQL操作。</p>
+<p>
+退出 mysql&gt; 命令提示窗口可以使用 exit 命令，如下所示：</p>
+<pre>
+mysql&gt; exit
+Bye
+</pre>
+<hr/>
+<h2>
+使用 PHP 脚本连接 MySQL</h2>
+<p>
+PHP 提供了 mysqli_connect() 函数来连接数据库。</p>
+<p>
+该函数有 6 个参数，在成功链接到 MySQL 后返回连接标识，失败返回 FALSE 。
+</p>
+<h3>语法</h3>
+<pre>
+mysqli_connect(host,username,password,dbname,port,socket);
+</pre>
+<p><strong>参数说明：</strong></p>
+<table class="reference">
+<tbody><tr>
+<th width="20%">参数</th>
+<th width="80%">描述</th>
+</tr>
+<tr>
+<td><em>host</em></td>
+<td>可选。规定主机名或 IP 地址。</td>
+</tr>
+<tr>
+<td><em>username</em></td>
+<td>可选。规定 MySQL 用户名。</td>
+</tr>
+<tr>
+<td><em>password</em></td>
+<td>可选。规定 MySQL 密码。</td>
+</tr>
+<tr>
+<td><em>dbname</em></td>
+<td>可选。规定默认使用的数据库。</td>
+</tr>
+<tr>
+<td><em>port</em></td>
+<td>可选。规定尝试连接到 MySQL 服务器的端口号。</td>
+</tr>
+<tr>
+<td><em>socket</em></td>
+<td>可选。规定 socket 或要使用的已命名 pipe。</td>
+</tr>
+</tbody></table>
+<p>
+你可以使用PHP的 mysqli_close() 函数来断开与MySQL数据库的链接。</p><p>
+该函数只有一个参数为 mysqli_connect() 函数创建连接成功后返回的 MySQL 连接标识符。</p>
+<h3>语法</h3>
+<pre>
+bool mysqli_close ( mysqli $link )
+</pre>
+<p>
+本函数关闭指定的连接标识所关联的到 MySQL 服务器的非持久连接。如果没有指定 link_identifier，则关闭上一个打开的连接。</p><p>
+<strong>提示：</strong>通常不需要使用 mysqli_close()，因为已打开的非持久连接会在脚本执行完毕后自动关闭。</p><p>
+<h3>实例</h3>
+<p>
+你可以尝试以下实例来连接到你的 MySQL 服务器:</p>
+<div class="example">
+<h2 class="example">连接 MySQL</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$dbhost</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">localhost:3306</span><span class="hl-quotes">'</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> mysql服务器主机地址</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbuser</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">;            </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbpass</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名密码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$dbhost</span><span class="hl-code">, </span><span class="hl-var">$dbuser</span><span class="hl-code">, </span><span class="hl-var">$dbpass</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$conn</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Could not connect: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">数据库连接成功！</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div></div>
+</p></div>

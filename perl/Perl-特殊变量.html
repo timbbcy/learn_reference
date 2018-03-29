@@ -1,0 +1,496 @@
+<div class="article-intro" id="content">
+<h1>Perl 特殊变量</h1>
+<p>Perl 语言中定义了一些特殊的变量，通常以 $, @, 或 % 作为前缀，例如：$_。</p>
+<p>
+很多特殊的变量有一个很长的英文名，操作系统变量 $! 可以写为 $OS_ERROR。</p>
+<p>如果你想使用英文名的特殊变量需要在程序头部添加 <b>use English;</b>。这样就可以使用具有描述性的英文特殊变量。</p>
+<p>最常用的特殊变量为 $_，该变量包含了默认输入和模式匹配内容。实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">Taobao</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Google
+Runoob
+Taobao
+</pre>
+<p>以下实例我们不使用  $_ 来输出内容：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">Taobao</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Google
+Runoob
+Taobao
+</pre>
+<p>实例中，首先输出 "Google" ，接着输出 "Runoob" ，最后输出 "Taobao" 。</p>
+<p>在迭代循环中，当前循环的字符串会放在 $_ 中, 然后 通过 print 输出。另外 print 在不指定输出变量，默认情况下使用的也是 $_。 </p>
+<p>以下是几处即使没有写明 Perl 也会假定使用 $_ 的地方：</p>
+<ul class="list"><li>
+各种单目函数，包括像 ord() 和 int() 这样的函数以及除 "-t"以外所有的文件 测试操作 ("-f"，"-d")，"-t" 默认操作 STDIN。</li><li>
+各种列表函数，例如 print() 和 unlink()。</li><li>
+没有使用 "=~" 运算符时的模式匹配操作 "m//"、"s///" 和"tr///"。</li><li>
+在没有给出其他变量时是 "foreach" 循环的默认迭代变量。</li><li>
+grep() 和 map() 函数的隐含迭代变量。</li><li>
+当 "while" 仅有唯一条件，且该条件是对 ""操作的结果进行测试时，$_ 就是存放输入记录的默认位置。除了"while" 测试条件之外不会发生这种情况。(助记：下划线在特定操作中是可以省略的。)
+</li>
+</ul>
+<hr/>
+<h2>特殊变量类型</h2>
+<p>根据特殊的变量的使用性质，可以分为以下几类：</p>
+<ul class="list">
+<li><p>全局标量特殊变量。</p></li>
+<li><p>全局数组特殊变量。</p></li>
+<li><p>全局哈希特殊变量。</p></li>
+<li><p>全局特殊文件句柄。</p></li>
+<li><p>全局特殊常量。</p></li>
+<li><p>正则表达式特殊变量。</p></li>
+<li><p>文件句柄特殊变量。</p></li>
+</ul>
+<h3>全局标量特殊变量</h3>
+<p>
+以下列出了所有的标量特殊变量，包含了特殊字符与英文形式的变量：</p>
+<table class="reference">
+<tbody><tr>
+<td width="18%">$_</td>
+<td align="left" rowspan="2" width="82%">默认输入和模式匹配内容。</td>
+</tr>
+<tr>
+<td width="18%">$ARG</td>
+</tr>
+<tr>
+<td width="18%">$.</td>
+<td align="left" rowspan="2" width="82%">前一次读的文件句柄的当前行号</td>
+</tr>
+<tr>
+<td width="18%">$NR</td>
+</tr>
+<tr>
+<td width="18%">$/</td>
+<td align="left" rowspan="2" width="82%">输入记录分隔符,默认是新行字符。如用undef这个变量,将读到文件结尾。</td>
+</tr>
+<tr>
+<td width="18%">$RS</td>
+</tr>
+<tr>
+<td width="18%">$,</td>
+<td align="left" rowspan="2" width="82%">输出域分隔符</td>
+</tr>
+<tr>
+<td width="18%">$OFS</td>
+</tr>
+<tr>
+<td width="18%">$\</td>
+<td align="left" rowspan="2" width="82%">输出记录分隔符</td>
+</tr>
+<tr>
+<td width="18%">$ORS</td>
+</tr>
+<tr>
+<td width="18%">$"</td>
+<td align="left" rowspan="2" width="82%">该变量同 $,类似，但应用于向双引号引起的字符串(或类似的内插字符串)中内插数组和切片值的场合。默认为一个空格。</td>
+</tr>
+<tr>
+<td width="18%">$LIST_SEPARATOR</td>
+</tr>
+<tr>
+<td width="18%">$;</td>
+<td align="left" rowspan="2" width="82%">在仿真多维数组时使用的分隔符。默认为 "\034"。</td>
+</tr>
+<tr>
+<td width="18%">$SUBSCRIPT_SEPARATOR</td>
+</tr>
+<tr>
+<td width="18%">$^L</td>
+<td align="left" rowspan="2" width="82%">发送到输出通道的走纸换页符。默认为 "\f".
+</td>
+</tr>
+<tr>
+<td width="18%">$FORMAT_FORMFEED</td>
+</tr>
+<tr>
+<td width="18%">$:</td>
+<td align="left" rowspan="2" width="82%">
+The current set of characters after which a string may be broken to fill continuation fields (starting with ^) in a format. Default is "\n"".
+</td>
+</tr>
+<tr>
+<td width="18%">$FORMAT_LINE_BREAK_CHARACTERS</td>
+</tr>
+<tr>
+<td width="18%">$^A</td>
+<td align="left" rowspan="2" width="82%">打印前用于保存格式化数据的变量</td>
+</tr>
+<tr>
+<td width="18%">$ACCUMULATOR</td>
+</tr>
+<tr>
+<td width="18%">$#</td>
+<td align="left" rowspan="2" width="82%">打印数字时默认的数字输出格式（已废弃）。</td>
+</tr>
+<tr>
+<td width="18%">$OFMT</td>
+</tr>
+<tr>
+<td width="18%">$?</td>
+<td align="left" rowspan="2" width="82%">返回上一个外部命令的状态</td>
+</tr>
+<tr>
+<td width="18%">$CHILD_ERROR</td>
+</tr>
+<tr>
+<td width="18%">$!</td>
+<td align="left" rowspan="2" width="82%">这个变量的数字值是errno的值,字符串值是对应的系统错误字符串</td>
+</tr>
+<tr>
+<td width="18%">$OS_ERROR or $ERRNO</td></tr>
+<tr>
+<td width="18%">$@</td>
+<td align="left" rowspan="2" width="82%">命令eval的错误消息.如果为空,则表示上一次eval命令执行成功</td>
+</tr>
+<tr>
+<td width="18%">$EVAL_ERROR
+</td>
+</tr>
+<tr>
+<td width="18%">$$</td>
+<td align="left" rowspan="2" width="82%">运行当前Perl脚本程序的进程号</td>
+</tr>
+<tr>
+<td width="18%">$PROCESS_ID or $PID</td>
+</tr>
+<tr>
+<td width="18%">$&lt;</td>
+<td align="left" rowspan="2" width="82%">当前进程的实际用户号</td>
+</tr>
+<tr>
+<td width="18%">$REAL_USER_ID or $UID</td>
+</tr>
+<tr>
+<td width="18%">$&gt;</td>
+<td align="left" rowspan="2" width="82%">当前进程的有效用户号</td>
+</tr>
+<tr>
+<td width="18%">$EFFECTIVE_USER_ID or $EUID</td>
+</tr>
+<tr>
+<td width="18%">$(</td>
+<td align="left" rowspan="2" width="82%">当前进程的实际组用户号</td>
+</tr>
+<tr>
+<td width="18%">$REAL_GROUP_ID or $GID</td>
+</tr>
+<tr>
+<td width="18%">$)</td>
+<td align="left" rowspan="2" width="82%">当前进程的有效组用户号</td>
+</tr>
+<tr>
+<td width="18%">$EFFECTIVE_GROUP_ID or $EGID</td>
+</tr>
+<tr>
+<td width="18%">$0</td>
+<td align="left" rowspan="2" width="82%">包含正在执行的脚本的文件名</td>
+</tr>
+<tr>
+<td width="18%">$PROGRAM_NAME</td>
+</tr>
+<tr>
+<td width="18%">$[</td>
+<td align="left" rowspan="2" width="82%">数组的数组第一个元素的下标,默认是 0。</td>
+</tr>
+<tr>
+<td width="18%">
+</td>
+</tr>
+<tr>
+<td width="18%">$]</td>
+<td align="left" rowspan="2" width="82%">Perl的版本号</td>
+</tr>
+<tr>
+<td width="18%">$PERL_VERSION</td>
+</tr>
+<tr>
+<td width="18%">$^D</td>
+<td align="left" rowspan="2" width="82%">调试标志的值</td>
+</tr>
+<tr>
+<td width="18%">$DEBUGGING</td>
+</tr>
+<tr>
+<td width="18%">$^E</td>
+<td align="left" rowspan="2" width="82%">在非UNIX环境中的操作系统扩展错误信息</td>
+</tr>
+<tr>
+<td width="18%">$EXTENDED_OS_ERROR</td>
+</tr>
+<tr>
+<td width="18%">$^F</td>
+<td align="left" rowspan="2" width="82%">最大的文件捆述符数值</td>
+</tr>
+<tr>
+<td width="18%">$SYSTEM_FD_MAX</td>
+</tr>
+<tr>
+<td width="18%">$^H</td>
+<td align="left" rowspan="2" width="82%">由编译器激活的语法检查状态</td>
+</tr>
+<tr>
+<td width="18%"></td>
+</tr>
+<tr>
+<td width="18%">$^I</td>
+<td align="left" rowspan="2" width="82%">内置控制编辑器的值</td>
+</tr>
+<tr>
+<td width="18%">$INPLACE_EDIT</td>
+</tr>
+<tr>
+<td width="18%">$^M</td>
+<td align="left" rowspan="2" width="82%">备用内存池的大小</td>
+</tr>
+<tr>
+<td width="18%"></td>
+</tr>
+<tr>
+<td width="18%">$^O</td>
+<td align="left" rowspan="2" width="82%">操作系统名</td>
+</tr>
+<tr>
+<td width="18%">$OSNAME</td>
+</tr>
+<tr>
+<td width="18%">$^P</td>
+<td align="left" rowspan="2" width="82%">指定当前调试值的内部变量</td>
+</tr>
+<tr>
+<td width="18%">$PERLDB</td>
+</tr>
+<tr>
+<td width="18%">$^T</td>
+<td align="left" rowspan="2" width="82%">从新世纪开始算起,脚步本以秒计算的开始运行的时间</td>
+</tr>
+<tr>
+<td width="18%">$BASETIME</td>
+</tr>
+<tr>
+<td width="18%">$^W</td>
+<td align="left" rowspan="2" width="82%">警告开关的当前值</td>
+</tr>
+<tr>
+<td width="18%">$WARNING</td>
+</tr>
+<tr>
+<td width="18%">$^X</td>
+<td align="left" rowspan="2" width="82%">Perl二进制可执行代码的名字</td>
+</tr>
+<tr>
+<td width="18%">$EXECUTABLE_NAME</td>
+</tr>
+<tr>
+<td width="18%">$ARGV</td>
+<td align="left" rowspan="2" width="82%">从默认的文件句柄中读取时的当前文件名
+</td>
+</tr>
+<tr>
+<td width="18%">
+</td>
+</tr>
+</tbody></table>
+<h3>全局数组特殊变量</h3>
+<table class="reference">
+<tr>
+<td width="30%">@ARGV</td>
+<td align="left" width="70%">传给脚本的命令行参数列表</td>
+</tr>
+<tr>
+<td width="30%">@INC</td>
+<td align="left" width="70%">在导入模块时需要搜索的目录列表</td>
+</tr>
+<tr>
+<td>@F</td>
+<td> 命令行的数组输入</td>
+</tr>
+</table>
+<h3>全局哈希特殊变量</h3>
+<table class="reference">
+<tr>
+<td width="30%">
+<p align="center">%INC</p></td>
+<td align="left" width="70%">散列表%INC包含所有用do或require语句包含的文件.关键字是文件名,值是这个文件的路径</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">%ENV</p></td>
+<td align="left" width="70%">包含当前环境变量</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">%SIG</p></td>
+<td align="left" width="70%">信号列表及其处理方式</td>
+</tr>
+</table>
+<h3>全局特殊文件句柄</h3>
+<table class="reference">
+<tr>
+<td width="30%"><p align="center">ARGV</p></td>
+<td align="left" width="70%">遍历数组变量@ARGV中的所有文件名的特殊文件句柄</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">STDERR</p></td>
+<td align="left" width="70%">标准错误输出句柄</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">STDIN</p></td>
+<td align="left" width="70%">标准输入句柄</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">STDOUT</p></td>
+<td align="left" width="70%">标准输出句柄</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">DATA</p></td>
+<td align="left" width="70%">
+特殊文件句柄引用了在文件中 __END__ 标志后的任何内容包含脚本内容。或者引用一个包含文件中__DATA__ 标志后的所有内容，只要你在同一个包有读取数据，__DATA__ 就存在。 </td>
+</tr>
+<tr>
+<td width="30%"><p align="center">_ (下划线)</p></td>
+<td align="left" width="70%">特殊的文件句柄用于缓存文件信息(fstat、stat和lstat)。
+</td>
+</tr>
+</table>
+<h3>全局特殊常量</h3>
+<table class="reference">
+<tr>
+<td width="30%"><p align="center">__END__</p></td>
+<td align="left" width="70%">脚本的逻辑结束，忽略后面的文本。  </td>
+</tr>
+<tr>
+<td width="30%"><p align="center">__FILE__</p></td>
+<td align="left" width="70%">当前文件名</td>
+</tr>
+<tr><td width="30%"><p align="center">__LINE__</p></td>
+<td align="left" width="70%">当前行号  </td>
+</tr>
+<tr>
+<td width="30%"><p align="center">__PACKAGE__</p></td>
+<td align="left" width="70%">当前包名，默认的包名是main。</td>
+</tr>
+</table>
+<h3>正则表达式特殊变量</h3>
+<table class="reference">
+<tr>
+<td width="30%"><p align="center">$n</p></td>
+<td align="left" width="70%">包含上次模式匹配的第n个子串</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">$&amp;</p></td>
+<td align="left" rowspan="2" width="70%">前一次成功模式匹配的字符串</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">$MATCH</p></td>
+</tr>
+<tr>
+<td width="30%"><p align="center">$`</p></td>
+<td align="left" rowspan="2" width="70%">前次匹配成功的子串之前的内容</td>
+</tr>
+<tr>
+<td width="30%"><p align="center">$PREMATCH</p></td>
+</tr>
+<tr>
+<td width="30%"><p align="center">$'</p></td>
+<td align="left" rowspan="2" width="70%">前次匹配成功的子串之后的内容</td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$POSTMATCH</p></td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$+</p></td>
+<td align="left" rowspan="2" width="70%">
+<p>与上个正则表达式搜索格式匹配的最后一个括号。例如：</p>
+<pre>/Version: (.*)|Revision: (.*)/ &amp;&amp; ($rev = $+);</pre>
+</td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$LAST_PAREN_MATCH</p></td>
+</tr>
+</table>
+<h3>文件句柄特殊变量</h3>
+<table class="reference">
+<tr>
+<td width="30%">
+<p align="center">$|</p></td>
+<td align="left" rowspan="2" width="70%">如果设置为零,在每次调用函数write或print后，自动调用函数fflush,将所写内容写回文件
+    </td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$OUTPUT_AUTOFLUSH</p></td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$%</p></td>
+<td align="left" rowspan="2" width="70%">当前输出页号
+    </td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$FORMAT_PAGE_NUMBER</p></td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$=</p></td>
+<td align="left" rowspan="2" width="70%">当前每页长度。默认为 60。
+    </td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$FORMAT_LINES_PER_PAGE</p></td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$-</p></td>
+<td align="left" rowspan="2" width="70%">当前页剩余的行数
+    </td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$FORMAT_LINES_LEFT</p></td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$~</p></td>
+<td align="left" rowspan="2" width="70%">当前报表输出格式的名称。默认值是文件句柄名。
+    </td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$FORMAT_NAME</p></td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$^</p></td>
+<td align="left" rowspan="2" width="70%">当前报表输出表头格式的名称。默认值是带后缀"_TOP"的文件句柄名。
+    </td>
+</tr>
+<tr>
+<td width="30%">
+<p align="center">$FORMAT_TOP_NAME</p></td>
+</tr>
+</table>
+</div>

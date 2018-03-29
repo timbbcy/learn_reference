@@ -1,0 +1,139 @@
+<div class="article-intro" id="content">
+<h1>MongoDB <span class="color_h1">$type</span> 操作符</h1>
+<br/><h2 class="tutheader">描述</h2>
+<p>在本章节中，我们将继续讨论MongoDB中条件操作符 $type。</p>
+<p>$type操作符是基于BSON类型来检索集合中匹配的数据类型，并返回结果。</p>
+<p>MongoDB 中可以使用的类型如下表所示：</p>
+<table class="reference">
+<tbody>
+<tr><th><strong>类型</strong></th>
+<th><strong>数字</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+<tr class="row-even"><td>Double</td>
+<td>1</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>String</td>
+<td>2</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>Object</td>
+<td>3</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>Array</td>
+<td>4</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>Binary data</td>
+<td>5</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>Undefined</td>
+<td>6</td>
+<td>已废弃。</td>
+</tr>
+<tr class="row-even"><td>Object id</td>
+<td>7</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>Boolean</td>
+<td>8</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>Date</td>
+<td>9</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>Null</td>
+<td>10</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>Regular Expression</td>
+<td>11</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>JavaScript</td>
+<td>13</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>Symbol</td>
+<td>14</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>JavaScript (with scope)</td>
+<td>15</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>32-bit integer</td>
+<td>16</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>Timestamp</td>
+<td>17</td>
+<td> </td>
+</tr>
+<tr class="row-even"><td>64-bit integer</td>
+<td>18</td>
+<td> </td>
+</tr>
+<tr class="row-odd"><td>Min key</td>
+<td>255</td>
+<td>Query with <tt class="docutils literal"><span class="pre">-1</span></tt>.</td>
+</tr>
+<tr class="row-even"><td>Max key</td>
+<td>127</td>
+<td> </td>
+</tr>
+</tbody></table>
+<p><strong>我们使用的数据库名称为"runoob" 我们的集合名称为"col"，以下为我们插入的数据。</strong></p>
+<p>简单的集合"col"：</p>
+<pre>
+&gt;db.col.insert({
+    title: 'PHP 教程', 
+    description: 'PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。',
+    by: '菜鸟教程',
+    url: 'http://www.runoob.com',
+    tags: ['php'],
+    likes: 200
+})
+</pre>
+<br>
+<pre>
+&gt;db.col.insert({title: 'Java 教程', 
+    description: 'Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。',
+    by: '菜鸟教程',
+    url: 'http://www.runoob.com',
+    tags: ['java'],
+    likes: 150
+})
+</pre>
+<br>
+<pre>
+&gt;db.col.insert({title: 'MongoDB 教程', 
+    description: 'MongoDB 是一个 Nosql 数据库',
+    by: '菜鸟教程',
+    url: 'http://www.runoob.com',
+    tags: ['mongodb'],
+    likes: 100
+})
+</pre>
+<p>使用find()命令查看数据：</p>
+<pre>
+&gt; db.col.find()
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+</pre>
+<br/><h2 class="tutheader">MongoDB 操作符 - $type 实例</h2>
+<p>如果想获取 "col" 集合中 title 为 String 的数据，你可以使用以下命令：</p>
+<pre>db.col.find({"title" : {$type : 2}})</pre>
+<p>输出结果为：
+</p>
+<pre>
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+</pre>
+</br></br></div>

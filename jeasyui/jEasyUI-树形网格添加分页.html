@@ -1,0 +1,97 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 树形菜单 - <span class="color_h1">树形网格添加分页</span></h1>
+<p>
+本教程展示如何向带有动态加载特性的树形网格（TreeGrid）添加分页。
+</p>
+<img src="/wp-content/uploads/2013/12/treegrid4.png"/>
+<h4>创建树形网格（TreeGrid）</h4>
+<p>
+启用树形网格（TreeGrid）的分页特性，必须添加 'pagination:true' 属性，这样页面加载时就会向服务器发送 'page' 和 'rows' 参数。
+</p>
+<pre style="color:#006600">
+    &lt;table title="Products" class="easyui-treegrid" style="width:700px;height:300px"
+            data-options="
+                url: 'treegrid4_getdata.php',
+                rownumbers: true,
+                pagination: true,
+                pageSize: 2,
+                pageList: [2,10,20],
+                idField: 'id',
+                treeField: 'name',
+                onBeforeLoad: function(row,param){
+                    if (!row) {    // load top level rows
+                        param.id = 0;    // set id=0, indicate to load new page rows
+                    }
+                }
+            "&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="name" width="250"&gt;Name&lt;/th&gt;
+                &lt;th field="quantity" width="100" align="right"&gt;Quantity&lt;/th&gt;
+                &lt;th field="price" width="150" align="right" formatter="formatDollar"&gt;Price&lt;/th&gt;
+                &lt;th field="total" width="150" align="right" formatter="formatDollar"&gt;Total&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<h4>服务器端代码</h4>
+<p>treegrid4_getdata.php</p>
+<pre style="color:#006600">
+$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+$offset = ($page-1)*$rows;
+
+$id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+
+include 'conn.php';
+
+$result = array();
+if ($id == 0){
+    $rs = mysql_query("select count(*) from products where parentId=0");
+    $row = mysql_fetch_row($rs);
+    $result["total"] = $row[0];
+    
+    $rs = mysql_query("select * from products where parentId=0 limit $offset,$rows");
+    $items = array();
+    while($row = mysql_fetch_array($rs)){
+        $row['state'] = has_child($row['id']) ? 'closed' : 'open';
+        array_push($items, $row);
+    }
+    $result["rows"] = $items;
+} else {
+    $rs = mysql_query("select * from products where parentId=$id");
+    while($row = mysql_fetch_array($rs)){
+        $row['state'] = has_child($row['id']) ? 'closed' : 'open';
+        $row['total'] = $row['price']*$row['quantity'];
+        array_push($result, $row);
+    }
+}
+
+echo json_encode($result);
+
+function has_child($id){
+    $rs = mysql_query("select count(*) from products where parentId=$id");
+    $row = mysql_fetch_array($rs);
+    return $row[0] &gt; 0 ? true : false;
+}
+</pre>
+<p>
+发送到服务器的参数包括：
+</p>
+<ul>
+<li>page：要加载的当前页面。</li>
+<li>rows：页面尺寸大小。</li>
+<li>id：父行的 id 值，从服务器返回的行将被添加。</li>
+</ul>
+<p>
+当展开一个行节点时，'id' 值是大于 0 的。
+当改变页码时，'id' 值应该被设置为 0 来放置加载子行。
+</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-tree-treegrid4.zip">jeasyui-tree-treegrid4.zip</a></p>
+</div>

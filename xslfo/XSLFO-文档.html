@@ -1,0 +1,64 @@
+<div class="article-intro" id="content">
+<h1>XSL-FO <span class="color_h1">文档</span>
+</h1>
+<hr/>
+<h2>XSL-FO 文档</h2>
+<p>XSL-FO 文档是带有输出信息的 XML 文件。</p>
+<p>XSL-FO 文档存储在以 .fo 或 .fob 为文件扩展名的文件中。您也可以把 XSL-FO 文档存储为以 .xml 为扩展名的文件，这样做的话可以使 XSL-FO 文档更易被 XML 编辑器存取。</p>
+<hr/>
+<h2>XSL-FO 文档结构</h2>
+<p>XSL-FO 的文档结构如下所示：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;<br/><br/>
+&lt;fo:layout-master-set&gt;<br/>
+   
+  &lt;fo:simple-page-master master-name="A4"&gt;<br/>
+       
+    &lt;!-- Page template goes here --&gt;<br/>
+   
+  &lt;/fo:simple-page-master&gt;<br/>
+&lt;/fo:layout-master-set&gt;<br/><br/>
+&lt;fo:page-sequence master-reference="A4"&gt;<br/>
+   
+  &lt;!-- Page content goes here --&gt;<br/>
+&lt;/fo:page-sequence&gt;<br/><br/>
+&lt;/fo:root&gt;
+</div></div>
+<h2>结构解释</h2>
+<p>XSL-FO 文档属于 XML 文档，因此也需要以 XML 声明来起始：</p>
+<div class="code notranslate"><div>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+</div></div>
+<p>&lt;fo:root&gt; 元素是 XSL-FO 文档的根元素。这个根元素也要声明 XSL-FO 的命名空间：</p>
+<div class="code notranslate"><div>
+
+&lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;<br/>
+   
+  &lt;!-- The full XSL-FO document goes here --&gt;<br/>
+&lt;/fo:root&gt;</div></div>
+<p>&lt;fo:layout-master-set&gt; 元素包含一个或多个页面模板：</p>
+<div class="code notranslate"><div>
+
+&lt;fo:layout-master-set&gt;<br/>
+   
+  &lt;!-- All page templates go here --&gt;<br/>
+&lt;/fo:layout-master-set&gt;</div></div>
+<p>每个 &lt;fo:simple-page-master&gt; 元素包含一个单一的页面模板。每个模板必须有一个唯一的名称（master-name）：</p>
+<div class="code notranslate"><div>
+
+&lt;fo:simple-page-master master-name="A4"&gt;<br/>
+   
+  &lt;!-- One page template goes here --&gt;<br/>
+&lt;/fo:simple-page-master&gt;</div></div>
+<p>一个或多个 &lt;fo:page-sequence&gt; 元素可描述页面内容。master-reference 属性使用相同的名称来引用 simple-page-master 模板：</p>
+<div class="code notranslate"><div>
+
+&lt;fo:page-sequence master-reference="A4"&gt;<br/>
+   
+  &lt;!-- Page content goes here --&gt;<br/>
+&lt;/fo:page-sequence&gt;</div></div>
+<p><b>注释：</b>master-reference 的值 "A4" 实际上并没有描述某个预定义的页面格式。它仅仅是一个名称。您可以使用任何名称，比如 "MyPage"、"MyTemplate" 等等。</p>
+<br/>
+</div>

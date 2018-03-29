@@ -1,0 +1,532 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 表格</h1>
+<h2>
+Bootstrap4 基础表格
+</h2>
+<p>Bootstrap4 通过 <span class="marked">.table</span> 类来设置基础表格的样式，实例如下:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_basic" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>条纹表格</h2>
+<p>通过添加 <span class="marked">.table-striped</span> 类，您将在 <strong>&lt;tbody&gt;</strong> 内的行上看到条纹，如下面的实例所示：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_striped" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>带边框表格</h2>
+<p><span class="marked">.table-bordered</span> 类可以为表格添加边框</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-bordered</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_bordered" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>鼠标悬停状态表格</h2>
+<p><span class="marked">.table-hover</span> 类可以为表格的每一行添加鼠标悬停效果（灰色背景）：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-hover</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_hover" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>黑色背景表格</h2>
+<p><span class="marked">.table-dark</span> 类可以为表格添加黑色背景：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-dark</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_inverse" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>黑色条纹表格</h2>
+<p>联合使用 <span class="marked">.table-dark</span> 和 <span class="marked">.table-striped</span> 类可以创建黑色的条纹表格：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-dark table-striped</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_dark_striped" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>鼠标悬停效果 - 黑色背景表格</h2>
+<p>联合使用 <span class="marked">.table-dark</span> 和 <span class="marked">.table-hover</span> 类可以设置黑色背景表格的鼠标悬停效果：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-dark table-hover</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_dark_hover" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>指定意义的颜色类</h2>
+<p>通过指定意义的颜色类可以为表格的行或者单元格设置颜色：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Default</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Defaultson</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">def@somemail.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-primary</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Primary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Joe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">joe@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Success</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-danger</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Danger</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-info</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Info</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Warning</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Refs</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">bo@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Active</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Activeson</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">act@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-secondary</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Secondary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Secondson</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">sec@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-light</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Light</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Angie</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">angie@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-dark text-dark</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dark</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Bo</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">bo@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_contextual" target="_blank">尝试一下 »</a></div>
+<p>下表列出了表格颜色类的说明:</p>
+<table class="reference">
+<thead>
+<tr>
+<th>类名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="marked">.table-primary</span></td>
+<td>蓝色: 指定这是一个重要的操作</td>
+</tr>
+<tr>
+<td><span class="marked">.table-success</span></td>
+<td>绿色: 指定这是一个允许执行的操作</td>
+</tr>
+<tr>
+<td><span class="marked">.table-danger</span></td>
+<td>红色: 指定这是可以危险的操作</td>
+</tr>
+<tr>
+<td><span class="marked">.table-info</span></td>
+<td>浅蓝色: 表示内容已变更</td>
+</tr>
+<tr>
+<td><span class="marked">.table-warning</span></td>
+<td>橘色: 表示需要注意的操作</td>
+</tr>
+<tr>
+<td><span class="marked">.table-active</span></td>
+<td>灰色: 用于鼠标悬停效果</td>
+</tr>
+<tr>
+<td><span class="marked">.table-secondary</span></td>
+<td>灰色: 表示内容不怎么重要</td>
+</tr>
+<tr>
+<td><span class="marked">.table-light</span></td>
+<td>浅灰色，可以是表格行的背景</td>
+</tr>
+<tr>
+<td><span class="marked">.table-dark</span></td>
+<td>深灰色，可以是表格行的背景</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>表头颜色</h2>
+<p>在 Bootstrap v4.0.0-beta.2 中<span class="marked">.thead-dark</span> 类用于给表头添加黑色背景， <span class="marked">.thead-light</span> 类用于给表头添加灰色背景:</p>
+<blockquote><p>在 Bootstrap v4.0.0-beta  这个版本中，<span class="marked">.thead-inverse</span> 类用于给表头添加黑色背景，<span class="marked">.thead-default</span> 类用于给表头添加灰色背景。</p></blockquote>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">thead-dark</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">thead-light</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_head" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>较小的表格</h2>
+<p><span class="marked">.table-sm</span> 类用于通过减少内边距来设置较小的表格:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table table-bordered table-sm</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">John</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Doe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">john@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mary</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Moe</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">mary@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">July</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dooley</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">july@example.com</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_sm" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>响应式表格</h2>
+<p><span class="marked">.table-responsive</span> 类用于创建响应式表格：在屏幕宽度小于 992px 时会创建水平滚动条，如果可视区域宽度大于 992px 则显示不同效果（没有滚动条）:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">#</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Firstname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Lastname</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Age</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">City</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Country</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Sex</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Example</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Example</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Example</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Example</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Anna</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Pitt</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">35</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">New York</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">USA</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Female</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Yes</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Yes</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Yes</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">Yes</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_responsive" target="_blank">尝试一下 »</a></div>
+<p>你可以通过以下类设定在指定屏幕宽度下显示滚动条：</p>
+<table class="reference">
+<thead>
+<tr>
+<th>类名</th>
+<th>屏幕宽度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="marked">.table-responsive-sm</span></td>
+<td>&lt; 576px</td>
+</tr>
+<tr>
+<td><span class="marked">.table-responsive-md</span></td>
+<td>&lt; 768px</td>
+</tr>
+<tr>
+<td><span class="marked">.table-responsive-lg</span></td>
+<td>&lt; 992px</td>
+</tr>
+<tr>
+<td><span class="marked">.table-responsive-xl</span></td>
+<td>&lt; 1200px</td>
+</tr>
+</tbody>
+</table>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table-responsive-sm</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">table</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    ...
+  </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_table_responsive_sm" target="_blank">尝试一下 »</a></div>
+</div>

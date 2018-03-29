@@ -1,0 +1,154 @@
+<div class="article-intro" id="content">
+<h1>CSS3 <span class="color_h1">字体</span>
+</h1>
+<hr/>
+<img alt="With CSS3, web designers are no longer forced to use only web-safe fonts" src="/images/font.gif"/><hr/>
+<h2>CSS3 @font-face 规则</h2>
+<p>以前CSS3的版本，网页设计师不得不使用用户计算机上已经安装的字体。</p>
+<p>使用CSS3，网页设计师可以使用他/她喜欢的任何字体。</p>
+<p>当你发现您要使用的字体文件时，只需简单的将字体文件包含在网站中，它会自动下载给需要的用户。</p>
+<p>您所选择的字体在新的CSS3版本有关于@font-face规则描述。</p>
+<p>您"自己的"的字体是在 CSS3 @font-face 规则中定义的。</p>
+<hr/>
+<h2>浏览器支持</h2>
+<p>表格中的数字表示支持该属性的第一个浏览器版本号。</p>
+<table class="browserref notranslate">
+<tbody><tr>
+<th style="width:25%;font-size:16px;text-align:left">属性</th>
+<th class="bsChrome" style="width:15%" title="Chrome"></th>
+<th class="bsEdge" style="width:15%" title="Internet Explorer / Edge"></th>
+<th class="bsFirefox" style="width:15%" title="Firefox"></th>
+<th class="bsSafari" style="width:15%" title="Safari"></th>
+<th class="bsOpera" style="width:15%" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left">@font-face</td>
+<td>4.0</td>
+<td>9.0</td>
+<td>3.5</td>
+<td>3.2</td>
+<td>10.0</td>
+</tr>
+</tbody></table>
+<p>Internet Explorer 9+, Firefox, Chrome, Safari, 和 Opera 支持 WOFF (Web Open Font Format) 字体.</p>
+<p>Firefox, Chrome, Safari, 和 Opera 支持 .ttf(True Type字体)和.otf(OpenType)字体字体类型）。</p>
+<p>Chrome, Safari  和 Opera 也支持 SVG 字体/折叠.</p>
+<p>Internet Explorer 同样支持 EOT (Embedded OpenType) 字体.</p>
+<p><b>注意：</b> Internet Explorer 8 以及更早的版本不支持新的 @font-face 规则。</p>
+<hr/>
+<h2>使用您需要的字体</h2>
+<p>在新的 @font-face 规则中，您必须首先定义字体的名称（比如 myFirstFont），然后指向该字体文件。</p>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<strong>提示：</strong>URL请使用小写字母的字体，大写字母在IE中会产生意外的结果</td>
+</tr></table>
+<p>如需为 HTML 元素使用字体，请通过 font-family 属性来引用字体的名称 (myFirstFont)：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&lt;</span><span class="hl-identifier">style</span><span class="hl-code">&gt; 
+</span><span class="hl-var">@font</span><span class="hl-code">-</span><span class="hl-identifier">face</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">font-family:</span><span class="hl-code"> </span><span class="hl-code">myFirstFont</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">src:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">sansation</span><span class="hl-code">_</span><span class="hl-code">light</span><span class="hl-code">.</span><span class="hl-code">woff</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">font-family:</span><span class="hl-code">myFirstFont</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+&lt;/</span><span class="hl-identifier">style</span><span class="hl-code">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_font-face_rule" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>使用粗体文本</h2>
+<p>您必须添加另一个包含粗体文字的@font-face规则：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-var">@font</span><span class="hl-code">-</span><span class="hl-identifier">face</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">font-family:</span><span class="hl-code"> </span><span class="hl-code">myFirstFont</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">src:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">sansation</span><span class="hl-code">_</span><span class="hl-string">bold</span><span class="hl-code">.</span><span class="hl-code">woff</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">font-weight:</span><span class="hl-string">bold</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_font-face_rule_bold" target="_blank">尝试一下 »</a>
+</div>
+<p>该文件"Sansation_Bold.ttf"是另一种字体文件，包含Sansation字体的粗体字。</p>
+<p>浏览器使用这一文本的字体系列"myFirstFont"时应该呈现为粗体。</p>
+<p>这样你就可以有许多相同的字体@font-face的规则。</p>
+<hr/>
+<h2>CSS3 字体描述</h2>
+<p>下表列出了所有的字体描述和里面的@font-face规则定义：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">描述符</th>
+<th style="width:25%">值</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>font-family</td>
+<td><i>name</i></td>
+<td>必需。规定字体的名称。</td>
+</tr>
+<tr>
+<td>src</td>
+<td><i>URL</i></td>
+<td>必需。定义字体文件的 URL。</td>
+</tr>
+<tr>
+<td>font-stretch</td>
+<td>
+<ul>
+<li>normal</li>
+<li>condensed</li>
+<li>ultra-condensed</li>
+<li>extra-condensed</li>
+<li>semi-condensed</li>
+<li>expanded</li>
+<li>semi-expanded</li>
+<li>extra-expanded</li>
+<li>ultra-expanded</li>
+</ul>
+</td>
+<td>可选。定义如何拉伸字体。默认是 "normal"。</td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>
+<ul>
+<li>normal</li>
+<li>italic</li>
+<li>oblique</li>
+</ul>
+</td>
+<td>可选。定义字体的样式。默认是 "normal"。</td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>
+<ul>
+<li>normal</li>
+<li>bold</li>
+<li>100</li>
+<li>200</li>
+<li>300</li>
+<li>400</li>
+<li>500</li>
+<li>600</li>
+<li>700</li>
+<li>800</li>
+<li>900</li>
+</ul>
+</td>
+<td>可选。定义字体的粗细。默认是 "normal"。</td>
+</tr>
+<tr>
+<td>unicode-range</td>
+<td><i>unicode-range</i></td>
+<td>可选。定义字体支持的 UNICODE 字符范围。默认是 "U+0-10FFFF"。</td>
+</tr>
+</tbody></table>
+</div>

@@ -1,0 +1,248 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">定位（Position）</span></h1>
+<div class="tutintro">
+<p>相对窗口、文档、锚、光标/鼠标等元素定位一个元素。</p>
+<p>如需了解更多有关 <code>.position()</code> 方法的细节，请查看 API 文档 <a href="/jqueryui/api-position.html">.position()</a>。</p>
+</div>
+<h2>默认功能</h2>
+<p>使用表单控件配置位置，或者拖拽被定位的元素来修改它的偏移量。向四周拖拽父元素来查看碰撞检测。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 定位（Position） - 默认功能&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #parent {
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    padding: 5px;
+    border: 1px solid #777;
+    background-color: #fbca93;
+    text-align: center;
+  }
+  .positionable {
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+    background-color: #bcd5e6;
+    text-align: center;
+  }
+  #positionable1 {
+    width: 75px;
+    height: 75px;
+  }
+  #positionable2 {
+    width: 120px;
+    height: 40px;
+  }
+  select, input {
+    margin-left: 15px;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    function position() {
+      $( ".positionable" ).position({
+        of: $( "#parent" ),
+        my: $( "#my_horizontal" ).val() + " " + $( "#my_vertical" ).val(),
+        at: $( "#at_horizontal" ).val() + " " + $( "#at_vertical" ).val(),
+        collision: $( "#collision_horizontal" ).val() + " " + $( "#collision_vertical" ).val()
+      });
+    }
+ 
+    $( ".positionable" ).css( "opacity", 0.5 );
+ 
+    $( "select, input" ).bind( "click keyup change", position );
+ 
+    $( "#parent" ).draggable({
+      drag: position
+    });
+ 
+    position();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="parent"&gt;
+  &lt;p&gt;
+  这是父元素的位置。
+  &lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div class="positionable" id="positionable1"&gt;
+  &lt;p&gt;
+  to position
+  &lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div class="positionable" id="positionable2"&gt;
+  &lt;p&gt;
+  to position 2
+  &lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div style="padding: 20px; margin-top: 75px;"&gt;
+  定位...
+  &lt;div style="padding-bottom: 20px;"&gt;
+    &lt;b&gt;my:&lt;/b&gt;
+    &lt;select id="my_horizontal"&gt;
+      &lt;option value="left"&gt;left&lt;/option&gt;
+      &lt;option value="center"&gt;center&lt;/option&gt;
+      &lt;option value="right"&gt;right&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select id="my_vertical"&gt;
+      &lt;option value="top"&gt;top&lt;/option&gt;
+      &lt;option value="center"&gt;center&lt;/option&gt;
+      &lt;option value="bottom"&gt;bottom&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div style="padding-bottom: 20px;"&gt;
+    &lt;b&gt;at:&lt;/b&gt;
+    &lt;select id="at_horizontal"&gt;
+      &lt;option value="left"&gt;left&lt;/option&gt;
+      &lt;option value="center"&gt;center&lt;/option&gt;
+      &lt;option value="right"&gt;right&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select id="at_vertical"&gt;
+      &lt;option value="top"&gt;top&lt;/option&gt;
+      &lt;option value="center"&gt;center&lt;/option&gt;
+      &lt;option value="bottom"&gt;bottom&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div style="padding-bottom: 20px;"&gt;
+    &lt;b&gt;collision:&lt;/b&gt;
+    &lt;select id="collision_horizontal"&gt;
+      &lt;option value="flip"&gt;flip&lt;/option&gt;
+      &lt;option value="fit"&gt;fit&lt;/option&gt;
+      &lt;option value="flipfit"&gt;flipfit&lt;/option&gt;
+      &lt;option value="none"&gt;none&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select id="collision_vertical"&gt;
+      &lt;option value="flip"&gt;flip&lt;/option&gt;
+      &lt;option value="fit"&gt;fit&lt;/option&gt;
+      &lt;option value="flipfit"&gt;flipfit&lt;/option&gt;
+      &lt;option value="none"&gt;none&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-position" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>图像循环</h2>
+<p>一个照片浏览器的原型，使用 Position 分别把图片定为在左边、中间、右边，然后循环显示。使用顶部的链接来循环图像，或者在图像的左侧或右侧点击来循环图像。请注意，当调整窗口大小时，会重新定位图像。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 定位（Position） - 图像循环&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  body {
+    margin: 0;
+  }
+  #container {
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+  }
+ 
+  img {
+    position: absolute;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    // 重构部件，去除这些插件方法
+    $.fn.left = function( using ) {
+      return this.position({
+        my: "right middle",
+        at: "left+25 middle",
+        of: "#container",
+        collision: "none",
+        using: using
+      });
+    };
+    $.fn.right = function( using ) {
+      return this.position({
+        my: "left middle",
+        at: "right-25 middle",
+        of: "#container",
+        collision: "none",
+        using: using
+      });
+    };
+    $.fn.center = function( using ) {
+      return this.position({
+        my: "center middle",
+        at: "center middle",
+        of: "#container",
+        using: using
+      });
+    };
+ 
+    $( "img:eq(0)" ).left();
+    $( "img:eq(1)" ).center();
+    $( "img:eq(2)" ).right();
+ 
+    function animate( to ) {
+      $( this ).stop( true, false ).animate( to );
+    }
+    function next( event ) {
+      event.preventDefault();
+      $( "img:eq(2)" ).center( animate );
+      $( "img:eq(1)" ).left( animate );
+      $( "img:eq(0)" ).right().appendTo( "#container" );
+    }
+    function previous( event ) {
+      event.preventDefault();
+      $( "img:eq(0)" ).center( animate );
+      $( "img:eq(1)" ).right( animate );
+      $( "img:eq(2)" ).left().prependTo( "#container" );
+    }
+    $( "#previous" ).click( previous );
+    $( "#next" ).click( next );
+ 
+    $( "img" ).click(function( event ) {
+      $( "img" ).index( this ) === 0 ? previous( event ) : next( event );
+    });
+ 
+    $( window ).resize(function() {
+      $( "img:eq(0)" ).left( animate );
+      $( "img:eq(1)" ).center( animate );
+      $( "img:eq(2)" ).right( animate );
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="container"&gt;
+  &lt;img src="/wp-content/uploads/2014/03/earth.jpg" width="458" height="308" alt="earth"&gt;
+  &lt;img src="/wp-content/uploads/2014/03/flight.jpg" width="512" height="307" alt="flight"&gt;
+  &lt;img src="/wp-content/uploads/2014/03/rocket.jpg" width="300" height="353" alt="rocket"&gt;
+ 
+  &lt;a id="previous" href="#"&gt;上一个&lt;/a&gt;
+  &lt;a id="next" href="#"&gt;下一个&lt;/a&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-position-cycler" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

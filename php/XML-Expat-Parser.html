@@ -1,0 +1,136 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">XML Expat 解析器</span>
+</h1>
+<hr/>
+<p class="intro">内建的 Expat 解析器使在 PHP 中处理 XML 文档成为可能。</p>
+<hr/>
+<h2>XML 是什么？</h2>
+<p>XML 用于描述数据，其焦点是数据是什么。XML 文件描述了数据的结构。</p>
+<p>在 XML 中，没有预定义的标签。您必须定义自己的标签。</p>
+<p>如需学习更多关于 XML 的知识，请访问我们的 <a href="/xml/xml-tutorial.html" target="_blank">XML 教程</a>。</p>
+<hr/>
+<h2>Expat 是什么？</h2>
+<p>如需读取和更新 - 创建和处理 - 一个 XML 文档，您需要 XML 解析器。</p>
+<p>有两种基本的 XML 解析器类型：</p>
+<ul>
+<li>基于树的解析器：这种解析器把 XML 文档转换为树型结构。它分析整篇文档，并提供了对树中元素的访问，例如文档对象模型 (DOM)。</li>
+<li>基于事件的解析器：将 XML 文档视为一系列的事件。当某个具体的事件发生时，解析器会调用函数来处理。</li>
+</ul>
+<p>Expat 解析器是基于事件的解析器。</p>
+<p>基于事件的解析器集中在 XML 文档的内容，而不是它们的结构。正因为如此，基于事件的解析器能够比基于树的解析器更快地访问数据。</p>
+<p>请看下面的 XML 片段：</p>
+<div class="code notranslate"><div>
+
+&lt;from&gt;Jani&lt;/from&gt;
+
+</div></div>
+<p>基于事件的解析器把上面的 XML 报告为一连串的三个事件：</p>
+<ul>
+<li>开始元素：from</li>
+<li>开始 CDATA 部分，值：Jani</li>
+<li>关闭元素：from</li>
+</ul>
+<p>上面的 XML 实例包含了形式良好的 XML。不过这个实例是无效的 XML，因为没有与它关联的文档类型声明 (DTD)。</p>
+<p>然而，在使用 Expat 解析器时，这没有区别。Expat 是不检查有效性的解析器，忽略任何 DTD。</p>
+<p>作为一款基于事件、非验证的 XML 解析器，Expat 快速且轻巧，十分适合 PHP 的 Web 应用程序。</p>
+<p><b>注释：</b>XML 文档必须形式良好，否则 Expat 会生成错误。</p>
+<hr/>
+<h2>安装</h2>
+<p>XML Expat 解析器函数是 PHP 核心的组成部分。无需安装就可以使用这些函数。</p>
+<hr/>
+<h2>XML 文件</h2>
+<p>下面的 XML 文件将应用在我们的实例中：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;note&gt;<br/>
+&lt;to&gt;Tove&lt;/to&gt;<br/>
+&lt;from&gt;Jani&lt;/from&gt;<br/>
+&lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br/>
+&lt;/note&gt;
+
+</div></div>
+<br/><hr/>
+<h2>初始化 XML 解析器</h2>
+<p>我们要在 PHP 中初始化 XML 解析器，为不同的 XML 事件定义处理器，然后解析这个 XML 文件。</p>
+<h3><b>实例</b></h3>
+<div class="code notranslate"><div>
+
+&lt;?php<br/>
+//Initialize the XML parser<br/>
+$parser=xml_parser_create();<br/><br/>
+//Function to use at the start of an element<br/>
+function start($parser,$element_name,$element_attrs)<br/>
+  {<br/>
+  switch($element_name)<br/>
+    {<br/>
+    case "NOTE":<br/>
+    echo "-- Note --&lt;br&gt;";<br/>
+    break;<br/>
+    case "TO":<br/>
+    echo "To: ";<br/>
+    break;<br/>
+    case "FROM":<br/>
+    echo "From: ";<br/>
+    break;<br/>
+    case "HEADING":<br/>
+    echo "Heading: ";<br/>
+    break;<br/>
+    case "BODY":<br/>
+    echo "Message: ";<br/>
+    }<br/>
+  }<br/><br/>
+//Function to use at the end of an element<br/>
+function stop($parser,$element_name)<br/>
+  {<br/>
+  echo "&lt;br&gt;";<br/>
+  }<br/><br/>
+//Function to use when finding character data<br/>
+function char($parser,$data)<br/>
+  {<br/>
+  echo $data;<br/>
+  }<br/><br/>
+//Specify element handler<br/>
+xml_set_element_handler($parser,"start","stop");<br/><br/>
+//Specify data handler<br/>
+xml_set_character_data_handler($parser,"char");<br/><br/>
+//Open XML file<br/>
+$fp=fopen("test.xml","r");<br/><br/>
+//Read data<br/>
+while ($data=fread($fp,4096))<br/>
+  {<br/>
+  xml_parse($parser,$data,feof($fp)) or <br/>
+  die (sprintf("XML Error: %s at line %d", <br/>
+  xml_error_string(xml_get_error_code($parser)),<br/>
+  xml_get_current_line_number($parser)));<br/>
+  }<br/><br/>
+//Free the XML parser<br/>
+xml_parser_free($parser);<br/>
+?&gt;
+
+</div></div>
+<p>以上代码将输出：</p>
+<div class="code notranslate"><div>
+
+-- Note --<br/>
+To: Tove<br/>
+From: Jani<br/>
+Heading: Reminder<br/>
+Message: Don't forget me this weekend!
+
+</div></div>
+<p>工作原理：</p>
+<ol>
+<li>通过 xml_parser_create() 函数初始化 XML 解析器</li>
+<li>创建配合不同事件处理程序的的函数</li>
+<li>添加 xml_set_element_handler() 函数来定义，当解析器遇到开始和结束标签时执行哪个函数</li>
+<li>添加 xml_set_character_data_handler() 函数来定义，当解析器遇到字符数据时执行哪个函数</li>
+<li>通过 xml_parse() 函数来解析文件 "test.xml"</li>
+<li>万一有错误的话，添加 xml_error_string() 函数把 XML 错误转换为文本说明</li>
+<li>调用 xml_parser_free() 函数来释放分配给 xml_parser_create() 函数的内存</li>
+</ol>
+<hr/>
+<h2>更多 PHP Expat 解析器的信息</h2>
+<p>如需了解更多关于 PHP Expat 函数的信息，请访问我们的 <a href="php-ref-xml.html">PHP XML Parser 参考手册</a>。<br/></p>
+</div>

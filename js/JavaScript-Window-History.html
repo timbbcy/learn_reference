@@ -1,0 +1,81 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Window History</span>
+</h1>
+<hr/>
+<p class="intro">window.history 对象包含浏览器的历史。</p>
+<hr/>
+<h2>Window History</h2>
+<p><strong>window.history</strong>对象在编写时可不使用 window 这个前缀。</p>
+<p>为了保护用户隐私，对 JavaScript 访问该对象的方法做出了限制。</p>
+<p>一些方法：</p>
+<ul>
+<li>history.back() - 与在浏览器点击后退按钮相同</li>
+<li>history.forward() - 与在浏览器中点击向前按钮相同</li>
+</ul>
+<hr/>
+<h2>Window History Back</h2>
+<p>history.back()  方法加载历史列表中的前一个 URL。
+</p>
+<p>这与在浏览器中点击后退按钮是相同的：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>在页面上创建后退按钮：</p>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script&gt;<br/>
+function goBack()<br/>
+  {<br/>
+  window.history.back()<br/>
+  }<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;input type="button" value="Back" onclick="goBack()"&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+<p>以上代码输出为：</p>
+<div class="example_code notranslate">
+<input onclick="goBack()" type="button" value="返回上一页"/>
+<script>
+function goBack()
+ {
+ window.history.back()
+ }
+</script>
+</div>
+</div>
+<br/><hr/>
+<h2>Window History Forward</h2>
+<p>history forward()  方法加载历史列表中的下一个 URL。</p>
+<p>这与在浏览器中点击前进按钮是相同的：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>在页面上创建一个向前的按钮：</p>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script&gt;<br/>
+function goForward()<br/>
+  {<br/>
+  window.history.forward()<br/>
+  }<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;input type="button" value="Forward" onclick="goForward()"&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+<p>以上代码输出为：</p>
+<div class="example_code notranslate">
+<input onclick="goForward()" type="button" value="返回下一页"/>
+<script>
+function goForward()
+ {
+ window.history.forward()
+ }
+</script>
+</div>
+</div>
+<br/><br/>
+</div>

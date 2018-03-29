@@ -1,0 +1,190 @@
+<div class="article-intro" id="content">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzE9xAESye6Kde-3hT-6B90nfwUkcS8Yw&amp;sensor=false">
+</script>
+<script>
+var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+
+function initialize()
+{
+var mapProp = {
+  center: myCenter,
+  zoom:5,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+  position: myCenter,
+  });
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+<style>a.menu_google_maps_overlays{font-weight:bold;}</style>
+<h1>Google 地图 <span class="color_h1" span="" 叠加层<="">
+</span></h1>
+<hr/>
+<p class="intro">在Google地图中添加一个标记</p>
+<div id="googleMap" style="width:100%;height:380px"></div>
+<hr/>
+<h2>Google 地图 - 叠加层</h2>
+<p>叠加层是地图上绑定到经度/纬度坐标的对象，会随您拖动或缩放地图而移动。</p>
+<p>Google 地图 API 有如下几种叠加层：</p>
+<ul>
+<li>地图上的点使用标记来显示，通常显示自定义图标。标记是 GMarker 类型的对象，并且可以利用 GIcon 类型的对象来自定义图标。</li>
+<li>地图上的线使用折线（表示点的集合）来显示。线是类型为 GPolyline 的对象。</li>
+<li>地图上的区域显示为多边形（如果是任意形状的区域）或底面叠加层（如果是矩形区域）。多边形类似于闭合的折线，因此可以是任何形状。地面叠加层通常用于地图上与图块有直接或间接关联的区域。</li>
+<li>地图本身使用图块叠加层显示。如果您有自己的系列图块，可以使用 GTileLayerOverlay 类来改变地图上已有的图块，甚至可以使用 GMapType 来创建您自己的地图类型。</li>
+<li>信息窗口也是一种特殊的叠加层。但是请注意，信息窗口会自动添加到地图中，并且地图只能添加一个类型为 GInfoWindow 的对象。</li>
+</ul>
+<hr/>
+<h2>Google 地图 - 添加标记</h2>
+<p>记标识地图上的点。默认情况下，它们使用 G_DEFAULT_ICON（您也可以指定自定义图标）。GMarker 构造函数将 GLatLng 和 GMarkerOptions（可选）对象作为参数。<p></p>
+标记设计为可交互。例如，默认情况下它们接收 "click" 事件，常用于在事件侦听器中打开信息窗口。</p>
+<p>通过 setMap() 
+方法在地图上添加标记:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">marker</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Marker</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">position</span><span class="hl-code">:</span><span class="hl-identifier">myCenter</span><span class="hl-code">,
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">marker</span><span class="hl-code">.</span><span class="hl-identifier">setMap</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_marker" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 可拖动的标记</h2>
+<p>以下实例将介绍如何使用 animation 属性来拖动标记:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">marker</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Marker</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">position</span><span class="hl-code">:</span><span class="hl-identifier">myCenter</span><span class="hl-code">,
+    </span><span class="hl-identifier">animation</span><span class="hl-code">:</span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Animation</span><span class="hl-code">.</span><span class="hl-identifier">BOUNCE</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">marker</span><span class="hl-code">.</span><span class="hl-identifier">setMap</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_animate" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 图标</h2>
+<p>标记可以用自定义的新图标来显示，以替代默认图标:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">marker</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Marker</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">position</span><span class="hl-code">:</span><span class="hl-identifier">myCenter</span><span class="hl-code">,
+    </span><span class="hl-identifier">icon</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">pinkball.png</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">marker</span><span class="hl-code">.</span><span class="hl-identifier">setMap</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_icon" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 折线</h2>
+<p>GPolyline 对象可在地图上创建线性叠加层。GPolyline 包括一系列点，并创建一系列有序连接这些点的线段。</p>
+<p>折线支持以下属性：</p>
+<ul>
+<li>path - 指定了多个直线的纬度/经度坐标 </li>
+<li>strokeColor - 指定直线的十六进制颜色值(格式: "#FFFFFF")</li>
+<li>strokeOpacity - 指定直线的透明度(该值为  0.0 
+	到 1.0)</li>
+<li>strokeWeight - 定义线的宽度,以像素为单位。</li>
+<li>editable - 定义用户是否可编辑直线(true/false)</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myTrip</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-identifier">stavanger</span><span class="hl-code">,</span><span class="hl-identifier">amsterdam</span><span class="hl-code">,</span><span class="hl-identifier">london</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">flightPath</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Polyline</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">path</span><span class="hl-code">:</span><span class="hl-identifier">myTrip</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeColor</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">#0000FF</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeOpacity</span><span class="hl-code">:</span><span class="hl-number">0.8</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeWeight</span><span class="hl-code">:</span><span class="hl-number">2</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_polyline" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 多边形</h2>
+<p>GPolygon 对象类似于 GPolyline 对象，因为它们都包括一系列有序的点。但是，多边形不像折线一样有两个端点，而是设计为定义形成闭环的区域。</p>
+<p>和折线一样，您可以自定义多边形边（线）的颜色、粗细和透明度，以及封闭的填充区域的颜色和透明度。颜色应是十六进制数字 HTML 样式。</p>
+<p>多边形支持以下属性：</p>
+<ul>
+<li>path - 指定多个直线纬度的坐标 (第一个和最后一个坐标是相等的)</li>
+<li>strokeColor - 指定直线的十六进制颜色值(格式: "#FFFFFF")</li>
+<li>strokeOpacity -指定直线的透明度(该值为  0.0 
+	到 1.0)</li>
+<li>strokeWeight - 定义线的宽度,以像素为单位。</li>
+<li>fillColor - 指定闭合区域的十六进制颜色值 (格式: "#FFFFFF")</li>
+<li>fillOpacity - 指定填充颜色的透明度 (该值为 
+	0.0 到  1.0)</li>
+<li>editable - 定义用户是否可编辑直线(true/false)</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myTrip</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-identifier">stavanger</span><span class="hl-code">,</span><span class="hl-identifier">amsterdam</span><span class="hl-code">,</span><span class="hl-identifier">london</span><span class="hl-code">,</span><span class="hl-identifier">stavanger</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">flightPath</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Polygon</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">path</span><span class="hl-code">:</span><span class="hl-identifier">myTrip</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeColor</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">#0000FF</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeOpacity</span><span class="hl-code">:</span><span class="hl-number">0.8</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeWeight</span><span class="hl-code">:</span><span class="hl-number">2</span><span class="hl-code">,
+  </span><span class="hl-identifier">fillColor</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">#0000FF</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-identifier">fillOpacity</span><span class="hl-code">:</span><span class="hl-number">0.4</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_polygon" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 圆</h2>
+<p>圆支持以下属性：</p>
+<ul>
+<li>center - 指定圆的中心点参数 google.maps.LatLng </li>
+<li>radius - 指定圆的半径，以米为单位</li>
+<li>strokeColor - 指定弧线的十六进制颜色值(格式: "#FFFFFF")</li>
+<li>strokeOpacity - 指定弧线的透明度(该值为  0.0 
+	到 1.0)</li>
+<li>strokeWeight -定义线的宽度,以像素为单位。</li>
+<li>fillColor - 指定圆的十六进制颜色值填充值 (格式: "#FFFFFF")</li>
+<li>fillOpacity - 指定填充颜色的透明度 (该值为 
+	0.0 到  1.0)</li>
+<li>定义用户是否可编辑直线(true/false)</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myCity</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Circle</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">center</span><span class="hl-code">:</span><span class="hl-identifier">amsterdam</span><span class="hl-code">,
+  </span><span class="hl-identifier">radius</span><span class="hl-code">:</span><span class="hl-number">20000</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeColor</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">#0000FF</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeOpacity</span><span class="hl-code">:</span><span class="hl-number">0.8</span><span class="hl-code">,
+  </span><span class="hl-identifier">strokeWeight</span><span class="hl-code">:</span><span class="hl-number">2</span><span class="hl-code">,
+  </span><span class="hl-identifier">fillColor</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">#0000FF</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-identifier">fillOpacity</span><span class="hl-code">:</span><span class="hl-number">0.4</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_circle" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 信息窗口</h2>
+<p>在一个标记上显示一个文本信息窗口：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">infowindow</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">InfoWindow</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">content</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Hello World!</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">infowindow</span><span class="hl-code">.</span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-code">,</span><span class="hl-identifier">marker</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_overlays_infowindow" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 叠加层参考手册</h2>
+<p><a href="google-maps-ref.html">Google Maps API 参考手册</a>.</p>
+</div>

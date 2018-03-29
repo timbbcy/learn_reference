@@ -1,0 +1,111 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">解析器错误</span>
+</h1>
+<hr/>
+<p class="intro">当 Firefox 遇到解析器错误，它会载入一个包含错误的 XML 文档。</p>
+<hr/>
+<h2>在 Firefox 中的解析器错误</h2>
+<p>在您试图打开一个 XML 文档时，就可能发生一个解析器错误（parser-error）。</p>
+<p>与 Internet Explorer 浏览器不同，如果 Firefox 遇到错误，它会载入包含错误描述的 XML 文档中。</p>
+<p>XML 错误文档的根节点的名称是 "parsererror"。这是用来检查是否有错误。</p>
+<hr/>
+<h2>XML 错误（XML Error）
+</h2>
+<p>在下面的代码中，我们会让解析器加载一个形式不良的 XML 文档。
+</p>
+<p>（您可以在我们的 <a href="/xml/xml-tutorial.html">XML 教程</a>中阅读更多有关形式良好且有效的 XML。）</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=document.implementation.createDocument("","",null);<br/>
+xmlDoc.async=false;<br/>
+xmlDoc.load("note_error.xml");<br/><br/>
+if (xmlDoc.documentElement.nodeName=="parsererror")<br/>
+{<br/>
+errStr=xmlDoc.documentElement.childNodes[0].nodeValue;<br/>
+errStr=errStr.replace(/&lt;/g, "&amp;lt;");<br/>
+document.write(errStr);<br/>
+}<br/>
+else<br/>
+{<br/>
+document.write("XML is valid");<br/>
+}
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=note_error_firefox" target="_blank">尝试一下 »</a>
+</div>
+<p>查看 XML 文件：<a href="/try/demo_source/note_error.xml" target="_blank">note_error.xml</a></p>
+<p>实例解释：</p>
+<ol>
+<li>加载 XML 文件</li>
+<li>检查根节点的节点名称是否是 "parsererror"</li>
+<li>把错误字符串载入变量 "errStr"</li>
+<li>在错误字符串编写为 HTML 之前，把 "&lt;" 字符替换为 "&amp;lt;"</li>
+</ol>
+<p><b>注意：</b>实际上，只有 Internet Explorer 会用 DTD 检查您的 XML，Firefox 不会。</p>
+<hr/>
+<h2>跨浏览器的错误检查</h2>
+<p>在这里，我们创建了一个 XML 加载函数，在 Internet Explorer 和 Firefox 中检查解析器错误：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+function loadXMLDocErr(dname)<br/>
+{<br/>
+try //Internet Explorer<br/>
+  {<br/>
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");<br/>
+  xmlDoc.async=false;<br/>
+  xmlDoc.load(dname); <br/><br/>
+  if (xmlDoc.parseError.errorCode != 0)<br/>
+    {<br/>
+    alert("Error in line " + xmlDoc.parseError.line +<br/>
+    " position " + xmlDoc.parseError.linePos +<br/>
+    "nError Code: " + xmlDoc.parseError.errorCode +<br/>
+    "nError Reason: " + xmlDoc.parseError.reason +<br/>
+    "Error Line: " + xmlDoc.parseError.srcText);<br/>
+    return(null);<br/>
+    }<br/>
+  }<br/>
+catch(e)<br/>
+  {<br/>
+  try //Firefox<br/>
+    {<br/>
+    xmlDoc=document.implementation.createDocument("","",null);<br/>
+    xmlDoc.async=false;<br/>
+    xmlDoc.load(dname);<br/>
+    if (xmlDoc.documentElement.nodeName=="parsererror")<br/>
+      {<br/>
+      alert(xmlDoc.documentElement.childNodes[0].nodeValue);<br/>
+      return(null);<br/>
+      }<br/>
+    }<br/>
+  catch(e) {alert(e.message)}<br/>
+  }<br/>
+try<br/>
+  {<br/>
+  return(xmlDoc);<br/>
+  }<br/>
+catch(e) {alert(e.message)}<br/>
+return(null);<br/>
+}
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=note_error_crossbrowser" target="_blank">尝试一下 »</a>
+</div>
+<p>查看 XML 文件：<a href="/try/demo_source/note_error.xml" target="_blank">note_error.xml</a></p>
+<p>实例解释 - Internet Explorer：</p>
+<ol>
+<li>第一行创建一个空的微软 XML 文档对象。</li>
+<li>第二行关闭异步加载，确保在文档完全加载之前解析器不会继续执行脚本。</li>
+<li>第三行告知解析器加载名为 "note_error.xml" 的 XML 文档。</li>
+<li>如果 parseError 对象的 ErrorCode 属性和 "0" 不同，提醒错误并退出函数。</li>
+<li>如果 ErrorCode 属性为 "0"，返回 XML 文档。</li>
+</ol>
+<p>实例解释 - Firefox：</p>
+<ol>
+<li>第一行创建一个空的XML文档对象。</li>
+<li>第二行关闭异步加载，确保在文档完全加载之前解析器不会继续执行脚本。</li>
+<li>第三行告知解析器加载名为 "note_error.xml" 的 XML 文档。</li>
+<li>如果返回的文档是一个错误的文档，提醒错误并退出函数。</li>
+<li>如果没有，则返回 XML 文档。</li>
+</ol>
+<br/>
+</div>

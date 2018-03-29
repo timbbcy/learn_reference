@@ -1,0 +1,190 @@
+<div class="article-intro" id="content">
+<style> 
+#rcorners1 {
+    border-radius: 25px;
+    background: #8AC007;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+#rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #8AC007;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+#rcorners3 {
+    border-radius: 25px;
+    background: url(/images/paper.gif);
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+#rcorners4 {
+    border-radius: 15px 50px 30px 5px;
+    background: #8AC007;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+#rcorners5 {
+    border-radius: 15px 50px 30px;
+    background: #8AC007;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+#rcorners6 {
+    border-radius: 15px 50px;
+    background: #8AC007;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+</style>
+<h1>CSS3 <span class="color_h1"> 圆角</span></h1>
+<hr/>
+<div style="border:3px solid #8AC007;margin-top:20px;font-size:15px;padding:25px;border-radius:25px;">
+<h2>CSS3 圆角</h2>
+<p>使用 CSS3 border-radius 属性，你可以给任何元素制作 "圆角"。</p>
+</div>
+<p><a href="https://www.runoob.com/css-radius" title="CSS3 圆角制作器">CSS3 圆角制作器</a></p>
+<hr/>
+<h2>浏览器支持</h2>
+<p>表格中的数字表示支持该属性的第一个浏览器的版本号。 </p>
+<p> -webkit- 或 -moz- 前面的数字表示支持该前缀的第一个版本。</p>
+<table class="browserref notranslate">
+<tbody><tr>
+<th style="width:15%;font-size:16px;text-align:left;">属性</th>
+<th class="bsIE" style="width:15%;" title="Internet Explorer"></th>
+<th class="bsChrome" style="width:17%;" title="Chrome"></th>
+<th class="bsFirefox" style="width:18%;" title="Firefox"></th>
+<th class="bsSafari" style="width:18%;" title="Safari"></th>
+<th class="bsOpera" style="width:17%;" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left;">border-radius</td>
+<td>9.0</td>
+<td>5.0<br/>4.0 -webkit-</td>
+<td>4.0<br/>3.0 -moz-</td>
+<td>5.0<br/>3.1 -webkit-</td>
+<td>10.5</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>CSS3 border-radius 属性</h2>
+<p>使用 CSS3 border-radius 属性，你可以给任何元素制作 "圆角"。</p>
+<p>以下为三个实例：</p>
+<p>1. 指定背景颜色的元素圆角：</p>
+<p id="rcorners1">圆角！</p>
+<p>2. 指定边框的元素圆角:</p>
+<p id="rcorners2">圆角！</p>
+<p>3. 指定背景图片的元素圆角:</p>
+<p id="rcorners3">圆角！</p>
+<p>代码如下:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">#rcorners1 </span>{<br/>    <span class="highATT">border-radius:</span><span class="highVAL"> 25px;</span><br/>    
+   <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    
+   <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>}<br/><br/><span class="highELE">#rcorners2 </span>{<br/>    
+   <span class="highATT">border-radius:</span><span class="highVAL"> 25px;</span><br/>    <span class="highATT">border:</span><span class="highVAL"> 2px solid #8AC007;</span><br/>    
+   <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    
+   <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>}<br/><br/><span class="highELE">#rcorners3 </span>{<br/>    
+   <span class="highATT">border-radius:</span><span class="highVAL"> 25px;</span><br/>    <span class="highATT">background:</span><span class="highVAL"> url(paper.gif);</span><br/>    
+   <span class="highATT">background-position:</span><span class="highVAL"> left top;</span><br/>    <span class="highATT">background-repeat:</span><span class="highVAL"> 
+   repeat;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    <span class="highATT">width:</span><span class="highVAL"> 
+   200px;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>} </div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss3_border-radius1" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>CSS3 border-radius - 指定每个圆角</h2>
+<p>如果你在 border-radius 属性中只指定一个值，那么将生成 4 个 圆角。</p>
+<p>但是，如果你要在四个角上一一指定，可以使用以下规则：</p>
+<ul>
+<li><strong>四个值:</strong> 第一个值为左上角，第二个值为右上角，第三个值为右下角，第四个值为左下角。</li>
+<li><strong>三个值:</strong> 第一个值为左上角, 第二个值为右上角和左下角，第三个值为右下角</li>
+<li><strong>两个值:</strong> 第一个值为左上角与右下角，第二个值为右上角与左下角</li>
+<li><strong>一个值：</strong> 四个圆角值相同</li>
+</ul>
+<p>以下为三个实例:</p>
+<p>1. 四个值 - border-radius: 15px 50px 30px 5px:</p>
+<p id="rcorners4"></p>
+<p>2. 三个值 - border-radius: 15px 50px 30px:</p>
+<p id="rcorners5"></p>
+<p>3. 两个值 - border-radius: 15px 50px:</p>
+<p id="rcorners6"></p>
+<p>以下为源代码:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">#rcorners4 </span>{<br/>    <span class="highATT">border-radius:</span><span class="highVAL"> 15px 50px 30px 5px;</span><br/>    
+   <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    
+   <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>}<br/><br/><span class="highELE">#rcorners5 </span>{<br/>    
+   <span class="highATT">border-radius:</span><span class="highVAL"> 15px 50px 30px;</span><br/>    <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    
+   <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    
+   <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>}<br/><br/><span class="highELE">#rcorners6 </span>{<br/>    
+   <span class="highATT">border-radius:</span><span class="highVAL"> 15px 50px;</span><br/>    <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    
+   <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    
+   <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>} </div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss3_border-radius2" target="_blank">尝试一下 »</a>
+</div>
+<p>您还可以创建椭圆边角:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate cssHigh">
+<span class="highELE">#rcorners7 </span>{<br/>    <span class="highATT">border-radius:</span><span class="highVAL"> 50px/15px;</span><br/>    
+   <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    
+   <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>}<br/><br/><span class="highELE">#rcorners8 </span>{<br/>    
+   <span class="highATT">border-radius:</span><span class="highVAL"> 15px/50px;</span><br/>    <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    
+   <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    
+   <span class="highATT">height:</span><span class="highVAL"> 150px;</span> <br/>}<br/><br/><span class="highELE">#rcorners9 </span>{<br/>    
+   <span class="highATT">border-radius:</span><span class="highVAL"> 50%;</span><br/>    <span class="highATT">background:</span><span class="highVAL"> #8AC007;</span><br/>    
+   <span class="highATT">padding:</span><span class="highVAL"> 20px;</span> <br/>    <span class="highATT">width:</span><span class="highVAL"> 200px;</span><br/>    
+   <span class="highATT">height:</span><span class="highVAL"> 150px;</span><br/>} </div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss3_border-radius3" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>CSS3 圆角属性</h2>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-border-radius.html" target="_blank">border-radius</a></td>
+<td>所有四个边角 border-*-*-radius 属性的缩写 </td>
+</tr>
+<tr>
+<td>
+<a href="/cssref/css3-pr-border-top-left-radius.html" target="_blank">border-top-left-radius</a></td>
+<td>定义了左上角的弧度</td>
+</tr>
+<tr>
+<td>
+<a href="/cssref/css3-pr-border-top-right-radius.html" target="_blank">border-top-right-radius</a></td>
+<td>定义了右上角的弧度</td>
+</tr>
+<tr>
+<td>
+<a href="/cssref/css3-pr-border-bottom-right-radius.html" target="_blank">border-bottom-right-radius</a></td>
+<td>定义了右下角的弧度</td>
+</tr>
+<tr>
+<td>
+<a href="/cssref/css3-pr-border-bottom-left-radius.html" target="_blank">border-bottom-left-radius</a></td>
+<td>定义了左下角的弧度</td>
+</tr>
+</tbody></table>
+</div>

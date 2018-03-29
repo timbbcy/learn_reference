@@ -1,0 +1,112 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">- 测试 jQuery</span>
+</h1>
+<hr/>
+<p class="intro">测试 JavaScript 框架库 - jQuery</p>
+<hr/>
+<h2>引用 jQuery</h2>
+<p>如需测试 JavaScript 库，您需要在网页中引用它。</p>
+<p>为了引用某个库，请使用 &lt;script&gt; 标签，其 src 属性设置为库的 URL：</p>
+<div class="example">
+<h2 class="example">引用 jQuery</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+</div>
+<br/><hr/>
+<h2>
+jQuery 描述</h2>
+<p>主要的 jQuery 函数是 $() 函数（jQuery 函数）。如果您向该函数传递 DOM 对象，它会返回 jQuery 对象，带有向其添加的 jQuery 功能。</p>
+<p>jQuery 允许您通过 CSS 选择器来选取元素。</p>
+<p>在 JavaScript 中，您可以分配一个函数以处理窗口加载事件：</p>
+<div class="example">
+<h2 class="example">JavaScript 方式：</h2>
+<div class="example_code">
+function myFunction()<br/>
+{<br/>
+    var obj=document.getElementById("h01");<br/>
+    obj.innerHTML="Hello jQuery";<br/>
+}<br/>
+onload=myFunction;</div>
+</div>
+<p>等价的 jQuery 是不同的：</p>
+<div class="example">
+<h2 class="example">jQuery 方式：</h2>
+<div class="example_code notranslate">
+function myFunction()<br/>
+{<br/>
+    $("#h01").html("Hello jQuery");<br/>
+}<br/>
+$(document).ready(myFunction);</div>
+</div>
+<p>上面代码的最后一行，HTML DOM 文档对象被传递到 jQuery ：$(document)。</p>
+<p>当您向 jQuery 传递 DOM 对象时，jQuery 会返回以 HTML DOM 对象包装的 jQuery 对象。</p>
+<p>jQuery 函数会返回新的 jQuery 对象，其中的 ready() 是一个方法。</p>
+<p>由于在 JavaScript 中函数就是变量，因此可以把 myFunction 作为变量传递给 jQuery 的 ready 方法。</p>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>jQuery 返回 jQuery 对象，与已传递的 DOM 对象不同。<br/>jQuery 对象拥有的属性和方法，与 DOM 对象的不同。<br/>您不能在 jQuery 对象上使用 HTML DOM 的属性和方法。</td>
+</tr></table>
+<br/><hr/>
+<h2>
+测试 jQuery</h2>
+<p>
+请试一下下面这个例子：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;script&gt;<br/>
+function myFunction()<br/>
+{<br/>
+    $("#h01").html("Hello jQuery")<br/>
+}<br/>
+$(document).ready(myFunction);<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1 id="h01"&gt;&lt;/h1&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_lib_jquery" target="_blank">尝试一下 »</a>
+</div>
+<p>
+请再试一下这个例子：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>&lt;head&gt;<br/>
+&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;script&gt;<br/>
+function myFunction()<br/>
+{<br/>
+    $("#h01").attr("style","color:red").html("Hello jQuery")<br/>
+}<br/>
+$(document).ready(myFunction);<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1 id="h01"&gt;&lt;/h1&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_lib_jquery2" target="_blank">尝试一下 »</a>
+</div>
+<p>正如您在上面的例子中看到的，jQuery 允许链接（链式语法）。</p>
+<p>链接（Chaining）是一种在同一对象上执行多个任务的便捷方法。</p>
+<p>需要学习更多内容吗？菜鸟教程为您提供了非常棒的 <a href="/jquery/" title="jQuery 教程">jQuery 教程</a>。</p>
+</div>

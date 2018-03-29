@@ -1,0 +1,79 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 树形菜单 - <span class="color_h1">树形网格惰性加载节点</span></h1>
+<p>
+有时我们已经得到充分的分层树形网格（TreeGrid）的数据。
+我们还想让树形网格（TreeGrid）按层次惰性加载节点。
+首先，只加载顶层节点。
+然后点击节点的展开图标来加载它的子节点。
+本教程展示如何创建带有惰性加载特性的树形网格（TreeGrid）。
+</p>
+<img src="/wp-content/uploads/2013/12/treegrid5.png"/>
+<h4>创建树形网格（TreeGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="test" title="Folder Browser" class="easyui-treegrid" style="width:700px;height:300px"
+            data-options="
+                url: 'data/treegrid_data.json',
+                method: 'get',
+                rownumbers: true,
+                idField: 'id',
+                treeField: 'name',
+                loadFilter: myLoadFilter
+            "&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="name" width="220"&gt;Name&lt;/th&gt;
+                &lt;th field="size" width="100" align="right"&gt;Size&lt;/th&gt;
+                &lt;th field="date" width="150"&gt;Modified Date&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>
+为了放置加载子节点，我们需要为每个节点重命名 'children' 属性。
+正如下面的代码所示，'children' 属性重命名为 'children1'。
+当展开一个节点时，我们调用 'append' 方法来加载它的子节点数据。
+</p>
+<h4>'loadFilter' 代码</h4>
+<pre style="color:#006600">
+    function myLoadFilter(data,parentId){
+        function setData(){
+            var todo = [];
+            for(var i=0; i&lt;data.length; i++){
+                todo.push(data[i]);
+            }
+            while(todo.length){
+                var node = todo.shift();
+                if (node.children){
+                    node.state = 'closed';
+                    node.children1 = node.children;
+                    node.children = undefined;
+                    todo = todo.concat(node.children1);
+                }
+            }
+        }
+        
+        setData(data);
+        var tg = $(this);
+        var opts = tg.treegrid('options');
+        opts.onBeforeExpand = function(row){
+            if (row.children1){
+                tg.treegrid('append',{
+                    parent: row[opts.idField],
+                    data: row.children1
+                });
+                row.children1 = undefined;
+                tg.treegrid('expand', row[opts.idField]);
+            }
+            return row.children1 == undefined;
+        };
+        return data;
+    }
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-tree-treegrid5.zip">jeasyui-tree-treegrid5.zip</a></p>
+</div>

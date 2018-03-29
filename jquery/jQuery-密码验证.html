@@ -1,0 +1,73 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">Password Validation（密码验证）</span></h1>
+<div class="tutintro">
+<p>jQuery Password Validation（密码验证）插件扩展了 jQuery Validate 插件，提供了两种组件：<br>
+一种评价密码的相关因素的功能：比如大小写字母的混合情况、字符（数字、特殊字符）的混合情况、长度、与用户名的相似度（可选的）。<br>
+一种使用评价功能显示密码强度的验证插件自定义方法。显示的文本可以被本地化。</br></br></p>
+<p>您可以简单地自定义强度显示的外观、本地化消息显示，并集成到已有的表单中。</p>
+<p>该插件目前版本是 1.0.0。</p>
+</div>
+<h2>使用方式</h2>
+<p>如需使用 Password Validation（密码验证）插件，请添加一个 class "password" 到 input，同时添加显示强度的基本标记在表单的需要显示的地方：</p>
+<pre>
+&lt;form id="register"&gt;
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input class="password" name="password" id="password" /&gt;
+    &lt;div class="password-meter"&gt;
+        &lt;div class="password-meter-message"&gt; &lt;/div&gt;
+        &lt;div class="password-meter-bg"&gt;
+            &lt;div class="password-meter-bar"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+<p>对表单应用 Validate 插件：</p>
+<pre>
+$(document).ready(function() {
+  $("#register").validate();
+});
+</pre>
+<p>您可以重载 $.validator.passwordRating 实现不同的评价方法。或者重载 $.validator.passwordRating.messages 来提供其他消息，比如本地化。</p>
+<h2>实例演示</h2>
+<pre>
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Makes "field" required to be the same as #other&lt;/title&gt;
+&lt;link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css"&gt;
+ 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id="myform"&gt;
+&lt;label for="password"&gt;Password&lt;/label&gt;
+&lt;input id="password" name="password" /&gt;
+&lt;br/&gt;
+&lt;label for="password_again"&gt;Again&lt;/label&gt;
+&lt;input class="left" id="password_again" name="password_again" /&gt;
+&lt;br&gt;
+&lt;input type="submit" value="Validate!"&gt;
+&lt;/form&gt;
+&lt;script src="http://code.jquery.com/jquery-1.11.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// just for the demos, avoids form submit
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#myform" ).validate({
+  rules: {
+    password: "required",
+    password_again: {
+      equalTo: "#password"
+    }
+  }
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jquery-plugin-password-validate" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

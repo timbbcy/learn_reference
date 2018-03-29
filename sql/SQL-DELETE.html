@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">DELETE</span> 语句</h1>
+<hr/>
+<p class="intro">DELETE 语句用于删除表中的记录。</p>
+<hr/>
+<h2>SQL DELETE 语句</h2>
+<p>DELETE 语句用于删除表中的行。</p>
+<h3>SQL DELETE 语法</h3>
+<div class="code notranslate"><div>
+DELETE FROM <em>table_name</em><br/>
+WHERE <em>some_column</em>=<em>some_value</em>;</div></div>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<strong>请注意 SQL DELETE 语句中的 WHERE 子句！</strong><br/>
+WHERE 子句规定哪条记录或者哪些记录需要删除。如果您省略了 WHERE 子句，所有的记录都将被删除！</td>
+</tr></table>
+<br/><hr/>
+<h2>演示数据库</h2>
+<p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 "Websites" 表的数据：</p>
+<pre>
++----+--------------+---------------------------+-------+---------+
+| id | name         | url                       | alexa | country |
++----+--------------+---------------------------+-------+---------+
+| 1  | Google       | https://www.google.cm/    | 1     | USA     |
+| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
+| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
+| 4  | 微博          | http://weibo.com/         | 20    | CN      |
+| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
+|  6 | 百度         | https://www.baidu.com/    |     4 | CN      |
+|  7 | stackoverflow | http://stackoverflow.com/ |     0 | IND     |
++----+---------------+---------------------------+-------+---------+
+</pre>
+<br/>
+<hr/>
+<h2>SQL DELETE 实例</h2>
+<p>假设我们要从 "Websites" 表中删除网站名为 "百度" 且国家为 CN 的网站 。</p>
+<p>我们使用下面的 SQL 语句：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">DELETE</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">百度</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">AND</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">CN</span><span class="hl-quotes">'</span><span class="hl-code">;</span></div>
+</div>
+<p>执行以上 SQL，再读取 "Websites" 表，数据如下所示：</p>
+<div class="example_code">
+<img src="https://www.runoob.com/wp-content/uploads/2013/09/B956E143-C197-406F-BD42-550EE390C980.jpg" width="70%">
+</img></div>
+</div>
+<hr/>
+<h2>删除所有数据</h2>
+<p>您可以在不删除表的情况下，删除表中所有的行。这意味着表结构、属性、索引将保持不变：</p>
+<div class="code"><div>
+DELETE FROM <em>table_name</em>;<br/><br/>
+或<br/><br/>
+DELETE * FROM <em>table_name</em>;</div></div>
+<p><b>注释：</b>在删除记录时要格外小心！因为您不能重来！</p>
+</div>

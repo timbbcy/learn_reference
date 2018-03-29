@@ -1,0 +1,295 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">指示器</span>
+</h1>
+<hr/>
+<p class="intro">通过指示器，我们可以控制在文档中使用元素的方式。</p>
+<hr/>
+<h2>指示器</h2>
+<p>有七种指示器：</p>
+<p>Order 指示器：</p>
+<ul>
+<li>All</li>
+<li>Choice</li>
+<li>Sequence</li>
+</ul>
+<p>Occurrence 指示器：</p>
+<ul>
+<li>maxOccurs</li>
+<li>minOccurs</li>
+</ul>
+<p>Group 指示器：</p>
+<ul>
+<li>Group name</li>
+<li>attributeGroup name</li>
+</ul>
+<hr/>
+<h2>Order 指示器</h2>
+<p>Order 指示器用于定义元素的顺序。</p>
+<h3>All 指示器</h3>
+<p>&lt;all&gt; 指示器规定子元素可以按照任意顺序出现，且每个子元素必须只出现一次：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="person"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:all&gt;<br/>
+           
+      &lt;xs:element name="firstname" type="xs:string"/&gt;<br/>
+           
+      &lt;xs:element name="lastname" type="xs:string"/&gt;<br/>
+       
+    &lt;/xs:all&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p><b>注意：</b> 当使用 &lt;all&gt; 指示器时，你可以把 &lt;minOccurs&gt; 设置为 0 或者 1，而只能把 &lt;maxOccurs&gt; 指示器设置为 1（稍后将讲解 &lt;minOccurs&gt; 以及 &lt;maxOccurs&gt;）。</p>
+<h3>Choice 指示器</h3>
+<p>&lt;choice&gt; 指示器规定可出现某个子元素或者可出现另外一个子元素（非此即彼）：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="person"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:choice&gt;<br/>
+           
+      &lt;xs:element name="employee" type="employee"/&gt;<br/>
+           
+      &lt;xs:element name="member" type="member"/&gt;<br/>
+       
+    &lt;/xs:choice&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<h3>Sequence 指示器</h3>
+<p>&lt;sequence&gt; 规定子元素必须按照特定的顺序出现：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="person"&gt;<br/>
+    
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:sequence&gt;<br/>
+           
+      &lt;xs:element name="firstname" type="xs:string"/&gt;<br/>
+           
+      &lt;xs:element name="lastname" type="xs:string"/&gt;<br/>
+       
+    &lt;/xs:sequence&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<br/><hr/>
+<h2>Occurrence 指示器</h2>
+<p>Occurrence 指示器用于定义某个元素出现的频率。</p>
+<p><b>注意： </b>对于所有的 "Order" 和 "Group" 指示器（any、all、choice、sequence、group name 以及 group reference），其中的 maxOccurs 以及 minOccurs 的默认值均为 1。</p>
+<h3>maxOccurs 指示器</h3>
+<p>&lt;maxOccurs&gt; 指示器可规定某个元素可出现的最大次数：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="person"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:sequence&gt;<br/>
+           
+      &lt;xs:element name="full_name" type="xs:string"/&gt;<br/>
+           
+      &lt;xs:element name="child_name" type="xs:string" maxOccurs="10"/&gt;<br/>
+       
+    &lt;/xs:sequence&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p>上面的例子表明，子元素 "child_name" 可在 "person" 元素中最少出现一次（其中 minOccurs 的默认值是 1），最多出现 10 次。</p>
+<h3>minOccurs 指示器</h3>
+<p>&lt;minOccurs&gt; 指示器可规定某个元素能够出现的最小次数：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="person"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:sequence&gt;<br/>
+           
+      &lt;xs:element name="full_name" type="xs:string"/&gt;<br/>
+           
+      &lt;xs:element name="child_name" type="xs:string"<br/>
+           
+      maxOccurs="10" minOccurs="0"/&gt;<br/>
+       
+    &lt;/xs:sequence&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p>上面的例子表明，子元素 "child_name" 可在 "person" 元素中出现最少 0 次，最多出现 10 次。</p>
+<p><b>提示：</b>如需使某个元素的出现次数不受限制，请使用 maxOccurs="unbounded" 这个声明：</p>
+<h3>一个实际的例子：</h3>
+<p>名为 "Myfamily.xml" 的 XML 文件：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br/>
+xsi:noNamespaceSchemaLocation="family.xsd"&gt;<br/><br/>
+&lt;person&gt;<br/>
+ 
+&lt;full_name&gt;Hege Refsnes&lt;/full_name&gt;<br/>
+ 
+&lt;child_name&gt;Cecilie&lt;/child_name&gt;<br/>
+&lt;/person&gt;<br/><br/>
+&lt;person&gt;<br/>
+ 
+&lt;full_name&gt;Tove Refsnes&lt;/full_name&gt;<br/>
+ 
+&lt;child_name&gt;Hege&lt;/child_name&gt;<br/>
+ 
+&lt;child_name&gt;Stale&lt;/child_name&gt;<br/>
+ 
+&lt;child_name&gt;Jim&lt;/child_name&gt;<br/>
+ 
+&lt;child_name&gt;Borge&lt;/child_name&gt;<br/>
+&lt;/person&gt;<br/><br/>
+&lt;person&gt;<br/>
+ 
+&lt;full_name&gt;Stale Refsnes&lt;/full_name&gt;<br/>
+&lt;/person&gt;<br/><br/>
+&lt;/persons&gt;
+</div></div>
+<p>上面这个 XML 文件含有一个名为 "persons" 的根元素。在这个根元素内部，我们定义了三个 "person" 元素。每个 "person" 元素必须含有一个 "full_name" 元素，同时它可以包含多至 5 个 "child_name" 元素。</p>
+<p>这是schema文件"family.xsd"：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"<br/>
+elementFormDefault="qualified"&gt;<br/><br/>
+&lt;xs:element name="persons"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:sequence&gt;<br/>
+           
+      &lt;xs:element name="person" maxOccurs="unbounded"&gt;<br/>
+               
+        &lt;xs:complexType&gt;<br/>
+                   
+          &lt;xs:sequence&gt;<br/>
+                       
+            &lt;xs:element name="full_name" type="xs:string"/&gt;<br/>
+                       
+            &lt;xs:element name="child_name" type="xs:string"<br/>
+                       
+            minOccurs="0" maxOccurs="5"/&gt;<br/>
+                   
+          &lt;/xs:sequence&gt;<br/>
+               
+        &lt;/xs:complexType&gt;<br/>
+           
+      &lt;/xs:element&gt;<br/>
+       
+    &lt;/xs:sequence&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;<br/><br/>
+&lt;/xs:schema&gt;
+</div></div>
+<br/><hr/>
+<h2>Group 指示器</h2>
+<p>Group 指示器用于定义相关的数批元素。</p>
+<h3>元素组</h3>
+<p>元素组通过 group 声明进行定义：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:group name="groupname"&gt;<br/>
+  ...<br/>
+&lt;/xs:group&gt;
+</div></div>
+<p>您必须在 group 声明内部定义一个 all、choice 或者 sequence 元素。下面这个例子定义了名为 "persongroup" 的 group，它定义了必须按照精确的顺序出现的一组元素：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:group name="persongroup"&gt;<br/>
+   
+  &lt;xs:sequence&gt;<br/>
+       
+    &lt;xs:element name="firstname" type="xs:string"/&gt;<br/>
+       
+    &lt;xs:element name="lastname" type="xs:string"/&gt;<br/>
+       
+    &lt;xs:element name="birthday" type="xs:date"/&gt;<br/>
+   
+  &lt;/xs:sequence&gt;<br/>
+&lt;/xs:group&gt;
+</div></div>
+<p>在您把 group 定义完毕以后，就可以在另一个定义中引用它了：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:group name="persongroup"&gt;<br/>
+   
+  &lt;xs:sequence&gt;<br/>
+       
+    &lt;xs:element name="firstname" type="xs:string"/&gt;<br/>
+       
+    &lt;xs:element name="lastname" type="xs:string"/&gt;<br/>
+       
+    &lt;xs:element name="birthday" type="xs:date"/&gt;<br/>
+   
+  &lt;/xs:sequence&gt;<br/>
+&lt;/xs:group&gt;<br/><br/>
+&lt;xs:element name="person" type="personinfo"/&gt;<br/><br/>
+&lt;xs:complexType name="personinfo"&gt;<br/>
+   
+  &lt;xs:sequence&gt;<br/>
+       
+    &lt;xs:group ref="persongroup"/&gt;<br/>
+       
+    &lt;xs:element name="country" type="xs:string"/&gt;<br/>
+   
+  &lt;/xs:sequence&gt;<br/>
+&lt;/xs:complexType&gt;
+</div></div>
+<h3>属性组</h3>
+<p>属性组通过 attributeGroup 声明来进行定义：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:attributeGroup name="groupname"&gt;<br/>
+  ...<br/>
+&lt;/xs:attributeGroup&gt;
+</div></div>
+<p>下面这个例子定义了名为 "personattrgroup" 的一个属性组：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:attributeGroup name="personattrgroup"&gt;<br/>
+   
+  &lt;xs:attribute name="firstname" type="xs:string"/&gt;<br/>
+   
+  &lt;xs:attribute name="lastname" type="xs:string"/&gt;<br/>
+   
+  &lt;xs:attribute name="birthday" type="xs:date"/&gt;<br/>
+&lt;/xs:attributeGroup&gt;
+</div></div>
+<p>在您已定义完毕属性组之后，就可以在另一个定义中引用它了，就像这样：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:attributeGroup name="personattrgroup"&gt;<br/>
+   
+  &lt;xs:attribute name="firstname" type="xs:string"/&gt;<br/>
+   
+  &lt;xs:attribute name="lastname" type="xs:string"/&gt;<br/>
+   
+  &lt;xs:attribute name="birthday" type="xs:date"/&gt;<br/>
+&lt;/xs:attributeGroup&gt;<br/><br/>
+&lt;xs:element name="person"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:attributeGroup ref="personattrgroup"/&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+</div>

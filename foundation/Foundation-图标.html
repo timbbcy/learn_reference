@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<h1>Foundation 图标</h1>
+<link href="//static.runoob.com/assets/foundation-icons/foundation-icons.css" rel="stylesheet"/>
+<p>Foundation 提供了 283 个图标，你可以使用css来定义它的样式尺寸。</p>
+<p>图标可用于文本，按钮，工具条，导航栏，表单等。</p>
+<p>以下是 Foundation 图标的实例：</p>
+<p>刷新按钮: <i class="fi-refresh"></i> <i class="fi-refresh" style="font-size:20px;"></i> <i class="fi-refresh" style="font-size:30px;color:red"></i></p>
+<p>检测图标: <i class="fi-check"></i> <i class="fi-check" style="font-size:20px;"></i> <i class="fi-check" style="font-size:30px;color:red"></i></p>
+<p>主页图标: <i class="fi-home"></i> <i class="fi-home" style="font-size:20px;"></i> <i class="fi-home" style="font-size:30px;color:red"></i></p>
+<hr/>
+<h2>图标语法</h2>
+<p>创建图标语法格式如下:</p>
+<pre>&lt;i class="fi-name"&gt;&lt;/i&gt;</pre>
+<p><em>name</em> 部分替换为图标的名字。</p>
+<p>要使用图标我们需要在 &lt;head&gt; 部分添加图标的样式文件：</p>
+<pre>
+&lt;link rel="stylesheet" href="http://static.runoob.com/assets/foundation-icons/foundation-icons.css"&gt;
+</pre><hr/>
+<h2>Icon 实例</h2>
+<p>以下演示了使用图标的实例:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Cloud icon: <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-cloud"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span> <br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Cloud icon as a link:<br/>
+	 
+	<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-cloud"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Styled Cloud icon: <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-cloud"</span> <span class="highATT">style=</span><span class="highVAL">"font-size:35px;color:red;"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span> <br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Home 
+	icon: <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-home"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Home icon on a button:<br/>  <span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-home"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span> Home <br/>  <span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Home icon on a green button:<br/>  <span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span>
+<span class="highATT">class=</span><span class="highVAL">"button success"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-home"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span> Home <br/>  <span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Home icon on a large, light blue link button:<br/>  <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span>
+<span class="highATT">class=</span><span class="highVAL">"button info large"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-home"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span> Home <br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span> </div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_icons" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>工具条图标</h2>
+<p>我们可以使用 <code>.icon-bar</code> 类来创建一个指定数量的工具栏图标:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"icon-bar five-up"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-home"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-bookmark"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-info"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-mail"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>
+	 
+	<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-like"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_icon_bar" target="_blank">尝试一下 »</a>
+</div>
+<p>图标描述使用 <code>&lt;label&gt;</code> 元素:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"icon-bar five-up"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-home"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Home<span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-share"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Share<span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-info"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Info<span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-mail"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Mail<span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>
+	 
+	<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-magnifying-glass"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Search<span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_icon_bar_label" target="_blank">尝试一下 »</a>
+</div>
+<p><code>.disabled</code> 类可以让图标变成不可点击状态：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item disabled"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">i</span> <span class="highATT">class=</span><span class="highVAL">"fi-share"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"item disabled"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">i</span>
+<span class="highATT">class=</span><span class="highVAL">"fi-mail"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/i</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_icon_bar_disabled" target="_blank">尝试一下 »</a>
+</div>
+<p><code>.vertical</code> 类用于创建一个垂直的工具栏：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"icon-bar 
+	vertical five-up"</span><span class="highGT">&gt;</span><br/>  ....<br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_icon_bar_vertical" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2> Foundation 图标参考手册</h2>
+<p>更多关于图标的内容，可以参考我们的
+<a href="foundation-ref-icons.html">Foundation 图标手册。</a></p>
+</div>

@@ -1,0 +1,296 @@
+<div class="article-intro" id="content">
+<style>
+#textshadow
+{
+    text-shadow: 5px 5px 5px #FF0000;
+    font-size:30px;
+}
+#wordwrap
+{
+    width:11em; 
+    border:1px solid #000000;
+    word-wrap:break-word;
+}
+#normal
+{
+    width:11em; 
+    border:1px solid #000000;
+    word-wrap:normal;
+}
+</style>
+<h1>CSS3 <span class="color_h1">文本效果</span>
+</h1>
+<hr/>
+<h2>CSS3 文本效果</h2>
+<p>CSS3中包含几个新的文本特征。</p>
+<p>在本章中您将了解以下文本属性：</p>
+<ul>
+<li>text-shadow</li>
+<li>box-shadow</li>
+<li>text-overflow</li>
+<li>word-wrap</li>
+<li>word-break</li>
+</ul>
+<hr/>
+<h2>浏览器支持</h2>
+<table class="browserref notranslate">
+<tbody><tr>
+<th style="width:25%;font-size:16px;text-align:left">属性</th>
+<th class="bsChrome" style="width:15%" title="Chrome"></th>
+<th class="bsEdge" style="width:15%" title="Internet Explorer / Edge"></th>
+<th class="bsFirefox" style="width:15%" title="Firefox"></th>
+<th class="bsSafari" style="width:15%" title="Safari"></th>
+<th class="bsOpera" style="width:15%" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left">text-shadow</td>
+<td>4.0</td>
+<td>10.0</td>
+<td>3.5</td>
+<td>4.0</td>
+<td>9.5</td>
+</tr>
+<tr>
+<td style="text-align:left">box-shadow</td>
+<td>10.0<br/>4.0 -webkit-</td>
+<td>9.0</td>
+<td>4.0<br/>3.5 -moz-</td>
+<td>5.1<br/>3.1 -webkit-</td>
+<td>10.5</td>
+</tr>
+<tr>
+<td style="text-align:left">text-overflow</td>
+<td>4.0</td>
+<td>6.0</td>
+<td>7.0</td>
+<td>3.1</td>
+<td>11.0<br/>9.0 -o-</td>
+</tr>
+<tr>
+<td style="text-align:left">word-wrap</td>
+<td>23.0</td>
+<td>5.5</td>
+<td>3.5</td>
+<td>6.1</td>
+<td>12.1</td>
+</tr>
+<tr>
+<td style="text-align:left">word-break</td>
+<td>4.0</td>
+<td>5.5</td>
+<td>15.0</td>
+<td>3.1</td>
+<td>15.0</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>CSS3 的文本阴影</h2>
+<p>CSS3 中，text-shadow属性适用于文本阴影。</p>
+<p>
+<img alt="阴影效果!" src="/images/text_shadow_effect.gif"/></p>
+<p>您指定了水平阴影，垂直阴影，模糊的距离，以及阴影的颜色：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>给标题添加阴影:</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">h1</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">text-shadow:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-var">#FF0000</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_text-shadow_tut" target="_blank">尝试一下 »</a>
+</div>
+<br><hr>
+<h2>CSS3 box-shadow属性</h2>
+<p>CSS3 中 CSS3 box-shadow 属性适用于盒子阴影</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">box-shadow:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-var">#888888</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow" target="_blank">尝试一下 »</a>
+</div>
+<br><hr>
+<h2>接下来给阴影添加颜色</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">box-shadow:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-code">grey</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow2" target="_blank">尝试一下 »</a>
+</div>
+<br><hr>
+<h2>接下来给阴影添加一个模糊效果</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">box-shadow:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-code">grey</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow3" target="_blank">尝试一下 »</a>
+</div>
+<br><hr/>
+<h2>你也可以在 ::before 和 ::after 两个伪元素中添加阴影效果</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">#</span><span class="hl-identifier">boxshadow</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">relative</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-identifier">b</span><span class="hl-code"> </span><span class="hl-reserved">ox-shadow:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-code">rgba</span><span class="hl-code">(</span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">.5</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-identifier">pa</span><span class="hl-code"> </span><span class="hl-reserved">dding:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-identifier">bac</span><span class="hl-code"> </span><span class="hl-reserved">kground:</span><span class="hl-code"> </span><span class="hl-var">white</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#boxshadow</span><span class="hl-code"> </span><span class="hl-identifier">img</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+     </span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">#8a4419</span><span class="hl-reserved"></span><span class="hl-code">;
+     </span><span class="hl-reserved">border-style:</span><span class="hl-code"> </span><span class="hl-string">inset</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#boxshadow</span><span class="hl-code">:</span><span class="hl-special">:after</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code"> ''</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">z-index:</span><span class="hl-code"> -</span><span class="hl-number">1</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> hide shadow behind image </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">box-shadow:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">15</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">20</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-code">rgba</span><span class="hl-code">(</span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.3</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">70</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">15</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> one half of the remaining 30% </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">height:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">bottom:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow6" target="_blank">尝试一下 »</a>
+</div>
+<br><hr/>
+<h2>阴影的一个使用特例是卡片效果</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-identifier">.card</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">250</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">box-shadow:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">8</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-code">rgba</span><span class="hl-code">(</span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.2</span><span class="hl-code">), </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">6</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">20</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-code">rgba</span><span class="hl-code">(</span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.19</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow4" target="_blank">文字卡片 »</a>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow5" target="_blank">图片卡片 »</a>
+</div>
+<br><hr/>
+<h2>CSS3 Text Overflow属性</h2>
+<p>CSS3文本溢出属性指定应向用户如何显示溢出内容</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-identifier">.test1</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">white-space:</span><span class="hl-code"> </span><span class="hl-string">nowrap</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">200</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">#000000</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">overflow:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-overflow:</span><span class="hl-code"> </span><span class="hl-code">clip</span><span class="hl-reserved"></span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">p</span><span class="hl-identifier">.test2</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">white-space:</span><span class="hl-code"> </span><span class="hl-string">nowrap</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">200</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">#000000</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">overflow:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-overflow:</span><span class="hl-code"> </span><span class="hl-code">ellipsis</span><span class="hl-reserved"></span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_text-overflow" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3的换行</h2>
+<p>如果某个单词太长，不适合在一个区域内，它扩展到外面：</p>
+<p>CSS3中，自动换行属性允许您强制文本换行 - 即使这意味着分裂它中间的一个字：</p>
+<p>CSS代码如下：</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>允许长文本换行:</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">word-wrap:</span><span class="hl-string">break-word</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_word-wrap" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3 单词拆分换行</h2>
+<p>CSS3 单词拆分换行属性指定换行规则：</p>
+<p>CSS代码如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-identifier">.test1</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">word-break:</span><span class="hl-code"> </span><span class="hl-string">keep-all</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">p</span><span class="hl-identifier">.test2</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">word-break:</span><span class="hl-code"> </span><span class="hl-string">break-all</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_word-break" target="_blank">尝试一下 »</a>
+</div>
+<br><hr>
+<h2>新文本属性</h2>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">属性</th>
+<th>描述</th>
+<th style="width:5%">CSS</th>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-hanging-punctuation.html" title="CSS3 hanging-punctuation 属性">hanging-punctuation</a></td>
+<td>规定标点字符是否位于线框之外。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-punctuation-trim.html" title="CSS3 punctuation-trim 属性">punctuation-trim</a></td>
+<td>规定是否对标点字符进行修剪。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-text-align-last.html" target="_blank">text-align-last</a></td>
+<td>设置如何对齐最后一行或紧挨着强制换行符之前的行。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="css3-pr-text-emphasis.html" target="_blank">text-emphasis</a></td>
+<td>向元素的文本应用重点标记以及重点标记的前景色。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-text-justify.html" title="CSS3 text-justify 属性">text-justify</a></td>
+<td>规定当  text-align 设置为 "justify" 时所使用的对齐方法。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-text-outline.html" title="CSS3 text-outline 属性">text-outline</a></td>
+<td>规定文本的轮廓。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-text-overflow.html" title="CSS3 text-overflow 属性">text-overflow</a></td>
+<td>规定当文本溢出包含元素时发生的事情。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-text-shadow.html" title="CSS3 text-shadow 属性">text-shadow</a></td>
+<td>向文本添加阴影。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-text-wrap.html" title="CSS3 text-wrap 属性">text-wrap</a></td>
+<td>规定文本的换行规则。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-word-break.html" title="CSS3 word-break 属性">word-break</a></td>
+<td>规定非中日韩文本的换行规则。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-word-wrap.html" title="CSS3 word-wrap 属性">word-wrap</a></td>
+<td>允许对长的不可分割的单词进行分割并换行到下一行。</td>
+<td>3</td>
+</tr>
+</tbody></table>
+</hr></br></br></br></br></hr></br></hr></br></hr></br></div>

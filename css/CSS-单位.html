@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<p>CSS 有几个不同的单位用于表示长度。
+</p><p>
+一些设置 CSS 长度的属性有 width, margin, padding, font-size, border-width, 等。
+</p><p>
+长度有一个数字和单位组成如 10px, 2em, 等。
+</p><p>
+数字与单位之间不能出现空格。如果长度值为 0，则可以省略单位。
+</p><p>
+对于一些 CSS 属性，长度可以是负数。
+</p><p>
+有两种类型的长度单位：相对和绝对。</p>
+<hr/>
+<h2>浏览器支持</h2>
+<p>下表中的数字表示支持该长度单位的最低浏览器版本。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%;font-size:16px;text-align:left">长度单位</th>
+<th class="bsChrome" style="width:16%" title="Chrome">Chrome</th>
+<th class="bsIE" style="width:16%" title="Internet Explorer">IE</th>
+<th class="bsFirefox" style="width:16%" title="Firefox">Firefox</th>
+<th class="bsSafari" style="width:16%" title="Safari">Safari</th>
+<th class="bsOpera" style="width:16%" title="Opera">Opera</th>
+</tr>
+<tr>
+<td style="text-align:left">em, ex, %, px, cm, mm, in, pt, pc</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td style="text-align:left">ch</td>
+<td>27.0</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>7.0</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td style="text-align:left">rem</td>
+<td>4.0</td>
+<td>9.0</td>
+<td>3.6</td>
+<td>4.1</td>
+<td>11.6</td>
+</tr>
+<tr>
+<td style="text-align:left">vh, vw</td>
+<td>20.0</td>
+<td>9.0</td>
+<td>19.0</td>
+<td>6.0</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td style="text-align:left">vmin</td>
+<td>20.0</td>
+<td>9.0*</td>
+<td>19.0</td>
+<td>6.0</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td style="text-align:left">vmax</td>
+<td>26.0</td>
+<td><span class="deprecated">不支持</span></td>
+<td>19.0</td>
+<td><span class="deprecated">不支持</span></td>
+<td>20.0</td>
+</tr>
+</tbody></table>
+<p><b>注意:</b> Internet Explorer 9 通过不标准的名称 vm 来支持 vmin 。</p><hr/>
+<h2>相对长度</h2>
+<p>
+相对长度单位指定了一个长度相对于另一个长度的属性。对于不同的设备相对长度更适用。
+</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:12%">单位</th>
+<th>描述</th>
+<th>在线实例</th>
+</tr>
+<tr>
+<td>em</td>
+<td>它是描述相对于应用在当前元素的字体尺寸，所以它也是相对长度单位。一般浏览器字体大小默认为16px，则2em == 32px；</td><td>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss_unit_em" target="_blank">尝试一下</a>
+</td>
+</tr>
+<tr>
+<td>ex</td>
+<td>依赖于英文子母小 x 的高度</td><td>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss_unit_ex" target="_blank">尝试一下</a>
+</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>数字 0 的宽度</td></tr></tbody></table></div>

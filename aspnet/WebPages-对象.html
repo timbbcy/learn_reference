@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- 对象</span>
+</h1>
+<hr/>
+<p class="intro"> Web Pages 经常是跟对象有关的。</p>
+<hr/>
+<h2>Page 对象</h2>
+<p>您已经看到了一些在使用的 Page 对象方法：</p>
+<div class="code notranslate"><div>
+	@RenderPage("header.cshtml")<br/><br/>@RenderBody()<br/>
+</div></div>
+<p>在前面的章节中，您已经看到了两个 Page 对象属性（isPost 和 Request）：</p>
+<div class="code notranslate"><div>
+	If (isPost) {<br/><br/>if (Request["Choice"] != null ) {<br/>
+</div></div>
+<br/><hr/>
+<h2>某些 Page 对象方法<br/>
+</h2>
+<table class="reference notranslate" style="width: 100%">
+<tr>
+<th width="20%">方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>href</td>
+<td>使用指定的值创建 URL。</td>
+</tr>
+<tr>
+<td>RenderBody()</td>
+<td>呈现不在布局页命名区域的内容页的一部分。</td>
+</tr>
+<tr>
+<td>RenderPage(<em>page</em>)</td>
+<td>在另一个页面中呈现某一个页面的内容。</td>
+</tr>
+<tr>
+<td>RenderSection(<em>section</em>)</td>
+<td>呈现布局页命名区域的内容。</td>
+</tr>
+<tr>
+<td>Write(<em>object</em>)</td>
+<td>将对象作为 HTML 编码字符串写入。</td>
+</tr>
+<tr>
+<td>WriteLiteral</td>
+<td>写入对象时优先不使用 HTML 编码。</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>某些 Page 对象属性<br/>
+</h2>
+<table class="reference notranslate" style="width: 100%">
+<tr>
+<th width="20%">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>isPost</td>
+<td>如果客户端使用的 HTTP 数据传输方法是 POST 请求，则返回 true。</td>
+</tr>
+<tr>
+<td>Layout</td>
+<td>获取或者设置布局页面的路径。</td>
+</tr>
+<tr>
+<td>Page</td>
+<td>提供了对页面和布局页之间共享的数据的类似属性访问。</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>为当前的 HTTP 请求获取 HttpRequest 对象。</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>获取 HttpServerUtility 对象，该对象提供了网页处理方法。</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>Page 对象的 Page 属性</h2>
+<p>Page 对象的 Page 属性，提供了对页面和布局页之间共享的数据的类似属性访问。</p>
+<p>您可以对 Page 属性使用（添加）您自己的属性：</p>
+<ul>
+<li>Page.Title</li>
+<li>Page.Version</li>
+<li>Page.anythingyoulike<br/>
+</li>
+</ul>
+<p>页面属性是非常有用的。例如，在内容文件中设置页面标题，并在布局文件中使用：</p>
+<div class="example">
+<h2 class="example">Home.cshtml</h2>
+<div class="example_code notranslate">
+<span class="marked">@{<br/>Layout="~/Shared/Layout.cshtml";<br/>Page.Title="Home Page"<br/>}</span><br/><br/>
+	&lt;h1&gt;Welcome to runoob.com&lt;/h1&gt; <br/><br/>&lt;h2&gt;Web Site Main Ingredients&lt;/h2&gt;<br/><br/>&lt;p&gt;A Home Page (Default.cshtml)&lt;/p&gt;<br/>&lt;p&gt;A Layout File (Layout.cshtml)&lt;/p&gt;<br/>
+	&lt;p&gt;A Style Sheet (Site.css)&lt;/p&gt;</div>
+</div>
+<br/><div class="example">
+<h2 class="example">Layout.cshtml</h2>
+<div class="example_code notranslate">
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>&lt;head&gt;<br/>&lt;title&gt;<span class="marked">@Page.Title</span>&lt;/title&gt;<br/>&lt;/head&gt;<br/>&lt;body&gt;<br/><span class="marked">@RenderBody()</span><br/>
+	&lt;/body&gt;<br/>
+	&lt;/html</div>
+</div>
+<br/><br/>
+</div>

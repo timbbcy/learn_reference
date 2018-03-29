@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<script> 
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle(5000);
+  });
+  $("#stop").click(function(){
+    $(".panel").stop();
+  });
+});
+</script>
+<style type="text/css"> 
+#stop
+{
+margin-left:25px;
+}
+div.panel,p.flip
+{
+width:90%;
+margin:auto;
+padding:5px;
+text-align:center;
+background:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+div.panel
+{
+height:100px;
+display:none;
+}
+</style>
+<h1>jQuery <span class="color_h1">停止动画</span>
+</h1>
+<hr/>
+<p class="intro">jQuery stop() 方法用于在动画或效果完成前对它们进行停止。</p>
+<p><button id="stop">停止滑动</button></p>
+<p class="flip">点击这里，向上/向下滑动面板</p>
+<div class="panel">
+<p>时间是宝贵的，因此，我们为您提供快捷易懂的学习内容。</p>
+<p>在这里，您可以通过一种易懂的便利的模式获得您需要的任何知识。</p>
+</div>
+<hr/>
+<h2>实例</h2>
+<p><a href="/try/try.php?filename=tryjquery_stop_slide" target="_blank">jQuery stop() 滑动</a><br/>
+演示 jQuery stop() 方法。</p>
+<p><a href="/try/try.php?filename=tryjquery_stop_params" target="_blank">jQuery 
+stop() 动画(带参数)</a><br/>
+演示 jQuery stop() 方法</p>
+<hr/>
+<h2>jQuery stop() 方法</h2>
+<p>jQuery stop() 方法用于停止动画或效果，在它们完成之前。</p>
+<p>stop() 方法适用于所有 jQuery 效果函数，包括滑动、淡入淡出和自定义动画。</p>
+<p><b>语法:</b></p>
+<div class="code"><div>
+$(<i>selector</i>).stop(<i>stopAll,goToEnd</i>);</div></div>
+<p>可选的 stopAll 参数规定是否应该清除动画队列。默认是 false，即仅停止活动的动画，允许任何排入队列的动画向后执行。</p>
+<p>可选的 goToEnd 参数规定是否立即完成当前动画。默认是 false。</p>
+<p>因此，默认地，stop() 会清除在被选元素上指定的当前动画。</p>
+<p>下面的例子演示 stop() 方法，不带参数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#stop</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#panel</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">stop</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_stop_slide" target="_blank">尝试一下 »</a>
+</div>
+</div>

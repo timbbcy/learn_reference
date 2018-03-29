@@ -1,0 +1,65 @@
+<div class="article-intro" id="content">
+<h1>ionic 上拉菜单(ActionSheet)</h1>
+<p>上拉菜单(ActionSheet)通过往上弹出的框，来让用户选择选项。</p>
+<p>非常危险的选项会以高亮的红色来让人第一时间识别。你可以通过点击取消按钮或者点击空白的地方来让它消失。</p>
+<hr/>
+<h2>实例</h2>
+<h3>HTML 代码</h3>
+<pre>
+&lt;body ng-app="starter" ng-controller="actionsheetCtl" &gt;
+
+    &lt;ion-pane&gt;
+        &lt;ion-content &gt;
+            &lt;h2 ng-click="show()"&gt;Action Sheet&lt;/h2&gt;
+        &lt;/ion-content&gt;
+    &lt;/ion-pane&gt;
+&lt;/body&gt;
+</pre>
+<h3>JavaScript 代码</h3>
+<p>在代码中触发上拉菜单，需要在你的 angular 控制器中使用 $ionicActionSheet 服务：</p>
+<pre>
+angular.module('starter', ['ionic'])
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if(window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+
+.controller( 'actionsheetCtl',['$scope','$ionicActionSheet','$timeout' ,function($scope,$ionicActionSheet,$timeout){
+    $scope.show = function() {
+
+        var hideSheet = $ionicActionSheet.show({
+            buttons: [
+              { text: '&lt;b&gt;Share&lt;/b&gt; This' },
+              { text: 'Move' }
+            ],
+            destructiveText: 'Delete',
+            titleText: 'Modify your album',
+            cancelText: 'Cancel',
+            cancel: function() {
+                 // add cancel code..
+               },
+            buttonClicked: function(index) {
+              return true;
+            }
+        });
+
+        $timeout(function() {
+            hideSheet();
+        }, 2000);
+
+    };  
+}])
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_actionsheet" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>运行效果如下图：</p>
+<img src="https://www.runoob.com/wp-content/uploads/2015/08/687474703a2f2f3776696a717a2e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f616374696f6e2d73686565742e6769662e676966.gif"/>
+</div>

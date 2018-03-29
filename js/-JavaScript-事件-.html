@@ -1,0 +1,115 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">事件</span>
+</h1>
+<hr/>
+<p class="intro">HTML 事件是发生在 HTML 元素上的事情。</p>
+<p class="intro">当在 HTML 页面中使用 JavaScript 时， JavaScript 可以触发这些事件。</p>
+<hr/>
+<h2>HTML 事件</h2>
+<p> HTML 事件可以是浏览器行为，也可以是用户行为。</p>
+<p>以下是 HTML 事件的实例：</p>
+<ul>
+<li> HTML 页面完成加载</li>
+<li> HTML input 字段改变时</li>
+<li> HTML 按钮被点击</li>
+</ul>
+<p>通常，当事件发生时，你可以做些事情。</p>
+<p>在事件触发时 JavaScript 可以执行一些代码。</p>
+<p>HTML 元素中可以添加事件属性，使用 JavaScript 代码来添加 HTML 元素。</p>
+<p>单引号:</p>
+<div class="code">
+<div>
+&lt;<em>some-HTML-element</em>
+<em>some-event</em>=<strong>'</strong><em><strong>JavaScript 代码</strong></em><strong>'</strong>&gt;</div>
+</div>
+<p>双引号:</p>
+<div class="code">
+<div>
+	&lt;<em>some-HTML-element</em>
+<em>some-event</em>=<strong>"</strong><em><strong>JavaScript 代码</strong></em><strong>"</strong>&gt;</div>
+</div>
+<p>在以下实例中，按钮元素中添加了 onclick 属性 (并加上代码):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&lt;</span><span class="hl-identifier">button</span><span class="hl-code"> </span><span class="hl-identifier">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">getElementById('demo').innerHTML=Date()</span><span class="hl-quotes">"</span><span class="hl-code">&gt;现在的时间是?&lt;/</span><span class="hl-identifier">button</span><span class="hl-code">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_event_onclick1" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例中，JavaScript 代码将修改 id="demo" 元素的内容。</p>
+<p>在下一个实例中，代码将修改自身元素的内容 (使用 <strong>this</strong>.innerHTML): </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&lt;</span><span class="hl-identifier">button</span><span class="hl-code"> </span><span class="hl-identifier">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">this.innerHTML=Date()</span><span class="hl-quotes">"</span><span class="hl-code">&gt;现在的时间是?&lt;/</span><span class="hl-identifier">button</span><span class="hl-code">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_event_onclick" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>JavaScript代码通常是几行代码。比较常见的是通过事件属性来调用：</td>
+</tr></table>
+<br/><div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&lt;</span><span class="hl-identifier">button</span><span class="hl-code"> </span><span class="hl-identifier">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">displayDate()</span><span class="hl-quotes">"</span><span class="hl-code">&gt;现在的时间是?&lt;/</span><span class="hl-identifier">button</span><span class="hl-code">&gt;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_events1" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>常见的HTML事件</h2>
+<p>下面是一些常见的HTML事件的列表:</p>
+<table class="reference" style="width: 100%">
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>onchange</td>
+<td> HTML 元素改变</td>
+</tr>
+<tr>
+<td>onclick</td>
+<td>用户点击 HTML 元素</td>
+</tr>
+<tr>
+<td>onmouseover</td>
+<td>用户在一个HTML元素上移动鼠标</td>
+</tr>
+<tr>
+<td>onmouseout</td>
+<td>用户从一个HTML元素上移开鼠标</td>
+</tr>
+<tr>
+<td>onkeydown</td>
+<td>用户按下键盘按键</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>浏览器已完成页面的加载</td>
+</tr>
+</table>
+<p>更多事件列表: <a href="/jsref/dom-obj-event.html"> JavaScript 参考手册 - HTML DOM 事件</a>。</p>
+<hr/>
+<h2> JavaScript 可以做什么?</h2>
+<p>事件可以用于处理表单验证，用户输入，用户行为及浏览器动作:</p>
+<ul>
+<li>页面加载时触发事件</li>
+<li>页面关闭时触发事件</li>
+<li>用户点击按钮执行动作</li>
+<li>验证用户输入内容的合法性</li>
+<li>等等 ...</li>
+</ul>
+<p>可以使用多种方法来执行 JavaScript 事件代码：</p>
+<ul>
+<li>HTML 事件属性可以直接执行 JavaScript 代码</li>
+<li>HTML 事件属性可以调用 JavaScript 函数</li>
+<li>你可以为 HTML 元素指定自己的事件处理程序</li>
+<li>你可以阻止事件的发生。</li>
+<li>等等 ...</li>
+</ul>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>在 HTML DOM 章节中你将会学到更多关于事件及事件处理程序的知识。<br/>
+</td>
+</tr></table>
+</div>

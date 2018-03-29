@@ -1,0 +1,66 @@
+<div class="article-intro" id="content">
+<h1>Foundation 选项卡</h1>
+<p>选项卡导航可以很好的展示不同的内容，并可以对内容进行切换。</p>
+<iframe src="/try/demo_source/tryfoundation_tabs_toggable.htm" style="border:0;width:100%;height:300px;overflow-y:hidden;"></iframe>
+<p>选项卡使用 <code>&lt;ul class="tabs" data-tab&gt;</code> 来创建, 各个选项使用 &lt;li&gt; 元素并加上 <code>.tab-title</code> 类来创建。</p>
+<p><strong>提示:</strong> 当前选中项可以使用 <code>.active</code> 类。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"tabs"</span> <span class="highATT">data-tab</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"tab-title active"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Home<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"tab-title"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Menu 
+	1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"tab-title"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Menu 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"tab-title"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Menu 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tabs" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>垂直的选项卡</h2>
+<p>垂直选项卡可以使用 <code>.vertical</code> 类:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"tabs vertical"</span> <span class="highATT">data-tab</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tabs_vertical" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>切换选项卡</h2>
+<p>如果要设置切换标签，可以使用 &lt;div&gt; 元素加上 <code>.content</code> 类。每个选项卡上加上唯一的 ID, 并连接到列表项 (&lt;a href="#menu1" 将打开 id="menu1" 的选项内容)。最后将所有的选项内容放在 <code>&lt;div&gt;</code> 元素上，该 <code>&lt;div&gt;</code> 元素需要添加 <code>.tabs-content</code> 类，并初始化 Foundation JS。</p>
+<p>注意 <code>.active</code> 类会自动添加到当前选中的选项卡上：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"tabs"</span> <span class="highATT">data-tab</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"tab-title active"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#home"</span><span class="highGT">&gt;</span>Home<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"tab-title"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#menu1"</span><span class="highGT">&gt;</span>Menu 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"tab-title"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#menu2"</span><span class="highGT">&gt;</span>Menu 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"tab-title"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#menu3"</span><span class="highGT">&gt;</span>Menu 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"tabs-content"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"content active"</span> <span class="highATT">id=</span><span class="highVAL">"home"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>HOME<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Home is where the heart is..<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"content"</span> <span class="highATT">id=</span><span class="highVAL">"menu1"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Menu 1<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text, blabla<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"content"</span> <span class="highATT">id=</span><span class="highVAL">"menu2"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Menu 2<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some other text.<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"content"</span> <span class="highATT">id=</span><span class="highVAL">"menu3"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Menu 3<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Last tab.<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tabs_toggable" target="_blank">尝试一下 »</a>
+</div>
+<hr/><h2>选项卡淡入</h2>
+<p>使用 CSS 来自定义选项卡淡入的效果：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">.tabs-content &gt; .content.active </span>{<br/>    <span class="highATT">-webkit-animation:</span><span class="highVAL"> fadeEffect 1s;</span><br/>
+	   
+	<span class="highATT">animation:</span><span class="highVAL"> fadeEffect 1s;</span><br/>}<br/><br/><span class="highELE">@-webkit-keyframes fadeEffect </span>{<br/>
+<span class="highELE">   
+	from </span>{<span class="highATT">opacity:</span><span class="highVAL"> 0;</span>}<br/><span class="highELE">    to </span>{<span class="highATT">opacity:</span><span class="highVAL"> 1;</span>}<br/>}<br/><br/><span class="highELE">@keyframes fadeEffect 
+	</span>{<br/><span class="highELE">    from </span>{<span class="highATT">opacity:</span><span class="highVAL"> 0;</span>}<br/><span class="highELE">    to </span>{<span class="highATT">opacity:</span><span class="highVAL"> 1;</span>}<br/>
+	}</div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_tabs_fade" target="_blank">尝试一下 »</a>
+</div>
+</div>

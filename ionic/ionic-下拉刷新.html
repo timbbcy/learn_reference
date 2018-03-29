@@ -1,0 +1,75 @@
+<div class="article-intro" id="content">
+<h1>ionic 下拉刷新</h1>
+<p>在加载新数据的时候，我们需要实现下拉刷新效果，代码如下：</p>
+<hr/>
+<h2>实例</h2>
+<h3>HTML 代码</h3>
+<pre>
+&lt;body ng-app="starter" ng-controller="actionsheetCtl" &gt;
+    &lt;ion-pane&gt;
+        &lt;ion-content &gt;
+            &lt;ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"&gt;&lt;/ion-refresher&gt;
+            &lt;ion-list&gt;
+                &lt;ion-item ng-repeat="item in items" ng-bind="item.name"&gt;&lt;/ion-item&gt;
+            &lt;/ion-list&gt;
+        &lt;/ion-content&gt;
+    &lt;/ion-pane&gt;
+&lt;/body&gt;
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('starter', ['ionic'])
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if(window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+
+.controller( 'actionsheetCtl',['$scope','$timeout' ,'$http',function($scope,$timeout,$http){
+
+    $scope.items=[
+        {
+            "name":"HTML5"
+        },
+        {
+            "name":"JavaScript"
+        },
+        {
+            "name":"Css3"
+        }
+    ];
+
+    $scope.doRefresh = function() {
+        $http.get('http://www.runoob.com/try/demo_source/item.json')  //注意改为自己本站的地址，不然会有跨域问题
+            .success(function(newItems) {
+                $scope.items = newItems;
+            })
+            .finally(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+    };
+}])
+</pre>
+<p>item.json 文件数据：</p>
+<pre>
+[
+    {
+        "name":"菜鸟教程"
+    },
+    {
+        "name":"www.runoob.com"
+    }
+]
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-refresher" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>效果如下所示：</p>
+<iframe frameborder="0" height="400" src="/try/demo_source/ionic_ion-refresher.htm"></iframe>
+</div>

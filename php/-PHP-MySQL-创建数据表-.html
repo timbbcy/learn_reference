@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">创建 MySQL 表</span></h1>
+<hr/>
+<p class="intro">一个数据表有一个唯一名称，并有行和列组成。</p>
+<hr/>
+<h2>使用 MySQLi 和 PDO 创建 MySQL 表</h2>
+<p> CREATE TABLE 语句用于创建 MySQL 表。</p>
+<p>创建表前，我们需要使用 <span class="marked">use myDB</span> 来选择要操作的数据库：</p>
+<pre>use myDB;</pre>
+<p>我们将创建一个名为 "MyGuests" 的表，有 5 个列： "id", "firstname", "lastname", "email" 和 "reg_date":</p>
+<div class="example">
+<div class="example_code">
+CREATE TABLE MyGuests (<br/>
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br/>
+firstname VARCHAR(30) NOT NULL,<br/>
+lastname VARCHAR(30) NOT NULL,<br/>
+email VARCHAR(50),<br/>
+reg_date TIMESTAMP<br/>
+)
+</div>
+</div>
+<p><b>上表中的注意事项:</b></p>
+<p>数据类型指定列可以存储什么类型的数据。完整的数据类型请参考我们的 
+<a href="/sql/sql-datatypes.html">数据类型参考手册</a>。</p>
+<p>在设置了数据类型后，你可以为每个列指定其他选项的属性：</p>
+<ul>
+<li>NOT NULL - 每一行都必须含有值（不能为空），null 值是不允许的。</li>
+<li>DEFAULT value - 设置默认值</li>
+<li>UNSIGNED - 使用无符号数值类型，0 及正数 </li>
+<li>AUTO INCREMENT - 设置 MySQL 字段的值在新增记录时每次自动增长 1</li>
+<li>PRIMARY KEY - 设置数据表中每条记录的唯一标识。 通常列的 PRIMARY KEY 设置为 ID 数值，与
+	AUTO_INCREMENT 一起使用。</li>
+</ul>
+<p>每个表都应该有一个主键(本列为 "id" 列)，主键必须包含唯一的值。</p>
+<p>以下实例展示了如何在 PHP 中创建表：</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>$password = 
+	"password";<br/>$dbname = 
+	"myDB";<br/><br/>// 创建连接<br/>$conn = 
+	new mysqli($servername, $username, $password, $dbname);<br/>
+	// 检测连接<br/>
+	if ($conn-&gt;connect_error) {<br/>
+    die("连接失败: " . $conn-&gt;connect_error);<br/>}
+<br/>
+<br/>// 使用 sql 创建数据表<br/>
+	$sql 
+	= "CREATE TABLE MyGuests (<br/>id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY 
+	KEY, <br/>firstname VARCHAR(30) NOT NULL,<br/>lastname VARCHAR(30) NOT NULL,<br/>email 
+	VARCHAR(50),<br/>reg_date TIMESTAMP<br/>)";<br/>
+<br/>if ($conn-&gt;query($sql) === TRUE) {<br/>    echo "Table 
+	MyGuests created successfully";<br/>} else {<br/>    echo 
+	"创建数据表错误: " . $conn-&gt;error;<br/>}<br/><br/>$conn-&gt;close();<br/>
+?&gt;
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向过程)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>$password = 
+	"password";<br/>$dbname = 
+	"myDB";<br/><br/>// 创建连接<br/>
+$conn = mysqli_connect($servername, $username, $password, 
+	$dbname);<br/>
+	// 检测连接<br/>
+	if (!$conn) {<br/>
+    die("连接失败: " . mysqli_connect_error());<br/>}<br/><br/>// 使用 sql 创建数据表<br/>
+	$sql 
+	= "CREATE TABLE MyGuests (<br/>id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY 
+	KEY, <br/>firstname VARCHAR(30) NOT NULL,<br/>lastname VARCHAR(30) NOT NULL,<br/>email 
+	VARCHAR(50),<br/>reg_date TIMESTAMP<br/>)";<br/>
+<br/>if (mysqli_query($conn, $sql)) {<br/>    echo "数据表 MyGuests 
+	创建成功";<br/>} else {<br/>    echo "创建数据表错误: " . mysqli_error($conn);<br/>}<br/><br/>mysqli_close($conn);<br/>
+?&gt;
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (PDO)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>
+	$password = "password";<br/>$dbname = 
+	"myDBPDO";<br/><br/>try {<br/>    $conn = new PDO("mysql:host=$servername;dbname=$dbname", 
+	$username, $password);<br/>    
+	// 设置 PDO 错误模式，用于抛出异常<br/>    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, 
+	PDO::ERRMODE_EXCEPTION);<br/><br/>    // 使用 sql 创建数据表<br/>
+	   
+	$sql 
+	= "CREATE TABLE MyGuests (<br/>    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY 
+	KEY, <br/>    firstname VARCHAR(30) NOT NULL,<br/>    lastname VARCHAR(30) NOT NULL,<br/>    email 
+	VARCHAR(50),<br/>    reg_date TIMESTAMP<br/>    )";<br/>
+<br/>    // 使用 exec() ，没有结果返回 <br/>    $conn-&gt;exec($sql);<br/>    
+	echo "数据表 MyGuests 创建成功";<br/>}<br/>catch(PDOException $e)<br/> {<br/>    
+	echo $sql . "&lt;br&gt;" . $e-&gt;getMessage();<br/>}<br/>
+<br/>$conn = null;<br/>
+?&gt;
+</div>
+<br/>
+</div>
+</div>

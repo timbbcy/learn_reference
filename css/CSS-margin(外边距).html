@@ -1,0 +1,122 @@
+<div class="article-intro" id="content">
+<h1>CSS <span class="color_h1">margin(外边距)</span>
+</h1>
+<hr/>
+<p class="intro">CSS margin(外边距)属性定义元素周围的空间。</p>
+<hr/>
+<h2>margin</h2>
+<p>margin 清除周围的（外边框）元素区域。margin 没有背景颜色，是完全透明的。</p>
+<p>margin 可以单独改变元素的上，下，左，右边距，也可以一次改变所有的属性。</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2013/08/VlwVi.png"/></p>
+<h2>可能的值</h2>
+<table border="1" cellpadding="0" cellspacing="0" class="reference" width="100%">
+<tbody><tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+<tr>
+<td>auto</td>
+<td>设置浏览器边距。<br/>这样做的结果会依赖于浏览器</td>
+</tr>
+<tr>
+<td><i>length</i></td>
+<td>定义一个固定的margin（使用像素，pt，em等） </td>
+</tr>
+<tr>
+<td><i>%</i></td>
+<td>定义一个使用百分比的边距</td>
+</tr>
+</tbody></table>
+<p><img alt="Remark" src="/images/lamp.gif"/> Margin可以使用负值，重叠的内容。</p>
+<hr/>
+<h2>Margin - 单边外边距属性</h2>
+<p>在CSS中，它可以指定不同的侧面不同的边距：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">margin-top</span><span class="hl-code">:100</span><span class="hl-identifier">px</span><span class="hl-code">;
+</span><span class="hl-identifier">margin-bottom</span><span class="hl-code">:100</span><span class="hl-identifier">px</span><span class="hl-code">;
+</span><span class="hl-identifier">margin-right</span><span class="hl-code">:50</span><span class="hl-identifier">px</span><span class="hl-code">;
+</span><span class="hl-identifier">margin-left</span><span class="hl-code">:50</span><span class="hl-identifier">px</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_margin_sides" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Margin - 简写属性</h2>
+<p>为了缩短代码，有可能使用一个属性中margin指定的所有边距属性。这就是所谓的简写属性。</p>
+<p>所有边距属性的简写属性是 <span class="marked">margin</span> :</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">margin</span><span class="hl-code">:100</span><span class="hl-identifier">px</span><span class="hl-code"> 50</span><span class="hl-identifier">px</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_margin_shorthand" target="_blank">尝试一下 »</a>
+</div>
+<p>margin属性可以有一到四个值。/p&gt;
+<ul>
+<li>
+<b>margin:25px 50px 75px 100px; </b>
+<ul>
+<li>上边距为25px</li>
+<li>右边距为50px</li>
+<li>下边距为75px</li>
+<li>左边距为100px</li>
+</ul>
+<br/>
+</li>
+<li>
+<b>margin:25px 50px 75px;</b><ul>
+<li>上边距为25px</li>
+<li>左右边距为50px</li>
+<li>下边距为75px</li>
+</ul>
+<br/>
+</li>
+<li>
+<b>margin:25px 50px;</b><ul>
+<li>上下边距为25px</li>
+<li>左右边距为50px</li>
+</ul>
+<br/>
+</li>
+<li>
+<b>margin:25px;</b><ul><li>所有的4个边距都是25px</li></ul>
+</li>
+</ul>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/try.php?filename=trycss_margin-top" target="_blank">文本的上边距设置使用厘米值</a><br/>
+这个例子演示了如何设置一个使用厘米值的文本的顶部margin。</p>
+<p><a href="/try/try.php?filename=trycss_margin-bottom_percent" target="_blank">Set 
+使用百分比值设置文本的下边距</a><br/>
+这个例子演示了如何设置使用百分比值的下边距，相对于包含的元素的宽度。</p>
+<hr/>
+<h2>所有的CSS边距属性</h2>
+<table class="reference">
+<tbody><tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="/cssref/pr-margin.html" title="CSS margin 属性">margin</a></td>
+<td>简写属性。在一个声明中设置所有外边距属性。</td>
+</tr>
+<tr>
+<td><a href="/cssref/pr-margin-bottom.html" title="CSS margin-bottom 属性">margin-bottom</a></td>
+<td>设置元素的下外边距。</td>
+</tr>
+<tr>
+<td><a href="/cssref/pr-margin-left.html" title="CSS margin-left 属性">margin-left</a></td>
+<td>设置元素的左外边距。</td>
+</tr>
+<tr>
+<td><a href="/cssref/pr-margin-right.html" title="CSS margin-right 属性">margin-right</a></td>
+<td>设置元素的右外边距。</td>
+</tr>
+<tr>
+<td><a href="/cssref/pr-margin-top.html" title="CSS margin-top 属性">margin-top</a></td>
+<td>设置元素的上外边距。</td>
+</tr>
+</tbody></table>
+</p></div>

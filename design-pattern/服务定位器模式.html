@@ -1,0 +1,162 @@
+<div class="article-intro" id="content">
+<h1>服务定位器模式</h1>
+<p>服务定位器模式（Service Locator Pattern）用在我们想使用 JNDI 查询定位各种服务的时候。考虑到为某个服务查找 JNDI 的代价很高，服务定位器模式充分利用了缓存技术。在首次请求某个服务时，服务定位器在 JNDI 中查找服务，并缓存该服务对象。当再次请求相同的服务时，服务定位器会在它的缓存中查找，这样可以在很大程度上提高应用程序的性能。以下是这种设计模式的实体。</p>
+<ul class="list">
+<li><b>服务（Service）</b> - 实际处理请求的服务。对这种服务的引用可以在 JNDI 服务器中查找到。</li>
+<li><b>Context / 初始的 Context</b> - JNDI Context 带有对要查找的服务的引用。</li>
+<li><b>服务定位器（Service Locator）</b> - 服务定位器是通过 JNDI 查找和缓存服务来获取服务的单点接触。</li>
+<li><b>缓存（Cache）</b> - 缓存存储服务的引用，以便复用它们。</li>
+<li><b>客户端（Client）</b> - Client 是通过 ServiceLocator 调用服务的对象。</li>
+</ul>
+<h2>实现</h2>
+<p>我们将创建 <i>ServiceLocator</i>、<i>InitialContext</i>、<i>Cache</i>、<i>Service</i> 作为表示实体的各种对象。<i>Service1</i> 和 <i>Service2</i> 表示实体服务。</p>
+<p><i>ServiceLocatorPatternDemo</i>，我们的演示类在这里是作为一个客户端，将使用 <i>ServiceLocator</i> 来演示服务定位器设计模式。</p>
+<img alt="服务定位器模式的 UML 图" src="/wp-content/uploads/2014/08/servicelocator_pattern_uml_diagram.jpg"/>
+<h2>步骤 1</h2>
+<p>创建服务接口 Service。</p>
+<p><i>Service.java</i></p>
+<pre class="prettyprint">
+public interface Service {
+   public String getName();
+   public void execute();
+}
+</pre>
+<h2>步骤 2</h2>
+<p>创建实体服务。</p>
+<p><i>Service1.java</i></p>
+<pre class="prettyprint">
+public class Service1 implements Service {
+   public void execute(){
+      System.out.println("Executing Service1");
+   }
+
+   @Override
+   public String getName() {
+      return "Service1";
+   }
+}
+</pre>
+<p><i>Service2.java</i></p>
+<pre class="prettyprint">
+public class Service2 implements Service {
+   public void execute(){
+      System.out.println("Executing Service2");
+   }
+
+   @Override
+   public String getName() {
+      return "Service2";
+   }
+}
+</pre>
+<h2>步骤 3</h2>
+<p>为 JNDI 查询创建 InitialContext。</p>
+<p><i>InitialContext.java</i></p>
+<pre class="prettyprint">
+public class InitialContext {
+   public Object lookup(String jndiName){
+      if(jndiName.equalsIgnoreCase("SERVICE1")){
+         System.out.println("Looking up and creating a new Service1 object");
+         return new Service1();
+      }else if (jndiName.equalsIgnoreCase("SERVICE2")){
+         System.out.println("Looking up and creating a new Service2 object");
+         return new Service2();
+      }
+      return null;        
+   }
+}
+</pre>
+<h2>步骤 4</h2>
+<p>创建缓存 Cache。</p>
+<p><i>Cache.java</i></p>
+<pre class="prettyprint">
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cache {
+
+   private List&lt;Service&gt; services;
+
+   public Cache(){
+      services = new ArrayList&lt;Service&gt;();
+   }
+
+   public Service getService(String serviceName){
+      for (Service service : services) {
+         if(service.getName().equalsIgnoreCase(serviceName)){
+            System.out.println("Returning cached  "+serviceName+" object");
+            return service;
+         }
+      }
+      return null;
+   }
+
+   public void addService(Service newService){
+      boolean exists = false;
+      for (Service service : services) {
+         if(service.getName().equalsIgnoreCase(newService.getName())){
+            exists = true;
+         }
+      }
+      if(!exists){
+         services.add(newService);
+      }
+   }
+}
+</pre>
+<h2>步骤 5</h2>
+<p>创建服务定位器。</p>
+<p><i>ServiceLocator.java</i></p>
+<pre class="prettyprint">
+public class ServiceLocator {
+   private static Cache cache;
+
+   static {
+      cache = new Cache();        
+   }
+
+   public static Service getService(String jndiName){
+
+      Service service = cache.getService(jndiName);
+
+      if(service != null){
+         return service;
+      }
+
+      InitialContext context = new InitialContext();
+      Service service1 = (Service)context.lookup(jndiName);
+      cache.addService(service1);
+      return service1;
+   }
+}
+</pre>
+<h2>步骤 6</h2>
+<p>使用 <i>ServiceLocator</i> 来演示服务定位器设计模式。</p>
+<p><i>ServiceLocatorPatternDemo.java</i></p>
+<pre class="prettyprint">
+public class ServiceLocatorPatternDemo {
+   public static void main(String[] args) {
+      Service service = ServiceLocator.getService("Service1");
+      service.execute();
+      service = ServiceLocator.getService("Service2");
+      service.execute();
+      service = ServiceLocator.getService("Service1");
+      service.execute();
+      service = ServiceLocator.getService("Service2");
+      service.execute();        
+   }
+}
+</pre>
+<h2>步骤 7</h2>
+<p>验证输出。</p>
+<pre class="result">
+Looking up and creating a new Service1 object
+Executing Service1
+Looking up and creating a new Service2 object
+Executing Service2
+Returning cached  Service1 object
+Executing Service1
+Returning cached  Service2 object
+Executing Service2
+</pre>
+</div>

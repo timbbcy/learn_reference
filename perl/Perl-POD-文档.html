@@ -1,0 +1,130 @@
+<div class="article-intro" id="content">
+<h1>Perl POD 文档</h1>
+<p>
+Perl 中可以在模块或脚本中嵌入 POD（Plain Old Documentation） 文档。</p>
+<p>POD 是一种简单而易用的标记型语言（置标语言）。</p>
+<p>POD 文档使用规则：</p>
+<blockquote><p>POD 文档以 <b>=head1</b> 开始，  <b>=cut</b> 结束， <b>=head1</b> 前与 <b>=cut</b> 后添加一空行。</p></blockquote>
+<p>Perl 会忽略 POD 中的文档。实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello, World</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">=head1</span><span class="hl-comment"> Hello, World 实例
+这是一个 Perl 的简单实例。
+</span><span class="hl-comment">=cut</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello, Runoob</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+Hello, World
+Hello, Runoob
+</pre>
+<p>我们还可以使用 "__END__" 或 "__DATA__" 将所在行之后的内容全部"注释"掉：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello, World</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-code">&lt;</span><span class="hl-identifier">DATA</span><span class="hl-code">&gt;</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">__END__</span><span class="hl-code">
+</span><span class="hl-comment">=head1</span><span class="hl-comment"> Hello, World 实例
+这是一个 Perl 的简单实例。
+print "Hello, Runoob\n";</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Hello, World
+
+=head1 Hello, World 实例
+这是一个 Perl 的简单实例。
+print "Hello, Runoob\n";
+</pre>
+<p>以下实例不读取 POD 文档：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello, World</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">__END__</span><span class="hl-code">
+</span><span class="hl-comment">=head1</span><span class="hl-comment"> Hello, World 实例
+这是一个 Perl 的简单实例。
+print "Hello, Runoob\n";</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Hello, World
+</pre>
+<hr/>
+<h2>什么是 POD？</h2>
+<p>Pod(Plain Old Documentation), 是一种简单而易用的标记型语言（置标语言），它经常用于在perl程序和模块中的文档书写。</p>
+<p>Pod 的 转化器可以将 Pod 转换成很多种格式，例如 text, html, man 等很多。</p>
+<p>Pod 标记语言包含三种基本基本类型： 普通, 原文, 和 命令。</p>
+<ul class="list">
+<li><p><b>普通段落</b>: 你可以在普通段落中使用格式化代码，如黑体，斜体，或代码风格，下划线等。 </p></li>
+<li><p><b>原文段落</b>: 原文段落，用于代码块或者其他不需要转换器处理的部分，而且不需要段落重排。</p></li>
+<li><p><b>命令段落</b>: 命令段落作用于整个的文档，通常用于标题设置或列表标记。</p><p>
+所有的命令段落（他只有一行的长度）使用 "=" 开始，然后是一个标识符。 随后的文本将被这条命令所影响。现在被广泛使用的命令包括
+</p>
+<pre>=pod (开始文档)
+=head1 标题文本
+=head2 标题文本
+=head3 标题文本
+=head4 标题文本
+=over 缩进空格数量
+=item 前缀
+=back (结束列表)
+=begin 文档格式
+=end 结束文档格式
+=for 格式文本
+=encoding 编码类型
+=cut (文档结束)</pre></li>
+</ul>
+<p>在perl中，可以使用 pod2html  **.pod  &gt;**.html 来生成html格式的pod文档。
+
+</p>
+<p>考虑以下 POD 实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">=begin</span><span class="hl-comment"> html
+=encoding utf-8
+ 
+=head1 菜鸟教程
+ 
+</span><span class="hl-comment">=cut</span></div>
+</div>
+</div>
+<p>pod2html时会原文拷贝此段代码。</p>
+<p>使用 pod2html 命令执行，将其转换为 HTML 代码：</p>
+<pre>
+$ pod2html test.pod &gt; test.html 
+</pre>
+<p>在浏览器中打开 test.html，链接部分为索引，显示如下:</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/06/3C485071-7A56-4E17-A5AA-BCA4B947901B.jpg" width="30%"/></p>
+<p>以下实例在 POD 文档中直接写入 HTML:</p>
+<pre>
+=begin html
+=encoding utf-8
+
+&lt;h1&gt;菜鸟教程&lt;/h1&gt;
+&lt;p&gt; www.runoob.com &lt;/p&gt;
+
+=end html
+</pre>
+<p>pod2html时会原文拷贝此段代码。</p>
+<p>使用 pod2html 命令执行，将其转换为 HTML 代码：</p>
+<pre>
+$ pod2html test.pod &gt; test.html 
+</pre>
+<p>在浏览器中打开 test.html，链接部分为索引，显示如下:</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/06/56A3C28C-2C31-426B-8C71-FF4F5AACEA8D.jpg" width="30%"/></p>
+</div>

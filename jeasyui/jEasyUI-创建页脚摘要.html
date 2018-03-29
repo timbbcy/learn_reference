@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">创建页脚摘要</span></h1>
+<p>在本教程中，我们将向您展示如何在数据网格（datagrid）页脚显示摘要信息行。</p>
+<img src="/wp-content/uploads/2013/12/datagrid17_1.png"/>
+<p>为了显示页脚行，您应该设置 showFooter 属性为 true，然后准备定义在数据网格（datagrid）数据中的页脚行。以下是示例数据：</p>
+<pre style="color:#006600">
+    {"total":1,"rows":[{"id":1,"name":"Chai","price":18.00}],"footer":[{"name":"Total","price":18.00}]}
+</pre>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" title="DataGrid" class="easyui-datagrid" style="width:400px;height:250px"
+            url="data/datagrid17_data.json"
+            fitColumns="true" rownumbers="true" showFooter="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="name" width="80"&gt;Product Name&lt;/th&gt;
+                &lt;th field="price" width="40" align="right"&gt;Unit Price&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>页脚行和显示数据行一样，所以您可以在页脚显示不止一个摘要信息。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid17.zip">jeasyui-datagrid-datagrid17.zip</a></p>
+</div>

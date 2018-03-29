@@ -1,0 +1,87 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">树结构</span>
+</h1>
+<hr/>
+<p class="intro">XML 文档形成了一种树结构，它从"根部"开始，然后扩展到"枝叶"。</p>
+<hr/>
+<h2>一个 XML 文档实例</h2>
+<p>XML 文档使用简单的具有自我描述性的语法：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;?</span><span class="hl-reserved">xml</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">encoding</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-brackets">?&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tove</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">Jani</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">Reminder</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">Don't forget me this weekend!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>第一行是 XML 声明。它定义 XML 的版本（1.0）和所使用的编码（UTF-8 : 万国码, 可显示各种语言）。</p>
+<p>下一行描述文档的<b>根元素</b>（像在说："本文档是一个便签"）：</p>
+<pre>
+&lt;note&gt;
+</pre>
+<p>接下来 4 行描述根的 4 个<b>子元素</b>（to, from, heading 以及 body）：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tove</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">Jani</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">Reminder</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">Don't forget me this weekend!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>最后一行定义根元素的结尾：</p>
+<pre>
+&lt;/note&gt;
+</pre>
+<p>您可以假设，从这个实例中，XML 文档包含了一张 Jani 写给 Tove 的便签。</p>
+<p>XML 具有出色的自我描述性，您同意吗？</p>
+<hr/>
+<h2>XML 文档形成一种树结构</h2>
+<p>XML 文档必须包含<b>根元素</b>。该元素是所有其他元素的父元素。</p>
+<p>XML 文档中的元素形成了一棵文档树。这棵树从根部开始，并扩展到树的最底端。</p>
+<p>所有的元素都可以有子元素：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">root</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">child</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">subchild</span><span class="hl-brackets">&gt;</span><span class="hl-code">.....</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">subchild</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">child</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">root</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>父、子以及同胞等术语用于描述元素之间的关系。父元素拥有子元素。相同层级上的子元素成为同胞（兄弟或姐妹）。</p>
+<p>所有的元素都可以有文本内容和属性（类似 HTML 中）。</p>
+<hr/>
+<h2>实例：</h2>
+<img alt="DOM node tree" border="0" height="275" src="/wp-content/uploads/2013/09/nodetree.gif" width="486"/><p>上图表示下面的 XML 中的一本书：</p>
+<div class="example">
+<h2 class="example_head">XML 文档实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">COOKING</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Everyday Italian</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Giada De Laurentiis</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2005</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">30.00</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">CHILDREN</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Harry Potter</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">J K. Rowling</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2005</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">29.99</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">WEB</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Learning XML</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Erik T. Ray</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">39.95</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>实例中的根元素是 &lt;bookstore&gt;。文档中的所有 &lt;book&gt; 元素都被包含在 &lt;bookstore&gt; 中。</p>
+<p>&lt;book&gt; 元素有 4 个子元素：&lt;title&gt;、&lt;author&gt;、&lt;year&gt;、&lt;price&gt;。</p>
+<br/>
+</div>

@@ -1,0 +1,88 @@
+<div class="article-intro" id="content">
+<h1>PHP 5 <span class="color_h1">echo 和 print 语句</span>
+</h1>
+<hr/>
+<p class="intro">在 PHP 中有两个基本的输出方式： echo 和 print。</p>
+<p class="intro">本章节中我们会详细讨论两个语句的用法，并在实例中演示如何使用 echo 和 print。</p>
+<hr/>
+<h2>PHP echo 和 print 语句</h2>
+<p>echo 和 print 区别:</p>
+<ul>
+<li>echo - 可以输出一个或多个字符串</li>
+<li>print - 只允许输出一个字符串，返回值总为 1</li>
+</ul>
+<p><strong>提示：</strong>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
+<hr/>
+<h2> PHP echo 语句</h2>
+<p>echo 是一个语言结构，使用的时候可以不用加括号，也可以加上括号：
+echo 或 echo()。</p>
+<p><strong>显示字符串</strong></p>
+<p>下面的实例演示了如何使用 echo 命令输出字符串（字符串可以包含 HTML 标签）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;h2&gt;PHP 很有趣!&lt;/h2&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello world!&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">我要学 PHP!&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">这是一个</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">字符串，</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">使用了</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">多个</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">参数。</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_echo1" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>显示变量</strong></p>
+<p>下面的实例演示了如何使用 echo 命令输出变量和字符串：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$txt1</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">学习 PHP</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$txt2</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">RUNOOB.COM</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$cars</span><span class="hl-code">=</span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Volvo</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">BMW</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Toyota</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$txt1</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">在 </span><span class="hl-var">$txt2</span><span class="hl-string"> 学习 PHP </span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">我车的品牌是 </span><span class="hl-var">{$cars[0]}</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_echo2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2> PHP print 语句</h2>
+<p>print 同样是一个语言结构，可以使用括号，也可以不使用括号：
+print 或 print()。</p>
+<p><strong>显示字符串</strong></p>
+<p>下面的实例演示了如何使用 print 命令输出字符串（字符串可以包含 HTML 标签）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;h2&gt;PHP 很有趣!&lt;/h2&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello world!&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">我要学习 PHP!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_print1" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>显示变量</strong></p>
+<p>下面的实例演示了如何使用 print 命令输出变量和字符串：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$txt1</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">学习 PHP</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$txt2</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">RUNOOB.COM</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$cars</span><span class="hl-code">=</span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Volvo</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">BMW</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Toyota</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-var">$txt1</span><span class="hl-code">;
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">在 </span><span class="hl-var">$txt2</span><span class="hl-string"> 学习 PHP </span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">我车的品牌是 </span><span class="hl-var">{$cars[0]}</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_print2" target="_blank">尝试一下 »</a>
+</div>
+</div>

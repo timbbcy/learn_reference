@@ -1,0 +1,121 @@
+<div class="article-intro" id="content">
+<h1>PHP 5 <span class="color_h1">SimpleXML</span> 函数</h1>
+<hr/>
+<h2>PHP SimpleXML 简介</h2>
+<p>SimpleXML 扩展提供了一种获取 XML 元素的名称和文本的简单方式，只要您知道 XML 文档的布局。</p>
+<p>SimpleXML 转换 XML 文档到 SimpleXMLElement 对象。</p>
+<p>通过正常的属性选择器和数组迭代器，这个对象能够像其他对象一样被处理。</p>
+<p><strong>提示：</strong>与 DOM 或者 Expat 解析器比较，SimpleXML 只需要几行代码就能读取元素中的文本数据。</p>
+<hr/>
+<h2>安装</h2>
+<p>SimpleXML 扩展需要 PHP 5 支持。</p>
+<p>自 PHP 5 起，SimpleXML 函数是 PHP 核心的组成部分。无需安装即可使用这些函数。</p>
+<hr/>
+<h2>PHP 5 SimpleXML 函数</h2>
+<table class="reference notranslate">
+<tr>
+<th width="30%">函数</th>
+<th width="70%">描述</th>
+</tr>
+<tr>
+<td><a href="func-simplexml-construct.html">__construct()</a></td>
+<td>创建一个新的 SimpleXMLElement 对象。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-addattribute.html">addAttribute()</a></td>
+<td>给 SimpleXML 元素添加一个属性。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-addchild.html">addChild()</a></td>
+<td>给 SimpleXML 元素添加一个子元素。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-asxml.html">asXML()</a></td>
+<td>格式化 XML（版本 1.0）中的 SimpleXML 对象的数据。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-attributes.html">attributes()</a></td>
+<td>返回 XML 标签的属性和值。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-children.html">children()</a></td>
+<td>查找指定节点的子节点。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-count.html">count()</a></td>
+<td>计算指定节点的子节点个数。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-getdocnamespaces.html">getDocNamespaces()</a></td>
+<td>返回文档中的声明的命名空间。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-getname.html">getName()</a></td>
+<td>返回 SimpleXML 元素引用的 XML 标签的名称。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-getnamespaces.html">getNamespaces()</a></td>
+<td>返回文档中使用的命名空间。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-registerxpathnamespace.html">registerXPathNamespace()</a></td>
+<td>为下一个 XPath 查询创建命名空间上下文。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-asxml.html">saveXML()</a></td>
+<td><a href="func-simplexml-asxml.html">asXML()</a> 的别名。
+</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-import-dom.html">simplexml_import_dom()</a></td>
+<td>从 DOM 节点返回 SimpleXMLElement 对象。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-load-file.html">simplexml_load_file()</a></td>
+<td>转换 XML 文件为 SimpleXMLElement 对象。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-load-string.html">simplexml_load_string()</a></td>
+<td>转换 XML 字符串为 SimpleXMLElement 对象。</td>
+</tr>
+<tr>
+<td><a href="func-simplexml-xpath.html">xpath()</a></td>
+<td>运行对 XML 数据的 XPath 查询。</td>
+</tr>
+</table>
+<h2>PHP 5 SimpleXML 迭代函数</h2>
+<table class="reference notranslate">
+<tr>
+<th width="30%">函数</th>
+<th width="70%">描述</th>
+</tr>
+<tr>
+<td>current()</td>
+<td>返回当前元素。</td>
+</tr>
+<tr>
+<td>getChildren()</td>
+<td>返回当前元素的子元素。</td>
+</tr>
+<tr>
+<td>hasChildren()</td>
+<td>检查当前元素是否有子元素。</td>
+</tr>
+<tr>
+<td>key()</td>
+<td>返回当前键。</td>
+</tr>
+<tr>
+<td>next()</td>
+<td>移动到下一个元素。</td>
+</tr>
+<tr>
+<td>rewind()</td>
+<td>倒回到第一个元素。</td>
+</tr>
+<tr>
+<td>valid()</td>
+<td>检查当前元素是否有效。</td>
+</tr>
+</table>
+</div>

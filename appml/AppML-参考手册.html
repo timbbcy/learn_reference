@@ -1,0 +1,161 @@
+<div class="article-intro" id="content">
+<h1>
+<span class="color_h1">&lt;AppML&gt;</span> 参考手册</h1>
+<hr/>
+<h2> &lt;AppML&gt; 数据模型：</h2>
+<div class="code notranslate">
+<div>
+&lt;appml security="<em>security</em>"&gt;<br/><br/>
+&lt;datasource&gt;<br/><em>Datasource definition goes here<br/></em>&lt;/datasource&gt;<br/><br/>
+&lt;filters&gt;<br/><em>Filter definitions goes here (if any)<br/></em>&lt;/filters&gt;<br/><br/>
+&lt;update&gt;<br/><em>Update definitions goes here (if any)<br/></em>&lt;/update&gt;<br/><br/>
+&lt;anything&gt;<br/><em>Anything you want to add to the model<br/></em>&lt;/anything&gt;<br/><br/>&lt;/appml&gt;</div>
+</div>
+<br/><hr/>
+<h2>&lt;AppML&gt;安全</h2>
+<p>&lt;AppML&gt; 安全通过 &lt;AppML&gt; 标签中的安全属性设置。</p>
+<div class="code notranslate">
+<div>
+&lt;appml security="artists"&gt;</div>
+</div>
+<p>以上应用开头包含了安全定义属性，只允许 artists 用户登陆。</p>
+<p>在这种情况下，用户登录的用户名必须为 "artists"组的成员。</p>
+<hr/>
+<h2> &lt;datasource&gt; 元素</h2>
+<p> &lt;AppML&gt;应用的的 &lt;datasource&gt;  元素定义了4个不同数据类型的:</p>
+<h3>子元素（只有一个可以适用）</h3>
+<table class="reference notranslate">
+<tr>
+<th width="30%">元素</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>&lt;database&gt;</td>
+<td>定义数据类型</td>
+</tr>
+<tr>
+<td>&lt;xmlfile&gt;</td>
+<td>定义 XML 源文件</td>
+</tr>
+<tr>
+<td>&lt;csvfile&gt;</td>
+<td>定义一个逗号分隔的文本文件</td>
+</tr>
+</table>
+<br/><hr/>
+<h2> &lt;database&gt; 元素</h2>
+<p> &lt;database&gt; 元素定义了数据库 </p>
+<h3>子元素</h3>
+<table class="reference notranslate">
+<tr>
+<th width="30%">元素</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>&lt;connection&gt;</td>
+<td>链接数据库名</td>
+</tr>
+<tr>
+<td>&lt;execute&gt;</td>
+<td>数据检索前执行的SQL语句（可选）</td>
+</tr>
+<tr>
+<td>&lt;sql&gt;</td>
+<td>用于检索数据的SQL语句</td>
+</tr>
+<tr>
+<td>&lt;maintable&gt;</td>
+<td>应用程序的主表（可选）</td>
+</tr>
+<tr>
+<td>&lt;keyfield&gt;</td>
+<td>主表的键字段（可选）</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>存储在SQL数据库中的数据</h2>
+<p>这是面向数据的应用程序最常用的解决方案。</p>
+<div class="code notranslate">
+<div>
+&lt;datasource&gt;<br/>
+&lt;database&gt;<br/>
+&lt;connection&gt;CDDataBase&lt;/connection&gt;<br/>
+&lt;sql&gt;SELECT Artist, Title, Country FROM CD_Catalog&lt;/sql&gt;<br/>
+&lt;/database&gt;<br/>
+&lt;/datasource&gt; 
+</div>
+</div>
+<p>上面的模型可以从"CDDataBase"数据库的"CD_Catalog"表中选择三个数据选项 (Artist, Title, Country) 。 </p>
+<p>结果返回的行数是未知的。</p>
+<hr/>
+<h2>存储在 XML 文件中的数据</h2>
+<p>&lt;AppML&gt; 可以从XML文件中读取数据: </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;appml&gt;<br/><br/>
+&lt;datasource&gt;<br/>
+&lt;xmlfile src="cd_catalog.xml"&gt;<br/><br/>
+&lt;record&gt;CD&lt;/record&gt;<br/><br/>
+&lt;item&gt;<br/>
+&lt;name&gt;Title&lt;/name&gt;<br/>
+&lt;nodename&gt;TITLE&lt;/nodename&gt;<br/>
+&lt;/item&gt;<br/><br/>
+&lt;item&gt;<br/>
+&lt;name&gt;Artist&lt;/name&gt;<br/>
+&lt;nodename&gt;ARTIST&lt;/nodename&gt;<br/>
+&lt;/item&gt;<br/>
+&lt;item&gt;<br/><br/>
+&lt;name&gt;Country&lt;/name&gt;<br/>
+&lt;nodename&gt;COUNTRY&lt;/nodename&gt;<br/>
+&lt;/item&gt;<br/><br/>
+&lt;/xmlfile&gt;<br/>
+&lt;/datasource&gt;<br/><br/>
+&lt;/appml&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryappml_from_xml" target="_blank">尝试一下 »</a>
+</div>
+<p>此方法能够将数据存储在服务器上的XML文件。</p>
+<hr/>
+<h2>数据存储在 文本（Text）文件中</h2>
+<p>&lt;AppML&gt; 可以从文本文件中读取数据： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;appml&gt;<br/><br/>
+&lt;datasource&gt;<br/>
+&lt;csvfile src="cd_catalog.txt"&gt;<br/><br/>
+&lt;item&gt;<br/>
+&lt;name&gt;Title&lt;/name&gt;<br/>
+&lt;index&gt;1&lt;/index&gt;<br/>
+&lt;/item&gt;<br/><br/>
+&lt;item&gt;<br/>
+&lt;name&gt;Artist&lt;/name&gt;<br/>
+&lt;index&gt;2&lt;/index&gt;<br/>
+&lt;/item&gt;<br/><br/>
+&lt;item&gt;<br/>
+&lt;name&gt;Price&lt;/name&gt;<br/>
+&lt;index&gt;5&lt;/index&gt;<br/>
+&lt;/item&gt;<br/><br/>
+&lt;/csvfile&gt;<br/>
+&lt;/datasource&gt;<br/><br/>
+&lt;/appml&gt; 
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryappml_from_txt" target="_blank">尝试一下 »</a>
+</div>
+<p>此方法可以在服务器上的将数据存储在文本文件中。</p>
+<hr/>
+<h2>如果需要你可以创建数据库</h2>
+<p>&lt;AppML&gt; 如果有需要你可以创建一个数据库：</p>
+<div class="code notranslate">
+<div>
+&lt;database&gt;<br/>
+&lt;connection&gt;CDDataBase&lt;/connection&gt;<br/><br/>
+&lt;execute&gt;<br/>
+CREATE TABLE CD_catalog
+(<br/>CD_Id INT IDENTITY,<br/>Title NVARCHAR(255),<br/>Artist NVARCHAR(255),<br/>Country NVARCHAR(255),<br/>Company NVARCHAR(255),<br/>Price NUMBER,Published INT)<br/>
+&lt;/execute&gt;<br/><br/>
+&lt;/database&gt;
+</div>
+</div>
+<p>完善快速原型模型！</p>
+</div>

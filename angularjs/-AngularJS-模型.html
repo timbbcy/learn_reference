@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>AngularJS <span class="color_h1">ng-model 指令</span>
+</h1>
+<hr/>
+<p class="intro">ng-model 指令用于绑定应用程序数据到 HTML 控制器(input, 
+select, textarea)的值。</p><hr/><h2>ng-model 指令</h2>
+<p><code>ng-model</code> 指令可以将输入域的值与 AngularJS 创建的变量绑定。</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span> <span class="highATT">ng-controller=</span><span class="highVAL">"myCtrl"</span><span class="highGT">&gt;</span><br/>    名字: 
+	<span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">ng-model=</span><span class="highVAL">"name"</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>var app = angular.module('myApp', []);<br/>
+	app.controller('myCtrl', function($scope) {<br/>    $scope.name 
+	= "John Doe";<br/>});<br/><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_model" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>双向绑定</h2><p>双向绑定，在修改输入域的值时， AngularJS 属性的值也将修改：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span> <span class="highATT">ng-controller=</span><span class="highVAL">"myCtrl"</span><span class="highGT">&gt;</span><br/>    名字: 
+	<span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">ng-model=</span><span class="highVAL">"name"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>你输入了: <span class="highATT">{{name}}</span><span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_model_two-way" target="_blank">尝试一下 »</a>
+</div><hr/><h2>验证用户输入</h2>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">form</span> <span class="highATT">ng-app=</span><span class="highVAL">""</span> <span class="highATT">name=</span><span class="highVAL">"myForm"</span><span class="highGT">&gt;</span><br/>    Email:<br/>    
+	<span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"email"</span> <span class="highATT">name=</span><span class="highVAL">"myAddress"</span> <span class="highATT">ng-model=</span><span class="highVAL">"text"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">ng-show=</span><span class="highVAL">"myForm.myAddress.$error.email"</span><span class="highGT">&gt;</span>不是一个合法的邮箱地址<span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_model_validate" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例中，提示信息会在 <code>ng-show</code> 属性返回 <code>true</code> 的情况下显示。</p>
+<hr/>
+<h2>应用状态</h2>
+<p><code>ng-model</code> 指令可以为应用数据提供状态值(invalid, 
+dirty, touched, error):</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">form</span> <span class="highATT">ng-app=</span><span class="highVAL">""</span> <span class="highATT">name=</span><span class="highVAL">"myForm"</span> <span class="highATT">ng-init=</span><span class="highVAL">"myText = 'test@runoob.com'"</span><span class="highGT">&gt;</span><br/>    
+	Email:<br/>    <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"email"</span> <span class="highATT">name=</span><span class="highVAL">"myAddress"</span> <span class="highATT">ng-model=</span><span class="highVAL">"myText"</span>
+<span class="highATT">required</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>状态<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>    
+	<span class="highATT">{{myForm.myAddress.$valid}}</span><br/>    <span class="highATT">{{myForm.myAddress.$dirty}}</span><br/>    
+	<span class="highATT">{{myForm.myAddress.$touched}}</span><br/><span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_model_status" target="_blank">尝试一下 »</a>
+</div><hr/>
+<h2>CSS 类</h2>
+<p><code>ng-model</code> 指令基于它们的状态为 HTML 元素提供了 CSS 类：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code htmlHigh">
+<div class="htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">style</span><span class="highGT">&gt;</span><br/></div><div class="cssHigh"><span class="highELE">input.ng-invalid </span>{<br/>    <span class="highATT">background-color:</span><span class="highVAL"> 
+		lightblue;</span><br/>
+	}<br/></div><div class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">/style</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">body</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">form</span> <span class="highATT">ng-app=</span><span class="highVAL">""</span> <span class="highATT">name=</span><span class="highVAL">"myForm"</span><span class="highGT">&gt;</span><br/>    
+		输入你的名字:<br/>    
+	<span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">name=</span><span class="highVAL">"myAddress"</span> <span class="highATT">ng-model=</span><span class="highVAL">"text"</span> <span class="highATT">required</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/form</span><span class="highGT">&gt;</span><br/></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_model_css" target="_blank">尝试一下 »</a>
+</div>
+<p><code>ng-model</code> 指令根据表单域的状态添加/移除以下类：</p>
+<ul>
+<li>ng-empty</li>
+<li>ng-not-empty</li>
+<li>ng-touched</li>
+<li>ng-untouched</li>
+<li>ng-valid</li>
+<li>ng-invalid</li>
+<li>ng-dirty</li>
+<li>ng-pending</li>
+<li>ng-pristine</li>
+</ul>
+</div>

@@ -1,0 +1,34 @@
+<div class="article-intro" id="content">
+<h1>MongoDB 删除集合</h1>
+<p>本章节我们为大家介绍如何使用 MongoDB 来删除集合。</p>
+<p>MongoDB 中使用 drop() 方法来删除集合。</p>
+<p><strong>语法格式：</strong></p>
+<pre>db.collection.drop()</pre>
+<p>参数说明：</p>
+<ul>
+<li>无</li>
+</ul>
+<p><strong>返回值</strong></p>
+<p>如果成功删除选定集合，则 drop() 方法返回 true，否则返回 false。</p>
+<h3>实例</h3>
+<p>在数据库 mydb 中，我们可以先通过 <span class="marked">show collections</span> 命令查看已存在的集合：</p>
+<pre>&gt;use mydb
+switched to db mydb
+&gt;show collections
+mycol
+mycol2
+system.indexes
+runoob
+&gt;</pre>
+<p>接着删除集合 mycol2 : </p>
+<pre>&gt;db.mycol2.drop()
+true
+&gt;</pre>
+<p>通过 show collections 再次查看数据库 mydb 中的集合：</p>
+<pre>&gt;show collections
+mycol
+system.indexes
+runoob
+&gt;</pre>
+<p>从结果中可以看出 mycol2 集合已被删除。</p>
+</div>

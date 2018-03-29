@@ -1,0 +1,154 @@
+<div class="article-intro" id="content">
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBzE9xAESye6Kde-3hT-6B90nfwUkcS8Yw&amp;sensor=false">
+</script>
+<script>
+function initialize()
+{
+  var mapProp= {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<style>a.menu_google_maps_controls{font-weight:bold;}</style>
+<h1>Google 地图<span class="color_h1">控件集</span>
+</h1>
+<hr/>
+<p class="intro">一个Google 地图 - 默认控件集设置：</p>
+<div id="googleMap" style="width:100%;height:380px"></div>
+<hr/>
+<h2>Google 地图 - 默认控件集设置：</h2>
+<p>当使用一个标准的google地图，它的默认设置如下：</p>
+<ul>
+<li> .Zoom-显示一个滑动条来控制map的Zoom级别</li>
+<li>.PPan-地图上显示的是一个平底碗样的控件，点击4个角平移地图</li>
+<li>
+.MapType-允许用户在map types(roadmap 和 satallite)之间切换</li>
+<li>.StreetView-显示为一个街景小人图标，可拖拽到地图上某个点来打开街景</li>
+</ul>
+<hr/>
+<h2>Google 地图 - 更多控件集</h2>
+<p>除了以上默认控件集,Google还有：</p>
+<ul>
+<li> .Scale-显示地图比例尺
+</li>
+<li>.Rotate-显示一个小的圆周图标，可以转动地图</li>
+<li>.verview Map-从一个广域的视角俯视地图</li>
+</ul>
+<p>创建地图时你可以通过设置选项指定哪些控件集显示或者通过调用 setOptions() 来改变地图的设置选项。 </p>
+<hr/>
+<h2>Google 地图 - 关闭默认控件集</h2>
+<p>你可能希望能够关闭默认的控件集。</p>
+<p> 为了关闭默认控件集,设置地图的disableDefaultUI的属性为true:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+disableDefaultUI:true</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_controls_disable" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 开所有控件集</h2>
+<p>一些控件集默认显示在地图上，而其它的不会，除非你设置它们。</p>
+<p>设置控件为true使其可见-设置控件为false则隐藏它。</p>
+<p>以下实例开启所有的控件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+panControl:true,<br/>
+zoomControl:true,<br/>
+mapTypeControl:true,<br/>
+scaleControl:true,<br/>
+streetViewControl:true,<br/>
+overviewMapControl:true,<br/>
+rotateControl:true</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_controls_add" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 修改控件集</h2>
+<p>某些地图控件是可配置的。通过制定控件选项域改变控件集。
+
+ </p>
+<p>F举个例子来说，修改Zoom 控件的选项在zoomControlOptions指定。zoomControlOptions包含如下3种选项：</p>
+<ul>
+<li>.google.maps.ZoomControlStyle.SMALL-显示最小化zoom 控件
+
+ </li>
+<li>.google.maps.ZoomControlStyle.LARGE-显示标准zoom滑动控件
+
+ </li>
+<li>.google.maps.ZoomControlStyle.DEFAULT-基于设备和地图大小，选择最合适的控件</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="pln">zoomControl</span><span class="pun">:</span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br/>
+zoomControlOptions</span><span class="pun">:</span><span class="pln"> </span>
+<span class="pun">{</span><span class="pln"><br/>
+  style</span><span class="pun">:</span><span class="pln">google</span><span class="pun">.</span><span class="pln">maps</span><span class="pun">.</span><span class="typ">ZoomControlStyle</span><span class="pun">.</span><span class="pln">SMALL<br/>
+}</span>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_controls_modify1" target="_blank">尝试一下 »</a>
+</div>
+<p><b>注意：</b> 如果需要修改一个控件，首先开启控件(设置其为true)。</p>
+<p>另一个控件为 MapType 控件。</p>
+<p>MapType 控件可显示为以下 style 选项之一：</p>
+<ul>
+<li>google.maps.MapTypeControlStyle.HORIZONTAL_BAR，用于在水平栏中将一组控件显示为如 Google Maps 中所示按钮。
+</li>
+<li>google.maps.MapTypeControlStyle.DROPDOWN_MENU，用于显示单个按钮控件，以便您从下拉菜单中选择地图类型。
+</li>
+<li>google.maps.MapTypeControlStyle.DEFAULT，用于显示"默认"的行为，该行为取决于屏幕尺寸，并且可能会在 API 以后的版本中有所变化。</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="pln">mapTypeControl:true,<br/>
+mapTypeControlOptions: {<br/>
+  style:google.maps.MapTypeControlStyle.DROPDOWN_MENU<br/>
+}</span>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_controls_modify2" target="_blank">尝试一下 »</a>
+</div>
+<p>同样你可以使用ControlPosition属性指定控件的位置:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="pln">mapTypeControl:true,<br/>
+mapTypeControlOptions: {<br/>
+  style:google.maps.MapTypeControlStyle.DROPDOWN_MENU,<br/>
+  position:google.maps.ControlPosition.TOP_CENTER<br/>
+}</span>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_controls_modify3" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 自定义控件集</h2>
+<p>创建一个返回伦敦自定义控件，用于点击事件：
+(如果地图被拖拽):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+controlDiv.style.padding = '5px';<br/>
+var controlUI = document.createElement('div');<br/>
+controlUI.style.backgroundColor = 'yellow';<br/>
+controlUI.style.border='1px solid';<br/>
+controlUI.style.cursor = 'pointer';<br/>
+controlUI.style.textAlign = 'center';<br/>
+controlUI.title = 'Set map to London';<br/>
+controlDiv.appendChild(controlUI);<br/>
+var controlText = document.createElement('div');<br/>
+controlText.style.fontFamily='Arial,sans-serif';<br/>
+controlText.style.fontSize='12px';<br/>
+controlText.style.paddingLeft = '4px';<br/>
+controlText.style.paddingRight = '4px';<br/>
+controlText.innerHTML = '&lt;b&gt;Home&lt;b&gt;'<br/>
+controlUI.appendChild(controlText);</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_controls_custom" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 控件集参考手册</h2>
+<p><a href="google-maps-ref.html">Google Maps API 参考手册</a>.</p>
+</div>

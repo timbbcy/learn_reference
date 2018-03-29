@@ -1,0 +1,56 @@
+<div class="article-intro" id="content">
+<h1>Scala 循环</h1>
+<p>有的时候，我们可能需要多次执行同一块代码。一般情况下，语句是按顺序执行的：函数中的第一个语句先执行，接着是第二个语句，依此类推。
+</p><p>编程语言提供了更为复杂执行路径的多种控制结构。</p><p>
+循环语句允许我们多次执行一个语句或语句组，下面是大多数编程语言中循环语句的流程图：</p>
+<p><img alt="循环结构" src="http://www.runoob.com/wp-content/uploads/2015/12/loop.png"/></p>
+<hr/>
+<h2>循环类型</h2>
+<p>Scala 语言提供了以下几种循环类型。点击链接查看每个类型的细节。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%">循环类型</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="/scala/scala-while-loop.html" title="Scala while 循环">while 循环</a></td>
+<td>运行一系列语句，如果条件为true，会重复运行，直到条件变为false。</td></tr>
+<tr>
+<td><a href="/scala/scala-do-while-loop.html" title="CScala+ do...while 循环">do...while 循环</a></td>
+<td>类似 while 语句区别在于判断循环条件之前，先执行一次循环的代码块。</td>
+</tr>
+<tr>
+<td><a href="/scala/scala-for-loop.html" title="CScala+ for 循环">for 循环</a></td>
+<td>用来重复执行一系列语句直到达成特定条件达成，一般通过在每次循环完成后增加计数器的值来实现。</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>循环控制语句</h2>
+<p>循环控制语句改变你代码的执行顺序，通过它你可以实现代码的跳转。Scala 以下几种循环控制语句：</p>
+<p>
+Scala 不支持 break 或 continue 语句，但从 2.8 版本后提供了一种中断循环的方式，点击以下链接查看详情。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%">控制语句</th>
+<th>描述</th></tr>
+<tr>
+<td><a href="/scala/scala-break-statement.html" title="Scala break 语句">break 语句</a></td>
+<td>中断循环</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>无限循环</h2><p>
+如果条件永远为 true，则循环将变成无限循环。我们可以使用 while 语句来实现无限循环：</p>
+<pre>
+object Test {
+   def main(args: Array[String]) {
+      var a = 10;
+      // 无限循环
+      while( true ){
+         println( "a 的值为 : " + a );
+      }
+   }
+}
+</pre>
+<p>以上代码执行后循环会永久执行下去，你可以使用 Ctrl + C 键来中断无限循环。</p>
+</div>

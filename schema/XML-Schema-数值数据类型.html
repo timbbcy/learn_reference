@@ -1,0 +1,134 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1"> 数值</span>数据类型</h1>
+<hr/>
+<p class="intro" p="" 十进制数据类型用于数值。<="">
+<hr/>
+<h2>十进制数据类型</h2>
+<p>十进制数据类型用于规定一个数值。</p>
+<p>下面是一个关于某个 scheme 中十进制数声明的例子。</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="prize" type="xs:decimal"/&gt;
+</div></div>
+<p>文档中的元素看上去应该类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;999.50&lt;/prize&gt;
+</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;+999.5450&lt;/prize&gt;
+</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;-999.5230&lt;/prize&gt;
+</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;0&lt;/prize&gt;
+</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;14&lt;/prize&gt;
+</div></div>
+<p><b>注意：</b> 您可规定的十进制数字的最大位数是 18 位。</p>
+<hr/>
+<h2>整数数据类型</h2>
+<p>整数数据类型用于规定无小数成分的数值。</p>
+<p>下面是一个关于某个 scheme 中整数声明的例子。</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="prize" type="xs:integer"/&gt;
+</div></div>
+<p>文档中的元素看上去应该类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;999&lt;/prize&gt;</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;+999&lt;/prize&gt;
+</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;-999&lt;/prize&gt;
+</div></div>
+<p>或者类似这样：</p>
+<div class="code notranslate"><div>
+&lt;prize&gt;0&lt;/prize&gt;
+</div></div>
+<br/><hr/>
+<h2>数值数据类型</h2>
+<p>请注意，下面所有的数据类型均源自于十进制数据类型（除 decimal 本身以外）！</p>
+<table class="reference ">
+<tr>
+<th>名字</th>
+<th>秒数</th>
+</tr>
+<tr>
+<td>byte</td>
+<td>有正负的 8 位整数</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>十进制数</td>
+</tr>
+<tr>
+<td>int</td>
+<td>有正负的 32 位整数</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>整数值</td>
+</tr>
+<tr>
+<td>long</td>
+<td>有正负的 64 位整数</td>
+</tr>
+<tr>
+<td>negativeInteger</td>
+<td>仅包含负值的整数 ( .., -2, -1.)</td>
+</tr>
+<tr>
+<td>nonNegativeInteger</td>
+<td>仅包含非负值的整数 (0, 1, 2, ..)</td>
+</tr>
+<tr>
+<td>nonPositiveInteger</td>
+<td>仅包含非正值的整数 (.., -2, -1, 0)</td>
+</tr>
+<tr>
+<td>positiveInteger</td>
+<td>仅包含正值的整数 (1, 2, ..)</td>
+</tr>
+<tr>
+<td>short</td>
+<td>有正负的 16 位整数</td>
+</tr>
+<tr>
+<td>unsignedLong</td>
+<td>无正负的 64 位整数</td>
+</tr>
+<tr>
+<td>unsignedInt</td>
+<td>无正负的 32 位整数</td>
+</tr>
+<tr>
+<td>unsignedShort</td>
+<td>无正负的 16 位整数</td>
+</tr>
+<tr>
+<td>unsignedByte</td>
+<td>无正负的 8 位整数</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>对数值数据类型的限定（Restriction）</h2>
+<p>可与数值数据类型一同使用的限定：</p>
+<ul>
+<li>enumeration</li>
+<li>fractionDigits</li>
+<li>maxExclusive</li>
+<li>maxInclusive</li>
+<li>minExclusive</li>
+<li>minInclusive</li>
+<li>pattern</li>
+<li>totalDigits</li>
+<li>whiteSpace</li>
+</ul>
+</p></div>

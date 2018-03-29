@@ -1,0 +1,49 @@
+<div class="article-intro" id="content">
+<h1>Foundation 网格 - 大型设备</h1>
+<p>上一章节我们介绍了中型设备和小型设备的网格布局，小型设备上使用的比例为 25%/75% (.small-3 和 .small-9)，但在中型设备上使用的比例为 50%/50% (.medium-6 和 .medium-6)：</p>
+<pre>
+&lt;div class="small-3 medium-6 columns"&gt;....&lt;/div&gt;
+&lt;div class="small-9 medium-6 columns"&gt;....&lt;/div&gt;
+</pre>
+<p>在大型设备上我们推荐的比例为  33%/66%。</p>
+<p><strong>提示:</strong> 大型设备的屏幕尺寸定义大于 64.0625em。</p>
+<p>大型设备上使用 <code>.large-*</code> 类。</p>
+<p>现在我们在大型设备上添加两列：</p>
+<pre>
+&lt;div class="small-3 medium-6 large-4 columns"&gt;....&lt;/div&gt;
+&lt;div class="small-9 medium-6 large-8 columns"&gt;....&lt;/div&gt;
+</pre>
+<h3>解析</h3>
+<ul>
+<li>小型设备两个列的比例为  25%/75% (<code>.small-3</code> 和 <code>.small-9</code>)</li>
+<li>中型设备两个列的比例为 50%/50%  (<code>.medium-6</code> 和 <code>.medium-6</code>)</li>
+<li>大型设备两个列的比例为 33%/66%  (<code>.large-4</code> 和 <code>.large-8</code>)</li>
+</ul>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"row"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"small-3
+	medium-6 large-4 columns"</span> <span class="highATT">style=</span><span class="highVAL">"background-color:yellow;"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>菜鸟教程<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"small-9
+	medium-6 large-8 columns"</span> <span class="highATT">style=</span><span class="highVAL">"background-color:pink;"</span><span class="highGT">&gt;</span><br/>
+	    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>菜鸟教程<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_grid_large" target="_blank">尝试一下 »</a></div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>注意:</strong> 要保证数列加起来是 12 列! </td>
+</tr></tbody></table>
+<hr/>
+<h2>紧在大型设备上使用</h2>
+<p>以下实例中我们指定了 <code>.large-6</code> 类 (不是 .medium-* 和 <code>.small-*</code>)。这表明在大型设备上比例为 50%/50%。但在中型或小型设备上会水平堆叠 (100% 宽度):</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"row"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"large-6
+	columns"</span> <span class="highATT">style=</span><span class="highVAL">"background-color:yellow;"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>菜鸟教程<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"large-6
+	columns"</span> <span class="highATT">style=</span><span class="highVAL">"background-color:pink;"</span><span class="highGT">&gt;</span><br/>
+	    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>菜鸟教程<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_grid_large2" target="_blank">尝试一下 »</a></div>
+</div>

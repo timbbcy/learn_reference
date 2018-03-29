@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">表单滑动条</span>
+</h1>
+<hr/>
+<h2>jQuery Mobile 滑动条控件</h2>
+<p>滑动条允许您从一个范围的数字中选择一个值：</p><br/>
+<iframe frameborder="0" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_slider.htm" style="margin-top:-13px;height:70px;width:100%;"></iframe>
+<p>如需创建滑动条，请使用 &lt;input type="range"&gt;：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;form method="post" action="demoform.php"&gt;<br/>  &lt;label for="points"&gt;进度:&lt;/label&gt;<br/>
+		  &lt;<span class="marked">input type="range"</span> name="points" id="points" value="50" min="0" 
+		max="100"&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_slider" target="_blank">尝试一下 »</a>
+</div>
+<p>使用以下属性来规定限制：</p>
+<ul>
+<li>max - 规定允许的最大值</li>
+<li>min - 规定允许的最小值</li>
+<li>step - 规定合法的数字间隔</li>
+<li>value - 规定默认值</li>
+</ul>
+<p><strong>提示:</strong> 如果你想在按钮中显示进度的值可以添加
+data-show-value="true" 属性:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;input type="range" <span class="marked">data-show-value="true"</span>&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_slider_showvalue" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示:</strong> 如果你想在滑动按钮上显示进度（类似一个小弹窗）可以使用
+data-popup-enabled="true" 属性:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;input type="range" <span class="marked">data-popup-enabled="true"</span>&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_slider_tooltip" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示：</strong>如果您想要高亮突出显示滑动条的值，请添加 data-highlight="true"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;input type="range" <span class="marked">data-highlight="true"</span>&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_slider_highlight" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>拨动开关</h2>
+<p>拨动开关通常用于 on/off 或 true/false 按钮：</p><br/>
+<iframe frameborder="0" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_switch.htm" style="margin-top:-13px;height:70px;width:100%;"></iframe>
+<p>我们可以使用 &lt;input type="checkbox"&gt; 元素并指定 data-role 为 
+"flipswitch" 来创建开关:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;form method="post" action="demoform.php"&gt;<br/>
+		  &lt;label for="switch"&gt;切换开关：&lt;/label&gt;<br/>    
+		&lt;input type="checkbox" data-role="flipswitch" name="switch" id="switch"&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_select_switch" target="_blank">尝试一下 »</a>
+</div>
+<p>默认情况下，开关切换的文本为 "On" 和 "Off"。你可以使用
+data-on-text 和 data-off-text 属性来修改它：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+		&lt;input type="checkbox" data-role="flipswitch" name="switch" id="switch" 
+		<span class="marked">data-on-text="True" data-off-text="False"</span>&gt;<br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_select_switch_text" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示:</strong>开关复选框可以使用 "checked" 属性来设置默认的选项：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;input type="checkbox" data-role="flipswitch" name="switch" id="switch"
+		<span class="marked">checked</span>&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_select_switch_selected" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" src="/images/tryitimg.gif" style="width:40px;height:46px"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/tryit.php?filename=tryjqmob_forms_slider_range" target="_blank">区间滑块</a><br/>
+制作一个区间值的滑块。</p>
+<p><a href="/try/tryit.php?filename=tryjqmob_forms_select_switch_css" target="_blank">滑块样式</a><br/>
+为滑块开关设置样式。</p>
+</div>

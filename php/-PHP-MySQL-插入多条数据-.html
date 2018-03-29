@@ -1,0 +1,183 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">MySQL 插入多条数据</span></h1>
+<hr/>
+<h2>使用 MySQLi 和 PDO 向 MySQL 插入多条数据</h2>
+<p>mysqli_multi_query() 函数可用来执行多条SQL语句。</p>
+<p>以下实例向 "MyGuests" 表添加了三条新的记录:</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDB</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建链接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">mysqli</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code">, </span><span class="hl-var">$dbname</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> 检查链接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com');</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> .= </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Mary', 'Moe', 'mary@example.com');</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> .= </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Julie', 'Dooley', 'julie@example.com')</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">multi_query</span><span class="hl-brackets">(</span><span class="hl-var">$sql</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-reserved">TRUE</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">新记录插入成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Error: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$sql</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">error</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">close</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<br/><table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>请注意，每个SQL语句必须用分号隔开。</td>
+</tr></tbody></table>
+<br/>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向过程)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDB</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建链接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code">, </span><span class="hl-var">$dbname</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> 检查链接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">!</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_connect_error</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com');</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> .= </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Mary', 'Moe', 'mary@example.com');</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> .= </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Julie', 'Dooley', 'julie@example.com')</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">mysqli_multi_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">新记录插入成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Error: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$sql</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (PDO)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDBPDO</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">PDO</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">mysql:host=</span><span class="hl-var">$servername</span><span class="hl-string">;dbname=</span><span class="hl-var">$dbname</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-comment">//</span><span class="hl-comment"> set the PDO error mode to exception</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">ATTR_ERRMODE</span><span class="hl-code">, </span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">ERRMODE_EXCEPTION</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 开始事务</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">beginTransaction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-comment">//</span><span class="hl-comment"> SQL 语句</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">exec</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email) 
+    VALUES ('John', 'Doe', 'john@example.com')</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">exec</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email) 
+    VALUES ('Mary', 'Moe', 'mary@example.com')</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">exec</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email) 
+    VALUES ('Julie', 'Dooley', 'julie@example.com')</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 提交事务</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">commit</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">新记录插入成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">PDOException</span><span class="hl-code"> </span><span class="hl-var">$e</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 如果执行失败回滚</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">rollback</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$sql</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$e</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getMessage</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">null</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<br/>
+<hr/>
+<h2>使用预处理语句</h2>
+<p>mysqli 扩展提供了第二种方式用于插入语句。</p>
+<p>我们可以预处理语句及绑定参数。</p>
+<p> mysql 扩展可以不带数据发送语句或查询到mysql数据库。 你可以向列关联或 "绑定" 变量。</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi 使用预处理语句)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDB</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">mysqli</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code">, </span><span class="hl-var">$dbname</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> 检测连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests(firstname, lastname, email)  VALUES(?, ?, ?)</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 为 mysqli_stmt_prepare() 初始化 statement 对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$stmt</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_stmt_init</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment">预处理语句</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">mysqli_stmt_prepare</span><span class="hl-brackets">(</span><span class="hl-var">$stmt</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 绑定参数</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_stmt_bind_param</span><span class="hl-brackets">(</span><span class="hl-var">$stmt</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">sss</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">$firstname</span><span class="hl-code">, </span><span class="hl-var">$lastname</span><span class="hl-code">, </span><span class="hl-var">$email</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+        </span><span class="hl-comment">//</span><span class="hl-comment"> 设置参数并执行</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">John</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Doe</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">john@example.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-identifier">mysqli_stmt_execute</span><span class="hl-brackets">(</span><span class="hl-var">$stmt</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+        </span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Mary</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Moe</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">mary@example.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-identifier">mysqli_stmt_execute</span><span class="hl-brackets">(</span><span class="hl-var">$stmt</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+        </span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Julie</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Dooley</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">julie@example.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+        </span><span class="hl-identifier">mysqli_stmt_execute</span><span class="hl-brackets">(</span><span class="hl-var">$stmt</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>我们可以看到以上实例中使用模块化来处理问题。我们可以通过创建代码块实现更简单的读取和管理。 </p>
+<p>注意参数的绑定。让我们看下  mysqli_stmt_bind_param() 中的代码：</p>
+<pre>mysqli_stmt_bind_param($stmt, 'sss', $firstname, $lastname, $email);</pre>
+<p>该函数绑定参数查询并将参数传递给数据库。第二个参数是 "sss" 。以下列表展示了参数的类型。 s 字符告诉 mysql 参数是字符串。</p>
+<p>可以是以下四种参数:</p>
+<ul>
+<li>i - 整数</li>
+<li>d - 双精度浮点数</li>
+<li>s - 
+字符串</li>
+<li>b - 布尔值
+</li>
+</ul>
+<p>
+每个参数必须指定类型，来保证数据的安全性。通过类型的判断可以减少SQL注入漏洞带来的风险。</p>
+</div>

@@ -1,0 +1,90 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">错误 - throw、try 和 catch</span>
+</h1>
+<hr/>
+<p class="intro"><strong>try</strong> 语句测试代码块的错误。</p>
+<p class="intro"><strong>catch</strong> 语句处理错误。</p>
+<p class="intro"><strong>throw</strong> 语句创建自定义错误。</p>
+<hr/>
+<h2> JavaScript  错误</h2>
+<p>当 JavaScript 引擎执行 JavaScript 代码时，会发生各种错误。</p>
+<p>可能是语法错误，通常是程序员造成的编码错误或错别字。</p>
+<p>可能是拼写错误或语言中缺少的功能（可能由于浏览器差异）。</p>
+<p>可能是由于来自服务器或用户的错误输出而导致的错误。</p>
+<p>当然，也可能是由于许多其他不可预知的因素。</p>
+<hr/>
+<h2>JavaScript 抛出（throw）错误</h2>
+<p>当错误发生时，当事情出问题时，JavaScript 引擎通常会停止，并生成一个错误消息。</p>
+<p>描述这种情况的技术术语是：JavaScript 将<strong>抛出</strong>一个错误。</p>
+<hr/>
+<h2>JavaScript try 和 catch</h2>
+<p><strong>try</strong> 语句允许我们定义在执行时进行错误测试的代码块。</p>
+<p><strong>catch</strong> 语句允许我们定义当 try 代码块发生错误时，所执行的代码块。</p>
+<p>JavaScript 语句 <strong>try</strong> 和 <strong>catch</strong> 是成对出现的。</p>
+<h3><strong>语法</strong></h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">在这里运行代码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">在这里处理错误</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<h2>实例</h2>
+<p>在下面的例子中，我们故意在 try 块的代码中写了一个错字。</p>
+<p>catch 块会捕捉到 try 块中的错误，并执行代码来处理它。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">; 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">message</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">adddlert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Welcome guest!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">本页有一个错误。</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">; 
+        </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">错误描述：</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">err</span><span class="hl-code">.</span><span class="hl-identifier">message</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">; 
+        </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">点击确定继续。</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">; 
+        </span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="showbtn" href="/try/try.php?filename=tryjs_try_catch" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Throw 语句</h2>
+<p>throw 语句允许我们创建自定义错误。</p>
+<p>正确的技术术语是：创建或<strong>抛出异常</strong>（exception）。</p>
+<p>如果把 throw 与 try 和 catch 一起使用，那么您能够控制程序流，并生成自定义的错误消息。</p>
+<h3><strong>语法</strong></h3>
+<div class="code"><div>
+throw <i>exception</i>
+</div></div>
+<p>异常可以是 JavaScript 字符串、数字、逻辑值或对象。</p>
+<h2>实例</h2>
+<p>本例检测输入变量的值。如果值是错误的，会抛出一个异常（错误）。catch 会捕捉到这个错误，并显示一段自定义的错误消息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">message</span><span class="hl-code">, </span><span class="hl-identifier">x</span><span class="hl-code">;
+    </span><span class="hl-identifier">message</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">message</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">message</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code">;
+    </span><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code"> == </span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">throw</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">值为空</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">isNaN</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">throw</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">不是数字</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-builtin">Number</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code"> &lt; </span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">throw</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">太小</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code"> &gt; </span><span class="hl-number">10</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">throw</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">太大</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">message</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">错误: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">err</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="showbtn" href="/try/try.php?filename=tryjs_throw_error" target="_blank">尝试一下 »</a>
+</div>
+<p>请注意，如果 getElementById 函数出错，上面的例子也会抛出一个错误。</p>
+</div>

@@ -1,0 +1,117 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">验证 XML 语法</span>
+</h1>
+<hr/>
+<h2>XML 错误将会停止您的 XML 程序
+</h2>
+<p><b>XML 文档中的错误将停止您的 XML 程序。</b>
+</p>
+<p>W3C XML 规范规定如果发现错误，程序不应该继续处理 XML 文档。究其原因是 XML 软件应该是易于编写的，所有的 XML 文档应该是兼容的。
+</p>
+<p>通过 HTML 就有可能创建带有"错误"（如缺少结束标签）的文档。HTML 浏览器如此巨大且不相容的主要原因之一是在遇到 HTML 错误时它们都有自己的方法弄明白文档本应该是什么样的。
+</p>
+<p>通过 XML，这应该是不可能的。</p>
+<hr/>
+<h2>验证您的 XML 语法</h2>
+<p>为协助检查您的 XML 语法，请粘贴下面文本区中的 XML 代码，并按"验证 XML"按钮。</p>
+<script>
+var xt="",h3OK=1
+function checkErrorXML(x)
+{
+xt=""
+h3OK=1
+checkXML(x)
+}
+
+function checkXML(n)
+{
+var l,i,nam
+nam=n.nodeName
+if (nam=="h3")
+	{
+	if (h3OK==0)
+		{
+		return;
+		}
+	h3OK=0
+	}
+if (nam=="#text")
+	{
+	xt=xt + n.nodeValue + "\n"
+	}
+l=n.childNodes.length
+for (i=0;i<l;i++)
+	{
+	checkXML(n.childNodes[i])
+	}
+}
+
+function validateXML()
+{
+// code for IE
+if (window.ActiveXObject)
+  {
+  var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+  xmlDoc.async=false;
+  xmlDoc.loadXML(document.all("validxml").value);
+
+  if(xmlDoc.parseError.errorCode!=0)
+    {
+    txt="Error Code: " + xmlDoc.parseError.errorCode + "\n";
+    txt=txt+"Error Reason: " + xmlDoc.parseError.reason;
+    txt=txt+"Error Line: " + xmlDoc.parseError.line;
+    alert(txt);
+    }
+  else
+    {
+    alert("No errors found");
+    }
+  }
+// code for Mozilla, Firefox, Opera, etc.
+else if (document.implementation && document.implementation.createDocument)
+  {
+var parser=new DOMParser();
+var text=document.getElementById("validxml").value;
+var xmlDoc=parser.parseFromString(text,"text/xml");
+if (xmlDoc.getElementsByTagName("parsererror").length>0)
+    {
+    checkErrorXML(xmlDoc.getElementsByTagName("parsererror")[0]);
+    alert(xt)
+    }
+  else
+    {
+    alert("No errors found");
+    }
+  }
+else
+  {
+  alert('Your browser cannot handle this script');
+  }
+}
+</script>
+<form action="">
+<textarea cols="75" id="validxml" rows="10">
+&lt;?xml version="1.0" ?&gt; 
+&lt;note&gt;
+&lt;to&gt;Tove&lt;/to&gt; 
+&lt;from&gt;Jani&lt;/Ffrom&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt; 
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt; 
+&lt;/note&gt;
+</textarea><br/><br/>
+<input onclick="validateXML()" type="button" value="验证 XML">
+</input></form>
+<hr/>
+<h2>验证您的 XML 文件</h2>
+<p>如需检查 XML 文件的语法，请在下面输入字段中键入文件的 URL，并按"验证 XML"按钮。</p>
+<form action="#" method="post" target="_blank">
+<p>文件名：<br/>
+<input name="xmlfile" size="50" type="text" value="http://www.w3cschool.cc/dom/note_error.xml">
+<br/><br/>
+<input type="submit" value="验证 XML"/>
+</input></p>
+</form>
+<p>为了验证一个错误的XML文件，请把下面的 URL 粘贴到上面的输入字段中：http://www.w3cschool.cc/dom/cd_catalog.xml</p>
+<p><b>注意：</b>当您访问这个文件时，如果显示 "Access denied" 的错误，这是因为您的浏览器安全设置不允许跨域访问。</p>
+<br/>
+</div>

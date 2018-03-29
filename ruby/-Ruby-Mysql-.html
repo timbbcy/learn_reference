@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<h1>Ruby 连接 Mysql - MySql2</h1>
+<p>前面一章节我们介绍了 Ruby DBI 的使用。这章节我们技术 Ruby 连接 Mysql 更高效的驱动 mysql2，目前也推荐使用这种方式连接 MySql。</p>
+<p>安装 mysql2 驱动：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">gem</span><span class="hl-code"> </span><span class="hl-identifier">install</span><span class="hl-code"> </span><span class="hl-identifier">mysql2</span></div>
+</div>
+</div>
+<p>
+你需要使用 –with-mysql-config 配置 mysql_config 的路径，如： <strong>–with-mysql-config=/some/random/path/bin/mysql_config</strong>。</p>
+<h3>连接</h3>
+<p>连接数据库语法如下：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">client</span><span class="hl-code"> = </span><span class="hl-identifier">Mysql2</span><span class="hl-code">::</span><span class="hl-identifier">Client</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-code">:</span><span class="hl-identifier">host</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">, :</span><span class="hl-identifier">username</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">"</span><span class="hl-string">root</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div><p>
+更多参数可以查看 <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/MysqlAdapter.html" target="_blank">http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/MysqlAdapter.html</a>。</p>
+<h3>查询</h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">results</span><span class="hl-code"> = </span><span class="hl-identifier">client</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SELECT * FROM users WHERE group='githubbers'</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<h3>特殊字符转义</h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">escaped</span><span class="hl-code"> = </span><span class="hl-identifier">client</span><span class="hl-code">.</span><span class="hl-identifier">escape</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">gi'thu</span><span class="hl-special">\"</span><span class="hl-string">bbe</span><span class="hl-special">\0</span><span class="hl-string">r's</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">results</span><span class="hl-code"> = </span><span class="hl-identifier">client</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SELECT * FROM users WHERE group='#{escaped}'</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>计算结果集返回的数量:</p>
+<pre>
+results.count
+</pre>
+<h3>迭代结果集：</h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">row</span><span class="hl-code">|
+  </span><span class="hl-comment">#</span><span class="hl-comment"> row 是哈希</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 键值是数据库字段</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 值都是对应 MySQL中数据</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">id</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> row["id"].class == Fixnum</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">dne</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 不存在则是 nil</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">dne</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">mysql2</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">client</span><span class="hl-code"> = </span><span class="hl-identifier">Mysql2</span><span class="hl-code">::</span><span class="hl-identifier">Client</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-code">
+    :</span><span class="hl-identifier">host</span><span class="hl-code">     =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">127.0.0.1</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-comment">#</span><span class="hl-comment"> 主机</span><span class="hl-comment"></span><span class="hl-code">
+    :</span><span class="hl-identifier">username</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,      </span><span class="hl-comment">#</span><span class="hl-comment"> 用户名</span><span class="hl-comment"></span><span class="hl-code">
+    :</span><span class="hl-identifier">password</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">,    </span><span class="hl-comment">#</span><span class="hl-comment"> 密码</span><span class="hl-comment"></span><span class="hl-code">
+    :</span><span class="hl-identifier">database</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">test</span><span class="hl-quotes">'</span><span class="hl-code">,      </span><span class="hl-comment">#</span><span class="hl-comment"> 数据库</span><span class="hl-comment"></span><span class="hl-code">
+    :</span><span class="hl-identifier">encoding</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">utf8</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 编码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">results</span><span class="hl-code"> = </span><span class="hl-identifier">client</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SELECT VERSION()</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">row</span><span class="hl-code">|
+  </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">row</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+{"VERSION()"=&gt;"5.6.21"}
+</pre>
+<h3>连接选项</h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">Mysql2</span><span class="hl-code">::</span><span class="hl-identifier">Client</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-code">
+  :</span><span class="hl-identifier">host</span><span class="hl-code">,
+  :</span><span class="hl-identifier">username</span><span class="hl-code">,
+  :</span><span class="hl-identifier">password</span><span class="hl-code">,
+  :</span><span class="hl-identifier">port</span><span class="hl-code">,
+  :</span><span class="hl-identifier">database</span><span class="hl-code">,
+  :</span><span class="hl-identifier">socket</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">/path/to/mysql.sock</span><span class="hl-quotes">'</span><span class="hl-code">,
+  :</span><span class="hl-identifier">flags</span><span class="hl-code"> = </span><span class="hl-identifier">REMEMBER_OPTIONS</span><span class="hl-code"> | </span><span class="hl-identifier">LONG_PASSWORD</span><span class="hl-code"> | </span><span class="hl-identifier">LONG_FLAG</span><span class="hl-code"> | </span><span class="hl-identifier">TRANSACTIONS</span><span class="hl-code"> | </span><span class="hl-identifier">PROTOCOL_41</span><span class="hl-code"> | </span><span class="hl-identifier">SECURE_CONNECTION</span><span class="hl-code"> | </span><span class="hl-identifier">MULTI_STATEMENTS</span><span class="hl-code">,
+  :</span><span class="hl-identifier">encoding</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">utf8</span><span class="hl-quotes">'</span><span class="hl-code">,
+  :</span><span class="hl-identifier">read_timeout</span><span class="hl-code"> = </span><span class="hl-identifier">seconds</span><span class="hl-code">,
+  :</span><span class="hl-identifier">write_timeout</span><span class="hl-code"> = </span><span class="hl-identifier">seconds</span><span class="hl-code">,
+  :</span><span class="hl-identifier">connect_timeout</span><span class="hl-code"> = </span><span class="hl-identifier">seconds</span><span class="hl-code">,
+  :</span><span class="hl-identifier">reconnect</span><span class="hl-code"> = </span><span class="hl-reserved">true</span><span class="hl-quotes">/</span><span class="hl-string">false,
+  :local_infile = true</span><span class="hl-quotes">/</span><span class="hl-reserved">false</span><span class="hl-code">,
+  :</span><span class="hl-identifier">secure_auth</span><span class="hl-code"> = </span><span class="hl-reserved">true</span><span class="hl-quotes">/</span><span class="hl-string">false,
+  :default_file = '</span><span class="hl-quotes">/</span><span class="hl-identifier">path</span><span class="hl-quotes">/</span><span class="hl-string">to</span><span class="hl-quotes">/m</span><span class="hl-identifier">y</span><span class="hl-code">.</span><span class="hl-identifier">cfg</span><span class="hl-quotes">'</span><span class="hl-string">,
+  :default_group = </span><span class="hl-quotes">'</span><span class="hl-identifier">my</span><span class="hl-code">.</span><span class="hl-identifier">cfg</span><span class="hl-code"> </span><span class="hl-identifier">section</span><span class="hl-quotes">'</span><span class="hl-string">,
+  :init_command =&gt; sql
+  )</span></div>
+</div>
+</div>
+<p>更多内容请参阅：<a href="http://www.rubydoc.info/gems/mysql2/0.2.3/frames" target="_blank">http://www.rubydoc.info/gems/mysql2/0.2.3/frames</a>。			
+			
+			</p></div>

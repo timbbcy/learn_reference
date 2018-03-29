@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<h1>XSL-FO <span class="color_h1">列表</span>
+</h1>
+<hr/>
+<p class="intro">XSL-FO 使用 &lt;fo:list-block&gt; 元素来定义列表。</p>
+<hr/>
+<h2>XSL-FO 列表块（List Blocks）</h2>
+<p>有四种 XSL-FO 对象可用来创建列表：</p>
+<ul>
+<li>fo:list-block（包含整个列表） (contains the whole list)</li>
+<li>fo:list-item（包含列表中的每个项目） (contains each item in the list)</li>
+<li>fo:list-item-label（包含用于 list-item 的标签 - 典型地，包含一个数字或者字符的 &lt;fo:block&gt; ）</li>
+<li>fo:list-item-body（包含 list-item 的内容/主体 - 典型地，一个或多个 &lt;fo:block&gt; 对象）</li>
+</ul>
+<p>一个 XSL-FO 列表实例:</p>
+<div class="code notranslate"><div>
+
+&lt;fo:list-block&gt;<br/><br/>
+&lt;fo:list-item&gt;<br/>
+  
+ &lt;fo:list-item-label&gt;<br/>
+      
+   &lt;fo:block&gt;*&lt;/fo:block&gt;<br/>
+  
+ &lt;/fo:list-item-label&gt;<br/>
+  
+ &lt;fo:list-item-body&gt;<br/>
+      
+   &lt;fo:block&gt;Volvo&lt;/fo:block&gt;<br/>
+  
+ &lt;/fo:list-item-body&gt;<br/>
+&lt;/fo:list-item&gt;<br/><br/>
+&lt;fo:list-item&gt;<br/>
+  
+ &lt;fo:list-item-label&gt;<br/>
+      
+   &lt;fo:block&gt;*&lt;/fo:block&gt;<br/>
+  
+ &lt;/fo:list-item-label&gt;<br/>
+  
+ &lt;fo:list-item-body&gt;<br/>
+      
+   &lt;fo:block&gt;Saab&lt;/fo:block&gt;<br/>
+  
+ &lt;/fo:list-item-body&gt;<br/>
+&lt;/fo:list-item&gt;<br/><br/>
+&lt;/fo:list-block&gt;
+</div></div>
+<p>上面代码的输出如下所示：</p>
+<table style="padding:5;width:50%;border:1px solid black"><tr><td>
+ * Volvo<br/>
+ * Saab<br/>
+</td></tr></table>
+<br/>
+</div>

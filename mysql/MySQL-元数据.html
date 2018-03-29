@@ -1,0 +1,97 @@
+<div class="article-intro" id="content">
+<h1>MySQL 元数据</h1>
+<p>你可能想知道MySQL以下三种信息：</p>
+<ul>
+<li><strong>查询结果信息：</strong>
+SELECT, UPDATE 或 DELETE语句影响的记录数。</li>
+<li><strong>数据库和数据表的信息：</strong>
+包含了数据库及数据表的结构信息。
+</li>
+<li><strong>MySQL服务器信息：</strong>
+包含了数据库服务器的当前状态，版本号等。</li>
+</ul>
+<p>在MySQL的命令提示符中，我们可以很容易的获取以上服务器信息。
+但如果使用Perl或PHP等脚本语言，你就需要调用特定的接口函数来获取。
+接下来我们会详细介绍。
+</p>
+<hr/>
+<h2>获取查询语句影响的记录数</h2>
+<h3>PERL 实例</h3>
+<p>
+在 DBI 脚本中，
+语句影响的记录数通过函数 do( ) 或 execute( )返回：</p>
+<pre>
+# 方法 1
+# 使用do( ) 执行  $query 
+my $count = $dbh-&gt;do ($query);
+# 如果发生错误会输出 0
+printf "%d 条数据被影响\n", (defined ($count) ? $count : 0);
+
+# 方法 2
+# 使用prepare( ) 及 execute( ) 执行  $query 
+my $sth = $dbh-&gt;prepare ($query);
+my $count = $sth-&gt;execute ( );
+printf "%d 条数据被影响\n", (defined ($count) ? $count : 0);
+</pre>
+<h3>
+PHP 实例</h3>
+<p>在PHP中，你可以使用 mysqli_affected_rows( ) 函数来获取查询语句影响的记录数。
+</p>
+<pre>
+$result_id = mysqli_query ($conn_id, $query);
+# 如果查询失败返回 
+$count = ($result_id ? mysqli_affected_rows ($conn_id) : 0);
+print ("$count 条数据被影响\n");
+</pre>
+<hr/>
+<h2>数据库和数据表列表</h2>
+<p>你可以很容易的在MySQL服务器中获取数据库和数据表列表。
+如果你没有足够的权限，结果将返回 null。</p>
+<p>你也可以使用 SHOW TABLES 或 SHOW DATABASES 语句来获取数据库和数据表列表。</p>
+<h3>
+PERL 实例</h3>
+<pre>
+# 获取当前数据库中所有可用的表。
+my @tables = $dbh-&gt;tables ( );
+foreach $table (@tables ){
+   print "表名 $table\n";
+}
+</pre>
+<h3>
+PHP 实例</h3>
+<p>以下实例输出 MySQL 服务器上的所有数据库：</p>
+<div class="example">
+<h2 class="example">查看所有数据库</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$dbhost</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">localhost:3306</span><span class="hl-quotes">'</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> mysql服务器主机地址</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbuser</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">;            </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbpass</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名密码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$dbhost</span><span class="hl-code">, </span><span class="hl-var">$dbuser</span><span class="hl-code">, </span><span class="hl-var">$dbpass</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$conn</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">连接失败: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 设置编码，防止中文乱码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$db_list</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">SHOW DATABASES</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$db</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_object</span><span class="hl-brackets">(</span><span class="hl-var">$db_list</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$db</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Database</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br /&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<hr/>
+<h2>获取服务器元数据</h2>
+<p>以下命令语句可以在 MySQL 的命令提示符使用，也可以在脚本中
+使用，如PHP脚本。</p>
+<table class="reference">
+<tbody><tr><th>命令</th><th>描述</th></tr>
+<tr><td>SELECT VERSION( )</td><td>服务器版本信息</td></tr>
+<tr><td>SELECT DATABASE( )</td><td>当前数据库名 (或者返回空)</td></tr>
+<tr><td>SELECT USER( )</td><td>当前用户名</td></tr>
+<tr><td>SHOW STATUS</td><td>服务器状态</td></tr>
+<tr><td>SHOW VARIABLES</td><td>服务器配置变量</td></tr>
+</tbody></table>
+</div>

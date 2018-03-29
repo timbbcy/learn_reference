@@ -1,0 +1,46 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 树形菜单 - <span class="color_h1">树形菜单添加节点</span></h1>
+<p>本教程向您展示如何附加节点到树形菜单（Tree）。我们将创建一个包含水果和蔬菜节点的食品树，然后添加一些其他水果到已存在的水果节点。</p>
+<img src="/wp-content/uploads/2013/12/tree3_1.png"/>
+<h4>创建食品树</h4>
+<p>首先，我们创建食品树，代码如下所示：</p>
+<pre style="color:#006600">
+    &lt;div style="width:200px;height:auto;border:1px solid #ccc;"&gt;
+        &lt;ul id="tt" class="easyui-tree" url="tree_data.json"&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+</pre>
+<p>请注意，树（Tree)组件是定义在 &lt;ul&gt; 标记中，树节点数据从 URL "tree_data.json" 加载。</p>
+<h4>得到父节点</h4>
+<p>然后我们通过点击节点选择水果节点，我们将添加一些其他的水果数据。执行 getSelected 方法得到处理节点：</p>
+<pre style="color:#006600">
+    var node = $('#tt').tree('getSelected');
+</pre>
+<p>getSelected 方法的返回结果是一个 javascript 对象，它有一个 id、text、target 属性。target 属性是一个 DOM 对象，引用选中节点，它的 append 方法将用于附加子节点。</p>
+<h4>附加节点</h4>
+<pre style="color:#006600">
+    var node = $('#tt').tree('getSelected');
+    if (node){
+        var nodes = [{
+            "id":13,
+            "text":"Raspberry"
+        },{
+            "id":14,
+            "text":"Cantaloupe"
+        }];
+        $('#tt').tree('append', {
+            parent:node.target,
+            data:nodes
+        });
+    }
+</pre>
+<p>当添加一些水果，您将看见：</p>
+<img src="/wp-content/uploads/2013/12/tree3_2.png"/>
+<p>正如您所看到的，使用 easyui 的树（Tree）插件去附加节点不是那么的难。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-tree-tree3.zip">jeasyui-tree-tree3.zip</a></p>
+</div>

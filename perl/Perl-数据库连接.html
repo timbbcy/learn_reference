@@ -1,0 +1,178 @@
+<div class="article-intro" id="content">
+<h1>Perl 数据库连接</h1>
+<p>本章节我们将为大家介绍 Perl 数据库的连接。</p>
+<p>Perl 5 中我们可以使用 DBI 模块来连接数据库。</p>
+<p>DBI 英文全称：Database Independent Interface，中文称为数据库独立接口。</p>
+<p>DBI 作为 Perl 语言中和数据库进行通讯的标准接口，它定义了一系列的方法，变量和常量，提供一个和具体数据库平台无关的数据库持久层。</p>
+<hr/>
+<h2>DBI 结构</h2>
+<p>DBI 和具体数据库平台无关，我们可以将其应用在Oracle, MySQL 或 Informix, 等数据库中。</p>
+<p>
+<img src="http://www.runoob.com/wp-content/uploads/2016/06/3802830_1270109228dXRn.jpg"/>
+</p>
+<p>图表中 DBI 获取所有 API（Application Programming Interface：应用程序接口） 发送过来的 SQL 数据，然后分发到对应的驱动上执行，最后再获取数据返回。</p>
+<h3>变量名约定</h3>
+<p>以下设置了比较常用的变量名命名方法：</p>
+<pre>
+$dsn    驱动程序对象的句柄
+$dbh    一个数据库对象的句柄
+$sth    一个语句或者一个查询对象的句柄
+$h      通用的句柄 ($dbh, $sth, 或 $drh)，依赖于上下文
+$rc     操作代码返回的布什值（true 或 false）
+$rv     操作代码返回的整数值
+@ary    查询返回的一行值的数组（列表）
+$rows   操作代码返回的行数值
+$fh     文件句柄
+undef   NULL 值表示未定义
+\%attr  引用属性的哈希值并传到方法上
+</pre>
+<hr/>
+<h2>数据库连接</h2>
+<p>接下来我们以 MySQL 数据库为例演示 Perl 是如何对数据库进行操作的。</p>
+<p>这里我们在 MySQL 数据库创建 RUNOOB 数据库，数据表为 Websites，表结构及数据如下图所示：</p><p>
+<img src="http://www.runoob.com/wp-content/uploads/2016/06/FCB5CC2E-384A-4A73-BA02-C9AC4FCC94CB.jpg"/></p>
+<p>下载该数据表：<a download="" href="http://static.runoob.com/download/websites_perl.sql">http://static.runoob.com/download/websites_perl.sql</a></p>
+<p>接下来我们使用以下代码来连接数据库：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl -w</span><span class="hl-code">
+</span><span class="hl-special">use strict</span><span class="hl-code">;
+</span><span class="hl-special">use DBI</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$host</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;         </span><span class="hl-comment"># 主机地址</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$driver</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">mysql</span><span class="hl-quotes">"</span><span class="hl-code">;           </span><span class="hl-comment"># 接口类型 默认为 localhost</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$database</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">"</span><span class="hl-code">;        </span><span class="hl-comment"># 数据库</span><span class="hl-code">
+</span><span class="hl-comment"># 驱动程序对象的句柄</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$dsn</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">DBI:</span><span class="hl-var">$driver</span><span class="hl-string">:database=</span><span class="hl-var">$database</span><span class="hl-string">:</span><span class="hl-var">$host</span><span class="hl-quotes">"</span><span class="hl-code">;  
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$userid</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">root</span><span class="hl-quotes">"</span><span class="hl-code">;            </span><span class="hl-comment"># 数据库用户名</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">123456</span><span class="hl-quotes">"</span><span class="hl-code">;        </span><span class="hl-comment"># 数据库密码</span><span class="hl-code">
+</span><span class="hl-comment"># 连接数据库</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$dbh</span><span class="hl-code"> = </span><span class="hl-identifier">DBI</span><span class="hl-code">-&gt;</span><span class="hl-reserved">connect</span><span class="hl-brackets">(</span><span class="hl-var">$dsn</span><span class="hl-code">, </span><span class="hl-var">$userid</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-var">$DBI::errstr</span><span class="hl-code">;
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$sth</span><span class="hl-code"> = </span><span class="hl-var">$dbh</span><span class="hl-code">-&gt;</span><span class="hl-identifier">prepare</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SELECT * FROM Websites</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;   </span><span class="hl-comment"># 预处理 SQL  语句</span><span class="hl-code">
+</span><span class="hl-var">$sth</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;    </span><span class="hl-comment"># 执行 SQL 操作</span><span class="hl-code">
+</span><span class="hl-comment"># 注释这部分使用的是绑定值操作</span><span class="hl-code">
+</span><span class="hl-comment"># $alexa = 20;</span><span class="hl-code">
+</span><span class="hl-comment"># my $sth = $dbh-&gt;prepare("SELECT name, url</span><span class="hl-code">
+</span><span class="hl-comment">#                        FROM Websites</span><span class="hl-code">
+</span><span class="hl-comment">#                        WHERE alexa &gt; ?");</span><span class="hl-code">
+</span><span class="hl-comment"># $sth-&gt;execute( $alexa ) or die $DBI::errstr;</span><span class="hl-code">
+</span><span class="hl-comment"># 循环输出所有数据</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">@row</span><span class="hl-code"> = </span><span class="hl-var">$sth</span><span class="hl-code">-&gt;</span><span class="hl-identifier">fetchrow_array</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-reserved">join</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">\t</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">@row</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$sth</span><span class="hl-code">-&gt;</span><span class="hl-identifier">finish</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$dbh</span><span class="hl-code">-&gt;</span><span class="hl-identifier">disconnect</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<hr/>
+<h2>
+插入操作</h2>
+<p>执行步骤:</p>
+<ul>
+<li>使用 prepare() API 预处理 SQL 语句。</li>
+<li>使用 execute() API 执行 SQL 语句。</li>
+<li>使用 finish()  API 释放语句句柄。</li>
+<li>最后如果一切顺利就会提交以上执行操作。</li>
+</ul>
+<pre>
+my $sth = $dbh-&gt;prepare("INSERT INTO Websites
+                       (name, url, alexa, conutry )
+                        values
+                       ('Twitter', 'https://twitter.com/', 10, 'USA')");
+$sth-&gt;execute() or die $DBI::errstr;
+$sth-&gt;finish();
+$dbh-&gt;commit or die $DBI::errstr;
+</pre>
+<p>应用程序还可以绑定输出和输入参数,下面例子通过用变量 取代 ? 占位符的位置来执行一条插入查询：</p>
+<pre>
+my $name = "Twitter";
+my $url = "https://twitter.com/";
+my $alexa = 10;
+my $conutry = "USA";
+my $sth = $dbh-&gt;prepare("INSERT INTO Websites
+                       (name, url, alexa, conutry )
+                        values
+                       (?,?,?,?)");
+$sth-&gt;execute($name,$url,$alexa, $conutry) 
+          or die $DBI::errstr;
+$sth-&gt;finish();
+$dbh-&gt;commit or die $DBI::errstr;
+</pre>
+<hr/>
+<h2>更新操作</h2>
+<p>执行步骤:</p>
+<ul>
+<li>使用 prepare() API 预处理 SQL 语句。</li>
+<li>使用 execute() API 执行 SQL 语句。</li>
+<li>使用 finish()  API 释放语句句柄。</li>
+<li>最后如果一切顺利就会提交以上执行操作。</li>
+</ul>
+<pre>
+my $sth = $dbh-&gt;prepare("UPDATE Websites
+                        SET   alexa = alexa + 1 
+                        WHERE country = 'CN'");
+$sth-&gt;execute() or die $DBI::errstr;
+print "更新的记录数 :" + $sth-&gt;rows;
+$sth-&gt;finish();
+$dbh-&gt;commit or die $DBI::errstr;
+</pre>
+<p>应用程序还可以绑定输出和输入参数,下面例子通过用变量取代 ? 占位符的位置来执行一条更新查询：</p>
+<pre>
+$name = '菜鸟教程';
+
+my $sth = $dbh-&gt;prepare("UPDATE Websites
+                        SET   alexa = alexa + 1 
+                        WHERE name = ?");
+$sth-&gt;execute('$name') or die $DBI::errstr;
+print "更新的记录数 :" + $sth-&gt;rows;
+$sth-&gt;finish();
+</pre>
+<p>当然我们也可以绑定要设置的值，如下所示将 country 为 CN 的 alexa 都修改为 1000：</p>
+<pre>
+$country = 'CN';
+$alexa = 1000：;
+my $sth = $dbh-&gt;prepare("UPDATE Websites
+                        SET   alexa = ?
+                        WHERE country = ?");
+$sth-&gt;execute( $alexa, '$country') or die $DBI::errstr;
+print "更新的记录数 :" + $sth-&gt;rows;
+$sth-&gt;finish();
+</pre>
+<hr/>
+<h2>删除数据</h2>
+<p>执行步骤:</p>
+<ul>
+<li>使用 prepare() API 预处理 SQL 语句。</li>
+<li>使用 execute() API 执行 SQL 语句。</li>
+<li>使用 finish()  API 释放语句句柄。</li>
+<li>最后如果一切顺利就会提交以上执行操作。</li>
+</ul>
+<p>以下数据将 Websites 中 alexa 大于 1000 的数据都删除：</p>
+<pre>
+$alexa = 1000;
+my $sth = $dbh-&gt;prepare("DELETE FROM Websites
+                        WHERE alexa = ?");
+$sth-&gt;execute( $alexa ) or die $DBI::errstr;
+print "删除的记录数 :" + $sth-&gt;rows;
+$sth-&gt;finish();
+$dbh-&gt;commit or die $DBI::errstr;
+</pre>
+<hr/>
+<h2>使用 do 语句</h2>
+<p> <b>do</b> 语句可以执行 UPDATE, INSERT, 或 DELETE 操作，使用他比较简短，执行成功返回true，执行失败返回 false，实例如下：</p>
+<pre>
+$dbh-&gt;do('DELETE FROM Websites WHERE alexa&gt;1000');
+</pre>
+<hr/><h2>COMMIT 操作</h2>
+<p>commit 为提交事务，完成数据库的操作：</p>
+<pre>$dbh-&gt;commit or die $dbh-&gt;errstr;</pre>
+<hr/><h2>ROLLBACK 操作</h2>
+<p>如果在 SQL 执行过程中发生错误，可以回滚数据，不做任何改变：</p>
+<pre>
+$dbh-&gt;rollback or die $dbh-&gt;errstr;
+</pre>
+<hr/>
+事务
+</div>

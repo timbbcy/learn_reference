@@ -1,0 +1,101 @@
+<div class="article-intro" id="content">
+<h1>Scala 函数</h1>
+<p>函数是一组一起执行一个任务的语句。
+您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p>
+<p>Scala 有函数和方法，二者在语义上的区别很小。Scala 方法是类的一部分，而函数是一个对象可以赋值给一个变量。换句话来说在类中定义的函数即是方法。</p>
+<p>我们可以在任何地方定义函数，甚至可以在函数内定义函数（内嵌函数）。更重要的一点是 Scala 函数名可以有以下特殊字符：<b>+, ++, ~, &amp;,-, -- , \, /, :</b> 等。
+</p>
+<hr/>
+<h2>函数声明</h2>
+<p>Scala 函数声明格式如下：</p>
+<pre>
+def functionName ([参数列表]) : [return type]
+</pre>
+<p>
+如果你不写等于号和方法主体，那么方法会被隐式声明为"抽象(abstract)"，包含它的类型于是也是一个抽象类型。</p>
+<hr/>
+<h2>函数定义</h2>
+<p>方法定义由一个def 关键字开始，紧接着是可选的参数列表，一个冒号"：" 和方法的返回类型，一个等于号"="，最后是方法的主体。</p>
+<p>Scala 函数定义格式如下：</p>
+<pre>
+def functionName ([参数列表]) : [return type] = {
+   function body
+   return [expr]
+}
+</pre>
+<p>以上代码中 <b>return type</b> 可以是任意合法的 Scala 数据类型。参数列表中的参数可以使用逗号分隔。</p>
+<p>以下函数的功能是将两个传入的参数相加并求和：</p>
+<pre>
+object add{
+   def addInt( a:Int, b:Int ) : Int = {
+      var sum:Int = 0
+      sum = a + b
+
+      return sum
+   }
+}
+</pre>
+<p>如果函数没有返回值，可以返回为 <b>Unit</b>，这个类似于 Java 的 <b>void</b>, 实例如下：</p>
+<pre>
+object Hello{
+   def printMe( ) : Unit = {
+      println("Hello, Scala!")
+   }
+}
+</pre>
+<hr/>
+<h2>函数调用</h2>
+<p>Scala 提供了多种不同的函数调用方式：</p>
+<p>以下是调用方法的标准格式：</p>
+<pre>functionName( 参数列表 )</pre>
+<p>如果函数使用了实例的对象来调用，我们可以使用类似java的格式 (使用 <b>.</b> 号)：</p>
+<pre>
+[instance.]functionName( 参数列表 )
+</pre>
+<p>以上实例演示了定义与调用函数的实例:</p>
+<pre>
+object Test {
+   def main(args: Array[String]) {
+        println( "Returned Value : " + addInt(5,7) );
+   }
+   def addInt( a:Int, b:Int ) : Int = {
+      var sum:Int = 0
+      sum = a + b
+
+      return sum
+   }
+}
+</pre>
+<p>执行以上代码，输出结果为：</p>
+<pre>
+$ scalac Test.scala 
+$ scala Test
+Returned Value : 12
+</pre>
+<p>Scala也是一种函数式语言，所以函数是 Scala 语言的核心。以下一些函数概念有助于我们更好的理解 Scala 编程：</p>
+<table class="reference">
+<tbody>
+<tr><th colspan="2" style="text-align: center;">函数概念解析接案例<th>
+</th></th></tr>
+<tr>
+<td style="width:50%"><a href="/scala/functions-call-by-name.html">函数传名调用(Call-by-Name)</a></td>
+<td style="width:50%"><a href="/scala/functions-named-arguments.html">指定函数参数名</a></td>
+</tr>
+<tr>
+<td style="width:50%"><a href="/scala/functions-variable-arguments.html">函数 - 可变参数</a></td>
+<td style="width:50%"><a href="/scala/recursion-functions.html">递归函数</a></td>
+</tr>
+<tr>
+<td style="width:50%"><a href="/scala/functions-default-parameter-values.html">默认参数值</a></td>
+<td style="width:50%"><a href="/scala/higher-order-functions.html">高阶函数</a></td>
+</tr>
+<tr>
+<td style="width:50%"><a href="/scala/nested-functions.html">内嵌函数</a></td>
+<td style="width:50%"><a href="/scala/anonymous-functions.html">匿名函数</a></td>
+</tr>
+<tr>
+<td style="width:50%"><a href="/scala/partially-applied-functions.html">偏应用函数</a></td>
+<td style="width:50%"><a href="/scala/currying-functions.html">函数柯里化(Function Currying) </a></td>
+</tr>
+</tbody></table>
+</div>

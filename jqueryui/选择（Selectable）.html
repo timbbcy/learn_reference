@@ -1,0 +1,152 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">选择（Selectable）</span></h1>
+<div class="tutintro">
+<p>使用鼠标选择单个元素或一组元素。</p>
+<p>如需了解更多有关 selectable 交互的细节，请查看 API 文档 <a href="/jqueryui/api-selectable.html">可选择小部件（Selectable Widget）</a>。</p>
+</div>
+<h2>默认功能</h2>
+<p>在某个 DOM 元素上或者一组元素上启用 selectable 功能。通过鼠标拖拽选择条目。按住 Ctrl 键，选择多个不相邻的条目。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 选择（Selectable） - 默认功能&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+ 
+  &lt;style&gt;
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#selectable" ).selectable();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;ol id="selectable"&gt;
+  &lt;li class="ui-widget-content"&gt;Item 1&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 2&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 3&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 4&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 5&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 6&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 7&lt;/li&gt;
+&lt;/ol&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-selectable" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>显示为网格</h2>
+<p>让 selectable 条目显示为网格，使用 CSS 使得它们带有相同的尺寸且浮动显示。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 选择（Selectable） - 显示为网格&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+ 
+  &lt;style&gt;
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+  #selectable li { margin: 3px; padding: 1px; float: left; width: 100px; height: 80px; font-size: 4em; text-align: center; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#selectable" ).selectable();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;ol id="selectable"&gt;
+  &lt;li class="ui-state-default"&gt;1&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;2&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;3&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;4&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;5&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;6&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;7&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;8&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;9&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;10&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;11&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;12&lt;/li&gt;
+&lt;/ol&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-selectable-display-grid" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>序列化</h2>
+<p>写一个函数，在 <code>stop</code> 事件发生时触发，来收集被选中条目的索引值。呈现这些值作为反馈，或者以数据字符串形式进行传递。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 选择（Selectable） - 序列化&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+ 
+  &lt;style&gt;
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#selectable" ).selectable({
+      stop: function() {
+        var result = $( "#select-result" ).empty();
+        $( ".ui-selected", this ).each(function() {
+          var index = $( "#selectable li" ).index( this );
+          result.append( " #" + ( index + 1 ) );
+        });
+      }
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;p id="feedback"&gt;
+&lt;span&gt;您已经选择了：&lt;/span&gt; &lt;span id="select-result"&gt;无&lt;/span&gt;。
+&lt;/p&gt;
+ 
+&lt;ol id="selectable"&gt;
+  &lt;li class="ui-widget-content"&gt;Item 1&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 2&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 3&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 4&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 5&lt;/li&gt;
+  &lt;li class="ui-widget-content"&gt;Item 6&lt;/li&gt;
+&lt;/ol&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-selectable-serialize" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

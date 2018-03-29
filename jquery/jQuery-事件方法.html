@@ -1,0 +1,262 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">事件</span> 方法</h1>
+<hr/>
+<h2>jQuery 事件方法</h2>
+<p>事件方法触发器或添加一个函数到被选元素的事件处理程序。</p>
+<p>下面的表格列出了所有用于处理事件的 jQuery 方法。</p>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="39%">方法</th>
+<th align="left" width="61%">描述</th>
+</tr>
+<tr>
+<td><a href="event-bind.html">bind()</a></td>
+<td>向元素添加事件处理程序</td>
+</tr>
+<tr>
+<td><a href="event-blur.html">blur()</a></td>
+<td>添加/触发失去焦点事件</td>
+</tr>
+<tr>
+<td><a href="event-change.html">change()</a></td>
+<td>添加/触发 change 事件</td>
+</tr>
+<tr>
+<td><a href="event-click.html">click()</a></td>
+<td>添加/触发 click 事件</td>
+</tr>
+<tr>
+<td><a href="event-dblclick.html">dblclick()</a></td>
+<td>添加/触发 double click 事件</td>
+</tr>
+<tr>
+<td><a href="event-delegate.html">delegate()</a></td>
+<td>向匹配元素的当前或未来的子元素添加处理程序</td>
+</tr>
+<tr>
+<td><a href="event-die.html">die()</a></td>
+<td>
+<span class="deprecated">在版本 1.9 中被移除。</span>移除所有通过 live() 方法添加的事件处理程序</td>
+</tr>
+<tr>
+<td><a href="event-error.html">error()</a></td>
+<td>
+<span class="deprecated">在版本 1.8 中被废弃。</span>添加/触发 error 事件</td>
+</tr>
+<tr>
+<td><a href="jq-event-currenttarget.html">event.currentTarget</a></td>
+<td>在事件冒泡阶段内的当前 DOM 元素</td>
+</tr>
+<tr>
+<td><a href="event-data.html">event.data</a></td>
+<td>包含当前执行的处理程序被绑定时传递到事件方法的可选数据</td>
+</tr>
+<tr>
+<td><a href="event-delegatetarget.html">event.delegateTarget</a></td>
+<td>返回当前调用的 jQuery 事件处理程序所添加的元素</td>
+</tr>
+<tr>
+<td><a href="event-isdefaultprevented.html">event.isDefaultPrevented()</a></td>
+<td>返回指定的 event 对象上是否调用了 event.preventDefault()</td>
+</tr>
+<tr>
+<td><a href="event-isimmediatepropagationstopped.html">event.isImmediatePropagationStopped()</a></td>
+<td>返回指定的 event 对象上是否调用了 event.stopImmediatePropagation()</td>
+</tr>
+<tr>
+<td><a href="event-ispropagationstopped.html">event.isPropagationStopped()</a></td>
+<td>返回指定的 event 对象上是否调用了 event.stopPropagation()</td>
+</tr>
+<tr>
+<td><a href="event-namespace.html">event.namespace</a></td>
+<td>返回当事件被触发时指定的命名空间</td>
+</tr>
+<tr>
+<td><a href="event-pagex.html">event.pageX</a></td>
+<td>返回相对于文档左边缘的鼠标位置</td>
+</tr>
+<tr>
+<td><a href="event-pagey.html">event.pageY</a></td>
+<td>返回相对于文档上边缘的鼠标位置</td>
+</tr>
+<tr>
+<td><a href="event-preventdefault.html">event.preventDefault()</a></td>
+<td>阻止事件的默认行为</td>
+</tr>
+<tr>
+<td><a href="jq-event-relatedtarget.html">event.relatedTarget</a></td>
+<td>
+<span>返回当鼠标移动时哪个元素进入或退出</span>
+</td>
+</tr>
+<tr>
+<td><a href="event-result.html">event.result</a></td>
+<td>包含由被指定事件触发的事件处理程序返回的最后一个值</td>
+</tr>
+<tr>
+<td><a href="event-stopimmediatepropagation.html">event.stopImmediatePropagation()</a></td>
+<td>阻止其他事件处理程序被调用</td>
+</tr>
+<tr>
+<td><a href="event-stoppropagation.html">event.stopPropagation()</a></td>
+<td>阻止事件向上冒泡到 DOM 树，阻止任何父处理程序被事件通知</td>
+</tr>
+<tr>
+<td><a href="jq-event-target.html">event.target</a></td>
+<td>返回哪个 DOM 元素触发事件</td>
+</tr>
+<tr>
+<td><a href="jq-event-timestamp.html">event.timeStamp</a></td>
+<td>返回从 1970 年 1 月 1 日到事件被触发时的毫秒数</td>
+</tr>
+<tr>
+<td><a href="jq-event-type.html">event.type</a></td>
+<td>返回哪种事件类型被触发</td>
+</tr>
+<tr>
+<td><a href="event-which.html">event.which</a></td>
+<td>返回指定事件上哪个键盘键或鼠标按钮被按下</td>
+</tr>
+<tr>
+<td><a href="event_metakey.html">event.metaKey</a></td>
+<td>事件触发时 META 键是否被按下</td>
+</tr>
+<tr>
+<td><a href="event-focus.html">focus()</a></td>
+<td>添加/触发 focus 事件</td>
+</tr>
+<tr>
+<td><a href="event-focusin.html">focusin()</a></td>
+<td>添加事件处理程序到 focusin 事件</td>
+</tr>
+<tr>
+<td><a href="event-focusout.html">focusout()</a></td>
+<td>添加事件处理程序到 focusout 事件</td>
+</tr>
+<tr>
+<td><a href="event-hover.html">hover()</a></td>
+<td>添加两个事件处理程序到 hover 事件</td>
+</tr>
+<tr>
+<td><a href="event-keydown.html">keydown()</a></td>
+<td>添加/触发 keydown 事件</td>
+</tr>
+<tr>
+<td><a href="event-keypress.html">keypress()</a></td>
+<td>添加/触发 keypress 事件</td>
+</tr>
+<tr>
+<td><a href="event-keyup.html">keyup()</a></td>
+<td>添加/触发 keyup 事件</td>
+</tr>
+<tr>
+<td><a href="event-live.html">live()</a></td>
+<td>
+<span class="deprecated">在版本 1.9 中被移除。</span>添加一个或多个事件处理程序到当前或未来的被选元素</td>
+</tr>
+<tr>
+<td><a href="event-load.html">load()</a></td>
+<td>
+<span class="deprecated">在版本 1.8 中被废弃。</span>添加一个事件处理程序到 load 事件</td>
+</tr>
+<tr>
+<td><a href="event-mousedown.html">mousedown()</a></td>
+<td>添加/触发 mousedown 事件</td>
+</tr>
+<tr>
+<td><a href="event-mouseenter.html">mouseenter()</a></td>
+<td>添加/触发 mouseenter 事件</td>
+</tr>
+<tr>
+<td><a href="event-mouseleave.html">mouseleave()</a></td>
+<td>添加/触发 mouseleave 事件</td>
+</tr>
+<tr>
+<td><a href="event-mousemove.html">mousemove()</a></td>
+<td>添加/触发 mousemove 事件</td>
+</tr>
+<tr>
+<td><a href="event-mouseout.html">mouseout()</a></td>
+<td>添加/触发 mouseout 事件</td>
+</tr>
+<tr>
+<td><a href="event-mouseover.html">mouseover()</a></td>
+<td>添加/触发 mouseover 事件</td>
+</tr>
+<tr>
+<td><a href="event-mouseup.html">mouseup()</a></td>
+<td>添加/触发 mouseup 事件</td>
+</tr>
+<tr>
+<td><a href="event-off.html">off()</a></td>
+<td>移除通过 on() 方法添加的事件处理程序</td>
+</tr>
+<tr>
+<td><a href="event-on.html">on()</a></td>
+<td>向元素添加事件处理程序</td>
+</tr>
+<tr>
+<td><a href="event-one.html">one()</a></td>
+<td>向被选元素添加一个或多个事件处理程序。该处理程序只能被每个元素触发一次</td>
+</tr>
+<tr>
+<td><a href="event-proxy.html">$.proxy()</a></td>
+<td>接受一个已有的函数，并返回一个带特定上下文的新的函数</td>
+</tr>
+<tr>
+<td><a href="event-ready.html">ready()</a></td>
+<td>规定当 DOM 完全加载时要执行的函数</td>
+</tr>
+<tr>
+<td><a href="event-resize.html">resize()</a></td>
+<td>添加/触发 resize 事件</td>
+</tr>
+<tr>
+<td><a href="event-scroll.html">scroll()</a></td>
+<td>添加/触发 scroll 事件</td>
+</tr>
+<tr>
+<td><a href="event-select.html">select()</a></td>
+<td>添加/触发 select 事件</td>
+</tr>
+<tr>
+<td><a href="event-submit.html">submit()</a></td>
+<td>添加/触发 submit 事件</td>
+</tr>
+<tr>
+<td><a href="event-toggle.html">toggle()</a></td>
+<td>
+<span class="deprecated">在版本 1.9 中被移除。</span>添加 click 事件之间要切换的两个或多个函数</td>
+</tr>
+<tr>
+<td><a href="event-trigger.html">trigger()</a></td>
+<td>触发绑定到被选元素的所有事件</td>
+</tr>
+<tr>
+<td><a href="event-triggerhandler.html">triggerHandler()</a></td>
+<td>触发绑定到被选元素的指定事件上的所有函数</td>
+</tr>
+<tr>
+<td><a href="event-unbind.html">unbind()</a></td>
+<td>从被选元素上移除添加的事件处理程序</td>
+</tr>
+<tr>
+<td><a href="event-undelegate.html">undelegate()</a></td>
+<td>从现在或未来的被选元素上移除事件处理程序</td>
+</tr>
+<tr>
+<td><a href="event-unload.html">unload()</a></td>
+<td>
+<span class="deprecated">在版本 1.8 中被废弃。</span>添加事件处理程序到 unload 事件</td>
+</tr>
+<tr>
+<td><a href="event-contextmenu.html">contextmenu()</a></td>
+<td>添加事件处理程序到 contextmenu 事件</td>
+</tr>
+<tr>
+<td><a href="event-holdready.html">$.holdReady()</a></td>
+<td>用于暂停或恢复.ready() 事件的执行</td>
+</tr>
+</table>
+<br/><br/>
+</div>

@@ -1,0 +1,136 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">服务器响应</span></h1>
+<p>Response响应对象主要将JSP容器处理后的结果传回到客户端。可以通过response变量设置HTTP的状态和向客户端发送数据，如Cookie、HTTP文件头信息等。</p>
+<p>
+一个典型的响应看起来就像下面这样：</p>
+<pre>
+HTTP/1.1 200 OK
+Content-Type: text/html
+Header2: ...
+...
+HeaderN: ...
+  (空行)
+&lt;!doctype ...&gt;
+&lt;html&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+...
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p>
+状态行包含HTTP版本信息，比如HTTP/1.1，一个状态码，比如200，还有一个非常短的信息对应着状态码，比如OK。</p>
+<p>
+下表摘要出了HTTP1.1响应头中最有用的部分，在网络编程中您将会经常见到它们：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>响应头</strong></th>
+<th>
+<strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+				Allow</td>
+<td>
+				指定服务器支持的request方法（GET，POST等等）</td>
+</tr>
+<tr>
+<td>
+				Cache-Control</td>
+<td>
+				指定响应文档能够被安全缓存的情况。通常取值为 <strong>public</strong><strong>，</strong><strong>private</strong> 或<strong>no-cache</strong> 等等。 Public意味着文档可缓存，Private意味着文档只为单用户服务并且只能使用私有缓存。No-cache 意味着文档不被缓存。</td>
+</tr>
+<tr>
+<td>
+				Connection</td>
+<td>
+				命令浏览器是否要使用持久的HTTP连接。<strong>close</strong><strong>值</strong> 命令浏览器不使用持久HTTP连接，而keep-alive 意味着使用持久化连接。</td>
+</tr>
+<tr>
+<td>
+				Content-Disposition</td>
+<td>
+				让浏览器要求用户将响应以给定的名称存储在磁盘中</td>
+</tr>
+<tr>
+<td>
+				Content-Encoding</td>
+<td>
+				指定传输时页面的编码规则</td>
+</tr>
+<tr>
+<td>
+				Content-Language</td>
+<td>
+				表述文档所使用的语言，比如en， en-us,，ru等等</td>
+</tr>
+<tr>
+<td>
+				Content-Length</td>
+<td>
+				表明响应的字节数。只有在浏览器使用持久化 (keep-alive) HTTP 连接时才有用</td>
+</tr>
+<tr>
+<td>
+				Content-Type</td>
+<td>
+				表明文档使用的MIME类型</td>
+</tr>
+<tr>
+<td>
+				Expires</td>
+<td>
+				指明啥时候过期并从缓存中移除</td>
+</tr>
+<tr>
+<td>
+				Last-Modified</td>
+<td>
+				指明文档最后修改时间。客户端可以 缓存文档并且在后续的请求中提供一个 <strong>If-Modified-Since</strong>请求头</td>
+</tr>
+<tr>
+<td>
+				Location</td>
+<td>
+				在300秒内，包含所有的有一个状态码的响应地址，浏览器会自动重连然后检索新文档</td>
+</tr>
+<tr>
+<td>
+				Refresh</td>
+<td>
+				指明浏览器每隔多久请求更新一次页面。</td>
+</tr>
+<tr>
+<td>
+				Retry-After</td>
+<td>
+				与503 (Service Unavailable)一起使用来告诉用户多久后请求将会得到响应</td>
+</tr>
+<tr>
+<td>
+				Set-Cookie</td>
+<td>
+				指明当前页面对应的cookie</td>
+</tr>
+</tbody>
+</table><hr/>
+<h2>HttpServletResponse类</h2><p>
+response 对象是 javax.servlet.http.HttpServletResponse 类的一个实例。就像服务器会创建request对象一样，它也会创建一个客户端响应。</p>
+<p>
+response对象定义了处理创建HTTP信息头的接口。通过使用这个对象，开发者们可以添加新的cookie或时间戳，还有HTTP状态码等等。</p>
+<p>
+下表列出了用来设置HTTP响应头的方法，这些方法由HttpServletResponse 类提供：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>S.N.</strong></th>
+<th>
+<strong>方法</strong><strong> &amp; </strong><strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+				1</td>
+<td>
+<strong>String encodeRedirectURL(String url)</strong></td></tr></tbody></table></div>

@@ -1,0 +1,36 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">添加工具栏</span></h1>
+<p>本实例演示如何添加工具栏（toolbar）到数据网格（datagrid）。</p>
+<img src="/wp-content/uploads/2013/12/datagrid4_1.png"/>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" class="easyui-datagrid" style="width:600px;height:250px"
+            url="data/datagrid_data.json"
+            title="DataGrid with Toolbar" iconCls="icon-save"
+            toolbar="#tb"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+    &lt;div id="tb"&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:alert('Add')"&gt;Add&lt;/a&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true" onclick="javascript:alert('Cut')"&gt;Cut&lt;/a&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:alert('Save')"&gt;Save&lt;/a&gt;
+    &lt;/div&gt;
+</pre>
+<p>我们不需要写任何的 javascript 代码，只需通过 'toolbar' 属性附加工具栏（toolbar）到数据网格（datagrid）。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid4.zip">jeasyui-datagrid-datagrid4.zip</a></p>
+</div>

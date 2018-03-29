@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>Memcached stats 命令</h1>
+<p>Memcached stats 命令用于返回统计信息例如 PID(进程号)、版本号、连接数等。</p>
+<h3>语法：</h3>
+<p>stats 命令的基本语法格式如下：</p>
+<pre>
+stats
+</pre>
+<h3>实例</h3>
+<p>在以下实例中，我们使用了 stats  命令来输出 Memcached 服务信息。
+</p>
+<pre>
+stats
+STAT pid 1162
+STAT uptime 5022
+STAT time 1415208270
+STAT version 1.4.14
+STAT libevent 2.0.19-stable
+STAT pointer_size 64
+STAT rusage_user 0.096006
+STAT rusage_system 0.152009
+STAT curr_connections 5
+STAT total_connections 6
+STAT connection_structures 6
+STAT reserved_fds 20
+STAT cmd_get 6
+STAT cmd_set 4
+STAT cmd_flush 0
+STAT cmd_touch 0
+STAT get_hits 4
+STAT get_misses 2
+STAT delete_misses 1
+STAT delete_hits 1
+STAT incr_misses 2
+STAT incr_hits 1
+STAT decr_misses 0
+STAT decr_hits 1
+STAT cas_misses 0
+STAT cas_hits 0
+STAT cas_badval 0
+STAT touch_hits 0
+STAT touch_misses 0
+STAT auth_cmds 0
+STAT auth_errors 0
+STAT bytes_read 262
+STAT bytes_written 313
+STAT limit_maxbytes 67108864
+STAT accepting_conns 1
+STAT listen_disabled_num 0
+STAT threads 4
+STAT conn_yields 0
+STAT hash_power_level 16
+STAT hash_bytes 524288
+STAT hash_is_expanding 0
+STAT expired_unfetched 1
+STAT evicted_unfetched 0
+STAT bytes 142
+STAT curr_items 2
+STAT total_items 6
+STAT evictions 0
+STAT reclaimed 1
+END
+</pre>
+<p>这里显示了很多状态信息，下边详细解释每个状态项：</p>
+<ul>
+<li><b>pid</b>：	memcache服务器进程ID</li>
+<li><b>uptime</b>：服务器已运行秒数</li>
+<li><b>time</b>：服务器当前Unix时间戳</li>
+<li><b>version</b>：memcache版本</li>
+<li><b>pointer_size</b>：操作系统指针大小</li>
+<li><b>rusage_user</b>：进程累计用户时间</li>
+<li><b>rusage_system</b>：进程累计系统时间</li>
+<li><b>curr_connections</b>：当前连接数量</li>
+<li><b>total_connections</b>：Memcached运行以来连接总数</li>
+<li><b>connection_structures</b>：Memcached分配的连接结构数量</li>
+<li><b>cmd_get</b>：get命令请求次数</li>
+<li><b>cmd_set</b>：set命令请求次数</li>
+<li><b>cmd_flush</b>：flush命令请求次数</li>
+<li><b>get_hits</b>：get命令命中次数</li>
+<li><b>get_misses</b>：get命令未命中次数</li>
+<li><b>delete_misses</b>：delete命令未命中次数</li>
+<li><b>delete_hits</b>：delete命令命中次数</li>
+<li><b>incr_misses</b>：incr命令未命中次数</li>
+<li><b>incr_hits</b>：incr命令命中次数</li>
+<li><b>decr_misses</b>：decr命令未命中次数</li>
+<li><b>decr_hits</b>：decr命令命中次数</li>
+<li><b>cas_misses</b>：cas命令未命中次数</li>
+<li><b>cas_hits</b>：cas命令命中次数</li>
+<li><b>cas_badval</b>：使用擦拭次数</li>
+<li><b>auth_cmds</b>：认证命令处理的次数</li>
+<li><b>auth_errors</b>：认证失败数目</li>
+<li><b>bytes_read</b>：读取总字节数</li>
+<li><b>bytes_written</b>：发送总字节数</li>
+<li><b>limit_maxbytes</b>：分配的内存总大小（字节）</li>
+<li><b>accepting_conns</b>：服务器是否达到过最大连接（0/1）</li>
+<li><b>listen_disabled_num</b>：失效的监听数</li>
+<li><b>threads</b>：当前线程数</li>
+<li><b>conn_yields</b>：连接操作主动放弃数目</li>
+<li><b>bytes</b>：当前存储占用的字节数</li>
+<li><b>curr_items</b>：当前存储的数据总数</li>
+<li><b>total_items</b>：启动以来存储的数据总数</li>
+<li><b>evictions</b>：LRU释放的对象数目</li>
+<li><b>reclaimed</b>：已过期的数据条目来存储新数据的数目</li></ul>
+</div>

@@ -1,0 +1,73 @@
+<div class="article-intro" id="content">
+<h1>CSS <span class="color_h1">属性</span> 选择器</h1>
+<hr/>
+<h2>具有特定属性的HTML元素样式</h2>
+<p>具有特定属性的HTML元素样式不仅仅是class和id。</p>
+<p><b>注意：</b>IE7和IE8需声明!DOCTYPE才支持属性选择器！IE6和更低的版本不支持属性选择器。</p>
+<hr/>
+<h2>属性选择器</h2>
+<p>下面的例子是把包含标题（title）的所有元素变为蓝色：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-var">title</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">blue</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_attselector_att" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>属性和值选择器</h2>
+<p>下面的实例改变了标题title='runoob'元素的边框样式:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-var">runoob</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">border:</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">green</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_attselector_value" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>属性和值的选择器 - 多值</h2>
+<p>下面是包含指定值的title属性的元素样式的例子，使用（~）分隔属性和值:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-var">title</span><span class="hl-code">~=</span><span class="hl-var">hello</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-reserved">color:</span><span class="hl-var">blue</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_attselector_valuelist_space" target="_blank">尝试一下 »</a>
+</div>
+<p>下面是包含指定值的lang属性的元素样式的例子，使用（|）分隔属性和值:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-var">lang</span><span class="hl-code">|=</span><span class="hl-var">en</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-reserved">color:</span><span class="hl-var">blue</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_attselector_valuelist_hyphen" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>表单样式</h2>
+<p>属性选择器样式无需使用class或id的形式:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">input</span><span class="hl-brackets">[</span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-number">150</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">display:</span><span class="hl-string">block</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin-bottom:</span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-var">yellow</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">input</span><span class="hl-brackets">[</span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-number">120</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin-left:</span><span class="hl-number">35</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">display:</span><span class="hl-string">block</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_attselector_form" target="_blank">尝试一下 »</a>
+</div>
+</div>

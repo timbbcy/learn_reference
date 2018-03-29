@@ -1,0 +1,146 @@
+<div class="article-intro" id="content">
+<h1>Foundation 滑块</h1>
+<p>Foundation 滑块允许用户通过拖动来选取区间值:</p>
+<iframe src="/try/demo_source/tryfoundation_slider_iframe.htm" style="border:0;width:100%;height:100px;overflow-y:hidden;"></iframe>
+<p>滑块可以通过使用 <code>&lt;div class="range-slider" data-slider&gt;</code> 创建。在
+<code>&lt;div&gt;</code> 内, 添加两个 <code>&lt;span&gt;</code> 元素: <code>&lt;span class="range-slider-handle"&gt;</code> 创建矩形滑块（蓝色背景），
+<code>&lt;span class="range-slider-active-segment"&gt;</code> 是在滑块后的灰色横条，是滑块拖动区域。</p>
+<p><strong>注意:</strong> 滑块需要使用 JavaScript。所以你需要初始化
+oundation JS:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>圆角和禁用滑块</h2>
+<p>使用 <code>.radius</code> 和 <code>.round</code> 类来添加圆角滑块。使用 <code>.disabled</code> 类来禁用滑块：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider</span><span class="highGT">&gt;</span>..<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider radius"</span> <span class="highATT">data-slider</span><span class="highGT">&gt;</span>...<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider round"</span> <span class="highATT">data-slider</span><span class="highGT">&gt;</span>...<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider disabled"</span> <span class="highATT">data-slider</span><span class="highGT">&gt;</span>...<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_round" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>垂直滑块</h2>
+<p>使用 <code>.vertical-range</code> 类和 <code>data-options="vertical: true;"</code> 来创建垂直滑块:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider vertical-range"</span> <span class="highATT">data-slider data-options=</span><span class="highVAL">"vertical: 
+	true;"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_vertical" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>滑块值</h2>
+<p>默认情况下，滑块放在横条的中间 (数值为 "50")。可以通过添加 <code>data-options="initial: <em>num</em>"</code> 
+属性来修改默认值:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider 
+	data-options=</span><span class="highVAL">"initial: 80;"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_default_value" target="_blank">尝试一下 »</a>
+</div>
+<h3>显示滑块值</h3>
+<p>如果我们需要在滑块拖动时实时显示值，可以通过在 <code>
+&lt;div&gt;</code> 中添加 <code>data-options="display_selector:#<em>id</em>"</code> 属性且元素 id 值与滑块的 id  匹配，如下实例：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- Display the slider value in this span --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">id=</span><span class="highVAL">"mySlider"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider 
+	data-options=</span><span class="highVAL">"display_selector: #mySlider;"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_value" target="_blank">尝试一下 »</a>
+</div>
+<h3>组合数据选项</h3>
+<p>以下实例使用了 <code>display_selector</code> 和 <code>initial</code> 数据选项:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">id=</span><span class="highVAL">"mySlider"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider 
+	data-options=</span><span class="highVAL">"display_selector: #mySlider; initial: 20;"</span><span class="highGT">&gt;</span><br/> <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_combining_value" target="_blank">尝试一下 »</a>
+</div>
+<h3>步长</h3>
+<p>默认情况下，滑块滑动的增加减少的数量为 "1"。可以通过添加 <code>data-options="step: <em>num</em>;"</code> 属性来修改步长值。实例中设置为 25:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">id=</span><span class="highVAL">"mySlider"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider 
+	data-options=</span><span class="highVAL">"display_selector: #mySlider; step: 25;"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_step" target="_blank">尝试一下 »</a>
+</div>
+<h3>自定义区间</h3>
+<p>默认情况下，区间值在 "0" 到 "100"。可以通过添加 data-options <code>start</code> 和 <code>end</code> 来设置区间值。以下实例设置区间值为 "1" 到 "20":</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">span</span> <span class="highATT">id=</span><span class="highVAL">"mySlider"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider data-options=</span><span class="highVAL">"display_selector: #mySlider; 
+	start: 1; end: 20;"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_range" target="_blank">尝试一下 »</a>
+</div>
+<h3>使用网格</h3>
+<p>以下使用为在网格中使用滑块：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"small-10 columns"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider data-options=</span><span class="highVAL">"display_selector: 
+	#mySlider;"</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"small-2 columns"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highCOM">&lt;!-- The display element (Tip: use CSS to perfectly position it) --&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">id=</span><span class="highVAL">"mySlider"</span> <span class="highATT">style=</span><span class="highVAL">"display:block;margin-top:14px;"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_value_grid" target="_blank">尝试一下 »</a>
+</div>
+<h3>使用 Input</h3>
+<p>以下实例使用 <code>&lt;input&gt;</code> 取代 <code>&lt;span&gt;</code> 来显示滑块的值:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"small-10 columns"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"range-slider"</span> <span class="highATT">data-slider data-options=</span><span class="highVAL">"display_selector: 
+	#mySlider; initial: 72;"</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-handle"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">class=</span><span class="highVAL">"range-slider-active-segment"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"small-2 columns"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highCOM">&lt;!-- The display element (Tip: use CSS to perfectly position it) --&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"number"</span> <span class="highATT">id=</span><span class="highVAL">"mySlider"</span> <span class="highATT">style=</span><span class="highVAL">"margin-top:7px;"</span> <span class="highATT">value=</span><span class="highVAL">"72"</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_slider_value_input" target="_blank">尝试一下 »</a>
+</div>
+</div>

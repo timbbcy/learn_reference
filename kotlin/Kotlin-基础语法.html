@@ -1,0 +1,252 @@
+<div class="article-intro" id="content">
+<h1>Kotlin 基础语法</h1>
+<p>Kotlin 文件以  .kt 为后缀。</p>
+<h2>包声明</h2>
+<p>代码文件的开头一般为包的声明：</p>
+<pre>
+package com.runoob.main
+
+import java.util.*
+
+fun test() {}
+class Runoob {}
+</pre>
+<p>kotlin源文件不需要相匹配的目录和包，源文件可以放在任何文件目录。</p>
+<p>以上例中 test() 的全名是 com.runoob.main.test、Runoob 的全名是 com.runoob.main.Runoob。</p>
+<p>如果没有指定包，默认为 <span class="marked">default</span> 包。</p>
+<h3>默认导入
+</h3><p>
+有多个包会默认导入到每个 Kotlin 文件中：
+</p><ul><li>
+kotlin.*</li><li>
+kotlin.annotation.*</li><li>
+kotlin.collections.*</li><li>
+kotlin.comparisons.* </li><li>
+kotlin.io.*</li><li>
+kotlin.ranges.*</li><li>
+kotlin.sequences.*</li><li>
+kotlin.text.*</li></ul>
+<hr/>
+<h2>函数定义</h2>
+<p>函数定义使用关键字 fun，参数格式为：参数 : 类型
+<pre>
+fun sum(a: Int, b: Int): Int {   // Int 参数，返回值 Int
+    return a + b
+}
+</pre>
+<p>表达式作为函数体，返回类型自动推断：</p>
+<pre>
+fun sum(a: Int, b: Int) = a + b
+
+public fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
+</pre>
+<p>无返回值的函数(类似Java中的void)：</p>
+<pre>
+fun printSum(a: Int, b: Int): Unit { 
+    print(a + b)
+}
+
+
+// 如果是返回 Unit类型，则可以省略(对于public方法也是这样)：
+public fun printSum(a: Int, b: Int) { 
+    print(a + b)
+}
+</pre>
+<h3>可变长参数函数</h3>
+<p>
+函数的变长参数可以用 <span class="marked">vararg</span> 关键字进行标识：</p>
+<pre>
+fun vars(vararg v:Int){
+    for(vt in v){
+        print(vt)
+    }
+}
+
+// 测试
+fun main(args: Array&lt;String&gt;) {
+    vars(1,2,3,4,5)  // 输出12345
+}
+</pre>
+<h3>lambda(匿名函数)</h3>
+<p>lambda表达式使用实例：</p>
+<pre>
+// 测试
+fun main(args: Array&lt;String&gt;) {
+    val sumLambda: (Int, Int) -&gt; Int = {x,y -&gt; x+y}
+    println(sumLambda(1,2))  // 输出 3
+}
+</pre>
+<hr/>
+<h2>定义常量与变量</h2>
+<p>可变变量定义：var 关键字
+</p><pre>
+var &lt;标识符&gt; : &lt;类型&gt; = &lt;初始化值&gt;
+</pre><p>
+不可变变量定义：val 关键字，只能赋值一次的变量(类似Java中final修饰的变量)
+</p><pre>
+val &lt;标识符&gt; : &lt;类型&gt; = &lt;初始化值&gt;</pre>
+<p>常量与变量都可以没有初始化值,但是在引用前必须初始化
+</p><p>
+编译器支持自动类型判断,即声明时可以不指定类型,由编译器判断。</p>
+<pre>
+val a: Int = 1
+val b = 1       // 系统自动推断变量类型为Int
+val c: Int      // 如果不在声明时初始化则必须提供变量类型
+c = 1           // 明确赋值
+
+
+var x = 5        // 系统自动推断变量类型为Int
+x += 1           // 变量可修改
+</pre>
+<hr/>
+<h2>注释</h2>
+<p>Kotlin 支持单行和多行注释，实例如下：</p>
+<pre>
+// 这是一个单行注释
+
+/* 这是一个多行的
+   块注释。 */
+</pre>
+<p>与 Java 不同, Kotlin 中的块注释允许嵌套。</p>
+<hr/><h2>字符串模板</h2>
+<p>
+$ 表示一个变量名或者变量值</p><p>
+$varName  表示变量值</p><p>
+${varName.fun()} 表示变量的方法返回值:</p><p>
+<pre>
+var a = 1
+// 模板中的简单名称：
+val s1 = "a is $a" 
+
+a = 2
+// 模板中的任意表达式：
+val s2 = "${s1.replace("is", "was")}, but now is $a"
+</pre>
+<hr/><h2>NULL检查机制</h2>
+<p>Kotlin的空安全设计对于声明可为空的参数，在使用时要进行空判断处理，有两种处理方式，字段后加!!像Java一样抛出空异常，另一种字段后加?可不做处理返回值为 null或配合?:做空判断处理</p>
+<pre>//类型后面加?表示可为空
+var age: String? = "23" 
+//抛出空指针异常
+val ages = age!!.toInt()
+//不做处理返回 null
+val ages1 = age?.toInt()
+//age为空返回-1
+val ages2 = age?.toInt() ?: -1
+</pre>
+<p>当一个引用可能为 null 值时, 对应的类型声明必须明确地标记为可为 null。
+</p><p>
+当 str 中的字符串内容不是一个整数时, 返回 null:
+
+</p>
+<pre>
+fun parseInt(str: String): Int? {
+  // ...
+}
+</pre>
+<p>以下实例演示如何使用一个返回值可为 null 的函数:</p>
+<pre>
+fun main(args: Array&lt;String&gt;) {
+  if (args.size &lt; 2) {
+    print("Two integers expected")
+    return
+  }
+  val x = parseInt(args[0])
+  val y = parseInt(args[1])
+  // 直接使用 `x * y` 会导致错误, 因为它们可能为 null.
+  if (x != null &amp;&amp; y != null) {
+    // 在进行过 null 值检查之后, x 和 y 的类型会被自动转换为非 null 变量
+    print(x * y)
+  }
+}
+</pre><hr/>
+<h2>类型检测及自动类型转换</h2>
+我们可以使用 is 运算符检测一个表达式是否某类型的一个实例(类似于Java中的instanceof关键字)。
+<pre>
+fun getStringLength(obj: Any): Int? {
+  if (obj is String) {
+    // 做过类型判断以后，obj会被系统自动转换为String类型
+    return obj.length 
+  }
+
+  //在这里还有一种方法，与Java中instanceof不同，使用!is
+  // if (obj !is String){
+  //   // XXX
+  // }
+
+  // 这里的obj仍然是Any类型的引用
+  return null
+}
+</pre>
+<p>或者</p>
+<pre>
+fun getStringLength(obj: Any): Int? {
+  if (obj !is String)
+    return null
+  // 在这个分支中, `obj` 的类型会被自动转换为 `String`
+  return obj.length
+}
+</pre>
+<p>甚至还可以</p>
+<pre>
+fun getStringLength(obj: Any): Int? {
+  // 在 `&amp;&amp;` 运算符的右侧, `obj` 的类型会被自动转换为 `String`
+  if (obj is String &amp;&amp; obj.length &gt; 0)
+    return obj.length
+  return null
+}
+</pre>
+<hr/>
+<h2>区间</h2>
+<p>区间表达式由具有操作符形式 <span class="marked">..</span> 的 rangeTo 函数辅以 in 和 !in 形成。 </p><p>区间是为任何可比较类型定义的，但对于整型原生类型，它有一个优化的实现。以下是使用区间的一些示例:</p>
+<pre>
+for (i in 1..4) print(i) // 输出“1234”
+
+for (i in 4..1) print(i) // 什么都不输出
+
+if (i in 1..10) { // 等同于 1 &lt;= i &amp;&amp; i &lt;= 10
+    println(i)
+}
+
+// 使用 step 指定步长
+for (i in 1..4 step 2) print(i) // 输出“13”
+
+for (i in 4 downTo 1 step 2) print(i) // 输出“42”
+
+
+// 使用 until 函数排除结束元素
+for (i in 1 until 10) {   // i in [1, 10) 排除了 10
+     println(i)
+}
+</pre>
+<h3>实例测试</h3>
+<pre>
+fun main(args: Array&lt;String&gt;) {
+    print("循环输出：")
+    for (i in 1..4) print(i) // 输出“1234”
+    println("\n----------------")
+    print("设置步长：")
+    for (i in 1..4 step 2) print(i) // 输出“13”
+    println("\n----------------")
+    print("使用 downTo：")
+    for (i in 4 downTo 1 step 2) print(i) // 输出“42”
+    println("\n----------------")
+    print("使用 until：")
+    // 使用 until 函数排除结束元素
+    for (i in 1 until 4) {   // i in [1, 4) 排除了 4
+        print(i)
+    }
+    println("\n----------------")
+}
+</pre>
+<p>输出结果：</p>
+<pre>
+循环输出：1234
+----------------
+设置步长：13
+----------------
+使用 downTo：42
+----------------
+使用 until：123
+----------------
+</pre>
+</p></p></div>

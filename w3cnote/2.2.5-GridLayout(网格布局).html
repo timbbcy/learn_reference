@@ -1,0 +1,119 @@
+<div class="article-intro">
+<h2>本节引言</h2>
+<p>今天要介绍的布局是Android 4.0以后引入的一个新的布局,和前面所学的TableLayout(表格布局)
+有点类似,不过他有很多前者没有的东西,也更加好用,</p>
+<blockquote><ul>
+<li>可以自己设置布局中组件的排列方式</li>
+<li>可以自定义网格布局有多少行,多少列</li>
+<li>可以直接设置组件位于某行某列</li>
+<li>可以设置组件横跨几行或者几列</li>
+</ul>
+</blockquote>
+<p>另外,除了上述内容外,本节还会给大家使用gridLayout时会遇到的问题,以及如何解决低版本
+sdk如何使用GridLayout的方法！接下来就开始本节的课程吧!</p>
+<hr/>
+<h2>1.相关属性总结图</h2>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/71483585.jpg"/></p>
+<hr/>
+<h2>2.使用实例:计算器布局的实现:</h2>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/4201451.jpg"/></p>
+<p><strong>实现代码:</strong></p>
+<pre>
+&lt;GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GridLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="4"
+    android:orientation="horizontal"
+    android:rowCount="6" &gt;
+
+    &lt;TextView
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#FFCCCC"
+        android:text="0"
+        android:textSize="50sp" /&gt;
+
+    &lt;Button
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:text="回退" /&gt;
+
+    &lt;Button
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:text="清空" /&gt;
+
+    &lt;Button android:text="+" /&gt;
+
+    &lt;Button android:text="1" /&gt;
+
+    &lt;Button android:text="2" /&gt;
+
+    &lt;Button android:text="3" /&gt;
+
+    &lt;Button android:text="-" /&gt;
+
+    &lt;Button android:text="4" /&gt;
+
+    &lt;Button android:text="5" /&gt;
+
+    &lt;Button android:text="6" /&gt;
+
+    &lt;Button android:text="*" /&gt;
+
+    &lt;Button android:text="7" /&gt;
+
+    &lt;Button android:text="8" /&gt;
+
+    &lt;Button android:text="9" /&gt;
+
+    &lt;Button android:text="/" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:text="." /&gt;
+
+    &lt;Button android:text="0" /&gt;
+
+    &lt;Button android:text="=" /&gt;
+
+&lt;/GridLayout&gt; 
+</pre>
+<p><strong>代码解析:</strong>
+代码很简单,只是回退与清楚按钮横跨两列,而其他的都是直接添加的,默认每个组件都是
+占一行一列,另外还有一点要注意的:
+我们通过:<strong>android:layout_rowSpan</strong>与<strong>android:layout_columnSpan</strong>设置了组件横跨
+多行或者多列的话,如果你要让组件填满横越过的行或列的话,需要添加下面这个属性:
+<strong>android:layout_gravity = "fill"</strong>！！！就像这个计算机显示数字的部分!</p>
+<hr/>
+<h2>3.用法归纳:</h2>
+<p>①GridLayout使用虚细线将布局划分为行,列和单元格,同时也支持在行,列上进行交错排列
+②使用流程:</p>
+<blockquote><ul>
+<li>step 1:先定义组件的对其方式 android:orientation  水平或者竖直,设置多少行与多少列</li>
+<li>step 2:设置组件所在的行或者列,记得是从0开始算的,不设置默认每个组件占一行一列</li>
+<li>step 3:设置组件横跨几行或者几列;设置完毕后,需要在设置一个填充:android:layout_gravity = "fill"</li>
+</ul>
+</blockquote>
+<hr/>
+<h2>4.使用GridLayout要注意的地方:</h2>
+<p>因为GirdLayout是4.0后才推出的,所以minSDK版本要改为14或者以上的版本,
+不然写布局代码的时候,这玩意就会莫名其妙地出错,说找不到这个GridLayout,
+当然,如果你要低版本兼容的话,就要看下面的内容了！</p>
+<hr/>
+<h2>5.低版本sdk如何使用GridLayout:</h2>
+<p>解决方法很简单:只需要导入v7包的gridlayout包即可!
+v7包一般在sdk下的:sdk\extras\android\support\v7\gridlayout目录下
+如果你没有的话,也可以到这里下载: <a href="http://www.runoob.com/wp-content/uploads/2015/07/gridlayout_v7_jay.rar">gridlayout_v7_jay.rar </a>
+但是用的时候,标签却是这样写的:</p>
+<pre>
+&lt;android.support.v7.widget.GridLayout&gt;`
+</pre>
+<hr/>
+<h2>本节小结</h2>
+<p>关于GridLayout的介绍就到这里~</p> </div>

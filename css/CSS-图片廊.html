@@ -1,0 +1,169 @@
+<div class="article-intro" id="content">
+<h1>CSS 图片廊</h1>
+<style>
+.responsive .img {
+    border: 1px solid #ccc;
+}
+
+.responsive .img:hover {
+    border: 1px solid #777;
+}
+
+.responsive .img img {
+    width: 100%;
+    height: auto;
+}
+
+.responsive  .desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.responsive  {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+       width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+<p>以下是使用CSS创建图片廊：</p>
+<div class="responsive">
+<div class="img">
+<a href="http://static.runoob.com/images/demo/demo1.jpg" target="_blank">
+<img alt="图片文本描述" height="200" src="http://static.runoob.com/images/demo/demo1.jpg" width="300"/>
+</a>
+<div class="desc">这里添加图片文本描述</div>
+</div>
+</div>
+<div class="responsive">
+<div class="img">
+<a href="http://static.runoob.com/images/demo/demo2.jpg" target="_blank">
+<img alt="图片文本描述" height="200" src="http://static.runoob.com/images/demo/demo2.jpg" width="300"/>
+</a>
+<div class="desc">这里添加图片文本描述</div>
+</div>
+</div>
+<div class="responsive">
+<div class="img">
+<a href="http://static.runoob.com/images/demo/demo3.jpg" target="_blank">
+<img alt="图片文本描述" height="200" src="http://static.runoob.com/images/demo/demo3.jpg" width="300"/>
+</a>
+<div class="desc">这里添加图片文本描述</div>
+</div>
+</div>
+<div class="responsive">
+<div class="img">
+<a href="http://static.runoob.com/images/demo/demo4.jpg" target="_blank">
+<img alt="图片文本描述" height="200" src="http://static.runoob.com/images/demo/demo4.jpg" width="300"/>
+</a>
+<div class="desc">这里添加图片文本描述</div>
+</div>
+</div>
+<br/>
+<h2>图片廊</h2><p>
+以下是使用 CSS 创建图片廊：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo1.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo1.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">图片文本描述</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">200</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo2.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo2.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">图片文本描述</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">200</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo3.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo3.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">图片文本描述</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">200</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo4.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://static.runoob.com/images/demo/demo4.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">图片文本描述</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">200</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_gallery" target="_blank">尝试一下 »</a>
+</div><hr/>
+<h2>更多实例</h2>
+<div class="example">
+<h2 class="example">响应式图片廊</h2>
+<p>使用 CSS3 的媒体查询来创建响应式图片廊：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img_fjords.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.runoob.com/wp-content/uploads/2016/04/img_fjords.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Trolltunga Norway</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">200</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img_forest.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.runoob.com/wp-content/uploads/2016/04/img_forest.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Forest</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">600</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">400</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img_lights.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.runoob.com/wp-content/uploads/2016/04/img_lights.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Northern Lights</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">600</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">400</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">responsive</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">_blank</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img_mountains.jpg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.runoob.com/wp-content/uploads/2016/04/img_mountains.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Mountains</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">600</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">height</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">400</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">desc</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这里添加图片文本描述</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">clearfix</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">padding:6px;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">重置浏览器大小查看效果</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_gallery_responsive" target="_blank">尝试一下 »</a>
+</div>
+</div>

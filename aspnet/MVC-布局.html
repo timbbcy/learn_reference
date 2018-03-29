@@ -1,0 +1,65 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET MVC <span class="color_h1">- 样式和布局</span>
+</h1>
+<br/><hr/>
+<p class="intro">为了学习 ASP.NET MVC，我们将构建一个 Internet 应用程序。</p>
+<p class="intro">第 3 部分：添加样式和统一的外观（布局）。</p>
+<hr/>
+<h2>添加布局</h2>
+<p>文件 _Layout.cshtml 表示应用程序中每个页面的布局。它位于 Views 文件夹中的 Shared 文件夹。</p>
+<p>打开文件 _Layout.cshtml，把内容替换成：</p>
+<div class="code notranslate"><div class="auto-style1">
+&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>&lt;head&gt;<br/>&lt;meta charset="utf-8" /&gt;<br/>
+&lt;title&gt;<span class="marked">@ViewBag.Title</span>&lt;/title&gt;<br/>&lt;link href="<span class="marked">@Url.Content("~/Content/Site.css")</span>" rel="stylesheet" type="text/css" /&gt;<br/>&lt;script src="<span class="marked">@Url.Content("~/Scripts/jquery-1.5.1.min.js")</span>"&gt;&lt;/script&gt;<br/>&lt;script src="<span class="marked">@Url.Content("~/Scripts/modernizr-1.7.min.js")</span>"&gt;&lt;/script&gt;<br/>&lt;/head&gt;<br/>&lt;body&gt;<br/>&lt;ul id="menu"&gt;<br/>
+&lt;li&gt;<span class="marked">@Html.ActionLink("Home", "Index", "Home")</span>&lt;/li&gt;<br/>&lt;li&gt;<span class="marked">@Html.ActionLink("Movies", 
+"Index", "Movies")</span>&lt;/li&gt;<br/>&lt;li&gt;<span class="marked">@Html.ActionLink("About", "About", 
+"Home")</span>&lt;/li&gt;<br/>&lt;/ul&gt; <br/>&lt;section id="main"&gt;<br/><span class="marked">@RenderBody()</span><br/>
+&lt;p&gt;Copyright RUNOOB 2012. All Rights Reserved.&lt;/p&gt;<br/>&lt;/section&gt;<br/>&lt;/body&gt;<br/>&lt;/html&gt;</div></div>
+<hr/>
+<h2>HTML 帮助器</h2>
+<p>在上面的代码中，HTML 帮助器用于修改 HTML 输出：</p>
+<p>@Url.Content() - URL 内容将在此处插入。</p>
+<p>@Html.ActionLink() - HTML 链接将在此处插入。</p>
+<p>在本教程后面的章节中，您将学到更多关于 HTML 帮助器的知识。</p>
+<hr/>
+<h2>Razor 语法</h2>
+<p>在上面的代码中，红色标记的代码是使用 Razor 标记的 C#。</p>
+<p>@ViewBag.Title - 页面标题将在此处插入。</p>
+<p>@RenderBody() - 页面内容将在此处呈现。</p>
+<p>您可以在我们的 <a href="razor-intro.html">Razor 教程</a>中学习关于 C# 和 VB（Visual Basic）的 Razor 标记的知识。</p>
+<hr/>
+<h2>添加样式</h2>
+<p>应用程序的样式表是 Site.css，位于 Content 文件夹中。</p>
+<p>打开文件 Site.css，把内容替换成：</p>
+<div class="code notranslate"><div>
+body<br/>{<br/>font: "Trebuchet MS", Verdana, sans-serif;<br/>background-color: 
+#5c87b2;<br/>color: #696969;<br/>}<br/>h1<br/>{<br/>border-bottom: 3px solid 
+#cc9900;<br/>font: Georgia, serif;<br/>color: #996600;<br/>}<br/>#main<br/>{<br/>
+padding: 20px;<br/>background-color: #ffffff;<br/>border-radius: 0 4px 4px 
+4px;<br/>}<br/>a<br/>{<br/>color: #034af3; <br/>}<br/>/* Menu Styles 
+------------------------------*/ <br/>ul#menu<br/>{<br/>padding: 0px;<br/>
+position: relative;<br/>margin: 0;<br/>}<br/>ul#menu li<br/>{<br/>display: 
+inline;<br/>}<br/>ul#menu li a <br/>{<br/>background-color: #e8eef4;<br/>padding: 
+10px 20px;<br/>text-decoration: none;<br/>line-height: 2.8em;<br/>/*CSS3 
+properties*/<br/>border-radius: 4px 4px 0 0;<br/>}<br/>ul#menu li a:hover<br/>{<br/>
+background-color: #ffffff;<br/>} <br/>/* Forms Styles 
+------------------------------*/ <br/>fieldset<br/>{<br/>padding-left: 12px;<br/>
+} <br/>fieldset label<br/>{<br/>display: block;<br/>padding: 4px;<br/>}<br/>
+input[type="text"], input[type="password"]<br/>{<br/>width: 300px;<br/>}<br/>
+input[type="submit"]<br/>{<br/>padding: 4px;<br/>}<br/>/* Data Styles 
+------------------------------*/ <br/>table.data<br/>{<br/>background-color:#ffffff;<br/>
+border:1px solid #c3c3c3;<br/>border-collapse:collapse;<br/>width:100%;<br/>}<br/>
+table.data th<br/>{<br/>background-color:#e8eef4;<br/>border:1px solid #c3c3c3;<br/>
+padding:3px;<br/>}<br/>table.data td <br/>{<br/>border:1px solid #c3c3c3;<br/>
+padding:3px;<br/>}
+</div></div>
+<br/><hr/>
+<h2>_ViewStart 文件</h2>
+<p>Shared 文件夹（位于 Views 文件夹内）中的 _ViewStart 文件包含如下内容：</p>
+<div class="code notranslate"><div>
+@{Layout = "~/Views/Shared/_Layout.cshtml";}</div></div>
+<p>这段代码被自动添加到由应用程序显示的所有视图。</p>
+<p>如果您删除了这个文件，则必须向所有视图中添加这行代码。</p>
+<p>在本教程后面的章节中，您将学到更多关于视图的知识。</p>
+<br/>
+</div>

@@ -1,0 +1,549 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">拖动（Draggable）</span></h1>
+<div class="tutintro">
+<p>允许使用鼠标移动元素。</p>
+<p>如需了解更多有关 draggable 交互的细节，请查看 API 文档 <a href="/jqueryui/api-draggable.html">可拖拽小部件（Draggable Widget）</a>。</p>
+</div>
+<h2>默认功能</h2>
+<p>在任意的 DOM 元素上启用 draggable 功能。通过鼠标点击并在视区中拖动来移动 draggable 对象。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 默认功能&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable { width: 150px; height: 150px; padding: 0.5em; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p&gt;请拖动我！&lt;/p&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>自动滚动</h2>
+<p>当 draggable 移动到视区外时自动滚动文档。设置 <code>scroll</code> 选项为 true 来启用自动滚动，当滚动触发时进行微调，滚动速度是通过 <code>scrollSensitivity</code> 和 <code>scrollSpeed</code> 选项设置的。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 自动滚动&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable, #draggable2, #draggable3 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ scroll: true });
+    $( "#draggable2" ).draggable({ scroll: true, scrollSensitivity: 100 });
+    $( "#draggable3" ).draggable({ scroll: true, scrollSpeed: 100 });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p&gt;Scroll 设置为 true，默认设置&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="ui-widget-content"&gt;
+  &lt;p&gt;scrollSensitivity 设置为 100&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable3" class="ui-widget-content"&gt;
+  &lt;p&gt;scrollSpeed 设置为 100&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div style="height: 5000px; width: 1px;"&gt;&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-scroll" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>约束运动</h2>
+<p>通过定义 draggable 区域的边界来约束每个 draggable 的运动。设置 <code>axis</code> 选项来限制 draggable 的路径为 x 轴或者 y 轴，或者使用 <code>containment</code> 选项来指定一个父级的 DOM 元素或者一个 jQuery 选择器，比如 'document.'。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 约束运动&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .draggable { width: 90px; height: 90px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  #draggable, #draggable2 { margin-bottom:20px; }
+  #draggable { cursor: n-resize; }
+  #draggable2 { cursor: e-resize; }
+  #containment-wrapper { width: 95%; height:150px; border:2px solid #ccc; padding: 10px; }
+  h3 { clear: left; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ axis: "y" });
+    $( "#draggable2" ).draggable({ axis: "x" });
+ 
+    $( "#draggable3" ).draggable({ containment: "#containment-wrapper", scroll: false });
+    $( "#draggable5" ).draggable({ containment: "parent" });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;h3&gt;沿着轴约束运动：&lt;/h3&gt;
+ 
+&lt;div id="draggable" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;只能垂直拖拽&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;只能水平拖拽&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;h3&gt;或者在另一个 DOM 元素中约束运动：&lt;/h3&gt;
+&lt;div id="containment-wrapper"&gt;
+  &lt;div id="draggable3" class="draggable ui-widget-content"&gt;
+    &lt;p&gt;我被约束在盒子里&lt;/p&gt;
+  &lt;/div&gt;
+ 
+  &lt;div class="draggable ui-widget-content"&gt;
+    &lt;p id="draggable5" class="ui-widget-header"&gt;我被约束在父元素内&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-constrain-movement" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>光标样式</h2>
+<p>当拖拽对象时定位光标。默认情况下，光标是出现在被拖拽对象的中间。使用 <code>cursorAt</code> 选项来指定相对于 draggable 的另一个位置（指定一个相对于 top、right、bottom、left 的像素值）。通过提供一个带有有效的 CSS 光标值的 <code>cursor</code> 选项，来自定义光标的外观。有效的 CSS 光标值包括：default、move、pointer、crosshair，等等。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 光标样式&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable, #draggable2, #draggable3 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ cursor: "move", cursorAt: { top: 56, left: 56 } });
+    $( "#draggable2" ).draggable({ cursor: "crosshair", cursorAt: { top: -5, left: -5 } });
+    $( "#draggable3" ).draggable({ cursorAt: { bottom: 0 } });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p&gt;我总是在中间（相对于鼠标）&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="ui-widget-content"&gt;
+  &lt;p&gt;我的光标是在 left -5 和 top -5&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable3" class="ui-widget-content"&gt;
+  &lt;p&gt;我的光标位置只控制了 'bottom' 值&lt;/p&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-cursor-style" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>延迟开始</h2>
+<p>通过 <code>delay</code> 选项设置延迟开始拖拽的毫秒数。通过 <code>distance</code> 选项设置光标被按下且拖拽指定像素后才允许拖拽。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 延迟开始&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable, #draggable2 { width: 120px; height: 120px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ distance: 20 });
+    $( "#draggable2" ).draggable({ delay: 1000 });
+    $( ".ui-draggable" ).disableSelection();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p&gt;只有把我拖拽了 20 像素后，拖拽才开始&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="ui-widget-content"&gt;
+  &lt;p&gt;不管 distance 是多少，您都必须拖拽并等待 1000ms 后拖拽才开始&lt;/p&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-delay-start" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>事件</h2>
+<p>draggable 上的 <code>start</code>、<code>drag</code> 和 <code>stop</code> 事件。拖拽开始时触发 <code>start</code> 事件，拖拽期间触发 <code>drag</code> 事件，拖拽停止时触发 <code>stop</code> 事件。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 事件&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable { width: 16em; padding: 0 1em; }
+  #draggable ul li { margin: 1em 0; padding: 0.5em 0; } * html #draggable ul li { height: 1%; }
+  #draggable ul li span.ui-icon { float: left; }
+  #draggable ul li span.count { font-weight: bold; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    var $start_counter = $( "#event-start" ),
+      $drag_counter = $( "#event-drag" ),
+      $stop_counter = $( "#event-stop" ),
+      counts = [ 0, 0, 0 ];
+ 
+    $( "#draggable" ).draggable({
+      start: function() {
+        counts[ 0 ]++;
+        updateCounterStatus( $start_counter, counts[ 0 ] );
+      },
+      drag: function() {
+        counts[ 1 ]++;
+        updateCounterStatus( $drag_counter, counts[ 1 ] );
+      },
+      stop: function() {
+        counts[ 2 ]++;
+        updateCounterStatus( $stop_counter, counts[ 2 ] );
+      }
+    });
+ 
+    function updateCounterStatus( $event_counter, new_count ) {
+      // 首先更新视觉状态...
+      if ( !$event_counter.hasClass( "ui-state-hover" ) ) {
+        $event_counter.addClass( "ui-state-hover" )
+          .siblings().removeClass( "ui-state-hover" );
+      }
+      // ...然后更新数字
+      $( "span.count", $event_counter ).text( new_count );
+    }
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget ui-widget-content"&gt;
+ 
+  &lt;p&gt;请拖拽我，触发一连串的事件。&lt;/p&gt;
+ 
+  &lt;ul class="ui-helper-reset"&gt;
+    &lt;li id="event-start" class="ui-state-default ui-corner-all"&gt;&lt;span class="ui-icon ui-icon-play"&gt;&lt;/span&gt;"start" 被调用 &lt;span class="count"&gt;0&lt;/span&gt;x&lt;/li&gt;
+    &lt;li id="event-drag" class="ui-state-default ui-corner-all"&gt;&lt;span class="ui-icon ui-icon-arrow-4"&gt;&lt;/span&gt;"drag" 被调用 &lt;span class="count"&gt;0&lt;/span&gt;x&lt;/li&gt;
+    &lt;li id="event-stop" class="ui-state-default ui-corner-all"&gt;&lt;span class="ui-icon ui-icon-stop"&gt;&lt;/span&gt;"stop" 被调用 &lt;span class="count"&gt;0&lt;/span&gt;x&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-events" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>Handles</h2>
+<p>只有当光标在 draggable 上指定部分时才允许拖拽。使用 <code>handle</code> 选项来指定用于拖拽对象的元素（或元素组）的 jQuery 选择器。</p>Or prevent dragging when the cursor is over a specific element (or group of elements) within the draggable. Use the cancel option to specify a jQuery selector over which to "cancel" draggable functionality.
+<p>或者当光标在 draggable 内指定元素（或元素组）上时不允许拖拽。使用 <code>handle</code> 选项来指定取消拖拽功能的 jQuery 选择器。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - Handles&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable, #draggable2 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  #draggable p { cursor: move; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ handle: "p" });
+    $( "#draggable2" ).draggable({ cancel: "p.ui-widget-header" });
+    $( "div, p" ).disableSelection();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p class="ui-widget-header"&gt;您只可以在这个范围内拖拽我&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="ui-widget-content"&gt;
+  &lt;p&gt;您可以把我向四周拖拽&amp;hellip;&lt;/p&gt;
+  &lt;p class="ui-widget-header"&gt;&amp;hellip;但是您不可以在这个范围内拖拽我&lt;/p&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-handle" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>还原位置</h2>
+<p>当带有布尔值 <code>revert</code> 选项的 draggable 停止拖拽时，返回 draggable（或它的助手）到原始位置。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 还原位置&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable, #draggable2 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ revert: true });
+    $( "#draggable2" ).draggable({ revert: true, helper: "clone" });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p&gt;还原&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="ui-widget-content"&gt;
+  &lt;p&gt;还原助手&lt;/p&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-revert" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>对齐到元素或网格</h2>
+<p>对齐 draggable 到 DOM 元素的内部或外部边界。使用 <code>snap</code>、<code>snapMode</code>（inner, outer, both）和 <code>snapTolerance</code>（当调用对齐时，draggable 与元素之间的距离，以像素为单位）选项。</p>
+<p>或者对齐 draggable 到网格。通过 <code>grid</code> 选项设置网格单元的尺寸（以像素为单位的高度或宽度）。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 对齐到元素或网格&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .draggable { width: 90px; height: 80px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em; }
+  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+  #snaptarget { height: 140px; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ snap: true });
+    $( "#draggable2" ).draggable({ snap: ".ui-widget-header" });
+    $( "#draggable3" ).draggable({ snap: ".ui-widget-header", snapMode: "outer" });
+    $( "#draggable4" ).draggable({ grid: [ 20, 20 ] });
+    $( "#draggable5" ).draggable({ grid: [ 80, 80 ] });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="snaptarget" class="ui-widget-header"&gt;
+  &lt;p&gt;我是对齐目标&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;br style="clear:both"&gt;
+ 
+&lt;div id="draggable" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;默认（snap: true），对齐到所有其他的 draggable 元素&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;我只对齐到大盒子&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable3" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;我只对齐到大盒子的外边缘&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable4" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;我对齐到一个 20 x 20 网格&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable5" class="draggable ui-widget-content"&gt;
+  &lt;p&gt;我对齐到一个 80 x 80 网格&lt;/p&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-snap-to" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>视觉反馈</h2>
+<p>给用户提供反馈，就像以助手方式拖拽对象一样。<code>helper</code> 选项接受值 'original'（用光标移动 draggable 对象），'clone'（用光标移动 draggable 的副本），或者一个返回 DOM 元素的函数（该元素在拖拽期间显示在光标附近）。通过 <code>opacity</code> 选项控制助手的透明度。</p>
+<p>为了区别哪一个 draggable 正在被拖拽，让在运动中的 draggable 保持最前。如果正在拖拽，使用 <code>zIndex</code> 选项来设置助手的高度 z-index，或者使用 <code>stack</code> 选项来确保当停止拖拽时，最后一个被拖拽的项目总是出现在同组其他项目的上面。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） - 视觉反馈&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #draggable, #draggable2, #draggable3, #set div { width: 90px; height: 90px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+  #draggable, #draggable2, #draggable3 { margin-bottom:20px; }
+  #set { clear:both; float:left; width: 368px; height: 120px; }
+  p { clear:both; margin:0; padding:1em 0; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#draggable" ).draggable({ helper: "original" });
+    $( "#draggable2" ).draggable({ opacity: 0.7, helper: "clone" });
+    $( "#draggable3" ).draggable({
+      cursor: "move",
+      cursorAt: { top: -12, left: -20 },
+      helper: function( event ) {
+        return $( "&lt;div class='ui-widget-header'&gt;I'm a custom helper&lt;/div&gt;" );
+      }
+    });
+    $( "#set div" ).draggable({ stack: "#set div" });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;h3 class="docs"&gt;助手：&lt;/h3&gt;
+ 
+&lt;div id="draggable" class="ui-widget-content"&gt;
+  &lt;p&gt;原始的&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable2" class="ui-widget-content"&gt;
+  &lt;p&gt;半透明的克隆&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;div id="draggable3" class="ui-widget-content"&gt;
+  &lt;p&gt;自定义助手（与 cursorAt 结合）&lt;/p&gt;
+&lt;/div&gt;
+ 
+&lt;h3 class="docs"&gt;堆叠：&lt;/h3&gt;
+&lt;div id="set"&gt;
+  &lt;div class="ui-widget-content"&gt;
+    &lt;p&gt;我们是 draggables..&lt;/p&gt;
+  &lt;/div&gt;
+ 
+  &lt;div class="ui-widget-content"&gt;
+    &lt;p&gt;..它的 z-index 是自动控制的..&lt;/p&gt;
+  &lt;/div&gt;
+ 
+  &lt;div class="ui-widget-content"&gt;
+    &lt;p&gt;..带有 stack 选项。&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-visual-feedback" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>jQuery UI Draggable + Sortable</h2>
+<p>Draggable 与 Sortable 的无缝交互。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 拖动（Draggable） + 排序（Sortable）&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+  li { margin: 5px; padding: 5px; width: 150px; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#sortable" ).sortable({
+      revert: true
+    });
+    $( "#draggable" ).draggable({
+      connectToSortable: "#sortable",
+      helper: "clone",
+      revert: "invalid"
+    });
+    $( "ul, li" ).disableSelection();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;ul&gt;
+  &lt;li id="draggable" class="ui-state-highlight"&gt;请拖拽我&lt;/li&gt;
+&lt;/ul&gt;
+ 
+&lt;ul id="sortable"&gt;
+  &lt;li class="ui-state-default"&gt;Item 1&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;Item 2&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;Item 3&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;Item 4&lt;/li&gt;
+  &lt;li class="ui-state-default"&gt;Item 5&lt;/li&gt;
+&lt;/ul&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-draggable-sortable" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

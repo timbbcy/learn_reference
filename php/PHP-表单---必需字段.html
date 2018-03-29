@@ -1,0 +1,105 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">表单 - 必需字段</span></h1>
+<hr/>
+<p class="intro">本章节我们将介绍如何设置表单必需字段及错误信息。</p>
+<hr/>
+<h2>PHP - 必需字段</h2>
+<p>在上一章节我们已经介绍了表的验证规则，我们可以看到"名字", "E-mail", 和 
+"性别" 字段是必需的，各字段不能为空。</p>
+<table class="reference notranslate">
+<tbody><tr>
+<th style="width:25%">字段</th>
+<th style="width:75%">验证规则</th>
+</tr>
+<tr>
+<td>名字</td>
+<td>必需。 + 只能包含字母和空格</td>
+</tr>
+<tr>
+<td>E-mail</td>
+<td>必需。 + 必需包含一个有效的电子邮件地址（包含"@"和"."）</td>
+</tr>
+<tr>
+<td>网址</td>
+<td>可选。 如果存在，它必需包含一个有效的URL</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>可选。多行字段（文本域）。</td>
+</tr>
+<tr>
+<td>性别</td>
+<td>必需。必需选择一个。</td>
+</tr>
+</tbody></table>
+<p>如果在前面的章节中，所有输入字段都是可选的。 </p>
+<p>在以下代码中我们加入了一些新的变量: $nameErr, $emailErr, 
+$genderErr, 和 $websiteErr.。这些错误变量将显示在必需字段上。 我们还为每个$_POST变量增加了一个if else语句。
+这些语句将检查 $_POST 变量是 否为空（使用php的 empty() 函数）。如果为空，将显示对应的错误信息。
+如果不为空，数据将传递给test_input() 函数：</p>
+<pre>
+&lt;?php
+// 定义变量并默认设为空值
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "名字是必需的。";
+  } else {
+    $name = test_input($_POST["name"]);
+  }
+
+  if (empty($_POST["email"])) {
+    $emailErr = "邮箱是必需的。";
+  } else {
+    $email = test_input($_POST["email"]);
+  }
+
+  if (empty($_POST["website"])) {
+    $website = "";
+  } else {
+    $website = test_input($_POST["website"]);
+  }
+
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = test_input($_POST["comment"]);
+  }
+
+  if (empty($_POST["gender"])) {
+    $genderErr = "性别是必需的。";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+?&gt;
+</pre>
+<hr/>
+<h2>PHP - 显示错误信息</h2>
+<p>在以下的HTML实例表单中，我们为每个字段中添加了一些脚本，
+各个脚本会在信息输入错误时显示错误信息。(如果用户未填写信息就提交表单则会输出错误信息):</p>
+<pre>
+&lt;form method="post" action="&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']);?&gt;"&gt; 
+   名字: &lt;input type="text" name="name"&gt;
+   &lt;span class="error"&gt;* &lt;?php echo $nameErr;?&gt;&lt;/span&gt;
+   &lt;br&gt;&lt;br&gt;
+   E-mail: &lt;input type="text" name="email"&gt;
+   &lt;span class="error"&gt;* &lt;?php echo $emailErr;?&gt;&lt;/span&gt;
+   &lt;br&gt;&lt;br&gt;
+   网址: &lt;input type="text" name="website"&gt;
+   &lt;span class="error"&gt;&lt;?php echo $websiteErr;?&gt;&lt;/span&gt;
+   &lt;br&gt;&lt;br&gt;
+   备注: &lt;textarea name="comment" rows="5" cols="40"&gt;&lt;/textarea&gt;
+   &lt;br&gt;&lt;br&gt;
+   性别:
+   &lt;input type="radio" name="gender" value="female"&gt;女
+   &lt;input type="radio" name="gender" value="male"&gt;男
+   &lt;span class="error"&gt;* &lt;?php echo $genderErr;?&gt;&lt;/span&gt;
+   &lt;br&gt;&lt;br&gt;
+   &lt;input type="submit" name="submit" value="Submit"&gt; 
+&lt;/form&gt;
+</pre>
+<p> <a class="showbtn" href="/try/showphp.php?filename=demo_form_validation_required" target="_blank">查看代码 »</a></p>
+</div>

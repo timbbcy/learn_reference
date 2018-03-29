@@ -1,0 +1,13 @@
+<div class="article-intro" id="content">
+<script>
+$(function() {
+	$.post("/try/quiz/html5.php",
+	  {
+	  },
+	  function(data){
+		$("#content").html(data)
+	  });
+	
+})
+</script>
+</div>

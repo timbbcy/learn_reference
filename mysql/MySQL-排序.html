@@ -1,0 +1,106 @@
+<div class="article-intro" id="content">
+<h1>MySQL 排序</h1>
+<p>
+我们知道从 MySQL 表中使用 SQL SELECT 语句来读取数据。</p>
+<p>
+如果我们需要对读取的数据进行排序，我们就可以使用 MySQL 的 <strong>ORDER BY</strong> 子句来设定你想按哪个字段哪种方式来进行排序，再返回搜索结果。
+</p>
+<h3>语法</h3>
+<p>
+以下是 SQL SELECT 语句使用 ORDER BY 子句将查询数据排序后再返回数据：
+</p>
+<pre>
+SELECT field1, field2,...fieldN table_name1, table_name2...
+ORDER BY field1, [field2...] [ASC [DESC]]
+</pre>
+<ul>
+<li>你可以使用任何字段来作为排序的条件，从而返回排序后的查询结果。</li>
+<li>你可以设定多个字段来排序。</li>
+<li>你可以使用 ASC 或 DESC 关键字来设置查询结果是按升序或降序排列。 默认情况下，它是按升序排列。</li>
+<li>你可以添加 WHERE...LIKE 子句来设置条件。</li>
+</ul>
+<hr/>
+<h2>在命令提示符中使用 ORDER BY 子句</h2>
+<p>以下将在 SQL SELECT 语句中使用 ORDER BY 子句来读取MySQL 数据表 runoob_tbl 中的数据：</p>
+<h3>实例</h3>
+<p>
+尝试以下实例，结果将按升序及降序排列。</p>
+<div class="example">
+<h2 class="example">SQL 排序</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">;
+</span><span class="hl-identifier">Database</span><span class="hl-code"> </span><span class="hl-identifier">changed</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-reserved">ORDER</span><span class="hl-code"> </span><span class="hl-reserved">BY</span><span class="hl-code"> </span><span class="hl-identifier">submission_date</span><span class="hl-code"> </span><span class="hl-reserved">ASC</span><span class="hl-code">;
++-----------+---------------+---------------+-----------------+
+| </span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_title</span><span class="hl-code">  | </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">submission_date</span><span class="hl-code"> |
++-----------+---------------+---------------+-----------------+
+| </span><span class="hl-number">3</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">Java</span><span class="hl-code">   | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2015</span><span class="hl-code">-</span><span class="hl-number">05</span><span class="hl-code">-</span><span class="hl-number">01</span><span class="hl-code">      |
+| </span><span class="hl-number">4</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">Python</span><span class="hl-code"> | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2016</span><span class="hl-code">-</span><span class="hl-number">03</span><span class="hl-code">-</span><span class="hl-number">06</span><span class="hl-code">      |
+| </span><span class="hl-number">1</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">PHP</span><span class="hl-code">    | 菜鸟教程  | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">12</span><span class="hl-code">      |
+| </span><span class="hl-number">2</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">MySQL</span><span class="hl-code">  | 菜鸟教程  | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">12</span><span class="hl-code">      |
++-----------+---------------+---------------+-----------------+
+</span><span class="hl-number">4</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-reserved">ORDER</span><span class="hl-code"> </span><span class="hl-reserved">BY</span><span class="hl-code"> </span><span class="hl-identifier">submission_date</span><span class="hl-code"> </span><span class="hl-reserved">DESC</span><span class="hl-code">;
++-----------+---------------+---------------+-----------------+
+| </span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_title</span><span class="hl-code">  | </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">submission_date</span><span class="hl-code"> |
++-----------+---------------+---------------+-----------------+
+| </span><span class="hl-number">1</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">PHP</span><span class="hl-code">    | 菜鸟教程  | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">12</span><span class="hl-code">      |
+| </span><span class="hl-number">2</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">MySQL</span><span class="hl-code">  | 菜鸟教程  | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">12</span><span class="hl-code">      |
+| </span><span class="hl-number">4</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">Python</span><span class="hl-code"> | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2016</span><span class="hl-code">-</span><span class="hl-number">03</span><span class="hl-code">-</span><span class="hl-number">06</span><span class="hl-code">      |
+| </span><span class="hl-number">3</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">Java</span><span class="hl-code">   | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2015</span><span class="hl-code">-</span><span class="hl-number">05</span><span class="hl-code">-</span><span class="hl-number">01</span><span class="hl-code">      |
++-----------+---------------+---------------+-----------------+
+</span><span class="hl-number">4</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>读取 runoob_tbl 表中所有数据并按  submission_date 字段的升序排列。</p>
+<hr/>
+<h2>在 PHP 脚本中使用 ORDER BY 子句</h2><p>
+你可以使用PHP函数的 mysqli_query() 及相同的 SQL SELECT 带上 ORDER BY 子句的命令来获取数据。</p><p>
+该函数用于执行 SQL 命令，然后通过 PHP 函数 mysqli_fetch_array() 来输出所有查询的数据。</p>
+<h3>实例</h3>
+<p>尝试以下实例，查询后的数据按  submission_date 字段的降序排列后返回。</p>
+<div class="example">
+<h2 class="example">MySQL ORDER BY 测试：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$dbhost</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">localhost:3306</span><span class="hl-quotes">'</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> mysql服务器主机地址</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbuser</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">;            </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbpass</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名密码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$dbhost</span><span class="hl-code">, </span><span class="hl-var">$dbuser</span><span class="hl-code">, </span><span class="hl-var">$dbpass</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$conn</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">连接失败: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 设置编码，防止中文乱码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT runoob_id, runoob_title, 
+        runoob_author, submission_date
+        FROM runoob_tbl
+        ORDER BY  submission_date ASC</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">无法读取数据: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 MySQL ORDER BY 测试&lt;h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;教程 ID&lt;/td&gt;&lt;td&gt;标题&lt;/td&gt;&lt;td&gt;作者&lt;/td&gt;&lt;td&gt;提交日期&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQL_ASSOC</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['runoob_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['submission_date']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;/table&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<p>输出结果如下图所示：</p><div class="example_code">
+<img src="//www.runoob.com/wp-content/uploads/2014/03/57109924-3486-49B0-9137-B08DFA4A0864.jpg"/>
+</div>
+</div>
+</div>

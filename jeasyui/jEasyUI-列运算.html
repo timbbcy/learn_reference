@@ -1,0 +1,62 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">列运算</span></h1>
+<p>在本教程中，您将学习如何在可编辑的数据网格（datagrid）中包含一个运算的列。一个运算列通常包含一些从一个或多个其他列运算的值。</p>
+<img src="/wp-content/uploads/2013/12/datagrid15.png"/>
+<p>首先，创建一个可编辑的数据网格（datagrid）。这里我们创建了一些可编辑列，'listprice'、'amount' 和 'unitcost' 列定义为 numberbox 编辑类型。运算列是 'unitcost' 字段，将是 listprice 乘以 amount 列的结果。</p>
+<pre style="color:#006600">
+    &lt;table id="tt" style="width:600px;height:auto"
+            title="Editable DataGrid with Calculated Column" iconCls="icon-edit" singleSelect="true"
+            idField="itemid" url="data/datagrid_data.json"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right" editor="{type:'numberbox',options:{precision:1}}"&gt;List Price&lt;/th&gt;
+                &lt;th field="amount" width="80" align="right" editor="{type:'numberbox',options:{precision:0}}"&gt;Amount&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right" editor="numberbox"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150" editor="text"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center" editor="{type:'checkbox',options:{on:'P',off:''}}"&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>当用户点击一行的时候，我们开始一个编辑动作。</p>
+<pre style="color:#006600">
+    var lastIndex;
+    $('#tt').datagrid({
+        onClickRow:function(rowIndex){
+            if (lastIndex != rowIndex){
+                $('#tt').datagrid('endEdit', lastIndex);
+                $('#tt').datagrid('beginEdit', rowIndex);
+                setEditing(rowIndex);
+            }
+            lastIndex = rowIndex;
+        }
+    });
+</pre>
+<p>为了在一些列之间创建运算关系，我们应该得到当前的 editors，并绑定一些事件到它们上面。</p>
+<pre style="color:#006600">
+    function setEditing(rowIndex){
+        var editors = $('#tt').datagrid('getEditors', rowIndex);
+        var priceEditor = editors[0];
+        var amountEditor = editors[1];
+        var costEditor = editors[2];
+        priceEditor.target.bind('change', function(){
+            calculate();
+        });
+        amountEditor.target.bind('change', function(){
+            calculate();
+        });
+        function calculate(){
+            var cost = priceEditor.target.val() * amountEditor.target.val();
+            $(costEditor.target).numberbox('setValue',cost);
+        }
+    }
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid15.zip">jeasyui-datagrid-datagrid15.zip</a></p>
+</div>

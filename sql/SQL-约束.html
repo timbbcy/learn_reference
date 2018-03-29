@@ -1,0 +1,32 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">约束（Constraints）</span>
+</h1>
+<hr/>
+<h2>SQL 约束（Constraints）</h2>
+<p>SQL 约束用于规定表中的数据规则。</p>
+<p>如果存在违反约束的数据行为，行为会被约束终止。</p>
+<p>约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。</p>
+<h3>SQL CREATE TABLE + CONSTRAINT 语法</h3>
+<div class="code notranslate"><div>
+CREATE TABLE <em>table_name</em><br/>
+(<br/><em>column_name1 data_type</em>(<em>size</em>) <em>constraint_name</em>,<br/><em>column_name2 data_type</em>(<em>size</em>) <em>constraint_name</em>,<br/><em>column_name3 data_type</em>(<em>size</em>) <em>constraint_name</em>,<br/>
+....<br/>
+);</div></div>
+<p>在 SQL 中，我们有如下约束：</p>
+<ul>
+<li>
+<strong>NOT NULL</strong> - 指示某列不能存储 NULL 值。</li>
+<li>
+<strong>UNIQUE</strong> - 保证某列的每行必须有唯一的值。</li>
+<li>
+<strong>PRIMARY KEY</strong> - NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。</li>
+<li>
+<strong>FOREIGN KEY</strong> - 保证一个表中的数据匹配另一个表中的值的参照完整性。</li>
+<li>
+<strong>CHECK</strong> - 保证列中的值符合指定的条件。</li>
+<li>
+<strong>DEFAULT</strong> - 规定没有给列赋值时的默认值。</li>
+</ul>
+<p>在下面的章节，我们会详细讲解每一种约束。</p>
+<br/>
+</div>

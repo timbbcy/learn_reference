@@ -1,0 +1,50 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 布局 - <span class="color_h1">添加自动播放标签页（Tabs）</span></h1>
+<p>
+本教程将向您展示如何创建一个自动播放的 Tabs。
+Tabs 组件显示第一个 tab 面板，然后显示第二个、第三个...
+我们将写一些代码来自动地切换 tab 面板，然后让它循环。
+</p>
+<img src="/wp-content/uploads/2013/12/tabs3.png"/>
+<h4>步骤 1：创建 Tabs</h4>
+<pre style="color:#006600">
+    &lt;div id="tt" class="easyui-tabs" style="width:330px;height:270px;"&gt;
+        &lt;div title="Shirt1" style="padding:20px;"&gt;
+            &lt;img src="images/shirt1.gif"&gt;
+        &lt;/div&gt;
+        &lt;div title="Shirt2" style="padding:20px;"&gt;
+            &lt;img src="images/shirt2.gif"&gt;
+        &lt;/div&gt;
+        &lt;div title="Shirt3" style="padding:20px;"&gt;
+            &lt;img src="images/shirt3.gif"&gt;
+        &lt;/div&gt;
+        &lt;div title="Shirt4" style="padding:20px;"&gt;
+            &lt;img src="images/shirt4.gif"&gt;
+        &lt;/div&gt;
+        &lt;div title="Shirt5" style="padding:20px;"&gt;
+            &lt;img src="images/shirt5.gif"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<h4>步骤 2：写自动播放代码</h4>
+<pre style="color:#006600">
+    var index = 0;
+    var t = $('#tt');
+    var tabs = t.tabs('tabs');
+    setInterval(function(){
+        t.tabs('select', tabs[index].panel('options').title);
+        index++;
+        if (index &gt;= tabs.length){
+            index = 0;
+        }
+    }, 3000);
+</pre>
+<p>正如您所看到的，我们调用 'tabs' 方法来得到所有 tab 面板，并使用 'setInterval' 函数来切换他们。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-layout-tabs3.zip">jeasyui-layout-tabs3.zip</a></p>
+</div>

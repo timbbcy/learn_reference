@@ -1,0 +1,190 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- 类</span>
+</h1>
+<hr/>
+<h2>ASP.NET 类参考手册</h2>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="50%">方法</th>
+<th align="left" width="50%">描述</th>
+</tr>
+<tr>
+<td class="unknown" valign="top">AsBool(), AsBool(true|false)</td>
+<td valign="top">
+转换字符串值为布尔值（true/false）。如果字符串不能转换为true/false，则返回 false 或者其他规定的值。
+</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">AsDateTime(), AsDateTime(<em>value</em>)</td>
+<td valign="top">
+转换字符串值为日期/时间。返回 DateTime。如果字符串不能转换为日期/时间，则返回 MinValue 或者其他规定的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">AsDecimal(), AsDecimal(<em>value</em>)</td>
+<td valign="top">
+转换字符串值为十进制值。如果字符串不能转换为十进制值，则返回 0.0 或者其他规定的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">AsFloat(), AsFloat(<em>value</em>)</td>
+<td valign="top">
+转换字符串值为浮点数。如果字符串不能转换为浮点数，则返回 0.0 或者其他规定的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">AsInt(), AsInt(<em>value</em>)</td>
+<td valign="top">
+转换字符串值为整数。如果字符串不能转换成整数，则返回 0 或者其他规定的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Href(<em>path</em> <em>[, param1 [, 
+param2]]</em>)</td>
+<td valign="top">从带有可选的附加路径部分的本地文件路径创建一个浏览器兼容的 URL。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Html.Raw(<em>value</em>)</td>
+<td valign="top">Renders
+<em>value</em> 呈现为 HTML 标记，而不是呈现为 HTML 编码输出。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">IsBool(), IsDateTime(), IsDecimal(), 
+IsFloat(), IsInt()</td>
+<td valign="top">如果该值可以从字符串转换为指定的类型，则返回 true。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">IsEmpty()</td>
+<td valign="top">如果对象或者变量没有值，则返回 true。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">IsPost</td>
+<td valign="top">如果请求是 POST，则返回 true。（初始请求通常是 GET。）</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Layout</td>
+<td valign="top">规定布局页面的路径应用到此页面。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">PageData[<em>key</em>], PageData[<em>index</em>], 
+Page</td>
+<td valign="top">在当前请求的页面、布局页面、部分页面之间包含共享数据。您可以使用动态页面来对相同的数据进行属性访问。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">RenderBody()</td>
+<td valign="top">(Layout pages) 
+呈现没有在布局页面任何命名区域的内容页的内容Renders the content of a content page that is not in 
+any named sections.</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">RenderPage(<em>path</em>,<em> values</em>)
+<br/>
+RenderPage(<em>path[, param1 [, param2]]</em>)</td>
+<td valign="top">
+呈现使用了规定的路径和可选的额外数据的内容页。您可以通过 position（实例 1）或者 key（实例 2）从 PageData 获取额外参数的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">RenderSection(<em>sectionName [, required 
+= </em>true|false<em>]</em>)</td>
+<td valign="top">(Layout pages) 
+呈现一个有名字的内容区域。设置 <em>required</em> 让一个区域为必需非可选的。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Request.Cookies[<em>key</em>]</td>
+<td valign="top">
+获取或者设置 HTTP cookie 的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Request.Files[<em>key</em>]</td>
+<td valign="top">Gets 
+在当前请求中上传的文件。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Request.Form[<em>key</em>]</td>
+<td valign="top">获取在表单中 post 的数据（作为字符串）。Request.Form 和 Request.QueryString 都要求[<em>key</em>] 检查。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Request.QueryString[<em>key</em>]</td>
+<td valign="top">
+获取 URL 查询字符串中规定的数据。Request.Form 和 Request.QueryString 都要求[<em>key</em>] 检查。
+</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Request.Unvalidated(<em>key</em>) <br/>
+Request.Unvalidated().QueryString|Form|Cookies|Headers[<em>key</em>]</td>
+<td valign="top">
+有选择地禁用请求验证（表单元素、查询字符串值、cookie、header 值）。请求验证默认是开启的，防止用户提交标记或者其他潜在的危险内容。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Response.AddHeader(<em>name</em>, <em>
+value</em>)</td>
+<td valign="top">在应答中添加一个 HTTP 服务器响应头。
+</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Response.OutputCache(<em>seconds</em> <em>
+[, sliding] [, varyByParams]</em>)</td>
+<td valign="top">Caches 
+在指定时间的页面输出缓存。设置 <em>sliding</em> 来重置每个页面的访问超时时间，设置 <em>varyByParams</em> 为请求页面的每个不同的查询字符串缓存不同版本的页面。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Response.Redirect(<em>path</em>)</td>
+<td valign="top">
+重定向浏览器请求到一个新的位置。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Response.SetStatus(<em>httpStatusCode</em>)</td>
+<td valign="top">
+设置HTTP状态代码发送到浏览器。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Response.WriteBinary(<em>data</em> <em>[, 
+mimetype]</em>)</td>
+<td valign="top">写入 <em>data</em> 内容响应可选的MIME类型。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Response.WriteFile(<em>file</em>)</td>
+<td valign="top">
+写入文件内容响应。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">@section(<em>sectionName</em>) { <em>
+content</em> }</td>
+<td valign="top">（布局页面）定义一个有名字的内容区域。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Server.HtmlDecode(<em>htmlText</em>)</td>
+<td valign="top">
+解码一个HTML编码的字符串。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Server.HtmlEncode(<em>text</em>)</td>
+<td valign="top">
+为呈现在 HTML 标记中的字符串编码。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Server.MapPath(<em>virtualPath</em>)</td>
+<td valign="top">
+为指定的虚拟路径返回服务器的物理路径。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Server.UrlDecode(<em>urlText</em>)</td>
+<td valign="top">
+解码URL文本。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Server.UrlEncode(<em>text</em>)</td>
+<td valign="top">
+URL文本编码。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">Session[<em>key</em>]</td>
+<td valign="top">获取或设置一个存在的值，直到用户关闭浏览器。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">ToString()</td>
+<td valign="top">显示一个用字符串表示的对象的值。</td>
+</tr>
+<tr>
+<td class="unknown" valign="top">UrlData[<em>index</em>]</td>
+<td valign="top">从 URL 获取额外的数据（例如，<em>/MyPage/ExtraData</em>）。</td>
+</tr>
+</table>
+<br/><br/>
+</div>

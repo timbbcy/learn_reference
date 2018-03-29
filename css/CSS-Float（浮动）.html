@@ -1,0 +1,140 @@
+<div class="article-intro" id="content">
+<script>
+function removeElement(numId)
+{
+document.getElementById(numId).style.display="none";
+}
+</script>
+<style>
+.imgbox
+{
+float:left;
+text-align:center;
+width:120px;
+height:120px;
+border:1px solid gray;
+margin:4px;
+margin-bottom:8px;
+padding:0px;
+}
+.thumbnail 
+{
+width:110px;
+height:90px;
+margin:3px;
+}
+.box
+{
+width:110px;
+padding:0px;
+}
+</style>
+<h1>CSS <span class="color_h1">Float(浮动)</span>
+</h1>
+<hr/>
+<h2>什么是 CSS  Float（浮动）？</h2>
+<div class="imgbox" id="imgbox1">
+<img class="thumbnail" height="90" src="/images/klematis_small.jpg" width="107"/><br/>
+</div>
+<div class="imgbox" id="imgbox2">
+<img class="thumbnail" height="80" src="/images/klematis2_small.jpg" width="107"/>
+</div>
+<div class="imgbox" id="imgbox3">
+<img class="thumbnail" height="90" src="/images/klematis3_small.jpg" width="116"/>
+</div>
+<div class="imgbox" id="imgbox4">
+<img class="thumbnail" height="90" src="/images/klematis4_small.jpg" width="107"/><br/>
+</div>
+<p style="clear:both">CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。</p>
+<p>Float（浮动），往往是用于图像，但它在布局时一样非常有用。</p>
+<hr/>
+<h2>元素怎样浮动</h2>
+<p>元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。</p>
+<p>一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。</p>
+<p>浮动元素之后的元素将围绕它。</p>
+<p>浮动元素之前的元素将不会受到影响。</p>
+<p>如果图像是右浮动，下面的文本流将环绕在它左边：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">img</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">float:</span><span class="hl-string">right</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_float" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>彼此相邻的浮动元素</h2>
+<p>如果你把几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻。</p>
+<p>在这里，我们对图片廊使用 float 属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.thumbnail</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">float:</span><span class="hl-string">left</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-number">110</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">height:</span><span class="hl-number">90</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin:</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_float_elements" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>清除浮动 - 使用 clear</h2>
+<p>元素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。</p>
+<p>clear 属性指定元素两侧不能出现浮动元素。</p>
+<p>使用 clear 属性往文本中添加图片廊：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.text</span><span class="hl-code">_</span><span class="hl-identifier">line</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">clear:</span><span class="hl-string">both</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=trycss_float_clear" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/try.php?filename=trycss_float2" target="_blank">为图像添加边框和边距并浮动到段落的右侧</a></p>
+<p>让我们为图像添加边框和边距并浮动到段落的右侧</p>
+<p><a href="/try/try.php?filename=trycss_float3" target="_blank">标题和图片向右侧浮动</a></p>
+<p>让标题和图片向右侧浮动。</p>
+<p><a href="/try/try.php?filename=trycss_float4" target="_blank">让段落的第一个字母浮动到左侧</a></p>
+<p>改变样式，让段落的第一个字母浮动到左侧。</p>
+<p><a href="/try/try.php?filename=trycss_float6" target="_blank">创建一个没有表格的网页</a></p>
+<p>使用 float 创建一个网页页眉、页脚、左边的内容和主要内容。</p>
+<hr/>
+<h2>CSS 中所有的浮动属性</h2>
+<p>"CSS" 列中的数字表示不同的 CSS 版本（CSS1 或 CSS2）定义了该属性。</p>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="25%">属性</th>
+<th align="left" width="43%">描述</th>
+<th align="left" width="27%">值</th>
+<th align="left" width="5%">CSS</th>
+</tr>
+<tr>
+<td><a href="/cssref/pr-class-clear.html">clear</a></td>
+<td>指定不允许元素周围有浮动元素。</td>
+<td>left<br/>
+	right<br/>
+	both<br/>
+	none<br/>
+	inherit</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="/cssref/pr-class-float.html">float</a></td>
+<td>指定一个盒子（元素）是否可以浮动。</td>
+<td>left<br/>
+	right<br/>
+	none<br/>
+	inherit</td>
+<td>1</td>
+</tr>
+</table>
+</div>

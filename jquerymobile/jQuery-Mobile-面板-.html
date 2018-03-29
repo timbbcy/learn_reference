@@ -1,0 +1,124 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile 面板</h1>
+<p> jQuery Mobile 中的面板会在屏幕的左侧向右侧划出。</p>
+<iframe frameborder="0" height="150px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_panels_app.htm" width="100%"></iframe>
+<p>通过向指定 id 的 &lt;div&gt; 元素添加 data-role="panel" 属性来创建面板。</p>
+<p>在 &lt;div&gt; 中添加 HTML 标记来显示你的面板内容：</p>
+<pre>
+&lt;div data-role="panel" id="myPanel"&gt;
+  &lt;h2&gt;面板标题..&lt;/h2&gt;
+  &lt;p&gt;文本内容..&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+<p><strong>注意：</strong>  panel 标记必须置于头部、内容、底部组成的页面之前或之后。  </p>
+<p>要访问面板，需要创建一个指向面板 &lt;div&gt; id 的链接，点击该链接即可打开面板:</p>
+<pre>
+&lt;a href="#myPanel" class="ui-btn ui-btn-inline"&gt;打开面板&lt;/a&gt;
+</pre>
+<p>简单的面板实例</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="page" id="pageone"&gt;<br/>  &lt;div 
+	<span class="marked">data-role="panel" id="myPanel"</span>&gt;
+	<br/>    &lt;h2&gt;面板头部..&lt;/h2&gt;<br/>    &lt;p&gt;面板内容..&lt;/p&gt;<br/>  &lt;/div&gt; <br/><br/>  &lt;div 
+	data-role="header"&gt;<br/>    &lt;h1&gt;标准页面头部&lt;/h1&gt;<br/>  
+	&lt;/div&gt;<br/><br/>  &lt;div data-role="main" class="ui-content"&gt;<br/>    
+	&lt;p&gt;点击下面按钮打开面板。&lt;/p&gt;<br/>    &lt;a 
+	<span class="marked">href="#myPanel"</span> class="ui-btn ui-btn-inline"&gt;打开面板&lt;/a&gt;<br/>  &lt;/div&gt;<br/><br/>  &lt;div data-role="footer"&gt;<br/>    
+	&lt;h1&gt;底部文本&lt;/h1&gt;<br/>  &lt;/div&gt; <br/>&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_panels_basic" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>关闭面板</h2>
+<p>你可以通过点击面板外部区域或按下 Esc 键或滑动来关闭面板。你可以通过使用 data-* 属性来禁用滑动和点击来关闭面板：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">属性</th>
+<th style="width:16%">值</th>
+<th style="width:54%">描述</th>
+<th style="width:10%">实例</th>
+</tr>
+<tr>
+<td>data-dismissible</td>
+<td><strong>true</strong> | false</td>
+<td>指定面板是否可以通过点击面板外部区域来关闭。 </td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_panels_dismissible" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>data-swipe-close</td>
+<td><strong>true</strong> | false</td>
+<td>指定是否可以通过滑动来关闭。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_panels_swipe" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<p>你可以使用按钮来关闭面板：仅需要在面板的 &lt;div&gt; 中添加 data-rel="close" 属性。
+从性能上考虑，我们需要键关闭链接的 href 属性指向页面的 ID 。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div 
+	data-role="panel" id="myPanel"&gt;
+	<br/>  &lt;h2&gt;面板头部..&lt;/h2&gt;<br/>  &lt;p&gt;面板中的一些文本内容..&lt;/p&gt;<br/>  &lt;a 
+	<span class="marked">href="#pageone" data-rel="close"</span> class="ui-btn ui-btn-inline"&gt;关闭面板&lt;/a&gt;<br/>&lt;/div&gt;
+<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_panels_closebtn" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>面板展示</h2>
+<p>你可以通过使用 data-display 属性来控制面板的展示方式:</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:31%">属性值</th>
+<th style="width:69%">描述</th>
+</tr>
+<tr>
+<td>data-display="overlay"</td>
+<td>在内容上显示面板</td>
+</tr>
+<tr>
+<td>data-display="push"</td>
+<td>是同时"推动"面板和页面。</td>
+</tr>
+<tr>
+<td>data-display="reveal"</td>
+<td>默认值，将页面像幻灯片一样从屏幕划出，将面板显示出来</td>
+</tr>
+</tbody></table>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="panel" id="overlayPanel" <span class="marked">data-display="overlay"</span>&gt;<br/>&lt;div 
+	data-role="panel" id="revealPanel" <span class="marked">data-display="reveal"</span>&gt;<br/>&lt;div 
+	data-role="panel" id="pushPanel" <span class="marked">data-display="push"</span>&gt;
+<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_panels_display" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>面板定位</h2>
+<p>默认情况下，面板会显示在屏幕的左侧。如果想让面板出现在屏幕的右侧，可以指定 data-position="right" 属性。 </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div 
+	data-role="panel" id="myPanel" 
+	<span class="marked">data-position="right"</span>&gt;
+<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_panels_rightpos" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以指定面板的内容根据页面滚动而滚动。默认情况下面板是随着页面一起滚动的（但是面板的内容仍然位于页面顶部）。如果你需要实现面板内容固定不随页面滚动而滚动，可以在面板添加 the data-position-fixed="true" 属性:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div 
+	data-role="panel" id="myPanel" 
+	<span class="marked">data-position-fixed="true"</span>&gt;
+<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_panels_fixed" target="_blank">尝试一下 »</a>
+</div>
+</div>

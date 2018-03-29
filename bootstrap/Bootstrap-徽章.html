@@ -1,0 +1,76 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">徽章（Badges）</span></h1>
+<p>本章将讲解 Bootstrap 徽章（Badges）。徽章与标签相似，主要的区别在于徽章的边角更加圆滑。</p>
+<p>徽章（Badges）主要用于突出显示新的或未读的项。如需使用徽章，只需要把 <b>&lt;span class="badge"&gt;</b> 添加到链接、Bootstrap 导航等这些元素上即可。</p>
+<p>下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>展示未读邮件：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Mailbox </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">50</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-badges" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="徽章（Badges）" src="/wp-content/uploads/2014/06/badges_demo.jpg"/>
+</div>
+<p>当没有新的或未读的项时，通过 CSS 的 <b> :empty</b> 选择器，徽章会折叠起来，表示里边没有内容。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>展示未读消息：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">徽章</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">.badge 类指定未读消息的数量:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">收件箱 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">21</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=trybs_ref_comp_badge&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>激活导航状态</h2>
+<p>您可以在激活状态的胶囊式导航和列表导航中放置徽章。通过使用 <b>&lt;span class="badge"&gt;</b> 来激活链接，如下面的实例所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">胶囊式导航中的激活状态</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">nav nav-pills</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">首页
+            </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">42</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">简介</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">消息
+            </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">列表导航中的激活状态</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">nav nav-pills nav-stacked</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">max-width: 260px;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge pull-right</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">42</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">首页</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">简介</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">badge pull-right</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">消息
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-badges-activestate" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="激活导航状态" src="/wp-content/uploads/2014/06/badgesactivestate_demo.jpg"/>
+</div>
+</div>

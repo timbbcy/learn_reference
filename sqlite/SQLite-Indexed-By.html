@@ -1,0 +1,27 @@
+<div class="article-intro" id="content">
+<h1>SQLite <span class="color_h1">Indexed By</span></h1>
+<div class="tutintro">
+<p>"INDEXED BY index-name" 子句规定必须需要命名的索引来查找前面表中值。</p>
+<p>如果索引名 index-name 不存在或不能用于查询，然后 SQLite 语句的准备失败。</p>
+<p>"NOT INDEXED" 子句规定当访问前面的表（包括由 UNIQUE 和 PRIMARY KEY 约束创建的隐式索引）时，没有使用索引。</p>
+<p>然而，即使指定了 "NOT INDEXED"，INTEGER PRIMARY KEY 仍然可以被用于查找条目。</p>
+</div>
+<h2>语法</h2>
+<p>下面是 INDEXED BY 子句的语法，它可以与 DELETE、UPDATE 或 SELECT 语句一起使用：</p>
+<pre class="prettyprint">
+SELECT|DELETE|UPDATE column1, column2...
+INDEXED BY (index_name)
+table_name
+WHERE (CONDITION);
+</pre>
+<h2>实例</h2>
+<p>假设有表 COMPANY，我们将创建一个索引，并用它进行 INDEXED BY 操作。</p>
+<pre class="prettyprint">
+sqlite&gt; CREATE INDEX salary_index ON COMPANY(salary);
+sqlite&gt;
+</pre>
+<p>现在使用 INDEXED BY 子句从表 COMPANY 中选择数据，如下所示：</p>
+<pre class="prettyprint">
+sqlite&gt; SELECT * FROM COMPANY INDEXED BY salary_index WHERE salary &gt; 5000;
+</pre>
+</div>

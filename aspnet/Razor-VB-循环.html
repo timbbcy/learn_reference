@@ -1,0 +1,60 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Razor <span class="color_h1">- VB 循环和数组</span>
+</h1>
+<hr/>
+<p class="intro">语句在循环中会被重复执行。</p>
+<hr/>
+<h2>For 循环</h2>
+<p>如果您需要重复执行相同的语句，您可以设定一个循环。</p>
+<p>如果您知道要循环的次数，您可以使用 <strong>for 循环</strong>。这种类型的循环在向上计数或向下计数时特别有用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>&lt;body&gt;<br/><span class="marked">@For i=10 To 21<br/>    
+	@&lt;p&gt;Line #@i&lt;/p&gt;<br/>Next i<br/></span>&lt;/body&gt;<br/>&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showfile_vb.php?filename=try_razor_vb_005" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>For Each 循环</h2>
+<p>如果您使用的是集合或者数组，您会经常用到 <strong>for each 循环</strong>。</p>
+<p>集合是一组相似的对象，for each 循环可以遍历集合直到完成。</p>
+<p>下面的实例中，遍历 ASP.NET Request.ServerVariables 集合。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>&lt;body&gt;<br/>&lt;ul&gt;<br/><span class="marked">@For Each x 
+	In Request.ServerVariables<br/>    @&lt;li&gt;@x&lt;/li&gt;<br/>Next x<br/></span>&lt;/ul&gt;<br/>
+&lt;/body&gt;<br/>&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_vb.php?filename=try_razor_vb_006" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>While 循环</h2>
+<p><strong>while 循环</strong>是一个通用的循环。</p>
+<p>while 循环以 while 关键字开始，后面紧跟着括号，您可以在括号里规定循环将持续多久，然后是重复执行的代码块。</p>
+<p>while 循环通常会设定一个递增或者递减的变量用来计数。</p>
+<p>下面的实例中，+= 运算符在每执行一次循环时给变量 i 的值加 1。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>&lt;body&gt;<br/><span class="marked">@Code<br/>Dim i=0<br/>Do While 
+	i&lt;5<br/>    i += 1<br/>    @&lt;p&gt;Line #@i&lt;/p&gt;<br/>Loop<br/>
+	End Code</span><br/>&lt;/body&gt;<br/>&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_vb.php?filename=try_razor_vb_007" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>数组</h2>
+<p>当您要存储多个相似变量但又不想为每个变量都创建一个独立的变量时，可以使用数组来存储：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@Code<br/>Dim members As String()={"Jani","Hege","Kai","Jim"}<br/>i=Array.IndexOf(members,"Kai")+1<br/>len=members.Length<br/>x=members(2-1)<br/>
+	end Code<br/></span>&lt;html&gt;<br/>&lt;body&gt;<br/>&lt;h3&gt;Members&lt;/h3&gt;<br/><span class="marked">@For Each person In members<br/>   @&lt;p&gt;@person&lt;/p&gt;<br/>
+	Next person</span><br/>&lt;p&gt;The number of names 
+	in Members are <span class="marked">@len</span>&lt;/p&gt;<br/>&lt;p&gt;The person at 
+	position 2 is <span class="marked">@x</span>&lt;/p&gt;<br/>&lt;p&gt;Kai is now in 
+	position <span class="marked">@i</span>&lt;/p&gt;<br/>&lt;/body&gt;<br/>&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_vb.php?filename=try_razor_vb_008" target="_blank">运行实例 »</a>
+</div>
+<br/>
+</div>

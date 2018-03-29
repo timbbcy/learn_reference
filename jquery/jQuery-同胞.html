@@ -1,0 +1,82 @@
+<div class="article-intro" id="content">
+<h1>jQuery 遍历 - <span class="color_h1">同胞(siblings)</span>
+</h1>
+<hr/>
+<p class="intro">同胞拥有相同的父元素。
+</p>
+<p class="intro">通过 jQuery，您能够在 DOM 树中遍历元素的同胞元素。</p>
+<hr/>
+<h2>在 DOM 树中水平遍历</h2>
+<p>有许多有用的方法让我们在 DOM 树进行水平遍历：</p>
+<ul>
+<li>siblings()</li>
+<li>next()</li>
+<li>nextAll()</li>
+<li>nextUntil()</li>
+<li>prev()</li>
+<li>prevAll()</li>
+<li>prevUntil()</li>
+</ul>
+<hr/>
+<h2>jQuery siblings() 方法</h2>
+<p>siblings() 方法返回被选元素的所有同胞元素。</p>
+<p>下面的例子返回 &lt;h2&gt; 的所有同胞元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">h2</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">siblings</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_siblings" target="_blank">尝试一下 »</a>
+</div>
+<p>您也可以使用可选参数来过滤对同胞元素的搜索。</p>
+<p>下面的例子返回属于 &lt;h2&gt; 的同胞元素的所有 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">h2</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">siblings</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_siblings2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery next() 方法</h2>
+<p>next() 方法返回被选元素的下一个同胞元素。</p>
+<p>该方法只返回一个元素。</p>
+<p>下面的例子返回 &lt;h2&gt; 的下一个同胞元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">h2</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">next</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_next" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery nextAll() 方法</h2>
+<p>nextAll() 方法返回被选元素的所有跟随的同胞元素。</p>
+<p>下面的例子返回 &lt;h2&gt; 的所有跟随的同胞元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">h2</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">nextAll</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_nextall" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery nextUntil() 方法</h2>
+<p>nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素。</p>
+<p>下面的例子返回介于 &lt;h2&gt; 与 &lt;h6&gt; 元素之间的所有同胞元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">h2</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">nextUntil</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">h6</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_nextuntil" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery prev(), prevAll() &amp; prevUntil() 方法</h2>
+<p>prev(), prevAll() 以及 prevUntil() 方法的工作方式与上面的方法类似，只不过方向相反而已：它们返回的是前面的同胞元素（在 DOM 树中沿着同胞之前元素遍历，而不是之后元素遍历）。</p>
+</div>

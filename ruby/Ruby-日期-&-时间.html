@@ -1,0 +1,209 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">日期 &amp; 时间（Date &amp; Time）</span></h1>
+<div class="tutintro">
+<p><b>Time</b> 类在 Ruby 中用于表示日期和时间。它是基于操作系统提供的系统日期和时间之上。该类可能无法表示 1970 年之前或者 2038 年之后的日期。</p>
+<p>本教程将让您熟悉日期和时间的所有重要的概念。</p>
+</div>
+<h2 class="tutheader">创建当前的日期和时间</h2>
+<p>下面是获取当前的日期和时间的简单实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time1</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">当前时间 : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">time1</span><span class="hl-code">.</span><span class="hl-identifier">inspect</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> Time.now 功能相同</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time2</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">now</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">当前时间 : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">time2</span><span class="hl-code">.</span><span class="hl-identifier">inspect</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=timeobj_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+当前时间 : 2015-09-17 15:23:14 +0800
+当前时间 : 2015-09-17 15:23:14 +0800
+</pre>
+<h2 class="tutheader">获取 Date &amp; Time 组件</h2>
+<p>我们可以使用 <i>Time</i> 对象来获取各种日期和时间的组件。请看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> Time 的组件</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">当前时间 : </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">inspect</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">year</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 日期的年份</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">month</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 日期的月份（1 到 12）</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">day</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 一个月中的第几天（1 到 31）</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">wday</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 一周中的星期几（0 是星期日）</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">yday</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 365：一年中的第几天</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">hour</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 23：24 小时制</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">min</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 59</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">sec</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 59</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">usec</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 999999：微秒</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">zone</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; "UTC"：时区名称</span><span class="hl-comment"></span></div>
+</div>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+当前时间 : 2015-09-17 15:24:44 +0800
+2015
+9
+17
+4
+260
+15
+24
+44
+921519
+CST
+
+</pre>
+<h2 class="tutheader"><i>Time.utc</i>、<i>Time.gm</i> 和 <i>Time.local</i> 函数</h2>
+<p>这些函数可用于格式化标准格式的日期，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment"> July 8, 2008</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">local</span><span class="hl-brackets">(</span><span class="hl-number">2008</span><span class="hl-code">, </span><span class="hl-number">7</span><span class="hl-code">, </span><span class="hl-number">8</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> July 8, 2008, 09:10am，本地时间</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">local</span><span class="hl-brackets">(</span><span class="hl-number">2008</span><span class="hl-code">, </span><span class="hl-number">7</span><span class="hl-code">, </span><span class="hl-number">8</span><span class="hl-code">, </span><span class="hl-number">9</span><span class="hl-code">, </span><span class="hl-number">10</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> July 8, 2008, 09:10 UTC</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">utc</span><span class="hl-brackets">(</span><span class="hl-number">2008</span><span class="hl-code">, </span><span class="hl-number">7</span><span class="hl-code">, </span><span class="hl-number">8</span><span class="hl-code">, </span><span class="hl-number">9</span><span class="hl-code">, </span><span class="hl-number">10</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> July 8, 2008, 09:10:11 GMT （与 UTC 相同）</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">gm</span><span class="hl-brackets">(</span><span class="hl-number">2008</span><span class="hl-code">, </span><span class="hl-number">7</span><span class="hl-code">, </span><span class="hl-number">8</span><span class="hl-code">, </span><span class="hl-number">9</span><span class="hl-code">, </span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-number">11</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>下面的实例在数组中获取所有的组件：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-identifier">sec</span><span class="hl-code">,</span><span class="hl-identifier">min</span><span class="hl-code">,</span><span class="hl-identifier">hour</span><span class="hl-code">,</span><span class="hl-identifier">day</span><span class="hl-code">,</span><span class="hl-identifier">month</span><span class="hl-code">,</span><span class="hl-identifier">year</span><span class="hl-code">,</span><span class="hl-identifier">wday</span><span class="hl-code">,</span><span class="hl-identifier">yday</span><span class="hl-code">,</span><span class="hl-identifier">isdst</span><span class="hl-code">,</span><span class="hl-identifier">zone</span><span class="hl-brackets">]</span></div>
+</div>
+</div>
+<p>尝试下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">values</span><span class="hl-code"> = </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">to_a</span><span class="hl-code">
+</span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-identifier">values</span></div>
+</div>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+[39, 25, 15, 17, 9, 2015, 4, 260, false, "CST"]
+</pre>
+<p>该数组可被传到 <i>Time.utc</i> 或 <i>Time.local</i> 函数来获取日期的不同格式，如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">values</span><span class="hl-code"> = </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">to_a</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">utc</span><span class="hl-brackets">(</span><span class="hl-code">*</span><span class="hl-identifier">values</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+2015-09-17 15:26:09 UTC
+</pre>
+<p>下面是获取时间的方式，从纪元以来的秒数（平台相关）：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment"> 返回从纪元以来的秒数</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">now</span><span class="hl-code">.</span><span class="hl-identifier">to_i</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 把秒数转换为 Time 对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">at</span><span class="hl-brackets">(</span><span class="hl-identifier">time</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 返回从纪元以来的秒数，包含微妙</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">now</span><span class="hl-code">.</span><span class="hl-identifier">to_f</span></div>
+</div>
+</div>
+<h2 class="tutheader">时区和夏令时</h2>
+<p>您可以使用 <i>Time</i> 对象来获取与时区和夏令时有关的所有信息，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 这里是解释</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">zone</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; "UTC"：返回时区</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">utc_offset</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 0：UTC 是相对于 UTC 的 0 秒偏移</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">zone</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; "PST"（或其他时区）</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">isdst</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; false：如果 UTC 没有 DST（夏令时）</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">utc</span><span class="hl-code">?       </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; true：如果在 UTC 时区</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">localtime</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 转换为本地时区</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">gmtime</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 转换回 UTC</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">getlocal</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 返回本地区中的一个新的 Time 对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">getutc</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 返回 UTC 中的一个新的 Time 对象</span><span class="hl-comment"></span></div>
+</div>
+</div>
+<h2 class="tutheader">格式化时间和日期</h2>
+<p>有多种方式格式化日期和时间。下面的实例演示了其中一部分：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby -w</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">time</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">to_s</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">ctime</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">localtime</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">time</span><span class="hl-code">.</span><span class="hl-identifier">strftime</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">%Y-%m-%d %H:%M:%S</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+2015-09-17 15:26:42 +0800
+Thu Sep 17 15:26:42 2015
+2015-09-17 15:26:42 +0800
+2015-09-17 15:26:42
+</pre>
+<h2 class="tutheader">时间格式化指令</h2>
+<p>下表所列出的指令与方法 <i>Time.strftime</i> 一起使用。</p>
+<table class="reference">
+<tr><th>指令</th><th>描述</th></tr>
+<tr><td>%a</td><td>星期几名称的缩写（比如 Sun）。</td></tr>
+<tr><td>%A</td><td>星期几名称的全称（比如 Sunday）。</td></tr>
+<tr><td>%b</td><td>月份名称的缩写（比如 Jan）。</td></tr>
+<tr><td>%B</td><td>月份名称的全称（比如 January）。</td></tr>
+<tr><td>%c</td><td>优选的本地日期和时间表示法。</td></tr>
+<tr><td>%d</td><td>一个月中的第几天（01 到 31）。</td></tr>
+<tr><td>%H</td><td>一天中的第几小时，24 小时制（00 到 23）。</td></tr>
+<tr><td>%I</td><td>一天中的第几小时，12 小时制（01 到 12）。</td></tr>
+<tr><td>%j</td><td>一年中的第几天（001 到 366）。</td></tr>
+<tr><td>%m</td><td>一年中的第几月（01 到 12）。</td></tr>
+<tr><td>%M</td><td>小时中的第几分钟（00 到 59）。</td></tr>
+<tr><td>%p</td><td>子午线指示（AM 或 PM）。</td></tr>
+<tr><td>%S</td><td>分钟中的第几秒（00 或 60）。</td></tr>
+<tr><td>%U</td><td>当前年中的周数，从第一个星期日（作为第一周的第一天）开始（00 到 53）。</td></tr>
+<tr><td>%W</td><td>当前年中的周数，从第一个星期一（作为第一周的第一天）开始（00 到 53）。</td></tr>
+<tr><td>%w</td><td>一星期中的第几天（Sunday 是 0，0 到 6）。</td></tr>
+<tr><td>%x</td><td>只有日期没有时间的优先表示法。</td></tr>
+<tr><td>%X</td><td>只有时间没有日期的优先表示法。</td></tr>
+<tr><td>%y</td><td>不带世纪的年份表示（00 到 99）。</td></tr>
+<tr><td>%Y</td><td>带有世纪的年份。</td></tr>
+<tr><td>%Z</td><td>时区名称。</td></tr>
+<tr><td>%%</td><td>% 字符。</td></tr>
+</table>
+<br>
+<h2 class="tutheader">时间算法</h2>
+<p>您可以用时间做一些简单的算术，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">now</span><span class="hl-code"> = </span><span class="hl-identifier">Time</span><span class="hl-code">.</span><span class="hl-identifier">now</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 当前时间</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">now</span><span class="hl-code">
+</span><span class="hl-identifier">past</span><span class="hl-code"> = </span><span class="hl-identifier">now</span><span class="hl-code"> - </span><span class="hl-number">10</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 10 秒之前。Time - number =&gt; Time</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">past</span><span class="hl-code">
+</span><span class="hl-identifier">future</span><span class="hl-code"> = </span><span class="hl-identifier">now</span><span class="hl-code"> + </span><span class="hl-number">10</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 从现在开始 10 秒之后。Time + number =&gt; Time</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">future</span><span class="hl-code">
+</span><span class="hl-identifier">diff</span><span class="hl-code"> = </span><span class="hl-identifier">future</span><span class="hl-code"> - </span><span class="hl-identifier">now</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> =&gt; 10  Time - Time =&gt; 秒数</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">diff</span></div>
+</div>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+2015-09-17 15:27:08 +0800
+2015-09-17 15:26:58 +0800
+2015-09-17 15:27:18 +0800
+10.0
+</pre>
+</br></div>

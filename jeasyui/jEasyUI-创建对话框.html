@@ -1,0 +1,33 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 窗口 - <span class="color_h1">创建对话框</span></h1>
+<p>对话框（Dialog）是一个特殊的窗口（window），可以包含在顶部的工具栏和在底部的按钮。默认情况下，对话框（Dialog）不能改变大小，但是用户可以设置 resizable 属性为 true，使其可以改变大小。</p>
+<img src="/wp-content/uploads/2013/12/dlg1_1.png"/>
+<h4>创建对话框（Dialog）</h4>
+<p>对话框（Dialog）非常简单，可以从 DIV 标记创建，如下所示：</p>
+<pre style="color:#006600">
+    &lt;div id="dd" class="easyui-dialog" style="padding:5px;width:400px;height:200px;"
+            title="My Dialog" iconCls="icon-ok"
+            toolbar="#dlg-toolbar" buttons="#dlg-buttons"&gt;
+        Dialog Content.
+    &lt;/div&gt;
+</pre>
+<h4>准备工具栏（Toolbar）和按钮（Button）</h4>
+<pre style="color:#006600">
+    &lt;div id="dlg-toolbar"&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:alert('Add')"&gt;Add&lt;/a&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:alert('Save')"&gt;Save&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="dlg-buttons"&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:alert('Ok')"&gt;Ok&lt;/a&gt;
+        &lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dd').dialog('close')"&gt;Cancel&lt;/a&gt;
+    &lt;/div&gt;
+</pre>
+<p>上面的代码我们创建了一个带有工具栏（toolbar）和按钮（button）的对话框（dialog）。这是对话框（dialog）、工具栏（toolbar）、内容（content）和按钮（buttons）的标准配置。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-win-dlg1.zip">jeasyui-win-dlg1.zip</a></p>
+</div>

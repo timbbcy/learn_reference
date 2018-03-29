@@ -1,0 +1,201 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<p>上一节中我们对Activity一些基本的概念进行了了解，什么是Activity，Activity的生命周期，如何去启动一个Activity等，本节我们继续来学习Activity，前面也讲了一个App一般都是又多个Activity构成的，这就涉及到了多个Activity间数据传递的问题了，那么本节继续学习Activity的使用！另外关于传递集合，对象，数组，Bitmap的我们会在Intent那里进行讲解，这里只介绍如何传递基本数据！</p>
+<hr/>
+<h2>1.Activity间的数据传递：</h2>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/7185831.jpg"/></p>
+<p><strong>代码示例：</strong></p>
+<p><strong>效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/65736101.jpg"/></p>
+<p><strong>代码下载：</strong><a href="http://www.runoob.com/try/download/ActivityTest1.zip">ActivityTest1.zip</a></p>
+<hr/>
+<h2>2.多个Activity间的交互(后一个传回给前一个)</h2>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/67124491.jpg"/></p>
+<p><strong>代码示例：</strong></p>
+<p><strong>效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/41632576.jpg"/></p>
+<p><strong>代码下载：</strong><a href="http://www.runoob.com/try/download/ActivityTest2.zip">ActivityTest2.zip</a></p>
+<hr/>
+<h2>3.知晓当前是哪个Activity</h2>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/19579941.jpg"/></p>
+<hr/>
+<h2>4.随时关闭所有Activity</h2>
+<blockquote><p>有时我们可能会打开了很多个Activity，突然来个这样的需求，在某个页面可以关掉
+所有的Activity并退出程序！好吧，下面提供一个关闭所有Activity的方法，
+就是用一个list集合来存储所有Activity!</p></blockquote>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/59443692.jpg"/></p>
+<p><strong>具体代码如下：</strong></p>
+<pre>
+public class ActivityCollector {  
+    public static LinkedList&lt;Activity&gt; activities = new LinkedList&lt;Activity&gt;();  
+    public static void addActivity(Activity activity)  
+    {  
+        activities.add(activity);  
+    }  
+    public static void removeActivity(Activity activity)  
+    {  
+        activities.remove(activity);  
+    }  
+    public static void finishAll()  
+    {  
+        for(Activity activity:activities)  
+        {  
+            if(!activity.isFinishing())  
+            {  
+                activity.finish();  
+            }  
+        }  
+    }  
+}  
+</pre>
+<hr/>
+<h2>5.完全退出App的方法</h2>
+<p>上面说的是关闭所有Activity的，但是有些时候我们可能想杀死整个App，连后台任务都杀死
+杀得一干二净的话，可以使用搭配着下述代码使用：</p>
+<p><strong>实现代码：</strong></p>
+<pre>
+/** 
+ * 退出应用程序 
+ */  
+public void AppExit(Context context) {  
+    try {  
+        ActivityCollector.finishAll();  
+        ActivityManager activityMgr = (ActivityManager) context  
+                .getSystemService(Context.ACTIVITY_SERVICE);  
+        activityMgr.killBackgroundProcesses(context.getPackageName());  
+        System.exit(0);  
+    } catch (Exception ignored) {}  
+}  
+</pre>
+<hr/>
+<h2>6.双击退出程序的两种方法：</h2>
+<h3>1）定义一个变量，来标识是否退出</h3>
+<pre>
+// 定义一个变量，来标识是否退出
+private static boolean isExit = false;
+Handler mHandler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+        super.handleMessage(msg);
+        isExit = false;
+    }
+};
+
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+    if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            // 利用handler延迟发送更改状态信息
+            mHandler.sendEmptyMessageDelayed(0, 2000);
+        } else {
+            exit(this);
+        }
+        return false;
+    }
+return super.onKeyDown(keyCode, event);}
+</pre>
+<hr/>
+<h3>2）保存点击时间：</h3>
+<pre>
+//保存点击的时间
+private long exitTime = 0;
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+    if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if ((System.currentTimeMillis() - exitTime) &gt; 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+                        exit();
+                      }
+        return false;
+    }
+        return super.onKeyDown(keyCode, event);
+}
+</pre>
+<hr/>
+<h2>7.为Activity设置过场动画</h2>
+<blockquote><p>所谓的过场动画就是切换到另外的Activity时加上一些切换动画，比如淡入淡出，放大缩小，左右互推等！
+当然，我们并不在这里详细讲解动画，后面有专门的章节来讲解这个，这里只教大家如何去加载动画，另外
+给大家提供了一些比较常用的过渡动画，只要将相关动画文件添加到res/anim目录下，然后下述方法二选一
+就可以实现Activity的切换动画了！</p></blockquote>
+<h3>1）方法一：</h3>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/16878455.jpg"/></p>
+<h3>2）方法二：</h3>
+<p>通过style进行配置，这个是全局的哦，就是所有的Activity都会加载这个动画！</p>
+<p><strong>实现代码如下：</strong></p>
+<p><strong>①在style.xml中自定义style：</strong>
+</p>
+<pre>
+&lt;!-- 默认Activity跳转动画 --&gt;
+&lt;style name="default_animation" mce_bogus="1" parent="@android:style/Animation.Activity"&gt;
+    &lt;item name="android:activityOpenEnterAnimation"&gt;@anim/default_anim_in&lt;/item&gt;
+    &lt;item name="android:activityOpenExitAnimation"&gt;@anim/anim_stay&lt;/item&gt;
+    &lt;item name="android:activityCloseEnterAnimation"&gt;@anim/anim_stay&lt;/item&gt;
+    &lt;item name="android:activityCloseExitAnimation"&gt;@anim/default_anim_out&lt;/item&gt;
+&lt;/style&gt;
+</pre>
+<p><b>解释：</b></p>
+<p> 4个item分别代表: </p><ul><li>
+Activity A跳转到Activity B时Activity B进入动画;</li><li>
+Activity A跳转到Activity B时Activity A退出动画;</li><li>
+Activity B返回Activity A时Activity A的进入动画</li><li>
+Activity B返回Activity A时ActivityB的退出动画</li></ul>
+<p><b>②然后修改下AppTheme:</b></p>
+<pre>
+&lt;style name="AppTheme" mce_bogus="1" parent="@android:style/Theme.Light"&gt;
+        &lt;item name="android:windowAnimationStyle"&gt;@style/default_animation&lt;/item&gt;
+        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+&lt;/style&gt;
+</pre>
+<p><b>③最后在appliction设置下：</b></p>
+<pre>
+&lt;application
+   android:icon="@drawable/logo"
+   android:label="@string/app_name"
+   android:theme="@style/AppTheme" &gt;
+</pre>
+<p>好的，动画特效就这样duang一声设置好了~</p>
+<h3>3）其他</h3>
+<p>好的，除了上面两种方法以外，还可以使用<strong>TransitionManager</strong>来实现，但是需求版本是API 19以上的，
+另外还有一种<strong>addOnPreDrawListener</strong>的转换动画，这个用起来还是有点麻烦的，可能不是适合初学者
+这里也不讲，最后提供下一些常用的动画效果打包，选择需要的特效加入工程即可！
+<a href="http://www.runoob.com/wp-content/uploads/2015/08/Activity常用过渡动画.zip">Activity常用过渡动画.zip</a></p>
+<hr/>
+<h2>8.Bundle传递数据的限制</h2>
+<blockquote><p>在使用Bundle传递数据时，要注意，Bundle的大小是有限制的 &lt; 0.5MB，如果大于这个值
+是会报TransactionTooLargeException异常的！！！</p></blockquote>
+<hr/>
+<h2>9.使用命令行查看当前所有Activity的命令：</h2>
+<blockquote><p>使用下述命令即可，前提是你为SDK配置了环境变量:<strong>adb shell dumpsys activity</strong></p></blockquote>
+<hr/>
+<h2>10.设置Activity全屏的方法：</h2>
+<h3>1）代码隐藏ActionBar</h3>
+<p>在Activity的onCreate方法中调用getActionBar.hide();即可</p>
+<h3>2）通过requestWindowFeature设置</h3>
+<p>requestWindowFeature(Window.FEATURE_NO_TITLE);
+该代码需要在setContentView ()之前调用，不然会报错！！！</p>
+<blockquote>
+<p><strong>注：</strong>
+把 requestWindowFeature(Window.FEATURE_NO_TITLE);放在super.onCreate(savedInstanceState);前面就可以隐藏ActionBar而不报错。</p></blockquote>
+<h3>3）通过AndroidManifest.xml的theme</h3>
+<p>在需要全屏的Activity的标签内设置 theme = @android:style/Theme.NoTitleBar.FullScreen</p>
+<hr/>
+<h2>11.onWindowFocusChanged方法妙用：</h2>
+<p>我们先来看下官方对这个方法的介绍：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/17084157.jpg"/></p>
+<p>就是，当Activity得到或者失去焦点的时候，就会回调该方法！
+如果我们想监控Activity是否加载完毕，就可以用到这个方法了~
+想深入了解的可移步到这篇文章：
+<a href="http://blog.csdn.net/yueqinglkong/article/details/44981449">onWindowFocusChanged触发简介</a></p>
+<hr/>
+<h2>12.定义对话框风格的Activity</h2>
+<blockquote><p>在某些情况下，我们可能需要将Activity设置成对话框风格的，Activity一般是占满全屏的，
+而Dialog则是占据部分屏幕的！实现起来也很简单！</p></blockquote>
+<p>直接设置下Activity的theme:</p>
+<pre>
+android:theme="@android:style/Theme.Dialog"
+</pre>
+这样就可以了，当然你可以再设置下标题，小图标！</div>

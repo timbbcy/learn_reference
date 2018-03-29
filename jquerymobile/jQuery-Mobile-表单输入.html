@@ -1,0 +1,127 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">表单输入元素</span>
+</h1>
+<hr/>
+<h2>jQuery Mobile 文本输入框</h2>
+<p>输入字段是通过标准的 HTML 元素编码的，jQuery Mobile 将为它们添加样式使其看起来更具吸引力，在移动设备上更易使用。您也能使用新的 HTML5 的 &lt;input&gt; 类型：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;form method="post" action="demo_form.php"&gt;<br/>  &lt;div class="ui-field-contain"&gt;<br/>    
+	&lt;label for="fullname"&gt;全名:&lt;/label&gt;<br/>    &lt;input 
+	type="text" name="fullname" id="fullname"&gt;<br/><br/>    &lt;label 
+	for="bday"&gt;生日:&lt;/label&gt;<br/>    &lt;input type="date" name="bday" 
+	id="bday"&gt;<br/><br/>    &lt;label for="email"&gt;E-mail:&lt;/label&gt;<br/>    
+	&lt;input type="email" name="email" id="email" placeholder="你的电子邮箱.."&gt;<br/>  
+	&lt;/div&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_inputs" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示：</strong>请使用 placeholder 来指定一个简短的描述，用来描述输入字段的期望值：</p>
+<pre>
+&lt;input placeholder="sometext"&gt;
+</pre><hr/>
+<h2>文本域</h2>
+<p>对于多行文本输入可使用 &lt;textarea&gt; 。</p>
+<p><strong>注意：</strong>当您键入一些文本时，文本域会自动调整大小以适应新增加的行。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;form method="post" action="demo_form.php"&gt;<br/>  &lt;div class="ui-field-contain"&gt;<br/>    
+	&lt;label for="info"&gt;附加信息:&lt;/label&gt;<br/>    &lt;textarea 
+	name="addinfo" id="info"&gt;&lt;/textarea&gt;<br/>  &lt;/div&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_textarea" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>搜索输入框</h2>
+<p>type="search" 类型的输入框是在 HTML5 中新增的，它是为输入搜索定义文本字段：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;form method="post" action="demo_form.php"&gt;<br/>  &lt;div class="ui-field-contain"&gt;<br/>    
+		&lt;label for="search"&gt;搜索:&lt;/label&gt;<br/>    &lt;input 
+		type="search" name="search" id="search"&gt;<br/>  &lt;/div&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_search" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>单选按钮</h2>
+<p>当用户在有限数量的选择中仅选取一个选项时，使用单选按钮。</p>
+<p>为了创建一系列单选按钮，请添加带有 type="radio" 的 input 以及相应的 label。把单选按钮包围在 &lt;fieldset&gt; 元素内。您也可以添加一个 &lt;legend&gt; 元素来定义 &lt;fieldset&gt; 的标题。</p>
+<p><strong>提示：</strong>请使用 data-role="controlgroup" 来把按钮组合在一起：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;form method="post" action="demo_form.php"&gt;<br/>  &lt;fieldset 
+	data-role="controlgroup"&gt;<br/>    &lt;legend&gt;Choose your 
+	gender:&lt;/legend&gt;<br/>      &lt;label 
+	for="male"&gt;Male&lt;/label&gt;<br/>      &lt;input 
+	type="radio" name="gender" id="male" value="male"&gt;<br/>      
+	&lt;label for="female"&gt;Female&lt;/label&gt;<br/>      &lt;input 
+	type="radio" name="gender" id="female" value="female"&gt; <br/>  &lt;/fieldset&gt;<br/>
+	&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_radio" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>复选框</h2>
+<p>当用户在有限数量的选择中选取一个或多个选项时，使用复选框：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;form method="post" action="demo_form.php"&gt;<br/>  &lt;fieldset 
+	data-role="controlgroup"&gt;<br/>    &lt;legend&gt;Choose as many 
+	favorite colors as you'd like:&lt;/legend&gt;<br/>      
+	&lt;label for="red"&gt;Red&lt;/label&gt;<br/>      &lt;input 
+	type="checkbox" name="favcolor" id="red" value="red"&gt;<br/>      
+	&lt;label for="green"&gt;Green&lt;/label&gt;<br/>      &lt;input 
+	type="checkbox" name="favcolor" id="green" value="green"&gt;<br/>      
+	&lt;label for="blue"&gt;Blue&lt;/label&gt;<br/>      &lt;input 
+	type="checkbox" name="favcolor" id="blue" value="blue"&gt; <br/>  &lt;/fieldset&gt;<br/>&lt;/form&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_checkbox" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p>如需水平组合单选按钮或复选框，请使用 data-type="horizontal"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;fieldset data-role="controlgroup" data-type="horizontal"&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_horizontal" target="_blank">尝试一下 »</a>
+</div>
+<p>您也可以用一个 field 容器包围 &lt;fieldset&gt;：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;div class="ui-field-contain"&gt;<br/> 
+	&lt;fieldset data-role="controlgroup"&gt;<br/>    
+		&lt;legend&gt;请选择您的性别:&lt;/legend&gt;<br/>  
+	&lt;/fieldset&gt;<br/>&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_radio_check_fieldcontain" target="_blank">尝试一下 »</a>
+</div>
+<p>如果您想要您的按钮中的一个预先选中，请使用 HTML 中 &lt;input&gt; 的 checked 属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;input type="radio" checked&gt;<br/>&lt;input type="checkbox" checked&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_checked" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以将表单放在弹窗中：</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code">
+&lt;a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline"&gt;Show Popup Form&lt;/a&gt;<br/><br/>&lt;div 
+		data-role="popup" id="myPopup" class="ui-content"&gt;<br/>  &lt;form method="post" action="demoform.php"&gt;<br/>    
+		&lt;div&gt;<br/>      &lt;h3&gt;登录信息&lt;/h3&gt;<br/>      
+		&lt;label for="usrnm" class="ui-hidden-accessible"&gt;用户名:&lt;/label&gt;<br/>      
+		&lt;input type="text" name="user" id="usrnm" placeholder="用户名"&gt;<br/>      
+		&lt;label for="pswd" class="ui-hidden-accessible"&gt;密码:&lt;/label&gt;<br/>      
+		&lt;input type="password" name="passw" id="pswd" placeholder="密码"&gt;<br/>    
+		&lt;/div&gt;<br/>  &lt;/form&gt;<br/>&lt;/div&gt;
+<br/> </div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_forms_popup" target="_blank">尝试一下 »</a> </div>
+</div>

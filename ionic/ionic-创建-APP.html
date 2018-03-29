@@ -1,0 +1,58 @@
+<div class="article-intro" id="content">
+<h1>ionic 创建 APP</h1>
+<p>前面的章节中我们已经学会了 ionic 框架如何导入到项目中。</p>
+<p>接下来我们将为大家介绍如何创建一个 ionic APP 应用。</p>
+<p>ionic 创建 APP 使用 HTML、CSS 和 Javascript 来构建，所以我们可以创建一个 www 目录，并在目录下创建 index.html 文件，代码如下：</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Todo&lt;/title&gt;
+    &lt;meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"&gt;
+
+    &lt;link href="lib/ionic/css/ionic.css" rel="stylesheet"&gt;
+
+    &lt;script src="lib/ionic/js/ionic.bundle.js"&gt;&lt;/script&gt;
+
+    &lt;!-- 在使用 Cordova/PhoneGap 创建的 APP 中包含的文件，由 Cordova/PhoneGap 提供，(开发过程中显示 404) --&gt;
+    &lt;script src="cordova.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>
+以上代码中，我们引入了 Ionic CSS 文件、 Ionic JS 文件及 Ionic AngularJS 扩展ionic.bundle.js（ionic.bundle.js）。</p>
+<p>ionic.bundle.js 文件已经包含了 Ionic核心JS、AngularJS、Ionic的AngularJS扩展，如果你需要引入其他 Angular 模块，可以从 lib/js/angular 目录中调用。</p>
+<p>cordova.js 是在使用 Cordova/PhoneGap 创建应用时生成的，不需要手动引入，你可以在 Cordova/PhoneGap 项目中找到该文件，所以在开发过程中显示 404 是正常的。</p>
+<hr/>
+<h2>创建 APP</h2>
+<p>接下来我们来实现一个包含标题、侧边栏、列表等的应用,设计图如下：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/08/3-mockup.png"/>
+<h3>创建侧边栏</h3>
+<p>
+侧边栏创建使用 ion-side-menus 控制器。</p>
+<p>编辑我们先前创建的 index.html 文件，修改 &lt;body&gt; 内的内容，如下所示：</p>
+<pre>
+&lt;body&gt;
+  &lt;ion-side-menus&gt;
+    &lt;ion-side-menu-content&gt;
+    &lt;/ion-side-menu-content&gt;
+    &lt;ion-side-menu side="left"&gt;
+    &lt;/ion-side-menu&gt;
+  &lt;/ion-side-menus&gt;
+&lt;/body&gt;
+</pre>
+<p>控制器解析：</p>
+<ul>
+<li><b>ion-side-menus：</b>
+是一个带有边栏菜单的容器，可以通过点击按钮或者滑动屏幕来展开菜单。</li>
+<li><b>ion-side-menu-content</b>：展示主要内容的容器，可以通过滑动屏幕来展开menu。</li>
+<li><b>ion-side-menu</b>：存放侧边栏的容器。</li></ul>
+<h3>初始化 APP</h3>
+<p>接下来我们创建一个新的  AngularJS 模块，并初始化，代码位于 www/js/app.js 中：</p>
+<pre>
+angular.module('todo', ['ionic'])
+</pre>
+</div>

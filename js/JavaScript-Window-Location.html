@@ -1,0 +1,79 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Window Location</span>
+</h1>
+<hr/>
+<p class="intro">window.location 对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。</p>
+<hr/>
+<h2>Window Location</h2>
+<p> <strong>window.location</strong> 对象在编写时可不使用 window 这个前缀。
+一些例子：</p>
+<p>一些实例:</p>
+<ul>
+<li>location.hostname 返回 web 主机的域名</li>
+<li>location.pathname 返回当前页面的路径和文件名</li>
+<li>location.port 返回 web 主机的端口 （80 或 443）</li>
+<li>location.protocol 返回所使用的 web 协议（http:// 或 https://）</li>
+</ul>
+<hr/>
+<h2>Window Location Href</h2>
+<p>location.href 属性返回当前页面的 URL。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>返回（当前页面的）整个 URL：
+<div class="example_code notranslate">
+&lt;script&gt;<br/><br/>
+document.write(location.href);<br/><br/>
+&lt;/script&gt;
+</div>
+<p>以上代码输出为：</p>
+<div class="example_code notranslate">
+<script>
+document.write(location.href);
+</script>
+</div>
+<br/>
+</p></div>
+<br/><hr/>
+<h2>Window Location Pathname</h2>
+<p>location.pathname 属性返回 URL 的路径名。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>返回当前 URL 的路径名：</p>
+<div class="example_code notranslate">
+&lt;script&gt;<br/><br/>
+document.write(location.pathname);<br/><br/>
+&lt;/script&gt;
+</div>
+<p>以上代码输出为：</p>
+<div class="example_code notranslate">
+<script>
+document.write(location.pathname);
+</script>
+</div>
+<br/>
+</div>
+<br/><hr/>
+<h2>Window Location Assign</h2>
+<p>location.assign() 方法加载新的文档。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>加载一个新的文档：</p>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script&gt;<br/>
+function newDoc()<br/>
+  {<br/>
+  window.location.assign("http://www.w3cschool.cc")<br/>
+  }<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;input type="button" value="Load new document"
+onclick="newDoc()"&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_loc_assign" target="_blank">尝试一下 »</a>
+</div>
+</div>

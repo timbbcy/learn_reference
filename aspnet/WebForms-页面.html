@@ -1,0 +1,94 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- HTML 页面</span>
+</h1>
+<hr/>
+<p class="intro">简单的 ASP.NET 页面看上去就像普通的 HTML 页面。</p>
+<hr/>
+<h2>Hello RUNOOB.COM</h2>
+<p>在开始学习 ASP.NET 之前，我们先来构建一个简单的 HTML 页面，该页面将在浏览器中显示 "Hello RUNOOB.COM"：</p>
+<table bgcolor="yellow" border="1" width="100%"><tr>
+<td align="center">
+<h2>Hello RUNOOB.COM!</h2>
+<p> </p>
+<p> </p>
+</td>
+</tr></table>
+<br/><hr/>
+<h2>用 HTML 编写的 Hello RUNOOB.COM</h2>
+<p>下面的代码将以 HTML 页面的形式显示实例：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body bgcolor="yellow"&gt;<br/>
+&lt;center&gt;<br/>
+&lt;h2&gt;Hello RUNOOB.COM!&lt;/h2&gt;<br/>
+&lt;/center&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>如果您想亲自尝试一下，请保存上面的代码到一个名为 "<b>firstpage.htm</b>" 的文件中，并创建一个到该文件的链接：<a href="#" target="_blank">firstpage.htm</a>。</p>
+<hr/>
+<h2>用 ASP.NET 编写的 Hello RUNOOB.COM</h2>
+<p>转换 HTML 页面为 ASP.NET 页面最简单的方法是，直接复制一个 HTML 文件，并把新文件的扩展名改成 <b>.aspx</b> 。</p>
+<p>下面的代码将以 ASP.NET 页面的形式显示实例：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body bgcolor="yellow"&gt;<br/>
+&lt;center&gt;<br/>
+&lt;h2&gt;Hello RUNOOB.COM!&lt;/h2&gt;<br/>
+&lt;/center&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div></div>
+<p>如果您想亲自尝试一下，请保存上面的代码到一个名为 "<b>firstpage.aspx</b>" 的文件中，并创建一个到该文件的链接：<a href="#" target="_blank">firstpage.aspx</a>。</p>
+<hr/>
+<h2>它是如何工作的？</h2>
+<p>从根本上讲，ASP.NET 页面与 HTML 是完全相同的。</p>
+<p>HTML 页面的扩展名是 .htm。如果浏览器向服务器请求一个 HTML 页面，服务器可以不进行任何修改，就直接发送页面给浏览器。</p>
+<p>ASP.NET 页面的扩展名是 .aspx。如果浏览器向服务器请求个 ASP.NET 页面，服务器在将结果发回给浏览器之前，需要先处理页面中的可执行代码。</p>
+<p>上面的 ASP.NET 页面不包含任何可执行的代码，所以没有执行任何东西。在下面的实例中，我们将添加一些可执行的代码到页面中，以便演示静态 HTML 页面和动态 ASP 页面的不同之处。</p>
+<hr/>
+<h2>经典 ASP</h2>
+<p>Active Server Pages (ASP) 已经流行很多年了。通过 ASP，可以在 HTML 页面中放置可执行代码。</p>
+<p>之前的 ASP 版本（在 ASP.NET 之前）通常被称为经典 ASP。</p>
+<p>ASP.NET 不完全兼容经典 ASP，但是只需要经过少量的修改，大部分经典 ASP 页面就可以作为 ASP.NET 页面良好地运行。</p>
+<p>如果您想学习更多关于经典 ASP 的知识，请访问我们的 
+<a href="/asp/asp-tutorial.html">ASP 教程</a>。</p>
+<hr/>
+<h2>用经典 ASP 编写的动态页面</h2>
+<p>为了演示 ASP 是如何显示包含动态内容的页面，我们将向上面的实例中添加一些可执行的代码（红色字体标识）：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body bgcolor="yellow"&gt;<br/>
+&lt;center&gt;<br/>
+&lt;h2&gt;Hello RUNOOB.COM!&lt;/h2&gt;<br/>
+&lt;p&gt;<span class="marked">&lt;%Response.Write(now())%&gt;</span>&lt;/p&gt;<br/>
+&lt;/center&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>&lt;% --%&gt; 标签内的代码是在服务器上执行的。</p>
+<p>Response.Write 是用来向 HTML 输出流中写东西的 ASP 代码。</p>
+<p>Now() 是一个返回服务器当前日期和时间的函数。</p>
+<p>如果您想亲自尝试一下，请保存上面的代码到一个名为 "<b>dynpage.asp</b>" 的文件中，并创建一个到该文件的链接：<a href="#" target="_blank">dynpage.asp</a>。</p>
+<hr/>
+<h2>用 ASP .NET 编写的动态页面</h2>
+<p>下面的代码将以 ASP.NET 页面的形式显示实例：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body bgcolor="yellow"&gt;<br/>
+&lt;center&gt;<br/>
+&lt;h2&gt;Hello RUNOOB.COM!&lt;/h2&gt;<br/>
+&lt;p&gt;<span class="marked">&lt;%Response.Write(now())%&gt;</span>&lt;/p&gt;<br/>
+&lt;/center&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>如果您想亲自尝试一下，请保存上面的代码到一个名为 "<b>dynpage.aspx</b>" 的文件中，并创建一个到该文件的链接：<a href="#" target="_blank">dynpage.aspx</a>。</p>
+<hr/>
+<h2>ASP.NET 对比经典 ASP</h2>
+<p>上面的实例无法演示 ASP.NET 与经典 ASP 之间任何的不同之处。</p>
+<p>正如最后的两个实例中，您看不出 ASP 页面和 ASP.NET 页面两者之间的不同之处。</p>
+<p>在下一章中，您将看到服务器控件是如何让 ASP.NET 比经典 ASP 更强大的。</p>
+<br/>
+</div>

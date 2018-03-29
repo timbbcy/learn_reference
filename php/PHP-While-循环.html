@@ -1,0 +1,95 @@
+<div class="article-intro" id="content">
+<h1>PHP 循环 - <span class="color_h1">While 循环</span>
+</h1>
+<hr/>
+<p class="intro">循环执行代码块指定的次数，或者当指定的条件为真时循环执行代码块。</p>
+<hr/>
+<h2>PHP 循环</h2>
+<p>在您编写代码时，您经常需要让相同的代码块一次又一次地重复运行。我们可以在代码中使用循环语句来完成这个任务。</p>
+<p>在 PHP 中，提供了下列循环语句：</p>
+<ul>
+<li>
+<b>while </b>- 只要指定的条件成立，则循环执行代码块</li>
+<li>
+<b>do...while</b> - 首先执行一次代码块，然后在指定的条件成立时重复这个循环</li>
+<li>
+<b>for </b>- 循环执行代码块指定的次数</li>
+<li>
+<b>foreach </b>- 根据数组中每个元素来循环代码块</li>
+</ul>
+<hr/>
+<h2>while 循环</h2>
+<p>while 循环将重复执行代码块，直到指定的条件不成立。</p>
+<h3>语法</h3>
+<pre>
+while (条件)
+{
+    要执行的代码;
+}</pre>
+<h3>实例</h3>
+<p>下面的实例首先设置变量 <i>i</i> 的值为 1 ($i=1;)。</p>
+<p>然后，只要 <i>i</i> 小于或者等于 5，while 循环将继续运行。循环每运行一次，<i>i</i> 就会递增 1：</p>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;?php
+$i=1;
+while($i&lt;=5)
+{
+    echo "The number is " . $i . "&lt;br&gt;";
+    $i++;
+}
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>输出：</p>
+<div class="code notranslate"><div>
+
+The number is 1<br/>
+The number is 2<br/>
+The number is 3<br/>
+The number is 4<br/>
+The number is 5
+</div></div>
+<br/><hr/>
+<h2>do...while 语句</h2>
+<p>do...while 语句会至少执行一次代码，然后检查条件，只要条件成立，就会重复进行循环。</p>
+<h3>语法</h3>
+<pre>
+do
+{
+    要执行的代码;
+}
+while (条件);</pre>
+<h3>实例</h3>
+<p>下面的实例首先设置变量 <i>i</i> 的值为 1 ($i=1;)。</p>
+<p>然后，开始 do...while 循环。循环将变量 <i>i</i> 的值递增 1，然后输出。先检查条件（<i>i</i> 小于或者等于 5），只要 <i>i</i> 小于或者等于 5，循环将继续运行：</p>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;?php
+$i=1;
+do
+{
+    $i++;
+    echo "The number is " . $i . "&lt;br&gt;";
+}
+while ($i&lt;=5);
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>输出：</p>
+<div class="code notranslate"><div>
+
+The number is 2<br/>
+The number is 3<br/>
+The number is 4<br/>
+The number is 5<br/>
+The number is 6
+</div></div>
+<p>for 循环和 foreach 循环将在下一章进行讲解。</p>
+</div>

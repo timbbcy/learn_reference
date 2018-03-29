@@ -1,0 +1,42 @@
+<div class="article-intro" id="content">
+<h1>Perl 条件语句</h1>
+<p>
+Perl 条件语句是通过一条或多条语句的执行结果（True或者False）来决定执行的代码块。</p><p>
+可以通过下图来简单了解条件语句的执行过程:</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/06/decision_making.jpg"/></p>
+<blockquote><p>注意，数字 0, 字符串 '0' 、 "" , 空 list () , 和 undef 为 <b>false</b> ，其他值均为 <b>true</b>。 true 前面使用 <b>!</b> 或 <b>not</b>则返回 false 。</p></blockquote>
+<p>Perl 提供了下拉的条件语句：</p>
+<table class="reference">
+<tbody><tr><th style="width:35%">语句</th><th>描述</th></tr>
+<tr><td><p><a href="/perl/perl-if-statement.html" title="Perl if 语句">if 语句</a></p></td><td>一个 <b>if 语句</b> 由一个布尔表达式后跟一个或多个语句组成。</td></tr>
+<tr><td><p><a href="/perl/perl-if-else-statement.html" title="Perl if...else 语句">if...else 语句</a></p></td><td>一个 <b>if 语句</b> 后可跟一个可选的 <b>else 语句</b>，else 语句在布尔表达式为假时执行。</td></tr>
+<tr><td><p><a href="/perl/perl-if-elsif-statement.html" title="Perl if...elsif...else 语句">if...elsif...else 语句</a></p></td><td>您可以在一个 <b>if</b> 语句后可跟一个可选的 <b>elsif 语句</b>，然后再跟另一个 <b>else 语句</b>。</td></tr>
+<tr><td><p><a href="/perl/perl-unless-statement.html" title="Perl unless 语句">unless 语句</a></p></td><td>一个 <b>unless 语句</b> 由一个布尔表达式后跟一个或多个语句组成。</td></tr>
+<tr><td><p><a href="/perl/perl-unless-else-statement.html" title="Perl unless...else 语句。">unless...else 语句。</a></p></td><td>一个 <b>unless 语句</b> 后可跟一个可选的 <b>else 语句</b>。</td></tr>
+<tr><td><p><a href="/perl/perl-unless-elsif-statement.html" title="Perl unless...elsif..else 语句">unless...elsif..else statement</a></p></td><td>一个 <b>unless 语句</b> 后可跟一个可选的 <b>elsif 语句</b>，然后再跟另一个 <b>else 语句</b>。</td></tr>
+<tr><td><p><a href="/perl/perl-switch-statement.html" title="Perl switch 语句">switch 语句</a></p></td><td>在最新版本的 Perl 中，我们可以使用 <b>switch</b> 语句。它根据不同的值执行对应的代码块。</td></tr>
+</tbody></table>
+<hr/>
+<h2>三元运算符 ? :</h2>
+<p>我们可以使用 <b>条件运算 ? :</b> 来简化 <b>if...else</b> 语句的操作。通常格式为：</p>
+<pre>
+Exp1 ? Exp2 : Exp3;
+</pre>
+<p>如果 Exp1 表达式为 true ，则返回 Exp2 表达式计算结果，否则返回 Exp3。</p>
+<p>实例如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/local/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$name</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$favorite</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code">;     </span><span class="hl-comment"># 喜欢数</span><span class="hl-code">
+</span><span class="hl-var">$status</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-var">$favorite</span><span class="hl-code"> &gt; </span><span class="hl-number">60</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">? </span><span class="hl-quotes">"</span><span class="hl-string">热门网站</span><span class="hl-quotes">"</span><span class="hl-code"> : </span><span class="hl-quotes">"</span><span class="hl-string">不是热门网站</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$name</span><span class="hl-string"> - </span><span class="hl-var">$status</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+菜鸟教程 - 不是热门网站
+</pre>
+</div>

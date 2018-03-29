@@ -1,0 +1,90 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1"> MySQL 插入数据</span></h1>
+<hr/>
+<h2>使用 MySQLi 和 PDO 向 MySQL 插入数据</h2>
+<p>在创建完数据库和表后，我们可以向表中添加数据。</p>
+<p>以下为一些语法规则：</p>
+<ul>
+<li>PHP 中 SQL 查询语句必须使用引号</li>
+<li>在 SQL 查询语句中的字符串值必须加引号</li>
+<li>数值的值不需要引号</li>
+<li>NULL 值不需要引号</li>
+</ul>
+<p> INSERT INTO 语句通常用于向 MySQL 表添加新的记录：</p>
+<div class="code">
+<div>
+INSERT INTO table_name (column1, column2, column3,...)<br/>
+VALUES (value1, value2, value3,...)
+</div></div>
+<p>学习更多关于 SQL 知识，请查看我们的 <a href="/sql/sql-tutorial.html">SQL 教程</a>。</p>
+<p>在前面的几个章节中我们已经创建了表 "MyGuests"，表字段有: "id", "firstname", "lastname", "email" 和 "reg_date"。 
+现在，让我们开始向表填充数据。</p>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>注意：</strong> 如果列设置 AUTO_INCREMENT (如 "id" 列) 或 TIMESTAMP 
+(如 "reg_date" 列),，我们就不需要在 SQL 查询语句中指定值； MySQL 会自动为该列添加值。</td>
+</tr></tbody></table>
+<p>以下实例向 "MyGuests" 表添加了新的记录:</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>$password = 
+	"password";<br/>$dbname = 
+	"myDB";<br/><br/>// 创建连接<br/>$conn = 
+	new mysqli($servername, $username, $password, $dbname);<br/>
+	// 检测连接<br/>
+	if ($conn-&gt;connect_error) {<br/>
+    die("连接失败: " . $conn-&gt;connect_error);<br/>}
+<br/>
+<br/>$sql = "INSERT INTO 
+	MyGuests (firstname, lastname, email)<br/>
+	VALUES ('John', 'Doe', 'john@example.com')";<br/>
+<br/>if ($conn-&gt;query($sql) === TRUE) {<br/>    echo "新记录插入成功";<br/>} else {<br/>    echo 
+	"Error: " . $sql . "&lt;br&gt;" . $conn-&gt;error;<br/>}<br/><br/>$conn-&gt;close();<br/>
+?&gt;
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向过程)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>$password = 
+	"password";<br/>$dbname = 
+	"myDB";<br/><br/>// 创建连接<br/>
+$conn = mysqli_connect($servername, $username, $password, 
+	$dbname);<br/>
+	// 检测连接<br/>
+	if (!$conn) {<br/>
+    die("Connection 
+	failed: " . mysqli_connect_error());<br/>}<br/><br/>$sql = "INSERT INTO 
+	MyGuests (firstname, lastname, email)<br/>
+	VALUES ('John', 'Doe', 'john@example.com')";<br/>
+<br/>if (mysqli_query($conn, $sql)) {<br/>    echo "新记录插入成功";<br/>} else {<br/>    echo "Error: " 
+	. $sql . "&lt;br&gt;" . mysqli_error($conn);<br/>}<br/><br/>mysqli_close($conn);<br/>
+?&gt;
+</div>
+<br/>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 (PDO)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>
+	$password = "password";<br/>$dbname = 
+	"myDBPDO";<br/><br/>try {<br/>    $conn = new PDO("mysql:host=$servername;dbname=$dbname", 
+	$username, $password);<br/>    
+	// 设置 PDO 错误模式，用于抛出异常<br/>    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, 
+	PDO::ERRMODE_EXCEPTION);<br/>    $sql = "INSERT INTO 
+	MyGuests (firstname, lastname, email)<br/>
+	   
+	VALUES ('John', 'Doe', 'john@example.com')";<br/>
+	    // 使用 exec() ，没有结果返回 <br/>    $conn-&gt;exec($sql);<br/>    
+	echo "新记录插入成功";<br/>}<br/>catch(PDOException $e)<br/> {<br/>    
+	echo $sql . "&lt;br&gt;" . $e-&gt;getMessage();<br/>}<br/>
+<br/>$conn = null;<br/>
+?&gt;
+</div>
+<br/>
+</div>
+</div>

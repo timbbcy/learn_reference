@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<h1>PHP 图像处理</h1>
+<p>
+PHP 提供了丰富的图像处理函数，主要包括：
+</p>
+<table class="reference">
+<tr><th>函数</th><th>描述</th></tr>
+<tr><td><a href="php-gd-info.html">gd_info()</a></td>
+<td>取得当前安装的 GD 库的信息</td></tr>
+<tr><td><a href="php-getimagesize.html">getimagesize()</a></td>
+<td>获取图像信息</td></tr>
+<tr><td><a href="php-getimagesizefromstring.html">getimagesizefromstring()</a></td>
+<td>获取图像信息</td></tr>
+<tr><td><a href="php-image-type-to-extension.html">image_type_to_extension()</a></td>
+<td>获取图片后缀</td></tr>
+<tr><td><a href="php-image2wbmp.html"> image_type_to_mime_type()</a></td>
+<td>返回图像的 MIME 类型</td></tr>
+<tr><td><a href="php-image2wbmp.html">image2wbmp()</a></td>
+<td>输出WBMP图片</td></tr>
+<tr><td><a href="php-imageaffine.html"> imageaffine()</a></td>
+<td>返回经过仿射变换后的图像</td></tr>
+<tr><td><a href="php-imageaffinematrixconcat.html"> imageaffinematrixconcat()</a></td>
+<td>连接两个矩阵</td></tr>
+<tr><td><a href="php-imageaffinematrixget.html"> imageaffinematrixget()</a></td>
+<td>获取矩阵</td></tr>
+<tr><td><a href="php-imagealphablending.html"> imagealphablending()</a></td>
+<td>设定图像的混色模式</td></tr>
+<tr><td><a href="php-imageantialias.html"> imageantialias()</a></td>
+<td>是否使用抗锯齿（antialias）功能</td></tr>
+<tr><td><a href="php-imagearc.html"> imagearc()</a></td>
+<td>画椭圆弧</td></tr>
+<tr><td><a href="php-imagechar.html"> imagechar()</a></td>
+<td>写出横向字符</td></tr>
+<tr><td><a href="php-imagecharup.html"> imagecharup()</a></td>
+<td>垂直地画一个字符</td></tr>
+<tr><td><a href="php-imagecolorallocate.html"> imagecolorallocate()</a></td>
+<td>为一幅图像分配颜色</td></tr>
+<tr><td><a href="php-imagecolorallocatealpha.html"> imagecolorallocatealpha()</a></td>
+<td>为一幅图像分配颜色和透明度</td></tr>
+<tr><td><a href="php-imagecolorat.html"> imagecolorat()</a></td>
+<td>取得某像素的颜色索引值</td></tr>
+<tr><td><a href="php-imagecolorclosest.html"> imagecolorclosest()</a></td>
+<td>取得与指定的颜色最接近的颜色的索引值</td></tr>
+<tr><td><a href="php-imagecolorclosestalpha.html"> imagecolorclosestalpha()</a></td>
+<td>取得与指定的颜色加透明度最接近的颜色的索引</td></tr>
+<tr><td><a href="php-imagecolorclosesthwb.html"> imagecolorclosesthwb()</a></td>
+<td>取得与指定的颜色最接近的色度的黑白色的索引</td></tr>
+<tr><td><a href="php-imagesx-imagesy.html">imagesx() 、imagesy()</a></td>
+<td>获取图像宽度与高度</td></tr>
+</table>
+<h2>GD 库</h2>
+<p>
+使用 PHP 图像处理函数，需要加载 GD 支持库。请确定 php.ini 加载了 GD 库：
+<p>Window 服务器上：
+</p>
+<pre>extension = php_gd2.dll
+</pre>
+<p>Linux 和 Mac 系统上:</p>
+<pre>
+extension = php_gd2.so
+</pre>
+<p>
+使用 gd_info() 函数可以查看当前安装的 GD 库的信息：
+</p>
+<pre>&lt;?php
+var_dump(gd_info());
+?&gt;
+</pre>
+<p>
+输出大致如下：
+</p>
+<pre>array(12) {
+  ["GD Version"]=&gt;
+  string(26) "bundled (2.1.0 compatible)"
+  ["FreeType Support"]=&gt;
+  bool(true)
+  ["FreeType Linkage"]=&gt;
+  string(13) "with freetype"
+  ["T1Lib Support"]=&gt;
+  bool(false)
+  ["GIF Read Support"]=&gt;
+  bool(true)
+  ["GIF Create Support"]=&gt;
+  bool(true)
+  ["JPEG Support"]=&gt;
+  bool(true)
+  ["PNG Support"]=&gt;
+  bool(true)
+  ["WBMP Support"]=&gt;
+  bool(true)
+  ["XPM Support"]=&gt;
+  bool(false)
+  ["XBM Support"]=&gt;
+  bool(true)
+  ["JIS-mapped Japanese Font Support"]=&gt;
+  bool(false)
+}
+</pre>
+</p></div>

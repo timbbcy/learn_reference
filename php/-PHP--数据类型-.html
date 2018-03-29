@@ -1,0 +1,113 @@
+<div class="article-intro" id="content">
+<h1>PHP 5 <span class="color_h1">数据类型</span>
+</h1>
+<hr/>
+<p class="intro">String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。<br/></p>
+<hr/>
+<h2>PHP 字符串</h2>
+<p>一个字符串是一串字符的序列，就像 "Hello world!"。</p>
+<p>你可以将任何文本放在单引号和双引号中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$x</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Hello world!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$x</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">; 
+</span><span class="hl-var">$x</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Hello world!</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$x</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_datatypes_string" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>PHP 整型</h2>
+<p>整数是一个没有小数的数字。 </p>
+<p>整数规则:</p>
+<ul>
+<li>整数必须至少有一个数字 (0-9)</li>
+<li>整数不能包含逗号或空格</li>
+<li>整数是没有小数点的</li>
+<li>整数可以是正数或负数</li>
+<li>
+	整型可以用三种格式来指定：十进制， 
+十六进制（ 以 0x 为前缀）或八进制（前缀为 0）。</li>
+</ul>
+<p>在以下实例中我们将测试不同的数字。
+ PHP var_dump() 
+函数返回变量的数据类型和值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php <br/>$x = 5985;<br/>var_dump($x);<br/>echo "&lt;br&gt;"; <br/>$x = 
+	-345; // 负数 <br/>var_dump($x);<br/>echo "&lt;br&gt;"; <br/>$x = 0x8C; // 
+	十六进制数<br/>var_dump($x);<br/>echo "&lt;br&gt;";<br/>$x = 047; // 八进制数<br/>var_dump($x);<br/>?&gt;</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_datatypes_integer" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>PHP 浮点型</h2>
+<p>浮点数是带小数部分的数字，或是指数形式。</p>
+<p>在以下实例中我们将测试不同的数字。
+ PHP var_dump() 
+函数返回变量的数据类型和值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php <br/>$x = 10.365;<br/>var_dump($x);<br/>echo "&lt;br&gt;"; <br/>$x 
+	= 2.4e3;<br/>var_dump($x);<br/>echo "&lt;br&gt;"; <br/>$x = 8E-5;<br/>var_dump($x);<br/>
+	?&gt; </div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_datatypes_float" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>PHP 布尔型</h2>
+<p>布尔型可以是 TRUE 或 FALSE。</p>
+<div class="code">
+<div>
+	$x=true;<br/>
+	$y=false;</div>
+</div>
+<p>布尔型通常用于条件判断。在接下来的章节中你会学到更多关于条件控制的教程。</p>
+<hr/>
+<h2>PHP 数组</h2>
+<p>数组可以在一个变量中存储多个值。</p>
+<p>在以下实例中创建了一个数组，
+然后使用 PHP var_dump() 
+函数返回数组的数据类型和值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php <br/>$cars=array("Volvo","BMW","Toyota");<br/>var_dump($cars);<br/>
+	?&gt; </div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_datatypes_array" target="_blank">尝试一下 »</a>
+</div>
+<p>在接下来的章节中你将学到更多关于数组的知识。</p>
+<hr/>
+<h2>PHP 对象</h2>
+<p>对象数据类型也可以用于存储数据。</p>
+<p>在 PHP 中，对象必须声明。</p>
+<p>首先，你必须使用class关键字声明类对象。类是可以包含属性和方法的结构。</p>
+<p>然后我们在类中定义数据类型，然后在实例化的类中使用数据类型：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php<br/>class Car<br/>{<br/>  var $color;<br/>  function 
+	Car($color="green") {<br/>    $this-&gt;color = 
+	$color;<br/>  }<br/>  function what_color() {<br/>    
+	return $this-&gt;color;<br/>  }<br/>}<br/>?&gt; </div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_datatypes_object" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例中PHP关键字this就是指向当前对象实例的指针，不指向任何其他对象或类。</p>
+<p>你将会在接下来的章节中学会更多关于对象的知识。</p>
+<hr/>
+<h2>PHP NULL 值</h2>
+<p> NULL 值表示变量没有值。NULL 是数据类型为 NULL 的值。</p>
+<p> NULL 值指明一个变量是否为空值。
+同样可用于数据空值和NULL值的区别。</p>
+<p>可以通过设置变量值为 NULL 来清空变量数据：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;?php<br/>$x="Hello world!";<br/>$x=null;<br/>var_dump($x);<br/>?&gt; </div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_datatypes_null" target="_blank">尝试一下 »</a>
+</div>
+</div>

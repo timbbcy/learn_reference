@@ -1,0 +1,135 @@
+<div class="article-intro" id="content">
+<h1>ionic 卡片</h1>
+<p>近年来卡片(card)的应用越来越流行，卡片提供了一个更好组织信息展示的工具。</p>
+<p>针对移动端的应用，卡片会根据屏幕大小自适应大小。</p>
+<p>我们可以很灵活的控制卡片的显示效果，甚至实现动画效果。</p>
+<p>卡片一般放在页面顶部，当然也可以实现左右切换的功能。</p>
+<pre>
+&lt;div class="card"&gt;
+  &lt;div class="item item-text-wrap"&gt;
+    基本卡片，包含了文本信息。
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_card&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<p>卡片(card)默认样式带有box-shadow(阴影)，由于性能的原因，和他类似的元素像 list list-inset 并没有阴影。</p>
+<p>如果你有很多的卡片，每个卡片都有很多子元素，建议使用内嵌列表（inset list）。</p>
+<hr/>
+<h2>卡片的头部与底部</h2>
+<p>我们可以通过添加 item-divider 类为卡片添加头部与底部：</p>
+<pre>
+&lt;div class="card"&gt;
+  &lt;div class="item item-divider"&gt;
+    卡片头部！
+  &lt;/div&gt;
+  &lt;div class="item item-text-wrap"&gt;
+    基本卡片，包含了文本信息。
+  &lt;/div&gt;
+  &lt;div class="item item-divider"&gt;
+    卡片底部！
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_card_item-divider&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>卡片列表</h2>
+<p>使用 list card 类来设置卡片列表：</p>
+<pre>
+&lt;div class="list card"&gt;
+
+  &lt;a href="#" class="item item-icon-left"&gt;
+    &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+    Enter home address
+  &lt;/a&gt;
+
+  &lt;a href="#" class="item item-icon-left"&gt;
+    &lt;i class="icon ion-ios-telephone"&gt;&lt;/i&gt;
+    Enter phone number
+  &lt;/a&gt;
+
+  &lt;a href="#" class="item item-icon-left"&gt;
+    &lt;i class="icon ion-wifi"&gt;&lt;/i&gt;
+    Enter wireless password
+  &lt;/a&gt;
+
+  &lt;a href="#" class="item item-icon-left"&gt;
+    &lt;i class="icon ion-card"&gt;&lt;/i&gt;
+    Enter card information
+  &lt;/a&gt;
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_card_list&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>带图片卡片</h2>
+<p>卡片中使用图片，效果会更好，实例如下：</p>
+<pre>
+&lt;div class="list card"&gt;
+
+  &lt;div class="item item-avatar"&gt;
+    &lt;img src="avatar.jpg"&gt;
+    &lt;h2&gt;Pretty Hate Machine&lt;/h2&gt;
+    &lt;p&gt;Nine Inch Nails&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="item item-image"&gt;
+    &lt;img src="cover.jpg"&gt;
+  &lt;/div&gt;
+
+  &lt;a class="item item-icon-left assertive" href="#"&gt;
+    &lt;i class="icon ion-music-note"&gt;&lt;/i&gt;
+    Start listening
+  &lt;/a&gt;
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_card_item-image&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<p>运行效果如下：</p>
+<iframe frameborder="0" height="500" src="/try/demo_source/ionic_card_item-image.htm"></iframe>
+<hr/>
+<h2>卡片展现</h2>
+<p>以下实例中使用几种不同的选项的卡片展现方式。 开始使用了 list card 元素，并使用了 item-avatar ,  item-body 元素用于展示图片和文本信息，底部使用 item-divider 类。</p>
+<pre>
+&lt;div class="list card"&gt;
+
+  &lt;div class="item item-avatar"&gt;
+    &lt;img src="mcfly.jpg"&gt;
+    &lt;h2&gt;Marty McFly&lt;/h2&gt;
+    &lt;p&gt;November 05, 1955&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="item item-body"&gt;
+    &lt;img class="full-image" src="delorean.jpg"&gt;
+    &lt;p&gt;
+      菜鸟教程 -- 学的不仅是技术，更是梦想！&lt;br&gt;
+      菜鸟教程 -- 学的不仅是技术，更是梦想！&lt;br&gt;
+      菜鸟教程 -- 学的不仅是技术，更是梦想！&lt;br&gt;
+      菜鸟教程 -- 学的不仅是技术，更是梦想！
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;a href="#" class="subdued"&gt;1 喜欢&lt;/a&gt;
+      &lt;a href="#" class="subdued"&gt;5 评论&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="item tabs tabs-secondary tabs-icon-left"&gt;
+    &lt;a class="tab-item" href="#"&gt;
+      &lt;i class="icon ion-thumbsup"&gt;&lt;/i&gt;
+      喜欢
+    &lt;/a&gt;
+    &lt;a class="tab-item" href="#"&gt;
+      &lt;i class="icon ion-chatbox"&gt;&lt;/i&gt;
+      评论
+    &lt;/a&gt;
+    &lt;a class="tab-item" href="#"&gt;
+      &lt;i class="icon ion-share"&gt;&lt;/i&gt;
+      分享
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_card_showcase&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<p>运行效果如下：</p>
+<iframe frameborder="0" height="600" src="/try/demo_source/ionic_card_showcase.htm"></iframe>
+</div>

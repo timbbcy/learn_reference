@@ -1,0 +1,118 @@
+<div class="article-intro" id="content">
+<h1>Kotlin 扩展</h1>
+<p>Kotlin 可以对一个类的属性和方法进行扩展，且不需要继承或使用 Decorator 模式。</p>
+<p>扩展是一种静态行为，对被扩展的类代码本身不会造成任何影响。</p>
+<hr/>
+<h2>扩展函数</h2>
+<p>扩展函数可以在已有类中添加新的方法，不会对原类做修改，扩展函数定义形式：</p>
+<pre>
+fun receiverType.functionName(params){
+    body
+}
+</pre>
+<ul>
+<li>receiverType：表示函数的接收者，也就是函数扩展的对象</li>
+<li>functionName：扩展函数的名称</li>
+<li>params：扩展函数的参数，可以为NULL</li>
+</ul>
+<p>以下实例扩展 User 类 ：</p>
+<pre>
+class User(var name:String)
+
+/**扩展函数**/
+fun User.Print(){
+    print("用户名 $name")
+}
+
+fun main(arg:Array&lt;String&gt;){
+    var user = User("Runoob")
+    user.Print()
+}
+</pre><p>实例执行输出结果为：</p>
+<pre>
+用户名 Runoob
+</pre>
+<p>下面代码为 MutableList<int> 添加一个swap 函数：</int></p>
+<pre>
+// 扩展函数 swap,调换不同位置的值
+fun MutableList&lt;Int&gt;.swap(index1: Int, index2: Int) {
+    val tmp = this[index1]     //  this 对应该列表
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
+
+fun main(args: Array&lt;String&gt;) {
+
+    val l = mutableListOf(1, 2, 3)
+    // 位置 0 和 2 的值做了互换
+    l.swap(0, 2) // 'swap()' 函数内的 'this' 将指向 'l' 的值
+
+    println(l.toString())
+}
+</pre>
+<p>实例执行输出结果为：</p>
+<pre>
+[3, 2, 1]
+</pre>
+<p>this关键字指代接收者对象(receiver object)(也就是调用扩展函数时, 在点号之前指定的对象实例)。</p>
+<hr/>
+<h2>扩展函数是静态解析的
+
+</h2>
+<p>扩展函数是静态解析的，并不是接收者类型的虚拟成员，在调用扩展函数时，具体被调用的的是哪一个函数，由调用函数的的对象表达式来决定的，而不是动态的类型决定的:</p>
+<pre>
+open class C
+
+class D: C()
+
+fun C.foo() = "c"   // 扩展函数 foo
+
+fun D.foo() = "d"   // 扩展函数 foo
+
+fun printFoo(c: C) {
+    println(c.foo())  // 类型是 C 类
+}
+
+fun main(arg:Array&lt;String&gt;){
+    printFoo(D())
+}
+</pre>
+<p>实例执行输出结果为：</p>
+<pre>
+c
+</pre>
+<p>若扩展函数和成员函数一致，则使用该函数时，会优先使用成员函数。</p>
+<pre>
+class C {
+    fun foo() { println("成员函数") }
+}
+
+fun C.foo() { println("扩展函数") }
+
+fun main(arg:Array&lt;String&gt;){
+    var c = C()
+    c.foo()
+}
+</pre><p>实例执行输出结果为：</p>
+<pre>
+成员函数
+</pre>
+<h3>扩展一个空对象</h3>
+<p>在扩展函数内， 可以通过 this 来判断接收者是否为 NULL,这样，即使接收者为 NULL,也可以调用扩展函数。例如:</p>
+<pre>
+fun Any?.toString(): String {
+    if (this == null) return "null"
+    // 空检测之后，“this”会自动转换为非空类型，所以下面的 toString()
+    // 解析为 Any 类的成员函数
+    return toString()
+}
+fun main(arg:Array&lt;String&gt;){
+    var t = null
+    println(t.toString())
+}
+</pre><p>实例执行输出结果为：</p>
+<pre>
+null
+</pre>
+<hr/>
+</div>

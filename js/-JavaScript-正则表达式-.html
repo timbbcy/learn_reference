@@ -1,0 +1,235 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">正则表达式</span></h1>
+<hr/>
+<p class="intro">正则表达式（英语：Regular Expression，在代码中常简写为regex、regexp或RE）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。</p>
+<p class="intro">搜索模式可用于文本搜索和文本替换。</p>
+<hr/>
+<h2>什么是正则表达式？</h2>
+<p>正则表达式是由一个字符序列形成的搜索模式。</p>
+<p>当你在文本中搜索数据时，你可以用搜索模式来描述你要查询的内容。</p>
+<p>正则表达式可以是一个简单的字符，或一个更复杂的模式。</p>
+<p>正则表达式可用于所有文本搜索和文本替换的操作。</p>
+<h2>语法</h2>
+<pre>
+/正则表达式主体/修饰符(可选)
+</pre>
+<p>其中修饰符是可选的。</p>
+<br/>
+<div class="example">
+<h2 class="example">实例：</h2>
+<div class="example_code">
+	var patt = /runoob/i</div>
+</div>
+<p>实例解析：</p>
+<p><strong>/runoob/i</strong>  是一个正则表达式。</p>
+<p><strong>runoob</strong>  是一个<strong>正则表达式主体</strong> (用于检索)。</p>
+<p><strong>i</strong>  是一个<strong>修饰符</strong> (搜索不区分大小写)。</p>
+<hr/>
+<h2>使用字符串方法</h2>
+<p>在 JavaScript 中，正则表达式通常用于两个字符串方法 : search() 和 replace()。</p>
+<p><strong>search() 方法</strong> 用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子串的起始位置。</p>
+<p><strong>replace() 方法</strong> 用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</p>
+<hr/>
+<h2> search() 方法使用正则表达式</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>使用正则表达式搜索 "Runoob" 字符串，且不区分大小写：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Visit Runoob!</span><span class="hl-quotes">"</span><span class="hl-code">; 
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">n</span><span class="hl-code"> = </span><span class="hl-identifier">str</span><span class="hl-code">.</span><span class="hl-identifier">search</span><span class="hl-brackets">(</span><span class="hl-code">/</span><span class="hl-identifier">Runoob</span><span class="hl-code">/</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>输出结果为：</p>
+<div class="example_code">
+6
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_string_search_regexp" target="_blank">尝试一下 »</a></div>
+<br/>
+<hr/>
+<h2>search() 方法使用字符串</h2>
+<p>search 方法可使用字符串作为参数。字符串参数会转换为正则表达式： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>检索字符串中 "Runoob" 的子串：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Visit Runoob!</span><span class="hl-quotes">"</span><span class="hl-code">; 
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">n</span><span class="hl-code"> = </span><span class="hl-identifier">str</span><span class="hl-code">.</span><span class="hl-identifier">search</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_string_search" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>replace() 方法使用正则表达式</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>使用正则表达式且不区分大小写将字符串中的 Microsoft 替换为 Runoob :</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">; 
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-identifier">str</span><span class="hl-code">.</span><span class="hl-identifier">replace</span><span class="hl-brackets">(</span><span class="hl-code">/</span><span class="hl-identifier">microsoft</span><span class="hl-code">/</span><span class="hl-identifier">i</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>结果输出为:</p>
+<div class="example_code">
+Visit Runoob!</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_string_replace_regexp" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<h2>replace() 方法使用字符串</h2>
+<p>replace() 方法将接收字符串作为参数：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">; 
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code"> = </span><span class="hl-identifier">str</span><span class="hl-code">.</span><span class="hl-identifier">replace</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Microsoft</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_string_replace" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>你注意到了吗？</h2>
+<br/>
+<table class="lamp"><tbody><tr>
+<th style="width: 34px;"><img alt="Note" src="/images/lamp.jpg" style="width: 32px; height: 32px;"/></th>
+<td>正则表达式参数可用在以上方法中 (替代字符串参数)。<br/>
+正则表达式使得搜索功能更加强大(如实例中不区分大小写)。</td>
+</tr></tbody></table>
+<br/>
+<hr/>
+<h2>正则表达式修饰符</h2>
+<p><strong>修饰符</strong> 可以在全局搜索中不区分大小写:</p>
+<table class="reference">
+<tbody><tr>
+<th style="width: 22%;">修饰符</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>i</td>
+<td>执行对大小写不敏感的匹配。</td>
+</tr>
+<tr>
+<td>g</td>
+<td>执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>执行多行匹配。</td>
+</tr>
+</tbody></table>
+<br/>
+<hr/>
+<h2>正则表达式模式</h2>
+<p>方括号用于查找某个范围内的字符：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width: 22%;">表达式</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>[abc]</td>
+<td>查找方括号之间的任何字符。</td>
+<tr>
+<td>[0-9]</td>
+<td>查找任何从 0 至 9 的数字。</td>
+<tr>
+<td>(x|y)</td>
+<td>查找任何以 | 分隔的选项。 </td>
+</tr>
+</tr></tr></tbody></table>
+<p>元字符是拥有特殊含义的字符：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width: 22%;">元字符</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>\d</td>
+<td>查找数字。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>查找空白字符。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词边界。</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>查找以十六进制数 xxxx 规定的 Unicode 字符。</td>
+</tr>
+</tbody></table>
+<p>量词:</p>
+<table class="reference">
+<tbody><tr>
+<th style="width: 22%;">量词</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>n+</td>
+<td>匹配任何包含至少一个 <em>n</em> 的字符串。</td>
+</tr>
+<tr>
+<td>n*</td>
+<td>匹配任何包含零个或多个 <em>n</em> 的字符串。 </td>
+</tr>
+<tr>
+<td>n?</td>
+<td>匹配任何包含零个或一个 <em>n</em> 的字符串。</td>
+</tr>
+</tbody></table>
+<br/>
+<hr/>
+<h2>使用 RegExp 对象</h2>
+<p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象。 </p>
+<hr/>
+<h2>使用 test()</h2>
+<p> test() 方法是一个正则表达式方法。</p>
+<p>test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。</p>
+<p>以下实例用于搜索字符串中的字符 "e"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span> patt = /e/;<br/>
+patt.test(<span class="highVAL">"The best things in life are free!"</span>);
+</div>
+<p>字符串中含有 "e"，所以该实例输出为：</p>
+<div class="example_code">
+true
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryjs_regexp_test" target="_blank">尝试一下 »</a>
+<p>你可以不用设置正则表达式的变量，以上两行代码可以合并为一行： </p>
+<div class="example_code">
+/e/.test(<span class="highVAL">"The best things in life are free!"</span>)
+</div>
+</div>
+<br/>
+<hr/>
+<h2>使用 exec()</h2>
+<p>exec() 方法是一个正则表达式方法。</p>
+<p>exec() 方法用于检索字符串中的正则表达式的匹配。</p>
+<p>该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。</p>
+<p>以下实例用于搜索字符串中的字母 "e":</p>
+<div class="example">
+<h2 class="example">Example 1</h2>
+<div class="example_code">
+	/e/.exec(<span class="highVAL">"The best things in life are free!"</span>);
+</div>
+<p>字符串中含有 "e"，所以该实例输出为:</p>
+<div class="example_code">
+e</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryjs_regexp_exec" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>更多实例</h2>
+<ul>
+<li><p><a href="https://c.runoob.com/codedemo/3527" target="_blank">JS 判断输入字符串是否为数字、字母、下划线组成</a></p></li>
+<li><p><a href="https://c.runoob.com/codedemo/3526" target="_blank">JS 判断输入字符串是否全部为字母</a></p></li>
+<li><p><a href="https://c.runoob.com/codedemo/3525" target="_blank">JS 判断输入字符串是否全部为数字</a></p></li>
+</ul>
+<hr/>
+<h2>完整的 RegExp 参考手册</h2>
+<p>完整的 RegExp 对象参考手册，请参考我们的 <a href="/jsref/jsref-obj-regexp.html"> 
+JavaScript RegExp 参考手册</a>。</p>
+<p>该参考手册包含了所有 RegExp 对象的方法和属性。</p>
+</div>

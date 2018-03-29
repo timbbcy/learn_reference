@@ -1,0 +1,119 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">JSON</span>
+</h1>
+<hr/>
+<p class="intro">JSON 是用于存储和传输数据的格式。</p>
+<p class="intro">JSON 通常用于服务端向网页传递数据 。 </p>
+<hr/>
+<h2>什么是 JSON?</h2>
+<ul>
+<li>JSON 英文全称 <b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation</li>
+<li>JSON 是一种轻量级的数据交换格式。</li>
+<li>JSON是独立的语言 <b>*</b>
+</li>
+<li>JSON 易于理解。</li>
+</ul>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>* JSON 使用 JavaScript 语法，但是 JSON 格式仅仅是一个文本。<br/>文本可以被任何编程语言读取及作为数据格式传递。</td>
+</tr></table>
+<h2>JSON 实例</h2>
+<p>以下 JSON 语法定义了 sites 对象: 3 条网站信息（对象）的数组:</p>
+<div class="example">
+<h2 class="example">JSON 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">sites</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-code">, 
+    </span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.google.com</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-code">,
+    </span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.taobao.com</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<br/><hr/>
+<h2>JSON 格式化后为 JavaScript 对象</h2>
+<p>JSON 格式在语法上与创建 JavaScript 对象代码是相同的。</p>
+<p>由于它们很相似，所以 JavaScript 程序可以很容易的将 JSON 数据转换为 JavaScript 对象。 
+</p>
+<hr/>
+<h2>JSON 语法规则</h2>
+<ul>
+<li>数据为 键/值 对。</li>
+<li>数据由逗号分隔。</li>
+<li>大括号保存对象</li>
+<li>方括号保存数组</li>
+</ul>
+<hr/>
+<h2>JSON 数据 - 一个名称对应一个值</h2>
+<p>JSON 数据格式为 键/值 对，就像 JavaScript 对象属性。</p>
+<p>
+键/值对包括字段名称（在双引号中），后面一个冒号，然后是值：</p>
+<div class="code"><div>
+
+"name":"Runoob"</div></div>
+<br/><hr/>
+<h2>JSON 对象</h2>
+<p>JSON 对象保存在大括号内。</p>
+<p>就像在 JavaScript 中, 对象可以保存多个 键/值 对：</p>
+<div class="code"><div>
+{"name":"Runoob", "url":"www.runoob.com"}
+</div></div>
+<br/><hr/>
+<h2>JSON 数组</h2>
+<p>JSON 数组保存在中括号内。</p>
+<p>就像在 JavaScript 中, 数组可以包含对象：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-quotes">"</span><span class="hl-string">sites</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-code">, 
+    </span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.google.com</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-code">,
+    </span><span class="hl-brackets">{</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.taobao.com</span><span class="hl-quotes">"</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">]</span></div>
+</div>
+</div>
+<p>在以上实例中，对象 "sites" 是一个数组，包含了三个对象。</p>
+<p>每个对象为站点的信息（网站名和网站地址）。</p>
+<hr/>
+<h2>JSON 字符串转换为 JavaScript 对象</h2>
+<p>通常我们从服务器中读取 JSON 数据，并在网页中显示数据。</p>
+<p>简单起见，我们网页中直接设置 JSON 字符串  (你还可以阅读我们的 <a href="/json/json-tutorial.html">JSON 教程</a>):</p>
+<p>首先，创建 JavaScript 字符串，字符串为 JSON 格式的数据：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">{ "sites" : [</span><span class="hl-quotes">'</span><span class="hl-code"> +
+</span><span class="hl-quotes">'</span><span class="hl-string">{ "name":"Runoob" , "url":"www.runoob.com" },</span><span class="hl-quotes">'</span><span class="hl-code"> +
+</span><span class="hl-quotes">'</span><span class="hl-string">{ "name":"Google" , "url":"www.google.com" },</span><span class="hl-quotes">'</span><span class="hl-code"> +
+</span><span class="hl-quotes">'</span><span class="hl-string">{ "name":"Taobao" , "url":"www.taobao.com" } ]}</span><span class="hl-quotes">'</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>然后，使用 JavaScript 内置函数 JSON.parse() 将字符串转换为 JavaScript 对象:</p>
+<div class="example">
+<div class="example_code">
+var obj = JSON.parse(text);</div>
+</div>
+<p>最后，在你的页面中使用新的 JavaScript 对象：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">{ "sites" : [</span><span class="hl-quotes">'</span><span class="hl-code"> +
+    </span><span class="hl-quotes">'</span><span class="hl-string">{ "name":"Runoob" , "url":"www.runoob.com" },</span><span class="hl-quotes">'</span><span class="hl-code"> +
+    </span><span class="hl-quotes">'</span><span class="hl-string">{ "name":"Google" , "url":"www.google.com" },</span><span class="hl-quotes">'</span><span class="hl-code"> +
+    </span><span class="hl-quotes">'</span><span class="hl-string">{ "name":"Taobao" , "url":"www.taobao.com" } ]}</span><span class="hl-quotes">'</span><span class="hl-code">;
+    
+</span><span class="hl-identifier">obj</span><span class="hl-code"> = </span><span class="hl-identifier">JSON</span><span class="hl-code">.</span><span class="hl-identifier">parse</span><span class="hl-brackets">(</span><span class="hl-identifier">text</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-identifier">obj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">obj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_json_parse" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>相关函数</h2>
+<table class="reference">
+<tr><th>函数</th><th>描述</th></tr>
+<tr><td><a href="http://www.runoob.com/js/javascript-json-parse.html" target="_blank">JSON.parse()</a></td><td>用于将一个 JSON 字符串转换为 JavaScript 对象。</td>
+</tr>
+<tr><td><a href="http://www.runoob.com/js/javascript-json-stringify.html" target="_blank">JSON.stringify()</a></td><td>用于将 JavaScript 值转换为 JSON 字符串。</td>
+</tr>
+</table>
+<p>更多 JSON 信息，你可以阅读我们的 <a href="/json/json-tutorial.html">JSON 教程</a>。</p>
+</div>

@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">设置冻结列</span></h1>
+<p>本实例演示如何冻结一些列，当用户在网格上移动水平滚动条时，冻结列不能滚动到视图的外部。</p>
+<img src="/wp-content/uploads/2013/12/datagrid5_1.png"/>
+<p>
+为了冻结列，您需要定义 frozenColumns 属性。frozenColumn 属性和 columns 属性一样。
+</p>
+<pre style="color:#006600">
+    $('#tt').datagrid({
+        title:'Frozen Columns',
+        iconCls:'icon-save',
+        width:500,
+        height:250,
+        url:'data/datagrid_data.json',
+        frozenColumns:[[
+            {field:'itemid',title:'Item ID',width:80},
+            {field:'productid',title:'Product ID',width:80},
+        ]],
+        columns:[[
+            {field:'listprice',title:'List Price',width:80,align:'right'},
+            {field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+            {field:'attr1',title:'Attribute',width:100},
+            {field:'status',title:'Status',width:60}
+        ]]
+    });
+</pre>
+<p>您不需要写任何的 javascript 代码，这样您就能创建一个数据网格（datagrid）组件，如下所示：</p>
+<pre style="color:#006600">
+    &lt;table id="tt" title="Frozen Columns" class="easyui-datagrid" style="width:500px;height:250px"
+            url="data/datagrid_data.json"
+            singleSelect="true" iconCls="icon-save"&gt;
+        &lt;thead frozen="true"&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid5.zip">jeasyui-datagrid-datagrid5.zip</a></p>
+</div>

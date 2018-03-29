@@ -1,0 +1,146 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>相信大家肯定对 Json 不陌生吧，我们和服务器交互一般用得较多的数据传递方式都是 Json 字符串的形式，
+保存对象，我们也可以写成一个 Json 字符串然后存储！解析 Json 不知道你用的是 Gson，Fastjson，jackson
+等，不过本节我们并不会去用这些第三方的解析库，而是使用 Android 自带的 Json 解析器来解析 Json！
+好的，开始本节内容！</p></blockquote>
+<hr/>
+<h2>1.Json概念以及与XML的比较</h2>
+<p><strong>1）Json是什么？</strong></p>
+<blockquote><p>答：JavaScript Object Natation, 一种轻量级的数据交换格式, 与XML一样,
+广泛被采用的客户端和服务端交互的解决方案！具有良好的可读和便于快速编写的特性。</p></blockquote>
+<p><strong>2）Json与XML的比较</strong>：</p>
+<blockquote><ul>
+<li>JSON和XML的数据可读性基本相同;</li>
+<li>JSON和XML同样拥有丰富的解析手段</li>
+<li>JSON相对于XML来讲，数据的体积小</li>
+<li>JSON与JavaScript的交互更加方便</li>
+<li>JSON对数据的描述性比XML较差</li>
+<li>JSON的速度要远远快于XML</li>
+</ul>
+<p>PS:上述来自于百度~简单点说Json的优点：体积小，节省流量，只是不如XML直观，可读性
+稍微差一点而已！</p></blockquote>
+<p><strong>3）Json的格式规范</strong>：</p>
+<blockquote><p>就像协议一样，肯定是有一套规范的，毕竟双方都是通过Json字符串来传递数据，语法规则如下：
+<strong>数据在名称/值对中</strong>；<strong>数据由逗号分隔</strong>；<strong>花括号保存对象</strong>；<strong>方括号保存数组</strong>；
+而Json数据的书写格式：<strong>名称/值对</strong>  比如： <strong>"person"："coder-pig"</strong>
+比如一个简单的Json字符串：</p></blockquote>
+<pre>
+[
+    { "id":"1","name":"基神","age":"18" },
+    { "id":"2","name":"B神","age":"18"  },
+    { "id":"3","name":"曹神","age":"18" }
+]
+</pre>
+<blockquote><p>我们除了解析Json还可以自己拼接Json，当然如果你自己拼了一个Json字符串又不知道对不对，
+可以百度随便找一个校验工具，比如：
+<a href="http://www.runoob.com/jsontool">http://www.runoob.com/jsontool</a>把Json字符串贴上去，校验下就好！</p></blockquote>
+<hr/>
+<h2>2.Android给我们提供的Json解析类</h2>
+<blockquote><p>这些API都存在于org.json包下，而我们用到的类有下面这些：</p>
+<ul>
+<li><strong>JSONObject</strong>：
+Json对象，可以完成Json字符串与Java对象的相互转换</li>
+<li><strong>JSONArray</strong>：
+Json数组，可以完成Json字符串与Java集合或对象的相互转换</li>
+<li><strong>JSONStringer</strong>：
+Json文本构建类，这个类可以帮助快速和便捷的创建JSON text，
+每个JSONStringer实体只能对应创建一个JSON text</li>
+<li><strong>JSONTokener</strong>：Json解析类</li>
+<li><strong>JSONException</strong>：Json异常</li>
+</ul>
+</blockquote>
+<hr/>
+<h2>3.代码示例：解析Json字符串：</h2>
+<p>PS:这里我们就不另外写servlet或者请求网站，直接把Json写到字符串中来解析，模拟下就算了！</p>
+<h3>1)简单的Json字符串解析示例：</h3>
+<p>我们解析的是上面这个简单的Json，首先我们来写一个POJO类：</p>
+<p><strong>Person.java</strong>：</p>
+<pre>
+/**
+ * Created by Jay on 2015/9/8 0008.
+ */
+public class Person {
+    private String id;
+    private String name;
+    private String age;
+    public void setId(String id){
+        this.id = id;
+    }
+    public String getId(){
+        return this.id;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public void setAge(String age){
+        this.age = age;
+    }
+    public String getAge(){
+        return this.age;
+    }
+    @Override
+    public String toString() {
+        return this.name + "~年方：" + this.age;
+    }
+}
+</pre>
+<p>写一个解析上述Json字符串的方法：</p>
+<pre>
+private void parseEasyJson(String json){
+    persons = new ArrayList&lt;Person&gt;();
+    try{
+        JSONArray jsonArray = new JSONArray(json);
+        for(int i = 0;i &lt; jsonArray.length();i++){
+            JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+            Person person = new Person();
+            person.setId(i+"");
+            person.setName(jsonObject.getString("name"));
+            person.setAge(jsonObject.getString("age"));
+            persons.add(person);
+        }
+    }catch (Exception e){e.printStackTrace();}
+}
+</pre>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/10621891.jpg"/></p>
+<p>嘿嘿，很简单是吧，接下来我们找一个复杂点的！</p>
+<hr/>
+<h3>2)复杂的Json字符串解析示例：</h3>
+<p>如果是这样的Json字符串呢？</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/12227965.jpg"/></p>
+<p>呵呵，那就需要我们一步步来扣数据了：</p>
+<p><strong>解析代码如下</strong>：</p>
+<pre>
+private void parseDiffJson(String json) {
+    try {
+        JSONObject jsonObject1 = new JSONObject(json);
+        Log.e("Json", json);
+        JSONArray jsonArray = jsonObject1.getJSONArray("ch");
+        for (int i = 0; i &lt; jsonArray.length(); i++) {
+            JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+            //取出name
+            String sname = jsonObject.getString("names");
+            JSONArray jarray1 = jsonObject.getJSONArray("data");
+            JSONArray jarray2 = jsonObject.getJSONArray("times");
+            Log.e("Json", sname);
+            Log.e("Json", jarray1.toString());
+            Log.e("Json", jarray2.toString());
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+}
+</pre>
+<p><strong>看下打印的Log</strong>:</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/35808866.jpg"/></p>
+<p>当然还有一层，有兴趣你就自己扣...</p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>好的，使用Android给我们提供的扣脚Json解析类果然要慢慢扣，当然你也可以将解析的过程
+反过来，自己拼接JSON，时间关系，这里就慢慢拼接了，哈哈，当然进阶部分我们
+学习了第三方的一些Json解析库就轻松多了，~好的，本节就到这里，谢谢~</p></blockquote> </div>

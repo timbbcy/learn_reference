@@ -1,0 +1,83 @@
+<div class="article-intro" id="content">
+<h1>XPointer <span class="color_h1">实例</span>
+</h1>
+<hr/>
+<p class="intro">让我们通过研究一个实例来学习一些基础的 XPointer 语法。</p>
+<hr/>
+<h2>XPointer 实例</h2>
+<p>在本例中，我们会为您展示如何使用 XPointer 并结合 XLink 来指向另外一个文档的某个具体的部分。
+</p>
+<p>我们将通过研究目标 XML 文档开始（即我们要链接的那个文档）。</p>
+<hr/>
+<h2>目标XML文档</h2>
+<p>目标XML文档名为 "dogbreeds.xml"，它列出了一些不同的狗种类：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;dogbreeds&gt;<br/><br/>
+&lt;dog breed="Rottweiler" id="Rottweiler"&gt;<br/>
+   
+  &lt;picture url="http://dog.com/rottweiler.gif" /&gt;<br/>
+   
+  &lt;history&gt;The Rottweiler's ancestors were probably Roman<br/>
+   
+  drover dogs.....&lt;/history&gt;<br/>
+   
+  &lt;temperament&gt;Confident, bold, alert and imposing, the Rottweiler<br/>
+   
+  is a popular choice for its ability to protect....&lt;/temperament&gt;<br/>
+&lt;/dog&gt;<br/><br/>
+&lt;dog breed="FCRetriever" id="FCRetriever"&gt;<br/>
+   
+  &lt;picture url="http://dog.com/fcretriever.gif" /&gt;<br/>
+   
+  &lt;history&gt;One of the earliest uses of retrieving dogs was to<br/>
+   
+  help fishermen retrieve fish from the water....&lt;/history&gt;<br/>
+   
+  &lt;temperament&gt;The flat-coated retriever is a sweet, exuberant,<br/>
+   
+  lively dog that loves to play and retrieve....&lt;/temperament&gt;<br/>
+&lt;/dog&gt;<br/><br/>
+&lt;/dogbreeds&gt;
+</div></div>
+<p>在您的浏览器查看 <a href="/try/xml/dogbreeds.xml" target="_blank">"dogbreeds.xml" 文件</a>。</p>
+<p><b>注意上面的 XML 文档在每个我们需要链接的元素上使用了 id 属性！</b></p>
+<hr/>
+<h2>XML 链接文档</h2>
+<p>不止能够链接到整个文档（当使用 XLink 时），XPointer 允许您链接到文档的特定部分。如需链接到页面的某个具体的部分，请在 xlink:href 属性中的 URL 后添加一个井号 (#) 以及一个 XPointer 表达式。</p>
+<p>表达式：<em>#xpointer(id("Rottweiler"))</em> 可引用目标文档中 id 值为 "Rottweiler" 的元素。</p>
+<p>因此，xlink:href 属性会类似这样：<em>xlink:href="http://dog.com/dogbreeds.xml#xpointer(id('Rottweiler'))"</em></p>
+<p>不过，当使用 id 链接到某个元素时，XPointer 允许简写形式。您可以直接使用 id 的值，就像这样：<em>xlink:href="http://dog.com/dogbreeds.xml#Rottweiler"</em>。</p>
+<p>下面的 XML 文档可引用每条狗的品种信息，均通过 XLink 和 XPointer 来引用：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;mydogs xmlns:xlink="http://www.w3.org/1999/xlink"&gt;<br/><br/>
+&lt;mydog xlink:type="simple"<br/>
+   
+  xlink:href="http://dog.com/dogbreeds.xml#Rottweiler"&gt;<br/>
+   
+  &lt;description xlink:type="simple"<br/>
+   
+  xlink:href="http://myweb.com/mydogs/anton.gif"&gt;<br/>
+   
+  Anton is my favorite dog. He has won a lot of.....<br/>
+   
+  &lt;/description&gt;<br/>
+&lt;/mydog&gt;<br/><br/>
+&lt;mydog xlink:type="simple"<br/>
+   
+  xlink:href="http://dog.com/dogbreeds.xml#FCRetriever"&gt;<br/>
+   
+  &lt;description xlink:type="simple"<br/>
+   
+  xlink:href="http://myweb.com/mydogs/pluto.gif"&gt;<br/>
+   
+  Pluto is the sweetest dog on earth......<br/>
+   
+  &lt;/description&gt;<br/>
+&lt;/mydog&gt;<br/><br/>
+&lt;/mydogs&gt;
+</div></div>
+</div>

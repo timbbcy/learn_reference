@@ -1,0 +1,152 @@
+<div class="article-intro" id="content">
+<h1>Perl 引用</h1>
+<p>引用就是指针，Perl 引用是一个标量类型可以指向变量、数组、哈希表（也叫关联数组）甚至子程序，可以应用在程序的任何地方。</p>
+<p>
+<hr/>
+<h2>创建引用</h2>
+<p>
+定义变量的时候，在变量名前面加个\，就得到了这个变量的一个引用，比如:</p>
+<pre>
+$scalarref = \$foo;     # 标量变量引用
+$arrayref  = \@ARGV;    # 列表的引用
+$hashref   = \%ENV;     # 哈希的引用
+$coderef   = \&amp;handler; # 子过程引用
+$globref   = \*foo;     # GLOB句柄引用
+</pre>
+<p>在数组中我们可以用匿名数组引用，使用 [] 定义：</p>
+<pre>
+$aref= [ 1,"foo",undef,13 ];
+</pre>
+<p>匿名数组的元素仍然可以是匿名数组，所以我们可以用这种方法构造数组的数组，可以构造任意维度的数组。</p>
+<pre>
+my $aref = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+]
+</pre>
+<p>在哈希中我们可以用匿名哈希引用，使用 {} 定义：</p>
+<pre>
+$href= { APR =&gt;4, AUG =&gt;8 };
+</pre>
+<p>我们也可以创建一个没有子程序名的匿名子程序引用:</p>
+<pre>
+$coderef = sub { print "Runoob!\n" };
+</pre>
+<hr/>
+<h2>
+取消引用</h2>
+<p>取消引用可以根据不同的类型使用  $, @ 或 % 来取消，实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$var</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># $r 引用 $var 标量</span><span class="hl-code">
+</span><span class="hl-var">$r</span><span class="hl-code"> = \</span><span class="hl-var">$var</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 输出本地存储的 $r 的变量值</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$var</span><span class="hl-string"> 为 : </span><span class="hl-quotes">"</span><span class="hl-code">, $</span><span class="hl-var">$r</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@var</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment"># $r 引用  @var 数组</span><span class="hl-code">
+</span><span class="hl-var">$r</span><span class="hl-code"> = \</span><span class="hl-var">@var</span><span class="hl-code">;
+</span><span class="hl-comment"># 输出本地存储的 $r 的变量值</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">@var 为: </span><span class="hl-quotes">"</span><span class="hl-code">,  @</span><span class="hl-var">$r</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">%var</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">key1</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">key2</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-number">20</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment"># $r 引用  %var 数组</span><span class="hl-code">
+</span><span class="hl-var">$r</span><span class="hl-code"> = \</span><span class="hl-var">%var</span><span class="hl-code">;
+</span><span class="hl-comment"># 输出本地存储的 $r 的变量值</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">%var 为 : </span><span class="hl-quotes">"</span><span class="hl-code">, %</span><span class="hl-var">$r</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上实例执行结果为：</p>
+<pre>
+10 为 : 10
+1 2 3 为: 123
+%var 为 : key110key220
+</pre>
+<p>如果你不能确定变量类型，你可以使用 <b>ref</b> 来判断，返回值列表如下，如果没有以下的值返回 false：</p>
+<pre>
+SCALAR
+ARRAY
+HASH
+CODE
+GLOB
+REF
+</pre>
+<p>实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$var</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code">;
+</span><span class="hl-var">$r</span><span class="hl-code"> = \</span><span class="hl-var">$var</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">r 的引用类型 : </span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">ref</span><span class="hl-brackets">(</span><span class="hl-var">$r</span><span class="hl-brackets">)</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@var</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$r</span><span class="hl-code"> = \</span><span class="hl-var">@var</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">r 的引用类型 : </span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">ref</span><span class="hl-brackets">(</span><span class="hl-var">$r</span><span class="hl-brackets">)</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">%var</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">key1</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">key2</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-number">20</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$r</span><span class="hl-code"> = \</span><span class="hl-var">%var</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">r 的引用类型 : </span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">ref</span><span class="hl-brackets">(</span><span class="hl-var">$r</span><span class="hl-brackets">)</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上实例执行结果为：</p>
+<pre>
+r 的引用类型 : SCALAR
+r 的引用类型 : ARRAY
+r 的引用类型 : HASH
+</pre>
+<hr/>
+<h2>
+循环引用</h2>
+<p>循环引用在两个引用相互包含时出现。你需要小心使用，不然会导致内存泄露，如下实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$foo</span><span class="hl-code"> = </span><span class="hl-number">100</span><span class="hl-code">;
+</span><span class="hl-var">$foo</span><span class="hl-code"> = \</span><span class="hl-var">$foo</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Value of foo is : </span><span class="hl-quotes">"</span><span class="hl-code">, $</span><span class="hl-var">$foo</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上实例执行结果为：</p>
+<pre>
+Value of foo is : REF(0x9aae38)
+</pre>
+<hr/>
+<h2>引用函数</h2>
+<p>函数引用格式: \&amp; </p>
+<p>调用引用函数格式: &amp; + 创建的引用名。</p>
+<p>实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 函数定义</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">PrintHash</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">%hash</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+   
+   </span><span class="hl-reserved">foreach</span><span class="hl-code"> </span><span class="hl-var">$item</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">%hash</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">元素 : </span><span class="hl-var">$item</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+   </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">%hash</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">name</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">age</span><span class="hl-quotes">'</span><span class="hl-code"> =&gt; </span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 创建函数的引用</span><span class="hl-code">
+</span><span class="hl-var">$cref</span><span class="hl-code"> = \&amp;</span><span class="hl-identifier">PrintHash</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 使用引用调用函数</span><span class="hl-code">
+&amp;</span><span class="hl-var">$cref</span><span class="hl-brackets">(</span><span class="hl-var">%hash</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上实例执行结果为：</p>
+<pre>
+元素 : age
+元素 : 3
+元素 : name
+元素 : runoob
+</pre>
+</p></div>

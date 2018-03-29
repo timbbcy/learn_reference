@@ -1,0 +1,137 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">范围（Range）</span></h1>
+<div class="tutintro">
+<p>范围（Range）无处不在：a 到 z、 0 到 9、等等。Ruby 支持范围，并允许我们以不同的方式使用范围：</p>
+<ul class="list">
+<li>作为序列的范围</li>
+<li>作为条件的范围</li>
+<li>作为间隔的范围</li>
+</ul>
+</div>
+<h2 class="tutheader">作为序列的范围</h2>
+<p>范围的第一个也是最常见的用途是表达序列。序列有一个起点、一个终点和一个在序列产生连续值的方式。</p>
+<p>Ruby 使用 <b>''..''</b> 和 <b>''...''</b> 范围运算符创建这些序列。两点形式创建一个包含指定的最高值的范围，三点形式创建一个不包含指定的最高值的范围。</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">(</span><span class="hl-number">1.</span><span class="hl-number">.5</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment">==&gt; 1, 2, 3, 4, 5</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-number">1.</span><span class="hl-code">.</span><span class="hl-number">.5</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment">==&gt; 1, 2, 3, 4</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">a</span><span class="hl-quotes">'</span><span class="hl-code">..</span><span class="hl-quotes">'</span><span class="hl-string">d</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment">==&gt; 'a', 'b', 'c', 'd'</span><span class="hl-comment"></span></div>
+</div>
+</div>
+<p>序列 1..100 是一个 <i>Range</i> 对象，包含了两个 <i>Fixnum</i> 对象的引用。如果需要，您可以使用 <i>to_a</i> 方法把范围转换为列表。尝试下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$,</span><span class="hl-code"> =</span><span class="hl-quotes">"</span><span class="hl-string">, </span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> Array 值分隔符</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">range1</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-number">1.</span><span class="hl-number">.10</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">to_a</span><span class="hl-code">
+</span><span class="hl-identifier">range2</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">bar</span><span class="hl-quotes">'</span><span class="hl-code">..</span><span class="hl-quotes">'</span><span class="hl-string">bat</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">to_a</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">#{range1}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">#{range2}</span><span class="hl-quotes">"</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=rangehobj_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+["bar", "bas", "bat"]
+</pre>
+<p>范围实现了让您可以遍历它们的方法，您可以通过多种方式检查它们的内容：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 指定范围</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">digits</span><span class="hl-code"> = </span><span class="hl-number">0.</span><span class="hl-number">.9</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">digits</span><span class="hl-code">.</span><span class="hl-identifier">include</span><span class="hl-code">?</span><span class="hl-brackets">(</span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">ret</span><span class="hl-code"> = </span><span class="hl-identifier">digits</span><span class="hl-code">.</span><span class="hl-identifier">min</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">最小值为 #{ret}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">ret</span><span class="hl-code"> = </span><span class="hl-identifier">digits</span><span class="hl-code">.</span><span class="hl-identifier">max</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">最大值为 #{ret}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">ret</span><span class="hl-code"> = </span><span class="hl-identifier">digits</span><span class="hl-code">.</span><span class="hl-identifier">reject</span><span class="hl-code"> {|</span><span class="hl-identifier">i</span><span class="hl-code">| </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-number">5</span><span class="hl-code"> }
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">不符合条件的有 #{ret}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">digits</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">digit</span><span class="hl-code">|
+   </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">在循环中 #{digit}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=rangehobj_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+true
+最小值为 0
+最大值为 9
+不符合条件的有 [5, 6, 7, 8, 9]
+在循环中 0
+在循环中 1
+在循环中 2
+在循环中 3
+在循环中 4
+在循环中 5
+在循环中 6
+在循环中 7
+在循环中 8
+在循环中 9
+</pre>
+<h2 class="tutheader">作为条件的范围</h2>
+<p>范围也可以用作条件表达式。例如，下面的代码片段从标准输入打印行，其中每个集合的第一行包含单词 <i>start</i>，最后一行包含单词 <i>end.</i>：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">gets</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-quotes"> /</span><span class="hl-string">start</span><span class="hl-quotes">/</span><span class="hl-code">..</span><span class="hl-quotes">/</span><span class="hl-string">end</span><span class="hl-quotes">/</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>范围可以用在 case 语句中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">score</span><span class="hl-code"> = </span><span class="hl-number">70</span><span class="hl-code">
+</span><span class="hl-identifier">result</span><span class="hl-code"> = </span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-identifier">score</span><span class="hl-code">
+</span><span class="hl-reserved">when</span><span class="hl-code"> </span><span class="hl-number">0.</span><span class="hl-number">.40</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">糟糕的分数</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">when</span><span class="hl-code"> </span><span class="hl-number">41.</span><span class="hl-number">.60</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">快要及格</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">when</span><span class="hl-code"> </span><span class="hl-number">61.</span><span class="hl-number">.70</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">及格分数</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">when</span><span class="hl-code"> </span><span class="hl-number">71.</span><span class="hl-number">.100</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">良好分数</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">错误的分数</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">result</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=rangehobj_demo3&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+及格分数
+</pre>
+<h2 class="tutheader">作为间隔的范围</h2>
+<p>范围的最后一个用途是间隔检测：检查指定值是否在指定的范围内。需要使用 === 相等运算符来完成计算。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">(</span><span class="hl-number">1.</span><span class="hl-number">.10</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">5 在 (1..10)</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">a</span><span class="hl-quotes">'</span><span class="hl-code">..</span><span class="hl-quotes">'</span><span class="hl-string">j</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-quotes">'</span><span class="hl-string">c</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">c 在 ('a'..'j')</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">a</span><span class="hl-quotes">'</span><span class="hl-code">..</span><span class="hl-quotes">'</span><span class="hl-string">j</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-quotes">'</span><span class="hl-string">z</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">z 在 ('a'..'j')</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=rangehobj_demo4&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+5 在 (1..10)
+c 在 ('a'..'j')
+</pre>
+</div>

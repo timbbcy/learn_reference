@@ -1,0 +1,49 @@
+<div class="article-intro" id="content">
+<h1>AJAX - 服务器 <span class="color_h1">响应</span>
+</h1>
+<hr/>
+<h2>服务器响应</h2>
+<p>如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%;">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>responseText</td>
+<td>获得字符串形式的响应数据。</td>
+</tr>
+<tr>
+<td>responseXML</td>
+<td>获得 XML 形式的响应数据。</td>
+</tr>
+</tbody></table>
+<br/><hr/>
+<h2> responseText 属性</h2>
+<p>如果来自服务器的响应并非 XML，请使用 responseText 属性。</p>
+<p>responseText 属性返回字符串形式的响应，因此您可以这样使用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+document.getElementById("myDiv").innerHTML=xmlhttp.responseText;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryajax_first" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>responseXML 属性</h2>
+<p>如果来自服务器的响应是 XML，而且需要作为 XML 对象进行解析，请使用 responseXML 属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>请求 <a href="/try/demo_source/cd_catalog.xml" target="_blank">cd_catalog.xml</a> 文件，并解析响应：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">responseXML</span><span class="hl-code">;
+</span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">ARTIST</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-identifier">txt</span><span class="hl-code"> + </span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">myDiv</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">txt</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryajax_responsexml" target="_blank">尝试一下 »</a>
+</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">添加复选框</span></h1>
+<p>本实例演示如何放置一个复选框列到数据网格（DataGrid）。通过复选框，用户将可以选择 选中/取消选中 网格行数据。</p>
+<img src="/wp-content/uploads/2013/12/datagrid10_1.png"/>
+<p>为了添加一个复选框列，我们仅仅需要添加一个列的 checkbox 属性，并设置它为 true。代码如下所示：</p>
+<pre style="color:#006600">
+    &lt;table id="tt" title="Checkbox Select" class="easyui-datagrid" style="width:550px;height:250px"
+            url="data/datagrid_data.json"
+            idField="itemid" pagination="true"
+            iconCls="icon-save"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="ck" checkbox="true"&gt;&lt;/th&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="100"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>以上代码添加了一个带有 checkbox 属性的列，所以它将成为复选框列。如果 idField 属性已设置，数据网格（DataGrid）的选择集合将在不同的页面保持。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid10.zip">jeasyui-datagrid-datagrid10.zip</a></p>
+</div>

@@ -1,0 +1,34 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- 数据绑定</span>
+</h1>
+<hr/>
+<p class="intro">我们可以使用数据绑定（Data Binding）来完成带可选项的列表，这些可选项来自某个导入的数据源，比如数据库、XML 文件或者脚本。</p>
+<hr/>
+<h2>数据绑定</h2>
+<p>下面的控件是支持数据绑定的列表控件：</p>
+<ul>
+<li>asp:RadioButtonList</li>
+<li>asp:CheckBoxList</li>
+<li>asp:DropDownList</li>
+<li>asp:Listbox</li>
+</ul>
+<p>以上每个控件的可选项通常是在一个或者多个 asp:ListItem 控件中定义，如下：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:RadioButtonList id="countrylist" runat="server"&gt;<br/>
+&lt;asp:ListItem value="N" text="Norway" /&gt;<br/>
+&lt;asp:ListItem value="S" text="Sweden" /&gt;<br/>
+&lt;asp:ListItem value="F" text="France" /&gt;<br/>
+&lt;asp:ListItem value="I" text="Italy" /&gt;<br/>
+&lt;/asp:RadioButtonList&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>然而，我们可以使用某种独立的数据源进行数据绑定，比如数据库、XML 文件或者脚本，通过数据绑定来填充列表的可选项。</p>
+<p>通过使用导入的数据源，数据从 HTML 中分离出来，并且对可选项的修改都是在独立的数据源中完成的。</p>
+<p>在下面的三个章节中，我们将描述如何从脚本化的数据源中绑定数据。</p>
+<br/>
+</div>

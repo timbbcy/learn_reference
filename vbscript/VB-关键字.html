@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>VBScript <span class="color_h1">关键字</span>
+</h1>
+<hr/>
+<h2>VBScript 关键字</h2>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="32%">关键字</th>
+<th align="left" width="68%">描述</th>
+</tr>
+<tr>
+<td valign="top">Empty</td>
+<td valign="top">
+<p>用于指示一个未初始化的变量值。当第一次创建变量时或变量值显式设置为空时，变量值未初始化且变量为被赋值。</p>
+<p>实例：<br/>
+	Dim x   
+    '变量 x 未初始化！<br/>
+    x="ff"   '变量 x 不再是未初始化<br/>
+    x=Empty   '变量 x 未初始化！</p>
+<p><b>注意：</b>这和 Null 不一样！！</p>
+</td>
+</tr>
+<tr>
+<td valign="top">IsEmpty</td>
+<td valign="top">
+<p>用于测试一个变量是否未初始化。</p>
+<p>实例：If (IsEmpty(x)) '变量 x 未初始化？</p>
+</td>
+</tr>
+<tr>
+<td valign="top">Nothing</td>
+<td valign="top">用于指示一个未初始化的对象值，或者把对象变量从对象分离用于释放系统资源。<p>实例: 
+	Set myObject=Nothing</p>
+</td>
+</tr>
+<tr>
+<td valign="top">Is Nothing</td>
+<td valign="top">用于测试一个值是否是初始化的对象。
+    <p>实例：If (myObject Is Nothing) '它是否未设置？</p>
+<p><b>注意：</b>如果您把一个值与 Nothing 作比较，您将不会得到正确的结果！实例: If (myObject = Nothing) '总是错误！</p>
+</td>
+</tr>
+<tr>
+<td valign="top">Null</td>
+<td valign="top">用于指示变量不包含有效数据。
+    <p>Null 把值设置为"无效"，Empty 则表示值"未设置"。</p>
+<p><b>注意：</b>这不同于 Empty 或 Nothing！！</p>
+<p>实例：x=Null 'x 不包含有效数据</p>
+</td>
+</tr>
+<tr>
+<td valign="top">IsNull</td>
+<td valign="top">用于测试一个值是否包含无效数据。
+    <p>实例: if (IsNull(x)) 'x 是无效的？</p>
+</td>
+</tr>
+<tr>
+<td valign="top">True</td>
+<td valign="top">用于指示一个布尔条件是正确的（True 为 -1）</td>
+</tr>
+<tr>
+<td valign="top">False</td>
+<td valign="top">用于指示一个布尔条件是不正确的（False 为 0）</td>
+</tr>
+</table>
+<br/>
+</div>

@@ -1,0 +1,118 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>上一节的概念课枯燥无味是吧，不过总有点收获是吧，本节开始我们来研究基于TCP协议的Socket
+通信，先来了解下Socket的概念，以及Socket通信的模型，实现Socket的步骤，以及作为Socket服务
+端与客户端的两位各做要做什么事情！好的，我们由浅入深来扣这个Socket吧！</p></blockquote>
+<hr/>
+<h2>1.什么是Socket？</h2>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/7998721.jpg"/></p>
+<hr/>
+<h2>2.Socket通信模型：</h2>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/37360672.jpg"/></p>
+<p><strong>Socket通信实现步骤解析</strong>：</p>
+<blockquote><p><strong>Step 1</strong>：创建ServerSocket和Socket</p><p>
+<strong>Step 2</strong>：打开连接到的Socket的输入/输出流</p><p></p><p>
+<strong>Step 3</strong>：按照协议对Socket进行读/写操作</p><p>
+<strong>Step 4</strong>：关闭输入输出流，以及Socket</p></blockquote>
+<p>好的，我们接下来写一个简单的例子，开启服务端后，客户端点击按钮然后链接服务端，
+并向服务端发送一串字符串，表示通过Socket链接上服务器~</p>
+<hr/>
+<h2>3.Socket服务端的编写：</h2>
+<p><strong>服务端要做的事有这些</strong>：</p>
+<blockquote><p><strong>Step 1</strong>：创建ServerSocket对象，绑定监听的端口</p><p>
+<strong>Step 2</strong>：调用accept()方法监听客户端的请求</p><p>
+<strong>Step 3</strong>：连接建立后，通过输入流读取客户端发送的请求信息</p><p>
+<strong>Step 4</strong>：通过输出流向客户端发送响应信息</p><p>
+<strong>Step 5</strong>：关闭相关资源</p></blockquote>
+<p><strong>代码实现</strong>：</p>
+<p>直接在Eclipse下创建一个Java项目，然后把Java代码贴进去即可！</p>
+<pre>
+public class SocketServer {
+    public static void main(String[] args) throws IOException {
+        //1.创建一个服务器端Socket，即ServerSocket，指定绑定的端口，并监听此端口
+        ServerSocket serverSocket = new ServerSocket(12345);
+        InetAddress address = InetAddress.getLocalHost();
+        String ip = address.getHostAddress();
+        Socket socket = null;
+        //2.调用accept()等待客户端连接
+        System.out.println("~~~服务端已就绪，等待客户端接入~，服务端ip地址: " + ip);
+        socket = serverSocket.accept();
+        //3.连接后获取输入流，读取客户端信息
+        InputStream is=null;
+        InputStreamReader isr=null;
+        BufferedReader br=null;
+        OutputStream os=null;
+        PrintWriter pw=null;
+        is = socket.getInputStream();     //获取输入流
+        isr = new InputStreamReader(is,"UTF-8");
+        br = new BufferedReader(isr);
+        String info = null;
+        while((info=br.readLine())!=null){//循环读取客户端的信息
+            System.out.println("客户端发送过来的信息" + info);
+        }
+        socket.shutdownInput();//关闭输入流
+        socket.close();
+    }
+}
+</pre>
+<p>然后我们把代码run起来，控制台会打印：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/61199545.jpg"/></p>
+<p>好的，接下来到Android客户端了！</p>
+<hr/>
+<h2>4.Socket客户端的编写：</h2>
+<p><strong>客户端要做的事有这些</strong>：</p>
+<blockquote><p><strong>Step 1</strong>：创建Socket对象，指明需要链接的服务器的地址和端号</p><p>
+<strong>Step 2</strong>：链接建立后，通过输出流向服务器发送请求信息</p><p>
+<strong>Step 3</strong>：通过输出流获取服务器响应的信息</p><p>
+<strong>Step 4</strong>：关闭相关资源</p></blockquote>
+<p><strong>代码实现</strong>：</p>
+<p><strong>MainActivity.java</strong>：</p>
+<pre>
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button btn_accept = (Button) findViewById(R.id.btn_accept);
+        btn_accept.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    acceptServer();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    private void acceptServer() throws IOException {
+        //1.创建客户端Socket，指定服务器地址和端口
+        Socket socket = new Socket("172.16.2.54", 12345);
+        //2.获取输出流，向服务器端发送信息
+        OutputStream os = socket.getOutputStream();//字节输出流
+        PrintWriter pw = new PrintWriter(os);//将输出流包装为打印流
+        //获取客户端的IP地址
+        InetAddress address = InetAddress.getLocalHost();
+        String ip = address.getHostAddress();
+        pw.write("客户端：~" + ip + "~ 接入服务器！！");
+        pw.flush();
+        socket.shutdownOutput();//关闭输出流
+        socket.close();
+    }
+}
+</pre><p>
+因为Android不允许在主线程(UI线程)中做网络操作，所以这里需要我们自己
+另开一个线程来连接Socket！
+<p><p><b>运行结果：</b></p>
+<p>
+点击按钮后，服务端控制台打印：
+</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/09/6331744.jpg"/>
+<hr/><h2>5.增强版案例：小猪简易聊天室</h2></p></p></div>

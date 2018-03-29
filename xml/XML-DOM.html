@@ -1,0 +1,116 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">DOM</span>
+</h1>
+<hr/>
+<p class="intro">
+DOM（Document Object Model 文档对象模型）定义了访问和操作文档的标准方法。</p>
+<hr/>
+<h2>XML DOM</h2>
+<p>
+XML DOM（XML Document Object Model）定义了访问和操作 XML 文档的标准方法。
+</p>
+<p>
+XML DOM 把 XML 文档作为树结构来查看。</p>
+<p>
+所有元素可以通过 DOM 树来访问。可以修改或删除它们的内容，并创建新的元素。元素，它们的文本，以及它们的属性，都被认为是节点。
+</p>
+<p>
+在我们的 <a href="/dom/dom-tutorial.html">XML DOM 教程</a>中，您可以学习更多有关 XML DOM 的知识。</p>
+<hr/>
+<h2>HTML DOM</h2>
+<p>
+HTML DOM 定义了访问和操作 HTML 文档的标准方法。
+</p>
+<p>
+所有 HTML 元素可以通过 HTML DOM 来访问。</p>
+<p>
+在我们的 <a href="/htmldom/htmldom-tutorial.html">HTML DOM 教程</a>中，您可以学习更多有关 HTML DOM 的知识。.</p>
+<hr/>
+<h2>加载一个 XML 文件 - 跨浏览器实例</h2>
+<p>下面的实例把 XML 文档（"<a href="/try/xml/note.xml" target="_blank">note.xml</a>"）解析到 XML DOM 对象中，然后通过 JavaScript 提取一些信息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1&gt;W3Schools Internal Note&lt;/h1&gt;<br/>
+&lt;div&gt;<br/>
+&lt;b&gt;To:&lt;/b&gt; &lt;span id="to"&gt;&lt;/span&gt;&lt;br /&gt;<br/>
+&lt;b&gt;From:&lt;/b&gt; &lt;span id="from"&gt;&lt;/span&gt;&lt;br /&gt;<br/>
+&lt;b&gt;Message:&lt;/b&gt; &lt;span id="message"&gt;&lt;/span&gt;<br/>
+&lt;/div&gt;<br/><br/>
+&lt;script&gt;<br/>
+if (window.XMLHttpRequest)<br/>
+  {// code for IE7+, Firefox, Chrome, Opera, Safari<br/>
+  xmlhttp=new XMLHttpRequest();<br/>
+  }<br/>
+else<br/>
+  {// code for IE6, IE5<br/>
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");<br/>
+  }<br/>
+xmlhttp.open("GET","note.xml",false);<br/>
+xmlhttp.send();<br/>
+xmlDoc=xmlhttp.responseXML;<br/><br/>
+document.getElementById("to").innerHTML=<br/>
+xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;<br/>
+document.getElementById("from").innerHTML=<br/>
+xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;<br/>
+document.getElementById("message").innerHTML=<br/>
+xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;<br/>
+&lt;/script&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryxml_parsertest" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>重要注释！</h2>
+<p>如需从上面的 XML 文件（"note.xml"）的 &lt;to&gt; 元素中提取文本 "Tove"，语法是：</p>
+<div class="code notranslate"><div>
+getElementsByTagName("to")[0].childNodes[0].nodeValue</div></div>
+<p>请注意，即使 XML 文件只包含一个 &lt;to&gt; 元素，您仍然必须指定数组索引 [0]。这是因为 getElementsByTagName() 方法返回一个数组。</p>
+<hr/>
+<h2>加载一个 XML 字符串 - 跨浏览器实例</h2>
+<p>下面的实例把 XML 字符串解析到 XML DOM 对象中，然后通过 JavaScript 提取一些信息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1&gt;W3Schools Internal Note&lt;/h1&gt;<br/>
+&lt;div&gt;<br/>
+&lt;b&gt;To:&lt;/b&gt; &lt;span id="to"&gt;&lt;/span&gt;&lt;br /&gt;<br/>
+&lt;b&gt;From:&lt;/b&gt; &lt;span id="from"&gt;&lt;/span&gt;&lt;br /&gt;<br/>
+&lt;b&gt;Message:&lt;/b&gt; &lt;span id="message"&gt;&lt;/span&gt;<br/>
+&lt;/div&gt;<br/><br/>
+&lt;script&gt;<br/>
+txt="&lt;note&gt;";<br/>
+txt=txt+"&lt;to&gt;Tove&lt;/to&gt;";<br/>
+txt=txt+"&lt;from&gt;Jani&lt;/from&gt;";<br/>
+txt=txt+"&lt;heading&gt;Reminder&lt;/heading&gt;";<br/>
+txt=txt+"&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;";<br/>
+txt=txt+"&lt;/note&gt;";<br/><br/>
+if (window.DOMParser)<br/>
+  {<br/>
+  parser=new DOMParser();<br/>
+  xmlDoc=parser.parseFromString(txt,"text/xml");<br/>
+  }<br/>
+else // Internet Explorer<br/>
+  {<br/>
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");<br/>
+  xmlDoc.async=false;<br/>
+  xmlDoc.loadXML(txt);<br/>
+  }<br/><br/>
+document.getElementById("to").innerHTML=<br/>
+xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;<br/>
+document.getElementById("from").innerHTML=<br/>
+xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;<br/>
+document.getElementById("message").innerHTML=<br/>
+xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;<br/>
+&lt;/script&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryxml_parsertest2" target="_blank">尝试一下 »</a>
+</div>
+<br/><br/>
+</div>

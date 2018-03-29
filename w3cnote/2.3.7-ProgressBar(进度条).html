@@ -1,0 +1,97 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<p>本节给大家带来的是Android基本UI控件中的ProgressBar(进度条)，ProgressBar的应用场景很多，比如
+用户登录时，后台在发请求，以及等待服务器返回信息，这个时候会用到进度条；或者当在进行一些比较
+耗时的操作，需要等待一段较长的时间，这个时候如果没有提示，用户可能会以为程序Carsh或者手机死机
+了，这样会大大降低用户体验，所以在需要进行耗时操作的地方，添加上进度条，让用户知道当前的程序
+在执行中，也可以直观的告诉用户当前任务的执行进度等！使用进度条可以给我带来这样的便利！
+好了，开始讲解本节内容~
+对了，ProgressBar官方API文档：<a href="http://androiddoc.qiniudn.com/reference/android/widget/ProgressBar.html">ProgressBar</a></p>
+<hr/>
+<h2>1.常用属性讲解与基础实例</h2>
+<p>从官方文档，我们看到了这样一个类关系图：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/46760225.jpg"/></p>
+<p>ProgressBar继承与View类，直接子类有AbsSeekBar和ContentLoadingProgressBar，
+其中AbsSeekBar的子类有SeekBar和RatingBar，可见这二者也是基于ProgressBar实现的</p>
+<p><strong>常用属性详解：</strong></p>
+<blockquote><ul>
+<li>android:<strong>max</strong>：进度条的最大值</li>
+<li>android:<strong>progress</strong>：进度条已完成进度值</li>
+<li>android:<strong>progressDrawable</strong>：设置轨道对应的Drawable对象</li>
+<li>android:<strong>indeterminate</strong>：如果设置成true，则进度条不精确显示进度</li>
+<li>android:<strong>indeterminateDrawable</strong>：设置不显示进度的进度条的Drawable对象</li>
+<li>android:<strong>indeterminateDuration</strong>：设置不精确显示进度的持续时间</li>
+<li>android:<strong>secondaryProgress</strong>：二级进度条，类似于视频播放的一条是当前播放进度，一条是缓冲进度，前者通过progress属性进行设置！</li>
+</ul>
+</blockquote>
+<p>对应的再Java中我们可调用下述方法：</p>
+<blockquote><ul>
+<li><strong>getMax</strong>()：返回这个进度条的范围的上限</li>
+<li><strong>getProgress</strong>()：返回进度</li>
+<li><strong>getSecondaryProgress</strong>()：返回次要进度</li>
+<li><strong>incrementProgressBy</strong>(int diff)：指定增加的进度</li>
+<li><strong>isIndeterminate</strong>()：指示进度条是否在不确定模式下</li>
+<li><strong>setIndeterminate</strong>(boolean indeterminate)：设置不确定模式下</li>
+</ul>
+</blockquote>
+<p>接下来来看看系统提供的默认的进度条的例子吧！</p>
+<p><strong>系统默认进度条使用实例：</strong></p>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/34906854.jpg"/></p>
+<p><strong>实现布局代码：</strong>
+</p>
+<pre>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"&gt;
+
+    &lt;!-- 系统提供的圆形进度条,依次是大中小 --&gt;
+
+    &lt;ProgressBar
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;ProgressBar
+        style="@android:style/Widget.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;!--系统提供的水平进度条--&gt;
+    &lt;ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="18" /&gt;
+
+    &lt;ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:indeterminate="true" /&gt;
+
+&lt;/LinearLayout&gt;
+</pre>
+<p>
+好吧，除了第二个能看，其他的就算了...系统提供的肯定是满足不了我们的需求的！
+下面我们就来讲解下实际开发中我们对进度条的处理！
+</p>
+<hr/><h2> 2.使用动画来替代圆形进度条</h2>
+<p>
+第一个方案是，使用一套连续图片，形成一个帧动画，当需要进度图的时候，让动画可见，不需要
+的时候让动画不可见即可！而这个动画，一般是使用AnimationDrawable来实现的！好的，我们来
+定义一个AnimationDrawable文件：</p><p>
+PS:用到的图片素材：<a href="http://www.runoob.com/wp-content/uploads/2015/08/进度条动画素材打包.zip">进度条图片素材打包.zip</a>
+</p>
+<p><b>运行效果图：</b></p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/08/716773.jpg"/>
+<p<b>实现步骤：</p<b></div>

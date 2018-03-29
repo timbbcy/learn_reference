@@ -1,0 +1,44 @@
+<div class="article-intro" id="content">
+<h1>Ruby 发送邮件 - SMATP</h1>
+<p>SMTP（Simple Mail Transfer Protocol）即简单邮件传输协议,它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。</p>
+<p>Ruby提供了 Net::SMTP 来发送邮件，并提供了两个方法 new  和 start:</p>
+<p><b>new</b> 方法有两个参数：</p>
+<ul>
+<li> <i>server name</i> 默认为 localhost</li>
+<li> <i>port number</i> 默认为  25</li>
+</ul>
+<p> <b>start</b> 方法有以下参数：</p>
+<ul>
+<li> <i>server</i>  - SMTP 服务器 IP, 默认为 localhost</li>
+<li> <i>port</i>  - 端口号，默认为 25</li>
+<li> <i>domain</i> - 邮件发送者域名，默认为 ENV["HOSTNAME"]</li>
+<li> <i>account</i> - 用户名，默认为 nil</li>
+<li> <i>password</i> - 用户密码，默认为nil</li>
+<li> <i>authtype</i> - 验证类型，默认为 <i>cram_md5</i></li>
+</ul>
+<p>
+ SMTP 对象实例化方法调用了 sendmail, 参数如下：</p>
+<ul>
+<li> <i>source</i>  - 一个字符串或数组或每个迭代器在任一时间中返回的任何东西。</li>
+<li> <i>sender</i> -一个字符串，出现在 email 的表单字段。</li>
+<li> <i>recipients</i> - 一个字符串或字符串数组，表示收件人的地址。</li>
+</ul>
+<h3>实例</h3>
+<p>以下提供了简单的Ruby脚本来发送邮件:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">net/smtp</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">message</span><span class="hl-code"> = &lt;&lt;</span><span class="hl-identifier">MESSAGE_END</span><span class="hl-code">
+</span><span class="hl-identifier">From</span><span class="hl-code">: </span><span class="hl-identifier">Private</span><span class="hl-code"> </span><span class="hl-identifier">Person</span><span class="hl-code"> &lt;</span><span class="hl-identifier">me</span><span class="hl-var">@fromdomain</span><span class="hl-code">.</span><span class="hl-identifier">com</span><span class="hl-code">&gt;
+</span><span class="hl-identifier">To</span><span class="hl-code">: </span><span class="hl-identifier">A</span><span class="hl-code"> </span><span class="hl-identifier">Test</span><span class="hl-code"> </span><span class="hl-identifier">User</span><span class="hl-code"> &lt;</span><span class="hl-identifier">test</span><span class="hl-var">@todomain</span><span class="hl-code">.</span><span class="hl-identifier">com</span><span class="hl-code">&gt;
+</span><span class="hl-identifier">Subject</span><span class="hl-code">: </span><span class="hl-identifier">SMTP</span><span class="hl-code"> </span><span class="hl-identifier">e</span><span class="hl-code">-</span><span class="hl-identifier">mail</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-code">
+</span><span class="hl-identifier">This</span><span class="hl-code"> </span><span class="hl-identifier">is</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-code"> </span><span class="hl-identifier">e</span><span class="hl-code">-</span><span class="hl-identifier">mail</span><span class="hl-code"> </span><span class="hl-identifier">message</span><span class="hl-code">.
+</span><span class="hl-identifier">MESSAGE_END</span><span class="hl-code">
+</span><span class="hl-identifier">Net</span><span class="hl-code">::</span><span class="hl-identifier">SMTP</span><span class="hl-code">.</span><span class="hl-identifier">start</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">smtp</span><span class="hl-code">|
+  </span><span class="hl-identifier">smtp</span><span class="hl-code">.</span><span class="hl-identifier">send_message</span><span class="hl-code"> </span><span class="hl-identifier">message</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">me@fromdomain.com</span><span class="hl-quotes">'</span><span class="hl-code">, 
+                             </span><span class="hl-quotes">'</span><span class="hl-string">test@todomain.com</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+</div>

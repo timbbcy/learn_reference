@@ -1,0 +1,41 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 窗口 - <span class="color_h1">创建简单窗口</span></h1>
+<p>创建一个窗口（window）非常简单，我们创建一个 DIV 标记：</p>
+<pre style="color:#006600">
+&lt;div id="win" class="easyui-window" title="My Window" style="width:300px;height:100px;padding:5px;"&gt;
+    Some Content.
+&lt;/div&gt;
+</pre>
+<p>现在运行测试页面，您会看见一个窗口（window）显示在您的屏幕上。我们不需要写任何的 javascript 代码。</p>
+<img src="/wp-content/uploads/2013/12/win1_1.png"/>
+<p>如果您希望创建一个隐藏的窗口（window），记得设置 'closed' 属性为 'true' 值，您可以调用 'open' 方法来打开窗口（window）：</p>
+<pre style="color:#006600">
+&lt;div id="win" class="easyui-window" title="My Window" closed="true" style="width:300px;height:100px;padding:5px;"&gt;
+    Some Content.
+&lt;/div&gt;
+</pre>
+<pre style="color:#006600">
+$('#win').window('open');
+</pre>
+<p>作为最后的实例演示，我们创建一个登录窗口（window）：</p>
+<pre style="color:#006600">
+&lt;div id="win" class="easyui-window" title="Login" style="width:300px;height:180px;"&gt;
+    &lt;form style="padding:10px 20px 10px 40px;"&gt;
+        &lt;p&gt;Name: &lt;input type="text"&gt;&lt;/p&gt;
+        &lt;p&gt;Pass: &lt;input type="password"&gt;&lt;/p&gt;
+        &lt;div style="padding:5px;text-align:center;"&gt;
+            &lt;a href="#" class="easyui-linkbutton" icon="icon-ok"&gt;Ok&lt;/a&gt;
+            &lt;a href="#" class="easyui-linkbutton" icon="icon-cancel"&gt;Cancel&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</pre>
+<img src="/wp-content/uploads/2013/12/win1_2.png"/>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-win-win1.zip">jeasyui-win-win1.zip</a></p>
+</div>

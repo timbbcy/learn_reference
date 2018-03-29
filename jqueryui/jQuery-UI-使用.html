@@ -1,0 +1,24 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI <span class="color_h1">使用</span></h1>
+<p>一旦您下载了 jQuery UI，您将得到一个 zip 压缩包，包含下列文件：</p>
+<ul>
+<li><code>/css/</code></li>
+<li><code>/development-bundle/</code></li>
+<li><code>/js/</code></li>
+<li><code>index.html</code></li>
+</ul>
+<h2>在网页上使用 jQuery UI</h2>
+<p>在文本编辑器中打开 <code>index.html</code>，您将看到引用了一些外部文件：主题、jQuery 和 jQuery UI。通常情况下，您需要在页面中引用这三个文件，以便使用 jQuery UI 的窗体小部件和交互部件：</p>
+<pre>
+&lt;link rel="stylesheet" href="css/themename/jquery-ui.custom.css" /&gt;
+&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/jquery-ui.custom.min.js"&gt;&lt;/script&gt;
+</pre>
+<p>一旦您引用了这些必要的文件，您就能向您的页面添加一些 jQuery 小部件。比如，要制作一个日期选择器（datepicker）小部件，您需要向页面添加一个文本输入框，然后再调用 <code>.datepicker()</code>，如下所示：</p>
+<p><strong>HTML:</strong></p>
+<pre>&lt;input type="text" name="date" id="date" /&gt;</pre>
+<p><strong>JavaScript:</strong></p>
+<pre>$( "#date" ).datepicker();</pre>
+<p><img alt="实例截图" src="/wp-content/uploads/2014/01/ex-datepicker.png"/></p>
+<p>如需查看 jQuery UI 小部件和交互部件的实例演示，请访问 <a href="/jqueryui/jqueryui-examples.html">jQuery UI 实例</a>。</p>
+</div>

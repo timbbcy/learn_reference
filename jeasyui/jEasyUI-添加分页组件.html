@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">添加分页组件</span></h1>
+<p>本实例演示如何从服务器端加载数据，如何添加分页组件（pagination）到数据网格（datagrid）。</p>
+<img src="/wp-content/uploads/2013/12/datagrid2.png"/>
+<h4>创建数据网格（DataGrid）</h4>
+<p>为了从远程服务器端加载数据，您应该设置 'url' 属性，在您的服务器端应该返回 JSON 格式数据。请看数据网格（datagrid）文档得到更多关于它的数据格式信息。</p>
+<pre style="color:#006600">
+    &lt;table id="tt" class="easyui-datagrid" style="width:600px;height:250px"
+            url="datagrid2_getdata.php"
+            title="Load Data" iconCls="icon-save"
+            rownumbers="true" pagination="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>我们定义数据网格（datagrid）列，并设置 'pagination' 属性为 true，它将在数据网格（datagrid）的底部生成一个分页（pagination）工具栏。pagination将发送两个参数到服务器：</p>
+<ul>
+<li>page：页码，起始值 1。</li>
+<li>rows：每页显示行。</li>
+</ul>
+<h4>服务器端代码</h4>
+<pre style="color:#006600">
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+    // ...
+    $rs = mysql_query("select count(*) from item");
+    $row = mysql_fetch_row($rs);
+    $result["total"] = $row[0];
+    
+    $rs = mysql_query("select * from item limit $offset,$rows");
+    
+    $items = array();
+    while($row = mysql_fetch_object($rs)){
+        array_push($items, $row);
+    }
+    $result["rows"] = $items;
+    
+    echo json_encode($result);
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid2.zip">jeasyui-datagrid-datagrid2.zip</a></p>
+</div>

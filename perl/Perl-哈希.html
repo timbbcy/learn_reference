@@ -1,0 +1,203 @@
+<div class="article-intro" id="content">
+<h1>Perl 哈希</h1>
+<p>哈希是 <b>key/value</b> 对的集合。</p>
+<p>Perl中哈希变量以百分号 (%) 标记开始。</p>
+<p>访问哈希元素格式：<b>${key}</b>。</p>
+<p>以下是一个简单的哈希实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\$</span><span class="hl-string">data{'google'} = </span><span class="hl-var">$data</span><span class="hl-string">{'google'}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\$</span><span class="hl-string">data{'runoob'} = </span><span class="hl-var">$data</span><span class="hl-string">{'runoob'}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\$</span><span class="hl-string">data{'taobao'} = </span><span class="hl-var">$data</span><span class="hl-string">{'taobao'}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<p>
+<img src="//www.runoob.com/wp-content/uploads/2016/06/EBB194B3-1C00-4693-9485-62B6F000641F.jpg" width="60%"/></p>
+<hr/>
+<h2>创建哈希</h2>
+<p>创建哈希可以通过以下两种方式：</p>
+<h3>一、为每个 key 设置 value</h3>
+<pre>
+$data{'google'} = 'google.com';
+$data{'runoob'} = 'runoob.com';
+$data{'taobao'} = 'taobao.com';
+</pre>
+<h3>二、通过列表设置</h3>
+<p>列表中第一个元素为 key，第二个为 value。</p>
+<pre>%data = ('google', 'google.com', 'runoob', 'runoob.com', 'taobao', 'taobao.com');
+</pre>
+<p>也可以使用 <b>=&gt;</b>  符号来设置 key/value:</p>
+<pre>%data = ('google'=&gt;'google.com', 'runoob'=&gt;'runoob.com', 'taobao'=&gt;'taobao.com');
+</pre>
+<p>以下实例是上面实例的变种，使用 <b>-</b> 来代替引号：</p>
+<pre>%data = (-google=&gt;'google.com', -runoob=&gt;'runoob.com', -taobao=&gt;'taobao.com');
+</pre>
+<p>使用这种方式 key 不能出现空格，读取元素方式为：</p>
+<pre>
+$val = $data{-google}
+$val = $data{-runoob}</pre>
+<hr/>
+<h2>访问哈希元素</h2>
+<p>访问哈希元素格式：<b>${key}</b>，实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\$</span><span class="hl-string">data{'google'} = </span><span class="hl-var">$data</span><span class="hl-string">{'google'}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\$</span><span class="hl-string">data{'runoob'} = </span><span class="hl-var">$data</span><span class="hl-string">{'runoob'}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\$</span><span class="hl-string">data{'taobao'} = </span><span class="hl-var">$data</span><span class="hl-string">{'taobao'}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<p>
+<img src="http://www.runoob.com/wp-content/uploads/2016/06/EBB194B3-1C00-4693-9485-62B6F000641F.jpg" width="60%"/></p>
+<hr/>
+<h2>读取哈希值</h2>
+<p>
+你可以像数组一样从哈希中提取值。</p>
+<p>哈希值提取到数组语法格式：<b>@{key1,key2}</b>。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/uer/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-string">taobao</span><span class="hl-code"> =&gt;</span><span class="hl-code"> </span><span class="hl-number">45</span><span class="hl-code">, -</span><span class="hl-string">google</span><span class="hl-code"> =&gt;</span><span class="hl-code"> </span><span class="hl-number">30</span><span class="hl-code">, -</span><span class="hl-string">runoob</span><span class="hl-code"> =&gt;</span><span class="hl-code"> </span><span class="hl-number">40</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@array</span><span class="hl-code"> = </span><span class="hl-var">@data</span><span class="hl-brackets">{</span><span class="hl-code">-</span><span class="hl-identifier">taobao</span><span class="hl-code">, -</span><span class="hl-identifier">runoob</span><span class="hl-brackets">}</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Array : @array</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+Array : 45 40
+</pre>
+<hr/>
+<h2>读取哈希的 key 和 value</h2>
+<h3>读取所有key</h3>
+<p>我们可以使用 <b>keys</b> 函数读取哈希所有的键，语法格式如下：</p>
+<pre>
+keys %HASH
+</pre>
+<p>该函数返回所有哈希的所有 key 的数组。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl </span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@names</span><span class="hl-code"> = </span><span class="hl-reserved">keys</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$names</span><span class="hl-string">[0]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$names</span><span class="hl-string">[1]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$names</span><span class="hl-string">[2]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+taobao
+google
+runoob
+</pre>
+<p>类似的我们可以使用 <b>values</b> 函数来读取哈希所有的值,语法格式如下：</p>
+<pre>
+values %HASH
+</pre>
+<p>该函数返回所有哈希的所有 value 的数组。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl </span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@urls</span><span class="hl-code"> = </span><span class="hl-reserved">values</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$urls</span><span class="hl-string">[0]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$urls</span><span class="hl-string">[1]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$urls</span><span class="hl-string">[2]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+taobao.com
+runoob.com
+google.com
+</pre>
+<hr/>
+<h2>检测元素是否存在</h2>
+<p>如果你在哈希中读取不存在的 key/value 对 ，会返回 <b>undefined</b> 值，且在执行时会有警告提醒。</p>
+<p>为了避免这种情况，我们可以使用 <b>exists</b> 函数来判断key是否存在，存在的时候读取：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-reserved">exists</span><span class="hl-brackets">(</span><span class="hl-var">$data</span><span class="hl-brackets">{</span><span class="hl-quotes">'</span><span class="hl-string">facebook</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">facebook 的网址为 </span><span class="hl-var">$data</span><span class="hl-string">{'facebook'} </span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">facebook 键不存在</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+facebook 键不存在
+</pre><p>以上代码中我们使用了 <b>IF...ELSE</b> 语句，在后面的章节我们会具体介绍。</p>
+<hr/>
+<h2>获取哈希大小</h2>
+<p>哈希大小为元素的个数，我们可以通过先获取 key 或 value 的所有元素数组，再计算数组元素多少来获取哈希的大小，实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@keys</span><span class="hl-code"> = </span><span class="hl-reserved">keys</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+</span><span class="hl-var">$size</span><span class="hl-code"> = </span><span class="hl-var">@keys</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">1 - 哈希大小: </span><span class="hl-var">$size</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@values</span><span class="hl-code"> = </span><span class="hl-reserved">values</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+</span><span class="hl-var">$size</span><span class="hl-code"> = </span><span class="hl-var">@values</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">2 - 哈希大小: </span><span class="hl-var">$size</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+1 - 哈希大小: 3
+2 - 哈希大小: 3
+</pre>
+<hr/>
+<h2>哈希中添加或删除元素</h2>
+<p>
+添加 key/value 对可以通过简单的赋值来完成。但是删除哈希元素你需要使用 <b>delete</b> 函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">%data</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">google</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">google.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-code">=&gt;</span><span class="hl-quotes">'</span><span class="hl-string">taobao.com</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">@keys</span><span class="hl-code"> = </span><span class="hl-reserved">keys</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+</span><span class="hl-var">$size</span><span class="hl-code"> = </span><span class="hl-var">@keys</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">1 - 哈希大小: </span><span class="hl-var">$size</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 添加元素</span><span class="hl-code">
+</span><span class="hl-var">$data</span><span class="hl-brackets">{</span><span class="hl-quotes">'</span><span class="hl-string">facebook</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">facebook.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">@keys</span><span class="hl-code"> = </span><span class="hl-reserved">keys</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+</span><span class="hl-var">$size</span><span class="hl-code"> = </span><span class="hl-var">@keys</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">2 - 哈希大小: </span><span class="hl-var">$size</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 删除哈希中的元素</span><span class="hl-code">
+</span><span class="hl-reserved">delete</span><span class="hl-code"> </span><span class="hl-var">$data</span><span class="hl-brackets">{</span><span class="hl-quotes">'</span><span class="hl-string">taobao</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-var">@keys</span><span class="hl-code"> = </span><span class="hl-reserved">keys</span><span class="hl-code"> </span><span class="hl-var">%data</span><span class="hl-code">;
+</span><span class="hl-var">$size</span><span class="hl-code"> = </span><span class="hl-var">@keys</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">3 - 哈希大小: </span><span class="hl-var">$size</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+1 - 哈希大小: 3
+2 - 哈希大小: 4
+3 - 哈希大小: 3
+</pre>
+</div>

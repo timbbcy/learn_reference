@@ -1,0 +1,75 @@
+<div class="article-intro" id="content">
+<h1>XSL-FO 与 <span class="color_h1">XSLT</span>
+</h1>
+<hr/>
+<p class="intro">XSL-FO 与 XSLT 可彼此互助。</p>
+<hr/>
+<h2>还记得这个实例吗？</h2>
+<div class="code notranslate"><div>
+
+&lt;fo:block
+    font-size="14pt" font-family="verdana" color="red"<br/>
+    space-before="5mm" space-after="5mm"&gt;<br/>
+ 
+RUNOOB<br/>
+&lt;/fo:block&gt;<br/><br/>
+&lt;fo:block
+    text-indent="5mm"
+    font-family="verdana" font-size="12pt"&gt;<br/>
+ 
+At RUNOOB you will find all the Web-building tutorials you<br/>
+ 
+need, from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.<br/>
+&lt;/fo:block&gt;</div></div>
+<p>结果：</p>
+<table style="border:1px solid black;width:50%"><tr>
+<td style="padding:5px">
+<p style="font:14pt verdana;color:red">RUNOOB</p>
+<p style="font:12pt verdana">   At RUNOOB you will find all the Web-building 
+    tutorials you need, from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.</p>
+</td>
+</tr></table>
+<p>上面的实例来自于有关 XSL-FO 块区域的那一章节。</p>
+<hr/>
+<h2>来自 XSLT 的帮助</h2>
+<p>从文档移除 XSL-FO 信息：</p>
+<div class="code notranslate"><div>
+
+&lt;header&gt;RUNOOB&lt;/header&gt;<br/><br/>
+&lt;paragraph&gt;At RUNOOB you will find all the Web-building tutorials you<br/>
+need, from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.<br/>
+&lt;/paragraph&gt;</div></div>
+<p>添加 XSLT 转换：</p>
+<div class="code notranslate"><div>
+
+&lt;xsl:template match="header"&gt;<br/>
+ 
+&lt;fo:block
+    font-size="14pt" font-family="verdana" color="red"<br/>
+     
+    space-before="5mm" space-after="5mm"&gt;<br/>
+       
+    &lt;xsl:apply-templates/&gt;<br/>
+ 
+&lt;/fo:block&gt;<br/>
+&lt;/xsl:template&gt;<br/><br/>
+&lt;xsl:template match="paragraph"&gt;<br/>
+ 
+&lt;fo:block
+    text-indent="5mm"
+    font-family="verdana" font-size="12pt"&gt;<br/>
+       
+    &lt;xsl:apply-templates/&gt;<br/>
+ 
+&lt;/fo:block&gt;<br/>
+&lt;/xsl:template&gt;</div></div>
+<p>产生的结果是相同的：</p>
+<table style="border:1px solid black;width:50%"><tr>
+<td style="padding:5px">
+<p style="font:14pt verdana;color:red">RUNOOB</p>
+<p style="font:12pt verdana">   At RUNOOB you will find all the Web-building 
+    tutorials you need, from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.</p>
+</td>
+</tr></table>
+<br/>
+</div>

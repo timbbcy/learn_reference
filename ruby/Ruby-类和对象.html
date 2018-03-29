@@ -1,0 +1,151 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">类和对象</span></h1>
+<p>Ruby 是一种完美的面向对象编程语言。面向对象编程语言的特性包括：</p>
+<ul class="list">
+<li>数据封装</li>
+<li>数据抽象</li>
+<li>多态性</li>
+<li>继承</li>
+</ul>
+<p>这些特性将在 <a href="/ruby/ruby-object-oriented.html">面向对象的 Ruby</a> 中进行讨论。</p>
+<p>一个面向对象的程序，涉及到的类和对象。类是个别对象创建的蓝图。在面向对象的术语中，您的自行车是自行车类的一个实例。</p>
+<p>以车辆为例，它包括车轮（wheels）、马力（horsepower）、燃油或燃气罐容量（fuel or gas tank capacity）。这些属性形成了车辆（Vehicle）类的数据成员。借助这些属性您能把一个车辆从其他车辆中区分出来。</p>
+<p>车辆也能包含特定的函数，比如暂停（halting）、驾驶（driving）、超速（speeding）。这些函数形成了车辆（Vehicle）类的数据成员。因此，您可以定义类为属性和函数的组合。</p>
+<p>类 Vehicle 的定义如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">Class</span><span class="hl-code"> </span><span class="hl-identifier">Vehicle</span><span class="hl-code">
+{
+   </span><span class="hl-identifier">Number</span><span class="hl-code"> </span><span class="hl-identifier">no_of_wheels</span><span class="hl-code">
+</span><span class="hl-identifier">Number</span><span class="hl-code"> </span><span class="hl-identifier">horsepower</span><span class="hl-code">
+</span><span class="hl-identifier">Characters</span><span class="hl-code"> </span><span class="hl-identifier">type_of_tank</span><span class="hl-code">
+</span><span class="hl-identifier">Number</span><span class="hl-code"> </span><span class="hl-identifier">Capacity</span><span class="hl-code">
+</span><span class="hl-identifier">Function</span><span class="hl-code"> </span><span class="hl-identifier">speeding</span><span class="hl-code">
+   {
+   }
+ 
+   </span><span class="hl-identifier">Function</span><span class="hl-code"> </span><span class="hl-identifier">driving</span><span class="hl-code">
+   {
+   }
+   
+   </span><span class="hl-identifier">Function</span><span class="hl-code"> </span><span class="hl-identifier">halting</span><span class="hl-code">
+   {
+   }
+}</span></div>
+</div>
+</div>
+<p>通过给这些数据成员分配不同的值，您可以创建类 Vehicle 的不同实例。例如，一架飞机有三个轮子，马力 1,000，燃油罐容量为 100 升。以同样的方式，一辆汽车有四个轮子，马力 200，煤气罐容量为 25 升。</p>
+<h2 class="tutheader">在 Ruby 中定义类</h2>
+<p>为了使用 Ruby 实现面向对象编程，您需要先学习如何在 Ruby 中创建对象和类。</p>
+<p>在 Ruby 中，类总是以关键字 <i>class</i> 开始，后跟类的名称。类名的首字母应该大写。类 <i>Customer</i> 如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Customer</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>您可以使用关键字 <i>end</i> 终止一个类。<i>类</i> 中的所有数据成员都是介于类定义和 <i>end</i> 关键字之间。</p>
+<h2 class="tutheader">Ruby 类中的变量</h2>
+<p>Ruby 提供了四种类型的变量：</p>
+<ul class="list">
+<li><b>局部变量：</b>局部变量是在方法中定义的变量。局部变量在方法外是不可用的。在后续的章节中，您将看到有关方法的更多细节。局部变量以小写字母或 _ 开始。</li>
+<li><b>实例变量：</b>实例变量可以跨任何特定的实例或对象中的方法使用。这意味着，实例变量可以从对象到对象的改变。实例变量在变量名之前放置符号（@）。</li>
+<li><b>类变量：</b>类变量可以跨不同的对象使用。类变量属于类，且是类的一个属性。类变量在变量名之前放置符号（@@）。</li>
+<li><b>全局变量：</b>类变量不能跨类使用。如果您想要有一个可以跨类使用的变量，您需要定义全局变量。全局变量总是以美元符号（$）开始。</li>
+</ul>
+<h2>实例</h2>
+<p>使用类变量 @@no_of_customers，您可以判断被创建的对象数量，这样可以确定客户数量。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Customer</span><span class="hl-code">
+</span><span class="hl-var">@@no_of_customers</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<h2 class="tutheader">在 Ruby 中使用 <i>new</i> 方法创建对象</h2>
+<p>对象是类的实例。现在您将学习如何在 Ruby 中创建类的对象。在 Ruby 中，您可以使用类的方法 <i>new</i> 创建对象。</p>
+<p>方法 <i>new</i> 是一种独特的方法，在 Ruby 库中预定义。new 方法属于<i>类</i>方法。</p>
+<p>下面的实例创建了类 Customer 的两个对象 cust1 和 cust2：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">cust1</span><span class="hl-code"> = </span><span class="hl-identifier">Customer</span><span class="hl-code">. </span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">cust2</span><span class="hl-code"> = </span><span class="hl-identifier">Customer</span><span class="hl-code">. </span><span class="hl-identifier">new</span></div>
+</div>
+</div>
+<p>在这里，cust1 和 cust2 是两个对象的名称。对象名称后跟着等号（=），等号后跟着类名，然后是点运算符和关键字 <i>new</i>。 </p>
+<h2 class="tutheader">自定义方法来创建 Ruby 对象</h2>
+<p>您可以给方法 <i>new</i> 传递参数，这些参数可用于初始化类变量。</p>
+<p>当您想要声明带参数的 <i>new</i> 方法时，您需要在创建类的同时声明方法 <i>initialize</i>。</p>
+<p><i>initialize</i> 方法是一种特殊类型的方法，将在调用带参数的类的 <i>new</i> 方法时执行。</p>
+<p>下面的实例创建了 initialize 方法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Customer</span><span class="hl-code">
+</span><span class="hl-var">@@no_of_customers</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">initialize</span><span class="hl-brackets">(</span><span class="hl-identifier">id</span><span class="hl-code">, </span><span class="hl-identifier">name</span><span class="hl-code">, </span><span class="hl-identifier">addr</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">@cust_id</span><span class="hl-code">=</span><span class="hl-identifier">id</span><span class="hl-code">
+</span><span class="hl-var">@cust_name</span><span class="hl-code">=</span><span class="hl-identifier">name</span><span class="hl-code">
+</span><span class="hl-var">@cust_addr</span><span class="hl-code">=</span><span class="hl-identifier">addr</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>在本实例中，您可以声明带有 <b>id、name、addr</b> 作为局部变量的 <i>initialize</i>方法。在这里，<i>def</i> 和 <i>end</i> 用于定义 Ruby 方法 <i>initialize</i>。在后续的章节中，您将学习有关方法的更多细节。</p>
+<p>在 <i>initialize</i> 方法中，把这些局部变量的值传给实例变量 @cust_id、@cust_name 和 @cust_addr。在这里，局部变量的值是随着 new 方法进行传递的。</p>
+<p>现在，您可以创建对象，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">cust1</span><span class="hl-code">=</span><span class="hl-identifier">Customer</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">1</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Wisdom Apartments, Ludhiya</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">cust2</span><span class="hl-code">=</span><span class="hl-identifier">Customer</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">2</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Poul</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">New Empire road, Khandala</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<hr/>
+<h2 class="tutheader">Ruby 类中的成员函数</h2>
+<p>在 Ruby 中，函数被称为方法。<i>类</i>中的每个方法是以关键字 <i>def</i> 开始，后跟方法名。</p>
+<p>方法名总是以<b>小写字母</b>开头。在 Ruby 中，您可以使用关键字 <i>end</i> 来结束一个方法。</p>
+<p>下面的实例定义了一个 Ruby 方法：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Sample</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">function</span><span class="hl-code">
+</span><span class="hl-identifier">statement</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-identifier">statement</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>在这里，<i>statement 1</i> 和 <i>statement 2</i> 是类 Sample 内的方法 <i>function</i> 的主体的组成部分。这些语句可以是任何有效的 Ruby 语句。例如，我们可以使用方法 <i>puts</i> 来输出 <i>Hello Ruby</i>，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Sample</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">hello</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello Ruby!</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>下面的实例将创建类 Sample 的一个对象，并调用 <i>hello</i> 方法：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Sample</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">hello</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Hello Ruby!</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 使用上面的类来创建对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">object</span><span class="hl-code"> = </span><span class="hl-identifier">Sample</span><span class="hl-code">. </span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">object</span><span class="hl-code">.</span><span class="hl-identifier">hello</span></div>
+</div>
+</div>
+<p>这将会产生下面的结果：</p>
+<pre>
+Hello Ruby!
+</pre>
+<h2 class="tutheader">简单的案例研究</h2>
+<p>如果您想要做更多有关类和对象的练习，这里有一个案例研究：</p>
+<p><b><a href="/ruby/ruby-class-case-study.html" title="Ruby 类案例">Ruby 类案例</a></b></p>
+</div>

@@ -1,0 +1,46 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">浏览器差异</span>
+</h1>
+<hr/>
+<h2>DOM 解析中的浏览器差异</h2>
+<p>所有现代的浏览器都支持 W3C DOM 规范。</p>
+<p>然而，浏览器之间是有差异的。一个重要的差异是：</p>
+<ul>
+<li>处理空白和换行的方式</li>
+</ul>
+<hr/>
+<h2>DOM - 空白和换行</h2>
+<p>XML 经常在节点之间包含换行或空白字符。这是在使用简单的编辑器（比如记事本）编辑文档时经常出现的情况。</p>
+<p>下面的例子（由记事本编辑）在每行之间包含 CR/LF（换行），在每个子节点之前包含两个空格：</p>
+<div class="code notranslate"><div>
+
+&lt;book&gt;<br/>
+   
+  &lt;title&gt;Everyday Italian&lt;/title&gt;<br/>
+   
+  &lt;author&gt;Giada De Laurentiis&lt;/author&gt;<br/>
+   
+  &lt;year&gt;2005&lt;/year&gt;<br/>
+   
+  &lt;price&gt;30.00&lt;/price&gt;<br/>
+&lt;/book&gt;
+</div></div>
+<p>Internet Explorer 将不会把空的空白或换行作为文本节点，而其他浏览器会。</p>
+<p>下面的代码片段显示（books.xml 的）根元素拥有多少个子节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.documentElement.childNodes;<br/>
+document.write("Number of child nodes: " + x.length);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_nodetype_ievsmozilla" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取根元素的子节点</li>
+<li>输出子节点的数量。结果取决于您所使用的浏览器。IE 浏览器会输出 4（提醒 4 个子节点），而其他浏览器会输出 9（提醒 9 个子节点）。</li>
+</ol>
+<br/>
+</div>

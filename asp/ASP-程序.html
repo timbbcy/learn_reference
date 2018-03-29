@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">子程序</span>
+</h1>
+<hr/>
+<p class="intro">在 ASP 中，您可通过 VBScript 调用 JavaScript 子程序，反之亦然。</p>
+<hr/>
+<h2>子程序</h2>
+<p>ASP 源代码可包含子程序和函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;%<br/>
+sub vbproc(num1,num2)<br/>
+response.write(num1*num2)<br/>
+end sub<br/>
+%&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;p&gt;Result: &lt;%call vbproc(3,4)%&gt;&lt;/p&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showasp.php?filename=demo_vbproc" target="_blank">演示实例 »</a>
+</div>
+<p>将 &lt;%@ language="<i>language</i>" %&gt; 这一行写在 &lt;html&gt; 标签的上面，就可以使用另一种脚本语言来编写子程序或者函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ language="javascript" %&gt;<br/>
+&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;%<br/>
+function jsproc(num1,num2)<br/>
+{<br/>
+Response.Write(num1*num2)<br/>
+}<br/>
+%&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;p&gt;Result: &lt;%jsproc(3,4)%&gt;&lt;/p&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showasp.php?filename=demo_jsproc" target="_blank">演示实例 »</a>
+</div>
+<br/><hr/>
+<h2>VBScript 与 JavaScript 的不同</h2>
+<p>当从一个用 VBScript 编写的 ASP 文件中调用 VBScript 或者 JavaScript 子程序时，可以使用 "call" 关键词，后面跟着子程序名称。假如子程序需要参数，当使用 "call" 关键词时，参数必须包含在括号内。假如您省略了 "call" 关键词，则参数不必包含在括号内。如果子程序没有参数，那么括号则是可选的。</p>
+<p>当从一个用 JavaScript 编写的 ASP 文件中调用 VBScript 或者 JavaScript 子程序时，必须在子程序名后使用括号。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_vbproc2" target="_blank">使用 VBScript 调用子程序</a><br/>
+本例演示如何在一个 ASP 文件中调用 VBScript 子程序和 JavaScript 子程序。</p>
+<br/>
+</div>

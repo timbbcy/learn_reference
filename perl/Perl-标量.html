@@ -1,0 +1,190 @@
+<div class="article-intro" id="content">
+<h1>Perl 标量</h1>
+<p>标量是一个简单的数据单元。</p>
+<p>标量可以是一个整数，浮点数，字符，字符串，段落或者一个完整的网页。</p>
+<p>以下实例演示了标量的简单应用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$age</span><span class="hl-code"> = </span><span class="hl-number">20</span><span class="hl-code">;             </span><span class="hl-comment"># 整数赋值</span><span class="hl-code">
+</span><span class="hl-var">$name</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">;   </span><span class="hl-comment"># 字符串</span><span class="hl-code">
+</span><span class="hl-var">$salary</span><span class="hl-code"> = </span><span class="hl-number">130.50</span><span class="hl-code">;     </span><span class="hl-comment"># 浮点数</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Age = </span><span class="hl-var">$age</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Name = </span><span class="hl-var">$name</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Salary = </span><span class="hl-var">$salary</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Age = 20
+Name = Runoob
+Salary = 130.5
+</pre>
+<hr/>
+<h2>数字标量</h2>
+<p>标量通常是一个数字或字符串，以下实例演示了不同类型的数字标量的使用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$integer</span><span class="hl-code"> = </span><span class="hl-number">200</span><span class="hl-code">;
+</span><span class="hl-var">$negative</span><span class="hl-code"> = -</span><span class="hl-number">300</span><span class="hl-code">;
+</span><span class="hl-var">$floating</span><span class="hl-code"> = </span><span class="hl-number">200.340</span><span class="hl-code">;
+</span><span class="hl-var">$bigfloat</span><span class="hl-code"> = -</span><span class="hl-number">1.2</span><span class="hl-identifier">E</span><span class="hl-code">-</span><span class="hl-number">23</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 八进制 377 , 十进制为 255 </span><span class="hl-code">
+</span><span class="hl-var">$octal</span><span class="hl-code"> = </span><span class="hl-number">0377</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 十六进制 FF, 十进制为 255 </span><span class="hl-code">
+</span><span class="hl-var">$hexa</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-identifier">xff</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">integer = </span><span class="hl-var">$integer</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">negative = </span><span class="hl-var">$negative</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">floating = </span><span class="hl-var">$floating</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">bigfloat = </span><span class="hl-var">$bigfloat</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">octal = </span><span class="hl-var">$octal</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">hexa = </span><span class="hl-var">$hexa</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+integer = 200
+negative = -300
+floating = 200.34
+bigfloat = -1.2e-23
+octal = 255
+hexa = 255
+</pre>
+<hr/>
+<h2>字符串标量</h2>
+<p>以下实例演示了不同类型的字符串标量的使用，注意单引号和双引号的使用区别：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$var</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">字符串标量 - 菜鸟教程!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$quote</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">我在单引号内 - $var</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$double</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">我在双引号内 - </span><span class="hl-var">$var</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$escape</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">转义字符使用 -</span><span class="hl-special">\t</span><span class="hl-string">Hello, World!</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">var = </span><span class="hl-var">$var</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">quote = </span><span class="hl-var">$quote</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">double = </span><span class="hl-var">$double</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">escape = </span><span class="hl-var">$escape</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+var = 字符串标量 - 菜鸟教程!
+quote = 我在单引号内 - $var
+double = 我在双引号内 - 字符串标量 - 菜鸟教程!
+escape = 转义字符使用 -    Hello, World!
+</pre>
+<hr/>
+<h2>标量运算</h2>
+<p>以下实例演示了标量的简单运算：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">hello</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">world</span><span class="hl-quotes">"</span><span class="hl-code">;       </span><span class="hl-comment"># 字符串连接</span><span class="hl-code">
+</span><span class="hl-var">$num</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code"> + </span><span class="hl-number">10</span><span class="hl-code">;                  </span><span class="hl-comment"># 两数相加</span><span class="hl-code">
+</span><span class="hl-var">$mul</span><span class="hl-code"> = </span><span class="hl-number">4</span><span class="hl-code"> * </span><span class="hl-number">5</span><span class="hl-code">;                   </span><span class="hl-comment"># 两数相乘</span><span class="hl-code">
+</span><span class="hl-var">$mix</span><span class="hl-code"> = </span><span class="hl-var">$str</span><span class="hl-code"> . </span><span class="hl-var">$num</span><span class="hl-code">;             </span><span class="hl-comment"># 连接字符串和数字</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">str = </span><span class="hl-var">$str</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">num = </span><span class="hl-var">$num</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">mix = </span><span class="hl-var">$mix</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+str = helloworld
+num = 15
+mix = helloworld15
+</pre>
+<hr/>
+<h2>多行字符串</h2>
+<p>我们可以使用单引号来输出多行字符串，如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$string</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">
+菜鸟教程
+    —— 学的不仅是技术，更是梦想！
+</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$string</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+菜鸟教程
+    —— 学的不仅是技术，更是梦想！
+</pre>
+<p>你也可以使用 "here" document 的语法格式来输出多行：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> &lt;&lt;</span><span class="hl-identifier">EOF</span><span class="hl-code">;
+菜鸟教程
+    —— 学的不仅是技术，更是梦想！
+</span><span class="hl-identifier">EOF</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+菜鸟教程
+    —— 学的不仅是技术，更是梦想！
+</pre>
+<hr/>
+<h2>特殊字符</h2>
+<p>
+以下我们将演示 Perl 中特殊字符的应用，如 __FILE__, __LINE__, 和 __PACKAGE__ 分别表示当前执行脚本的文件名，行号，包名。
+</p>
+<p><strong>注意</strong>： <span class="marked">__</span> 是两条下划线，<span class="marked">__FILE__</span> 前后各两条下划线。</p>
+<p>这些特殊字符是单独的标记，不能写在字符串中，例如：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">文件名 </span><span class="hl-quotes">"</span><span class="hl-code">. </span><span class="hl-identifier">__FILE__</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">行号 </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">__LINE__</span><span class="hl-code"> .</span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">包名 </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">__PACKAGE__</span><span class="hl-code"> .</span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 无法解析</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">__FILE__ __LINE__ __PACKAGE__</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+文件名 test.pl
+行号 4
+包名 main
+__FILE__ __LINE__ __PACKAGE__
+</pre>
+<hr/>
+<h2>v 字符串</h2>
+<p>一个以 v 开头,后面跟着一个或多个用句点分隔的整数,会被当作一个字串文本。</p><p>
+当你想为每个字符 直接声明其数字值时,v-字串提供了一种更清晰的构造这类字串的方法，而不像 "\x{1}\x{14}\x{12c}\x{fa0}" 这种不易于理解，我么可以看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$smile</span><span class="hl-code">  = </span><span class="hl-identifier">v9786</span><span class="hl-code">;
+</span><span class="hl-var">$foo</span><span class="hl-code">    = </span><span class="hl-identifier">v102</span><span class="hl-number">.111</span><span class="hl-number">.111</span><span class="hl-code">;
+</span><span class="hl-var">$martin</span><span class="hl-code"> = </span><span class="hl-identifier">v77</span><span class="hl-number">.97</span><span class="hl-number">.114</span><span class="hl-number">.116</span><span class="hl-number">.105</span><span class="hl-number">.110</span><span class="hl-code">; 
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">smile = </span><span class="hl-var">$smile</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">foo = </span><span class="hl-var">$foo</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">martin = </span><span class="hl-var">$martin</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Wide character in print at test.pl line 7.
+smile = &amp;#x263a;
+foo = foo
+martin = Martin
+</pre>
+</div>

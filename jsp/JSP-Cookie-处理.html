@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">Cookie 处理</span></h1>
+<p>Cookie是存储在客户机的文本文件，它们保存了大量轨迹信息。在servlet技术基础上，JSP显然能够提供对HTTP cookie的支持。</p>
+<p>
+通常有三个步骤来识别回头客：</p>
+<ul>
+<li>
+		服务器脚本发送一系列cookie至浏览器。比如名字，年龄，ID号码等等。</li>
+<li>
+		浏览器在本地机中存储这些信息，以备不时之需。</li>
+<li>
+		当下一次浏览器发送任何请求至服务器时，它会同时将这些cookie信息发送给服务器，然后服务器使用这些信息来识别用户或者干些其它事情。</li>
+</ul><p>
+本章节将会传授您如何去设置或重设cookie的方法，还有如何访问它们及如何删除它们。</p>
+<blockquote>
+<p>JSP Cookie 处理需要对中文进行编码与解码，方法如下：</p>
+<pre>
+String   str   =   java.net.URLEncoder.encode("中文"，"UTF-8");            //编码
+String   str   =   java.net.URLDecoder.decode("编码后的字符串","UTF-8");   // 解码
+</pre>
+</blockquote>
+<hr/>
+<h2>
+	Cookie 剖析</h2><p>
+Cookie通常在HTTP信息头中设置（虽然JavaScript能够直接在浏览器中设置cookie）。在JSP中，设置一个cookie需要发送如下的信息头给服务器：
+<pre>
+HTTP/1.1 200 OK
+Date: Fri, 04 Feb 2015 21:03:38 GMT
+Server: Apache/1.3.9 (UNIX) PHP/4.0b3
+Set-Cookie: name=runoob; expires=Friday, 04-Feb-07 22:03:38 GMT; 
+                 path=/; domain=runoob.com
+Connection: close
+Content-Type: text/html
+</pre>
+<p>
+正如您所见，Set-Cookie信息头包含一个键值对，一个GMT（格林尼治标准）时间，一个路径，一个域名。键值对会被编码为URL。有效期域是个指令，告诉浏览器在什么时候之后就可以清除这个cookie。</p>
+<p>
+如果浏览器被配置成可存储cookie，那么它将会保存这些信息直到过期。如果用户访问的任何页面匹配了cookie中的路径和域名，那么浏览器将会重新将这个cookie发回给服务器。浏览器端的信息头长得就像下面这样：
+<pre>
+GET / HTTP/1.0
+Connection: Keep-Alive
+User-Agent: Mozilla/4.6 (X11; I; Linux 2.2.6-15apmac ppc)
+Host: zink.demon.co.uk:1126
+Accept: image/gif, */*
+Accept-Encoding: gzip
+Accept-Language: en
+Accept-Charset: iso-8859-1,*,utf-8
+Cookie: name=xyz
+</pre>
+<p>
+JSP脚本通过request对象中的getCookies()方法来访问这些cookie，这个方法会返回一个Cookie对象的数组。</p><hr/>
+<h2>
+	Servlet Cookie 方法</h2><p>
+下表列出了Cookie对象中常用的方法：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>序号</strong></th>
+<th>
+<strong>方法</strong><strong> &amp; </strong><strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+				1</td>
+<td>
+<strong>public void setDomain(String pattern)</strong></td></tr></tbody></table></p>
+				设置cookie的域名，比如 runoob.com</p></div>

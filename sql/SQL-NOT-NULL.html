@@ -1,0 +1,20 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">NOT NULL</span> 约束</h1>
+<hr/>
+<p class="intro">在默认的情况下，表的列接受 NULL 值。</p>
+<hr/>
+<h2>SQL NOT NULL 约束</h2>
+<p>NOT NULL 约束强制列不接受 NULL 值。</p>
+<p>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。</p>
+<p>下面的 SQL 强制 "P_Id" 列和 "LastName" 列不接受 NULL 值：</p>
+<div class="code notranslate"><div>
+CREATE TABLE Persons<br/>
+(<br/>
+P_Id int NOT NULL,<br/>
+LastName varchar(255) NOT NULL,<br/>
+FirstName varchar(255),<br/>
+Address varchar(255),<br/>
+City varchar(255)<br/>
+)</div></div>
+<br/>
+</div>

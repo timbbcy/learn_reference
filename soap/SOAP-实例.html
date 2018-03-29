@@ -1,0 +1,47 @@
+<div class="article-intro" id="content">
+<h1>SOAP <span class="color_h1">实例</span>
+</h1>
+<hr/>
+<h2>一个 SOAP 实例
+</h2>
+<p>在下面的例子中，一个 GetStockPrice 请求被发送到了服务器。此请求有一个 StockName 参数，而在响应中则会返回一个 Price 参数。此功能的命名空间被定义在此地址中： "http://www.example.org/stock"</p>
+<h3>SOAP 请求：</h3>
+<div class="code notranslate"><div>
+
+POST /InStock HTTP/1.1<br/>
+Host: www.example.org<br/>
+Content-Type: application/soap+xml; charset=utf-8<br/>
+Content-Length: nnn<br/><br/>
+&lt;?xml version="1.0"?&gt;<br/>
+&lt;soap:Envelope<br/>
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope"<br/>
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;<br/><br/>
+  &lt;soap:Body xmlns:m="http://www.example.org/stock"&gt;<br/>
+   &lt;m:GetStockPrice&gt;<br/>
+         
+      &lt;m:StockName&gt;IBM&lt;/m:StockName&gt;<br/>
+  &lt;/m:GetStockPrice&gt;<br/>
+  &lt;/soap:Body&gt;<br/><br/>
+&lt;/soap:Envelope&gt;
+</div></div>
+<h3>SOAP 响应：</h3>
+<div class="code notranslate"><div>
+
+HTTP/1.1 200 OK<br/>
+Content-Type: application/soap+xml; charset=utf-8<br/>
+Content-Length: nnn<br/><br/>
+&lt;?xml version="1.0"?&gt;<br/>
+&lt;soap:Envelope<br/>
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope"<br/>
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;<br/><br/>
+  &lt;soap:Body xmlns:m="http://www.example.org/stock"&gt;<br/>
+     
+    &lt;m:GetStockPriceResponse&gt;<br/>
+         
+      &lt;m:Price&gt;34.5&lt;/m:Price&gt;<br/>
+     
+    &lt;/m:GetStockPriceResponse&gt;<br/>
+  &lt;/soap:Body&gt;<br/><br/>
+&lt;/soap:Envelope&gt;
+</div></div>
+</div>

@@ -1,0 +1,70 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- WebGrid 帮助器</span>
+</h1>
+<hr/>
+<p class="intro">WebGrid - 众多有用的 ASP.NET Web 帮助器之一。</p>
+<hr/>
+<h2>自己写的 HTML</h2>
+<p>在前面的章节中，您使用 Razor 代码显示数据库数据，所有的 HTML 标记都是手写的：</p>
+<div class="example">
+<h2 class="example">数据库实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{<br/>
+var db = Database.Open("SmallBakery"); <br/>
+var selectQueryString = "SELECT * FROM Product ORDER BY Name"; <br/>
+}</span><br/>
+&lt;html&gt; <br/>
+&lt;body&gt; <br/>
+&lt;h1&gt;Small Bakery Products&lt;/h1&gt; <br/>
+&lt;table&gt; <br/>
+&lt;tr&gt;<br/>
+&lt;th&gt;Id&lt;/th&gt; <br/>
+&lt;th&gt;Product&lt;/th&gt; <br/>
+&lt;th&gt;Description&lt;/th&gt; <br/>
+&lt;th&gt;Price&lt;/th&gt; <br/>
+&lt;/tr&gt;<br/><span class="marked">@foreach(var row in db.Query(selectQueryString))<br/>
+{</span><br/>
+&lt;tr&gt; <br/>
+&lt;td&gt;<span class="marked">@row.Id</span>&lt;/td&gt; <br/>
+&lt;td&gt;<span class="marked">@row.Name</span>&lt;/td&gt; <br/>
+&lt;td&gt;<span class="marked">@row.Description</span>&lt;/td&gt; <br/>
+&lt;td align="right"&gt;<span class="marked">@row.Price</span>&lt;/td&gt; <br/>
+&lt;/tr&gt; <br/><span class="marked">}</span><br/>
+&lt;/table&gt; <br/>
+&lt;/body&gt; <br/>
+&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_003" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>使用 WebGrid 帮助器</h2>
+<p>WebGrid 帮助器提供了一种更简单的显示数据的方法。</p>
+<p>WebGrid 帮助器：</p>
+<ul>
+<li>自动创建一个 HTML 表格来显示数据</li>
+<li>支持不同的格式化选项</li>
+<li>支持数据分页显示</li>
+<li>支持通过点击列表标题进行排序</li>
+</ul>
+<div class="example">
+<h2 class="example">WebGrid 实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{ <br/>
+var db = Database.Open("SmallBakery") ; <br/>
+var selectQueryString = "SELECT * FROM Product ORDER BY Id"; <br/>
+var data = db.Query(selectQueryString); <br/>
+var grid = new WebGrid(data); <br/>
+}</span><br/>
+&lt;html&gt; <br/>
+&lt;head&gt; <br/>
+&lt;title&gt;Displaying Data Using the WebGrid Helper&lt;/title&gt; <br/>
+&lt;/head&gt; <br/>
+&lt;body&gt; <br/>
+&lt;h1&gt;Small Bakery Products&lt;/h1&gt; <br/>
+&lt;div id="grid"&gt; <br/><span class="marked">@grid.GetHtml()</span><br/>
+&lt;/div&gt; <br/>
+&lt;/body&gt; <br/>
+&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_004" target="_blank">运行实例 »</a>
+</div>
+<br/><br/>
+</div>

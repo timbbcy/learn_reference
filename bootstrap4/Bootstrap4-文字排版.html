@@ -1,0 +1,257 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 文字排版
+</h1>
+<hr/>
+<h2>Bootstrap 4 默认设置</h2>
+<p>Bootstrap 4 默认的
+<span class="marked">font-size</span> 为 16px, 
+<span class="marked">line-height</span> 为 1.5。</p>
+<p>默认的 <span class="marked">font-family</span> 为 "Helvetica Neue", Helvetica, Arial, sans-serif。</p>
+<p>此外，所有的 <span class="marked">&lt;p&gt;</span> 元素
+<span class="marked">margin-top: 0</span> 、 <span class="marked">margin-bottom: 1rem</span> (16px)。</p>
+<hr/>
+<h2>&lt;h1&gt; - &lt;h6&gt;</h2>
+<p>Bootstrap 中定义了所有的 HTML 标题（h1 到 h6）的样式。请看下面的实例：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">h1 Bootstrap 标题 (2.5rem = 40px)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">h2 Bootstrap 标题 (2rem = 32px)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">h3 Bootstrap 标题 (1.75rem = 28px)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">h4 Bootstrap 标题 (1.5rem = 24px)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">h5 Bootstrap 标题 (1.25rem = 20px)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span><span class="hl-code">h6 Bootstrap 标题 (1rem = 16px)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_hn" target="_blank">尝试一下 »</a></div>
+<h3>Display 标题类</h3>
+<p>Bootstrap 还提供了四个 Display 类来控制标题的样式: .display-1, .display-2, .display-3, .display-4。</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Display 标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Display 标题可以输出更大更粗的字体样式。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">display-1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Display 1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">display-2</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Display 2</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">display-3</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Display 3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">display-4</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Display 4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_display" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;small&gt;</h2>
+<p>在 Bootstrap 4 中 HTML <span class="marked">&lt;small&gt;</span> 元素用于创建字号更小的颜色更浅的文本:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">更小文本标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">small 元素用于字号更小的颜色更浅的文本:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">h1 标题 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">副标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">h2 标题 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">副标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">h3 标题 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">副标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">h4 标题 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">副标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">h5 标题 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">副标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h5</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span><span class="hl-code">h6 标题 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-code">副标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">small</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h6</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_small" target="_blank">尝试一下 »</a></div><hr/>
+<h2>&lt;mark&gt;</h2>
+<p>Bootstrap 4 定义 <span class="marked">&lt;mark&gt;</span> 为黄色背景及有一定的内边距:</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">高亮文本</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">使用 mark 元素来 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">mark</span><span class="hl-brackets">&gt;</span><span class="hl-code">高亮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">mark</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 文本。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_mark" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;abbr&gt;</h2>
+<p>Bootstrap 4 定义 HTML <span class="marked">&lt;abbr&gt;</span>  元素的样式为显示在文本底部的一条虚线边框:</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Abbreviations</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">The abbr element is used to mark up an abbreviation or acronym:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">The </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">abbr</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">World Health Organization</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">WHO</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">abbr</span><span class="hl-brackets">&gt;</span><span class="hl-code"> was founded in 1948.</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_abbr" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;blockquote&gt;</h2>
+<p>对于引用的内容可以在  <span class="marked">&lt;blockquote&gt;</span> 上添加 <span class="marked">.blockquote</span> 类 :</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Blockquotes</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">The blockquote element is used to present content from another source:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">blockquote</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">blockquote</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">footer</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">blockquote-footer</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">From WWF's website</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">footer</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">blockquote</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_blockquote" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;dl&gt;</h2>
+<p>Bootstrap 4 定义 HTML <span class="marked">&lt;dl&gt;</span> 元素的样式如下:</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Description Lists</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">The dl element indicates a description list:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dl</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">Coffee</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">- black hot drink</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">Milk</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">- white cold drink</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dl</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_dl" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;code&gt;</h2>
+<p>Bootstrap 4 定义 HTML <span class="marked">&lt;code&gt;</span> 元素的样式如下:</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">代码片段</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">可以将一些代码元素放到 code 元素里面:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">以下 HTML 元素: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">span</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">section</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">, 和 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code">div</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">code</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 用于定义部分文档内容。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_code" target="_blank">尝试一下 »</a></div>
+<h2>&lt;kbd&gt;</h2>
+<p>Bootstrap 4 定义 HTML <span class="marked">&lt;kbd&gt;</span> 元素的样式如下:</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Keyboard Inputs</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">To indicate input that is typically entered via the keyboard, use the kbd element:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Use </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">kbd</span><span class="hl-brackets">&gt;</span><span class="hl-code">ctrl + p</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">kbd</span><span class="hl-brackets">&gt;</span><span class="hl-code"> to open the Print dialog box.</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_kbd" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>&lt;pre&gt;</h2>
+<p>Bootstrap 4 定义 HTML <span class="marked">&lt;pre&gt;</span> 元素的样式如下:</p>
+<div class="example">
+<h2 class="example_head">实例</h2><div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Multiple Code Lines</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">For multiple lines of code, use the pre element:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">pre</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Text in a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks.
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">pre</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_txt_pre" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>更多排版类</h2><p>
+下表提供了 Bootstrap4 更多排版类的实例：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%;">类名</th>
+<th style="width:63%;">描述</th>
+<th style="width:12%;">实例</th>
+</tr>
+<tr>
+<td><span class="marked">.font-weight-bold</span></td>
+<td>加粗文本</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_txt_font-weight" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.font-weight-normal</span></td>
+<td>普通文本</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_txt_font-weight" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.font-weight-light</span></td>
+<td>更细的文本</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_txt_font-weight" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.font-italic</span></td>
+<td>斜体文本</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_txt_font-weight" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.lead</span></td>
+<td>让段落更突出</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_txt_lea" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.small</span></td>
+<td>指定更小文本 (为父元素的 85% )</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_txt_small" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-left</span></td>
+<td>左对齐</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-center</span></td>
+<td>居中</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-right</span></td>
+<td>右对齐</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-justify</span></td>
+<td>设定文本对齐,段落中超出屏幕部分文字自动换行</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-nowrap</span></td>
+<td>段落中超出屏幕部分不换行</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-lowercase</span></td>
+<td>设定文本小写</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-lowercase" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-uppercase</span></td>
+<td>设定文本大写</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-lowercase" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.text-capitalize</span></td>
+<td>设定单词首字母大写</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_text-lowercase" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.initialism</span></td>
+<td>显示在 &lt;abbr&gt; 元素中的文本以小号字体展示，且可以将小写字母转换为大写字母</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_txt_abbr2" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.list-unstyled</span></td>
+<td>移除默认的列表样式，列表项中左对齐 ( &lt;ul&gt; 和 &lt;ol&gt; 中)。 这个类仅适用于直接子列表项  
+  (如果需要移除嵌套的列表项，你需要在嵌套的列表中使用该样式)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_txt_list-unstyle" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.list-inline</span></td>
+<td>将所有列表项放置同一行</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_txt_list-inline" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><span class="marked">.pre-scrollable</span></td>
+<td>使 &lt;pre&gt; 元素可滚动，代码块区域最大高度为340px,一旦超出这个高度,就会在Y轴出现滚动条</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try.php?filename=trybs4_ref_txt_pre" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+</div>

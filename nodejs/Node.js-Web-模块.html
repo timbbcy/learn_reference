@@ -1,0 +1,149 @@
+<div class="article-intro" id="content">
+<h1>Node.js Web 模块</h1>
+<hr/>
+<h2>什么是 Web 服务器？</h2>
+<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，Web服务器的基本功能就是提供Web信息浏览服务。它只需支持HTTP协议、HTML文档格式及URL，与客户端的网络浏览器配合。</p>
+<p>大多数 web 服务器都支持服务端的脚本语言（php、python、ruby）等，并通过脚本语言从数据库获取数据，将结果返回给客户端浏览器。</p>
+<p>
+<p>目前最主流的三个Web服务器是Apache、Nginx、IIS。</p>
+<hr/>
+<h2>Web 应用架构</h2>
+<img src="http://www.runoob.com/wp-content/uploads/2015/09/web_architecture.jpg" title="Web 应用架构"/>
+<ul>
+<li><p><b>Client</b> - 客户端，一般指浏览器，浏览器可以通过 HTTP 协议向服务器请求数据。 </p></li>
+<li><p><b>Server</b> - 服务端，一般指 Web 服务器，可以接收客户端请求，并向客户端发送响应数据。</p></li>
+<li><p><b>Business</b> - 业务层， 通过 Web 服务器处理应用程序，如与数据库交互，逻辑运算，调用外部程序等。</p></li>
+<li><p><b>Data</b> - 数据层，一般由数据库组成。</p></li>
+</ul>
+<hr/>
+<h2>使用 Node 创建 Web 服务器</h2>
+<p>
+Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块，代码如下：
+</p>
+<pre>var http = require('http');</pre>
+<p>
+以下是演示一个最基本的 HTTP 服务器架构(使用 8080 端口)，创建 server.js 文件，代码如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">http</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">http</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">fs</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">fs</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">url</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">url</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建服务器</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">http</span><span class="hl-code">.</span><span class="hl-identifier">createServer</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-identifier">response</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 解析请求，包括文件名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">pathname</span><span class="hl-code"> = </span><span class="hl-identifier">url</span><span class="hl-code">.</span><span class="hl-identifier">parse</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">pathname</span><span class="hl-code">;
+   
+   </span><span class="hl-comment">//</span><span class="hl-comment"> 输出请求的文件名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Request for </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">pathname</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string"> received.</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+   
+   </span><span class="hl-comment">//</span><span class="hl-comment"> 从文件系统中读取请求的文件内容</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">fs</span><span class="hl-code">.</span><span class="hl-identifier">readFile</span><span class="hl-brackets">(</span><span class="hl-identifier">pathname</span><span class="hl-code">.</span><span class="hl-identifier">substr</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-code">, </span><span class="hl-identifier">data</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-code">;
+         </span><span class="hl-comment">//</span><span class="hl-comment"> HTTP 状态码: 404 : NOT FOUND</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> Content Type: text/plain</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">writeHead</span><span class="hl-brackets">(</span><span class="hl-number">404</span><span class="hl-code">, </span><span class="hl-brackets">{</span><span class="hl-quotes">'</span><span class="hl-string">Content-Type</span><span class="hl-quotes">'</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">text/html</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+      </span><span class="hl-brackets">}</span><span class="hl-reserved">else</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> HTTP 状态码: 200 : OK</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> Content Type: text/plain</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">writeHead</span><span class="hl-brackets">(</span><span class="hl-number">200</span><span class="hl-code">, </span><span class="hl-brackets">{</span><span class="hl-quotes">'</span><span class="hl-string">Content-Type</span><span class="hl-quotes">'</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">text/html</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;    
+         
+         </span><span class="hl-comment">//</span><span class="hl-comment"> 响应文件内容</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">toString</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;        
+      </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">  发送响应数据</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;   
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">listen</span><span class="hl-brackets">(</span><span class="hl-number">8080</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 控制台会输出以下信息</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Server running at http://127.0.0.1:8080/</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>接下来我们在该目录下创建一个 index.html 文件，代码如下：</p>
+<div class="example"> <h2 class="example">index.html 文件</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程(runoob.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">我的第一个标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">我的第一个段落。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>执行 server.js 文件：</p>
+<pre>
+$ node server.js
+Server running at http://127.0.0.1:8080/
+</pre>
+<p>接着我们在浏览器中打开地址：<strong>http://127.0.0.1:8080/index.html</strong>，显示如下图所示:</p>
+<img src="//www.runoob.com/wp-content/uploads/2015/09/6E0D2A5C-0339-4D61-858D-A4EEB5763D98.jpg"/>
+<p>执行 server.js 的控制台输出信息如下：</p>
+<pre>
+Server running at http://127.0.0.1:8080/
+Request for /index.html received.     #  客户端请求信息
+</pre>
+<hr/>
+<h2>使用 Node 创建 Web 客户端</h2>
+<p>
+Node 创建 Web 客户端需要引入 http 模块，创建 client.js 文件，代码如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">http</span><span class="hl-code"> = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">http</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 用于请求的选项</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">options</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">host</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,
+   </span><span class="hl-identifier">port</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">8080</span><span class="hl-quotes">'</span><span class="hl-code">,
+   </span><span class="hl-identifier">path</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">/index.html</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 处理响应的回调函数</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">callback</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">response</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 不断更新数据</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">body</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+   </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">on</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">data</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">data</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">body</span><span class="hl-code"> += </span><span class="hl-identifier">data</span><span class="hl-code">;
+   </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+   
+   </span><span class="hl-identifier">response</span><span class="hl-code">.</span><span class="hl-identifier">on</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">end</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 数据接收完成</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-identifier">body</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 向服务端发送请求</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">req</span><span class="hl-code"> = </span><span class="hl-identifier">http</span><span class="hl-code">.</span><span class="hl-identifier">request</span><span class="hl-brackets">(</span><span class="hl-identifier">options</span><span class="hl-code">, </span><span class="hl-identifier">callback</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">req</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p><strong>新开一个终端</strong>，执行 client.js 文件，输出结果如下：
+</p>
+<pre>
+$ node  client.js 
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;我的第一个标题&lt;/h1&gt;
+    &lt;p&gt;我的第一个段落。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>执行 server.js 的控制台输出信息如下：</p>
+<pre>
+Server running at http://127.0.0.1:8080/
+Request for /index.html received.   # 客户端请求信息
+</pre>
+</p></div>

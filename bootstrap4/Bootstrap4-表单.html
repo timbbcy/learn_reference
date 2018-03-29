@@ -1,0 +1,41 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 表单</h1>
+<p>在本章中，我们将学习如何使用 Bootstrap 创建表单。Bootstrap 通过一些简单的 HTML 标签和扩展的类即可创建出不同样式的表单。</p>
+<p>表单元素 <span class="marked">&lt;input&gt;</span>, <span class="marked">&lt;textarea&gt;</span>, 和 
+<span class="marked">&lt;select&gt;</span> elements 
+在使用 <span class="marked">.form-control</span> 类的情况下，宽度都是设置为 100%。</p>
+<h3>Bootstrap4 表单布局</h3>
+<ul>
+<li>堆叠表单 (全屏宽度)：垂直方向 </li>
+<li>内联表单：水平方向</li>
+</ul>
+<p>Bootstrap 提供了两种类型的表单布局:</p>
+<hr/>
+<h2>堆叠表单</h2>
+<p>以下实例使用两个输入框，一个复选框，一个提交按钮来创建堆叠表单：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-group</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">email</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Email address:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">email</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-control</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">email</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-group</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">pwd</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Password:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-control</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">pwd</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-check</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-check-label</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">form-check-input</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code"> Remember me
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Submit</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=trybs4_form_basic" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>内联表单</h2>
+<p>所有内联表单中的元素都是左对齐的。</p>
+<p><strong>注意：在屏幕宽度小于 576px 时为垂直堆叠，如果屏幕宽度大于等于576px时表单元素才会显示在同一个水平线上。</strong></p>
+<p>内联表单需要在 <span class="marked">&lt;form&gt;</span> 元素上添加  <span class="marked">.form-inline</span>类。 </p></div>

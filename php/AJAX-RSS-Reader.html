@@ -1,0 +1,153 @@
+<div class="article-intro" id="content">
+<h1>PHP 实例 - <span class="color_h1">AJAX RSS 阅读器</span>
+</h1>
+<hr/>
+<p class="intro">RSS 阅读器用于阅读 RSS Feed。</p>
+<hr/>
+<h2>AJAX RSS 阅读器</h2>
+<p>在下面的实例中，我们将演示一个 RSS 阅读器，通过它，来自 RSS 的内容在网页不进行刷新的情况下被载入：</p>
+<script>
+function showRSS(str)
+{
+if (str.length==0)
+  { 
+  document.getElementById("rssOutput").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("rssOutput").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","/try/demo_source/getrss.php?q="+str,true);
+xmlhttp.send();
+}
+</script>
+<form>
+<select onchange="showRSS(this.value)">
+<option value="">选择一个 RSS-feed:</option>
+<option value="rss">读取 RSS 数据</option>
+</select>
+</form>
+<br/><div id="rssOutput">RSS-feed 数据列表...</div>
+<hr/>
+<h2>实例解释 - HTML 页面</h2>
+<p>当用户在上面的下拉列表中选择某个 RSS-feed 时，会执行名为 "showRSS()" 的函数。该函数由 "onchange" 事件触发：</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;script&gt;
+function showRSS(str)
+{
+    if (str.length==0)
+    { 
+        document.getElementById("rssOutput").innerHTML="";
+        return;
+        }
+    if (window.XMLHttpRequest)
+    {
+        // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+        {
+            document.getElementById("rssOutput").innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","getrss.php?q="+str,true);
+    xmlhttp.send();
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form&gt;
+&lt;select onchange="showRSS(this.value)"&gt;
+&lt;option value=""&gt;选择一个 RSS-feed:&lt;/option&gt;
+&lt;option value="rss"&gt;读取 RSS 数据&lt;/option&gt;
+&lt;/select&gt;
+&lt;/form&gt;
+&lt;br&gt;
+&lt;div id="rssOutput"&gt;RSS-feed 数据列表...&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>showRSS() 函数会执行以下步骤：</p>
+<ul>
+<li>检查是否有 RSS-feed 被选择</li>
+<li>创建 XMLHttpRequest 对象</li>
+<li>创建在服务器响应就绪时执行的函数</li>
+<li>向服务器上的文件发送请求</li>
+<li>请注意添加到 URL 末端的参数（q）（包含下拉列表的内容）</li>
+</ul>
+<hr/>
+<h2>PHP 文件</h2>
+<p>文件 <a href="/try/demo_source/rss_demo.xml" target="_blank">rss_demo.xml</a>。</p>
+<p>上面这段通过 JavaScript 调用的服务器页面是名为 "getrss.php" 的 PHP 文件：</p>
+<pre>
+&lt;?php
+// rss 文件
+$xml="rss_demo.xml";
+
+$xmlDoc = new DOMDocument();
+$xmlDoc-&gt;load($xml);
+
+// 从 "&lt;channel&gt;" 中读取元素
+$channel=$xmlDoc-&gt;getElementsByTagName('channel')-&gt;item(0);
+$channel_title = $channel-&gt;getElementsByTagName('title')
+-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;
+$channel_link = $channel-&gt;getElementsByTagName('link')
+-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;
+$channel_desc = $channel-&gt;getElementsByTagName('description')
+-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;
+
+// 输出 "&lt;channel&gt;" 中的元素
+echo("&lt;p&gt;&lt;a href='" . $channel_link
+  . "'&gt;" . $channel_title . "&lt;/a&gt;");
+echo("&lt;br&gt;");
+echo($channel_desc . "&lt;/p&gt;");
+
+// 输出 "&lt;item&gt;" 中的元素
+$x=$xmlDoc-&gt;getElementsByTagName('item');
+for ($i=0; $i&lt;=1; $i++) {
+    $item_title=$x-&gt;item($i)-&gt;getElementsByTagName('title')
+    -&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;
+    $item_link=$x-&gt;item($i)-&gt;getElementsByTagName('link')
+    -&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;
+    $item_desc=$x-&gt;item($i)-&gt;getElementsByTagName('description')
+    -&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;
+    echo ("&lt;p&gt;&lt;a href='" . $item_link
+    . "'&gt;" . $item_title . "&lt;/a&gt;");
+    echo ("&lt;br&gt;");
+    echo ($item_desc . "&lt;/p&gt;");
+}
+?&gt;
+</pre>
+<p>当 RSS feed 的请求从 JavaScript 发送到 PHP 文件时，将发生：</p>
+<ul>
+<li>检查哪个 RSS feed 被选中</li>
+<li>创建一个新的 XML DOM 对象</li>
+<li>在 xml 变量中加载 RSS 文档</li>
+<li>从 channel 元素中提取并输出元素</li>
+<li>从 item 元素中提取并输出元素</li>
+</ul>
+</div>

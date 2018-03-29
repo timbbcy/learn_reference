@@ -1,0 +1,149 @@
+<div class="article-intro" id="content">
+<h1>Vue.js 自定义指令</h1>
+<p>除了默认设置的核心指令( v-model 和 v-show ), Vue 也允许注册自定义指令。</p>
+<p>下面我们注册一个全局指令 v-focus, 该指令的功能是在页面加载时，元素获得焦点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">页面载入时，input 元素自动获取焦点：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">v-focus</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+// 注册一个全局自定义指令 v-focus
+Vue.directive('focus', {
+  // 当绑定元素插入到 DOM 中。
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+// 创建根实例
+new Vue({
+  el: '#app'
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-custom-directive1" target="_blank">尝试一下 »</a>
+</div>
+<p>我们也可以在实例使用 directives 选项来注册局部指令，这样指令只能在这个实例中使用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">页面载入时，input 元素自动获取焦点：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">v-focus</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+// 创建根实例
+new Vue({
+  el: '#app',
+  directives: {
+    // 注册一个局部的自定义指令 v-focus
+    focus: {
+      // 指令的定义
+      inserted: function (el) {
+        // 聚焦元素
+        el.focus()
+      }
+    }
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-custom-directive2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>钩子</h2>
+<h3>钩子函数</h3>
+<p>指令定义函数提供了几个钩子函数（可选）：</p>
+<ul>
+<li><p><code>bind</code>: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。</p>
+</li>
+<li><p><code>inserted</code>: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。</p>
+</li>
+<li><p><code>update</code>: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。</p>
+</li>
+<li><p><code>componentUpdated</code>: 被绑定元素所在模板完成一次更新周期时调用。</p>
+</li>
+<li><p><code>unbind</code>: 只调用一次， 指令与元素解绑时调用。</p>
+</li>
+</ul>
+<h3>钩子函数参数</h3>
+<p>
+钩子函数的参数有：</p>
+<ul>
+<li><strong>el</strong>: 指令所绑定的元素，可以用来直接操作 DOM 。</li>
+<li><strong>binding</strong>: 一个对象，包含以下属性：<ul>
+<li><strong>name</strong>: 指令名，不包括 <code>v-</code> 前缀。</li>
+<li><strong>value</strong>: 指令的绑定值， 例如： <code>v-my-directive="1 + 1"</code>, value 的值是 <code>2</code>。</li>
+<li><strong>oldValue</strong>: 指令绑定的前一个值，仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。无论值是否改变都可用。</li>
+<li><strong>expression</strong>: 绑定值的字符串形式。 例如 <code>v-my-directive="1 + 1"</code> ， expression 的值是 <code>"1 + 1"</code>。</li>
+<li><strong>arg</strong>: 传给指令的参数。例如 <code>v-my-directive:foo</code>， arg 的值是 <code>"foo"</code>。</li>
+<li><strong>modifiers</strong>: 一个包含修饰符的对象。 例如： <code>v-my-directive.foo.bar</code>, 修饰符对象 modifiers 的值是 <code>{ foo: true, bar: true }</code>。</li>
+</ul>
+</li>
+<li><strong>vnode</strong>: Vue 编译生成的虚拟节点。</li>
+<li><strong>oldVnode</strong>: 上一个虚拟节点，仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。</li>
+</ul>
+<p>以下实例演示了这些参数的使用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">v-runoob:hello</span><span class="hl-code">.</span><span class="hl-var">a</span><span class="hl-code">.</span><span class="hl-var">b</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">message</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Vue.directive('runoob', {
+  bind: function (el, binding, vnode) {
+    var s = JSON.stringify
+    el.innerHTML =
+      'name: '       + s(binding.name) + '</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">' +
+      'value: '      + s(binding.value) + '</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">' +
+      'expression: ' + s(binding.expression) + '</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">' +
+      'argument: '   + s(binding.arg) + '</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">' +
+      'modifiers: '  + s(binding.modifiers) + '</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">' +
+      'vnode keys: ' + Object.keys(vnode).join(', ')
+  }
+})
+new Vue({
+  el: '#app',
+  data: {
+    message: '菜鸟教程!'
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-custom-directive3" target="_blank">尝试一下 »</a>
+</div>
+<p>有时候我们不需要其他钩子函数，我们可以简写函数，如下格式：</p>
+<pre>
+Vue.directive('runoob', function (el, binding) {
+  // 设置指令的背景颜色
+  el.style.backgroundColor = binding.value.color
+})
+</pre>
+<p>指令函数可接受所有合法的 JavaScript 表达式，以下实例传入了 JavaScript 对象：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-runoob</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{ color: 'green', text: '菜鸟教程!' }</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Vue.directive('runoob', function (el, binding) {
+    // 简写方式设置文本及背景颜色
+    el.innerHTML = binding.value.text
+    el.style.backgroundColor = binding.value.color
+})
+new Vue({
+  el: '#app'
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-custom-directive4" target="_blank">尝试一下 »</a>
+</div>
+</div>

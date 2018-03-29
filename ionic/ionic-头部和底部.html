@@ -1,0 +1,82 @@
+<div class="article-intro" id="content">
+<h1>ionic 头部和底部</h1>
+<hr/>
+<h2>ion-header-bar</h2>
+<p>这个是固定在屏幕顶部的一个头部标题栏。如果给它加上'bar-subheader' 这个样式，它就是副标题。</p>
+<h3>用法</h3>
+<pre>
+&lt;ion-header-bar align-title="left" class="bar-positive"&gt;
+  &lt;div class="buttons"&gt;
+    &lt;button class="button" ng-click="doSomething()"&gt;Left Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+  &lt;div class="buttons"&gt;
+    &lt;button class="button"&gt;Right Button&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ion-header-bar&gt;
+&lt;ion-content&gt;
+  Some content!
+&lt;/ion-content&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        align-title
+        
+        <div><em>(optional)</em></div>
+</td>
+<td>
+<code>string</code>
+</td>
+<td>
+<p>这个是对齐 title 的。如果没有设置，它将会按照手机的默认排版(Ios的默认是居中，Android默认是居左)。它的值可以是 'left','center','right'。</p>
+</td>
+</tr>
+<tr>
+<td>
+        no-tap-scroll
+        
+        <div><em>(optional)</em></div>
+</td>
+<td>
+<code>boolean</code>
+</td>
+<td>
+<p>
+
+默认情况下，头部标题栏在点击屏幕时内容会滚动到头部，可以将 no-tap-scroll 设置为 true 来禁止该动作。。它的值是布尔值（true/false）。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>ion-footer-bar</h2>
+<p>知道了 ion-header-bar ，理解ion-footer-bar就轻松多啦！只是 ion-footer-bar 是在屏幕的底部。
+
+<h3>用法</h3>
+<pre>
+&lt;ion-content&gt;
+  Some content!
+&lt;/ion-content&gt;
+&lt;ion-footer-bar align-title="left" class="bar-assertive"&gt;
+  &lt;div class="buttons"&gt;
+    &lt;button class="button"&gt;Left Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;h1 class="title"&gt;Title!&lt;/h1&gt;
+  &lt;div class="buttons" ng-click="doSomething()"&gt;
+    &lt;button class="button"&gt;Right Button&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ion-footer-bar&gt;
+</pre>
+<h3>API</h3>
+</p>
+与 ion-header-bar 不同的是，ion-footer-bar 只有 align-title 这个 API。</div>

@@ -1,0 +1,129 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- 数据库连接</span>
+</h1>
+<hr/>
+<p class="intro">ADO.NET 也是 .NET 框架的组成部分。ADO.NET 用于处理数据访问。通过 ADO.NET，您可以操作数据库。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showaspx.php?filename=demo_dbconn_datalist" target="_blank">数据库连接 - 绑定到 DataList 控件</a></p>
+<p><a href="/try/showaspx.php?filename=demo_dbconn_repeater" target="_blank">数据库连接 - 绑定到 Repeater 控件</a></p>
+<hr/>
+<h2>什么是 ADO.NET？</h2>
+<ul>
+<li>ADO.NET 是 .NET 框架的组成部分</li>
+<li>ADO.NET  由一系列用于处理数据访问的类组成</li>
+<li>ADO.NET 完全基于 XML</li>
+<li>ADO.NET 没有 Recordset 对象，这一点与 ADO 不同</li>
+</ul>
+<hr/>
+<h2>创建数据库连接</h2>
+<p>在我们的实例中，我们将使用 Northwind 数据库。</p>
+<p>首先，导入 "System.Data.OleDb" 命名空间。我们需要这个命名空间来操作 Microsoft Access 和其他 OLE DB 数据库提供商。我们将在 Page_Load 子例程中创建这个数据库的连接。我们创建一个 dbconn 变量，并为其赋值一个新的 OleDbConnection 类，这个类带有指示 OLE DB 提供商和数据库位置的连接字符串。然后我们打开数据库连接：</p>
+<div class="code notranslate"><div>
+
+&lt;%@ Import Namespace="System.Data.OleDb" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+dim dbconn<br/>
+dbconn=New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;<br/>
+data source=" &amp; server.mappath("northwind.mdb"))<br/>
+dbconn.Open()<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<p><b>注释：</b>这个连接字符串必须是没有折行的连续字符串！</p>
+<hr/>
+<h2>创建数据库命令</h2>
+<p>为了指定需从数据库取回的记录，我们将创建一个 dbcomm 变量，并为其赋值一个新的 OleDbCommand 类。这个 OleDbCommand 类用于发出针对数据库表的 SQL 查询：</p>
+<div class="code notranslate"><div>
+
+&lt;%@ Import Namespace="System.Data.OleDb" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+dim dbconn,sql,dbcomm<br/>
+dbconn=New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;<br/>
+data source=" &amp; server.mappath("northwind.mdb"))<br/>
+dbconn.Open()<br/>
+sql="SELECT * FROM customers"<br/>
+dbcomm=New OleDbCommand(sql,dbconn)<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<br/><hr/>
+<h2>创建 DataReader</h2>
+<p>OleDbDataReader 类用于从数据源中读取记录流。DataReader 是通过调用 OleDbCommand 对象的 ExecuteReader 方法来创建的：</p>
+<div class="code notranslate"><div>
+
+&lt;%@ Import Namespace="System.Data.OleDb" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+dim dbconn,sql,dbcomm,dbread<br/>
+dbconn=New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;<br/>
+data source=" &amp; server.mappath("northwind.mdb"))<br/>
+dbconn.Open()<br/>
+sql="SELECT * FROM customers"<br/>
+dbcomm=New OleDbCommand(sql,dbconn)<br/>
+dbread=dbcomm.ExecuteReader()<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<br/><hr/>
+<h2>绑定到 Repeater 控件</h2>
+<p>然后，我们绑定 DataReader 到 Repeater 控件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%@ Import Namespace="System.Data.OleDb" %&gt;<br/><br/>
+&lt;script runat="server"&gt;<br/>
+sub Page_Load<br/>
+dim dbconn,sql,dbcomm,dbread<br/>
+dbconn=New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;<br/>
+data source=" &amp; server.mappath("northwind.mdb"))<br/>
+dbconn.Open()<br/>
+sql="SELECT * FROM customers"<br/>
+dbcomm=New OleDbCommand(sql,dbconn)<br/>
+dbread=dbcomm.ExecuteReader()<br/>
+customers.DataSource=dbread<br/>
+customers.DataBind()<br/>
+dbread.Close()<br/>
+dbconn.Close()<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Repeater id="customers" runat="server"&gt;<br/><br/>
+&lt;HeaderTemplate&gt;<br/>
+&lt;table border="1" width="100%"&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;th&gt;Companyname&lt;/th&gt;<br/>
+&lt;th&gt;Contactname&lt;/th&gt;<br/>
+&lt;th&gt;Address&lt;/th&gt;<br/>
+&lt;th&gt;City&lt;/th&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/HeaderTemplate&gt;<br/><br/>
+&lt;ItemTemplate&gt;<br/>
+&lt;tr&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("companyname")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("contactname")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("address")%&gt;&lt;/td&gt;<br/>
+&lt;td&gt;&lt;%#Container.DataItem("city")%&gt;&lt;/td&gt;<br/>
+&lt;/tr&gt;<br/>
+&lt;/ItemTemplate&gt;<br/><br/>
+&lt;FooterTemplate&gt;<br/>
+&lt;/table&gt;<br/>
+&lt;/FooterTemplate&gt;<br/><br/>
+&lt;/asp:Repeater&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_dbconn_repeater" target="_blank">演示实例 »</a>
+</div>
+<hr/>
+<h2>关闭数据库连接</h2>
+<p>如果不再需要访问数据库，请记得关闭 DataReader 和数据库连接：</p>
+<div class="code notranslate"><div>
+dbread.Close()<br/>
+dbconn.Close()</div></div>
+<br/>
+</div>

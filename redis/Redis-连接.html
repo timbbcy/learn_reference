@@ -1,0 +1,26 @@
+<div class="article-intro" id="content">
+<h1>Redis 连接</h1>
+<p>
+Redis 连接命令主要是用于连接 redis 服务。</p>
+<h3>实例</h3>
+<p>
+以下实例演示了客户端如何通过密码验证连接到 redis 服务，并检测服务是否在运行：
+</p>
+<pre>
+redis 127.0.0.1:6379&gt; AUTH "password"
+OK
+redis 127.0.0.1:6379&gt; PING
+PONG
+</pre>
+<hr/><h2>Redis 连接命令</h2>
+<p>
+下表列出了 redis 连接的基本命令：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/connection-auth.html">AUTH password</a> <br/>验证密码是否正确</td></tr>
+<tr><td>2</td><td><a href="/redis/connection-echo.html">ECHO message</a> <br/>打印字符串</td></tr>
+<tr><td>3</td><td><a href="/redis/connection-ping.html">PING</a> <br/>查看服务是否运行</td></tr>
+<tr><td>4</td><td><a href="/redis/connection-quit.html">QUIT</a> <br/>关闭当前连接</td></tr>
+<tr><td>5</td><td><a href="/redis/connection-select.html">SELECT index</a> <br/>切换到指定的数据库</td></tr>
+</tbody></table>
+</div>

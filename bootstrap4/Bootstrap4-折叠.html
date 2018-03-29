@@ -1,0 +1,85 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 折叠</h1>
+<p>Bootstrap4 折叠可以很容易的实现内容的显示与隐藏。</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">折叠</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Lorem ipsum dolor text....
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_collapsible" target="_blank">尝试一下 »</a></div>
+<h3>实例解析</h3>
+<p><span class="marked">.collapse</span> 类用于指定一个折叠元素 (实例中的 &lt;div&gt;); 
+点击按钮后会在隐藏与显示之间切换。</p>
+<p>控制内容的隐藏与显示，需要在 &lt;a&gt; 或  &lt;button&gt; 元素上添加 <span class="marked">data-toggle="collapse"</span> 属性。
+ <span class="marked">data-target="#id"</span> 属性是对应折叠的内容 (&lt;div id="demo"&gt;)。</p>
+<p><strong>注意:</strong> &lt;a&gt; 
+元素上你可以使用 <span class="marked">href</span> 属性来代替 <span class="marked">data-target</span> 
+属性:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#demo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Collapsible</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Lorem ipsum dolor text....
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_collapsible2" target="_blank">尝试一下 »</a></div>
+<p>默认情况下折叠的内容是隐藏的，你可以添加 <span class="marked">.show</span> 类让内容默认显示:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse show</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Lorem ipsum dolor text....
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_collapsible_in" target="_blank">尝试一下 »</a></div>
+<p>以下实例通过扩展卡片组件来显示简单的手风琴。
+</p>
+<p><strong>注意:</strong> 使用 <span class="marked">data-parent</span> 属性来确保所有的折叠元素在指定的父元素下，这样就能实现在一个折叠选项显示时其他选项就隐藏。</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">accordion</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-header</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-link</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseOne</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        Collapsible Group Item #1
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseOne</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse show</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        Lorem ipsum..
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-header</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapsed card-link</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseTwo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        Collapsible Group Item #2
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseTwo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        Lorem ipsum..
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-header</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapsed card-link</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseThree</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        Collapsible Group Item #3
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseThree</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">card-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        Lorem ipsum..
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_collapsible_accordion" target="_blank">尝试一下 »</a></div>
+</div>

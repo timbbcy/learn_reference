@@ -1,0 +1,975 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">自动完成（Autocomplete）</span></h1>
+<p>根据用户输入值进行搜索和过滤，让用户快速找到并从预设值列表中选择。</p>
+<p>如需了解更多有关 autocomplete 部件的细节，请查看 API 文档 <a href="/jqueryui/api-autocomplete.html">自动完成部件（Autocomplete Widget）</a>。</p>
+<p>本章节使用到 <a download="" href="http://static.runoob.com/download/search.php">search.php 下载</a>。</p>
+<h2>默认功能</h2>
+<p>当您在输入域中输入时，自动完成（Autocomplete）部件提供相应的建议。在本实例中，提供了编程语言的建议选项，您可以输入 "ja"  尝试一下，可以得到 Java 或 JavaScript。</p>
+<p>数据源是一个简单的 JavaScript 数组，使用 source 选项提供给部件。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 默认功能&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="tags"&gt;标签：&lt;/label&gt;
+  &lt;input id="tags"&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>包含重音</h2>
+<p>autocomplete 域使用自定义的 source 选项来匹配带有重音字符的结果项，即使文本域不包含重音字符也会匹配。但是如果您在文本域中键入了重音字符，则不会显示非重音的结果项。</p>
+<p>尝试键入 "Jo"，会看到 "John" 和 "Jörn"，然后 键入 "Jö"，只会看到 "Jörn"。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 包含重音&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    var names = [ "Jörn Zaefferer", "Scott González", "John Resig" ];
+ 
+    var accentMap = {
+      "á": "a",
+      "ö": "o"
+    };
+    var normalize = function( term ) {
+      var ret = "";
+      for ( var i = 0; i &lt; term.length; i++ ) {
+        ret += accentMap[ term.charAt(i) ] || term.charAt(i);
+      }
+      return ret;
+    };
+ 
+    $( "#developer" ).autocomplete({
+      source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
+        response( $.grep( names, function( value ) {
+          value = value.label || value.value || value;
+          return matcher.test( value ) || matcher.test( normalize( value ) );
+        }) );
+      }
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;form&gt;
+  &lt;label for="developer"&gt;开发人员：&lt;/label&gt;
+  &lt;input id="developer"&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-folding" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>分类</h2>
+<p>分类的搜索结果。尝试键入 "a" 或 "n"。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 分类&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $.widget( "custom.catcomplete", $.ui.autocomplete, {
+    _renderMenu: function( ul, items ) {
+      var that = this,
+        currentCategory = "";
+      $.each( items, function( index, item ) {
+        if ( item.category != currentCategory ) {
+          ul.append( "&lt;li class='ui-autocomplete-category'&gt;" + item.category + "&lt;/li&gt;" );
+          currentCategory = item.category;
+        }
+        that._renderItemData( ul, item );
+      });
+    }
+  });
+  &lt;/script&gt;
+  &lt;script&gt;
+  $(function() {
+    var data = [
+      { label: "anders", category: "" },
+      { label: "andreas", category: "" },
+      { label: "antal", category: "" },
+      { label: "annhhx10", category: "Products" },
+      { label: "annk K12", category: "Products" },
+      { label: "annttop C13", category: "Products" },
+      { label: "anders andersson", category: "People" },
+      { label: "andreas andersson", category: "People" },
+      { label: "andreas johnson", category: "People" }
+    ];
+ 
+    $( "#search" ).catcomplete({
+      delay: 0,
+      source: data
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;label for="search"&gt;搜索：&lt;/label&gt;
+&lt;input id="search"&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-categories" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>组合框（Combobox）</h2>
+<p>一个由 Autocomplete 和 Button 创建的自定义部件。您可以键入一些字符，来获得基于您的输入过滤的结果，或者使用按钮从完整列表中选择。</p>
+<p>该输入是从一个已有的 select 元素中读取，传递给带有自定义的 source 选项的 Autocomplete。</p>
+<p>这是一个不被支持的不完美的部件。这里纯粹是为了演示 autocomplete 定制功能。<a href="http://www.learningjquery.com/2010/06/a-jquery-ui-combobox-under-the-hood/" target="_blank">如需了解更多有关该部件工作原理的细节，请点击这里查看相关的 jQuery 文章。</a></p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 组合框（Combobox）&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .custom-combobox {
+    position: relative;
+    display: inline-block;
+  }
+  .custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+    /* 支持： IE7 */
+    *height: 1.7em;
+    *top: 0.1em;
+  }
+  .custom-combobox-input {
+    margin: 0;
+    padding: 0.3em;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  (function( $ ) {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "&lt;span&gt;" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "&lt;input&gt;" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            tooltipClass: "ui-state-highlight"
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+ 
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "&lt;a&gt;" )
+          .attr( "tabIndex", -1 )
+          .attr( "title", "Show All Items" )
+          .tooltip()
+          .appendTo( this.wrapper )
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "custom-combobox-toggle ui-corner-right" )
+          .mousedown(function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+          })
+          .click(function() {
+            input.focus();
+ 
+            // 如果已经可见则关闭
+            if ( wasOpen ) {
+              return;
+            }
+ 
+            // 传递空字符串作为搜索的值，显示所有的结果
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+          var text = $( this ).text();
+          if ( this.value &amp;&amp; ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              option: this
+            };
+        }) );
+      },
+ 
+      _removeIfInvalid: function( event, ui ) {
+ 
+        // 选择一项，不执行其他动作
+        if ( ui.item ) {
+          return;
+        }
+ 
+        // 搜索一个匹配（不区分大小写）
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+ 
+        // 找到一个匹配，不执行其他动作
+        if ( valid ) {
+          return;
+        }
+ 
+        // 移除无效的值
+        this.input
+          .val( "" )
+          .attr( "title", value + " didn't match any item" )
+          .tooltip( "open" );
+        this.element.val( "" );
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+        this.input.data( "ui-autocomplete" ).term = "";
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+  })( jQuery );
+ 
+  $(function() {
+    $( "#combobox" ).combobox();
+    $( "#toggle" ).click(function() {
+      $( "#combobox" ).toggle();
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label&gt;您喜欢的编程语言：&lt;/label&gt;
+  &lt;select id="combobox"&gt;
+    &lt;option value=""&gt;请选择...&lt;/option&gt;
+    &lt;option value="ActionScript"&gt;ActionScript&lt;/option&gt;
+    &lt;option value="AppleScript"&gt;AppleScript&lt;/option&gt;
+    &lt;option value="Asp"&gt;Asp&lt;/option&gt;
+    &lt;option value="BASIC"&gt;BASIC&lt;/option&gt;
+    &lt;option value="C"&gt;C&lt;/option&gt;
+    &lt;option value="C++"&gt;C++&lt;/option&gt;
+    &lt;option value="Clojure"&gt;Clojure&lt;/option&gt;
+    &lt;option value="COBOL"&gt;COBOL&lt;/option&gt;
+    &lt;option value="ColdFusion"&gt;ColdFusion&lt;/option&gt;
+    &lt;option value="Erlang"&gt;Erlang&lt;/option&gt;
+    &lt;option value="Fortran"&gt;Fortran&lt;/option&gt;
+    &lt;option value="Groovy"&gt;Groovy&lt;/option&gt;
+    &lt;option value="Haskell"&gt;Haskell&lt;/option&gt;
+    &lt;option value="Java"&gt;Java&lt;/option&gt;
+    &lt;option value="JavaScript"&gt;JavaScript&lt;/option&gt;
+    &lt;option value="Lisp"&gt;Lisp&lt;/option&gt;
+    &lt;option value="Perl"&gt;Perl&lt;/option&gt;
+    &lt;option value="PHP"&gt;PHP&lt;/option&gt;
+    &lt;option value="Python"&gt;Python&lt;/option&gt;
+    &lt;option value="Ruby"&gt;Ruby&lt;/option&gt;
+    &lt;option value="Scala"&gt;Scala&lt;/option&gt;
+    &lt;option value="Scheme"&gt;Scheme&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+&lt;button id="toggle"&gt;显示基础的选择框&lt;/button&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-combobox" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>自定义数据并显示</h2>
+<p>您可以使用自定义数据格式，并通过简单地重载默认的聚焦和选择行为来显示数据。</p>
+<p>尝试键入 "j"，或者按向下箭头按键，即可得到一个项目列表。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 自定义数据并显示&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  #project-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+  #project-description {
+    margin: 0;
+    padding: 0;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    var projects = [
+      {
+        value: "jquery",
+        label: "jQuery",
+        desc: "the write less, do more, JavaScript library",
+        icon: "jquery_32x32.png"
+      },
+      {
+        value: "jquery-ui",
+        label: "jQuery UI",
+        desc: "the official user interface library for jQuery",
+        icon: "jqueryui_32x32.png"
+      },
+      {
+        value: "sizzlejs",
+        label: "Sizzle JS",
+        desc: "a pure-JavaScript CSS selector engine",
+        icon: "sizzlejs_32x32.png"
+      }
+    ];
+ 
+    $( "#project" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        $( "#project-id" ).val( ui.item.value );
+        $( "#project-description" ).html( ui.item.desc );
+        $( "#project-icon" ).attr( "src", "images/" + ui.item.icon );
+ 
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "&lt;li&gt;" )
+        .append( "&lt;a&gt;" + item.label + "&lt;br&gt;" + item.desc + "&lt;/a&gt;" )
+        .appendTo( ul );
+    };
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="project-label"&gt;选择一个项目（请键入 "j"）：&lt;/div&gt;
+&lt;img id="project-icon" src="images/transparent_1x1.png" class="ui-state-default" alt=""&gt;
+&lt;input id="project"&gt;
+&lt;input type="hidden" id="project-id"&gt;
+&lt;p id="project-description"&gt;&lt;/p&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-custom-data" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>多个值</h2>
+<p>用法：键入一些字符，比如 "j"，可以看到相关的编程语言结果。选择一个值，然后继续键入字符来添加其他的值。</p>
+<p>本实例演示如何使用 source 选项和一些事件来实现在一个单一的文本域输入多个自动完成的值。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 多个值&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#tags" )
+      // 当选择一个条目时不离开文本域
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &amp;&amp;
+            $( this ).data( "ui-autocomplete" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          // 回到 autocomplete，但是提取最后的条目
+          response( $.ui.autocomplete.filter(
+            availableTags, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          // 防止在获得焦点时插入值
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // 移除当前输入
+          terms.pop();
+          // 添加被选项
+          terms.push( ui.item.value );
+          // 添加占位符，在结尾添加逗号+空格
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="tags"&gt;编程语言：&lt;/label&gt;
+  &lt;input id="tags" size="50"&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-multiple" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>多个值，远程</h2>
+<p>用法：键入至少两个字符来获取鸟的名称。选择一个值，然后继续键入字符来添加其他的值。</p>
+<p>本实例演示如何使用 source 选项和一些事件来实现在一个单一的文本域输入多个自动完成的值。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 多个值，远程&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete-loading {
+    background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#birds" )
+      // 当选择一个条目时不离开文本域
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &amp;&amp;
+            $( this ).data( "ui-autocomplete" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+          $.getJSON( "search.php", {
+            term: extractLast( request.term )
+          }, response );
+        },
+        search: function() {
+          // 自定义最小长度
+          var term = extractLast( this.value );
+          if ( term.length &lt; 2 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // 防止在获得焦点时插入值
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // 移除当前输入
+          terms.pop();
+          // 添加被选项
+          terms.push( ui.item.value );
+          // 添加占位符，在结尾添加逗号+空格
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="birds"&gt;鸟：&lt;/label&gt;
+  &lt;input id="birds" size="50"&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-multiple-remote" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>远程 JSONP 数据源</h2>
+<p>当您在文本域中键入字符时，Autocomplete 部件给出建议结果。在本实例中，当您在文本域中至少键入两个字符时，将显示相关城市的名称。</p>
+<p>在本实例中，数据源是 <a href="http://geonames.org" target="_blank">geonames.org webservice</a>。虽然选择一个元素后文本域中是该城市名称，但是会显示更多的信息以便找到正确的条目。数据也可以回调，显示在下面的结果框中。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 远程 JSONP 数据源&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete-loading {
+    background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
+  }
+  #city { width: 25em; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    function log( message ) {
+      $( "&lt;div&gt;" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+ 
+    $( "#city" ).autocomplete({
+      source: function( request, response ) {
+        $.ajax({
+          url: "http://ws.geonames.org/searchJSON",
+          dataType: "jsonp",
+          data: {
+            featureClass: "P",
+            style: "full",
+            maxRows: 12,
+            name_startsWith: request.term
+          },
+          success: function( data ) {
+            response( $.map( data.geonames, function( item ) {
+              return {
+                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                value: item.name
+              }
+            }));
+          }
+        });
+      },
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.label :
+          "Nothing selected, input was " + this.value);
+      },
+      open: function() {
+        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+      },
+      close: function() {
+        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+      }
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="city"&gt;您的城市：&lt;/label&gt;
+  &lt;input id="city"&gt;
+  Powered by &lt;a href="http://geonames.org" target="_blank"&gt;geonames.org&lt;/a&gt;
+&lt;/div&gt;
+ 
+&lt;div class="ui-widget" style="margin-top:2em; font-family:Arial"&gt;
+  结果：
+  &lt;div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"&gt;&lt;/div&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-remote-jsonp" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>远程数据源</h2>
+<p>当您在文本域中键入字符时，Autocomplete 部件给出建议结果。在本实例中，当您在文本域中至少键入两个字符时，将显示相关鸟的名称。</p>
+<p>在本实例中，数据源是可返回 JSON 数据的服务器端脚本，通过一个简单的 source 选项来指定。另外，minLength 选项设置为 2，避免查询返回太多的结果，select 事件用于显示一些反馈。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 远程数据源&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete-loading {
+    background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    function log( message ) {
+      $( "&lt;div&gt;" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+ 
+    $( "#birds" ).autocomplete({
+      source: "search.php",
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.value + " aka " + ui.item.id :
+          "Nothing selected, input was " + this.value );
+      }
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="birds"&gt;鸟：&lt;/label&gt;
+  &lt;input id="birds"&gt;
+&lt;/div&gt;
+ 
+&lt;div class="ui-widget" style="margin-top:2em; font-family:Arial"&gt;
+  结果：
+  &lt;div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"&gt;&lt;/div&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-remote" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>远程缓存</h2>
+<p>当您在文本域中键入字符时，Autocomplete 部件给出建议结果。在本实例中，当您在文本域中至少键入两个字符时，将显示相关鸟的名称。</p>
+<p>为了提高性能，这里添加了一些本地缓存，其他与远程数据源实例相似。在这里，缓存只保存了一个查询，并可以扩展到缓存多个值，每个条目一个值。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 远程缓存&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete-loading {
+    background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    var cache = {};
+    $( "#birds" ).autocomplete({
+      minLength: 2,
+      source: function( request, response ) {
+        var term = request.term;
+        if ( term in cache ) {
+          response( cache[ term ] );
+          return;
+        }
+ 
+        $.getJSON( "search.php", request, function( data, status, xhr ) {
+          cache[ term ] = data;
+          response( data );
+        });
+      }
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="birds"&gt;鸟：&lt;/label&gt;
+  &lt;input id="birds"&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-remote-with-cache" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>可滚动的结果</h2>
+<p>当显示一个长列表的选项时，您可以简单地为 autocomplete 菜单设置 max-height 来防止菜单显示太长。尝试键入 "a" 或 "s" 来获得一个可滚动的长列表的结果。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - 可滚动的结果&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* 防止水平滚动条 */
+    overflow-x: hidden;
+  }
+  /* IE 6 不支持 max-height
+   * 我们使用 height 代替，但是这会强制菜单总是显示为那个高度
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="tags"&gt;标签：&lt;/label&gt;
+  &lt;input id="tags"&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-maxheight" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>XML 数据</h2>
+<p>本实例演示如何获取一些 XML 数据，并使用 jQuery 的方法解析它，然后把它提供给 autocomplete 作为数据源。</p>
+<p>本实例也可作为解析远程 XML 数据源的参考 - 解析在每次 source 回调请求时发生。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 自动完成（Autocomplete） - XML 数据&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    function log( message ) {
+      $( "&lt;div/&gt;" ).text( message ).prependTo( "#log" );
+      $( "#log" ).attr( "scrollTop", 0 );
+    }
+ 
+    $.ajax({
+      url: "london.xml",
+      dataType: "xml",
+      success: function( xmlResponse ) {
+        var data = $( "geoname", xmlResponse ).map(function() {
+          return {
+            value: $( "name", this ).text() + ", " +
+              ( $.trim( $( "countryName", this ).text() ) || "(unknown country)" ),
+            id: $( "geonameId", this ).text()
+          };
+        }).get();
+        $( "#birds" ).autocomplete({
+          source: data,
+          minLength: 0,
+          select: function( event, ui ) {
+            log( ui.item ?
+              "Selected: " + ui.item.value + ", geonameId: " + ui.item.id :
+              "Nothing selected, input was " + this.value );
+          }
+        });
+      }
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="birds"&gt;London 匹配：&lt;/label&gt;
+  &lt;input id="birds"&gt;
+&lt;/div&gt;
+ 
+&lt;div class="ui-widget" style="margin-top:2em; font-family:Arial"&gt;
+  结果：
+  &lt;div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"&gt;&lt;/div&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-autocomplete-xml" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

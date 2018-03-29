@@ -1,0 +1,192 @@
+<div class="article-intro" id="content">
+<h1>AngularJS <span class="color_h1">指令</span>
+</h1>
+<hr/>
+<p class="intro">AngularJS 通过被称为 <strong>指令</strong> 的新属性来扩展 HTML。</p>
+<p class="intro">
+AngularJS 通过内置的指令来为应用添加功能。</p>
+<p class="intro">AngularJS 允许你自定义指令。</p>
+<hr/>
+<h2>AngularJS 指令</h2>
+<p>AngularJS 指令是扩展的 HTML 属性，带有前缀 <strong>ng-</strong>。</p>
+<p><strong>ng-app</strong> 指令初始化一个 AngularJS 应用程序。</p>
+<p><strong>ng-init</strong> 指令初始化应用程序数据。</p>
+<p><strong>ng-model</strong> 指令把元素值（比如输入域的值）绑定到应用程序。</p>
+<p>完整的指令内容可以参阅 <a href="angularjs-reference.html"> AngularJS 参考手册</a>。</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-init</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">firstName='John'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">在输入框中尝试输入：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">姓名：</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">firstName</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">你输入的为： {{ firstName }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directives" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>ng-app</strong> 指令告诉 AngularJS，&lt;div&gt; 元素是 AngularJS <strong>应用程序</strong> 的"所有者"。</p>
+<h2>数据绑定</h2>
+<p>上面实例中的 <strong>{{ firstName }}</strong> 表达式是一个 AngularJS 数据绑定表达式。</p>
+<p>AngularJS 中的数据绑定，同步了 AngularJS 表达式与 AngularJS 数据。</p>
+<p><strong>{{ firstName }}</strong> 是通过 <strong>ng-model="firstName"</strong> 进行同步。</p>
+<p>在下一个实例中，两个文本域是通过两个 ng-model 指令同步的：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-init</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">quantity=1;price=5</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">价格计算器</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+ 
+数量： </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">number</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">quantity</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+价格： </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">number</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">price</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-code">总价：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-code"> {{ quantity * price }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_binding" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+使用 <strong>ng-init</strong> 不是很常见。您将在控制器一章中学习到一个更好的初始化数据的方式。</td>
+</tr></table>
+<hr/>
+<h2>重复 HTML 元素</h2>
+<p><strong>ng-repeat</strong> 指令会重复一个 HTML 元素：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-init</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">names=['Jani','Hege','Kai']</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">使用 ng-repeat 来循环数组</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">ng-repeat</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">x in names</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      {{ x }}
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_repeat_array" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>ng-repeat</strong> 指令用在一个对象数组上：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-init</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">names=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">循环对象：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">ng-repeat</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">x    in names</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    {{ x.name + ', ' + x.country }}
+  </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_repeat_object" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>AngularJS 完美支持数据库的 CRUD（增加Create、读取Read、更新Update、删除Delete）应用程序。<br/>
+把实例中的对象想象成数据库中的记录。</td>
+</tr></table>
+<hr/>
+<h2>ng-app 指令</h2>
+<p><strong>ng-app</strong> 指令定义了 AngularJS 应用程序的 <strong>根元素</strong>。</p>
+<p><strong>ng-app</strong> 指令在网页加载完毕时会<strong>自动引导</strong>（自动初始化）应用程序。 </p>
+<p>稍后您将学习到 <strong>ng-app</strong> 如何通过一个值（比如 ng-app="myModule"）连接到代码模块。</p>
+<hr/>
+<h2>ng-init 指令</h2>
+<p><strong>ng-init</strong> 指令为 AngularJS 应用程序定义了 <strong>初始值</strong>。</p>
+<p>通常情况下，不使用 ng-init。您将使用一个控制器或模块来代替它。</p>
+<p>稍后您将学习更多有关控制器和模块的知识。</p>
+<hr/>
+<h2>ng-model 指令</h2>
+<p><strong>ng-model</strong> 指令 <strong>绑定 HTML 元素</strong> 到应用程序数据。</p>
+<p><strong>ng-model</strong> 指令也可以：</p>
+<ul>
+<li>为应用程序数据提供类型验证（number、email、required）。</li>
+<li>为应用程序数据提供状态（invalid、dirty、touched、error）。</li>
+<li>为 HTML 元素提供 CSS 类。</li>
+<li>绑定 HTML 元素到 HTML 表单。</li>
+</ul>
+<hr/>
+<h2>ng-repeat 指令</h2>
+<p><strong>ng-repeat</strong> 指令对于集合中（数组中）的每个项会 <strong>克隆一次 HTML 元素</strong>。</p>
+<br/><hr/>
+<h2>创建自定义的指令</h2>
+<p>除了 AngularJS 内置的指令外，我们还可以创建自定义指令。</p>
+<p>你可以使用 <b>.directive</b> 函数来添加自定义的指令。</p>
+<p>要调用自定义指令，HTML 元素上需要添加自定义指令名。</p>
+<p>使用驼峰法来命名一个指令， <b>
+runoobDirective</b>, 但在使用它时需要以 <b>-</b> 分割, <b>runoob-directive</b>:</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<div class="htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">body</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">runoob-directive</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/runoob-directive</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>var app = angular.module("myApp", []);<br/>app.directive("runoobDirective", 
+	function() {<br/>    return {<br/>        
+	template : "&lt;h1&gt;自定义指令!&lt;/h1&gt;"<br/>    };<br/>
+	});<br/><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span></div>
+</div><br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directive_tagname" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以通过以下方式来调用指令：</p>
+<ul>
+<li>元素名</li>
+<li>属性</li>
+<li>类名</li>
+<li>注释</li>
+</ul>
+<p>以下实例方式也能输出同样结果:</p>
+<div class="example">
+<p>元素名</p>
+<div class="example_code">
+<div class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">runoob-directive</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/runoob-directive</span><span class="highGT">&gt;</span></div>
+</div><br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directive_element" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<p>属性</p>
+<div class="example_code">
+<div class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">runoob-directive</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+</div><br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directive_attribute" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<p>类名</p>
+<div class="example_code">
+<div class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"runoob-directive"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directive_class" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<p>注释</p>
+<div class="example_code">
+<div class="htmlHigh"><span class="highCOM">&lt;!-- directive: runoob-directive --&gt;</span></div>
+</div><br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directive_comment" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>限制使用</h2>
+<p>你可以限制你的指令只能通过特定的方式来调用。</p>
+<div class="example">
+<h3>实例</h3>
+<p>通过添加 <b>restrict</b> 属性,并设置值为 <code>"A"</code>, 
+	来设置指令只能通过属性的方式来调用:</p>
+<div class="example_code">
+<div class="jsHigh">
+<span class="highELE">var</span> app = angular.module(<span class="highVAL">"myApp"</span>, []);<br/>app.directive(<span class="highVAL">"runoobDirective"</span>, 
+	<span class="highELE">function</span>() {<br/>    <span class="highELE">return</span> {<br/>        
+	restrict : <span class="highVAL">"A"</span>,<br/>        
+	template : <span class="highVAL">"&lt;h1&gt;自定义指令!&lt;/h1&gt;"</span><br/>    };<br/>
+	});<br/></div>
+</div><br/><a class="tryitbtn" href="/try/try.php?filename=try_ng_directive_restrictions" target="_blank">尝试一下 »</a>
+</div><p><b>restrict</b> 值可以是以下几种:</p>
+<ul>
+<li><code>E</code> 作为元素名使用</li>
+<li><code>A</code> 作为属性使用</li>
+<li><code>C</code> 作为类名使用</li>
+<li><code>M</code> 作为注释使用</li>
+</ul><p><b>restrict</b> 默认值为 <code>EA</code>, 即可以通过元素名和属性名来调用指令。</p>
+</div>

@@ -1,0 +1,219 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">方法</span></h1>
+<div class="tutintro">
+<p>Ruby 方法与其他编程语言中的函数类似。Ruby 方法用于捆绑一个或多个重复的语句到一个单元中。</p>
+<p>方法名应以小写字母开头。如果您以大写字母作为方法名的开头，Ruby 可能会把它当作常量，从而导致不正确地解析调用。</p>
+<p>方法应在调用之前定义，否则 Ruby 会产生未定义的方法调用异常。</p>
+</div>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">method_name</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-identifier">arg</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-code">= </span><span class="hl-identifier">default</span><span class="hl-brackets">]</span><span class="hl-brackets">]</span><span class="hl-code">...</span><span class="hl-brackets">[</span><span class="hl-code">, * </span><span class="hl-identifier">arg</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-code">, &amp;</span><span class="hl-identifier">expr</span><span class="hl-code"> </span><span class="hl-brackets">]</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">expr</span><span class="hl-code">..
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>所以，您可以定义一个简单的方法，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">method_name</span><span class="hl-code">
+</span><span class="hl-identifier">expr</span><span class="hl-code">..
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>您可以定义一个接受参数的方法，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">method_name</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">var1</span><span class="hl-code">, </span><span class="hl-identifier">var2</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">expr</span><span class="hl-code">..
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>您可以为参数设置默认值，如果方法调用时未传递必需的参数则使用默认值：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">method_name</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">var1</span><span class="hl-code">=</span><span class="hl-identifier">value1</span><span class="hl-code">, </span><span class="hl-identifier">var2</span><span class="hl-code">=</span><span class="hl-identifier">value2</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">expr</span><span class="hl-code">..
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>当您要调用方法时，只需要使用方法名即可，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">method_name</span></div>
+</div>
+</div>
+<p>但是，当您调用带参数的方法时，您在写方法名时还要带上参数，例如：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">method_name</span><span class="hl-code"> </span><span class="hl-number">25</span><span class="hl-code">, </span><span class="hl-number">30</span></div>
+</div>
+</div>
+<p>使用带参数方法最大的缺点是调用方法时需要记住参数个数。例如，如果您向一个接受三个参数的方法只传递了两个参数，Ruby 会显示错误。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-identifier">a1</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Ruby</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">a2</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Perl</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">编程语言为 #{a1}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">编程语言为 #{a2}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">test</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">C</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">C++</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">test</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=func_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+编程语言为 C
+编程语言为 C++
+编程语言为 Ruby
+编程语言为 Perl
+</pre>
+<h2 class="tutheader">从方法返回值</h2>
+<p>Ruby 中的每个方法默认都会返回一个值。这个返回的值是最后一个语句的值。例如：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-code">
+</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">100</span><span class="hl-code">
+</span><span class="hl-identifier">j</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code">
+</span><span class="hl-identifier">k</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>在调用这个方法时，将返回最后一个声明的变量 k。</p>
+<h2 class="tutheader">Ruby <i>return</i> 语句</h2>
+<p>Ruby 中的 <i>return</i> 语句用于从 Ruby 方法中返回一个或多个值。</p>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-identifier">expr</span><span class="hl-brackets">[</span><span class="hl-code">`,</span><span class="hl-quotes">'</span><span class="hl-string"> expr...]]</span></div>
+</div>
+</div>
+<p>如果给出超过两个的表达式，包含这些值的数组将是返回值。如果未给出表达式，nil 将是返回值。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">return</span><span class="hl-code">
+ 
+或
+ 
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-number">12</span><span class="hl-code">
+ 
+或
+ 
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span></div>
+</div>
+</div>
+<p>看看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-code">
+</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">100</span><span class="hl-code">
+</span><span class="hl-identifier">j</span><span class="hl-code"> = </span><span class="hl-number">200</span><span class="hl-code">
+</span><span class="hl-identifier">k</span><span class="hl-code"> = </span><span class="hl-number">300</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">, </span><span class="hl-identifier">j</span><span class="hl-code">, </span><span class="hl-identifier">k</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">var</span><span class="hl-code"> = </span><span class="hl-identifier">test</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">var</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=func_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+100
+200
+300
+</pre>
+<h2 class="tutheader">可变数量的参数</h2>
+<p>假设您声明了一个带有两个参数的方法，当您调用该方法时，您同时还需要传递两个参数。</p>
+<p>但是，Ruby 允许您声明参数数量可变的方法。让我们看看下面的实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">sample</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">*</span><span class="hl-identifier">test</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">参数个数为 #{test.length}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">0.</span><span class="hl-code">..</span><span class="hl-identifier">test</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">参数值为 #{test[i]}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">sample</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Zara</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">6</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">F</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">sample</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Mac</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">36</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">M</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">MCA</span><span class="hl-quotes">"</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=func_demo3&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>在这段代码中，您已经声明了一个方法 sample，接受一个参数 test。但是，这个参数是一个变量参数。这意味着参数可以带有不同数量的变量。以上实例运行输出结果为：</p>
+<pre>
+参数个数为 3
+参数值为 Zara
+参数值为 6
+参数值为 F
+参数个数为 4
+参数值为 Mac
+参数值为 36
+参数值为 M
+参数值为 MCA
+</pre>
+<h2 class="tutheader">类方法</h2>
+<p>当方法定义在类的外部，方法默认标记为 <i>private</i>。另一方面，如果方法定义在类中的，则默认标记为 public。
+</p><p>方法默认的可见性和 <i>private</i> 标记可通过模块（Module）的 <i>public</i> 或 <i>private</i> 改变。</p>
+<p>当你想要访问类的方法时，您首先需要实例化类。然后，使用对象，您可以访问类的任何成员。</p>
+<p>Ruby 提供了一种不用实例化即可访问方法的方式。让我们看看如何声明并访问类方法：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Accounts</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">reading_charge</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">Accounts</span><span class="hl-code">.</span><span class="hl-identifier">return_date</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>我们已经知道方法 return_date 是如何声明的。它是通过在类名后跟着一个点号，点号后跟着方法名来声明的。您可以直接访问类方法，如下所示：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">Accounts</span><span class="hl-code">.</span><span class="hl-identifier">return_date</span></div>
+</div>
+</div>
+<p>如需访问该方法，您不需要创建类 Accounts 的对象。</p>
+<h2 class="tutheader">Ruby <i>alias</i> 语句</h2>
+<p>这个语句用于为方法或全局变量起别名。别名不能在方法主体内定义。即使方法被重写，方法的别名也保持方法的当前定义。</p>
+<p>为编号的全局变量（$1, $2,...）起别名是被禁止的。重写内置的全局变量可能会导致严重的问题。</p>
+<h3>语法</h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">alias</span><span class="hl-code"> 方法名 方法名
+</span><span class="hl-reserved">alias</span><span class="hl-code"> 全局变量 全局变量</span></div>
+</div>
+</div>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">alias</span><span class="hl-code"> </span><span class="hl-identifier">foo</span><span class="hl-code"> </span><span class="hl-identifier">bar</span><span class="hl-code">
+</span><span class="hl-reserved">alias</span><span class="hl-code"> </span><span class="hl-var">$MATCH</span><span class="hl-code"> </span><span class="hl-var">$&amp;</span></div>
+</div>
+</div>
+<p>在这里，我们已经为 bar 定义了别名为 foo，为 $&amp; 定义了别名为 $MATCH。</p>
+<h2 class="tutheader">Ruby <i>undef</i> 语句</h2>
+<p>这个语句用于取消方法定义。<i>undef</i> 不能出现在方法主体内。</p>
+<p>通过使用 <i>undef</i> 和 <i>alias</i>，类的接口可以从父类独立修改，但请注意，在自身内部方法调用时，它可能会破坏程序。</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">undef</span><span class="hl-code"> 方法名</span></div>
+</div>
+</div>
+<h3>实例</h3>
+<p>下面的实例取消名为 <i>bar</i>的方法定义：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">undef</span><span class="hl-code"> </span><span class="hl-identifier">bar</span></div>
+</div>
+</div>
+</div>

@@ -1,0 +1,177 @@
+<div class="article-intro" id="content">
+<h1>响应式 Web 设计 - <span class="color_h1">图片</span></h1>
+<style>
+.bg1 {
+    width: 100%;
+    height:400px;
+    background-image:url('/wp-content/uploads/2015/06/img_flowers.jpg');    
+    background-repeat:no-repeat;
+    background-size:contain;
+    border:1px solid red;    
+}
+.bg2 {
+    width: 100%;
+    height:400px;
+    background-image:url('/wp-content/uploads/2015/06/img_flowers.jpg');        
+    background-size:100% 100%;
+    border:1px solid red;
+}
+.bg3 {
+    width: 100%;
+    height:400px;
+    background-image:url('/wp-content/uploads/2015/06/img_flowers.jpg');        
+    background-size:cover;
+    border:1px solid red;
+}
+</style>
+<hr/>
+<h2>使用 width 属性</h2>
+<p>
+
+如果 width 属性设置为 100%，图片会根据上下范围实现响应式功能：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>
+    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> auto;</span><br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+注意在以上实例中，图片会比它的原始图片大。我们可以使用 <strong>max-width</strong> 属性很好的解决这个问题。</p>
+<hr/>
+<h2>使用 max-width 属性</h2>
+<p>
+如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：
+</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>
+    <span class="highATT">max-width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> auto;</span><br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>网页中添加图片</h2>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>
+    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> auto;</span><br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image3" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>背景图片</h2><p>背景图片可以响应调整大小或缩放。</p>
+<p>以下是三个不同的方法：</p>
+<p>1. 如果 background-size 属性设置为 "contain", 背景图片将按比例自适应内容区域。图片保持其比例不变：</p>
+<div class="bg1"></div>
+<p>这是 CSS 代码:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<span class="highELE">div </span>{<br/>    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 400px;</span><br/>    
+	<span class="highATT">background-image:</span><span class="highVAL"> url('img_flowers.jpg');</span><br/>    
+	<span class="highATT">background-repeat:</span><span class="highVAL"> no-repeat;</span><br/>    
+	<span class="highATT">background-size:</span><span class="highVAL"> contain;</span><br/>    <span class="highATT">border:</span><span class="highVAL"> 1px solid red;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image_background1" target="_blank">尝试一下 »</a>
+</div>
+<p>
+2. 如果 background-size 属性设置为 "100% 100%" ，背景图片将延展覆盖整个区域：</p>
+<div class="bg2"></div>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<p>这是 CSS 代码:</p>
+<div class="example_code">
+<span class="highELE">div </span>{<br/>    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 400px;</span><br/>    
+	<span class="highATT">background-image:</span><span class="highVAL"> url('img_flowers.jpg');</span><br/>    
+	<span class="highATT">background-size:</span><span class="highVAL"> 100% 100%;</span><br/>    <span class="highATT">border:</span><span class="highVAL"> 1px solid red;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image_background2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+3. 如果 background-size 属性设置为 "cover"，则会把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。注意该属性保持了图片的比例因此
+背景图像的某些部分无法显示在背景定位区域中。
+
+</p>
+<div class="bg3"></div>
+<p>这是 CSS 代码:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code notranslate cssHigh">
+<span class="highELE">div </span>{<br/>    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 400px;</span><br/>    
+	<span class="highATT">background-image:</span><span class="highVAL"> url('img_flowers.jpg');</span><br/>    <span class="highATT">background-size:</span><span class="highVAL"> cover;</span><br/>    
+	<span class="highATT">border:</span><span class="highVAL"> 1px solid red;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image_background3" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>不同设备显示不同图片</h2>
+<p>大尺寸图片可以显示在大屏幕上，但在小屏幕上确不能很好显示。我们没有必要在小屏幕上去加载大图片，这样很影响加载速度。所以我们可以使用媒体查询，根据不同的设备显示不同的图片。</p>
+<p>以下大图片和小图片将显示在不同设备上：</p>
+<img class="img-responsive" src="/wp-content/uploads/2015/06/img_flowers.jpg" style="max-width: 100%;height: auto"/>
+<img class="img-responsive" src="/wp-content/uploads/2015/06/img_smallflower.jpg" style="max-width: 100%;height: auto"/>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code notranslate cssHigh">
+<span class="highCOM">/* For width smaller than 400px: */</span><br/><span class="highELE">body </span>{<br/>    <span class="highATT">background-image:</span><span class="highVAL"> 
+	url('img_smallflower.jpg');</span> <br/>}<br/><br/><span class="highCOM">/* 
+	For width 400px and larger: */</span><br/><span class="highELE">@media only screen and (min-width: 400px) 
+	</span>{<br/><span class="highELE">    body </span>{ <br/>        
+	<span class="highATT">background-image:</span><span class="highVAL"> url('img_flowers.jpg');</span> <br/>    }<br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image_mediaq" target="_blank">尝试一下 »</a>
+</div>
+<p>
+你可以使用媒体查询的 min-device-width 替代 min-width 属性，它将检测的是设备宽度而不是浏览器宽度。浏览器大小重置时，图片大小不会改变。</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<span class="highCOM">/* 设备小于 400px: */</span><br/><span class="highELE">body </span>{<br/>    <span class="highATT">background-image:</span><span class="highVAL"> 
+	url('img_smallflower.jpg');</span> <br/>}<br/><br/><span class="highCOM">/* 
+	设备大于 400px (也等于): */</span><br/><span class="highELE">@media only screen and (min-device-width: 400px) 
+	</span>{<br/><span class="highELE">    body </span>{ <br/>        
+	<span class="highATT">background-image:</span><span class="highVAL"> url('img_flowers.jpg');</span> <br/>    }<br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image_mediaq2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>HTML5 &lt;picture&gt; 元素</h2>
+<p>HTML5 的 <code>&lt;picture&gt;</code> 元素可以设置多张图片。</p>
+<h3>浏览器支持</h3>
+<table class="browserref">
+<tbody><tr>
+<th style="width:15%;font-size:16px;text-align:left">元素</th>
+<th class="bsIE" style="width:15%" title="Internet Explorer"></th>
+<th class="bsChrome" style="width:17%" title="Chrome"></th>
+<th class="bsFirefox" style="width:18%" title="Firefox"></th>
+<th class="bsSafari" style="width:18%" title="Safari"></th>
+<th class="bsOpera" style="width:17%" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left">&lt;picture&gt;</td>
+<td><span class="deprecated">不支持</span></td>
+<td>38.0</td>
+<td>38.0</td>
+<td><span class="deprecated">不支持</span></td>
+<td>25.0</td>
+</tr>
+</tbody></table>
+<p> <code>&lt;picture&gt;</code> 元素类似于 <code>&lt;video&gt;</code> 和 
+<code>&lt;audio&gt;</code> 元素。可以设备不同的资源，第一个设置的资源为首选使用的：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">picture</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">source</span> <span class="highATT">srcset=</span><span class="highVAL">"img_smallflower.jpg"</span> <span class="highATT">media=</span><span class="highVAL">"(max-width: 
+	400px)"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">source</span> <span class="highATT">srcset=</span><span class="highVAL">"img_flowers.jpg"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">img</span>
+<span class="highATT">src=</span><span class="highVAL">"img_flowers.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"Flowers"</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/picture</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_image_picture" target="_blank">尝试一下 »</a>
+</div>
+<p> <code>srcset</code> 属性的必须的，定义了图片资源。</p>
+<p> <code>media</code> 属性是可选的，可以在媒体查询的
+<a href="/cssref/css3-pr-mediaquery.html">CSS @media 规则</a> 查看详情。</p>
+<p>对于不支持 <code>&lt;picture&gt;</code>  元素的浏览器你也可以定义 <code>&lt;img&gt;</code> 元素来替代。</p>
+</div>

@@ -1,0 +1,53 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Window Screen</span>
+</h1>
+<hr/>
+<p class="intro">window.screen 对象包含有关用户屏幕的信息。</p>
+<hr/>
+<h2>Window Screen</h2>
+<p><strong>window.screen</strong>对象在编写时可以不使用 window 这个前缀。</p>
+<p>一些属性：</p>
+<ul>
+<li>screen.availWidth - 可用的屏幕宽度</li>
+<li>screen.availHeight - 可用的屏幕高度</li>
+</ul>
+<hr/>
+<h2>Window Screen 可用宽度</h2>
+<p>screen.availWidth 属性返回访问者屏幕的宽度，以像素计，减去界面特性，比如窗口任务栏。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>返回您的屏幕的可用宽度：</p>
+<div class="example_code">
+&lt;script&gt;<br/>
+document.write("可用宽度: " + screen.availWidth);<br/>
+&lt;/script&gt;
+</div>
+<p>以上代码输出为：</p>
+<div class="example_code">
+<script>
+document.write("可用宽度: " + screen.availWidth);
+</script>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_screen_availwidth" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Window Screen 可用高度</h2>
+<p>screen.availHeight 属性返回访问者屏幕的高度，以像素计，减去界面特性，比如窗口任务栏。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>返回您的屏幕的可用高度：</p>
+<div class="example_code">
+&lt;script&gt;<br/><br/>
+document.write("可用高度: " + screen.availHeight);<br/><br/>
+&lt;/script&gt;
+</div>
+<p>以上代码将输出：</p>
+<div class="example_code">
+<script>
+document.write("可用高度: " + screen.availHeight);
+</script>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_screen_availheight" target="_blank">尝试一下 »</a>
+</div>
+<p><a href="/try/try.php?filename=tryjs_screen_all" target="_blank">所有 screen 属性实例</a></p>
+</div>

@@ -1,0 +1,51 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 信息提示框
+</h1>
+<p>Bootstrap 4 可以很容易实现信息提示框。</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/10/06CC7655-91D9-4953-A8CC-33F50A21404E.jpg"/></p>
+<p>提示框可以使用 <span class="marked">.alert</span> 类, 后面加上 <span class="marked">.alert-success</span>, <span class="marked">.alert-info</span>, <span class="marked">.alert-warning</span>, 
+<span class="marked">.alert-danger</span>, <span class="marked">.alert-primary</span>, <span class="marked">.alert-secondary</span>, <span class="marked">.alert-light</span> 或 <span class="marked">.alert-dark</span> 类来实现:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 指定操作成功提示信息。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_alerts" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>提示框添加链接</h2>
+<p>提示框中在链接的标签上添加 <span class="marked">alert-link</span> 类来设置匹配提示框颜色的链接：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 你应该认真阅读 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert-link</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这条信息</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_alerts_link" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>关闭提示框</h2>
+<p>我们可以在提示框中的 div 中添加 <span class="marked">.alert-dismissable</span> 
+类，然后在关闭按钮的链接上添加 <span class="marked">class="close"</span> 和 <span class="marked">data-dismiss="alert"</span> 
+类来设置提示框的关闭操作。</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success alert-dismissable</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-special">&amp;times;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 指定操作成功提示信息。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_alerts_dismissible" target="_blank">尝试一下 »</a></div>
+<p><strong>提示:</strong> &amp;times; (×) 是 HTML 实体字符，来表示关闭操作，而不是字母 "x"。</p>
+<hr/>
+<h2>提示框动画</h2>
+<p><span class="marked">.fade</span> 和 <span class="marked">.show</span> 类用于设置提示框在关闭时的淡出和淡入效果：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-danger alert-dismissable fade show</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_alerts_fade" target="_blank">尝试一下 »</a></div>
+</div>

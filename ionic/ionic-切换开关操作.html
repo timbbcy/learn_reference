@@ -1,0 +1,90 @@
+<div class="article-intro" id="content">
+<h1>ionic 切换开关操作</h1>
+<p>以下实例中，通过切换不同开关 checked 显示不同的值，true 为打开，false 为关闭。</p>
+<h3>HTML 代码</h3>
+<pre>
+&lt;ion-header-bar class="bar-positive"&gt;
+  &lt;h1 class="title"&gt;开关切换&lt;/h1&gt;
+&lt;/ion-header-bar&gt;
+         
+&lt;ion-content&gt;
+  
+  &lt;div class="list"&gt;
+    
+    &lt;div class="item item-divider"&gt; 
+      Settings
+    &lt;/div&gt;
+    
+    &lt;ion-toggle ng-repeat="item in settingsList"
+                ng-model="item.checked" 
+                ng-checked="item.checked"&gt;
+      {{ item.text }}
+    &lt;/ion-toggle&gt;
+    
+    &lt;div class="item"&gt;
+        &lt;!-- 使用 pre 标签展示效果更美观 --&gt;
+      &lt;div ng-bind="settingsList | json"&gt;&lt;/div&gt; 
+    &lt;/div&gt;
+    
+    &lt;div class="item item-divider"&gt; 
+      Notifications
+    &lt;/div&gt;
+    
+    &lt;ion-toggle ng-model="pushNotification.checked"
+                ng-change="pushNotificationChange()"&gt;
+      Push Notifications
+    &lt;/ion-toggle&gt;
+    
+    &lt;div class="item"&gt;
+        &lt;!-- 使用 pre 标签展示效果更美观 --&gt;
+      &lt;div ng-bind="pushNotification | json"&gt;&lt;/div&gt; 
+    &lt;/div&gt;
+    
+    &lt;ion-toggle toggle-class="toggle-assertive"
+                ng-model="emailNotification"
+                ng-true-value="'Subscribed'"
+                ng-false-value="'Unubscribed'"&gt;
+      Newsletter
+    &lt;/ion-toggle&gt;
+    
+    &lt;div class="item"&gt;
+        &lt;!-- 使用 pre 标签展示效果更美观 --&gt;
+      &lt;div ng-bind="emailNotification | json"&gt;&lt;/div&gt; 
+    &lt;/div&gt;
+    
+  &lt;/div&gt;
+  
+&lt;/ion-content&gt;
+</pre>
+<p>由于pre标签冲突，实例中的 pre 已替换为 div标签，具体可以在"尝试一下"中查看。</p>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('ionicApp', ['ionic'])
+
+.controller('MainCtrl', function($scope) {
+
+  $scope.settingsList = [
+    { text: "Wireless", checked: true },
+    { text: "GPS", checked: false },
+    { text: "Bluetooth", checked: false }
+  ];
+
+  $scope.pushNotificationChange = function() {
+    console.log('Push Notification Change', $scope.pushNotification.checked);
+  };
+  
+  $scope.pushNotification = { checked: true };
+  $scope.emailNotification = 'Subscribed';
+  
+});
+</pre>
+<p>css 代码：</p>
+<pre>
+body {
+  cursor: url('http://www.runoob.com/try/demo_source/finger.png'), auto;
+}
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-toggle" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>效果如下所示：</p>
+<iframe frameborder="0" height="400" src="/try/demo_source/ionic_ion-toggle.htm"></iframe>
+</div>

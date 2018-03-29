@@ -1,0 +1,144 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">元素</span> vs. <span class="color_h1">属性</span>
+</h1>
+<hr/>
+<p class="intro">在XML中，并没有规定何时使用属性，以及何时使用子元素。</p>
+<hr/>
+<h2>使用元素 vs. 属性</h2>
+<p>数据可以存储在子元素或属性。</p>
+<p>让我们来看下这些实例:</p>
+<div class="code notranslate"><div>
+
+&lt;person sex="female"&gt;<br/>
+ 
+&lt;firstname&gt;Anna&lt;/firstname&gt;<br/>
+ 
+&lt;lastname&gt;Smith&lt;/lastname&gt;<br/>
+&lt;/person&gt;
+</div></div>
+<br/><div class="code notranslate"><div>
+
+&lt;person&gt;<br/>
+ 
+&lt;sex&gt;female&lt;/sex&gt;<br/>
+ 
+&lt;firstname&gt;Anna&lt;/firstname&gt;<br/>
+ 
+&lt;lastname&gt;Smith&lt;/lastname&gt;<br/>
+&lt;/person&gt;
+</div></div>
+<p>在第一个例子中"sex"是一个属性。在后面一个例子中，"sex"是一个子元素。但是两者都提供了相同的信息。</p>
+<p>
+没有特别规定何时使用属性，以及何时使用子元素。我的经验是在HTML重多使用属性，但在XML中，使用子元素，会感觉更像数据信息。</p>
+<hr/>
+<h2>我喜欢的方式</h2>
+<p><b>我喜欢在子元素中存储数据</b></p>
+<p>下面的三个XML文档包含完全相同的信息：</p>
+<p>本例中使用"date"属性：</p>
+<div class="code notranslate"><div>
+
+&lt;note date="12/11/2002"&gt;<br/>
+ 
+&lt;to&gt;Tove&lt;/to&gt;<br/>
+ 
+&lt;from&gt;Jani&lt;/from&gt;<br/>
+ 
+&lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+ 
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br/>
+&lt;/note&gt;
+</div></div>
+<p>本例中使用"date"元素：</p>
+<div class="code notranslate"><div>
+
+&lt;note&gt;<br/>
+ 
+&lt;date&gt;12/11/2002&lt;/date&gt;<br/>
+ 
+&lt;to&gt;Tove&lt;/to&gt;<br/>
+ 
+&lt;from&gt;Jani&lt;/from&gt;<br/>
+ 
+&lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+ 
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br/>
+&lt;/note&gt;
+</div></div>
+<p>本例中使用了扩展的"date" 元素: (这是我最喜欢的方式):</p>
+<div class="code notranslate"><div>
+
+&lt;note&gt;<br/>
+ 
+&lt;date&gt;<br/>
+     
+  &lt;day&gt;12&lt;/day&gt;<br/>
+     
+  &lt;month&gt;11&lt;/month&gt;<br/>
+     
+  &lt;year&gt;2002&lt;/year&gt;<br/>
+ 
+&lt;/date&gt;<br/>
+ 
+&lt;to&gt;Tove&lt;/to&gt;<br/>
+ 
+&lt;from&gt;Jani&lt;/from&gt;<br/>
+ 
+&lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+ 
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br/>
+&lt;/note&gt;
+</div></div>
+<br/><hr/>
+<h2>避免使用属性?</h2>
+<p>你应该避免使用属性?</p>
+<p>一些属性具有以下问题:</p>
+<ul>
+<li>属性不能包含多个值（子元素可以）</li>
+<li>属性不容易扩展（为以后需求的变化）</li>
+<li>属性无法描述结构（子元素可以）</li>
+<li>属性更难以操纵程序代码</li>
+<li>属性值是不容易测试，针对DTD</li>
+</ul>
+<p>如果您使用属性作为数据容器，最终的XML文档将难以阅读和维护。 尝试使用<b>元素</b>来描述数据。只有在提供的数据是不相关信息时我们才建议使用属性。</p>
+<p>不要这个样子结束（这不是XML应该使用的）：</p>
+<div class="code notranslate"><div>
+
+&lt;note day="12" month="11" year="2002"<br/>
+to="Tove" from="Jani" heading="Reminder"<br/>
+body="Don't forget me this weekend!"&gt;<br/>
+&lt;/note&gt;
+</div></div>
+<br/><hr/>
+<h2>一个属性规则的例外</h2>
+<p>规则总是有另外的</p>
+<p>关于属性的规则我有一个例外情况。</p>
+<p>有时我指定的 ID 应用了元素。这些 ID 应用可在HTML中的很多相同的情况下可作为 NAME 或者 ID 属性来访问 XML 元素。以下实例展示了这种方式：</p>
+<div class="code notranslate"><div>
+
+&lt;messages&gt;<br/>
+  &lt;note id="p501"&gt;<br/>
+     
+    &lt;to&gt;Tove&lt;/to&gt;<br/>
+     
+    &lt;from&gt;Jani&lt;/from&gt;<br/>
+     
+    &lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+     
+    &lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br/>
+  &lt;/note&gt;<br/><br/>
+  &lt;note id="p502"&gt;<br/>
+     
+    &lt;to&gt;Jani&lt;/to&gt;<br/>
+     
+    &lt;from&gt;Tove&lt;/from&gt;<br/>
+     
+    &lt;heading&gt;Re: Reminder&lt;/heading&gt;<br/>
+     
+    &lt;body&gt;I will not!&lt;/body&gt;<br/>
+  &lt;/note&gt;<br/>
+&lt;/messages&gt;
+</div></div>
+<p>以上实例的XML文件中，ID是只是一个计数器，或一个唯一的标识符，来识别不同的音符，而不是作为数据的一部分。</p>
+<p>
+在这里我想说的是，元数据（关于数据的数据）应当存储为属性，而数据本身应当存储为元素。</p>
+</div>

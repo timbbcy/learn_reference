@@ -1,0 +1,60 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">应用程序</span>
+</h1>
+<hr/>
+<p class="intro">本章演示一些基于 XML, HTML, XML DOM 和 JavaScript 构建的小型 XML 应用程序。</p>
+<hr/>
+<h2>XML 文档实例</h2>
+<p>在本应用程序中，我们将使用 <a href="/try/xml/cd_catalog.xml" target="_blank">"cd_catalog.xml"</a> 文件。</p>
+<hr/>
+<h2>在 HTML div 元素中显示第一个 CD</h2>
+<p>下面的实例从第一个 CD 元素中获取 XML 数据，然后在 id="showCD" 的 HTML 元素中显示数据。displayCD() 函数在页面加载时调用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+x=xmlDoc.getElementsByTagName("CD");<br/>
+i=0;<br/><br/>
+function displayCD()<br/>
+{<br/>
+artist=(x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue);<br/>
+title=(x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue);<br/>
+year=(x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue);<br/>
+txt="Artist: " + artist + "&lt;br /&gt;Title: " + title + "&lt;br /&gt;Year: "+ year;<br/>
+document.getElementById("showCD").innerHTML=txt;<br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryxml_app_first" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>添加导航脚本</h2>
+<p>为了向上面的实例添加导航（功能），需要创建 next() 和 previous() 两个函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+function next()<br/>
+{ // display the next CD, unless you are on the last CD<br/>
+if (i&lt;x.length-1)<br/>
+  {<br/>
+  i++;<br/>
+  displayCD();<br/>
+  }<br/>
+}<br/><br/>
+function previous()<br/>
+{ // displays the previous CD, unless you are on the first CD <br/>
+if (i&gt;0)<br/>
+  {<br/>
+  i--;<br/>
+  displayCD();<br/>
+  }<br/>
+}
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryxml_app_navigate" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>当点击 CD 时显示专辑信息</h2>
+<p>
+最后的实例展示如何在用户点击某个 CD 项目时显示专辑信息：</p>
+<p>
+<a href="/try/tryit.php?filename=tryxml_app" target="_blank">尝试一下</a>。</p>
+<p>如需了解更多关于使用 JavaScript 和 XML DOM 的信息，请访问我们的 <a href="/dom/dom-tutorial.html">XML DOM 教程</a>。</p>
+<br/>
+</div>

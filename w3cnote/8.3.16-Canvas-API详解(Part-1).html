@@ -1,0 +1,34 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>前面我们花了13小节详细地讲解了Android中Paint类大部分常用的API，本节开始我们来讲解
+Canvas(画板)的一些常用API，我们在<li><a href="http://www.runoob.com/w3cnote/android-tutorial-drawable-tool.html" target="_top" title="8.3.1 三个绘图工具类详解">8.3.1 三个绘图工具类详解</a></li>
+中已经列出了我们可供调用的一些方法，我们分下类：</p>
+<ul>
+<li><strong>drawXxx方法族</strong>：以一定的坐标值在当前画图区域画图，另外图层会叠加，
+即后面绘画的图层会覆盖前面绘画的图层。</li>
+<li><strong>clipXXX方法族</strong>：在当前的画图区域裁剪(clip)出一个新的画图区域，这个
+画图区域就是canvas对象的当前画图区域了。比如：clipRect(new Rect())，
+那么该矩形区域就是canvas的当前画图区域</li>
+<li><strong>getXxx方法族</strong>：获得与Canvas相关一些值，比如宽高，屏幕密度等。</li>
+<li><strong>save</strong>()，<strong>restore</strong>()，<strong>saveLayer</strong>()，<strong>restoreToCount</strong>()等保存恢复图层的方法</li>
+<li><strong>translate</strong>(平移)，<strong>scale</strong>(缩放)，<strong>rotate</strong>(旋转)，<strong>skew</strong>(倾斜)</li>
+</ul>
+<p>当然还有其他一些零散的方法，嗯，从本节开始我会挑一些感觉有点意思的API来进行学习~</p><p>
+而本节先给大家带来的是<strong>translate</strong>(平移)，<strong>scale</strong>(缩放)，<strong>rotate</strong>(旋转)，<strong>skew</strong>(倾斜)
+以及<strong>save</strong>()，<strong>restore</strong>()的详解！</p><p>
+官方API文档：<a href="http://androiddoc.qiniudn.com/reference/android/graphics/Canvas.html">Canvas</a></p><p>
+另外我们先要明确Canvas中X轴与Y轴的方向：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/11/39871179.jpg"/></p></blockquote>
+<hr/>
+<h2>1.translate(平移)</h2>
+<blockquote><p><strong>方法</strong>：<strong>translate</strong>(float dx, float dy)</p><p>
+<strong>解析</strong>：平移，将画布的<strong>坐标原点</strong>向左右方向移动x，向上下方向移动y，canvas默认位置在(0,0)</p><p>
+<strong>参数</strong>：dx为水平方向的移动距离，dy为垂直方向的移动距离</p></blockquote>
+<p><strong>使用示例</strong>：</p>
+<pre>
+for(int i=0; i &lt; 5; i++) {
+    canvas.drawCircle(50, 50, 50, mPaint);
+    canvas.translate(100, 100);
+}
+</pre>
+<strong>运行效果</strong>：</div>

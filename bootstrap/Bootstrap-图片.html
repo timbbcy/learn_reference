@@ -1,0 +1,63 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">图片</span></h1>
+<p>在本章中，我们将学习 Bootstrap 对图片的支持。Bootstrap 提供了三个可对图片应用简单样式的 class：</p>
+<ul class="list">
+<li><i>.img-rounded</i>：添加 <i>border-radius:6px</i> 来获得图片圆角。</li>
+<li><i>.img-circle</i>：添加 <i>border-radius:50%</i> 来让整个图片变成圆形。</li>
+<li><i>.img-thumbnail</i>：添加一些内边距（padding）和一个灰色的边框。</li>
+</ul>
+<p>请看下面的实例演示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/wp-content/uploads/2014/06/download.png</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img-rounded</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/wp-content/uploads/2014/06/download.png</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img-circle</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/wp-content/uploads/2014/06/download.png</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img-thumbnail</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-image" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="图片" src="/wp-content/uploads/2014/06/image_demo.jpg"/>
+</div>
+<h2>&lt;img&gt; 类</h2>
+<p>以下类可用于任何图片中。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%;">类</th>
+<th style="width:68%;">描述</th>
+<th style="width:7%;">实例</th>
+</tr>
+<tr>
+<td>.img-rounded</td>
+<td>为图片添加圆角 (IE8 不支持)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_img-rounded" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.img-circle</td>
+<td>将图片变为圆形 (IE8 不支持)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_img-circle" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.img-thumbnail</td>
+<td>缩略图功能</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_img-thumbnail" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.img-responsive</td>
+<td>图片响应式 (将很好地扩展到父元素)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_img-responsive" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<h2>响应式图片</h2>
+<p> 通过在 &lt;img&gt; 标签添加 .img-responsive 类来让图片支持响应式设计。 
+  图片将很好地扩展到父元素。</p>
+<p> .img-responsive 类将 max-width: 100%; 和 height: auto; 样式应用在图片上：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"cinqueterre.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"img-responsive"</span> <span class="highATT">alt=</span><span class="highVAL">"Cinque 
+	Terre"</span><span class="highGT">&gt;</span> </div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=trybs_ref_img-responsive" target="_blank">尝试一下 »</a>
+</div>
+</div>

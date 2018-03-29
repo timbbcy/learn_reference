@@ -1,0 +1,66 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap 滚动监听(Scrollspy)</h1>
+<p>滚动监听（Scrollspy）插件，即自动更新导航插件，会根据滚动条的位置自动更新对应的导航目标。其基本的实现是随着您的滚动。</p>
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="380" src="//www.runoob.com/try/demo_source/trybs4_scrollspy.htm" width="100%"></iframe>
+<hr/>
+<h2>如何创建滚动监听</h2>
+<p>以下实例演示了如何创建滚动监听：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 可滚动区域 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-code"> </span><span class="hl-var">data-spy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">scroll</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">.navbar</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-offset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">50</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> The navbar - The &lt;a&gt; elements are used to jump to a section in the scrollable area </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">nav</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">navbar navbar-expand-sm bg-dark navbar-dark fixed-top</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+...
+  </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">navbar-nav</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#section1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Section 1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    ...
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">nav</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 第一部分内容 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">section1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Section 1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Try to scroll this page and look at the navigation bar while scrolling!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+...
+ 
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_scrollspy" target="_blank">尝试一下 »</a></div>
+<h3>实例解析</h3>
+<p>向您想要监听的元素（通常是 body）添加 <span class="marked">data-spy="scroll"</span> 。</p>
+<p>然后添加 <span class="marked">data-target</span> 属性，它的值为导航栏的 id 或 class (<span class="marked">.navbar</span>)。这样就可以联系上可滚动区域。</p>
+<p>注意可滚动项元素上的 id 
+（<span class="marked">&lt;div id="section1"&gt;</span>） 必须匹配导航栏上的链接选项 （<span class="marked">&lt;a href="#section1"&gt;</span>)。</p>
+<p>可选项<span class="marked">data-offset</span> 属性用于计算滚动位置时，距离顶部的偏移像素。 默认为 10 px。</p>
+<p><strong>设置相对定位: </strong>使用
+data-spy="scroll" 
+的元素需要将其 CSS <strong>position</strong> 属性设置为 "relative" 才能起作用。</p>
+<p>以下实例设置了垂直滚动监听：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-code"> </span><span class="hl-var">data-spy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">scroll</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#myScrollspy</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-offset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container-fluid</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">nav</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-3 col-4</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myScrollspy</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">nav nav-pills flex-column</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">nav-item</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">nav-link active</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#section1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Section 1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+          ...
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">nav</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-9 col-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">section1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Section 1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Try to scroll this page and look at the navigation list while scrolling!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 
+        ...
+      </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_scrollspy2" target="_blank">尝试一下 »</a></div>
+</div>

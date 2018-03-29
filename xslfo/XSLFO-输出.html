@@ -1,0 +1,57 @@
+<div class="article-intro" id="content">
+<h1>XSL-FO <span class="color_h1">输出</span>
+</h1>
+<hr/>
+<p class="intro">XSL-FO 在 &lt;fo:flow&gt; 元素内部定义输出。</p>
+<hr/>
+<h2>XSL-FO 页面（Page）、流（Flow）以及块（Block）</h2>
+<p>内容"块"会"流"入"页面"中，然后输出到媒介。</p>
+<p>XSL-FO 输出通常被嵌套在 &lt;fo:block&gt; 元素内，&lt;fo:block&gt; 嵌套于 &lt;fo:flow&gt; 元素内，&lt;fo:flow&gt; 嵌套于 &lt;fo:page-sequence&gt; 元素内：</p>
+<div class="code notranslate"><div>
+
+&lt;fo:page-sequence&gt;<br/>
+   
+  &lt;fo:flow flow-name="xsl-region-body"&gt;<br/>
+       
+    &lt;fo:block&gt;<br/>
+           
+      &lt;!-- Output goes here --&gt;<br/>
+       
+    &lt;/fo:block&gt;<br/>
+   
+  &lt;/fo:flow&gt;<br/>
+&lt;/fo:page-sequence&gt;
+</div></div>
+<br/><hr/>
+<h2>XSL-FO 实例</h2>
+<p>现在让我们看一个真实的 XSL-FO 实例：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;<br/><br/>
+&lt;fo:layout-master-set&gt;<br/>
+   
+  &lt;fo:simple-page-master master-name="A4"&gt;<br/>
+   
+&lt;fo:region-body /&gt;<br/>
+ 
+&lt;/fo:simple-page-master&gt;<br/>
+&lt;/fo:layout-master-set&gt;<br/><br/>
+&lt;fo:page-sequence master-reference="A4"&gt;<br/>
+   
+  &lt;fo:flow flow-name="xsl-region-body"&gt;<br/>
+       
+    &lt;fo:block&gt;Hello RUNOOB&lt;/fo:block&gt;<br/>
+   
+  &lt;/fo:flow&gt;<br/>
+&lt;/fo:page-sequence&gt;<br/><br/>
+&lt;/fo:root&gt;
+</div></div>
+<p>以上代码的输出如下所示：</p>
+<div class="code"><div>
+
+Hello RUNOOB
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div></div>
+<br/>
+</div>

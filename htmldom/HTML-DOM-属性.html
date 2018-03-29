@@ -1,0 +1,112 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM <span class="color_h1">属性</span>
+</h1>
+<hr/>
+<p class="intro">属性是节点（HTML 元素）的值，您能够获取或设置。</p>
+<hr/>
+<h2>编程接口</h2>
+<p>可通过 JavaScript （以及其他编程语言）对 HTML DOM 进行访问。</p>
+<p>所有 HTML 元素被定义为对象，而编程接口则是对象方法和对象属性。</p>
+<p>方法是您能够执行的动作（比如添加或修改元素）。</p>
+<p>属性是您能够获取或设置的值（比如节点的名称或内容）。</p>
+<hr/>
+<h2>innerHTML 属性</h2>
+<p>获取元素内容的最简单方法是使用 innerHTML 属性。</p>
+<p>innerHTML 属性对于获取或替换 HTML 元素的内容很有用。</p>
+<h2>实例</h2>
+<p>下面的代码获取 id="intro" 的 &lt;p&gt; 元素的 innerHTML：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">intro</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+var txt=document.getElementById("intro").innerHTML;
+document.write(txt);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_methods" target="_blank">尝试一下 »</a>
+</div>
+<p>在上面的例子中，getElementById 是一个方法，而 innerHTML 是属性。</p>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td><p>innerHTML 属性可用于获取或改变任意 HTML 元素，包括 &lt;html&gt; 和 &lt;body&gt;。</p></td>
+</tr></table>
+<br/><hr/>
+<p>nodeName 属性规定节点的名称。</p>
+<ul>
+<li>nodeName 是只读的</li>
+<li>元素节点的 nodeName 与标签名相同</li>
+<li>属性节点的 nodeName 与属性名相同</li>
+<li>文本节点的 nodeName 始终是 #text</li>
+<li>文档节点的 nodeName 始终是 #document</li>
+</ul>
+<p><b>注意：</b> nodeName 始终包含 HTML 元素的大写字母标签名。</p>
+<hr/>
+<h2>nodeValue 属性</h2>
+<p>nodeValue 属性规定节点的值。</p>
+<ul>
+<li>元素节点的 nodeValue 是 undefined 或 null</li>
+<li>文本节点的 nodeValue 是文本本身</li>
+<li>属性节点的 nodeValue 是属性值</li>
+</ul>
+<hr/>
+<h2>获取元素的值</h2>
+<p>下面的例子会取回 &lt;p id="intro"&gt; 标签的文本节点值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">intro</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+x=document.getElementById("intro");
+document.write(x.firstChild.nodeValue);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_firstchild" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>nodeType 属性</h2>
+<p>nodeType 属性返回节点的类型。nodeType 是只读的。</p>
+<p>比较重要的节点类型有：</p>
+<table class="reference">
+<tr>
+<th>元素类型</th>
+<th>NodeType</th>
+</tr>
+<tr>
+<td>元素</td>
+<td>1</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>2</td>
+</tr>
+<tr>
+<td>文本</td>
+<td>3</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>8</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>9</td>
+</tr>
+</table>
+</div>

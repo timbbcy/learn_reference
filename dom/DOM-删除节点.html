@@ -1,0 +1,158 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">删除节点</span>
+</h1>
+<hr/>
+<p class="intro">removeChild() 方法删除指定节点。</p>
+<p class="intro">removeAttribute() 方法删除指定属性。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_removechild" target="_blank">删除元素节点</a><br/>
+本例使用 removeChild() 来删除第一个 &lt;book&gt; 元素。</p>
+<p><a href="/try/try.php?filename=try_dom_removecurrent" target="_blank">删除当前元素节点</a><br/>
+本例使用 parentNode 和 removeChild() 来删除当前的 &lt;book&gt; 元素。</p>
+<p><a href="/try/try.php?filename=try_dom_removetextnode" target="_blank">删除文本节点</a><br/>
+本例使用 removeChild() 来删除第一个 &lt;title&gt; 元素的文本节点。</p>
+<p><a href="/try/try.php?filename=try_dom_remove_nodevalue" target="_blank">清空文本节点的文本</a><br/>
+本例使用 nodeValue() 属性来清空第一个 &lt;title&gt; 元素的文本节点。</p>
+<p><a href="/try/try.php?filename=try_dom_removeattribute" target="_blank">根据名称删除属性</a><br/>
+本例使用 removeAttribute() 从第一个 &lt;book&gt; 元素中删除 "category" 属性。</p>
+<p><a href="/try/try.php?filename=try_dom_removeattributenode" target="_blank">根据对象删除属性</a><br/>
+本例使用 removeAttributeNode() 从所有 &lt;book&gt; 元素中删除所有属性。</p>
+<hr/>
+<h2>删除元素节点</h2>
+<p>removeChild() 方法删除指定的节点。</p>
+<p>当一个节点被删除时，其所有子节点也会被删除。</p>
+<p>下面的代码片段将从载入的 xml 中删除第一个 &lt;book&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+y=xmlDoc.getElementsByTagName("book")[0];<br/><br/>
+xmlDoc.documentElement.removeChild(y);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_removechild" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>把变量 y 设置为要删除的元素节点</li>
+<li>通过使用 removeChild() 方法从父节点删除元素节点</li>
+</ol>
+<hr/>
+<h2>删除自身 - 删除当前的节点</h2>
+<p>removeChild() 方法是唯一可以删除指定节点的方法。</p>
+<p>当您已导航到需要删除的节点时，就可以通过使用 parentNode 属性和 removeChild() 方法来删除此节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("book")[0];<br/><br/>
+x.parentNode.removeChild(x);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_removecurrent" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>把变量 y 设置为要删除的元素节点</li>
+<li>通过使用 parentNode 属性和 removeChild() 方法来删除此元素节点</li>
+</ol>
+<hr/>
+<h2>删除文本节点</h2>
+<p>removeChild() 方法可用于删除文本节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0];<br/><br/>
+y=x.childNodes[0];<br/>
+x.removeChild(y);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_removetextnode" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>把变量 x 设置为第一个 title 元素节点</li>
+<li>把变量 y 设置为要删除的文本节点</li>
+<li>通过使用 removeChild() 方法从父节点删除元素节点</li>
+</ol>
+<p>不太常用 removeChild() 从节点删除文本。可以使用 nodeValue 属性代替它。请看下一段。</p>
+<hr/>
+<h2>清空文本节点</h2>
+<p>nodeValue 属性可用于改变或清空文本节点的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0].childNodes[0];<br/>
+x.nodeValue="";
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_remove_nodevalue" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>把变量 x 设置为第一个 title 元素的文本节点</li>
+<li>使用 nodeValue 属性来清空文本节点的文本</li>
+</ol>
+<p>遍历并更改所有 &lt;title&gt; 元素的文本节点：
+<a href="/try/try.php?filename=try_dom_remove_nodevalue2" target="_blank">尝试一下</a><br/></p>
+<hr/>
+<h2>根据名称删除属性节点</h2>
+<p>removeAttribute(<i>name</i>) 方法用于根据名称删除属性节点。</p>
+<p>实例：removeAttribute('category')</p>
+<p>下面的代码片段删除第一个 &lt;book&gt; 元素中的 "category" 属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("book");<br/>
+x[0].removeAttribute("category");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_removeattribute" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>使用 getElementsByTagName() 来获取 book 节点</li>
+<li>从第一个 book 元素节点中删除 "category" 属性</li>
+</ol>
+<p>遍历并删除所有 &lt;book&gt; 元素的 "category" 属性：
+<a href="/try/try.php?filename=try_dom_removeattribute2" target="_blank">尝试一下</a></p>
+<hr/>
+<h2>根据对象删除属性节点</h2>
+<p>removeAttributeNode(<i>node</i>) 方法通过使用 node 对象作为参数，来删除属性节点。</p>
+<p>实例: removeAttributeNode(x)</p>
+<p>下面的代码片段删除所有 &lt;book&gt; 元素的所有属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">book</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">attributes</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">&gt;</span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">attnode</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">attributes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+    </span><span class="hl-identifier">old_att</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">removeAttributeNode</span><span class="hl-brackets">(</span><span class="hl-identifier">attnode</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_removeattributenode" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>使用 getElementsByTagName() 来获取所有 book 节点</li>
+<li>检查每个 book 元素是否拥有属性</li>
+<li>如果在某个 book 元素中存在属性，则删除该属性</li>
+</ol>
+<br/>
+</div>

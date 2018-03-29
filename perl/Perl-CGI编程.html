@@ -1,0 +1,78 @@
+<div class="article-intro" id="content">
+<h1>Perl CGI编程</h1>
+<hr/>
+<h2>什么是CGI</h2>
+<p>CGI 目前由NCSA维护，NCSA定义CGI如下：</p><p>
+CGI(Common Gateway Interface),通用网关接口,它是一段程序,运行在服务器上如：HTTP服务器，提供同客户端HTML页面的接口。</p>
+<hr/><h2>网页浏览</h2>
+<p>为了更好的了解CGI是如何工作的，我们可以从在网页上点击一个链接或URL的流程：</p>
+<ul>
+<li>
+1、使用你的浏览器访问URL并连接到HTTP web 服务器。</li><li>
+2、Web服务器接收到请求信息后会解析URL，并查找访问的文件在服务器上是否存在，如果存在返回文件的内容，否则返回错误信息。</li><li>
+3、浏览器从服务器上接收信息，并显示接收的文件或者错误信息。</li></ul>
+<p>CGI程序可以是Python脚本，PERL脚本，SHELL脚本，C或者C++程序等。</p>
+<hr/>
+<h2>
+CGI架构图
+</h2>
+<p><img alt="cgiarch" class="alignnone size-full wp-image-4561" height="473" src="http://www.runoob.com/wp-content/uploads/2013/11/Cgi01.png" width="411"/></p>
+<hr/>
+<h2>Web服务器支持及配置</h2>
+<p>在你进行CGI编程前，确保您的Web服务器支持CGI及已经配置了CGI的处理程序。</p>
+<p>Apache 支持CGI 配置：</p>
+<p>设置好CGI目录：</p>
+<pre>
+ScriptAlias /cgi-bin/ /var/www/cgi-bin/
+</pre>
+<p>
+所有的HTTP服务器执行CGI程序都保存在一个预先配置的目录。这个目录被称为CGI目录，并按照惯例，它被命名为/var/www/cgi-bin目录。</p><p>
+CGI文件的扩展名为.cgi，Perl 也可以使用.pl扩展名。</p><p>
+默认情况下，Linux服务器配置运行的cgi-bin目录中为/var/www。</p><p>
+如果你想指定其他运行CGI脚本的目录，可以修改httpd.conf配置文件，如下所示：</p>
+<pre>
+&lt;Directory "/var/www/cgi-bin"&gt;
+   AllowOverride None
+   Options +ExecCGI
+   Order allow,deny
+   Allow from all
+&lt;/Directory&gt;
+</pre>
+<p>在 AddHandler 中添加 .pl 后缀，这样我们就可以访问 .pl 结尾的 Perl 脚本文件：</p>
+<pre>
+AddHandler cgi-script .cgi .pl .py</pre>
+<h3>第一个 CGI 程序</h3>
+<p>以下我们创建一个 test.cgi 文件，代码如下所示：</p>
+<div class="example">
+<h2 class="example">test.cgi 代码</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Content-type:text/html</span><span class="hl-special">\r</span><span class="hl-special">\n</span><span class="hl-special">\r</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;html&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;head&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;meta charset="utf-8"&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;/head&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;body&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;Hello Word! &lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;p&gt;来自菜鸟教程第一个 CGI 程序。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;/body&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;/html&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-number">1</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>然后通过浏览器打开 http://localhost/cgi-bin/test.cgi，输出结果如下：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/06/8A200E35-EBB0-49EB-8042-894DF1D406B2.jpg" width="70%"/></p>
+<p>
+脚本第一行的输出内容"Content-type:text/html\r\n\r\n"发送到浏览器并告知浏览器显示的内容类型为"text/html"。
+</p>
+<hr/><h2>HTTP头部</h2>
+<p>test.cgi文件内容中的" Content-type:text/html"即为HTTP头部的一部分，它会发送给浏览器告诉浏览器文件的内容类型。</p>
+<p>HTTP头部的格式如下：</p>
+<pre>
+HTTP 字段名: 字段内容
+</pre><p>
+例如：</p><pre>
+Content-type:text/html\r\n\r\n</pre>
+</div>

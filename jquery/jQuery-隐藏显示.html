@@ -1,0 +1,94 @@
+<div class="article-intro" id="content">
+<script> 
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".panel").toggle();
+});
+});
+</script>
+<style type="text/css"> 
+div.panel,p.flip
+{
+width:90%;
+margin:auto;
+padding:5px;
+text-align:center;
+background:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+div.panel
+{
+height:100px;
+display:none;
+}
+</style>
+<h1>jQuery 效果- <span class="color_h1">隐藏和显示</span>
+</h1>
+<hr/>
+<p class="intro">隐藏、显示、切换，滑动，淡入淡出，以及动画，哇哦！</p>
+<p class="flip">点击 显示/隐藏面板</p>
+<div class="panel">
+<p>因为时间是宝贵的，我们提供快捷方便的学习方法。</p>
+<p>在菜鸟教程,你可以学习需要的知识。</p>
+</div>
+<hr/>
+<h2>实例</h2>
+<p><a href="/try/try.php?filename=tryjquery_hide" target="_blank">jQuery hide()</a><br/>
+简单的jQuery hide()方法演示。</p>
+<p><a href="/try/try.php?filename=tryjquery_hide_explanations" target="_blank">jQuery hide()</a><br/>
+另一个hide()实例。演示如何隐藏文本。</p>
+<hr/>
+<h2>jQuery hide() 和 show()</h2>
+<p>通过 jQuery，您可以使用 hide() 和 show() 方法来隐藏和显示 HTML 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#hide</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#show</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">show</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_show" target="_blank">尝试一下 »</a>
+</div>
+<p><b>语法:</b></p>
+<div class="code notranslate"><div>
+$(<i>selector</i>).hide(<i>speed,callback</i>);<br/><br/>
+$(<i>selector</i>).show(<i>speed,callback</i>);
+</div></div>
+<p>可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。</p>
+<p>可选的 callback 参数是隐藏或显示完成后所执行的函数名称。</p>
+<p>下面的例子演示了带有 speed 参数的 hide() 方法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-number">1000</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_slow" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery toggle()</h2>
+<p>通过 jQuery，您可以使用 toggle() 方法来切换 hide() 和 show() 方法。
+</p>
+<p>显示被隐藏的元素，并隐藏已显示的元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">toggle</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_toggle" target="_blank">尝试一下 »</a>
+</div>
+<p><b>语法:</b></p>
+<div class="code notranslate"><div>
+$(<i>selector</i>).toggle(<i>speed,callback</i>);
+</div></div>
+<p>可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+</p>
+<p>可选的 callback 参数是隐藏或显示完成后所执行的函数名称。</p>
+</div>

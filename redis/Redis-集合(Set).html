@@ -1,0 +1,44 @@
+<div class="article-intro" id="content">
+<h1>Redis 集合(Set)</h1>
+<p>Redis 的 Set 是 String 类型的无序集合。集合成员是唯一的，这就意味着集合中不能出现重复的数据。
+</p>
+<p>Redis 中集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是 O(1)。</p><p> 集合中最大的成员数为 2<sup>32 - 1</sup> (4294967295, 每个集合可存储40多亿个成员)。 </p>
+<h3>实例</h3>
+<pre>
+redis 127.0.0.1:6379&gt; SADD runoobkey redis
+(integer) 1
+redis 127.0.0.1:6379&gt; SADD runoobkey mongodb
+(integer) 1
+redis 127.0.0.1:6379&gt; SADD runoobkey mysql
+(integer) 1
+redis 127.0.0.1:6379&gt; SADD runoobkey mysql
+(integer) 0
+redis 127.0.0.1:6379&gt; SMEMBERS runoobkey
+
+1) "mysql"
+2) "mongodb"
+3) "redis"
+</pre>
+<p>在以上实例中我们通过 <b>SADD</b> 命令向名为 <strong>runoobkey</strong> 的集合插入的三个元素。</p>
+<hr/>
+<h2>Redis 集合命令</h2>
+<p>下表列出了 Redis 集合基本命令：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/sets-sadd.html">SADD key member1 [member2]</a> <br/>向集合添加一个或多个成员</td></tr>
+<tr><td>2</td><td><a href="/redis/sets-scard.html">SCARD key</a> <br/>获取集合的成员数</td></tr>
+<tr><td>3</td><td><a href="/redis/sets-sdiff.html">SDIFF key1 [key2]</a> <br/>返回给定所有集合的差集</td></tr>
+<tr><td>4</td><td><a href="/redis/sets-sdiffstore.html">SDIFFSTORE destination key1 [key2]</a> <br/>返回给定所有集合的差集并存储在 destination 中</td></tr>
+<tr><td>5</td><td><a href="/redis/sets-sinter.html">SINTER key1 [key2]</a> <br/>返回给定所有集合的交集</td></tr>
+<tr><td>6</td><td><a href="/redis/sets-sinterstore.html">SINTERSTORE destination key1 [key2]</a> <br/>返回给定所有集合的交集并存储在 destination 中</td></tr>
+<tr><td>7</td><td><a href="/redis/sets-sismember.html">SISMEMBER key member</a> <br/>判断 member 元素是否是集合 key 的成员</td></tr>
+<tr><td>8</td><td><a href="/redis/sets-smembers.html">SMEMBERS key</a> <br/>返回集合中的所有成员</td></tr>
+<tr><td>9</td><td><a href="/redis/sets-smove.html">SMOVE source destination member</a> <br/>将 member 元素从 source 集合移动到 destination 集合</td></tr>
+<tr><td>10</td><td><a href="/redis/sets-spop.html">SPOP key</a> <br/>移除并返回集合中的一个随机元素</td></tr>
+<tr><td>11</td><td><a href="/redis/sets-srandmember.html">SRANDMEMBER key [count]</a> <br/>返回集合中一个或多个随机数</td></tr>
+<tr><td>12</td><td><a href="/redis/sets-srem.html">SREM key member1 [member2]</a> <br/>移除集合中一个或多个成员</td></tr>
+<tr><td>13</td><td><a href="/redis/sets-sunion.html">SUNION key1 [key2]</a> <br/>返回所有给定集合的并集</td></tr>
+<tr><td>14</td><td><a href="/redis/sets-sunionstore.html">SUNIONSTORE destination key1 [key2]</a> <br/>所有给定集合的并集存储在 destination 集合中</td></tr>
+<tr><td>15</td><td><a href="/redis/sets-sscan.html">SSCAN key cursor [MATCH pattern] [COUNT count]</a> <br/>迭代集合中的元素</td></tr>
+</tbody></table>
+</div>

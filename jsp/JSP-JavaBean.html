@@ -1,0 +1,168 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">JavaBean</span></h1>
+<p>JavaBean是特殊的Java类，使用J ava语言书写，并且遵守JavaBean API规范。</p>
+<p>
+接下来给出的是JavaBean与其它Java类相比而言独一无二的特征：</p>
+<ul>
+<li>
+		提供一个默认的无参构造函数。</li>
+<li>
+		需要被序列化并且实现了Serializable接口。</li>
+<li>
+		可能有一系列可读写属性。</li>
+<li>
+		可能有一系列的"getter"或"setter"方法。</li>
+</ul><hr/>
+<h2>JavaBean属性</h2><p>
+一个JavaBean对象的属性应该是可访问的。这个属性可以是任意合法的Java数据类型，包括自定义Java类。</p>
+<p>
+一个JavaBean对象的属性可以是可读写，或只读，或只写。JavaBean对象的属性通过JavaBean实现类中提供的两个方法来访问：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>方法</strong></th>
+<th>
+<strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+				get<strong>PropertyName</strong>()</td>
+<td>
+				举例来说，如果属性的名称为myName，那么这个方法的名字就要写成getMyName()来读取这个属性。这个方法也称为访问器。</td>
+</tr>
+<tr>
+<td>
+				set<strong>PropertyName</strong>()</td>
+<td>
+				举例来说，如果属性的名称为myName，那么这个方法的名字就要写成setMyName()来写入这个属性。这个方法也称为写入器。</td>
+</tr>
+</tbody>
+</table>
+<p>
+一个只读的属性只提供getPropertyName()方法，一个只写的属性只提供setPropertyName()方法。</p><hr/>
+<h2>JavaBean 程序示例</h2><p>
+这是StudentBean.java文件：</p>
+<pre>
+package com.runoob;
+
+public class StudentsBean implements java.io.Serializable
+{
+   private String firstName = null;
+   private String lastName = null;
+   private int age = 0;
+
+   public StudentsBean() {
+   }
+   public String getFirstName(){
+      return firstName;
+   }
+   public String getLastName(){
+      return lastName;
+   }
+   public int getAge(){
+      return age;
+   }
+
+   public void setFirstName(String firstName){
+      this.firstName = firstName;
+   }
+   public void setLastName(String lastName){
+      this.lastName = lastName;
+   }
+   public void setAge(int age) {
+      this.age = age;
+   }
+}
+</pre>
+<p>编译 StudentBean.java 文件(最后一个实例会用到):</p>
+<pre>
+$ javac StudentsBean.java
+</pre>
+<p>编译后获得 <strong>StudentBean.class</strong> 文件，将其拷贝到 <strong>&lt;JSP 项目&gt;/WebContent/WEB-INF/classes/com/runoob</strong>，如下图所示:</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2014/01/DDBE2229-22EF-45A5-B64A-EA1B74C7F43E.jpg" width="70%"/></p>
+<hr/>
+<h2>访问JavaBean</h2><p>
+&lt;jsp:useBean&gt; 标签可以在JSP中声明一个JavaBean，然后使用。声明后，JavaBean对象就成了脚本变量，可以通过脚本元素或其他自定义标签来访问。&lt;jsp:useBean&gt;标签的语法格式如下：
+</p><pre>
+&lt;jsp:useBean id="bean 的名字" scope="bean 的作用域" typeSpec/&gt;
+</pre>
+<p>
+其中，根据具体情况，scope的值可以是page，request，session或application。id值可任意只要不和同一JSP文件中其它&lt;jsp:useBean&gt;中id值一样就行了。</p>
+<p>
+接下来给出的是 &lt;jsp:useBean&gt; 标签的一个简单的用法：</p>
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;useBean 实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;jsp:useBean id="date" class="java.util.Date" /&gt; 
+&lt;p&gt;日期为：&lt;%= date %&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p>
+它将会产生如下结果：</p>
+<pre>
+日期为：Tue Jun 28 15:22:24 CST 2016
+</pre><hr/>
+<h2>访问 JavaBean 对象的属性</h2><p>
+在 <strong>&lt;jsp:useBean&gt;</strong> 标签主体中使用 <strong>&lt;jsp:getProperty/&gt;</strong> 标签来调用 <strong>getter</strong> 方法，使用 <strong>&lt;jsp:setProperty/&gt;</strong> 标签来调用 <strong>setter</strong> 方法，语法格式如下：</p>
+<pre>
+&lt;jsp:useBean id="id" class="bean 编译的类" scope="bean 作用域"&gt;
+   &lt;jsp:setProperty name="bean 的 id" property="属性名"  
+                    value="value"/&gt;
+   &lt;jsp:getProperty name="bean 的 id" property="属性名"/&gt;
+   ...........
+&lt;/jsp:useBean&gt;
+</pre>
+<p>
+name属性指的是Bean的id属性。property属性指的是想要调用的getter或setter方法。</p>
+<p>
+接下来给出使用以上语法进行属性访问的一个简单例子：</p>
+<pre>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;get 和 set 属性实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;jsp:useBean id="students" 
+                    class="com.runoob.StudentsBean"&gt; 
+   &lt;jsp:setProperty name="students" property="firstName"
+                    value="小强"/&gt;
+   &lt;jsp:setProperty name="students" property="lastName" 
+                    value="王"/&gt;
+   &lt;jsp:setProperty name="students" property="age"
+                    value="10"/&gt;
+&lt;/jsp:useBean&gt;
+
+&lt;p&gt;学生名字: 
+   &lt;jsp:getProperty name="students" property="firstName"/&gt;
+&lt;/p&gt;
+&lt;p&gt;学生姓氏: 
+   &lt;jsp:getProperty name="students" property="lastName"/&gt;
+&lt;/p&gt;
+&lt;p&gt;学生年龄: 
+   &lt;jsp:getProperty name="students" property="age"/&gt;
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>
+访问以上 JSP，运行结果如下：</p>
+<pre>
+学生名字: 小强
+
+学生姓氏: 王
+
+学生年龄: 10
+</pre>
+</div>

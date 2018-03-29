@@ -1,0 +1,89 @@
+<div class="article-intro" id="content">
+<h1>DTD - <span class="color_h1">来自网络的实例</span>
+</h1>
+<hr/>
+<h2>电视节目表 DTD</h2>
+<p>由 David Moisan 创造。拷贝自： <a href="http://www.davidmoisan.org/" target="_blank">http://www.davidmoisan.org/</a></p>
+<div class="code notranslate"><div>
+  
+    
+&lt;!DOCTYPE TVSCHEDULE [<br/><br/>
+&lt;!ELEMENT TVSCHEDULE (CHANNEL+)&gt;<br/>
+&lt;!ELEMENT CHANNEL (BANNER,DAY+)&gt;<br/>
+&lt;!ELEMENT BANNER (#PCDATA)&gt;<br/>
+&lt;!ELEMENT DAY (DATE,(HOLIDAY|PROGRAMSLOT+)+)&gt;<br/>
+&lt;!ELEMENT HOLIDAY (#PCDATA)&gt;<br/>
+&lt;!ELEMENT DATE (#PCDATA)&gt;<br/>
+&lt;!ELEMENT PROGRAMSLOT (TIME,TITLE,DESCRIPTION?)&gt;<br/>
+&lt;!ELEMENT TIME (#PCDATA)&gt;<br/>
+&lt;!ELEMENT TITLE (#PCDATA)&gt; <br/>
+&lt;!ELEMENT DESCRIPTION (#PCDATA)&gt;<br/><br/>
+&lt;!ATTLIST TVSCHEDULE NAME CDATA #REQUIRED&gt;<br/>
+&lt;!ATTLIST CHANNEL CHAN CDATA #REQUIRED&gt;<br/>
+&lt;!ATTLIST PROGRAMSLOT VTR CDATA #IMPLIED&gt;<br/>
+&lt;!ATTLIST TITLE RATING CDATA #IMPLIED&gt;<br/>
+&lt;!ATTLIST TITLE LANGUAGE CDATA #IMPLIED&gt;<br/>
+]&gt;
+  
+</div></div>
+<br/><hr/>
+<h2>报纸文章 DTD</h2>
+<p>拷贝自：<a href="http://www.vervet.com/" target="_blank">http://www.vervet.com/</a></p>
+<div class="code notranslate"><div>
+  
+    
+&lt;!DOCTYPE NEWSPAPER [<br/><br/>
+&lt;!ELEMENT NEWSPAPER (ARTICLE+)&gt;<br/>
+&lt;!ELEMENT ARTICLE (HEADLINE,BYLINE,LEAD,BODY,NOTES)&gt;<br/>
+&lt;!ELEMENT HEADLINE (#PCDATA)&gt;<br/>
+&lt;!ELEMENT BYLINE (#PCDATA)&gt;<br/>
+&lt;!ELEMENT LEAD (#PCDATA)&gt;<br/>
+&lt;!ELEMENT BODY (#PCDATA)&gt;<br/>
+&lt;!ELEMENT NOTES (#PCDATA)&gt;<br/><br/>
+&lt;!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED&gt;<br/>
+&lt;!ATTLIST ARTICLE EDITOR CDATA #IMPLIED&gt;<br/>
+&lt;!ATTLIST ARTICLE DATE CDATA #IMPLIED&gt;<br/>
+&lt;!ATTLIST ARTICLE EDITION CDATA #IMPLIED&gt;<br/><br/>
+&lt;!ENTITY NEWSPAPER "Vervet Logic Times"&gt;<br/>
+&lt;!ENTITY PUBLISHER "Vervet Logic Press"&gt;<br/>
+&lt;!ENTITY COPYRIGHT "Copyright 1998 Vervet Logic Press"&gt;<br/><br/>
+]&gt;
+</div></div>
+<br/><hr/>
+<h2>产品目录 DTD</h2>
+<p>拷贝自： <a href="http://www.vervet.com/" target="_blank">http://www.vervet.com/</a></p>
+<div class="code notranslate"><div>
+ 
+&lt;!DOCTYPE CATALOG [<br/><br/>
+&lt;!ENTITY AUTHOR "John Doe"&gt;<br/>
+&lt;!ENTITY COMPANY "JD Power Tools, Inc."&gt;<br/>
+&lt;!ENTITY EMAIL "jd@jd-tools.com"&gt;<br/><br/>
+&lt;!ELEMENT CATALOG (PRODUCT+)&gt;<br/><br/>
+&lt;!ELEMENT PRODUCT<br/>
+(SPECIFICATIONS+,OPTIONS?,PRICE+,NOTES?)&gt;<br/>
+&lt;!ATTLIST PRODUCT<br/>
+NAME CDATA #IMPLIED<br/>
+CATEGORY (HandTool|Table|Shop-Professional) "HandTool"<br/>
+PARTNUM CDATA #IMPLIED<br/>
+PLANT (Pittsburgh|Milwaukee|Chicago) "Chicago"<br/>
+INVENTORY (InStock|Backordered|Discontinued) "InStock"&gt;<br/><br/>
+&lt;!ELEMENT SPECIFICATIONS (#PCDATA)&gt;<br/>
+&lt;!ATTLIST SPECIFICATIONS<br/>
+WEIGHT CDATA #IMPLIED<br/>
+POWER CDATA #IMPLIED&gt;<br/><br/>
+&lt;!ELEMENT OPTIONS (#PCDATA)&gt;<br/>
+&lt;!ATTLIST OPTIONS<br/>
+FINISH (Metal|Polished|Matte) "Matte"<br/>
+ADAPTER (Included|Optional|NotApplicable) "Included"<br/>
+CASE (HardShell|Soft|NotApplicable) "HardShell"&gt;<br/><br/>
+&lt;!ELEMENT PRICE (#PCDATA)&gt;<br/>
+&lt;!ATTLIST PRICE<br/>
+MSRP CDATA #IMPLIED<br/>
+WHOLESALE CDATA #IMPLIED<br/>
+STREET CDATA #IMPLIED<br/>
+SHIPPING CDATA #IMPLIED&gt;<br/><br/>
+&lt;!ELEMENT NOTES (#PCDATA)&gt;<br/><br/>
+]&gt;
+</div></div>
+<br/>
+</div>

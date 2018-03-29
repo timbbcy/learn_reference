@@ -1,0 +1,133 @@
+<div class="article-intro" id="content">
+<h1>Redis 服务器</h1>
+<p>Redis 服务器命令主要是用于管理 redis 服务。</p>
+<h3>实例</h3>
+<p>以下实例演示了如何获取 redis 服务器的统计信息：</p>
+<pre>
+redis 127.0.0.1:6379&gt; INFO
+
+# Server
+redis_version:2.8.13
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:c2238b38b1edb0e2
+redis_mode:standalone
+os:Linux 3.5.0-48-generic x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.7.2
+process_id:3856
+run_id:0e61abd297771de3fe812a3c21027732ac9f41fe
+tcp_port:6379
+uptime_in_seconds:11554
+uptime_in_days:0
+hz:10
+lru_clock:16651447
+config_file:
+
+# Clients
+connected_clients:1
+client-longest_output_list:0
+client-biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:589016
+used_memory_human:575.21K
+used_memory_rss:2461696
+used_memory_peak:667312
+used_memory_peak_human:651.67K
+used_memory_lua:33792
+mem_fragmentation_ratio:4.18
+mem_allocator:jemalloc-3.6.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:3
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1409158561
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:0
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:24
+total_commands_processed:294
+instantaneous_ops_per_sec:0
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:41
+keyspace_misses:82
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:264
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:10.49
+used_cpu_user:4.96
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.01
+
+# Keyspace
+db0:keys=94,expires=1,avg_ttl=41638810
+db1:keys=1,expires=0,avg_ttl=0
+db3:keys=1,expires=0,avg_ttl=0
+</pre>
+<hr/>
+<h2>Redis 服务器命令</h2>
+<p>下表列出了 redis 服务器的相关命令:</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/server-bgrewriteaof.html">BGREWRITEAOF</a> <br/>异步执行一个 AOF（AppendOnly File） 文件重写操作</td></tr>
+<tr><td>2</td><td><a href="/redis/server-bgsave.html">BGSAVE</a> <br/>在后台异步保存当前数据库的数据到磁盘</td></tr>
+<tr><td>3</td><td><a href="/redis/server-client-kill.html">CLIENT KILL [ip:port] [ID client-id]</a> <br/>关闭客户端连接</td></tr>
+<tr><td>4</td><td><a href="/redis/server-client-list.html">CLIENT LIST</a> <br/>获取连接到服务器的客户端连接列表</td></tr>
+<tr><td>5</td><td><a href="/redis/server-client-getname.html">CLIENT GETNAME</a> <br/>获取连接的名称</td></tr>
+<tr><td>6</td><td><a href="/redis/server-client-pause.html">CLIENT PAUSE timeout</a> <br/>在指定时间内终止运行来自客户端的命令</td></tr>
+<tr><td>7</td><td><a href="/redis/server-client-setname.html">CLIENT SETNAME connection-name</a> <br/>设置当前连接的名称</td></tr>
+<tr><td>8</td><td><a href="/redis/server-cluster-slots.html">CLUSTER SLOTS</a> <br/>获取集群节点的映射数组</td></tr>
+<tr><td>9</td><td><a href="/redis/server-command.html">COMMAND</a> <br/>获取 Redis 命令详情数组</td></tr>
+<tr><td>10</td><td><a href="/redis/server-command-count.html">COMMAND COUNT</a> <br/>获取 Redis 命令总数</td></tr>
+<tr><td>11</td><td><a href="/redis/server-command-getkeys.html">COMMAND GETKEYS</a> <br/>获取给定命令的所有键</td></tr>
+<tr><td>12</td><td><a href="/redis/server-time.html">TIME</a> <br/>返回当前服务器时间</td></tr>
+<tr><td>13</td><td><a href="/redis/server-command-info.html">COMMAND INFO command-name [command-name ...]</a> <br/>获取指定 Redis 命令描述的数组</td></tr>
+<tr><td>14</td><td><a href="/redis/server-config-get.html">CONFIG GET parameter</a> <br/>获取指定配置参数的值</td></tr>
+<tr><td>15</td><td><a href="/redis/server-config-rewrite.html">CONFIG REWRITE</a> <br/>对启动 Redis 服务器时所指定的 redis.conf 配置文件进行改写</td></tr>
+<tr><td>16</td><td><a href="/redis/server-config-set.html">CONFIG SET parameter value</a> <br/>修改 redis 配置参数，无需重启</td></tr>
+<tr><td>17</td><td><a href="/redis/server-config-resetstat.html">CONFIG RESETSTAT</a> <br/>重置 INFO 命令中的某些统计数据</td></tr>
+<tr><td>18</td><td><a href="/redis/server-dbsize.html">DBSIZE</a> <br/>返回当前数据库的 key 的数量</td></tr>
+<tr><td>19</td><td><a href="/redis/server-debug-object.html">DEBUG OBJECT key</a> <br/>获取 key 的调试信息</td></tr>
+<tr><td>20</td><td><a href="/redis/server-debug-segfault.html">DEBUG SEGFAULT</a> <br/>让 Redis 服务崩溃</td></tr>
+<tr><td>21</td><td><a href="/redis/server-flushall.html">FLUSHALL</a> <br/>删除所有数据库的所有key</td></tr>
+<tr><td>22</td><td><a href="/redis/server-flushdb.html">FLUSHDB</a> <br/>删除当前数据库的所有key</td></tr>
+<tr><td>23</td><td><a href="/redis/server-info.html">INFO [section]</a> <br/>获取 Redis 服务器的各种信息和统计数值</td></tr>
+<tr><td>24</td><td><a href="/redis/server-lastsave.html">LASTSAVE</a> <br/>返回最近一次 Redis 成功将数据保存到磁盘上的时间，以 UNIX 时间戳格式表示</td></tr>
+<tr><td>25</td><td><a href="/redis/server-monitor.html">MONITOR</a> <br/>实时打印出 Redis 服务器接收到的命令，调试用</td></tr>
+<tr><td>26</td><td><a href="/redis/server-role.html">ROLE</a> <br/>返回主从实例所属的角色</td></tr>
+<tr><td>27</td><td><a href="/redis/server-save.html">SAVE</a> <br/>同步保存数据到硬盘</td></tr>
+<tr><td>28</td><td><a href="/redis/server-shutdown.html">SHUTDOWN [NOSAVE] [SAVE]</a> <br/>异步保存数据到硬盘，并关闭服务器</td></tr>
+<tr><td>29</td><td><a href="/redis/server-slaveof.html">SLAVEOF host port</a> <br/>将当前服务器转变为指定服务器的从属服务器(slave server)</td></tr>
+<tr><td>30</td><td><a href="/redis/server-showlog.html">SLOWLOG subcommand [argument]</a> <br/>管理 redis 的慢日志</td></tr>
+<tr><td>31</td><td><a href="/redis/server-sync.html">SYNC</a> <br/> 用于复制功能(replication)的内部命令</td></tr>
+</tbody></table>
+</div>

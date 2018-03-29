@@ -1,0 +1,136 @@
+<div class="article-intro" id="content">
+<h1>MySQL NULL 值处理</h1>
+<p>
+我们已经知道 MySQL 使用 SQL SELECT 命令及 WHERE 子句来读取数据表中的数据,但是当提供的查询条件字段为 NULL 时，该命令可能就无法正常工作。</p>
+<p>为了处理这种情况，MySQL提供了三大运算符:</p>
+<ul>
+<li><strong>IS NULL:</strong> 当列的值是 NULL,此运算符返回 true。</li>
+<li><strong>IS NOT NULL:</strong> 当列的值不为 NULL, 运算符返回 true。</li>
+<li><strong>&lt;=&gt;:</strong> 比较操作符（不同于=运算符），当比较的的两个值为 NULL 时返回 true。</li>
+</ul>
+<p>
+关于 NULL 的条件比较运算是比较特殊的。你不能使用 = NULL 或 != NULL 在列中查找 NULL 值 。</p><p>
+在 MySQL 中，NULL 值与任何其它值的比较（即使是 NULL）永远返回 false，即 NULL = NULL 返回false 。</p><p>
+MySQL 中处理 NULL 使用 IS NULL 和 IS NOT NULL 运算符。</p>
+<hr/>
+<h2>在命令提示符中使用 NULL 值</h2>
+<p>以下实例中假设数据库 RUNOOB 中的表 runoob_test_tbl 含有两列 runoob_author 和 runoob_count,   runoob_count 中设置插入NULL值。</p>
+<h3>实例</h3>
+<p>尝试以下实例:</p>
+<div class="example">
+<h2 class="example">创建数据表 runoob_test_tbl</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">root</span><span class="hl-code">@</span><span class="hl-reserved">host</span><span class="hl-comment"># mysql -u root -p password;</span><span class="hl-code">
+</span><span class="hl-identifier">Enter</span><span class="hl-code"> </span><span class="hl-identifier">password</span><span class="hl-code">:*******
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">;
+</span><span class="hl-identifier">Database</span><span class="hl-code"> </span><span class="hl-identifier">changed</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">create</span><span class="hl-code"> </span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code">
+    -&gt; </span><span class="hl-brackets">(</span><span class="hl-code">
+    -&gt; </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> </span><span class="hl-reserved">varchar</span><span class="hl-brackets">(</span><span class="hl-number">40</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">NOT</span><span class="hl-code"> </span><span class="hl-reserved">NULL</span><span class="hl-code">,
+    -&gt; </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">INT</span><span class="hl-code">
+    -&gt; </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">Query</span><span class="hl-code"> </span><span class="hl-identifier">OK</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-identifier">affected</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.05</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">INSERT</span><span class="hl-code"> </span><span class="hl-reserved">INTO</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">runoob_count</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">values</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">20</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">INSERT</span><span class="hl-code"> </span><span class="hl-reserved">INTO</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">runoob_count</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">values</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">NULL</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">INSERT</span><span class="hl-code"> </span><span class="hl-reserved">INTO</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">runoob_count</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">values</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">NULL</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">INSERT</span><span class="hl-code"> </span><span class="hl-reserved">INTO</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">runoob_count</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">values</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">FK</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">20</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code">;
++---------------+--------------+
+| </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++---------------+--------------+
+| </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">        | </span><span class="hl-number">20</span><span class="hl-code">           |
+| 菜鸟教程  | </span><span class="hl-reserved">NULL</span><span class="hl-code">         |
+| </span><span class="hl-identifier">Google</span><span class="hl-code">        | </span><span class="hl-reserved">NULL</span><span class="hl-code">         |
+| </span><span class="hl-identifier">FK</span><span class="hl-code">            | </span><span class="hl-number">20</span><span class="hl-code">           |
++---------------+--------------+
+</span><span class="hl-number">4</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>以下实例中你可以看到 = 和 != 运算符是不起作用的：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> = </span><span class="hl-reserved">NULL</span><span class="hl-code">;
+</span><span class="hl-identifier">Empty</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.00</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> != </span><span class="hl-reserved">NULL</span><span class="hl-code">;
+</span><span class="hl-identifier">Empty</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>查找数据表中 runoob_test_tbl 列是否为 NULL，必须使用 <strong>IS NULL</strong> 和 <strong>IS NOT NULL</strong>，如下实例：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">IS</span><span class="hl-code"> </span><span class="hl-reserved">NULL</span><span class="hl-code">;
++---------------+--------------+
+| </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++---------------+--------------+
+| 菜鸟教程  | </span><span class="hl-reserved">NULL</span><span class="hl-code">         |
+| </span><span class="hl-identifier">Google</span><span class="hl-code">        | </span><span class="hl-reserved">NULL</span><span class="hl-code">         |
++---------------+--------------+
+</span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_test_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">IS</span><span class="hl-code"> </span><span class="hl-reserved">NOT</span><span class="hl-code"> </span><span class="hl-reserved">NULL</span><span class="hl-code">;
++---------------+--------------+
+| </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++---------------+--------------+
+| </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">        | </span><span class="hl-number">20</span><span class="hl-code">           |
+| </span><span class="hl-identifier">FK</span><span class="hl-code">            | </span><span class="hl-number">20</span><span class="hl-code">           |
++---------------+--------------+
+</span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<hr/>
+<h2>使用 PHP 脚本处理 NULL 值</h2>
+<p>PHP 脚本中你可以在 if...else 语句来处理变量是否为空，并生成相应的条件语句。
+
+</p>
+<p>以下实例中 PHP 设置了 $runoob_count 变量，然后使用该变量与数据表中的 runoob_count 字段进行比较：</p>
+<div class="example">
+<h2 class="example">MySQL ORDER BY 测试：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$dbhost</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">localhost:3306</span><span class="hl-quotes">'</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> mysql服务器主机地址</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbuser</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">;            </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbpass</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名密码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$dbhost</span><span class="hl-code">, </span><span class="hl-var">$dbuser</span><span class="hl-code">, </span><span class="hl-var">$dbpass</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$conn</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">连接失败: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 设置编码，防止中文乱码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-reserved">isset</span><span class="hl-brackets">(</span><span class="hl-var">$runoob_count</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">SELECT runoob_author, runoob_count
+           FROM  runoob_test_tbl
+           WHERE runoob_count = </span><span class="hl-var">$runoob_count</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">SELECT runoob_author, runoob_count
+           FROM  runoob_test_tbl
+           WHERE runoob_count IS NULL</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">无法读取数据: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 IS NULL 测试&lt;h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;作者&lt;/td&gt;&lt;td&gt;登陆次数&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQL_ASSOC</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_count']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;/table&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<p>输出结果如下图所示：</p><div class="example_code">
+<img src="//www.runoob.com/wp-content/uploads/2014/03/032F6502-8497-4F77-BB3A-78D8CC15C972.jpg"/>
+</div>
+</div>
+</div>

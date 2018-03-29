@@ -1,0 +1,58 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">创建自定义视图</span></h1>
+<p>在不同的情况下，您可能需要为数据网格（datagrid）运用更灵活的布局。对于用户来说，卡片视图（Card View）是个不错的选择。这个工具可以在数据网格（datagrid）中迅速获取和显示数据。在数据网格（datagrid）的头部，您可以仅仅通过点击列的头部来排序数据。本教程将向您展示如何创建自定义卡片视图（Card View）。</p>
+<img src="/wp-content/uploads/2013/12/datagrid16.png"/>
+<h4>创建卡片视图（Card View）</h4>
+<p>从数据网格（datagrid）的默认视图继承，是个创建自定义视图的不错方法。我们将要创建一个卡片视图（Card View）来为每行显示一些信息。</p>
+<pre>
+    var cardview = $.extend({}, $.fn.datagrid.defaults.view, {
+        renderRow: function(target, fields, frozen, rowIndex, rowData){
+            var cc = [];
+            cc.push('&lt;td colspan=' + fields.length + ' style="padding:10px 5px;border:0;"&gt;');
+            if (!frozen){
+                var aa = rowData.itemid.split('-');
+                var img = 'shirt' + aa[1] + '.gif';
+                cc.push('&lt;img src="images/' + img + '" style="width:150px;float:left"&gt;');
+                cc.push('&lt;div style="float:left;margin-left:20px;"&gt;');
+                for(var i=0; i&lt;fields.length; i++){
+                    var copts = $(target).datagrid('getColumnOption', fields[i]);
+                    cc.push('&lt;p&gt;&lt;span class="c-label"&gt;' + copts.title + ':&lt;/span&gt; ' + rowData[fields[i]] + '&lt;/p&gt;');
+                }
+                cc.push('&lt;/div&gt;');
+            }
+            cc.push('&lt;/td&gt;');
+            return cc.join('');
+        }
+    });
+</pre>
+<h4>创建数据网格（DataGrid）</h4>
+<p>现在我们使用视图创建数据网格（datagrid）。</p>
+<pre>
+    &lt;table id="tt" style="width:500px;height:400px"
+            title="DataGrid - CardView" singleSelect="true" fitColumns="true" remoteSort="false"
+            url="datagrid8_getdata.php" pagination="true" sortOrder="desc" sortName="itemid"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80" sortable="true"&gt;Item ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" sortable="true"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" sortable="true"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150" sortable="true"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" sortable="true"&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;    
+</pre>
+<pre style="color:#006600">
+    $('#tt').datagrid({
+        view: cardview
+    });
+</pre>
+<p>请注意，我们设置 view 属性，且它的值为我们的卡片视图。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid16.zip">jeasyui-datagrid-datagrid16.zip</a></p>
+</div>

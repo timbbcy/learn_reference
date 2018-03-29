@@ -1,0 +1,124 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">节点信息</span>
+</h1>
+<hr/>
+<p class="intro">nodeName、nodeValue 和 nodeType 属性包含有关节点的信息。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件
+<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_nodename3" target="_blank">获取元素节点的节点名称</a><br/>
+本例使用 nodeName 属性来获取 "books.xml" 中根元素的节点名称。</p>
+<p><a href="/try/try.php?filename=try_dom_getelement" target="_blank">从文本节点获取文本</a><br/>
+本例使用 nodeValue 属性来获取 "books.xml" 中第一个 &lt;title&gt; 元素的文本。</p>
+<p><a href="/try/try.php?filename=try_dom_changeelement" target="_blank">更改文本节点中的文本</a><br/>
+本例使用 nodeValue 属性来更改 "books.xml" 中第一个 &lt;title&gt; 元素的文本。</p>
+<p><a href="/try/try.php?filename=try_dom_root" target="_blank">获取元素节点的节点名称和类型</a><br/>
+本例使用 nodeName 和 nodeType 属性来获取 "books.xml" 中根元素的节点名称和类型。</p>
+<hr/>
+<h2>节点的属性</h2>
+<p>在 XML DOM 中，每个节点都是一个<b>对象</b>。</p>
+<p>对象拥有方法和属性，并可通过 JavaScript 进行访问和操作。</p>
+<p>三个重要的节点属性是：</p>
+<ul>
+<li>nodeName</li>
+<li>nodeValue</li>
+<li>nodeType</li>
+</ul>
+<hr/>
+<h2>nodeName 属性</h2>
+<p>nodeName 属性规定节点的名称。</p>
+<ul>
+<li>nodeName 是只读的</li>
+<li>元素节点的 nodeName 与标签名相同</li>
+<li>属性节点的 nodeName 是属性的名称</li>
+<li>文本节点的 nodeName 永远是 #text</li>
+<li>文档节点的 nodeName 永远是 #document</li>
+</ul>
+<p><a href="/try/try.php?filename=try_dom_nodename3" target="_blank">尝试一下.</a></p>
+<hr/>
+<h2>nodeValue 属性</h2>
+<p>nodeValue 属性规定节点的值。</p>
+<ul>
+<li>元素节点的 nodeValue 是 undefined</li>
+<li>文本节点的 nodeValue 是文本本身</li>
+<li>属性节点的 nodeValue 是属性的值</li>
+</ul>
+<hr/>
+<h2>获取元素的值</h2>
+<p>
+下面的代码检索第一个 &lt;title&gt; 元素的文本节点的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getelement" target="_blank">尝试一下 »</a>
+</div>
+<p>结果：txt = "Everyday Italian"</p>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;title&gt; 元素节点的文本节点</li>
+<li>把 txt 变量设置为文本节点的值</li>
+</ol>
+<hr/>
+<h2>更改元素的值</h2>
+<p>
+下面的代码更改第一个 &lt;title&gt; 元素的文本节点的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Easy Cooking</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_changeelement" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;title&gt; 元素节点的文本节点</li>
+<li>更改文本节点的值为 "Easy Cooking"</li>
+</ol>
+<hr/>
+<h2>nodeType 属性</h2>
+<p>nodeType 属性规定节点的类型。</p>
+<p>nodeType 是只读的。</p>
+<p>最重要的节点类型是：</p>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="85%">节点类型</th>
+<th align="left" width="15%">NodeType</th>
+</tr>
+<tr>
+<td>元素</td>
+<td>1</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>2</td>
+</tr>
+<tr>
+<td>文本</td>
+<td>3</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>8</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>9</td>
+</tr>
+</table>
+<p><a href="/try/try.php?filename=try_dom_root" target="_blank">尝试一下。</a></p>
+<br/>
+</div>

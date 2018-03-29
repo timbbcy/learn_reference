@@ -1,0 +1,62 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">合并单元格</span></h1>
+<p>数据网格（datagrid）经常需要合并一些单元格。本教程将向您展示如何在数据网格（datagrid）中合并单元格。</p>
+<p>为了合并数据网格（datagrid）单元格，只需简单地调用 'mergeCells' 方法，并传入合并信息参数，告诉数据网格（datagrid）如何合并单元格。在所有合并的单元格中，除了第一个单元格，其它单元格在合并后被隐藏。</p>
+<img src="/wp-content/uploads/2013/12/datagrid13_2.png"/>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" title="Merge Cells" style="width:550px;height:250px"
+            url="data/datagrid_data.json"
+            singleSelect="true" iconCls="icon-save" rownumbers="true"
+            idField="itemid" pagination="true"&gt;
+        &lt;thead frozen="true"&gt;
+            &lt;tr&gt;
+                &lt;th field="productid" width="80" formatter="formatProduct"&gt;Product ID&lt;/th&gt;
+                &lt;th field="itemid" width="100"&gt;Item ID&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th colspan="2"&gt;Price&lt;/th&gt;
+                &lt;th rowspan="2" field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th rowspan="2" field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<h4>合并单元格</h4>
+<p>当数据加载之后，我们合并数据网格（datagrid）中的一些单元格，所以放置下面的代码在 onLoadSuccess 回调函数中。</p>
+<pre style="color:#006600">
+    $('#tt').datagrid({
+        onLoadSuccess:function(){
+            var merges = [{
+                index:2,
+                rowspan:2
+            },{
+                index:5,
+                rowspan:2
+            },{
+                index:7,
+                rowspan:2
+            }];
+            for(var i=0; i&lt;merges.length; i++)
+                $('#tt').datagrid('mergeCells',{
+                    index:merges[i].index,
+                    field:'productid',
+                    rowspan:merges[i].rowspan
+                });
+        }
+    });
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid13.zip">jeasyui-datagrid-datagrid13.zip</a></p>
+</div>

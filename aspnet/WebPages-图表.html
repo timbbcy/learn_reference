@@ -1,0 +1,117 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- Chart 帮助器</span>
+</h1>
+<hr/>
+<p class="intro">Chart 帮助器 - 众多有用的 ASP.NET Web 帮助器之一。</p>
+<hr/>
+<h2>Chart 帮助器</h2>
+<p>在前面的章节中，您已经学习了如何使用 ASP.NET 的 "帮助器"。</p>
+<p>前面已经介绍了如何使用 "WebGrid 帮助器" 在网格中显示数据。</p>
+<p>本章介绍如何使用 "Chart 帮助器" 以图形化的形式显示数据。</p>
+<p>"Chart 帮助器" 可以创建不同类型的带有多种格式化选项和标签的图表图像。它可以创建面积图、条形图、柱形图、折线图、饼图等标准图表，也可以创建像股票图表这样的更专业的图表。</p>
+<p>
+<img alt="chart" border="0" height="179" src="/wp-content/uploads/2013/07/06.jpg" width="249"/><img alt="chart" border="0" height="179" src="/wp-content/uploads/2013/07/07.jpg" width="249"/></p>
+<p>
+在图表中显示的数据可以是来自一个数组，一个数据库，或者一个文件中的数据。
+</p>
+<hr/>
+<h2>根据数组创建图表</h2>
+<p>
+下面的实例显示了根据数组数据显示图表所需的代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{ <br/>
+var myChart = new Chart(width: 600, height: 400) <br/>
+  
+.AddTitle("Employees") <br/>
+  
+.AddSeries(chartType: "column",<br/>
+      xValue: new[] {  "Peter", "Andrew", "Julie", "Mary", "Dave" }, <br/>
+      yValues: new[] { "2", "6", "4", "5", "3" }) <br/>
+  
+.Write();<br/>
+}</span>
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_005" target="_blank">运行实例 »</a>
+</div>
+<p>- <b>new Chart</b> 创建一个新的图表对象并且设置它的宽度和高度</p>
+<p>- <b>AddTitle</b> 方法指定了图表的标题</p>
+<p>- <b>AddSeries</b> 方法向图表中增加数据</p>
+<p>- <b>chartType</b> 参数定义图表的类型</p>
+<p>- <b>xValue</b> 参数定义 x 轴的名称</p>
+<p>- <b>yValues</b> 参数定义 y 轴的名称</p>
+<p>- <b>Write()</b> 方法显示图表</p>
+<hr/>
+<h2>根据数据库创建图表</h2>
+<p>您可以执行一个数据库查询，然后使用查询结果中的数据来创建一个图表：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{ <br/>
+var db = Database.Open("SmallBakery"); <br/>
+var dbdata = db.Query("SELECT Name, Price FROM Product"); <br/>
+var myChart = new Chart(width: 600, height: 400) <br/>
+   .AddTitle("Product Sales") <br/>
+   .DataBindTable(dataSource: dbdata, xField: "Name")<br/>
+   .Write();<br/>
+}</span>
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_006" target="_blank">运行实例 »</a>
+</div>
+<p>- <b>var db = Database.Open</b> 打开数据库（将数据库对象赋值给变量 db）</p>
+<p>- <b>var dbdata = db.Query</b> 执行数据库查询并保存结果在 dbdata 中</p>
+<p>- <b>new Chart</b> 创建一个新的图表对象并且设置它的宽度和高度</p>
+<p>- <b>AddTitle</b> 方法指定了图表的标题</p>
+<p>- <b>DataBindTable</b> 方法将数据源绑定到图表</p>
+<p>- <b>Write()</b> 方法显示图表</p>
+<p>除了使用 DataBindTable 方法之外，另一种方法是使用 AddSeries（见前面的实例）。DataBindTable 更容易使用，但是 AddSeries 更加灵活，因为您可以更明确地指定图表和数据：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{ <br/>
+var db = Database.Open("SmallBakery"); <br/>
+var dbdata = db.Query("SELECT Name, Price FROM Product"); <br/>
+var myChart = new Chart(width: 600, height: 400) <br/>
+   .AddTitle("Product Sales") <br/>
+   .AddSeries(chartType:"Pie",<br/>
+      xValue: dbdata, xField: "Name",<br/>
+      yValues: dbdata, yFields: "Price")<br/>
+   .Write();<br/>
+}</span>
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_007" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>根据 XML 数据创建图表</h2>
+<font size="3">
+<p>第三种创建图表的方法是使用 XML 文件作为图表的数据：</p>
+</font>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">
+@using System.Data;<br/><br/>
+@{<br/>
+var dataSet = new DataSet();<br/>
+dataSet.ReadXmlSchema(Server.MapPath("data.xsd"));<br/>
+dataSet.ReadXml(Server.MapPath("data.xml"));<br/>
+var dataView = new DataView(dataSet.Tables[0]);<br/>
+var myChart = new Chart(width: 600, height: 400)<br/>
+  
+.AddTitle("Sales Per Employee")<br/>
+  
+.AddSeries("Default", chartType: "Pie",<br/>
+     
+xValue: dataView, xField: "Name",<br/>
+     
+yValues: dataView, yFields: "Sales")<br/>
+  
+.Write();}<br/>
+}</span>
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_008" target="_blank">运行实例 »</a>
+</div>
+<p>
+<br/></p>
+</div>

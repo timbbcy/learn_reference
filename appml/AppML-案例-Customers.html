@@ -1,0 +1,83 @@
+<div class="article-intro" id="content">
+<link href="/try/appml/appml.css" rel="stylesheet" type="text/css"/>
+<h1>
+<span class="color_h1">&lt;AppML&gt; </span>Customers - 完整的应用程序</h1>
+<hr/>
+<div id="Form01"></div>
+<div id="List01"></div>
+<br/><div id="Orders01"></div>
+<table class="appmltable" id="Template01" style="width:100%;display:none">
+<tr>
+<th></th>
+<th>Customer</th>
+<th>City</th>
+<th>Country</th>
+<th>Orders</th>
+</tr>
+<tr id="appml_row">
+<td onclick='customerForm.run("Form01","","#CustomerID#")' style="cursor:pointer">
+<img src="/wp-content/uploads/2013/10/appmlPlus.png"/></td>
+<td>#CustomerName#</td>
+<td>#City#</td>
+<td>#Country#</td>
+<td><a href="" onclick='openOrders("#CustomerID#");return false;'>Orders</a></td>
+</tr>
+</table>
+<table class="appmltable" id="Template02" style="width:100%;display:none">
+<tr>
+<th>Customer</th>
+<th>Date</th>
+<th>Salesperson</th>
+<th>Shipper</th>
+</tr>
+<tr id="appml_row">
+<td>#CustomerName#</td>
+<td>#OrderDate#</td>
+<td>#Salesperson#</td>
+<td>#ShipperName#</td>
+</tr>
+</table>
+<h2>源代码</h2>
+<div class="example">
+<h2 class="example">HTML 源代码</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>&lt;body&gt;<br/><br/>&lt;h1&gt;Customers&lt;/h1&gt;<br/><br/>&lt;div 
+	id="Form01"&gt;&lt;/div&gt;<br/>&lt;div id="List01"&gt;&lt;/div&gt;&lt;br&gt;<br/>&lt;div 
+	id="Orders01"&gt;&lt;/div&gt;<br/><br/>&lt;table id="Template01" class="appmltable" 
+	style="width:100%;display:none"&gt;<br/>&lt;tr&gt;<br/>&lt;th&gt;&lt;/th&gt;<br/>&lt;th&gt;Customer&lt;/th&gt;<br/>
+	&lt;th&gt;City&lt;/th&gt;<br/>&lt;th&gt;Country&lt;/th&gt;<br/>&lt;th&gt;Orders&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr 
+	id="appml_row"&gt;<br/>&lt;td style="cursor:pointer" 
+	onclick='customerForm.run("Form01","","#CustomerID#")'&gt;<br/>&lt;img 
+	src="Images/appmlPlus.png"&gt;&lt;/td&gt;<br/>&lt;td&gt;#CustomerName#&lt;/td&gt;<br/>
+	&lt;td&gt;#City#&lt;/td&gt;<br/>&lt;td&gt;#Country#&lt;/td&gt;<br/>&lt;td&gt;&lt;a href='' 
+	onclick='openOrders(#CustomerID#);return false;'&gt;Orders&lt;/a&gt;&lt;/td&gt;<br/>&lt;/tr&gt;<br/>
+	&lt;/table&gt;<br/><br/>&lt;table id="Template02" class="appmltable" 
+	style="width:100%;display:none"&gt;<br/>&lt;tr&gt;<br/>&lt;th&gt;Customer&lt;/th&gt;<br/>
+	&lt;th&gt;Date&lt;/th&gt;<br/>&lt;th&gt;Salesperson&lt;/th&gt;<br/>&lt;th&gt;Shipper&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr 
+	id="appml_row"&gt;<br/>&lt;td&gt;#CustomerName#&lt;/td&gt;<br/>&lt;td&gt;#OrderDate#&lt;/td&gt;<br/>
+	&lt;td&gt;#Salesperson#&lt;/td&gt;<br/>&lt;td&gt;#ShipperName#&lt;/td&gt;<br/>&lt;/tr&gt;<br/>&lt;/table&gt; <br/><br/>&lt;script src="appml.js"&gt;&lt;/script&gt;<br/><br/>&lt;script&gt;<br/>var customers,customerForm,orders;<br/>customers=new 
+	AppML("appml.php","Models/Customers");<br/>
+	customers.run("List01","Template01");<br/>customerForm=new 
+	AppML("appml.php","Models/Customers");<br/>customerForm.displayType="form";<br/>
+	function openOrders(id)<br/>{<br/>orders=new 
+	AppML("appml.php","Models/Orders");<br/>orders.commands=false;<br/>
+	orders.setQuery("orders.customerid",id);<br/>
+	orders.run("Orders01","Template02");<br/>}<br/>&lt;/script&gt;<br/><br/>&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+</div>
+<script src="/try/appml/appml.js"></script>
+<script>
+var customers,customerForm,orders;
+customers=new AppML("http://test.runoob.com/appml/appml.php","./Models/Customers.xml");
+customers.run("List01","Template01");
+customerForm=new AppML("http://test.runoob.com/appml/appml.php","./Models/Customers.xml");
+customerForm.displayType="form";
+function openOrders(id)
+{
+orders=new AppML("http://test.runoob.com/appml/appml.php","./Models/Orders.xml");
+orders.commands=false;
+orders.setQuery("orders.customerid",id);
+orders.run("Orders01","Template02");
+}
+</script>
+</div>

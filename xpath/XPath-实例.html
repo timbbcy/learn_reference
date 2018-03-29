@@ -1,0 +1,155 @@
+<div class="article-intro" id="content">
+<h1>XPath <span class="color_h1">Examples</span>
+</h1>
+<hr/>
+<p class="intro">在本节，让我们通过实例来学习一些基础的 XPath 语法。</p>
+<hr/>
+<h2>XML实例文档</h2>
+<p>我们将在下面的例子中使用这个 XML 文档：</p>
+<p>"books.xml":</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br/><br/>
+&lt;bookstore&gt;<br/><br/>
+&lt;book category="COOKING"&gt;<br/>
+ 
+&lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;<br/>
+ 
+&lt;author&gt;Giada De Laurentiis&lt;/author&gt;<br/>
+ 
+&lt;year&gt;2005&lt;/year&gt;<br/>
+ 
+&lt;price&gt;30.00&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;book category="CHILDREN"&gt;<br/>
+ 
+&lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+ 
+&lt;author&gt;J K. Rowling&lt;/author&gt;<br/>
+ 
+&lt;year&gt;2005&lt;/year&gt;<br/>
+ 
+&lt;price&gt;29.99&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;book category="WEB"&gt;<br/>
+ 
+&lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;<br/>
+ 
+&lt;author&gt;James McGovern&lt;/author&gt;<br/>
+ 
+&lt;author&gt;Per Bothner&lt;/author&gt;<br/>
+ 
+&lt;author&gt;Kurt Cagle&lt;/author&gt;<br/>
+ 
+&lt;author&gt;James Linn&lt;/author&gt;<br/>
+ 
+&lt;author&gt;Vaidyanathan Nagarajan&lt;/author&gt;<br/>
+ 
+&lt;year&gt;2003&lt;/year&gt;<br/>
+ 
+&lt;price&gt;49.99&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;book category="WEB"&gt;<br/>
+ 
+&lt;title lang="en"&gt;Learning XML&lt;/title&gt;<br/>
+ 
+&lt;author&gt;Erik T. Ray&lt;/author&gt;<br/>
+ 
+&lt;year&gt;2003&lt;/year&gt;<br/>
+ 
+&lt;price&gt;39.95&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;/bookstore&gt;
+</div></div>
+<p><a href="/try/xml/books.xml" target="_blank">在您的浏览器中查看此 "books.xml" 文件</a>。</p>
+<hr/>
+<h2>加载 XML 文档</h2>
+<p>所有现代浏览器都支持使用 XMLHttpRequest 来加载 XML 文档的方法。
+</p>
+<p>针对大多数现代浏览器的代码：</p>
+<div class="code notranslate"><div>
+var xmlhttp=new XMLHttpRequest()</div></div>
+<p>针对古老的微软浏览器（IE 5 和 6）的代码：</p>
+<div class="code notranslate"><div>
+var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")</div></div>
+<br/><hr/>
+<h2>选取节点</h2>
+<p>
+不幸的是，Internet Explorer 和其他处理 XPath 的方式不同。</p>
+<p>在我们的例子中，包含适用于大多数主流浏览器的代码。
+</p>
+<p>Internet Explorer 使用 selectNodes() 方法从 XML 文档中的选取节点：</p>
+<div class="code notranslate"><div>
+
+xmlDoc.selectNodes(<i>xpath</i>);
+</div></div>
+<p>Firefox、Chrome、Opera 以及 Safari 使用 evaluate() 方法从 XML 文档中选取节点：</p>
+<div class="code notranslate"><div>
+
+xmlDoc.evaluate(<i>xpath</i>, xmlDoc, null, XPathResult.ANY_TYPE,null);
+</div></div>
+<br/><hr/>
+<h2>选取所有 title
+</h2>
+<p>下面的例子选取所有 title 节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+/bookstore/book/title
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_xpath_select_cdnodes" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>选取第一个 book 的 title
+</h2>
+<p>下面的例子选取 bookstore 元素下面的第一个 book 节点的 title：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+/bookstore/book[1]/title
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_xpath_select_cdnodes_first" target="_blank">尝试一下 »</a>
+</div>
+<p>这里有一个问题。上面的例子在 IE 和其他浏览器中输出不同的结果。</p>
+<p>IE5 以及更高版本将 [0] 视为第一个节点，而根据 W3C 的标准，应该是 [1]。</p>
+<h3>一种解决方法！</h3>
+<p>为了解决 IE5+ 中 [0] 和 [1] 的问题，可以为 XPath 设置语言选择（SelectionLanguage）。</p>
+<p>下面的例子选取 bookstore 元素下面的第一个 book 节点的 title：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<i>xml</i>.setProperty("SelectionLanguage","XPath");<br/><i>xml</i>.selectNodes("/bookstore/book[1]/title");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_xpath_select_cdnodes_firstIE6SP1" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>选取所有价格</h2>
+<p>下面的例子选取 price 节点中的所有文本：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+/bookstore/book/price/text()
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_xpath_select_pricenodes_text" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>选取价格高于 35 的 price 节点</h2>
+<p>下面的例子选取价格高于 35 的所有 price 节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+/bookstore/book[price&gt;35]/price
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_xpath_select_pricenodes_35" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>选取价格高于 35 的 title 节点</h2>
+<p>下面的例子选取价格高于 35 的所有 title 节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+/bookstore/book[price&gt;35]/title
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_xpath_select_pricenodes_high" target="_blank">尝试一下 »</a>
+</div>
+</div>

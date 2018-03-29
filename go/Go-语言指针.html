@@ -1,0 +1,115 @@
+<div class="article-intro" id="content">
+<h1>Go 语言指针</h1>
+<p>Go 语言中指针是很容易学习的，Go 语言中使用指针可以更简单的执行一些任务。</p>
+<p>接下来让我们来一步步学习 Go 语言指针。</p>
+<p>我们都知道，变量是一种使用方便的占位符，用于引用计算机内存地址。</p>
+<p>Go 语言的取地址符是 &amp;，放到一个变量前使用就会返回相应变量的内存地址。</p>
+<p>以下实例演示了变量在内存中地址：</p>
+<pre>package main
+
+import "fmt"
+
+func main() {
+   var a int = 10   
+
+   fmt.Printf("变量的地址: %x\n", &amp;a  )
+}
+</pre>
+<p>执行以上代码输出结果为：</p>
+<pre>变量的地址: 20818a220
+</pre>
+<p>现在我们已经了解了什么是内存地址和如何去访问它。接下来我们将具体介绍指针。</p>
+<hr/>
+<h2>什么是指针</h2>
+<p>一个指针变量指向了一个值的内存地址。</p>
+<p>类似于变量和常量，在使用指针前你需要声明指针。指针声明格式如下：</p>
+<pre>var var_name *var-type
+</pre>
+<p>var-type 为指针类型，var_name 为指针变量名，* 号用于指定变量是作为一个指针。以下是有效的指针声明：</p>
+<pre>var ip *int        /* 指向整型*/
+var fp *float32    /* 指向浮点型 */
+</pre>
+<p>本例中这是一个指向 int 和 float32 的指针。</p>
+<hr/>
+<h2>如何使用指针</h2>
+<p>指针使用流程：</p>
+<ul>
+<li>定义指针变量。</li>
+<li>为指针变量赋值。</li>
+<li>访问指针变量中指向地址的值。</li>
+</ul>
+<p>在指针类型前面加上 * 号（前缀）来获取指针所指向的内容。</p>
+<pre>package main
+
+import "fmt"
+
+func main() {
+   var a int= 20   /* 声明实际变量 */
+   var ip *int        /* 声明指针变量 */
+
+   ip = &amp;a  /* 指针变量的存储地址 */
+
+   fmt.Printf("a 变量的地址是: %x\n", &amp;a  )
+
+   /* 指针变量的存储地址 */
+   fmt.Printf("ip 变量储存的指针地址: %x\n", ip )
+
+   /* 使用指针访问值 */
+   fmt.Printf("*ip 变量的值: %d\n", *ip )
+}
+</pre>
+<p>以上实例执行输出结果为：</p>
+<pre>a 变量的地址是: 20818a220
+ip 变量储存的指针地址: 20818a220
+*ip 变量的值: 20
+</pre>
+<hr/>
+<h2>Go 空指针</h2>
+<p>当一个指针被定义后没有分配到任何变量时，它的值为 nil。</p>
+<p>nil 指针也称为空指针。</p>
+<p>nil在概念上和其它语言的null、None、nil、NULL一样，都指代零值或空值。</p>
+<p>一个指针变量通常缩写为 ptr。</p>
+<p>查看以下实例：</p>
+<pre>package main
+
+import "fmt"
+
+func main() {
+   var  ptr *int
+
+   fmt.Printf("ptr 的值为 : %x\n", ptr  )
+}
+</pre>
+<p>以上实例输出结果为：</p>
+<pre>ptr 的值为 : 0
+</pre>
+<p>空指针判断：</p>
+<pre>if(ptr != nil)     /* ptr 不是空指针 */
+if(ptr == nil)    /* ptr 是空指针 */
+</pre>
+<hr/>
+<h2>Go指针更多内容</h2>
+<p>接下来我们将为大家介绍Go语言中更多的指针应用：</p>
+<table class="reference">
+<thead>
+<tr>
+<th>内容 </th>
+<th> 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="go-array-of-pointers.html">Go 指针数组</a> </td>
+<td> 你可以定义一个指针数组来存储地址</td>
+</tr>
+<tr>
+<td><a href="go-pointer-to-pointer.html">Go 指向指针的指针</a></td>
+<td> Go 支持指向指针的指针</td>
+</tr>
+<tr>
+<td><a href="go-passing-pointers-to-functions.html">Go 向函数传递指针参数</a> </td>
+<td>通过引用或地址传参，在函数调用时可以改变其值</td>
+</tr>
+</tbody>
+</table>
+</div>

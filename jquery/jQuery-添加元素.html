@@ -1,0 +1,85 @@
+<div class="article-intro" id="content">
+<h1>jQuery - <span class="color_h1">添加元素</span>
+</h1>
+<hr/>
+<p class="intro">通过 jQuery，可以很容易地添加新元素/内容。</p>
+<hr/>
+<h2>添加新的 HTML 内容</h2>
+<p>我们将学习用于添加新内容的四个 jQuery 方法：</p>
+<ul>
+<li>append() - 在被选元素的结尾插入内容</li>
+<li>prepend() - 在被选元素的开头插入内容</li>
+<li>after() - 在被选元素之后插入内容</li>
+<li>before() - 在被选元素之前插入内容</li>
+</ul>
+<hr/>
+<h2>jQuery append() 方法</h2>
+<p>jQuery append() 方法在被选元素的结尾插入内容（仍然该元素的内部）。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">append</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">追加文本</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_html_append" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery prepend() 方法</h2>
+<p>jQuery prepend() 方法在被选元素的开头插入内容。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">prepend</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在开头追加文本</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_html_prepend" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>通过 append() 和 prepend() 方法添加若干新元素</h2>
+<p>在上面的例子中，我们只在被选元素的开头/结尾插入文本/HTML。</p>
+<p>不过，append() 和 prepend() 方法能够通过参数接收无限数量的新元素。可以通过 jQuery 来生成文本/HTML（就像上面的例子那样），或者通过 JavaScript 代码和 DOM 元素。</p>
+<p>在下面的例子中，我们创建若干个新元素。这些元素可以通过 text/HTML、jQuery 或者 JavaScript/DOM 来创建。然后我们通过 append() 方法把这些新元素追加到文本中（对 prepend() 同样有效）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">appendText</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt1</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;文本。&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;              </span><span class="hl-comment">//</span><span class="hl-comment"> 使用 HTML 标签创建文本</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt2</span><span class="hl-code">=$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">text</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">文本。</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> 使用 jQuery 创建文本</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt3</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">txt3</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">文本。</span><span class="hl-quotes">"</span><span class="hl-code">;               </span><span class="hl-comment">//</span><span class="hl-comment"> 使用 DOM 创建文本 text with DOM</span><span class="hl-comment"></span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">body</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">append</span><span class="hl-brackets">(</span><span class="hl-identifier">txt1</span><span class="hl-code">,</span><span class="hl-identifier">txt2</span><span class="hl-code">,</span><span class="hl-identifier">txt3</span><span class="hl-brackets">)</span><span class="hl-code">;        </span><span class="hl-comment">//</span><span class="hl-comment"> 追加新元素</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_html_append2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery after() 和 before() 方法</h2>
+<p>jQuery after() 方法在被选元素之后插入内容。</p>
+<p>jQuery before() 方法在被选元素之前插入内容。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">after</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在后面添加文本</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">before</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在前面添加文本</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_html_after" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>通过 after() 和 before() 方法添加若干新元素</h2>
+<p>after() 和 before() 方法能够通过参数接收无限数量的新元素。可以通过 text/HTML、jQuery 或者 JavaScript/DOM 来创建新元素。</p>
+<p>在下面的例子中，我们创建若干新元素。这些元素可以通过 text/HTML、jQuery 或者 JavaScript/DOM 来创建。然后我们通过 after() 方法把这些新元素插到文本中（对 before() 同样有效）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">afterText</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt1</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">&lt;b&gt;I &lt;/b&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;                    </span><span class="hl-comment">//</span><span class="hl-comment"> 使用 HTML 创建元素</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt2</span><span class="hl-code">=$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">&lt;i&gt;&lt;/i&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">text</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">love </span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;     </span><span class="hl-comment">//</span><span class="hl-comment"> 使用 jQuery 创建元素</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt3</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">big</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> 使用 DOM 创建元素</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">txt3</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">jQuery!</span><span class="hl-quotes">"</span><span class="hl-code">;
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">img</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">after</span><span class="hl-brackets">(</span><span class="hl-identifier">txt1</span><span class="hl-code">,</span><span class="hl-identifier">txt2</span><span class="hl-code">,</span><span class="hl-identifier">txt3</span><span class="hl-brackets">)</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> 在图片后添加文本</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_html_after2" target="_blank">尝试一下 »</a>
+</div>
+</div>

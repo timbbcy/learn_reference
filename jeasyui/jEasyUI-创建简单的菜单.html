@@ -1,0 +1,35 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 菜单与按钮 - <span class="color_h1">创建简单的菜单</span></h1>
+<img src="/wp-content/uploads/2013/12/menu.png"/>
+<p>菜单（Menu）定义在一些 DIV 标记中，如下所示：</p>
+<pre style="color:#006600">
+    &lt;div id="mm" class="easyui-menu" style="width:120px;"&gt;
+        &lt;div onclick="javascript:alert('new')"&gt;New&lt;/div&gt;
+        &lt;div&gt;
+            &lt;span&gt;Open&lt;/span&gt;
+            &lt;div style="width:150px;"&gt;
+                &lt;div&gt;&lt;b&gt;Word&lt;/b&gt;&lt;/div&gt;
+                &lt;div&gt;Excel&lt;/div&gt;
+                &lt;div&gt;PowerPoint&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div icon="icon-save"&gt;Save&lt;/div&gt;
+        &lt;div class="menu-sep"&gt;&lt;/div&gt;
+        &lt;div&gt;Exit&lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<p>当菜单创建之后是不显示的，调用 'show' 方法显示它或者调用 'hide' 方法隐藏它：</p>
+<pre style="color:#006600">
+    $('#mm').menu('show', {
+      left: 200,
+      top: 100
+    });
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-mb-menu.zip">jeasyui-mb-menu.zip</a></p>
+</div>

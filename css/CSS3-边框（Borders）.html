@@ -1,0 +1,97 @@
+<div class="article-intro" id="content">
+<h1>CSS3 <span class="color_h1">边框</span>
+</h1>
+<div>
+<h2>CSS3 边框</h2>
+<p>用 CSS3，你可以创建圆角边框，添加阴影框，并作为边界的形象而不使用设计程序，如 Photoshop。</p>
+<p>在本章中，您将了解以下的边框属性：</p>
+<ul>
+<li>border-radius</li>
+<li>box-shadow</li>
+<li>border-image</li>
+</ul>
+</div>
+<hr/>
+<h2>CSS3 圆角</h2>
+<p>在 CSS2 中添加圆角棘手。我们不得不在每个角落使用不同的图像。</p>
+<p>在 CSS3 中，很容易创建圆角。</p>
+<p>在 CSS3 中 border-radius 属性被用于创建圆角：</p>
+<div id="rounded_borders">这是圆角边框！</div>
+<br/><div class="example">
+<h2 class="example">实例</h2>
+<p>在div中添加圆角元素：</p>
+<div class="example_code">
+  
+    div<br/>
+	{<br/>
+	border:2px solid;<br/>
+	border-radius:25px;<br/>
+	}
+ 
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_border-radius" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3 盒阴影</h2>
+<p>CSS3 中的 box-shadow 属性被用来添加阴影:</p>
+<div id="boxshadow"></div>
+<br/><div class="example">
+<h2 class="example">实例</h2>
+<p>在div中添加box-shadow属性</p>
+<div class="example_code">
+  
+    div<br/>
+	{<br/>
+	box-shadow: 10px 10px 5px #888888;<br/>
+	}
+  
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_box-shadow" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3 边界图片</h2>
+<p>有了 CSS3 的 border-image 属性，你可以使用图像创建一个边框：
+</p>
+<div id="border_image">border-image 属性允许你指定一个图片作为边框！
+用于创建上文边框的原始图像：</div>
+<p>在 div 中使用图片创建边框:</p>
+<img alt="Border" height="81" src="/images/border.png" width="81"/><br/><br/><div class="example">
+<h2 class="example">实例</h2>
+<p>在 div 中使用图片创建边框</p>
+<div class="example_code">
+  
+    div<br/>
+	{<br/>
+	border-image:url(border.png) 30 30 round;<br/>
+	-webkit-border-image:url(border.png) 30 30 round; /* Safari 5 and older */<br/>
+	-o-border-image:url(border.png) 30 30 round; /* Opera */<br/>
+	}
+  
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_border-image" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>新边框属性</h2>
+<table class="reference">
+<tbody><tr>
+<th align="left" width="30%">属性</th>
+<th align="left" width="65%">说明</th>
+<th align="left" width="5%">CSS</th>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-border-image.html">border-image</a></td>
+<td>设置所有边框图像的速记属性。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-border-radius.html">border-radius</a></td>
+<td>一个用于设置所有四个边框- *-半径属性的速记属性</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-box-shadow.html">box-shadow</a></td>
+<td>附加一个或多个下拉框的阴影</td>
+<td>3</td>
+</tr>
+</tbody></table>
+</div>

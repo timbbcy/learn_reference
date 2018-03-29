@@ -1,0 +1,70 @@
+<div class="article-intro" id="content">
+<h1>Lua 元表(Metatable)</h1>
+<p>
+在 Lua table 中我们可以访问对应的key来得到value值，但是却无法对两个 table 进行操作。</p>
+<p>因此 Lua 提供了元表(Metatable)，允许我们改变table的行为，每个行为关联了对应的元方法。</p>
+<p>例如，使用元表我们可以定义Lua如何计算两个table的相加操作a+b。</p>
+<p>当Lua试图对两个表进行相加时，先检查两者之一是否有元表，之后检查是否有一个叫"__add"的字段，若找到，则调用对应的值。"__add"等即时字段，其对应的值（往往是一个函数或是table）就是"元方法"。</p>
+<p>有两个很重要的函数来处理元表：</p>
+<ul class="list">
+<li><b>setmetatable(table,metatable):</b> 对指定table设置元表(metatable)，如果元表(metatable)中存在__metatable键值，setmetatable会失败 。</li>
+<li><b>getmetatable(table):</b> 返回对象的元表(metatable)。</li>
+</ul>
+<p>以下实例演示了如何对指定的表设置元表：</p>
+<pre>
+mytable = {}                          -- 普通表 
+mymetatable = {}                      -- 元表
+setmetatable(mytable,mymetatable)     -- 把 mymetatable 设为 mytable 的元表 
+
+</pre>
+<p>以上代码也可以直接写成一行：</p>
+<pre>
+mytable = setmetatable({},{})
+</pre>
+<p>以下为返回对象元表：</p>
+<pre>
+getmetatable(mytable)                 -- 这回返回mymetatable
+</pre>
+<hr/>
+<h2>__index 元方法</h2>
+<p>这是 metatable 最常用的键。
+</p><p>
+当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的__index 键。如果__index包含一个表格，Lua会在表格中查找相应的键。
+</p>
+<p>我们可以在使用 lua 命令进入交互模式查看：</p>
+<pre>
+$ lua
+Lua 5.3.0  Copyright (C) 1994-2015 Lua.org, PUC-Rio
+&gt; other = { foo = 3 } 
+&gt; t = setmetatable({}, { __index = other }) 
+&gt; t.foo
+3
+&gt; t.bar
+nil
+</pre>
+<p>如果__index包含一个函数的话，Lua就会调用那个函数，table和键会作为参数传递给函数。</p>
+<p>__index 元方法查看表中元素是否存在，如果不存在，返回结果为 nil；如果存在则由 __index 返回结果。</p>
+<pre>
+mytable = setmetatable({key1 = "value1"}, {
+  __index = function(mytable, key)
+    if key == "key2" then
+      return "metatablevalue"
+    else
+      return nil
+    end
+  end
+})
+
+print(mytable.key1,mytable.key2)
+</pre>
+<p>实例输出结果为：</p>
+<pre>
+value1    metatablevalue
+</pre>
+<p>实例解析：</p>
+<ul class="list">
+<li><p>mytable 表赋值为 <b>{key1 = "value1"}</b>。</p></li>
+<li><p>mytable 设置了元表，元方法为 __index。</p></li>
+<li><p>在mytable表中查找 key1，如果找到，返回该元素，找不到则继续。</p></li>
+<li><p>在mytable表中查找 key2，如果找到，返回 metatablevalue，找不到则继续。</p></li>
+<li><p>判断元表有没有__index方法，如果__index方法是一个函数，则调用该函数。</p></li><li><p>元方法中查看是否传入 "key2" 键的参数（mytable.key2已设置），如果传入 "key2" 参数返回 "metatablevalue"，否则返回 mytable 对应的键值。</p></li></ul></div>

@@ -1,0 +1,71 @@
+<div class="article-intro" id="content">
+<h1>JSON <span class="color_h1">- 简介</span>
+</h1>
+<hr/>
+<h2>在线实例</h2>
+<p>通过我们的编辑器，您可以在线编辑 JavaScript 代码，然后通过点击一个按钮来查看结果：</p>
+<div class="example">
+<h2 class="example_head">JSON 实例</h2>
+<div class="example_code notranslate">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程(runoob.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">JavaScript 创建 JSON 对象</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+网站名称: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">jname</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code"> 
+网站地址: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">jurl</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code"> 
+网站 slogan: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">jslogan</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div> <div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">JSONObject</span><span class="hl-code">= </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">url</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">, 
+    </span><span class="hl-quotes">"</span><span class="hl-string">slogan</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">学的不仅是技术，更是梦想！</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">jname</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">JSONObject</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">jurl</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">JSONObject</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">jslogan</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">JSONObject</span><span class="hl-code">.</span><span class="hl-identifier">slogan</span></div> <div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_create" target="_blank">尝试一下 »</a>
+<br/>
+点击 "尝试一下" 按钮查看在线实例。
+</div>
+<br/><hr/>
+<h2>与 XML 相同之处</h2>
+<ul>
+<li>JSON 是纯文本</li>
+<li>JSON 具有"自我描述性"（人类可读）</li>
+<li>JSON 具有层级结构（值中存在值）</li>
+<li>JSON 可通过 JavaScript 进行解析</li>
+<li>JSON 数据可使用 AJAX 进行传输</li>
+</ul>
+<hr/>
+<h2>与 XML 不同之处</h2>
+<ul>
+<li>没有结束标签</li>
+<li>更短</li>
+<li>读写的速度更快</li>
+<li>能够使用内建的 JavaScript eval() 方法进行解析</li>
+<li>使用数组</li>
+<li>不使用保留字</li>
+</ul>
+<hr/>
+<h2>为什么使用 JSON？</h2>
+<p>对于 AJAX 应用程序来说，JSON 比 XML 更快更易使用：</p>
+<h4>使用 XML</h4>
+<ul>
+<li>读取 XML 文档</li>
+<li>使用 XML DOM 来循环遍历文档</li>
+<li>读取值并存储在变量中</li>
+</ul>
+<h4>使用 JSON</h4>
+<ul>
+<li>读取 JSON 字符串</li>
+<li>用 eval() 处理 JSON 字符串</li>
+</ul>
+</div>

@@ -1,0 +1,45 @@
+<div class="article-intro" id="content">
+<h1>XSLT <span class="color_h1">&lt;xsl:apply-templates&gt;</span> 元素</h1>
+<hr/>
+<p class="intro">&lt;xsl:apply-templates&gt; 元素可把一个模板应用于当前的元素或者当前元素的子节点。</p>
+<hr/>
+<h2>&lt;xsl:apply-templates&gt; 元素</h2>
+<p>&lt;xsl:apply-templates&gt; 元素可把一个模板应用于当前的元素或者当前元素的子节点。</p>
+<p>假如我们向 &lt;xsl:apply-templates&gt; 元素添加一个 select 属性，此元素就会仅仅处理与属性值匹配的子元素。我们可以使用 select 属性来规定子节点被处理的顺序。</p>
+<p>请看下面的 XSL 样式表：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;?</span><span class="hl-reserved">xml</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">encoding</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-brackets">?&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:stylesheet</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">xmlns:xsl</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.w3.org/1999/XSL/Transform</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:template</span><span class="hl-code"> </span><span class="hl-var">match</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">My CD Collection</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:apply-templates</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:template</span><span class="hl-code"> </span><span class="hl-var">match</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cd</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:apply-templates</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:apply-templates</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">artist</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:template</span><span class="hl-code"> </span><span class="hl-var">match</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+  Title: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">color:#ff0000</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:value-of</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">.</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:template</span><span class="hl-code"> </span><span class="hl-var">match</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">artist</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+  Artist: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">color:#00ff00</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:value-of</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">.</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:stylesheet</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/tryxslt.php?xmlfile=cdcatalog&amp;xsltfile=cdcatalog_apply" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+</div>

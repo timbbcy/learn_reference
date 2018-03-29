@@ -1,0 +1,70 @@
+<div class="article-intro" id="content">
+<h1>Java 接口</h1>
+<p>接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法。</p>
+<p>接口并不是类，编写接口的方式和类很相似，但是它们属于不同的概念。类描述对象的属性和方法。接口则包含类要实现的方法。</p>
+<p>除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。</p>
+<p>接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则就必须声明为抽象类。另外，在 Java 中，接口类型可用来声明一个变量，他们可以成为一个空指针，或是被绑定在一个以此接口实现的对象。</p>
+<h3>接口与类相似点：</h3>
+<ul>
+<li>
+		一个接口可以有多个方法。</li>
+<li>
+		接口文件保存在 .java 结尾的文件中，文件名使用接口名。</li>
+<li>
+		接口的字节码文件保存在 .class 结尾的文件中。</li>
+<li>
+		接口相应的字节码文件必须在与包名称相匹配的目录结构中。</li>
+</ul><h3>
+接口与类的区别：</h3>
+<ul>
+<li>
+		接口不能用于实例化对象。</li>
+<li>
+		接口没有构造方法。</li>
+<li>
+		接口中所有的方法必须是抽象方法。</li>
+<li>
+		接口不能包含成员变量，除了 static 和 final 变量。</li>
+<li>
+		接口不是被类继承了，而是要被类实现。</li>
+<li>
+		接口支持多继承。</li>
+</ul>
+<h3>接口特性</h3>
+<ul>
+<li>接口中每一个方法也是隐式抽象的,接口中的方法会被隐式的指定为 <strong>public abstract</strong>（只能是  public abstract，其他修饰符都会报错）。</li>
+<li>接口中可以含有变量，但是接口中的变量会被隐式的指定为 <strong>public static final</strong> 变量（并且只能是 public，用 private 修饰会报编译错误）。</li>
+<li>接口中的方法是不能在接口中实现的，只能由实现接口的类来实现接口中的方法。</li>
+</ul>
+<h3>抽象类和接口的区别</h3>
+<ul><li>
+1. 抽象类中的方法可以有方法体，就是能实现方法的具体功能，但是接口中的方法不行。</li><li>
+2. 抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是 <strong>public static final</strong> 类型的。</li><li>
+3. 接口中不能含有静态代码块以及静态方法(用 static 修饰的方法)，而抽象类是可以有静态代码块和静态方法。</li><li>
+4. 一个类只能继承一个抽象类，而一个类却可以实现多个接口。</li>
+</ul>
+<hr/><h2>接口的声明</h2>
+<p>接口的声明语法格式如下：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-code">可见度</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-reserved">interface</span><span class="hl-code"> 接口名称 </span><span class="hl-brackets">[</span><span class="hl-reserved">extends</span><span class="hl-code"> 其他的类名</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 声明变量</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 抽象方法</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>Interface关键字用来声明一个接口。下面是接口声明的一个简单例子。</p>
+<div class="example">
+<h2 class="example">NameOfInterface.java 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">/*</span><span class="hl-comment"> 文件名 : NameOfInterface.java </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">java</span><span class="hl-code">.</span><span class="hl-identifier">lang</span><span class="hl-code">.*;
+</span><span class="hl-comment">//</span><span class="hl-comment">引入包</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">interface</span><span class="hl-code"> </span><span class="hl-identifier">NameOfInterface</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">任何类型 final, static 字段</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment">抽象方法</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+</div>

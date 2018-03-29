@@ -1,0 +1,43 @@
+<div class="article-intro" id="content">
+<h1>Foundation 侧边栏</h1>
+<hr/>
+<h2>侧边栏导航</h2>
+<p>Foundation 使用 <code>&lt;ul class="side-nav"&gt;</code> 创建侧边栏:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"side-nav"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 4<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_sidenav" target="_blank">尝试一下 »</a>
+</div>
+<h3>激活链接与分割线</h3>
+<p>已点击的链接可以在 <code>&lt;li&gt;</code> 上使用 <code>.active</code> 类来标识，使用 <code>.divider</code> 类添加水平分割线： </p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"side-nav"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"active"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">class=</span><span class="highVAL">"a"</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 
+	1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">class=</span><span class="highVAL">"a"</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"divider"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">class=</span><span class="highVAL">"a"</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">class=</span><span class="highVAL">"a"</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 4<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_sidenav_active" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>网格中的侧边栏</h2>
+<p>我们可以使用网格设计模式来设置侧边导航栏，实例如下：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-4 columns"</span>
+<span class="highATT">style=</span><span class="highVAL">"background-color:#f1f1f1;"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"side-nav"</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"active"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Home<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Learn HTML<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>      ...<br/>    
+	<span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-8 columns"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>Side Nav<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text..<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>    
+	...<br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_sidenav_grid" target="_blank">尝试一下 »</a>
+</div>
+</div>

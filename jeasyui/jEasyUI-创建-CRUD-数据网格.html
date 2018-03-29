@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 应用 - <span class="color_h1">创建 CRUD 数据网格（DataGrid）</span></h1>
+<p>
+在上一章节中，我们使用对话框（dialog）组件创建了 CRUD 应用来创建和编辑用户信息。本教程我们将告诉您如何创建一个 CRUD 数据网格（DataGrid）。
+我们将使用 <a href="/jeasyui/ext-edatagrid.html">可编辑的数据网格（DataGrid）插件</a> 来完成这些 CRUD 操作动作。
+</p>
+<img src="/wp-content/uploads/2013/12/crud2.png"/>
+<h4>步骤 1：在 HTML 标签中定义数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+&lt;table id="dg" title="My Users" style="width:550px;height:250px"
+        toolbar="#toolbar" idField="id"
+        rownumbers="true" fitColumns="true" singleSelect="true"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th field="firstname" width="50" editor="{type:'validatebox',options:{required:true}}"&gt;First Name&lt;/th&gt;
+            &lt;th field="lastname" width="50" editor="{type:'validatebox',options:{required:true}}"&gt;Last Name&lt;/th&gt;
+            &lt;th field="phone" width="50" editor="text"&gt;Phone&lt;/th&gt;
+            &lt;th field="email" width="50" editor="{type:'validatebox',options:{validType:'email'}}"&gt;Email&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+&lt;/table&gt;
+&lt;div id="toolbar"&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')"&gt;New&lt;/a&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')"&gt;Destroy&lt;/a&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')"&gt;Save&lt;/a&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')"&gt;Cancel&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<h4>步骤 2：使用可编辑的数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+$('#dg').edatagrid({
+    url: 'get_users.php',
+    saveUrl: 'save_user.php',
+    updateUrl: 'update_user.php',
+    destroyUrl: 'destroy_user.php'
+});
+</pre>
+<p>
+我们应该提供 'url'、'saveUrl'、'updateUrl' 和 'destroyUrl' 属性来编辑数据网格（DataGrid）：
+</p>
+<ul>
+<li>url：从服务器端检索用户数据。</li>
+<li>saveUrl：保存一个新的用户数据。</li>
+<li>updateUrl：更新一个已存在的用户数据。</li>
+<li>destroyUrl：删除一个已存在的用户数据。</li>
+</ul>
+<h4>步骤 3：写服务器处理代码</h4>
+<p>保存一个新的用户（save_user.php）：</p>
+<pre style="color:#006600">
+$firstname = $_REQUEST['firstname'];
+$lastname = $_REQUEST['lastname'];
+$phone = $_REQUEST['phone'];
+$email = $_REQUEST['email'];
+
+include 'conn.php';
+
+$sql = "insert into users(firstname,lastname,phone,email) values('$firstname','$lastname','$phone','$email')";
+@mysql_query($sql);
+echo json_encode(array(
+    'id' =&gt; mysql_insert_id(),
+    'firstname' =&gt; $firstname,
+    'lastname' =&gt; $lastname,
+    'phone' =&gt; $phone,
+    'email' =&gt; $email
+));
+</pre>
+<p>更新一个已存在用户（update_user.php）：</p>
+<pre style="color:#006600">
+$id = intval($_REQUEST['id']);
+$firstname = $_REQUEST['firstname'];
+$lastname = $_REQUEST['lastname'];
+$phone = $_REQUEST['phone'];
+$email = $_REQUEST['email'];
+
+include 'conn.php';
+
+$sql="update users set firstname='$firstname',lastname='$lastname',phone='$phone',email='$email' where id=$id";
+@mysql_query($sql);
+echo json_encode(array(
+    'id' =&gt; $id,
+    'firstname' =&gt; $firstname,
+    'lastname' =&gt; $lastname,
+    'phone' =&gt; $phone,
+    'email' =&gt; $email
+));
+</pre>
+<p>删除一个已存在用户（destroy_user.php）：</p>
+<pre style="color:#006600">
+$id = intval($_REQUEST['id']);
+
+include 'conn.php';
+
+$sql = "delete from users where id=$id";
+@mysql_query($sql);
+echo json_encode(array('success'=&gt;true));
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-app-crud2.zip">jeasyui-app-crud2.zip</a></p>
+</div>

@@ -1,0 +1,110 @@
+<div class="article-intro" id="content">
+<h1>XQuery <span class="color_h1">实例</span>
+</h1>
+<hr/>
+<p class="intro">在本节，让我们通过研究一个例子来学习一些基础的 XQuery 语法。</p>
+<hr/>
+<h2>XML 实例文档</h2>
+<p>我们将在下面的例子中使用这个 XML 文档。</p>
+<p>"books.xml":</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;bookstore&gt;<br/><br/>
+&lt;book category="COOKING"&gt;<br/>
+   
+  &lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;<br/>
+   
+  &lt;author&gt;Giada De Laurentiis&lt;/author&gt;<br/>
+   
+  &lt;year&gt;2005&lt;/year&gt;<br/>
+   
+  &lt;price&gt;30.00&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;book category="CHILDREN"&gt;<br/>
+   
+  &lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+   
+  &lt;author&gt;J K. Rowling&lt;/author&gt;<br/>
+   
+  &lt;year&gt;2005&lt;/year&gt;<br/>
+   
+  &lt;price&gt;29.99&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;book category="WEB"&gt;<br/>
+   
+  &lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;<br/>
+   
+  &lt;author&gt;James McGovern&lt;/author&gt;<br/>
+   
+  &lt;author&gt;Per Bothner&lt;/author&gt;<br/>
+   
+  &lt;author&gt;Kurt Cagle&lt;/author&gt;<br/>
+   
+  &lt;author&gt;James Linn&lt;/author&gt;<br/>
+   
+  &lt;author&gt;Vaidyanathan Nagarajan&lt;/author&gt;<br/>
+   
+  &lt;year&gt;2003&lt;/year&gt;<br/>
+   
+  &lt;price&gt;49.99&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;book category="WEB"&gt;<br/>
+   
+  &lt;title lang="en"&gt;Learning XML&lt;/title&gt;<br/>
+   
+  &lt;author&gt;Erik T. Ray&lt;/author&gt;<br/>
+   
+  &lt;year&gt;2003&lt;/year&gt;<br/>
+   
+  &lt;price&gt;39.95&lt;/price&gt;<br/>
+&lt;/book&gt;<br/><br/>
+&lt;/bookstore&gt;
+</div></div>
+<p><a href="/try/xml/books.xml" target="_blank">在您的浏览器中查看 "books.xml" 文件</a>。</p>
+<hr/>
+<h2>如何从 "books.xml" 选取节点？</h2>
+<h3>函数
+
+</h3>
+<p>XQuery 使用函数来提取 XML 文档中的数据。</p>
+<p>doc() 用于打开 "books.xml" 文件：</p>
+<div class="code notranslate"><div>
+doc("books.xml")
+</div></div>
+<h3>路径表达式</h3>
+<p>XQuery 使用路径表达式在 XML 文档中通过元素进行导航。</p>
+<p>下面的路径表达式用于在 "books.xml" 文件中选取所有的 title 元素：</p>
+<div class="code notranslate"><div>
+doc("books.xml")<span class="marked">/bookstore/book/title</span>
+</div></div>
+<p>(/bookstore 选取 bookstore 元素，/book 选取 bookstore 元素下的所有 book 元素，而 /title 选取每个 book 元素下的所有 title 元素)</p>
+<p>上面的 XQuery 可提取以下数据：</p>
+<div class="code notranslate"><div>
+
+&lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Learning XML&lt;/title&gt;
+</div></div>
+<h3>谓语</h3>
+<p>XQuery 使用谓语来限定从 XML 文档所提取的数据。</p>
+<p>下面的谓语用于选取 bookstore 元素下的所有 book 元素，并且所选取的 book 元素下的 price 元素的值必须小于 30：</p>
+<div class="code notranslate"><div>
+doc("books.xml")/bookstore/book<span class="marked">[price&lt;30]</span>
+</div></div>
+<p>上面的 XQuery 可提取到下面的数据：</p>
+<div class="code notranslate"><div>
+
+&lt;book category="CHILDREN"&gt;<br/>
+   
+  &lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+   
+  &lt;author&gt;J K. Rowling&lt;/author&gt;<br/>
+   
+  &lt;year&gt;2005&lt;/year&gt;<br/>
+   
+  &lt;price&gt;29.99&lt;/price&gt;<br/>
+&lt;/book&gt;
+</div></div>
+</div>

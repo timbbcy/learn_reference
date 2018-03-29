@@ -1,0 +1,22 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>学完上一节，相信你已经知道如何去使用系统提供的ContentProvider或者自定义ContentProvider了，
+已经基本满足日常开发的需求了，有趣的是，我在官方文档上看到了另外这几个Provider：</p>
+<p><img alt="此处输入图片的描述" src="http://www.runoob.com/wp-content/uploads/2015/08/1767920.jpg"/></p>
+<p><strong>Calendar Provider</strong>：日历提供者，就是针对针对日历相关事件的一个资源库，通过他提供的API，我们
+可以对日历，时间，会议，提醒等内容做一些增删改查！<br/>
+<strong>Contacts Provider</strong>：联系人提供者，这个就不用说了，这个用得最多~后面有时间再回头翻译下这篇文章吧！<br/>
+<strong>Storage Access Framework(SAF)</strong>：存储访问框架，4.4以后引入的一个新玩意，为用户浏览手机中的
+存储内容提供了便利，可供访问的内容不仅包括：文档，图片，视频，音频，下载，而且包含所有由
+由特定ContentProvider（须具有约定的API）提供的内容。不管这些内容来自于哪里，不管是哪个应
+用调用浏览系统文件内容的命令，系统都会用一个统一的界面让你去浏览。<br/>
+其实就是一个内置的应用程序，叫做DocumentsUI，因为它的IntentFilter不带有LAUNCHER，所以我们并没有
+在桌面上找到这个东东！嘿嘿，试下下面的代码，这里我们选了两个手机来对比：
+分别是4.2的Lenovo S898T 和 5.0.1的Nexus 5做对比，执行下述代码：</p></blockquote>
+<pre>
+ Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        startActivity(intent);
+</pre>
+下面是运行结果：</div>

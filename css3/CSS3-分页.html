@@ -1,0 +1,272 @@
+<div class="article-intro" id="content">
+<h1>CSS 分页实例</h1>
+<style>
+.article-body ul li { background-image:none}
+.pagination,.pagination2,.pagination3 {
+  display: inline-block;
+  padding: 0;
+  margin: 8px 0;
+}
+.pagination li,.pagination2 li,.pagination3 li {display: inline;}
+.pagination li a, .pagination2 li a,.pagination3 li a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.border li a {
+  transition: background-color .3s;
+  border:1px solid #ddd;
+}
+.size li a {font-size:22px;}
+.btnround li a {border-radius: 5px;}
+.hover li a {transition: background-color .3s;}
+.margin li a {margin:0 4px;}
+.pagination3 li:first-child a {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.pagination3 li:last-child a {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+ul.pagination2 li a.active, ul.pagination3 li a.active {
+  background-color: #4CAF50;
+  color: white;
+  border:1px solid #4CAF50;
+}
+ul.pagination2 li a:hover:not(.active), 
+ul.pagination3 li a:hover:not(.active) {background-color: #ddd;}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+ul.breadcrumb li {display: inline;}
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+</style>
+<p class="intro">本章节我们将为大家介绍如何通过使用 CSS 来创建分页的实例。</p>
+<hr/>
+<h2>简单分页</h2>
+<p>如果你的网站有很多个页面，你就需要使用分页来为每个页面做导航。</p>
+<p>以下实例演示了如何使用 HTML 和 CSS 来创建分页：</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+<span class="highELE">ul.pagination </span>{<br/>    <span class="highATT">display:</span><span class="highVAL"> inline-block;</span><br/>    
+	<span class="highATT">padding:</span><span class="highVAL"> 0;</span><br/>    <span class="highATT">margin:</span><span class="highVAL"> 0;</span><br/>}<br/><br/><span class="highELE">ul.pagination li 
+	</span>{<span class="highATT">display:</span><span class="highVAL"> inline;</span>}<br/><br/><span class="highELE">ul.pagination li a </span>{<br/>    <span class="highATT">color:</span><span class="highVAL"> 
+	black;</span><br/>    <span class="highATT">float:</span><span class="highVAL"> left;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 8px 
+	16px;</span><br/>    <span class="highATT">text-decoration:</span><span class="highVAL"> none;</span><br/>}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>点击及鼠标悬停分页样式</h2>
+<ul class="pagination2">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#" style="border:none !important;">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<p>如果点击当前页，可以使用 <code>.active</code> 来设置当期页样式，鼠标悬停可以使用 <code>:hover</code> 
+选择器来修改样式：</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+<span class="highELE">ul.pagination li a.active </span>{<br/>    <span class="highATT">background-color:</span><span class="highVAL"> 
+	#4CAF50;</span><br/>    <span class="highATT">color:</span><span class="highVAL"> white;</span><br/>}<br/><br/><span class="highELE">ul.pagination li 
+	a:hover:not(.active) </span>{<span class="highATT">background-color:</span><span class="highVAL"> #ddd;</span>}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_active" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.pagination li a.active {<br/>    background-color: 
+	#4CAF50;<br/>    color: white;<br/>}<br/><br/>ul.pagination li 
+	a:hover:not(.active) {background-color: #ddd;}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_active" target="_blank">尝试一下 »</a>
+</div>
+<h3 style="margin-top:35px;">圆角样式</h3>
+<ul class="pagination2 btnround">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#" style="border:none !important;border-radius:5px;">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<p>可以使用 <code>border-radius</code> 属性为选中的页码来添加圆角样式:</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.pagination li a {<br/>    border-radius: 5px;<br/>}<br/><br/>ul.pagination li a.active {<br/>    
+	border-radius: 5px;<br/>}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_active_round" target="_blank">尝试一下 »</a>
+</div>
+<h3 style="margin-top:35px;">鼠标悬停过渡效果</h3>
+<ul class="pagination2 hover">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#" style="border:none !important;">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<p>我们可以通过添加 <code>transition</code> 属性来为鼠标移动到页码上时添加过渡效果:</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.pagination li a {<br/>    transition: background-color .3s;<br/>}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_transition" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>带边框分页</h2>
+<ul class="pagination2 border">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<p>我们可以使用 <code>border</code> 属性来添加带边框分页:</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.pagination li a {<br/>    border: 1px solid #ddd; /* Gray 
+	*/<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_border" target="_blank">尝试一下 »</a>
+</div>
+<h3 style="margin-top:35px;">圆角边框</h3>
+<p><strong>提示:</strong> 在第一个分页链接和最后一个分页链接添加圆角：</p>
+<ul class="pagination3 border">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	.pagination li:first-child a {<br/>    border-top-left-radius: 
+	5px;<br/>    border-bottom-left-radius: 5px;<br/>}<br/><br/>.pagination li:last-child a {<br/>    
+	border-top-right-radius: 5px;<br/>    
+	border-bottom-right-radius: 5px;<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_border_round" target="_blank">尝试一下 »</a>
+</div>
+<h3 style="margin-top:35px;">分页间隔</h3>
+<p><strong>提示:</strong> 你可以使用 <code>margin</code> 属性来为每个页码直接添加空格：</p>
+<ul class="pagination2 border margin">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.pagination li a {<br/>    margin: 0 4px; /* 0 is for top 
+	and bottom. Feel free to change it */<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_margin" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>分页字体大小</h2>
+<ul class="pagination2 border size">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+<p>我们可以使用 <code>font-size</code> 属性来设置分页的字体大小:</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.pagination li a {<br/>    font-size: 22px;<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_size" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>居中分页</h2>
+<div style="text-align:center;">
+<ul class="pagination2 border">
+<li><a href="#">«</a></li>
+<li><a href="#">1</a></li>
+<li><a class="active" href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">6</a></li>
+<li><a href="#">7</a></li>
+<li><a href="#">»</a></li>
+</ul>
+</div>
+<p>如果要让分页居中，可以在容器元素上 (如 &lt;div&gt;) 添加 <b>text-align:center</b> 样式：</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	div.center {<br/>    text-align: center;<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_center" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>更多实例</h2>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+<iframe src="/try/demo_source/trycss_ex_pagination_nav.htm" style="border:none;width:100%;height:200px;"></iframe>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_ex_pagination_nav" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>面包屑导航</h2>
+<ul class="breadcrumb">
+<li><a href="javascript:void(0)">首页</a></li>
+<li><a href="javascript:void(0)">前端</a></li>
+<li><a href="javascript:void(0)">HTML 教程</a></li>
+<li style="color:green">HTML 段落</li>
+</ul>
+<p>另外一种导航为面包屑导航，实例如下：</p>
+<div class="example">
+<h3>CSS 实例</h3>
+<div class="example_code">
+	ul.breadcrumb {<br/>    padding: 8px 16px;<br/>    
+	list-style: none;<br/>    background-color: #eee;<br/>}<br/><br/>
+	ul.breadcrumb li {display: inline;}<br/><br/>ul.breadcrumb li+li:before {<br/>    
+	padding: 8px;<br/>    color: black;<br/>    
+	content: "/\00a0";<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_breadcrumbs" target="_blank">尝试一下 »</a>
+</div>
+</div>

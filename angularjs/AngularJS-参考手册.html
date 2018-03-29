@@ -1,0 +1,360 @@
+<div class="article-intro" id="content">
+<h1>AngularJS <span class="color_h1">参考手册</span></h1>
+<hr/>
+<h2>AngularJS 指令</h2>
+<p>本教程用到的 AngularJS 指令 :</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">指令</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="ng-ng-app.html">ng-app</a></td>
+<td>定义应用程序的根元素。</td>
+</tr>
+<tr>
+<td><a href="ng-ng-bind.html">ng-bind</a></td>
+<td>绑定 HTML 元素到应用程序数据</td>
+</tr>
+<tr>
+<td><a href="ng-ng-bind-html.html">ng-bind-html</a></td>
+<td>绑定 HTML 元素的 innerHTML 到应用程序数据，并移除 HTML 字符串中危险字符</td>
+</tr>
+<tr>
+<td><a href="ng-ng-bind-template.html">ng-bind-template</a></td>
+<td>规定要使用模板替换的文本内容</td>
+</tr>
+<tr>
+<td><a href="ng-ng-blur.html">ng-blur</a></td>
+<td>规定 blur 事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-change.html">ng-change</a></td>
+<td>规定在内容改变时要执行的表达式</td>
+</tr>
+<tr>
+<td><a href="ng-ng-checked.html">ng-checked</a></td>
+<td>规定元素是否被选中</td>
+</tr>
+<tr>
+<td><a href="ng-ng-class.html">ng-class</a></td>
+<td>指定 HTML 元素使用的 CSS 类</td>
+</tr>
+<tr>
+<td><a href="ng-ng-class-even.html">ng-class-even</a></td>
+<td>类似 ng-class，但只在偶数行起作用</td>
+</tr>
+<tr>
+<td><a href="ng-ng-class-odd.html">ng-class-odd</a></td>
+<td>类似 ng-class，但只在奇数行起作用</td>
+</tr>
+<tr>
+<td><a href="ng-ng-click.html">ng-click</a></td>
+<td>定义元素被点击时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-cloak.html">ng-cloak</a></td>
+<td>在应用正要加载时防止其闪烁</td>
+</tr>
+<tr>
+<td><a href="ng-ng-controller.html">ng-controller</a></td>
+<td>定义应用的控制器对象</td>
+</tr>
+<tr>
+<td><a href="ng-ng-copy.html">ng-copy</a></td>
+<td>规定拷贝事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-csp.html">ng-csp</a></td>
+<td>修改内容的安全策略</td>
+</tr>
+<tr>
+<td><a href="ng-ng-cut.html">ng-cut</a></td>
+<td>规定剪切事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-dblclick.html">ng-dblclick</a></td>
+<td>规定双击事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-disabled.html">ng-disabled</a></td>
+<td>规定一个元素是否被禁用</td>
+</tr>
+<tr>
+<td><a href="ng-ng-focus.html">ng-focus</a></td>
+<td>规定聚焦事件的行为</td>
+</tr>
+<tr>
+<td>ng-form</td>
+<td>指定 HTML 表单继承控制器表单</td>
+</tr>
+<tr>
+<td><a href="ng-ng-hide.html">ng-hide</a></td>
+<td>隐藏或显示 HTML 元素</td>
+</tr>
+<tr>
+<td><a href="ng-ng-href.html">ng-href</a></td>
+<td>为 the &lt;a&gt; 元素指定链接</td>
+</tr>
+<tr>
+<td><a href="ng-ng-if.html">ng-if</a></td>
+<td>如果条件为 false 移除 HTML 元素</td>
+</tr>
+<tr>
+<td><a href="ng-ng-include.html">ng-include</a></td>
+<td>在应用中包含 HTML 文件</td>
+</tr>
+<tr>
+<td><a href="ng-ng-init.html">ng-init</a></td>
+<td>定义应用的初始化值</td>
+</tr>
+<tr>
+<td>ng-jq</td>
+<td>定义应用必须使用到的库，如：jQuery</td>
+</tr>
+<tr>
+<td><a href="ng-ng-keydown.html">ng-keydown</a></td>
+<td>规定按下按键事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-keypress.html">ng-keypress</a></td>
+<td>规定按下按键事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-keyup.html">ng-keyup</a></td>
+<td>规定松开按键事件的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-list.html">ng-list</a></td>
+<td>将文本转换为列表 (数组)</td>
+</tr>
+<tr>
+<td><a href="ng-ng-model.html">ng-model</a></td>
+<td>绑定 HTML 控制器的值到应用数据</td>
+</tr>
+<tr>
+<td><a href="ng-ng-model-options.html">ng-model-options</a></td>
+<td>规定如何更新模型</td>
+</tr>
+<tr>
+<td><a href="ng-ng-mousedown.html">ng-mousedown</a></td>
+<td>规定按下鼠标按键时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-mouseenter.html">ng-mouseenter</a></td>
+<td>规定鼠标指针穿过元素时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-mouseleave.html">ng-mouseleave</a></td>
+<td>规定鼠标指针离开元素时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-mousemove.html">ng-mousemove</a></td>
+<td>规定鼠标指针在指定的元素中移动时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-mouseover.html">ng-mouseover</a></td>
+<td>规定鼠标指针位于元素上方时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-mouseup.html">ng-mouseup</a></td>
+<td>规定当在元素上松开鼠标按钮时的行为</td>
+</tr>
+<tr>
+<td><a href="ng-ng-non-bindable.html">ng-non-bindable</a></td>
+<td>规定元素或子元素不能绑定数据</td>
+</tr>
+<tr>
+<td><a href="ng-ng-open.html">ng-open</a></td>
+<td>指定元素的 open 属性</td>
+</tr>
+<tr>
+<td><a href="ng-ng-options.html">ng-options</a></td>
+<td>在 &lt;select&gt; 列表中指定 &lt;options&gt;</td>
+</tr>
+<tr>
+<td><a href="ng-ng-paste.html">ng-paste</a></td>
+<td>规定粘贴事件的行为</td>
+</tr>
+<tr>
+<td>ng-pluralize</td>
+<td>根据本地化规则显示信息</td>
+</tr>
+<tr>
+<td><a href="ng-ng-readonly.html">ng-readonly</a></td>
+<td>指定元素的 readonly 属性</td>
+</tr>
+<tr>
+<td><a href="ng-ng-repeat.html">ng-repeat</a></td>
+<td>定义集合中每项数据的模板</td>
+</tr>
+<tr>
+<td><a href="ng-ng-selected.html">ng-selected</a></td>
+<td>指定元素的 selected 属性</td>
+</tr>
+<tr>
+<td><a href="ng-ng-show.html">ng-show</a></td>
+<td>显示或隐藏 HTML 元素</td>
+</tr>
+<tr>
+<td><a href="ng-ng-src.html">ng-src</a></td>
+<td>指定 &lt;img&gt; 元素的 src 属性</td>
+</tr>
+<tr>
+<td><a href="ng-ng-srcset.html">ng-srcset</a></td>
+<td>指定 &lt;img&gt; 元素的 srcset 属性</td>
+</tr>
+<tr>
+<td><a href="ng-ng-style.html">ng-style</a></td>
+<td>指定元素的 style 属性</td>
+</tr>
+<tr>
+<td><a href="ng-ng-submit.html">ng-submit</a></td>
+<td>规定 onsubmit 事件发生时执行的表达式</td>
+</tr>
+<tr>
+<td><a href="ng-ng-switch.html">ng-switch</a></td>
+<td>规定显示或隐藏子元素的条件</td>
+</tr>
+<tr>
+<td>ng-transclude</td>
+<td>规定填充的目标位置</td>
+</tr>
+<tr>
+<td><a href="ng-ng-value.html">ng-value</a></td>
+<td>规定 input 元素的值</td>
+</tr>
+</tbody></table>
+<p>过滤器解析 <a href="angularjs-filters.html">AngularJs 过滤器</a>。</p>
+<hr/>
+<h2>AngularJS 事件</h2>
+<p>AngularJS 支持以下事件:</p>
+<ul>
+<li>ng-click</li>
+<li>ng-dbl-click</li>
+<li>ng-mousedown</li>
+<li>ng-mouseenter</li>
+<li>ng-mouseleave</li>
+<li>ng-mousemove</li>
+<li>ng-keydown</li>
+<li>ng-keyup</li>
+<li>ng-keypress</li>
+<li>ng-change</li>
+</ul>
+<p>事件解析： <a href="angularjs-html-events.html">Angular 事件</a>。</p>
+<hr/>
+<h2>AngularJS 验证属性</h2>
+<ul>
+<li>$dirty</li>
+<li>$invalid</li>
+<li>$error</li>
+</ul>
+<p>验证解析：<a href="angularjs-validation.html">Angular 验证</a>。</p>
+<hr/>
+<h2>AngularJS 全局 API</h2>
+<h3>转换</h3>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">API</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>angular.lowercase()</td>
+<td>将字符串转换为小写</td>
+</tr>
+<tr>
+<td>angular.uppercase()</td>
+<td>将字符串转换为大写</td>
+</tr>
+<tr>
+<td>angular.copy()</td>
+<td>数组或对象深度拷贝</td>
+</tr>
+<tr>
+<td>angular.forEach()</td>
+<td>对象或数组的迭代函数</td>
+</tr>
+</tbody></table>
+<h3>比较</h3>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">API</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>angular.isArray()</td>
+<td>如果引用的是数组返回 true</td>
+</tr>
+<tr>
+<td>angular.isDate()</td>
+<td>如果引用的是日期返回 true</td>
+</tr>
+<tr>
+<td>angular.isDefined()</td>
+<td>如果引用的已定义返回 true</td>
+</tr>
+<tr>
+<td>angular.isElement()</td>
+<td>如果引用的是 DOM 元素返回 true</td>
+</tr>
+<tr>
+<td>angular.isFunction()</td>
+<td>如果引用的是函数返回 true</td>
+</tr>
+<tr>
+<td>angular.isNumber()</td>
+<td>如果引用的是数字返回 true</td>
+</tr>
+<tr>
+<td>angular.isObject()</td>
+<td>如果引用的是对象返回 true</td>
+</tr>
+<tr>
+<td>angular.isString()</td>
+<td>如果引用的是字符串返回 true</td>
+</tr>
+<tr>
+<td>angular.isUndefined()</td>
+<td>如果引用的未定义返回 true</td>
+</tr>
+<tr>
+<td>angular.equals()</td>
+<td>如果两个对象相等返回 true</td>
+</tr>
+</tbody></table>
+<h3>JSON</h3>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">API</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>angular.fromJson()</td>
+<td>反序列化 JSON 字符串</td>
+</tr>
+<tr>
+<td>angular.toJson()</td>
+<td>序列化 JSON 字符串</td>
+</tr>
+</tbody></table>
+<h3>基础</h3>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%">API</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>angular.bootstrap()</td>
+<td>手动启动 AngularJS</td>
+</tr>
+<tr>
+<td>angular.element()</td>
+<td>包裹着一部分DOM element或者是HTML字符串，把它作为一个jQuery元素来处理。</td>
+</tr>
+<tr>
+<td>angular.module()</td>
+<td>创建，注册或检索 AngularJS 模块</td>
+</tr>
+</tbody></table>
+<p>全局 API 解析 ：<a href="angularjs-api.html">Angular API</a>。</p>
+</div>

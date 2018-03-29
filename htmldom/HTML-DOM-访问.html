@@ -1,0 +1,62 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM <span class="color_h1">访问</span>
+</h1>
+<hr/>
+<p>访问 HTML DOM - 查找 HTML 元素。</p>
+<hr/>
+<h2>访问 HTML 元素（节点）</h2>
+<p>访问 HTML 元素等同于访问节点</p>
+<p>您能够以不同的方式来访问 HTML 元素：</p>
+<ul>
+<li>通过使用 getElementById() 方法</li>
+<li>通过使用 getElementsByTagName() 方法</li>
+<li>通过使用 getElementsByClassName() 方法</li>
+</ul>
+<hr/>
+<h2>getElementById() 方法</h2>
+<p>getElementById() 方法返回带有指定 ID 的元素引用：</p>
+<h3>语法</h3>
+<div class="code"><div>
+<i>node</i>.getElementById(<i>"id"</i>);</div></div>
+<p>下面的例子获取 id="intro" 的元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">intro</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_getelementbyid" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>getElementsByTagName() 方法</h2>
+<p>getElementsByTagName() 返回带有指定标签名的所有元素。</p>
+<h3>语法</h3>
+<div class="code"><div>
+<i>node</i>.getElementsByTagName(<i>"tagname"</i>);
+
+</div></div>
+<p>下面的例子返回包含文档中所有 &lt;p&gt; 元素的列表：</p>
+<div class="example">
+<h2 class="example">实例 1</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_getelementsbytagname" target="_blank">尝试一下 »</a>
+</div>
+<p>下面的例子返回包含文档中所有 &lt;p&gt; 元素的列表，并且这些 &lt;p&gt; 元素应该是  id="main" 的元素的后代（子、孙等等）：</p>
+<div class="example">
+<h2 class="example">实例 2</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">main</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_getelementsbytagname2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>The getElementsByClassName() Method</h2>
+<p>如果您希望查找带有相同类名的所有 HTML 元素，请使用这个方法：</p>
+<div class="code">
+<div>
+document.getElementsByClassName("intro");</div>
+</div>
+<p>上面的例子返回包含 class="intro" 的所有元素的一个列表：</p>
+<p><strong>注意：</strong>getElementsByClassName() 在 Internet Explorer 5,6,7,8 中无效。</p>
+</div>

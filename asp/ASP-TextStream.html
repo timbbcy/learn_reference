@@ -1,0 +1,109 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">TextStream</span> 对象</h1>
+<hr/>
+<p class="intro">TextStream 对象用于访问文本文件的内容。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_readtextfile" target="_blank">读取文本文件</a><br/>
+本例演示如何从文本文件中读取内容。</p>
+<p><a href="/try/showasp.php?filename=demo_readpartoftextfile" target="_blank">读取文本文件中的一个部分</a><br/>
+本例演示如何仅仅读取一个文本流文件的部分内容。</p>
+<p><a href="/try/showasp.php?filename=demo_readline" target="_blank">读取文本文件中的一行</a><br/>
+本例演示如何从一个文本流文件中读取一行内容。</p>
+<p><a href="/try/showasp.php?filename=demo_readlines" target="_blank">读取文本文件的所有行</a><br/>
+本例演示如何从文本流文件中读取所有的行。</p>
+<p><a href="/try/showasp.php?filename=demo_skip" target="_blank">略过文本文件中的一部分</a><br/>
+本例演示如何在读取文本流文件时跳过指定的字符数。</p>
+<p><a href="/try/showasp.php?filename=demo_skipline" target="_blank">略过文本文件中的一行</a><br/>
+本例演示如何在读取文本流文件时跳过一行。</p>
+<p><a href="/try/showasp.php?filename=demo_line" target="_blank">返回行数</a><br/>
+本例演示如何返回在文本流文件中的当前行号。</p>
+<p><a href="/try/showasp.php?filename=demo_column" target="_blank">取得列数</a><br/>
+本例演示如何取得在文件中当前字符的列号。</p>
+<hr/>
+<h2>TextStream 对象</h2>
+<p>TextStream 对象用于访问文本文件的内容。</p>
+<p>下面的代码会创建一个文本文件 (c:\test.txt)，然后向此文件写一些文本（变量 f 是 TextStream 对象的一个实例）：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+dim fs,f<br/>
+set fs=Server.CreateObject("Scripting.FileSystemObject")<br/>
+set f=fs.CreateTextFile("c:\test.txt",true)<br/>
+f.WriteLine("Hello World!")<br/>
+f.Close<br/>
+set f=nothing<br/>
+set fs=nothing<br/>
+%&gt;</div></div>
+<p>如需创建 TextStream 对象的一个实例，您可以使用 FileSystemObject 对象的 CreateTextFile 方法或者 OpenTextFile 方法，也可以使用 File 对象的 OpenAsTextStream 方法。</p>
+<p>TextStream 对象的属性和方法描述如下：</p>
+<h3>属性</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" valign="top" width="25%">属性</th>
+<th align="left" valign="top" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-atendofline.html">AtEndOfLine</a></td>
+<td valign="top">如果文件指针正好位于 TextStream 文件中行尾标记的前面，则该属性值返回 True；否则返回 False。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-atendofstream.html">AtEndOfStream</a></td>
+<td valign="top">如果文件指针在 TextStream 文件末尾，则该属性值返回 True；否则返回 False。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-column.html">Column</a></td>
+<td valign="top">返回 TextStream 文件输入流中的当前字符位置的列号。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-line.html">Line</a></td>
+<td valign="top">返回 TextStream 文件中的当前行号。</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" valign="top" width="25%">方法</th>
+<th align="left" valign="top" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-close.html">Close</a></td>
+<td valign="top">关闭一个打开的 TextStream 文件。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-read.html">Read</a></td>
+<td valign="top">从一个 TextStream 文件中读取指定数量的字符并返回结果。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-readall.html">ReadAll</a></td>
+<td valign="top">读取整个 TextStream 文件并返回结果。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-readline.html">ReadLine</a></td>
+<td valign="top">从一个 TextStream 文件读取一整行（到换行符但不包括换行符）并返回结果。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-skip.html">Skip</a></td>
+<td valign="top">当读取一个 TextStream 文件时跳过指定数量的字符。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-skipline.html">SkipLine</a></td>
+<td valign="top">当读取一个 TextStream 文件时跳过下一行。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-write.html">Write</a></td>
+<td valign="top">写入指定的文本到一个 TextStream 文件中。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-writeline.html">WriteLine</a></td>
+<td valign="top">写入指定的文本和换行符到一个 TextStream 文件中。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-writeblanklines.html">WriteBlankLines</a></td>
+<td valign="top">写入指定数量的换行符到一个 TextStream 文件中。</td>
+</tr>
+</table>
+<br/>
+</div>

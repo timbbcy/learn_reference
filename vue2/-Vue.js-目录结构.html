@@ -1,0 +1,121 @@
+<div class="article-intro" id="content">
+<h1>Vue.js 目录结构</h1>
+<p>上一章节中我们使用了 npm 安装项目，我们在 IDE（Eclipse、Atom等） 中打开该目录，结构如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2017/01/B6E593E3-F284-4C58-A610-94C6ACDAD485.jpg"/></p>
+<h3>目录解析</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>目录/文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>build</td>
+<td>项目构建(webpack)相关代码</td>
+</tr>
+<tr>
+<td>config</td>
+<td>配置目录，包括端口号等。我们初学可以使用默认的。</td>
+</tr>
+<tr>
+<td>node_modules</td>
+<td>npm 加载的项目依赖模块</td>
+</tr>
+<tr>
+<td>src</td>
+<td><p>这里是我们要开发的目录，基本上要做的事情都在这个目录里。里面包含了几个目录及文件：</p>
+<ul>
+<li>assets: 放置一些图片，如logo等。</li>
+<li>components: 目录里面放了一个组件文件，可以不用。</li>
+<li>App.vue: 项目入口文件，我们也可以直接将组件写这里，而不使用 components 目录。</li>
+<li>main.js: 项目的核心文件。</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态资源目录，如图片、字体等。</td>
+</tr>
+<tr>
+<td>test</td>
+<td>初始测试目录，可删除</td>
+</tr>
+<tr>
+<td>.xxxx文件</td>
+<td>这些是一些配置文件，包括语法配置，git配置等。</td>
+</tr>
+<tr>
+<td>index.html</td>
+<td>首页入口文件，你可以添加一些 meta 信息或统计代码啥的。</td>
+</tr>
+<tr>
+<td>package.json</td>
+<td>项目配置文件。</td>
+</tr>
+<tr>
+<td>README.md</td>
+<td>项目的说明文档，markdown 格式</td>
+</tr>
+</tbody></table>
+<p>在前面我们打开 APP.vue 文件，代码如下（解释在注释中）：</p>
+<div class="example">
+<h2 class="example">src/APP.vue</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 展示模板 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">./assets/logo.png</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">hello</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">hello</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+// 导入组件
+import Hello from './components/Hello'
+ 
+export default {
+  name: 'app',
+  components: {
+    Hello
+  }
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 样式代码 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">style</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">style</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>接下来我们可以尝试修改下初始化的项目，将 Hello.vue 修改为以下代码：</p>
+<div class="example">
+<h2 class="example">src/components/Hello.vue</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">hello</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ msg }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+export default {
+  name: 'hello',
+  data () {
+    return {
+      msg: '欢迎来到菜鸟教程！'
+    }
+  }
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>重新打开页面 http://localhost:8080/，一般修改后会自动刷新，显示效果如下所示:</p>
+<img src="http://www.runoob.com/wp-content/uploads/2017/01/AEDE7289-0479-4F14-A9C9-898470E5620E.jpg">
+</img></div>

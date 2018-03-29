@@ -1,0 +1,97 @@
+<div class="article-intro" id="content">
+<h1>Node.js Stream(流)</h1>
+<p>
+Stream 是一个抽象接口，Node 中有很多对象实现了这个接口。例如，对http 服务器发起请求的request 对象就是一个 Stream，还有stdout（标准输出）。
+</p>
+<p>Node.js，Stream 有四种流类型：</p>
+<ul>
+<li><p><b>Readable</b> - 可读操作。</p></li>
+<li><p><b>Writable</b> - 可写操作。</p></li>
+<li><p><b>Duplex</b> - 可读可写操作.</p></li>
+<li><p><b>Transform</b> - 操作被写入数据，然后读出结果。</p></li>
+</ul>
+<p>所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：</p>
+<ul>
+<li><p><b>data</b> - 当有数据可读时触发。</p></li>
+<li><p><b>end</b> - 没有更多的数据可读时触发。</p></li>
+<li><p><b>error</b> - 在接收和写入过程中发生错误时触发。</p></li>
+<li><p><b>finish</b> - 所有数据已被写入到底层系统时触发。</p></li>
+</ul>
+<p>本教程会为大家介绍常用的流操作。</p>
+<hr/>
+<h2>从流中读取数据</h2>
+<p>创建 input.txt  文件，内容如下：</p>
+<pre>
+菜鸟教程官网地址：www.runoob.com
+</pre>
+<p>创建 main.js 文件, 代码如下：</p>
+<pre>
+var fs = require("fs");
+var data = '';
+
+// 创建可读流
+var readerStream = fs.createReadStream('input.txt');
+
+// 设置编码为 utf8。
+readerStream.setEncoding('UTF8');
+
+// 处理流事件 --&gt; data, end, and error
+readerStream.on('data', function(chunk) {
+   data += chunk;
+});
+
+readerStream.on('end',function(){
+   console.log(data);
+});
+
+readerStream.on('error', function(err){
+   console.log(err.stack);
+});
+
+console.log("程序执行完毕");
+</pre>
+<p>以上代码执行结果如下：</p>
+<pre>
+程序执行完毕
+菜鸟教程官网地址：www.runoob.com
+</pre>
+<hr/>
+<h2>写入流</h2>
+<p>创建 main.js 文件, 代码如下：</p>
+<pre>
+var fs = require("fs");
+var data = '菜鸟教程官网地址：www.runoob.com';
+
+// 创建一个可以写入的流，写入到文件 output.txt 中
+var writerStream = fs.createWriteStream('output.txt');
+
+// 使用 utf8 编码写入数据
+writerStream.write(data,'UTF8');
+
+// 标记文件末尾
+writerStream.end();
+
+// 处理流事件 --&gt; data, end, and error
+writerStream.on('finish', function() {
+    console.log("写入完成。");
+});
+
+writerStream.on('error', function(err){
+   console.log(err.stack);
+});
+
+console.log("程序执行完毕");
+</pre>
+<p>以上程序会将 data 变量的数据写入到 output.txt 文件中。代码执行结果如下：</p>
+<pre>
+$ node main.js 
+程序执行完毕
+写入完成。
+</pre>
+<p>查看 output.txt  文件的内容：</p>
+<pre>
+$ cat output.txt 
+菜鸟教程官网地址：www.runoob.com
+</pre>
+<hr/><h2>管道流</h2>
+管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传递到另外一个流中。</div>

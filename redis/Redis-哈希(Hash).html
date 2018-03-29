@@ -1,0 +1,42 @@
+<div class="article-intro" id="content">
+<h1>Redis 哈希(Hash)</h1>
+<p>Redis hash 是一个string类型的field和value的映射表，hash特别适合用于存储对象。</p>
+<p>Redis 中每个 hash 可以存储 2<sup>32</sup> - 1 键值对（40多亿）。
+<h3>实例</h3>
+<pre>
+127.0.0.1:6379&gt;  HMSET runoobkey name "redis tutorial" description "redis basic commands for caching" likes 20 visitors 23000
+OK
+127.0.0.1:6379&gt;  HGETALL runoobkey
+1) "name"
+2) "redis tutorial"
+3) "description"
+4) "redis basic commands for caching"
+5) "likes"
+6) "20"
+7) "visitors"
+8) "23000"
+</pre>
+<p>
+在以上实例中，我们设置了 redis 的一些描述信息(name, description, likes, visitors) 到哈希表的 <strong>runoobkey</strong> 中。</p>
+<hr/>
+<h2>Redis hash 命令</h2>
+<p>下表列出了 redis hash 基本的相关命令：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/hashes-hdel.html">HDEL key field1 [field2]</a> <br/>删除一个或多个哈希表字段</td></tr>
+<tr><td>2</td><td><a href="/redis/hashes-hexists.html">HEXISTS key field</a> <br/>查看哈希表 key 中，指定的字段是否存在。</td></tr>
+<tr><td>3</td><td><a href="/redis/hashes-hget.html">HGET key field</a> <br/>获取存储在哈希表中指定字段的值。</td></tr>
+<tr><td>4</td><td><a href="/redis/hashes-hgetall.html">HGETALL key</a> <br/>获取在哈希表中指定 key 的所有字段和值</td></tr>
+<tr><td>5</td><td><a href="/redis/hashes-hincrby.html">HINCRBY key field increment</a> <br/>为哈希表 key 中的指定字段的整数值加上增量 increment 。</td></tr>
+<tr><td>6</td><td><a href="/redis/hashes-hincrbyfloat.html">HINCRBYFLOAT key field increment</a> <br/>为哈希表 key 中的指定字段的浮点数值加上增量 increment 。</td></tr>
+<tr><td>7</td><td><a href="/redis/hashes-hkeys.html">HKEYS key</a> <br/>获取所有哈希表中的字段</td></tr>
+<tr><td>8</td><td><a href="/redis/hashes-hlen.html">HLEN key</a> <br/>获取哈希表中字段的数量</td></tr>
+<tr><td>9</td><td><a href="/redis/hashes-hmget.html">HMGET key field1 [field2]</a> <br/>获取所有给定字段的值</td></tr>
+<tr><td>10</td><td><a href="/redis/hashes-hmset.html">HMSET key field1 value1 [field2 value2 ]</a> <br/>同时将多个 field-value (域-值)对设置到哈希表 key 中。</td></tr>
+<tr><td>11</td><td><a href="/redis/hashes-hset.html">HSET key field value</a> <br/>将哈希表 key 中的字段 field 的值设为 value 。</td></tr>
+<tr><td>12</td><td><a href="/redis/hashes-hsetnx.html">HSETNX key field value</a> <br/>只有在字段 field 不存在时，设置哈希表字段的值。</td></tr>
+<tr><td>13</td><td><a href="/redis/hashes-hvals.html">HVALS key</a> <br/>获取哈希表中所有值</td></tr>
+<tr><td>14</td><td>HSCAN key cursor [MATCH pattern] [COUNT count] <br/>迭代哈希表中的键值对。</td></tr>
+</tbody></table>
+<p>更多命令请参考：<a href="https://redis.io/commands" target="_blank">https://redis.io/commands</a></p>
+</p></div>

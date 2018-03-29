@@ -1,0 +1,84 @@
+<div class="article-intro" id="content">
+<h1>Kotlin 枚举类</h1>
+<p>枚举类最基本的用法是实现一个类型安全的枚举。</p>
+<p>枚举常量用逗号分隔,每个枚举常量都是一个对象。</p>
+<pre>
+enum class Color{
+    RED,BLACK,BLUE,GREEN,WHITE
+}
+</pre>
+<h3>枚举初始化</h3>
+<p>每一个枚举都是枚举类的实例，它们可以被初始化： </p>
+<pre>
+enum class Color(val rgb: Int) {
+    RED(0xFF0000),
+    GREEN(0x00FF00),
+    BLUE(0x0000FF)
+}
+</pre>
+<p>默认名称为枚举字符名，值从0开始。若需要指定值，则可以使用其构造函数：</p>
+<pre>
+enum class Shape(value:Int){
+    ovel(100),
+    rectangle(200)
+}
+</pre>
+<p>枚举还支持以声明自己的匿名类及相应的方法、以及覆盖基类的方法。如：</p>
+<pre>
+enum class ProtocolState {
+    WAITING {
+        override fun signal() = TALKING
+    },
+
+    TALKING {
+        override fun signal() = WAITING
+    };
+
+    abstract fun signal(): ProtocolState
+}
+</pre>
+<p>如果枚举类定义任何成员，要使用分号将成员定义中的枚举常量定义分隔开</p>
+<hr/>
+<h2>使用枚举常量</h2>
+<p>Kotlin 中的枚举类具有合成方法，允许遍历定义的枚举常量，并通过其名称获取枚举常数。</p>
+<pre>
+EnumClass.valueOf(value: String): EnumClass  // 转换指定 name 为枚举值，若未匹配成功，会抛出IllegalArgumentException
+EnumClass.values(): Array&lt;EnumClass&gt;        // 以数组的形式，返回枚举值
+</pre>
+<p>获取枚举相关信息：</p>
+<pre>
+val name: String //获取枚举名称
+val ordinal: Int //获取枚举值在所有枚举数组中定义的顺序
+</pre>
+<h3>实例</h3>
+<pre>
+enum class Color{
+    RED,BLACK,BLUE,GREEN,WHITE
+}
+
+fun main(args: Array&lt;String&gt;) {
+    var color:Color=Color.BLUE
+
+    println(Color.values())
+    println(Color.valueOf("RED"))
+    println(color.name)
+    println(color.ordinal)
+
+}
+</pre>
+<p>自 Kotlin 1.1 起，可以使用 <code>enumValues&lt;T&gt;()</code> 和 <code>enumValueOf&lt;T&gt;()</code> 函数以泛型的方式访问枚举类中的常量
+：</p>
+<pre>
+enum class RGB { RED, GREEN, BLUE }
+
+inline fun &lt;reified T : Enum&lt;T&gt;&gt; printAllValues() {
+    print(enumValues&lt;T&gt;().joinToString { it.name })
+}
+
+
+
+fun main(args: Array&lt;String&gt;) {
+    printAllValues&lt;RGB&gt;() // 输出 RED, GREEN, BLUE
+}
+</pre>
+</div>

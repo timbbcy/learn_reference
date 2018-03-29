@@ -1,0 +1,79 @@
+<div class="article-intro" id="content">
+<h1>ionic 单选框操作</h1>
+<p>实例中，根据选中的不同选项，显示不同的值。</p>
+<h3>HTML 代码</h3>
+<pre>
+&lt;ion-header-bar class="bar-positive"&gt;
+  &lt;h1 class="title"&gt;当选按钮&lt;/h1&gt;
+&lt;/ion-header-bar&gt;
+         
+&lt;ion-content&gt;
+  
+  &lt;div class="list"&gt;
+    
+    &lt;div class="item item-divider"&gt; 
+      选取的值为: {{ data.clientSide }}
+    &lt;/div&gt;
+    
+    &lt;ion-radio ng-repeat="item in clientSideList"
+               ng-value="item.value"
+               ng-model="data.clientSide"&gt;
+      {{ item.text }}
+    &lt;/ion-radio&gt;
+    
+    &lt;div class="item item-divider"&gt;
+      Serverside, Selected Value: {{ data.serverSide }}
+    &lt;/div&gt;
+    
+    &lt;ion-radio ng-repeat="item in serverSideList"
+               ng-value="item.value"
+               ng-model="data.serverSide"
+               ng-change="serverSideChange(item)"
+               name="server-side"&gt;
+      {{ item.text }}
+    &lt;/ion-radio&gt;
+    
+  &lt;/div&gt;
+  
+&lt;/ion-content&gt;
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('ionicApp', ['ionic'])
+
+.controller('MainCtrl', function($scope) {
+
+  $scope.clientSideList = [
+    { text: "Backbone", value: "bb" },
+    { text: "Angular", value: "ng" },
+    { text: "Ember", value: "em" },
+    { text: "Knockout", value: "ko" }
+  ];
+
+  $scope.serverSideList = [
+    { text: "Go", value: "go" },
+    { text: "Python", value: "py" },
+    { text: "Ruby", value: "rb" },
+    { text: "Java", value: "jv" }
+  ];
+  
+  $scope.data = {
+    clientSide: 'ng'
+  };
+  
+  $scope.serverSideChange = function(item) {
+    console.log("Selected Serverside, text:", item.text, "value:", item.value);
+  };
+  
+});
+</pre>
+<p>css 代码：</p>
+<pre>
+body {
+  cursor: url('http://www.runoob.com/try/demo_source/finger.png'), auto;
+}
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-radio" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>效果如下所示：</p>
+<iframe frameborder="0" height="400" src="/try/demo_source/ionic_ion-radio.htm"></iframe>
+</div>

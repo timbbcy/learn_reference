@@ -1,0 +1,51 @@
+<div class="article-intro" id="content">
+<h1>DTD <span class="color_h1">验证</span>
+</h1>
+<hr/>
+<p class="intro">使用 Internet Explorer  可根据某个 DTD 来验证您的 XML。</p>
+<hr/>
+<h2>通过 XML 解析器进行验证</h2>
+<p>当您试图打开某个 XML 文档时，XML 解析器有可能会产生错误。通过访问 parseError 对象，就可以取回引起错误的确切代码、文本甚至所在的行。</p>
+<p><b>注意：</b> load() 方法用于文件，而 loadXML() 方法用于字符串。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");<br/>
+xmlDoc.async="false";<br/>
+xmlDoc.validateOnParse="true";<br/>
+xmlDoc.load("note_dtd_error.xml");<br/><br/>
+document.write("&lt;br /&gt;Error Code: ");<br/>
+document.write(xmlDoc.parseError.errorCode);<br/>
+document.write("&lt;br /&gt;Error Reason: ");<br/>
+document.write(xmlDoc.parseError.reason);<br/>
+document.write("&lt;br /&gt;Error Line: ");<br/>
+document.write(xmlDoc.parseError.line);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=note_error_three" target="_blank">尝试一下 »</a>
+</div>
+<p><a href="/try/xml/note_dtd_error.xml" target="_blank">查看xml文件</a></p>
+<hr/>
+<h2>关闭验证</h2>
+<p>通过把 XML 解析器的 validateOnParse 设置为 "false"，就可以关闭验证。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");<br/>
+xmlDoc.async="false";<br/>
+xmlDoc.validateOnParse="false";<br/>
+xmlDoc.load("note_dtd_error.xml");<br/><br/>
+document.write("&lt;br /&gt;Error Code: ");<br/>
+document.write(xmlDoc.parseError.errorCode);<br/>
+document.write("&lt;br /&gt;Error Reason: ");<br/>
+document.write(xmlDoc.parseError.reason);<br/>
+document.write("&lt;br /&gt;Error Line: ");<br/>
+document.write(xmlDoc.parseError.line);</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=note_error_four" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>通用的 XML 验证器</h2>
+<p>为了帮助您验证 XML 文件，我们创建了此 <a href="/dom/dom-validate.html" target="_blank">链接</a>，这样你就可以验证任何 XML 文件了。</p>
+<hr/>
+<h2>parseError 对象</h2>
+<p>您可以在我们的<a href="/dom/dom-tutorial.html">《XML DOM 教程》</a>中阅读更多有关 parseError 对象的信息。</p>
+</div>

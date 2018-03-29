@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>Foundation 图片</h1>
+<p>Foundation 提供了响应式的图片，可以创建缩略图和图片弹窗：</p>
+<iframe src="/try/demo_source/tryfoundation_thumbs_iframe.htm" style="border:0;width:100%;height:160px;overflow-y:hidden;"></iframe>
+<a class="tryitbtn" href="/try/demo_source/tryfoundation_thumbs_iframe.htm" target="_blank">尝试一下 »</a>
+<hr/>
+<h2>缩略图</h2>
+<p>在 <code>&lt;img&gt;</code> 元素外添加 <code>&lt;a&gt;</code> 元素将图片作为一个锚链接。</p>
+<p>在 <code>&lt;a&gt;</code> 标签中添加 <code>.th</code> 类将图片设置为缩略图。 鼠标移动到上面会显示一个浅蓝色外框:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"paris.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><br/> 
+	<span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"paris.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"Paris"</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_thumbnail" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><b>响应式图片<br/></b><br/>
+ Foundation 中图片默认是响应式的。我们可以在实例页面重置浏览器大小来查看图片缩放效果。</td>
+</tr></tbody></table>
+<hr/>
+<h2>圆角图片</h2>
+<p>我们可以在 <code>.th</code> 类添加 <code>.radius</code>  类来设置圆角缩略图：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"paris.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th radius"</span><span class="highGT">&gt;</span><br/> 
+	<span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"paris.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"Paris"</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_thumbnail_radius" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>简洁的弹窗</h2>
+<p>Foundation 可以很容易实现图片弹窗。</p>
+<p>要创建一个弹窗可以在 <code>
+&lt;ul&gt;</code> 元素上添加 <code>.clearing-thumbs</code> 类及 <code>data-clearing</code> 属性。在 <code>&lt;ul&gt;</code> 内添加图片列表。</p>
+<p><strong>注意:</strong> 图片弹窗需要 JavaScript。所以使用它前需要初始化 Foundation JS。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"clearing-thumbs"</span> <span class="highATT">data-clearing</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"rock600x400.jpg"</span>
+<span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span>
+<span class="highATT">src=</span><span class="highVAL">"rock200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"skies600x400.jpg"</span>
+<span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span>
+<span class="highATT">src=</span><span class="highVAL">"skies200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"lights600x400.jpg"</span>
+<span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span>
+<span class="highATT">src=</span><span class="highVAL">"lights200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_lightbox" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>图片文本描述</h2>
+<p>可以添加 <code>data-caption</code> 属性到每个图片来设置图片的描述:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"clearing-thumbs"</span> <span class="highATT">data-clearing</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"rock600x400.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">data-caption=</span><span class="highVAL">"The Pulpit Rock"</span>
+<span class="highATT">src=</span><span class="highVAL">"rock200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"skies600x400.jpg"</span>
+<span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">data-caption=</span><span class="highVAL">"Sunrise Skies"</span> <span class="highATT">src=</span><span class="highVAL">"skies200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"lights600x400.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">data-caption=</span><span class="highVAL">"Northern 
+	Lights"</span> <span class="highATT">src=</span><span class="highVAL">"lights200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_lightbox_caption" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>提示：</strong> 你可以在 data-caption 属性中添加 HTML 元素，如  data-caption="&lt;h2&gt;Pulpit Rock&lt;/h2&gt;&lt;p&gt;Located in Norway&lt;/p&gt;"</td>
+</tr></tbody></table>
+<hr/>
+<h2>只显示一张缩略图</h2>
+<p>当你需要实现只显示一张缩略图时你可以在 <code>
+&lt;ul&gt;</code> 中使用 <code>.clearing-feature</code> 类并在<code>&lt;li&gt;</code> 中使用 <code>.clearing-featured-img</code> 类。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"clearing-thumbs clearing-feature"</span> <span class="highATT">data-clearing</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"rock600x400.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">data-caption=</span><span class="highVAL">"The Pulpit Rock"</span> <span class="highATT">src=</span><span class="highVAL">"rock200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"skies600x400.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">data-caption=</span><span class="highVAL">"Sunrise Skies"</span>
+<span class="highATT">src=</span><span class="highVAL">"skies200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"clearing-featured-img"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"lights600x400.jpg"</span> <span class="highATT">class=</span><span class="highVAL">"th"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span>
+<span class="highATT">data-caption=</span><span class="highVAL">"Northern Lights"</span> <span class="highATT">src=</span><span class="highVAL">"lights200x100.jpg"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_lightbox_feature" target="_blank">尝试一下 »</a>
+</div>
+</div>

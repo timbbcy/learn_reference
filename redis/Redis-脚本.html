@@ -1,0 +1,36 @@
+<div class="article-intro" id="content">
+<h1>Redis 脚本</h1>
+<p>
+Redis 脚本使用 Lua 解释器来执行脚本。 Reids 2.6 版本通过内嵌支持 Lua 环境。执行脚本的常用命令为 <b>EVAL</b>。
+</p>
+<h3>
+语法</h3>
+<p>
+Eval 命令的基本语法如下：
+</p>
+<pre>
+redis 127.0.0.1:6379&gt; EVAL script numkeys key [key ...] arg [arg ...]
+</pre>
+<h3>实例</h3>
+<p>以下实例演示了 redis 脚本工作过程：</p>
+<pre>
+redis 127.0.0.1:6379&gt; EVAL "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 2 key1 key2 first second
+
+1) "key1"
+2) "key2"
+3) "first"
+4) "second"
+</pre>
+<hr/>
+<h2>Redis 脚本命令</h2>
+<p>下表列出了 redis 脚本常用命令：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>命令及描述</th></tr>
+<tr><td>1</td><td><a href="/redis/scripting-eval.html">EVAL script numkeys key [key ...] arg [arg ...]</a> <br/>执行 Lua 脚本。</td></tr>
+<tr><td>2</td><td><a href="/redis/scripting-evalsha.html">EVALSHA sha1 numkeys key [key ...] arg [arg ...]</a> <br/>执行 Lua 脚本。</td></tr>
+<tr><td>3</td><td><a href="/redis/scripting-script-exists.html">SCRIPT EXISTS script [script ...]</a> <br/>查看指定的脚本是否已经被保存在缓存当中。</td></tr>
+<tr><td>4</td><td><a href="/redis/scripting-script-flush.html">SCRIPT FLUSH</a> <br/>从脚本缓存中移除所有脚本。</td></tr>
+<tr><td>5</td><td><a href="/redis/scripting-script-kill.html">SCRIPT KILL</a> <br/>杀死当前正在运行的 Lua 脚本。</td></tr>
+<tr><td>6</td><td><a href="/redis/scripting-script-load.html">SCRIPT LOAD script</a> <br/>将脚本 script 添加到脚本缓存中，但并不立即执行这个脚本。</td></tr>
+</tbody></table>
+</div>

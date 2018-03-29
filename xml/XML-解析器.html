@@ -1,0 +1,60 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">Parser</span>
+</h1>
+<hr/>
+<p class="intro">所有现代浏览器都有内建的 XML 解析器。</p>
+<p class="intro">XML 解析器把 XML 文档转换为 XML DOM 对象 - 可通过 JavaScript 操作的对象。</p>
+<hr/>
+<h2>解析 XML 文档</h2>
+<p>下面的代码片段把 XML 文档解析到 XML DOM 对象中：</p>
+<div class="code notranslate"><div>
+
+if (window.XMLHttpRequest)<br/>
+  {// code for IE7+, Firefox, Chrome, Opera, Safari<br/>
+  xmlhttp=new XMLHttpRequest();<br/>
+  }<br/>
+else<br/>
+  {// code for IE6, IE5<br/>
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");<br/>
+  }<br/>
+xmlhttp.open("GET","books.xml",false);<br/>
+xmlhttp.send();<br/>
+xmlDoc=xmlhttp.responseXML;
+
+
+</div></div>
+<br/><hr/>
+<h2>解析 XML 字符串</h2>
+<p>下面的代码片段把 XML 字符串解析到 XML DOM 对象中：</p>
+<div class="code notranslate"><div>
+
+
+txt="&lt;bookstore&gt;&lt;book&gt;";<br/>
+txt=txt+"&lt;title&gt;Everyday Italian&lt;/title&gt;";<br/>
+txt=txt+"&lt;author&gt;Giada De Laurentiis&lt;/author&gt;";<br/>
+txt=txt+"&lt;year&gt;2005&lt;/year&gt;";<br/>
+txt=txt+"&lt;/book&gt;&lt;/bookstore&gt;";<br/><br/>
+if (window.DOMParser)<br/>
+  {<br/>
+  parser=new DOMParser();<br/>
+  xmlDoc=parser.parseFromString(txt,"text/xml");<br/>
+  }<br/>
+else // Internet Explorer<br/>
+  {<br/>
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");<br/>
+  xmlDoc.async=false;<br/>
+  xmlDoc.loadXML(txt); <br/>
+  }
+
+
+</div></div>
+<p><b>注释：</b>Internet Explorer 使用 loadXML() 方法来解析 XML 字符串，而其他浏览器使用 DOMParser 对象。</p>
+<hr/>
+<h2>跨域访问</h2>
+<p>出于安全方面的原因，现代的浏览器不允许跨域的访问。</p>
+<p>这意味着，网页以及它试图加载的 XML 文件，都必须位于相同的服务器上。</p>
+<hr/>
+<h2>XML DOM</h2>
+<p>在下一章中，您将学习如何访问 XML DOM 对象并取回数据。</p>
+<br/>
+</div>

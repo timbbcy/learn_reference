@@ -1,0 +1,31 @@
+<div class="article-intro" id="content">
+<h1>Foundation 表格</h1>
+<p>Foundation 的 <code>&lt;table&gt;</code> 元素样式为灰色斑马条纹且包含四个边框：</p>
+<iframe src="/try/demo_source/tryfoundation_table_iframe2.htm" style="border:0;width:100%;height:190px;overflow-y:auto;"></iframe>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">table</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">thead</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">tr</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">th</span><span class="highGT">&gt;</span>Firstname<span class="highLT">&lt;</span><span class="highELE">/th</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">th</span><span class="highGT">&gt;</span>Lastname<span class="highLT">&lt;</span><span class="highELE">/th</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">th</span><span class="highGT">&gt;</span>Email<span class="highLT">&lt;</span><span class="highELE">/th</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/tr</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/thead</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">tbody</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">tr</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>John<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>Doe<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>john@example.com<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">/tr</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">tr</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>Mary<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>Moe<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>mary@example.com<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/tr</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">tr</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>July<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>Dooley<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">td</span><span class="highGT">&gt;</span>july@example.com<span class="highLT">&lt;</span><span class="highELE">/td</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">/tr</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/tbody</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/table</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_table" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>响应式表格</h2>
+<p>使用 CSS 让表格支持响应式设计：在表格外添加 <code>&lt;div&gt;</code> 元素，样式为 <code>overflow-x:hidden</code>:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">style=</span><span class="highVAL">"overflow-x:hidden"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">table</span><span class="highGT">&gt;</span><br/>    
+	...<br/>  <span class="highLT">&lt;</span><span class="highELE">/table</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span> </div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_table_responsive" target="_blank">尝试一下 »</a></div>
+</div>

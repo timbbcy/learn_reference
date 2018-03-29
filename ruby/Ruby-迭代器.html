@@ -1,0 +1,88 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">迭代器</span></h1>
+<div class="tutintro">
+<p>简单来说：迭代(iterate)指的是重复做相同的事，所以迭代器(iterator)就是用来重复多次相同的事。</p>
+<p>迭代器是<i>集合</i>支持的方法。存储一组数据成员的对象称为集合。在 Ruby 中，数组(Array)和哈希(Hash)可以称之为集合。</p>
+<p>迭代器返回集合的所有元素，一个接着一个。在这里我们将讨论两种迭代器，<i>each</i> 和 <i>collect</i>。</p>
+</div>
+<h2 class="tutheader">Ruby <i>each</i> 迭代器</h2>
+<p>each 迭代器返回数组或哈希的所有元素。</p>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">collection</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">variable</span><span class="hl-code">|
+   </span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>为<i>集合</i>中的每个元素执行 <i>code</i>。在这里，集合可以是数组或哈希。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">ary</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span><span class="hl-code">,</span><span class="hl-number">4</span><span class="hl-code">,</span><span class="hl-number">5</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">ary</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">i</span><span class="hl-code">|
+   </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=iterate_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+1
+2
+3
+4
+5
+</pre>
+<p><i>each</i> 迭代器总是与一个块关联。它向块返回数组的每个值，一个接着一个。值被存储在变量 <b>i</b> 中，然后显示在屏幕上。</p>
+<h2 class="tutheader">Ruby <i>collect</i> 迭代器</h2>
+<p><i>collect</i> 迭代器返回集合的所有元素。</p>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">collection</span><span class="hl-code"> = </span><span class="hl-identifier">collection</span><span class="hl-code">.</span><span class="hl-identifier">collect</span></div>
+</div>
+</div>
+<p><i>collect</i> 方法不需要总是与一个块关联。<i>collect</i> 方法返回整个集合，不管它是数组或者是哈希。</p>
+<h3>实例</h3>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span><span class="hl-code">,</span><span class="hl-number">4</span><span class="hl-code">,</span><span class="hl-number">5</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-identifier">Array</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">collect</span><span class="hl-code">{ |</span><span class="hl-identifier">x</span><span class="hl-code">|</span><span class="hl-identifier">x</span><span class="hl-code"> }
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">b</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=iterate_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+1
+2
+3
+4
+5
+</pre>
+<p><b>注意</b>：<i>collect</i> 方法不是数组间进行复制的正确方式。这里有另一个称为 <i>clone</i> 的方法，用于复制一个数组到另一个数组。</p>
+<p>当您想要对每个值进行一些操作以便获得新的数组时，您通常使用 collect 方法。例如，下面的代码会生成一个数组，其值是 a 中每个值的 10 倍。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span><span class="hl-code">,</span><span class="hl-number">4</span><span class="hl-code">,</span><span class="hl-number">5</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">collect</span><span class="hl-code">{|</span><span class="hl-identifier">x</span><span class="hl-code">| </span><span class="hl-number">10</span><span class="hl-code">*</span><span class="hl-identifier">x</span><span class="hl-code">}
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-identifier">b</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=iterate_demo3&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行输出结果为：</p>
+<pre>
+10
+20
+30
+40
+50
+</pre>
+</div>

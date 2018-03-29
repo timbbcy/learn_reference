@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>XQuery <span class="color_h1">FLWOR + HTML</span>
+</h1>
+<hr/>
+<h2>XML 实例文档</h2>
+<p>我们将在下面的例子中继续使用这个 "books.xml" 文档（与上一节中的文件相同）。</p>
+<p><a href="/try/xml/books.xml" target="_blank">在您的浏览器中查看 "books.xml" 文件</a>。</p>
+<hr/>
+<h2>在一个 HTML 列表中提交结果</h2>
+<p>请看下面的 XQuery FLWOR 表达式：</p>
+<div class="code notranslate"><div>
+
+for $x in doc("books.xml")/bookstore/book/title<br/>
+order by $x<br/>
+return $x
+</div></div>
+<p>上面的表达式会选取 bookstore 元素下的 book 元素下的所有 title 元素，并以字母顺序返回 title 元素。</p>
+<p>现在，我们希望使用 HTML 列表列出我们的书店中所有的书目。我们向 FLWOR 表达式添加 &lt;ul&gt; 和 &lt;li&gt; 标签：</p>
+<div class="code notranslate"><div>
+<span class="marked">&lt;ul&gt;<br/>
+{</span><br/>
+for $x in doc("books.xml")/bookstore/book/title<br/>
+order by $x<br/>
+return <span class="marked">&lt;li&gt;{</span>$x<span class="marked">}&lt;/li&gt;<br/>
+}<br/>
+&lt;/ul&gt;</span>
+</div></div>
+<p>以上代码输出结果：</p>
+<div class="code notranslate"><div>
+
+&lt;ul&gt;<br/>
+&lt;li&gt;&lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;title lang="en"&gt;Harry Potter&lt;/title&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;title lang="en"&gt;Learning XML&lt;/title&gt;&lt;/li&gt;<br/>
+&lt;li&gt;&lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;&lt;/li&gt;<br/>
+&lt;/ul&gt;
+</div></div>
+<p>现在我们希望去除 title 元素，而仅仅显示 title 元素内的数据。</p>
+<div class="code notranslate"><div>
+
+&lt;ul&gt;<br/>
+{<br/>
+for $x in doc("books.xml")/bookstore/book/title<br/>
+order by $x<br/>
+return &lt;li&gt;{<span class="marked">data(</span>$x<span class="marked">)</span>}&lt;/li&gt;<br/>
+}<br/>
+&lt;/ul&gt;
+</div></div>
+<p>结果将是一个 HTML 列表：</p>
+<div class="code notranslate"><div>
+
+&lt;ul&gt;<br/>
+&lt;li&gt;Everyday Italian&lt;/li&gt;<br/>
+&lt;li&gt;Harry Potter&lt;/li&gt;<br/>
+&lt;li&gt;Learning XML&lt;/li&gt;<br/>
+&lt;li&gt;XQuery Kick Start&lt;/li&gt;<br/>
+&lt;/ul&gt;
+</div></div>
+</div>

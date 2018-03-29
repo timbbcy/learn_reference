@@ -1,0 +1,90 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- TextBox 控件</span>
+</h1>
+<hr/>
+<p class="intro">TextBox 控件用于创建用户可输入文本的文本框。</p>
+<hr/>
+<h2>TextBox 控件</h2>
+<p>TextBox 控件用于创建用户可输入文本的文本框。</p>
+<p>TextBox 控件的特性和属性列在我们的 <a href="aspnet-ref-webcontrols.html" target="_blank">WebForms 控件参考手册页面</a>。</p>
+<p>下面的实例演示了您可能会用到的 TextBox 控件的一些属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/><br/>
+A basic TextBox:<br/>
+&lt;asp:TextBox id="tb1" runat="server" /&gt;<br/>
+&lt;br /&gt;&lt;br /&gt;<br/><br/>
+A password TextBox:<br/>
+&lt;asp:TextBox id="tb2" TextMode="password" runat="server" /&gt;<br/>
+&lt;br /&gt;&lt;br /&gt;<br/><br/>
+A TextBox with text:<br/>
+&lt;asp:TextBox id="tb4" Text="Hello World!" runat="server" /&gt;<br/>
+&lt;br /&gt;&lt;br /&gt;<br/><br/>
+A multiline TextBox:<br/>
+&lt;asp:TextBox id="tb3" TextMode="multiline" runat="server" /&gt;<br/>
+&lt;br /&gt;&lt;br /&gt;<br/><br/>
+A TextBox with height:<br/>
+&lt;asp:TextBox id="tb6" rows="5" TextMode="multiline"<br/>
+runat="server" /&gt;<br/>
+&lt;br /&gt;&lt;br /&gt;<br/><br/>
+A TextBox with width:<br/>
+&lt;asp:TextBox id="tb5" columns="30" runat="server" /&gt;<br/><br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_textbox_ex1" target="_blank">演示实例 »</a>
+</div>
+<hr/>
+<h2>添加脚本</h2>
+<p>当表单被提交时，TextBox 控件的内容和设置可能会被服务器脚本修改。表单可通过点击一个按钮或当用户修改 TextBox 控件的值的时候进行提交。</p>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 TextBox 控件、一个 Button 控件和一个 Label 控件。当提交按钮被触发时，submit 子例程将被执行。submit 子例程将写入一行文本到 Label 控件中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;script runat="server"&gt;<br/>
+Sub submit(sender As Object, e As EventArgs)<br/>
+lbl1.Text="Your name is " &amp; txt1.Text<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+Enter your name:<br/>
+&lt;asp:TextBox id="txt1" runat="server" /&gt;<br/>
+&lt;asp:Button OnClick="submit" Text="Submit" runat="server" /&gt;<br/>
+&lt;p&gt;&lt;asp:Label id="lbl1" runat="server" /&gt;&lt;/p&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_textbox" target="_blank">演示实例 »</a>
+</div>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 TextBox 控件和一个 Label 控件。当您修改了 TextBox 中的值，并且在 TextBox 外部点击（或者按下了 Tab 键）时，change 子例程将会被执行。change 子例程将写入一行文本到 Label 控件中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;script runat="server"&gt;<br/>
+Sub change(sender As Object, e As EventArgs)<br/>
+lbl1.Text="You changed text to " &amp; txt1.Text<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+Enter your name:<br/>
+&lt;asp:TextBox id="txt1" runat="server"<br/>
+text="Hello World!"<br/>
+ontextchanged="change" autopostback="true"/&gt;<br/>
+&lt;p&gt;&lt;asp:Label id="lbl1" runat="server" /&gt;&lt;/p&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_textbox3" target="_blank">演示实例 »</a>
+</div>
+<br/>
+</div>

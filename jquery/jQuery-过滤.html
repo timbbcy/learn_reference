@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<h1>jQuery 遍历- <span class="color_h1">过滤</span>
+</h1>
+<hr/>
+<h2>缩小搜索元素的范围</h2>
+<p>三个最基本的过滤方法是：first(), last() 和 eq()，它们允许您基于其在一组元素中的位置来选择一个特定的元素。</p>
+<p>其他过滤方法，比如 filter() 和 not() 允许您选取匹配或不匹配某项指定标准的元素。</p>
+<hr/>
+<h2>jQuery first() 方法</h2>
+<p>first() 方法返回被选元素的首个元素。</p>
+<p>下面的例子选取首个 &lt;div&gt; 元素内部的第一个 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">first</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_first" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery last() 方法</h2>
+<p>last() 方法返回被选元素的最后一个元素。</p>
+<p>下面的例子选择最后一个 &lt;div&gt; 元素中的最后一个 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">last</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_last" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery eq() 方法</h2>
+<p>eq() 方法返回被选元素中带有指定索引号的元素。</p>
+<p>索引号从 0 开始，因此首个元素的索引号是 0 而不是 1。下面的例子选取第二个 &lt;p&gt; 元素（索引号 1）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">eq</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_eq" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery filter() 方法</h2>
+<p>filter() 方法允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回。</p>
+<p>下面的例子返回带有类名 "url" 的所有 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">filter</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.url</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_filter" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery not() 方法</h2>
+<p>not() 方法返回不匹配标准的所有元素。</p>
+<p class="tip"><span>提示：</span>not() 方法与 filter() 相反。</p>
+<p>下面的例子返回不带有类名 "url" 的所有 &lt;p&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">not</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.url</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div> </div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_not" target="_blank">尝试一下 »</a>
+</div>
+</div>

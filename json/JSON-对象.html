@@ -1,0 +1,125 @@
+<div class="article-intro" id="content">
+<h1>JSON 对象</h1>
+<hr/>
+<h2>对象语法</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">alexa</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">10000</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">site</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-reserved">null</span><span class="hl-code"> </span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>JSON 对象使用在大括号({})中书写。</p>
+<p>对象可以包含多个 <b>key/value（键/值）</b>对。</p>
+<p>key 必须是字符串，value 可以是合法的 JSON 数据类型（字符串, 数字, 对象, 数组, 布尔值或 null）。</p>
+<p>key 和 value 中使用冒号(:)分割。</p>
+<p>每个 key/value 对使用逗号(,)分割。</p>
+<hr/>
+<h2>访问对象值</h2>
+<p>你可以使用点号（.）来访问对象的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">, </span><span class="hl-identifier">x</span><span class="hl-code">;
+</span><span class="hl-identifier">myObj</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">alexa</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">10000</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">site</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-reserved">null</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_dot" target="_blank">尝试一下 »</a>
+</div>
+<p>你也可以使用中括号（[]）来访问对象的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">, </span><span class="hl-identifier">x</span><span class="hl-code">;
+</span><span class="hl-identifier">myObj</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">alexa</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">10000</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">site</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-reserved">null</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">myObj</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_bracket" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>循环对象</h2>
+<p>你可以使用 for-in 来循环对象的属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">alexa</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">10000</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">site</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-reserved">null</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> += </span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_loop" target="_blank">尝试一下 »</a>
+</div>
+<p>在 for-in 循环对象的属性时，使用中括号（[]）来访问属性的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">alexa</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">10000</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">site</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-reserved">null</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> += </span><span class="hl-identifier">myObj</span><span class="hl-brackets">[</span><span class="hl-identifier">x</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_loop_bracket" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>嵌套 JSON 对象</h2>
+<p>JSON 对象中可以包含另外一个 JSON 对象：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">myObj</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">alexa</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">10000</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">sites</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">site1</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">,
+        </span><span class="hl-quotes">"</span><span class="hl-string">site2</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">m.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">,
+        </span><span class="hl-quotes">"</span><span class="hl-string">site3</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">c.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>你可以使用点号(.)或者中括号([])来访问嵌套的 JSON 对象。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-code">.</span><span class="hl-identifier">site1</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> 或者</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">site1</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_nested" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>修改值</h2>
+<p>你可以使用点号(.)来修改 JSON 对象的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-code">.</span><span class="hl-identifier">site1</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">www.google.com</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_modify" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以使用中括号([])来修改 JSON 对象的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">site1</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">www.google.com</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_modify_bracket" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>删除对象属性</h2>
+<p>我们可以使用 <b>delete</b> 关键字来删除 JSON 对象的属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">delete</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-code">.</span><span class="hl-identifier">site1</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_delete" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以使用中括号([])来删除 JSON 对象的属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">delete</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">site1</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_object_delete_bracket" target="_blank">尝试一下 »</a>
+</div>
+</div>

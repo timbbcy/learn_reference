@@ -1,0 +1,141 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">验证器</span>
+</h1>
+<hr/>
+<p class="intro">使用我们的 XML 验证器来对您的 XML 文件进行语法检查。</p>
+<hr/>
+<h2>XML 错误会终止您的程序</h2>
+<p>XML 文档中的错误会终止您的 XML 应用程序。</p>
+<p>W3C 的 XML 规范声明：如果 XML 文档存在错误，那么程序就不应当继续处理这个文档。理由是，XML 软件应当轻巧，快速，具有良好的兼容性。
+</p>
+<p>如果使用 HTML，创建包含大量错误的文档是有可能的（比如您忘记了结束标签）。其中一个主要的原因是 HTML 浏览器相当臃肿，兼容性也很差，并且它们有自己的方式来确定当发现错误时文档应该显示为什么样子。</p>
+<p><b>使用 XML 时，这种情况不应当存在。</b></p>
+<hr/>
+<h2>对您的 XML 进行语法检查</h2>
+<p>为了帮助您对 XML 进行语法检查，我们创建了一个 XML 验证器。</p>
+<p>把您的 XML 粘贴到下面的文本框中，然后点击"验证"按钮来进行语法检查。</p>
+<p>语法正确实例：</p>
+<textarea cols="20" id="xml1" name="xml1" rows="10" style="width:100%">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;note&gt;
+&lt;to&gt;Tove&lt;/to&gt;
+&lt;from&gt;Jani&lt;/from&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;
+&lt;/note&gt;
+</textarea>
+<p><input onclick="validateXML('xml1')" type="button" value="验证"/></p>
+<p>语法错误实例：</p>
+<form action="">
+<textarea cols="75" id="validxml1" rows="10" style="width:100%">
+&lt;?xml version="1.0" ?&gt; 
+&lt;note&gt;
+&lt;to&gt;Tove&lt;/to&gt; 
+&lt;from&gt;Jani&lt;/Ffrom&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt; 
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt; 
+&lt;/note&gt;
+</textarea><br/>
+<input onclick="validateXML('validxml1')" type="button" value="验证">
+</input></form>
+<p><b>注释：</b>只会检查您的 XML 是否"形式良好"。如果您想根据 DTD 来验证 XML，请参阅此页面上的最后一段。</p>
+<hr/>
+<h2>根据 DTD 来验证 XML</h2>
+<p>如果您运行 <b>Internet Explorer</b>，您可以在下面的文本区域中根据 DTD 验证您的 XML。</p>
+<p>只要把 DOCTYPE 声明（带有 DTD）添加到您的 XML 中 &lt;xml&gt; 元素后，然后点击"验证"按钮即可：</p>
+<form action="">
+<textarea cols="75" id="validxml2" rows="17" style="width:100%">
+&lt;?xml version="1.0" ?&gt; 
+&lt;!DOCTYPE note [
+  &lt;!ELEMENT note (to,from,heading,body)&gt;
+  &lt;!ELEMENT to      (#PCDATA)&gt;
+  &lt;!ELEMENT from    (#PCDATA)&gt;
+  &lt;!ELEMENT heading (#PCDATA)&gt;
+  &lt;!ELEMENT body    (#PCDATA)&gt;
+]&gt;
+&lt;note&gt;
+&lt;to&gt;Tove&lt;/to&gt; 
+&lt;from&gt;Jani&lt;/from&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt; 
+&lt;message&gt;Don't forget me this weekend!&lt;/message&gt; 
+&lt;/note&gt;
+</textarea><br/>
+<input onclick="validateXML('validxml2')" type="button" value="验证（只限 IE!）">
+</input></form>
+<script>
+var xt="",h3OK=1
+function checkErrorXML(x)
+{
+xt=""
+h3OK=1
+checkXML(x)
+}
+
+function checkXML(n)
+{
+var l,i,nam
+nam=n.nodeName
+if (nam=="h3")
+	{
+	if (h3OK==0)
+		{
+		return;
+		}
+	h3OK=0
+	}
+if (nam=="#text")
+	{
+	xt=xt + n.nodeValue + "\n"
+	}
+l=n.childNodes.length
+for (i=0;i<l;i++)
+	{
+	checkXML(n.childNodes[i])
+	}
+}
+
+function validateXML(txt)
+{
+// code for IE
+if (window.ActiveXObject)
+  {
+  var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+  xmlDoc.async=false;
+  xmlDoc.loadXML(document.all(txt).value);
+
+  if(xmlDoc.parseError.errorCode!=0)
+    {
+    txt="Error Code: " + xmlDoc.parseError.errorCode + "\n";
+    txt=txt+"Error Reason: " + xmlDoc.parseError.reason;
+    txt=txt+"Error Line: " + xmlDoc.parseError.line;
+    alert(txt);
+    }
+  else
+    {
+    alert("没有找到错误！");
+    }
+  }
+// code for Mozilla, Firefox, Opera, etc.
+else if (document.implementation.createDocument)
+  {
+var parser=new DOMParser();
+var text=document.getElementById(txt).value;
+var xmlDoc=parser.parseFromString(text,"text/xml");
+
+if (xmlDoc.getElementsByTagName("parsererror").length>0)
+    {
+    checkErrorXML(xmlDoc.getElementsByTagName("parsererror")[0]);
+    alert(xt)
+    }
+  else
+    {
+    alert("没有找到错误！");
+    }
+  }
+else
+  {
+  alert('您的浏览器不支持 XML 验证器');
+  }
+}
+</script>
+</div>

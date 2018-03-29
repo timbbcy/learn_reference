@@ -1,0 +1,193 @@
+<div class="article-intro" id="content">
+<h1>PHP - <span class="color_h1">AJAX 与 MySQL</span>
+</h1>
+<hr/>
+<p class="intro">AJAX 可用来与数据库进行交互式通信。</p>
+<hr/>
+<h2>AJAX 数据库实例</h2>
+<p>下面的实例将演示网页如何通过 AJAX 从数据库读取信息：</p>
+<p>本教程使用到的 Websites 表 SQL 文件：<a download="" href="http://static.runoob.com/download/websites.sql" target="_blank">websites.sql</a>。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_result">
+<script>
+function showSite(str)
+{
+if (str=="")
+  {
+  document.getElementById("txtHint").innerHTML="";
+  return;
+  }  
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","/try/demo_source/getsite_mysql.php?q="+str,true);
+xmlhttp.send();
+}
+</script>
+<form action="">
+<select name="users" onchange="showSite(this.value)">
+<option value="">选择一个网站:</option>
+<option value="1">Google</option>
+<option value="2">淘宝</option>
+<option value="3">菜鸟教程</option>
+<option value="4">微博</option>
+<option value="5">Facebook</option>
+</select>
+</form>
+<br/><div id="txtHint">选择对应选项，用户信息会显示在这……</div>
+</div>
+<br/>
+</div>
+<br/><hr/>
+<h2>实例解释 - MySQL 数据库</h2>
+<p>在上面的实例中，我们使用的数据库表如下所示：</p>
+<pre>
+mysql&gt; select * from websites;
++----+--------------+---------------------------+-------+---------+
+| id | name         | url                       | alexa | country |
++----+--------------+---------------------------+-------+---------+
+| 1  | Google       | https://www.google.cm/    | 1     | USA     |
+| 2  | 淘宝       | https://www.taobao.com/   | 13    | CN      |
+| 3  | 菜鸟教程 | http://www.runoob.com/    | 4689  | CN      |
+| 4  | 微博       | http://weibo.com/         | 20    | CN      |
+| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
++----+--------------+---------------------------+-------+---------+
+5 rows in set (0.01 sec)
+</pre>
+<hr/>
+<h2>实例解释 - HTML 页面</h2>
+<p>当用户在上面的下拉列表中选择某位用户时，会执行名为 "showSite()" 的函数。该函数由 "onchange" 事件触发：</p>
+<div class="example">
+<h2 class="example">test.html 文件代码:</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程(runoob.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">showSite</span><span class="hl-brackets">(</span><span class="hl-identifier">str</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">str</span><span class="hl-code">==</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">txtHint</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-reserved">return</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-builtin">window</span><span class="hl-code">.</span><span class="hl-identifier">XMLHttpRequest</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">XMLHttpRequest</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> IE6, IE5 浏览器执行代码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">ActiveXObject</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Microsoft.XMLHTTP</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">onreadystatechange</span><span class="hl-code">=</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">readyState</span><span class="hl-code">==</span><span class="hl-number">4</span><span class="hl-code"> &amp;&amp; </span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">status</span><span class="hl-code">==</span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">txtHint</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">responseText</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">GET</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">getsite_mysql.php?q=</span><span class="hl-quotes">"</span><span class="hl-code">+</span><span class="hl-identifier">str</span><span class="hl-code">,</span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">xmlhttp</span><span class="hl-code">.</span><span class="hl-identifier">send</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">select</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">users</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onchange</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">showSite(this.value)</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">选择一个网站:</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Google</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">2</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">淘宝</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">3</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">4</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">微博</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">5</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Facebook</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">select</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">txtHint</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-code">网站信息显示在这里……</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>showSite() 函数会执行以下步骤：</p>
+<ul>
+<li>检查是否有网站被选择</li>
+<li>创建 XMLHttpRequest 对象</li>
+<li>创建在服务器响应就绪时执行的函数</li>
+<li>向服务器上的文件发送请求</li>
+<li>请注意添加到 URL 末端的参数（q）（包含下拉列表的内容）</li>
+</ul>
+<hr/>
+<h2>PHP 文件</h2>
+<p>上面这段通过 JavaScript 调用的服务器页面是名为 "getsite_mysql.php" 的 PHP 文件。</p>
+<p>"getsite_mysql.php" 中的源代码会运行一次针对 MySQL 数据库的查询，然后在 HTML 表格中返回结果：</p>
+<div class="example">
+<h2 class="example">getsite_mysql.php 文件代码:</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$q</span><span class="hl-code"> = </span><span class="hl-reserved">isset</span><span class="hl-brackets">(</span><span class="hl-var">$_GET</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">q</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> ? </span><span class="hl-identifier">intval</span><span class="hl-brackets">(</span><span class="hl-var">$_GET</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">q</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-reserved">empty</span><span class="hl-brackets">(</span><span class="hl-var">$q</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">请选择一个网站</span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-reserved">exit</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$con</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">!</span><span class="hl-var">$con</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Could not connect: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$con</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 选择数据库</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-var">$con</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">test</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> 设置编码，防止中文乱码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_set_charset</span><span class="hl-brackets">(</span><span class="hl-var">$con</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$sql</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">SELECT * FROM Websites WHERE id = '</span><span class="hl-quotes">"</span><span class="hl-code">.</span><span class="hl-var">$q</span><span class="hl-code">.</span><span class="hl-quotes">"</span><span class="hl-string">'</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$result</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$con</span><span class="hl-code">,</span><span class="hl-var">$sql</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;table border='1'&gt;
+&lt;tr&gt;
+&lt;th&gt;ID&lt;/th&gt;
+&lt;th&gt;网站名&lt;/th&gt;
+&lt;th&gt;网站 URL&lt;/th&gt;
+&lt;th&gt;Alexa 排名&lt;/th&gt;
+&lt;th&gt;国家&lt;/th&gt;
+&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$result</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">id</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">name</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">url</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">alexa</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">country</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/table&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$con</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>解释：当查询从 JavaScript 发送到 PHP 文件时，将发生：</p>
+<ol>
+<li>PHP 打开一个到 MySQL 数据库的连接</li>
+<li>找到选中的用户</li>
+<li>创建 HTML 表格，填充数据，并发送回 "txtHint" 占位符</li>
+</ol>
+</div>

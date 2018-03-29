@@ -1,0 +1,92 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">改变节点值</span>
+</h1>
+<hr/>
+<p class="intro">nodeValue 属性用于改变节点值。</p>
+<p class="intro">setAttribute() 方法用于改变属性值。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html" target="_blank">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_change_nodevalue" target="_blank">改变元素的文本节点</a><br/>
+本例使用 nodeValue 属性来改变 "books.xml" 中第一个 &lt;title&gt; 元素的文本节点。</p>
+<p><a href="/try/try.php?filename=try_dom_setattribute1" target="_blank">通过使用 setAttribute 来改变属性值</a><br/>
+本例使用 setAttribute() 方法来改变第一个 &lt;book&gt; 的 "category" 属性的值。</p>
+<p><a href="/try/try.php?filename=try_dom_att_nodevalue" target="_blank">通过使用 nodeValue 来改变属性值</a><br/>
+本例使用 nodeValue 属性来改变第一个 &lt;book&gt; 的 "category" 属性的值。</p>
+<hr/>
+<h2>改变元素的值</h2>
+<p>在 DOM 中，每种成分都是节点。元素节点没有文本值。</p>
+<p>元素节点的文本存储在子节点中。该节点称为文本节点。</p>
+<p>改变元素文本的方法，就是改变这个子节点（文本节点）的值。</p>
+<hr/>
+<h2>改变文本节点的值</h2>
+<p>nodeValue 属性可用于改变文本节点的值。</p>
+<p>下面的代码片段改变了第一个 &lt;title&gt; 元素的文本节点值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0].childNodes[0];<br/>
+x.nodeValue="Easy Cooking";
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_change_nodevalue" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;title&gt; 元素的文本节点</li>
+<li>把该文本节点的节点值更改为 "Easy Cooking"</li>
+</ol>
+<p>遍历并更改所有 &lt;title&gt; 元素的文本节点：
+<a href="/try/try.php?filename=try_dom_change_nodevalue2" target="_blank">尝试一下</a><br/></p>
+<hr/>
+<h2>改变属性的值</h2>
+<p>在 DOM 中，属性也是节点。与元素节点不同，属性节点拥有文本值。I</p>
+<p>改变属性的值的方法，就是改变它的文本值。</p>
+<p>可以通过使用 setAttribute() 方法或属性节点的 nodeValue 属性来完成这个任务。</p>
+<hr/>
+<h2>通过使用 setAttribute() 改变属性</h2>
+<p>setAttribute() 方法改变已有属性的值，或创建新属性。</p>
+<p>下面的代码改变 &lt;book&gt; 元素的 category 属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName('book');<br/>
+x[0].setAttribute("category","food");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_setattribute1" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;book&gt; 元素</li>
+<li>把 "category" 属性的值更改为 "food"</li>
+</ol>
+<p>遍历所有的 &lt;title&gt; 元素并添加一个新属性：
+<a href="/try/try.php?filename=try_dom_setattribute2" target="_blank">尝试一下</a></p>
+<p><b>注意：</b>如果属性不存在，则创建一个新属性（拥有指定的名称和值）。<br/></p>
+<hr/>
+<h2>通过使用 nodeValue 改变属性</h2>
+<p>nodeValue 属性可用于更改属性节点的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("book")[0]<br/>
+y=x.getAttributeNode("category");<br/>
+y.nodeValue="food";
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_att_nodevalue" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;book&gt; 元素的 "category" 属性</li>
+<li>把该属性节点的值更改为 "food"</li>
+</ol>
+<br/>
+</div>

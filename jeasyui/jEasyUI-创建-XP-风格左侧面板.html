@@ -1,0 +1,66 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 布局 - <span class="color_h1">创建 XP 风格左侧面板</span></h1>
+<p>
+通常情况下，在 Windows XP 的资源管理器文件夹中，左侧的面板（panel）包含一些常见任务。
+本教程向您展示如何通过 easyui 的面板（panel）插件来创建 XP 左侧面板。
+</p>
+<img src="/wp-content/uploads/2013/12/xp.png"/>
+<h4>定义一些面板（panel）</h4>
+<p>我们定义一些面板（panel），这些面板（panel）用来显示一些任务。每个面板（panel）应该至少有折叠/展开工具按钮。</p>
+<p>代码如下所示：</p>
+<pre style="color:#006600">
+    &lt;div style="width:200px;height:auto;background:#7190E0;padding:5px;"&gt;
+        &lt;div class="easyui-panel" title="Picture Tasks" collapsible="true" style="width:200px;height:auto;padding:10px;"&gt;
+            View as a slide show&lt;br/&gt;
+            Order prints online&lt;br/&gt;
+            Print pictures
+        &lt;/div&gt;
+        &lt;br/&gt;
+        &lt;div class="easyui-panel" title="File and Folder Tasks" collapsible="true" style="width:200px;height:auto;padding:10px;"&gt;
+            Make a new folder&lt;br/&gt;
+            Publish this folder to the Web&lt;br/&gt;
+            Share this folder
+        &lt;/div&gt;
+        &lt;br/&gt;
+        &lt;div class="easyui-panel" title="Other Places" collapsible="true" collapsed="true" style="width:200px;height:auto;padding:10px;"&gt;
+            New York&lt;br/&gt;
+            My Pictures&lt;br/&gt;
+            My Computer&lt;br/&gt;
+            My Network Places
+        &lt;/div&gt;
+        &lt;br/&gt;
+        &lt;div class="easyui-panel" title="Details" collapsible="true" style="width:200px;height:auto;padding:10px;"&gt;
+            My documents&lt;br/&gt;
+            File folder&lt;br/&gt;&lt;br/&gt;
+            Date modified: Oct.3rd 2010
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<h4>自定义面板（panel）的外观效果</h4>
+<p>
+请注意，这个视图外观效果不是我们想要的，我们必须改变面板（panel）的头部背景图片和折叠/展开按钮的图标。
+</p>
+<p>做到这一点并不难，我们需要做的只是重新定义一些 CSS。</p>
+<pre style="color:#006600">
+    .panel-body{
+        background:#f0f0f0;
+    }
+    .panel-header{
+        background:#fff url('images/panel_header_bg.gif') no-repeat top right;
+    }
+    .panel-tool-collapse{
+        background:url('images/arrow_up.gif') no-repeat 0px -3px;
+    }
+    .panel-tool-expand{
+        background:url('images/arrow_down.gif') no-repeat 0px -3px;
+    }
+</pre>
+<p>由此可见，使用 easyui 定义用户界面非常简单。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-layout-xp.zip">jeasyui-layout-xp.zip</a></p>
+</div>

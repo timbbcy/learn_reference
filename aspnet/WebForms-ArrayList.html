@@ -1,0 +1,155 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- ArrayList 对象</span>
+</h1>
+<hr/>
+<p class="intro">ArrayList 对象是包含单个数据值的项目的集合。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showaspx.php?filename=demo_arraylist_drop1" target="_blank">ArrayList DropDownList</a></p>
+<p><a href="/try/showaspx.php?filename=demo_arraylist_radio1" target="_blank">ArrayList RadioButtonList</a></p>
+<hr/>
+<h2>创建 ArrayList</h2>
+<p>ArrayList 对象是包含单个数据值的项目的集合。</p>
+<p>通过 Add() 方法向 ArrayList 添加项目。</p>
+<p>下面的代码创建了一个名为 mycountries 的 ArrayList 对象，并添加了四个项目：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+   
+  dim mycountries=New ArrayList<br/>
+   
+  mycountries.Add("Norway")<br/>
+   
+  mycountries.Add("Sweden")<br/>
+   
+  mycountries.Add("France")<br/>
+   
+  mycountries.Add("Italy")<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<p>在默认情况下，一个 ArrayList 对象包含 16 个条目。可通过 TrimToSize() 方法把 ArrayList 调整为最终尺寸：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+   
+  dim mycountries=New ArrayList<br/>
+   
+  mycountries.Add("Norway")<br/>
+   
+  mycountries.Add("Sweden")<br/>
+   
+  mycountries.Add("France")<br/>
+   
+  mycountries.Add("Italy")<br/>
+   
+  mycountries.TrimToSize()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<p>通过 Sort() 方法，ArrayList 也能够按照字母顺序或者数字顺序进行排序：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+   
+  dim mycountries=New ArrayList<br/>
+   
+  mycountries.Add("Norway")<br/>
+   
+  mycountries.Add("Sweden")<br/>
+   
+  mycountries.Add("France")<br/>
+   
+  mycountries.Add("Italy")<br/>
+   
+  mycountries.TrimToSize()<br/>
+   
+  mycountries.Sort()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<p>要实现反向排序，请在 Sort() 方法后应用 Reverse() 方法：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+   
+  dim mycountries=New ArrayList<br/>
+   
+  mycountries.Add("Norway")<br/>
+   
+  mycountries.Add("Sweden")<br/>
+   
+  mycountries.Add("France")<br/>
+   
+  mycountries.Add("Italy")<br/>
+   
+  mycountries.TrimToSize()<br/>
+   
+  mycountries.Sort()<br/>
+   
+  mycountries.Reverse()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;</div></div>
+<br/><hr/>
+<h2>绑定数据到 ArrayList</h2>
+<p>ArrayList 对象可为下列的控件自动生成文本和值：</p>
+<ul>
+<li>asp:RadioButtonList</li>
+<li>asp:CheckBoxList</li>
+<li>asp:DropDownList</li>
+<li>asp:Listbox</li>
+</ul>
+<p>为了绑定数据到 RadioButtonList 控件，首先要在 .aspx 页面中创建一个 RadioButtonList 控件（不带任何 asp:ListItem 元素）：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:RadioButtonList id="rb" runat="server" /&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>然后添加创建列表的脚本，并且绑定列表中的值到 RadioButtonList 控件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  dim mycountries=New ArrayList<br/>
+  mycountries.Add("Norway")<br/>
+  mycountries.Add("Sweden")<br/>
+  mycountries.Add("France")<br/>
+  mycountries.Add("Italy")<br/>
+  mycountries.TrimToSize()<br/>
+  mycountries.Sort()<br/>
+  rb.DataSource=mycountries<br/>
+  rb.DataBind()<br/>
+end if<br/>
+end sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:RadioButtonList id="rb" runat="server" /&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_arraylist_radio1" target="_blank">演示实例 »</a>
+</div>
+<p>RadioButtonList 控件的 DataSource 属性被设置为该 ArrayList，它定义了这个 RadioButtonList 控件的数据源。RadioButtonList 控件的 DataBind() 方法把 RadioButtonList 控件与数据源绑定在一起。</p>
+<p><b>注释：</b>数据值作为控件的 Text 和 Value 属性来使用。如需添加不同于 Text 的 Value，请使用 Hashtable 对象或者 SortedList 对象。</p>
+<br/>
+</div>

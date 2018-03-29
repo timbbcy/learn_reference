@@ -1,0 +1,133 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>本节我们来继续学习Android系统给我们提供的几个原生的Date &amp; Time组件，他们分别是：
+DatePicker(日期选择器)，TimePicker(时间选择器)，CalendarView(日期视图)，好吧，
+其实一开始让我扣这几个玩意我是拒绝的，因为在我的印象里，他们是这样的：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/98939711.jpg"/></p>
+<p>简直把我丑哭了，有木有，终于知道为什么那么多人喜欢自定义这种类型的控件了！但是毕竟
+提纲上写了，自己写的提纲，含着泪也要把他写完...当我把DatePicker写到布局中，然后看下
+预览图，哟：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/29230138.jpg"/></p>
+<p>原来，看起来还不错，心情大好，哈哈，那么开始本节内容！</p></blockquote>
+<hr/>
+<h2>1.DatePicker(日期选择器)</h2>
+<p>可供我们使用的属性如下：</p>
+<blockquote><ul>
+<li><strong>android:calendarTextColor</strong> ： 日历列表的文本的颜色</li>
+<li><strong>android:calendarViewShown</strong>：是否显示日历视图</li>
+<li><strong>android:datePickerMode</strong>：组件外观，可选值:spinner，calendar
+前者效果如下，默认效果是后者
+<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/47223691.jpg"/></li>
+<li><strong>android:dayOfWeekBackground</strong>：顶部星期几的背景颜色</li>
+<li><strong>android:dayOfWeekTextAppearance</strong>：顶部星期几的文字颜色</li>
+<li><strong>android:endYear</strong>：去年(内容)比如2010</li>
+<li><strong>android:firstDayOfWeek</strong>：设置日历列表以星期几开头</li>
+<li><strong>android:headerBackground</strong>：整个头部的背景颜色</li>
+<li><strong>android:headerDayOfMonthTextAppearance</strong>：头部日期字体的颜色</li>
+<li><strong>android:headerMonthTextAppearance</strong>：头部月份的字体颜色</li>
+<li><strong>android:headerYearTextAppearance</strong>：头部年的字体颜色</li>
+<li><strong>android:maxDate</strong>：最大日期显示在这个日历视图mm / dd / yyyy格式</li>
+<li><strong>android:minDate</strong>：最小日期显示在这个日历视图mm / dd / yyyy格式</li>
+<li><strong>android:spinnersShown</strong>：是否显示spinner</li>
+<li><strong>android:startYear</strong>：设置第一年(内容)，比如19940年</li>
+<li><strong>android:yearListItemTextAppearance</strong>：列表的文本出现在列表中。</li>
+<li><strong>android:yearListSelectorColor</strong>：年列表选择的颜色</li>
+</ul>
+</blockquote>
+<p>属性就是上面这些，你想怎么玩就怎么玩，接下来我们说下他的DatePicker的事件：
+<strong>DatePicker.OnDateChangedListener</strong>
+另外，奇怪的是，如果是上面这种mode为calendar的设置了事件并没有响应，看来上面这种
+只能选择完后获取对应的值了，如果你的mode未spinner的话，使用下述代码就可以完成事件监听：</p>
+<p><strong>实现代码如下:</strong></p>
+<pre>
+public class MainActivity extends AppCompatActivity implements DatePicker.OnDateChangedListener{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        DatePicker dp_test = (DatePicker) findViewById(R.id.dp_test);
+        Calendar calendar = Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        int monthOfYear=calendar.get(Calendar.MONTH);
+        int dayOfMonth=calendar.get(Calendar.DAY_OF_MONTH);
+        dp_test.init(year,monthOfYear,dayOfMonth,this);
+    }
+
+    @Override
+    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        Toast.makeText(MainActivity.this,"您选择的日期是："+year+"年"+(monthOfYear+1)+"月"+dayOfMonth+"日!",Toast.LENGTH_SHORT).show();
+    }
+}
+</pre>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/28264687.jpg"/></p>
+<hr/>
+<h2>2.TimePicker(时间选择器)</h2>
+<blockquote><p>先来看看5.0的TimePicker长什么样：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/15797308.jpg"/></p>
+<p>样子还是蛮标致的哈，我们发现官方给我们提供的属性只有一个：
+<strong>android:timePickerMode</strong>：组件外观，同样可选值为:spinner和clock(默认)
+前者是旧版本的TimePicker~
+而他对应的监听事件是：<strong>TimePicker.OnTimeChangedListener</strong></p></blockquote>
+<p><strong>下面来个代码示例：</strong>
+</p>
+<pre>
+public class MainActivity extends AppCompatActivity{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TimePicker tp_test = (TimePicker) findViewById(R.id.tp_test);
+        tp_test.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                Toast.makeText(MainActivity.this,"您选择的时间是："+hourOfDay+"时"+minute+"分!",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+}
+</pre>
+<p>
+<strong>运行效果图：</strong>
+可惜的是，同样需要旧版本的TimePicker才会触发这个事件！</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/54528082.jpg"/></p>
+<hr/>
+<h2>3.CalendarView(日历视图)</h2>
+<blockquote><p>好的，一样是看看样子先：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/3277689.jpg"/></p>
+<p>嗯，好像变化不大，接下来我们简单的看下文档中给我们提供的属性：</p></blockquote>
+<ul>
+<li><strong>android:firstDayOfWeek</strong>：设置一个星期的第一天</li>
+<li><strong>android:maxDate</strong> ：最大的日期显示在这个日历视图mm / dd / yyyy格式</li>
+<li><strong>android:minDate</strong>：最小的日期显示在这个日历视图mm / dd / yyyy格式</li>
+<li><strong>android:weekDayTextAppearance</strong>：工作日的文本出现在日历标题缩写</li>
+</ul>
+<p>处理上面的还有其他，但是都是被弃用的...
+对应的日期改变事件是：<strong>CalendarView.OnDateChangeListener</strong></p>
+<p><strong>示例代码：</strong>
+</p>
+<pre>
+public class MainActivity extends AppCompatActivity{
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        CalendarView cv_test = (CalendarView) findViewById(R.id.cv_test);
+        cv_test.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(MainActivity.this,"您选择的时间是："+ year + "年" + month + "月" + dayOfMonth + "日",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+</pre>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/08/84434264.jpg"/></p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>好的，关于这三个控件的介绍就到这里，实际开发中这些控件我们一般都是自定义的，
+在进阶系列我们会来自己写控件，敬请期待，谢谢~</p></blockquote> </div>

@@ -1,0 +1,164 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">Content Linking</span> 组件</h1>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_contentlinking" target="_blank">Content Linking 组件</a><br/>
+本例构建一个内容列表。</p>
+<p><a href="/try/showasp.php?filename=demo_contentlinking2" target="_blank">Content Linking 组件 2</a><br/>
+本例使用 Content Linking 组件在一个文本文件所列的页面间进行导航。</p>
+<hr/>
+<h2>ASP Content Linking 组件</h2>
+<p>ASP Content Linking 组件用于创建快捷便利的导航系统！</p>
+<p>Content Linking 组件会返回一个 Nextlink 对象，这个对象用于容纳需要导航网页的一个列表。</p>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+&lt;%<br/>
+Set nl=Server.CreateObject("MSWC.NextLink")<br/>
+%&gt;
+</div></div>
+<br/><hr/>
+<h2>ASP Content Linking 实例</h2>
+<p>首先，我们会创建一个文本文件 - "links.txt"：</p>
+<div class="code notranslate"><div>
+asp_intro.asp	ASP 简介<br/>
+asp_syntax.asp	ASP 语法<br/>
+asp_variables.asp	ASP 变量<br/>
+asp_procedures.asp	ASP 程序
+</div></div>
+<p>上面的文本文件包含需要导航的页面。页面的排列顺序应该与它们的显示顺序相同，并包含对每个文件名的描述（使用制表符来分隔文件名和描述信息）。</p>
+<p><b>注释：</b>如果您希望向列表添加页面，或者改变在列表中的页面顺序，那么您需要做的仅仅是修改这个文本文件而已！导航会自动更新！</p>
+<p>然后我们创建一个引用文件，"nlcode.inc"。.inc 文件创建一个 NextLink 对象来在 "links.txt" 中列出的页面间进行导航。</p>
+<p>"nlcode.inc":</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+dim nl<br/>
+Set nl=Server.CreateObject("MSWC.NextLink")<br/>
+if (nl.GetListIndex("links.txt")&gt;1) then<br/>
+   
+  Response.Write("&lt;a href='" &amp; nl.GetPreviousURL("links.txt"))<br/>
+   
+  Response.Write("'&gt;Previous Page&lt;/a&gt;")<br/>
+end if<br/>
+Response.Write("&lt;a href='" &amp; nl.GetNextURL("links.txt"))<br/>
+Response.Write("'&gt;Next Page&lt;/a&gt;")<br/>
+%&gt;</div></div>
+<p>请在文本文件 "links.txt" 列出的每个 .asp 页面中放置一行代码：<b>&lt;!-- #include file="nlcode.inc"--&gt;</b>。这行代码会在 "links.txt" 中列出每个页面上引用 "nlcode.inc" 中的代码，这样导航就可以工作了。</p>
+<hr/>
+<h2>ASP Content Linking 组件的方法</h2>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left">方法</th>
+<th align="left">描述</th>
+<th align="left" width="45%">实例</th>
+</tr>
+<tr valign="top">
+<td>GetListCount</td>
+<td>返回内容链接列表文件中所列项目的数量。</td>
+<td> &lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetListCount("links.txt") <br/>
+    Response.Write("There are ")<br/>
+    Response.Write(c)<br/>
+    Response.Write(" items in the list")<br/>
+    %&gt;<p>输出：</p>
+<p>There are 4 items in the list</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetListIndex</td>
+<td>返回在内容链接列表文件中当前条目的索引号。第一个条目的索引号是 1。如果当前页面不在内容链接列表文件中，则返回 0。</td>
+<td> &lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetListIndex("links.txt") <br/>
+    Response.Write("Item number ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p>
+<p>Item number 3</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetNextDescription</td>
+<td>返回在内容链接列表文件中所列的下一个条目的文本描述。如果在列表文件中没有找到当前文件，则返回列表中最后一个页面的文本描述。</td>
+<td> &lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetNextDescription("links.txt") <br/>
+    Response.Write("Next ")<br/>
+    Response.Write("description is: ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p><p>Next description is: ASP Variables</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetNextURL</td>
+<td>返回在内容链接列表文件中所列的下一个条目的 URL。如果在列表文件中没有找到当前文件，则返回列表中最后一个页面的 URL。</td>
+<td>&lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetNextURL("links.txt") <br/>
+    Response.Write("Next ")<br/>
+    Response.Write("URL is: ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p><p>Next URL is: asp_variables.asp</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetNthDescription</td>
+<td>返在内容链接列表文件中所列的第 N 个页面的描述信息。</td>
+<td> &lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetNthDescription("links.txt",3) <br/>
+    Response.Write("Third ")<br/>
+    Response.Write("description is: ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p><p>Third description is: ASP Variables</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetNthURL</td>
+<td>返回在内容链接列表文件中所列的第 N 个页面的 URL。</td>
+<td>&lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetNthURL("links.txt",3) <br/>
+    Response.Write("Third ")<br/>
+    Response.Write("URL is: ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p><p>Third URL is: asp_variables.asp</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetPreviousDescription</td>
+<td>返回在内容链接列表文件中所列的前一个条目的文本描述。如果在列表文件中没有找到当前文件，则返回列表中第一个页面的文本描述。</td>
+<td> &lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetPreviousDescription("links.txt") <br/>
+    Response.Write("Previous ")<br/>
+    Response.Write("description is: ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p><p>Previous description is: ASP Variables</p>
+</td>
+</tr>
+<tr valign="top">
+<td>GetPreviousURL</td>
+<td>返回在内容链接列表文件中所列的前一个条目的 URL。如果在列表文件中没有找到当前文件，则返回列表中第一个页面的 URL。</td>
+<td> &lt;%<br/>
+    dim nl,c<br/>
+    Set nl=Server.CreateObject("MSWC.NextLink") <br/>
+    c=nl.GetPreviousURL("links.txt") <br/>
+    Response.Write("Previous ")<br/>
+    Response.Write("URL is: ")<br/>
+    Response.Write(c)<br/>
+    %&gt;<p>输出：</p><p>Previous URL is: asp_variables.asp</p>
+</td>
+</tr>
+</table>
+<br/>
+</div>

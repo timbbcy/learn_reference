@@ -1,0 +1,32 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">动作元素</span></h1>
+<p>
+与JSP指令元素不同的是，JSP动作元素在请求处理阶段起作用。JSP动作元素是用XML语法写成的。</p>
+<p>利用JSP动作可以动态地插入文件、重用JavaBean组件、把用户重定向到另外的页面、为Java插件生成HTML代码。 </p>
+<p>动作元素只有一种语法，它符合XML标准：</p>
+<pre>
+&lt;jsp:action_name attribute="value" /&gt;
+</pre>
+<p>动作元素基本上都是预定义的函数，JSP规范定义了一系列的标准动作，它用JSP作为前缀，可用的标准动作元素如下：</p>
+<table class="reference">
+<tbody><tr><th style="width:30%">语法 </th><th>描述 </th></tr>
+<tr><td>jsp:include</td><td>在页面被请求的时候引入一个文件。 </td></tr>
+<tr><td>jsp:useBean</td><td>寻找或者实例化一个JavaBean。 </td></tr>
+<tr><td>jsp:setProperty</td><td>设置JavaBean的属性。 </td></tr>
+<tr><td>jsp:getProperty</td><td>输出某个JavaBean的属性。 </td></tr>
+<tr><td>jsp:forward</td><td>把请求转到一个新的页面。 </td></tr>
+<tr><td>jsp:plugin</td><td>根据浏览器类型为Java插件生成OBJECT或EMBED标记。 </td></tr>
+<tr><td>jsp:element</td><td>定义动态XML元素</td></tr>
+<tr><td>jsp:attribute</td><td>设置动态定义的XML元素属性。</td></tr>
+<tr><td>jsp:body</td><td>设置动态定义的XML元素内容。</td></tr>
+<tr><td>jsp:text</td><td>在JSP页面和文档中使用写入文本的模板</td></tr>
+</tbody></table>
+<hr/>
+<h2>常见的属性</h2>
+<p>
+所有的动作要素都有两个属性：id属性和scope属性。
+</p>
+<ul><li><strong>
+id属性：</strong><p>id属性是动作元素的唯一标识，可以在JSP页面中引用。动作元素创建的id值可以通过PageContext来调用。
+<p></p></p></li><li><strong>
+scope属性：</strong><p></p></li></ul></div>

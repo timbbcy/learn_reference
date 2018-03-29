@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>XSLT <span class="color_h1">函数</span>
+</h1>
+<hr/>
+<p class="intro">XQuery 1.0、XPath 2.0 以及 XSLT 2.0 共享相同的函数库。</p>
+<hr/>
+<h2>XSLT 函数</h2>
+<p>XSLT 含有超过 100 个内建的函数。这些函数用于字符串值、数值、日期和时间比较、节点和 QName 操作、序列操作、布尔值，等等。</p>
+<p><img alt="Note" src="/images/lamp.gif"/>函数命名空间的默认前缀是 fn。</p>
+<p><img alt="Note" src="/images/lamp.gif"/>函数命名空间的 URI 是：
+http://www.w3.org/2005/xpath-functions</p>
+<p><b>提示：</b>函数在被调用时常带有 fn: 前缀，比如 fn:string()。
+不过，既然 fn: 是命名空间的默认前缀，那么在被调用时，函数的名称不必使用前缀。</p>
+<p><a href="/xpath/xpath-functions.html">您可以在我们的 XPath 教程中访问所有内建的 XSLT 2.0 函数的参考手册。</a></p>
+<p>此外，下面列出了内建的 XSLT 函数：</p>
+<table class="reference notranslate">
+<tr>
+<th valign="top" width="28%">名称</th>
+<th valign="top" width="72%">描述</th>
+</tr>
+<tr>
+<td valign="top"><a href="func-current.html">current()</a></td>
+<td valign="top">返回当前节点。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-document.html">document()</a></td>
+<td valign="top">用于访问外部 XML 文档中的节点。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-elementavailable.html">element-available()</a></td>
+<td valign="top">检测 XSLT 处理器是否支持指定的元素。</td>
+</tr>
+<tr>
+<td valign="top"><a href="xsl-func-formatnumber.html">format-number()</a></td>
+<td valign="top">把数字转换为字符串。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-functionavailable.html">function-available()</a></td>
+<td valign="top">检测 XSLT 处理器是否支持指定的函数。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-generateid.html">generate-id()</a></td>
+<td valign="top">返回唯一标识指定节点的字符串值。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-key.html">key()</a></td>
+<td valign="top">通过使用由 &lt;xsl:key&gt; 元素规定的索引号返回节点集。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-systemproperty.html">system-property()</a></td>
+<td valign="top">返回系统属性的值。</td>
+</tr>
+<tr>
+<td valign="top"><a href="func-unparsedentityuri.html">unparsed-entity-uri()</a></td>
+<td valign="top">返回未解析实体的 URI。</td>
+</tr>
+</table>
+<br/>
+</div>

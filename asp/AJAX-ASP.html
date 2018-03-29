@@ -1,0 +1,181 @@
+<div class="article-intro" id="content">
+<h1>ASP - <span class="color_h1">AJAX 与 ASP</span>
+</h1>
+<hr/>
+<p class="intro">AJAX 被用于创建交互性更强的应用程序。</p>
+<hr/>
+<h2>AJAX ASP 实例</h2>
+<p>下面的实例将演示当用户在输入框中键入字符时，网页如何与 Web 服务器进行通信：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_result notranslate">
+<p><b>Start typing a name in the input field below:</b></p>
+<script>
+function showHint(str)
+{
+if (str.length==0)
+  { 
+  document.getElementById("txtHint").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","gethint.asp?q="+str,true);
+xmlhttp.send();
+}
+</script>
+<form action=""> 
+First name: <input id="txt1" onkeyup="showHint(this.value)" type="text">
+</input></form>
+<p>Suggestions: <span id="txtHint"></span></p>
+</div>
+</div>
+<br/><hr/>
+<h2>实例解释 - HTML 页面</h2>
+<p>当用户在上面的输入框中键入字符时，会执行 "showHint()" 函数。该函数由 "onkeyup" 事件触发：</p>
+<div class="code notranslate"><div>
+
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script&gt;<br/>
+function showHint(str)<br/>
+{<br/>
+if (str.length==0)<br/>
+  { <br/>
+  document.getElementById("txtHint").innerHTML="";<br/>
+  return;<br/>
+  }<br/>
+if (window.XMLHttpRequest)<br/>
+  {// code for IE7+, Firefox, Chrome, Opera, Safari<br/>
+  xmlhttp=new XMLHttpRequest();<br/>
+  }<br/>
+else<br/>
+  {// code for IE6, IE5<br/>
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");<br/>
+  }<br/>
+xmlhttp.onreadystatechange=function()<br/>
+  {<br/>
+  if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)<br/>
+    {<br/>
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;<br/>
+    }<br/>
+  }<br/>
+xmlhttp.open("GET","gethint.asp?q="+str,true);<br/>
+xmlhttp.send();<br/>
+}<br/>
+&lt;/script&gt;<br/>
+&lt;/head<br/>
+&lt;body&gt;<br/><br/>
+&lt;p&gt;&lt;b&gt;Start typing a name in the input field below:&lt;/b&gt;&lt;/p&gt;<br/>
+&lt;form&gt; <br/>
+First name: &lt;input type="text" onkeyup="showHint(this.value)" size="20"&gt;<br/>
+&lt;/form&gt;<br/>
+&lt;p&gt;Suggestions: &lt;span id="txtHint"&gt;&lt;/span&gt;&lt;/p&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>源代码解释：</p>
+<p>如果输入框是空的（str.length==0），该函数会清空 txtHint 占位符的内容，并退出该函数。</p>
+<p>如果输入框不是空的，那么 showHint() 会执行以下步骤：</p>
+<ul>
+<li>创建 XMLHttpRequest 对象</li>
+<li>创建在服务器响应就绪时执行的函数</li>
+<li>向服务器上的文件发送请求</li>
+<li>请注意添加到 URL 末端的参数（q）（包含输入框的内容）</li>
+</ul>
+<hr/>
+<h2>ASP 文件</h2>
+<p>上面这段通过 JavaScript 调用的服务器页面是名为 "gethint.asp" 的 ASP 文件。</p>
+<p>"gethint.asp" 中的源代码会检查姓名数组，然后向浏览器返回对应的姓名：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+response.expires=-1<br/>
+dim a(30)<br/>
+'Fill up array with names<br/>
+a(1)="Anna"<br/>
+a(2)="Brittany"<br/>
+a(3)="Cinderella"<br/>
+a(4)="Diana"<br/>
+a(5)="Eva"<br/>
+a(6)="Fiona"<br/>
+a(7)="Gunda"<br/>
+a(8)="Hege"<br/>
+a(9)="Inga"<br/>
+a(10)="Johanna"<br/>
+a(11)="Kitty"<br/>
+a(12)="Linda"<br/>
+a(13)="Nina"<br/>
+a(14)="Ophelia"<br/>
+a(15)="Petunia"<br/>
+a(16)="Amanda"<br/>
+a(17)="Raquel"<br/>
+a(18)="Cindy"<br/>
+a(19)="Doris"<br/>
+a(20)="Eve"<br/>
+a(21)="Evita"<br/>
+a(22)="Sunniva"<br/>
+a(23)="Tove"<br/>
+a(24)="Unni"<br/>
+a(25)="Violet"<br/>
+a(26)="Liza"<br/>
+a(27)="Elizabeth"<br/>
+a(28)="Ellen"<br/>
+a(29)="Wenche"<br/>
+a(30)="Vicky"<br/><br/>
+'get the q parameter from URL<br/>
+q=ucase(request.querystring("q"))<br/><br/>
+'lookup all hints from array if length of q&gt;0<br/>
+if len(q)&gt;0 then<br/>
+   
+  hint=""<br/>
+   
+  for i=1 to 30<br/>
+       
+    if q=ucase(mid(a(i),1,len(q))) then<br/>
+           
+      if hint="" then<br/>
+               
+        hint=a(i)<br/>
+           
+      else<br/>
+               
+        hint=hint &amp; " , " &amp; a(i)<br/>
+           
+      end if<br/>
+       
+    end if<br/>
+   
+  next<br/>
+end if<br/><br/>
+'Output "no suggestion" if no hint were found<br/>
+'or output the correct values<br/>
+if hint="" then<br/>
+   
+  response.write("no suggestion")<br/>
+else<br/>
+   
+  response.write(hint)<br/>
+end if<br/>
+%&gt;</div></div>
+<p>解释：如果 JavaScript 发送了任何文本（即 strlen($q) &gt; 0），则会发生： </p>
+<ol>
+<li>查找匹配 JavaScript 发送的字符的姓名</li>
+<li>如果未找到匹配，则将响应字符串设置为 "no suggestion"</li>
+<li>如果找到一个或多个匹配姓名，则用所有姓名设置响应字符串</li>
+<li>把响应发送到 "txtHint" 占位符</li>
+</ol>
+<br/>
+</div>

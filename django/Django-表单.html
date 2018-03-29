@@ -1,0 +1,297 @@
+<div class="article-intro" id="content">
+<h1>Django 表单</h1>
+<p>HTML表单是网站交互性的经典方式。
+本章将介绍如何用Django对用户提交的表单数据进行处理。 
+</p>
+<hr/>
+<h2>HTTP 请求</h2>
+<p>
+HTTP协议以"请求－回复"的方式工作。客户发送请求时，可以在请求中附加数据。服务器通过解析请求，就可以获得客户传来的数据，并根据URL来提供特定的服务。
+</p>
+<h3>GET 方法</h3>
+<p>我们在之前的项目中创建一个 search.py 文件，用于接收用户的请求：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/HelloWorld/search.py  文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment"># -*- coding: utf-8 -*-</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">http</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">HttpResponse</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">shortcuts</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">render_to_response</span><span class="hl-code">
+</span><span class="hl-comment"># 表单</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">search_form</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-brackets">)</span><span class="hl-code">:
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">render_to_response</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">search_form.html</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment"># 接收请求数据</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">search</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-brackets">)</span><span class="hl-code">:  
+    </span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">encoding</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">utf-8</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">q</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">GET</span><span class="hl-code">:
+        </span><span class="hl-identifier">message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">你搜索的内容为: </span><span class="hl-quotes">'</span><span class="hl-code"> + </span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">GET</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">q</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">:
+        </span><span class="hl-identifier">message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">你提交了空表单</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">HttpResponse</span><span class="hl-brackets">(</span><span class="hl-identifier">message</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>在模板目录 templates 中添加 search_form.html 表单：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/templates/search_form.html 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程(runoob.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-code"> </span><span class="hl-var">action</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/search</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">method</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">get</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">q</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">搜索</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p> urls.py 规则修改为如下形式：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/HelloWorld/urls.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">conf</span><span class="hl-code">.</span><span class="hl-identifier">urls</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">url</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> . </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">view</span><span class="hl-code">,</span><span class="hl-identifier">testdb</span><span class="hl-code">,</span><span class="hl-identifier">search</span><span class="hl-code">
+</span><span class="hl-identifier">urlpatterns</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^hello$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">view</span><span class="hl-code">.</span><span class="hl-identifier">hello</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^testdb$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">testdb</span><span class="hl-code">.</span><span class="hl-identifier">testdb</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^search-form$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">search</span><span class="hl-code">.</span><span class="hl-identifier">search_form</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^search$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">search</span><span class="hl-code">.</span><span class="hl-identifier">search</span><span class="hl-brackets">)</span><span class="hl-code">,
+</span><span class="hl-brackets">]</span></div>
+</div>
+</div>
+<p>访问地址 http://127.0.0.1:8000/search-form 并搜索，结果如下所示:</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2015/01/django1.gif"/></p>
+<h3>POST 方法</h3>
+<p>
+上面我们使用了GET方法。视图显示和请求处理分成两个函数处理。
+</p>
+<p>
+提交数据时更常用POST方法。我们下面使用该方法，并用一个URL和处理函数，同时显示视图和处理请求。
+</p>
+<p>我们在tmplate 创建 post.html：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/tmplates/post.html 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程(runoob.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-code"> </span><span class="hl-var">action</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/search-post</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">method</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">post</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+        {% csrf_token %}
+        </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">q</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Submit</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ rlt }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>
+在模板的末尾，我们增加一个 rlt 记号，为表格处理结果预留位置。
+</p>
+<p>
+表格后面还有一个{% csrf_token %}的标签。csrf 全称是 Cross Site Request Forgery。这是Django提供的防止伪装提交请求的功能。POST 方法提交的表格，必须有此标签。
+</p>
+<p> 在HelloWorld目录下新建 search2.py 文件并使用 search_post 函数来处理 POST 请求：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/HelloWorld/search2.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment"># -*- coding: utf-8 -*-</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">shortcuts</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">views</span><span class="hl-code">.</span><span class="hl-identifier">decorators</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">csrf</span><span class="hl-code">
+</span><span class="hl-comment"># 接收POST请求数据</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">search_post</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-brackets">)</span><span class="hl-code">:
+    </span><span class="hl-identifier">ctx</span><span class="hl-code"> ={}
+    </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">POST</span><span class="hl-code">:
+        </span><span class="hl-identifier">ctx</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">rlt</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-identifier">request</span><span class="hl-code">.</span><span class="hl-identifier">POST</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">q</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">post.html</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">ctx</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p> urls.py 规则修改为如下形式：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/HelloWorld/urls.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">conf</span><span class="hl-code">.</span><span class="hl-identifier">urls</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">url</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> . </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">view</span><span class="hl-code">,</span><span class="hl-identifier">testdb</span><span class="hl-code">,</span><span class="hl-identifier">search</span><span class="hl-code">,</span><span class="hl-identifier">search2</span><span class="hl-code">
+</span><span class="hl-identifier">urlpatterns</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^hello$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">view</span><span class="hl-code">.</span><span class="hl-identifier">hello</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^testdb$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">testdb</span><span class="hl-code">.</span><span class="hl-identifier">testdb</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^search-form$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">search</span><span class="hl-code">.</span><span class="hl-identifier">search_form</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^search$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">search</span><span class="hl-code">.</span><span class="hl-identifier">search</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^search-post$</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">search2</span><span class="hl-code">.</span><span class="hl-identifier">search_post</span><span class="hl-brackets">)</span><span class="hl-code">,
+</span><span class="hl-brackets">]</span></div>
+</div>
+</div>
+<p>访问 http://127.0.0.1:8000/search-post 显示结果如下：</p>
+<img src="//www.runoob.com/wp-content/uploads/2015/01/django2.gif">
+<p>完成以上实例后，我们的目录结构为：</p>
+<pre>
+HelloWorld
+|-- HelloWorld
+|   |-- __init__.py
+|   |-- __init__.pyc
+|   |-- search.py
+|   |-- search.pyc
+|   |-- search2.py
+|   |-- search2.pyc
+|   |-- settings.py
+|   |-- settings.pyc
+|   |-- testdb.py
+|   |-- testdb.pyc
+|   |-- urls.py
+|   |-- urls.pyc
+|   |-- view.py
+|   |-- view.pyc
+|   |-- wsgi.py
+|   `-- wsgi.pyc
+|-- TestModel
+|   |-- __init__.py
+|   |-- __init__.pyc
+|   |-- admin.py
+|   |-- admin.pyc
+|   |-- apps.py
+|   |-- migrations
+|   |   |-- 0001_initial.py
+|   |   |-- 0001_initial.pyc
+|   |   |-- __init__.py
+|   |   `-- __init__.pyc
+|   |-- models.py
+|   |-- models.pyc
+|   |-- tests.py
+|   `-- views.py
+|-- db.sqlite3
+|-- manage.py
+`-- templates
+    |-- base.html
+    |-- hello.html
+    |-- post.html
+    `-- search_form.html
+</pre>
+<hr/>
+<h2>Request 对象</h2>
+<p>每个 view 函数的第一个参数是一个 HttpRequest 对象，就像下面这个 hello() 函数:</p>
+<pre>
+from django.http import HttpResponse
+
+def hello(request):
+    return HttpResponse("Hello world")
+</pre>
+<p>HttpRequest对象包含当前请求URL的一些信息：</p>
+<table class="reference">
+<tbody><tr>
+<td>
+<p><strong>属性</strong></p>
+</td>
+<td>
+<p><strong>描述</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>path</p>
+</td>
+<td>
+<p>请求页面的全路径,不包括域名—例如, "/hello/"。</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>method</p>
+</td>
+<td>
+<p>请求中使用的HTTP方法的字符串表示。全大写表示。例如:</p>
+<p>if request.method == 'GET':<br/>    do_something()<br/>elif request.method == 'POST':<br/>    do_something_else()</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>GET</p>
+</td>
+<td>
+<p>包含所有HTTP GET参数的类字典对象。参见QueryDict 文档。</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>POST</p>
+</td>
+<td>
+<p>包含所有HTTP POST参数的类字典对象。参见QueryDict 文档。</p>
+<p>服务器收到空的POST请求的情况也是有可能发生的。也就是说，表单form通过HTTP POST方法提交请求，但是表单中可以没有数据。因此，不能使用语句if request.POST来判断是否使用HTTP POST方法；应该使用if request.method == "POST" (参见本表的method属性)。</p>
+<p>注意: POST不包括file-upload信息。参见FILES属性。</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>REQUEST</p>
+</td>
+<td>
+<p>为了方便，该属性是POST和GET属性的集合体，但是有特殊性，先查找POST属性，然后再查找GET属性。借鉴PHP's $_REQUEST。</p>
+<p>例如，如果GET = {"name": "john"} 和POST = {"age": '34'},则 REQUEST["name"] 的值是"john", REQUEST["age"]的值是"34".</p>
+<p>强烈建议使用GET and POST,因为这两个属性更加显式化，写出的代码也更易理解。</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>COOKIES</p>
+</td>
+<td>
+<p>包含所有cookies的标准Python字典对象。Keys和values都是字符串。</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>FILES</p>
+</td>
+<td>
+<p>包含所有上传文件的类字典对象。FILES中的每个Key都是&lt;input type="file" name="" /&gt;标签中name属性的值. FILES中的每个value 同时也是一个标准Python字典对象，包含下面三个Keys:</p>
+<ul>
+<li>filename: 上传文件名,用Python字符串表示</li>
+<li>content-type: 上传文件的Content type</li>
+<li>content: 上传文件的原始内容</li>
+</ul>
+<p>注意：只有在请求方法是POST，并且请求页面中&lt;form&gt;有enctype="multipart/form-data"属性时FILES才拥有数据。否则，FILES 是一个空字典。</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>META</p>
+</td>
+<td>
+<p>包含所有可用HTTP头部信息的字典。 例如:</p>
+<ul>
+<li>CONTENT_LENGTH</li>
+<li>CONTENT_TYPE</li>
+<li>QUERY_STRING: 未解析的原始查询字符串</li>
+<li>REMOTE_ADDR: 客户端IP地址</li>
+<li>REMOTE_HOST: 客户端主机名</li>
+<li>SERVER_NAME: 服务器主机名</li>
+<li>SERVER_PORT: 服务器端口</li>
+</ul>
+<p>META 中这些头加上前缀HTTP_最为Key, 例如:</p>
+<ul>
+<li>HTTP_ACCEPT_ENCODING</li>
+<li>HTTP_ACCEPT_LANGUAGE</li>
+<li>HTTP_HOST: 客户发送的HTTP主机头信息</li>
+<li>HTTP_REFERER: referring页</li>
+<li>HTTP_USER_AGENT: 客户端的user-agent字符串</li>
+<li>HTTP_X_BENDER: X-Bender头信息</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<p>user</p>
+</td>
+<td>
+<p>
+是一个django.contrib.auth.models.User 对象，代表当前登录的用户。</p><p>
+如果访问用户当前没有登录，user将被初始化为django.contrib.auth.models.AnonymousUser的实例。</p><p>
+你可以通过user的is_authenticated()方法来辨别用户是否登录：</p>
+</td></tr></tbody></table></img></div>

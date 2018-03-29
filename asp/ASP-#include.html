@@ -1,0 +1,90 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">引用文件</span>
+</h1>
+<hr/>
+<h2>#include 指令</h2>
+<p>通过使用 #include 指令，您可以在服务器执行 ASP 文件之前，把另一个 ASP 文件的内容插入到这个 ASP 文件中。</p>
+<p>#include 指令用于创建函数、页眉、页脚或者其他多个页面上需要重复使用的元素等。</p>
+<hr/>
+<h2>如何使用 #include 指令</h2>
+<p>这里有一个名为 "mypage.asp" 的文件：</p>
+<div class="code notranslate"><div>
+
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;body&gt;<br/> 
+&lt;h3&gt;Words of Wisdom:&lt;/h3&gt;<br/>
+&lt;p&gt;&lt;!--#include file="wisdom.inc"--&gt;&lt;/p&gt;<br/>
+&lt;h3&gt;The time is:&lt;/h3&gt;<br/>
+&lt;p&gt;&lt;!--#include file="time.inc"--&gt;&lt;/p&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>这是 "wisdom.inc" 文件：</p>
+<div class="code notranslate"><div>
+
+"One should never increase, beyond what is necessary,<br/>
+the number of entities required to explain anything."</div></div>
+<p>这是 "time.inc" 文件：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+Response.Write(Time)<br/>
+%&gt;</div></div>
+<p>如果您在浏览器中查看源代码，它将如下所示：</p>
+<div class="code notranslate"><div>
+
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h3&gt;Words of Wisdom:&lt;/h3&gt;<br/>
+&lt;p&gt;"One should never increase, beyond what is necessary,<br/>
+the number of entities required to explain anything."&lt;/p&gt;<br/>
+&lt;h3&gt;The time is:&lt;/h3&gt;<br/>
+&lt;p&gt;11:33:42 AM&lt;/p&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<br/><hr/>
+<h2>引用文件的语法</h2>
+<p>如需在 ASP 页面中引用文件，请把 #include 指令放在注释标签中：</p>
+<div class="code notranslate"><div>
+
+&lt;!--#include virtual="somefilename"--&gt;<br/><br/>
+or<br/><br/>
+&lt;!--#include file ="somefilename"--&gt;</div></div>
+<h3>Virtual 关键词</h3>
+<p>请使用关键词 virtual 来指示以虚拟目录开始的路径。</p>
+<p>如果一个名为 "header.inc" 的文件位于虚拟目录 /html 中，下面这行代码会插入 "header.inc" 文件中的内容：</p>
+<div class="code notranslate"><div>
+&lt;!-- #include virtual ="/html/header.inc" --&gt;</div></div>
+<h3>File 关键词</h3>
+<p>请使用关键词 file 来指示一个相对路径。相对路径是以含有引用文件的目录开始的。</p>
+<p>如果您在 html 目录中有一个文件，且 "header.inc" 文件位于 html 头部，下面这行代码将在您的文件中插入 "header.inc" 文件中的内容：</p>
+<div class="code notranslate"><div>
+&lt;!-- #include file ="headersheader.inc" --&gt;</div></div>
+<p>请注意被引用文件 (headersheader.inc) 的路径是相对于引用文件的。如果包含 #include 声明的文件不在 html 目录中，这个声明就不会生效。</p>
+<hr/>
+<h2>提示和注释</h2>
+<p>在上面的一部分中，我们已经使用 ".inc" 来作为被被引用文件的文件扩展名。请注意：如果用户尝试直接浏览 INC 文件，这个文件中内容将会被显示出来。如果您的被引用文件中的内容包含机密的信息或者是您不想让任何用户看到的信息，那么最好还是使用 ".asp" 作为扩展名。ASP 文件中的源代码被编译后是不可见的。被引用的文件也可引用其他文件，同时一个 ASP 文件可以对同一个文件引用多次。</p>
+<p><b>重要事项：</b>在脚本执行前，被引用的文件就会被处理和插入。下面的脚本无法执行，这是由于 ASP 会在为变量赋值之前执行 #include 指令：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+fname="header.inc"<br/>
+%&gt;<br/>
+&lt;!--#include file="&lt;%fname%&gt;"--&gt;</div></div>
+<p>您不能在脚本分隔符之间包含文件引用。下面的脚本无法执行：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+For i = 1 To n<br/>
+   
+  &lt;!--#include file="count.inc"--&gt;<br/>
+Next<br/>
+%&gt;</div></div>
+<p>但是这段脚本可以执行：</p>
+<div class="code notranslate"><div>
+
+&lt;% For i = 1 to n %&gt;<br/>
+ 
+&lt;!--#include file="count.inc" --&gt;<br/>
+&lt;% Next %&gt;</div></div>
+<br/>
+</div>

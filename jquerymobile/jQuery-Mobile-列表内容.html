@@ -1,0 +1,122 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">列表内容</span>
+</h1>
+<hr/>
+<iframe frameborder="0" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_lists.htm" style="width:95%;height:260px;"></iframe>
+<hr/>
+<h2>jQuery Mobile 列表图标</h2>
+<p>默认情况下每个列表项都会包含一个箭头图标 "carat-r" (右箭头)。如果要修改这个图标可以使用 data-icon 属性:</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code">
+&lt;ul data-role="listview"&gt; <br/>  &lt;li&gt;&lt;a href="#"&gt;Default is right 
+	arrow&lt;/a&gt;&lt;/li&gt;<br/>  &lt;li data-icon="plus"&gt;&lt;a href="#"&gt;data-icon="plus"&lt;/a&gt;&lt;/li&gt;<br/>  
+	&lt;li data-icon="minus"&gt;&lt;a href="#"&gt;data-icon="minus"&lt;/a&gt;&lt;/li&gt;<br/>  &lt;li 
+	data-icon="delete"&gt;&lt;a href="#"&gt;data-icon="delete"&lt;/a&gt;&lt;/li&gt;<br/>  &lt;li 
+	data-icon="location"&gt;&lt;a href="#"&gt;data-icon="location"&lt;/a&gt;&lt;/li&gt; <br/>  
+	&lt;li data-icon="false"&gt;&lt;a href="#"&gt;data-icon="false"&lt;/a&gt;&lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_change_icons" target="_blank">尝试一下 »</a> </div>
+<table class="lamp" id="table1"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>data-icon="false" 将会移除图标。</td>
+</tr></tbody></table>
+<p>更完整的 jQuery Mobile 按钮图标，请访问我们的 <a href="jquerymobile-ref-icons.html">jQuery Mobile 
+图标参考手册</a>。</p>
+<hr/>
+<h2>16x16 图标</h2>
+<p>如果你想在你的列表添加标准的 16x16px 的图标, 可以在列表项中添加 &lt;img&gt; 元素，并使用 "ui-li-icon" 类:</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code">
+&lt;ul data-role="listview"&gt;<br/> 
+	&lt;li&gt;&lt;a href="#"&gt;&lt;img src="us.png" alt="USA" <span class="marked">class="ui-li-icon"</span>&gt;USA&lt;/a&gt;&lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_icons" target="_blank">尝试一下 »</a> </div>
+<hr/>
+<h2>jQuery Mobile 列表缩略图</h2>
+<p>大于 16x16px 的图像，请在链接中添加 &lt;img&gt; 元素。</p>
+<p>jQuery Mobile 将自动缩放图像到 80x80px:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview"&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;&lt;img src="chrome.png"&gt;&lt;/a&gt;&lt;/li&gt;<br/>
+	&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_thumbs" target="_blank">尝试一下 »</a>
+</div>
+<p>使用标准的HTML添加列表信息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview"&gt;<br/>  &lt;li&gt;<br/>    
+	&lt;a href="#"&gt;<br/>    &lt;img src="chrome.png"&gt;<br/>    
+	&lt;h2&gt;Google Chrome&lt;/h2&gt;<br/>    &lt;p&gt;Google Chrome 免费的开源 web 浏览器。发布于 2008 年。&lt;/p&gt;<br/>    &lt;/a&gt;<br/>  
+	&lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_thumbs2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery Mobile 列表图标</h2>
+<p> 在列表 &lt;img&gt; 元素使用 class="ui-li-icon" 添加 16x16px 图标：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;li&gt;&lt;a href="#"&gt;&lt;img src="us.png" alt="USA" <span class="marked">class="ui-li-icon"</span>&gt;USA&lt;/a&gt;&lt;/li&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_icons" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>分割按钮</h2>
+<p>在JQuery Mobile的列表中，有时需要对选项内容做两个不同的操作，这时，需要对选项中的链接按钮进行分割。实现分割的方法是在&lt;li&gt;元素中再增加一个&lt;a&gt;元素，便可以在页面实现分割效果。</p>
+<p>jQuery Mobile 会自动设置第二个链接为蓝色箭头的图标，图标的链接文字（如果有的话）将在用户将鼠标悬停在
+图标时显示:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview"&gt;<br/>  &lt;li&gt;<br/>    
+	&lt;a href="#"&gt;&lt;img src="chrome.png"&gt;&lt;/a&gt;<br/>    &lt;a href="#"&gt;Some 
+	Text&lt;/a&gt;<br/>  &lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_split" target="_blank">尝试一下 »</a>
+</div>
+<p>添加一些页面和对话框使链接功能更加丰富：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview"&gt;<br/>  &lt;li&gt;<br/>    
+	&lt;a href="#"&gt;&lt;img src="chrome.png"&gt;&lt;/a&gt;<br/>    &lt;a href="#download"
+	data-rel="dialog"&gt;下载浏览器&lt;/a&gt;<br/>  &lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_split2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>气泡数字</h2>
+<p>气泡数字是用来显示列表项相关的数字，如在一个邮箱的邮件：</p>
+<iframe frameborder="0" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_count_bubbles.htm" style="height:190px;width:96%;"></iframe>
+<p>如需添加气泡数字，请使用行内元素，比如 &lt;span&gt;，设置 class "ui-li-count" 属性并添加数字：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview"&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;收件箱&lt;span <span class="marked">class="ui-li-count"</span>&gt;25&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;<br/>  
+	&lt;li&gt;&lt;a href="#"&gt;发件箱&lt;span <span class="marked">class="ui-li-count"</span>&gt;432&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;<br/>  
+	&lt;li&gt;&lt;a href="#"&gt;垃圾箱&lt;span <span class="marked">class="ui-li-count"</span>&gt;7&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_count" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>注意：</strong>显示一个正确的气泡数字，必须修改编程方式。
+这将在以后的章节解释。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_lists_popup" target="_blank">弹窗列表</a><br/>
+如何创建弹窗列表</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_lists_change_icons" target="_blank">改变列表项的默认链接图标</a><br/>
+如何设置列表项的默认链接图标(默认是右箭头).</p>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_lists_collapsible_popup" target="_blank">可折叠弹窗列表</a><br/>
+如何创建可折叠弹窗列表。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_lists_collapsible" target="_blank">可折叠的列表</a><br/>
+如何创建显示/隐藏的列表。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_lists_formatting" target="_blank">更多内容格式</a><br/>
+如何制作一个日历。</p>
+</div>

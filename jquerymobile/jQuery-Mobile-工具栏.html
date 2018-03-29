@@ -1,0 +1,112 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">工具栏</span>
+</h1>
+<p>工具栏元素通常位于头部和尾部内 - 让导航易于访问：</p>
+<iframe frameborder="0" height="181px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_toolbars.htm" width="100%"></iframe>
+<br/><hr/>
+<h2>头部栏</h2>
+<p>头部栏一般包含页面标题/logo 或一两个按钮（通常是首页、选项或搜索）。</p>
+<p>您可以添加按钮到头部的左侧或右侧。</p>
+<p>下面的代码，将添加一个按钮到头部标题文本的左侧，添加一个按钮到头部标题文本的右侧：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="header"&gt;<br/>  &lt;a href="#" 
+	class="ui-btn ui-icon-home ui-btn-icon-left"&gt;主页&lt;/a&gt;<br/>  &lt;h1&gt;欢迎访问我的主页&lt;/h1&gt;<br/>  
+	&lt;a href="#" class="ui-btn ui-icon-search ui-btn-icon-left"&gt;搜索&lt;/a&gt;<br/>&lt;/div&gt;	
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_header" target="_blank">尝试一下 »</a>
+</div>
+<p>下面的代码，将添加一个按钮到头部标题文本的左侧：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="header"&gt;<br/>  &lt;a href="#" 
+	class="ui-btn <span class="marked">ui-btn-left</span> ui-icon-home ui-btn-icon-left"&gt;主页&lt;/a&gt;<br/>  &lt;h1&gt;欢迎访问我的主页&lt;/h1&gt;<br/>&lt;/div&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_header_left" target="_blank">尝试一下 »</a>
+</div>
+<p>但是，如果您把按钮链接放置在 &lt;h1&gt; 元素之后，将无法显示右侧的文本。要添加一个按钮到头部标题的右侧，请指定 class 为 "ui-btn-right"：</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code">
+&lt;div data-role="header"&gt;<br/>  &lt;h1&gt;欢迎访问我的主页&lt;/h1&gt;<br/>  
+	&lt;a href="#" 
+	class="ui-btn <span class="marked">ui-btn-right</span> ui-icon-home ui-btn-icon-left"&gt;搜索&lt;/a&gt;<br/>&lt;/div&gt;
+ </div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_header_class" target="_blank">尝试一下 »</a> </div>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>头部可以包含一个或两个按钮，而尾部没有限制。</td>
+</tr></table>
+<br/><hr/>
+<h2>尾部栏</h2>
+<p>尾部栏比头部栏更灵活 - 在整个页面中它们更具功能性和可变性，因此可以包含尽可能多的按钮：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="footer"&gt;<br/>  &lt;a href="#" 
+	class="ui-btn ui-icon-plus ui-btn-icon-left"&gt;在Facebook上关注我&lt;/a&gt;<br/>  &lt;a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left"&gt;在Twitter上关注我&lt;/a&gt;<br/>  
+	&lt;a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left"&gt;在Instagram上关注我&lt;/a&gt;<br/>&lt;/div&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_footer" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>注意：</strong>尾部的样式与头部不同（没有内边距和空间，且按钮不居中）。我们可以使用简单的样式来解决这个问题：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="footer" style="text-align:center;"&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_footer_class" target="_blank">尝试一下 »</a>
+</div>
+<p>您还可以将尾部中的按钮进行水平或垂直组合：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div data-role="footer" style="text-align:center;"&gt;<br/>  &lt;div <span class="marked">data-role="controlgroup" 
+	data-type="horizontal"</span>&gt;<br/>    &lt;a href="#" 
+	class="ui-btn ui-icon-plus ui-btn-icon-left"&gt;在Facebook上关注我&lt;/a&gt;<br/>    &lt;a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left"&gt;在Twitter上关注我&lt;/a&gt;<br/>    &lt;a href="#" 
+	class="ui-btn ui-icon-plus ui-btn-icon-left"&gt;在Instagram上关注我&lt;/a&gt;<br/>  
+	&lt;/div&gt;<br/>&lt;/div&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_footer_grouped_horizontal" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>定位头部栏和尾部栏</h2>
+<p>头部和尾部可以通过三种方式进行定位：</p>
+<ul>
+<li>Inline - 默认。头部栏和尾部栏与页面内容内联。</li>
+<li>Fixed - 头部栏和尾部栏固定在页面的顶部和底部。</li>
+<li>Fullscreen - 与 Fixed 定位模式基本相同，头部栏和尾部栏固定在页面的顶部和底部。但是当他工具栏滚动出屏幕之外时，不会自动重新显示，除非点击屏幕，这对于图片或视频类有提升代入感的应用是非常有用的。注意这种模式下工具栏会遮住页面内容，所以最好用在比较特殊的场合下。</li>
+</ul>
+<p>使用 data-position 属性来定位头部栏和尾部栏：</p>
+<div class="example">
+<h2 class="example">Inline 定位（默认）</h2>
+<div class="example_code notranslate">
+	&lt;div data-role="header" <span class="marked">data-position="inline"</span>&gt;&lt;/div&gt;<br/>&lt;div data-role="footer"
+	<span class="marked">data-position="inline"</span>&gt;&lt;/div&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_toolbars_inline" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<h2 class="example">Fixed 定位</h2>
+<div class="example_code notranslate">
+	&lt;div data-role="header" <span class="marked">data-position="fixed"</span>&gt;&lt;/div&gt;<br/>&lt;div data-role="footer"
+	<span class="marked">data-position="fixed"</span>&gt;&lt;/div&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_toolbars_fixed" target="_blank">尝试一下 »</a>
+</div>
+<p>要启用全屏定位，请使用 data-position="fixed"，并添加 data-fullscreen 属性到元素：</p>
+<div class="example">
+<h2 class="example">Fullscreen 定位</h2>
+<div class="example_code notranslate">
+	&lt;div data-role="header" 
+	data-position="fixed" <span class="marked">data-fullscreen="true"</span>&gt;&lt;/div&gt;<br/>&lt;div data-role="footer"
+	data-position="fixed" <span class="marked">data-fullscreen="true"</span>&gt;&lt;/div&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_toolbars_fullscreen" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示：</strong>全屏定位适用于照片、图像和视频。</p>
+<p><strong>提示：</strong>固定定位和全屏定位中，通过点击屏幕将隐藏和显示头部栏和尾部栏。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" src="/images/tryitimg.gif" style="width:40px;height:46px"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/tryit.php?filename=tryjqmob_header_footer_icons" target="_blank">
+在工具栏上只显示图标</a><br/>
+在工具栏上只显示图标可以使用 ui-btn-icon-notext 类。</p>
+</div>

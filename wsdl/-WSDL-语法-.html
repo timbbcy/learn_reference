@@ -1,0 +1,71 @@
+<div class="article-intro" id="content">
+<p>描述于 W3C 工作草案的完整 WSDL 1.2 语法已列在下面：</p>
+<pre>
+&lt;wsdl:definitions name="nmtoken"? targetNamespace="uri"&gt;
+
+    &lt;import namespace="uri" location="uri"/&gt; *
+    
+    &lt;wsdl:documentation .... /&gt; ?
+
+    &lt;wsdl:types&gt; ?
+        &lt;wsdl:documentation .... /&gt; ?
+        &lt;xsd:schema .... /&gt; *
+    &lt;/wsdl:types&gt;
+
+    &lt;wsdl:message name="ncname"&gt; *
+        &lt;wsdl:documentation .... /&gt; ?
+        &lt;part name="ncname" element="qname"? type="qname"?/&gt; *
+    &lt;/wsdl:message&gt;
+
+    &lt;wsdl:portType name="ncname"&gt; *
+        &lt;wsdl:documentation .... /&gt; ?
+        &lt;wsdl:operation name="ncname"&gt; *
+            &lt;wsdl:documentation .... /&gt; ?
+            &lt;wsdl:input message="qname"&gt; ?
+                &lt;wsdl:documentation .... /&gt; ?
+            &lt;/wsdl:input&gt;
+            &lt;wsdl:output message="qname"&gt; ?
+                &lt;wsdl:documentation .... /&gt; ?
+            &lt;/wsdl:output&gt;
+            &lt;wsdl:fault name="ncname" message="qname"&gt; *
+                &lt;wsdl:documentation .... /&gt; ?
+            &lt;/wsdl:fault&gt;
+        &lt;/wsdl:operation&gt;
+    &lt;/wsdl:portType&gt;
+
+    &lt;wsdl:serviceType name="ncname"&gt; *
+        &lt;wsdl:portType name="qname"/&gt; +
+    &lt;/wsdl:serviceType&gt;
+
+    &lt;wsdl:binding name="ncname" type="qname"&gt; *
+        &lt;wsdl:documentation .... /&gt; ?
+        &lt;-- binding details --&gt; *
+        &lt;wsdl:operation name="ncname"&gt; *
+            &lt;wsdl:documentation .... /&gt; ?
+            &lt;-- binding details --&gt; *
+            &lt;wsdl:input&gt; ?
+                &lt;wsdl:documentation .... /&gt; ?
+                &lt;-- binding details --&gt;
+            &lt;/wsdl:input&gt;
+            &lt;wsdl:output&gt; ?
+                &lt;wsdl:documentation .... /&gt; ?
+                &lt;-- binding details --&gt; *
+            &lt;/wsdl:output&gt;
+            &lt;wsdl:fault name="ncname"&gt; *
+                &lt;wsdl:documentation .... /&gt; ?
+                &lt;-- binding details --&gt; *
+            &lt;/wsdl:fault&gt;
+        &lt;/wsdl:operation&gt;
+    &lt;/wsdl:binding&gt;
+
+    &lt;wsdl:service name="ncname" serviceType="qname"&gt; *
+        &lt;wsdl:documentation .... /&gt; ?
+        &lt;wsdl:port name="ncname" binding="qname"&gt; *
+            &lt;wsdl:documentation .... /&gt; ?
+            &lt;-- address details --&gt;
+        &lt;/wsdl:port&gt;
+    &lt;/wsdl:service&gt;
+
+&lt;/wsdl:definitions&gt;
+</pre>
+</div>

@@ -1,0 +1,66 @@
+<div class="article-intro" id="content">
+<h1>Vue.js 表单</h1>
+<p>这节我们为大家介绍 Vue.js 表单上的应用。</p>
+<p>你可以用 v-model 指令在表单控件元素上创建双向数据绑定。</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2017/01/20151109171527_549.png"/></p>
+<p>v-model 会根据控件类型自动选取正确的方法来更新元素。</p>
+<div class="example">
+<h2 class="example">输入框</h2>
+<p>实例中演示了 input 和 textarea 元素中使用 v-model 实现双向数据绑定：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">input 元素：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">v-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">message</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">placeholder</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">编辑我……</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">消息是: {{ message }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">textarea 元素：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">white-space: pre</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ message2 }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">textarea</span><span class="hl-code"> </span><span class="hl-var">v-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">message2</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">placeholder</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">多行文本输入……</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">textarea</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Runoob',
+    message2: '菜鸟教程\r\nhttp://www.runoob.com'
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-form1" target="_blank">尝试一下 »</a>
+</div>
+<h3>复选框</h3>
+<p>复选框如果是一个为逻辑值，如果是多个则绑定到同一个数组：</p>
+<div class="example">
+<h2 class="example">复选框</h2>
+<p>以下实例中演示了复选框的双向数据绑定：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">单个复选框：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">v-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checked</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ checked }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">多个复选框：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">v-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkedNames</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">runoob</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Runoob</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">google</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">v-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkedNames</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">google</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Google</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">taobao</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">v-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkedNames</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">label</span><span class="hl-code"> </span><span class="hl-var">for</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">taobao</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">taobao</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">label</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">选择的值为: {{ checkedNames }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app',
+  data: {
+    checked : false,
+    checkedNames: []
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-form2" target="_blank">尝试一下 »</a>
+</div>
+<p>实例中勾选复选框效果如下所示：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2017/01/F6855065-AA5E-4BD7-B1F6-2350D4B4B1BB.jpg"/></div>

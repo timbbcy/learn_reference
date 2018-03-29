@@ -1,0 +1,27 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 表单 - <span class="color_h1">格式化下拉框</span></h1>
+<p>本教程向您展示如何创建一个简单的下拉框（Combobox），让它在下拉框中显示图片项。您可以在下拉框（combobox）上使用 formatter 函数来告诉它如何格式化每一个条目。</p>
+<img src="/wp-content/uploads/2013/12/form4.png"/>
+<h4>创建图像下拉框（Combobox）</h4>
+<pre style="color:#006600">
+    &lt;input id="cc" style="width:100px"
+            url="data/combobox_data.json"
+            valueField="id" textField="text"&gt;
+    &lt;/input&gt;
+</pre>
+<pre style="color:#006600">
+    $('#cc').combobox({
+        formatter:function(row){
+            var imageFile = 'images/' + row.icon;
+            return '&lt;img class="item-img" src="'+imageFile+'"/&gt;&lt;span class="item-text"&gt;'+row.text+'&lt;/span&gt;';
+        }
+    });
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-form-form4.zip">jeasyui-form-form4.zip</a></p>
+</div>

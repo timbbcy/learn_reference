@@ -1,0 +1,143 @@
+<div class="article-intro" id="content">
+<h1>AngularJS 服务(Service)
+</h1>
+<p class="intro">
+AngularJS 中你可以创建自己的服务，或使用内建服务。</p>
+<hr/>
+<h2>什么是服务？</h2>
+<p>在 AngularJS 中，服务是一个函数或对象，可在你的 AngularJS 应用中使用。</p>
+<p>AngularJS 内建了30 多个服务。</p>
+<p>有个 <b>$location</b> 服务，它可以返回当前页面的 URL 地址。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">var</span> app = angular.module(<span class="highVAL">'myApp'</span>, []);<br/>app.controller(<span class="highVAL">'customersCtrl'</span>, 
+	<span class="highELE">function</span>($scope, $location) {<br/>    $scope.myUrl = $location.absUrl();<br/>
+	});
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services" target="_blank">尝试一下 »</a>
+</div>
+<p>注意 <b>$location</b> 服务是作为一个参数传递到 controller 
+中。如果要使用它，需要在 controller 中定义。</p>
+<hr/>
+<h2>为什么使用服务?</h2>
+<p>在很多服务中，比如 $location 服务，它可以使用 DOM 中存在的对象，类似 window.location 对象，但 window.location 对象在 AngularJS 应用中有一定的局限性。</p>
+<p>AngularJS 会一直监控应用，处理事件变化， AngularJS 使用 <b>$location</b> 
+服务比使用 <b>window.location</b> 对象更好。</p>
+<h3>$location vs window.location</h3>
+<table class="reference">
+<tbody><tr>
+<th> </th>
+<th>window.location</th>
+<th>$location.service</th>
+</tr>
+<tr>
+<td>目的</td>
+<td>允许对当前浏览器位置进行读写操作</td>
+<td>允许对当前浏览器位置进行读写操作</td>
+</tr>
+<tr>
+<td>API</td>
+<td>暴露一个能被读写的对象</td>
+<td>暴露jquery风格的读写器</td>
+</tr>
+<tr>
+<td>是否在AngularJS应用生命周期中和应用整合</td>
+<td>否</td>
+<td>可获取到应用生命周期内的每一个阶段，并且和$watch整合</td>
+</tr>
+<tr>
+<td>是否和HTML5 API的无缝整合</td>
+<td>否</td>
+<td>是（对低级浏览器优雅降级）</td>
+</tr>
+<tr>
+<td>和应用的上下文是否相关</td>
+<td>否，window.location.path返回"/docroot/actual/path"</td>
+<td>是，$location.path()返回"/actual/path"</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>$http 服务</h2>
+<p><b>$http</b> 是 AngularJS 应用中最常用的服务。 服务向服务器发送请求，应用响应服务器传送过来的数据。</p>
+<div class="example">
+<h3>实例</h3>
+<p>使用 <b>$http</b> 服务向服务器请求数据:</p>
+<div class="example_code">
+<span class="highELE">var</span> app = angular.module(<span class="highVAL">'myApp'</span>, []);<br/>app.controller(<span class="highVAL">'myCtrl'</span>, 
+	<span class="highELE">function</span>($scope, $http) {<br/>    $http.get(<span class="highVAL">"welcome.htm"</span>).then(<span class="highELE">function</span> 
+	(response) {<br/>        $scope.myWelcome 
+	= response.data;<br/>    });<br/>});</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services_http" target="_blank">尝试一下 »</a>
+</div>
+<p>以上是一个非常简单的 <b>$http</b> 服务实例，更多 <b>$http</b> 服务应用请查看 <a href="angularjs-http.html">AngularJS Http 
+教程</a>。</p>
+<hr/>
+<h2>$timeout 服务</h2>
+<p>AngularJS <b>$timeout</b> 服务对应了 JS <b>
+window.setTimeout</b> 函数。</p>
+<div class="example">
+<h3>实例</h3>
+<p>两秒后显示信息:</p>
+<div class="example_code">
+<span class="highELE">var</span> app = angular.module(<span class="highVAL">'myApp'</span>, []);<br/>app.controller(<span class="highVAL">'myCtrl'</span>, 
+	<span class="highELE">function</span>($scope, $timeout) {<br/>    $scope.myHeader = <span class="highVAL">"Hello 
+	World!"</span>;<br/>    $timeout(<span class="highELE">function</span> () {<br/>        
+	$scope.myHeader = <span class="highVAL">"How are you today?"</span>;<br/>    }, <span class="highVAL">2000</span>);<br/>
+	});<br/></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services_timeout" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>$interval 服务</h2>
+<p>AngularJS <b>$interval</b> 服务对应了 JS <b>window.setInterval</b> 函数。</p>
+<div class="example">
+<h3>实例</h3>
+<p>每一秒显示信息:</p>
+<div class="example_code">
+<span class="highELE">var</span> app = angular.module(<span class="highVAL">'myApp'</span>, []);<br/>app.controller(<span class="highVAL">'myCtrl'</span>, 
+	<span class="highELE">function</span>($scope, $interval) {<br/>    $scope.theTime = <span class="highELE">new</span> 
+	Date().toLocaleTimeString();<br/>    $interval(<span class="highELE">function</span> () {<br/>        
+	$scope.theTime = <span class="highELE">new</span> Date().toLocaleTimeString();<br/>    }, 
+	<span class="highVAL">1000</span>);<br/>});<br/></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services_interval" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>创建自定义服务</h2>
+<p>
+你可以创建自定义服务，链接到你的模块中：</p>
+<div class="example">
+<p>创建名为<b>hexafy</b> 的服务:</p>
+<div class="example_code">
+	app.service(<span class="highVAL">'hexafy'</span>, <span class="highELE">function</span>() {<br/>    this.myFunc = <span class="highELE">function</span> (x) {<br/>        
+	<span class="highELE">return</span> x.toString(<span class="highVAL">16</span>);<br/>    }<br/>});<br/></div>
+</div><p>要使用自定义服务，需要在定义控制器的时候独立添加，设置依赖关系:
+</p>
+<div class="example">
+<h3>实例</h3>
+<p>使用自定义的的服务 <b>hexafy</b> 将一个数字转换为16进制数:</p>
+<div class="example_code">
+<div class="jsHigh">
+	app.controller(<span class="highVAL">'myCtrl'</span>, <span class="highELE">function</span>($scope, <strong>hexafy</strong>) {<br/>    $scope.hex 
+	= <strong>hexafy</strong>.myFunc(<span class="highVAL">255</span>);<br/>});</div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services_custom" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>过滤器中，使用自定义服务</h2>
+<p>当你创建了自定义服务，并连接到你的应用上后，你可以在控制器，指令，过滤器或其他服务中使用它。</p>
+<div class="example">
+<p>在过滤器 <b>myFormat</b> 中使用服务 <b>hexafy</b>:</p>
+<div class="example_code">
+	app.filter(<span class="highVAL">'myFormat'</span>,[<strong>'hexafy'</strong>, <span class="highELE">function</span>(<strong>hexafy</strong>) {<br/>    
+	<span class="highELE">return</span> <span class="highELE">function</span>(x) {<br/>        <span class="highELE">return</span>
+<strong>hexafy</strong>.myFunc(x);<br/>    };<br/>}]);<br/></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services_filter" target="_blank">尝试一下 »</a>
+</div>
+<p>在对象数组中获取值时你可以使用过滤器：</p>
+<div class="example">
+<p>创建服务 <b>hexafy</b>:</p>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">ng-repeat=</span><span class="highVAL">"x in counts"</span><span class="highGT">&gt;</span><span class="highATT">{{x | myFormat}}</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_services_filter2" target="_blank">尝试一下 »</a>
+</div>
+</div>

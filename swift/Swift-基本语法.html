@@ -1,0 +1,281 @@
+<div class="article-intro" id="content">
+<h1>Swift 基本语法</h1>
+<p>
+在上一章节中我们已经讲到如何创建 Swift 语言的 "Hello, World!" 程序。现在我们来复习下。</p><p>
+如果创建的是 OS X playground 需要引入 Cocoa ：</p>
+<pre>
+import Cocoa
+
+/* 我的第一个 Swift 程序 */
+var myString = "Hello, World!"
+
+print(myString)
+</pre>
+<p>如果我们想创建 iOS playground 则需要引入 UIKit :
+</p>
+<pre>
+import UIKit
+var myString = "Hello, World!"
+print(myString)
+</pre>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+Hello, World! 
+</pre>
+<p>以上代码即为 Swift 程序的基本结构，接下来我们来详细说明结构的组成部分。</p>
+<hr/>
+<h2>Swift 引入</h2>
+<p>
+我们可以使用 <b>import</b> 语句来引入任何的 Objective-C 框架（或 C 库）到 Swift 程序中。例如 <b>import cocoa</b> 语句导入了使用了 Cocoa 库和API，我们可以在 Swift 程序中使用他们。</p>
+<p><p>Cocoa 本身由 Objective-C 语言写成，Objective-C 又是 C 语言的严格超集，所以在 Swift 应用中我们可以很简单的混入 C 语言代码，甚至是 C++ 代码。</p>
+<hr/>
+<h2>Swift 标记</h2>
+<p>
+Swift 程序由多种标记组成，标记可以是单词，标识符，常量，字符串或符号。例如以下 Swift 程序由三种标记组成：</p>
+<pre>
+print("test!")
+</pre>
+<p>以上语句由 3 个符号组成：单词( <strong>print</strong> )、符号( <strong>(</strong> )、字符串( <strong>"test"</strong> )。</p>
+<pre>
+print
+(
+   "test!"
+)
+</pre>
+<hr/>
+<h2>注释</h2>
+<p>
+Swift的注释与C语言极其相似，单行注释以两个反斜线开头：
+</p><p><pre>
+//这是一行注释
+</pre>
+<p>
+多行注释以/*开始，以*/结束:
+</p>
+<pre>
+/* 这也是一条注释，
+但跨越多行 */
+</pre>
+<p>
+与 C 语言的多行注释有所不同的是，Swift 的多行注释可以嵌套在其他多行注释内部。写法是在一个多行注释块内插入另一个多行注释。第二个注释块封闭时，后面仍然接着第一个注释块：
+</p>
+<pre>
+/* 这是第一个多行注释的开头
+
+/* 这是嵌套的第二个多行注释 */
+
+这是第一个多行注释的结尾 */
+</pre><p>
+多行注释的嵌套是你可以更快捷方便的注释代码块，即使代码块中已经有了注释。</p>
+<hr/>
+<h2>分号</h2>
+<p>与其它语言不同的是，Swift不要求在每行语句的结尾使用分号(;)，但当你在同一行书写多条语句时，必须用分号隔开：</p>
+<pre>
+import Cocoa
+/* 我的第一个 Swift 程序 */
+var myString = "Hello, World!"; print(myString)
+</pre>
+<hr/><h2>标识符</h2>
+<p>标识符就是给变量、常量、方法、函数、枚举、结构体、类、协议等指定的名字。构成标识符的字母均有一定的规范，Swift语言中标识符的命名规则如下：</p>
+<ul>
+<li>
+<p><span>区分大小写，</span><span><span lang="EN-US">Myname</span></span><span>与</span><span><span lang="EN-US">myname</span></span><span>是两个不同的标识符；</span></p>
+</li>
+<li>
+<p><span>标识符首字符可以以下划线（</span><span lang="EN-US">_</span><span>）或者字母开始，但不能是数字；</span></p>
+</li>
+<li>
+<p><span>标识符中其他字符可以是下划线（</span><span lang="EN-US">_</span><span>）、字母或数字。</span></p>
+</li>
+</ul>
+<p>例如： userName、User_Name、_sys_val、身高等为合法的标识符，而2mail、room#和class为非法的标识符。</p>
+<p><b>注意:</b>Swift中的字母采用的是Unicode编码[1]。Unicode叫做统一编码制，它包含了亚洲文字编码，如中文、日文、韩文等字符，甚至是我们在聊天工具中使用的表情符号</p>
+<p>如果一定要使用关键字作为标识符，可以在关键字前后添加重音符号（`），例如：</p>
+<pre>let `class` = "Runoob"</pre>
+<hr/>
+<h2>关键字</h2>
+<p>关键字是类似于标识符的保留字符序列，除非用重音符号（`）将其括起来，否则不能用作标识符。关键字是对编译器具有特殊意义的预定义保留标识符。常见的关键字有以下4种。</p>
+<h3>与声明有关的关键字</h3>
+<table class="reference">
+<tbody><tr>
+<td>class</td>
+<td>deinit</td>
+<td>enum</td>
+<td>extension</td>
+</tr>
+<tr>
+<td>func</td>
+<td>import</td>
+<td>init</td>
+<td>internal</td>
+</tr>
+<tr>
+<td>let</td>
+<td>operator</td>
+<td>private</td>
+<td>protocol</td>
+</tr>
+<tr>
+<td>public</td>
+<td>static</td>
+<td>struct</td>
+<td>subscript</td>
+</tr>
+<tr>
+<td>typealias</td>
+<td>var</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>与语句有关的关键字</h3>
+<table class="reference">
+<tbody><tr>
+<td>break</td>
+<td>case</td>
+<td>continue</td>
+<td>default</td>
+</tr>
+<tr>
+<td>do</td>
+<td>else</td>
+<td>fallthrough</td>
+<td>for</td>
+</tr>
+<tr>
+<td>if</td>
+<td>in</td>
+<td>return</td>
+<td>switch</td>
+</tr>
+<tr>
+<td>where</td>
+<td>while</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>表达式和类型关键字</h3>
+<table class="reference">
+<tbody><tr>
+<td>as</td>
+<td>dynamicType</td>
+<td>false</td>
+<td>is</td>
+</tr>
+<tr>
+<td>nil</td>
+<td>self</td>
+<td>Self</td>
+<td>super</td>
+</tr>
+<tr>
+<td>true</td>
+<td>_COLUMN_</td>
+<td>_FILE_</td>
+<td>_FUNCTION_</td>
+</tr>
+<tr>
+<td>_LINE_</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>在特定上下文中使用的关键字</h3>
+<table class="reference">
+<tbody><tr>
+<td>associativity</td>
+<td>convenience</td>
+<td>dynamic</td>
+<td>didSet</td>
+</tr>
+<tr>
+<td>final</td>
+<td>get</td>
+<td>infix</td>
+<td>inout</td>
+</tr>
+<tr>
+<td>lazy</td>
+<td>left</td>
+<td>mutating</td>
+<td>none</td>
+</tr>
+<tr>
+<td>nonmutating</td>
+<td>optional</td>
+<td>override</td>
+<td>postfix</td>
+</tr>
+<tr>
+<td>precedence</td>
+<td>prefix</td>
+<td>Protocol</td>
+<td>required</td>
+</tr>
+<tr>
+<td>right</td>
+<td>set</td>
+<td>Type</td>
+<td>unowned</td>
+</tr>
+<tr>
+<td>weak</td>
+<td>willSet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>Swift 空格</h2>
+<p>Swift语言并不是像C/C++，Java那样完全忽视空格，Swift对空格的使用有一定的要求，但是又不像Python对缩进的要求那么严格。
+</p><p>
+在Swift中，运算符不能直接跟在变量或常量的后面。例如下面的代码会报错：</p>
+<pre>
+let a= 1 + 2
+</pre>
+<p>错误信息是：</p>
+<pre>error: prefix/postfix '=' is reserved</pre>
+<p>意思大概是等号直接跟在前面或后面这种用法是保留的。</p>
+<p>下面的代码还是会报错（继续注意空格）：</p>
+<pre>
+let a = 1+ 2
+</pre>
+<p>错误信息是：</p>
+<pre>error: consecutive statements on a line must be separated by ';'</pre>
+<p>这是因为Swift认为到1+这个语句就结束了，2就是下一个语句了。
+</p><p>
+只有这样写才不会报错：</p>
+<pre>
+let a = 1 + 2;  // 编码规范推荐使用这种写法
+let b = 3+4 // 这样也是OK的
+</pre>
+<hr/>
+<h2>Swift 字面量</h2>
+<p>所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：</p>
+<pre>
+42                 // 整型字面量
+3.14159            // 浮点型字面量
+"Hello, world!"    // 字符串型字面量
+true               // 布尔型字面量
+</pre>
+<hr/><h2>打印输出</h2>
+<p>Swift 使用 print 函数打印输出:</p>
+<pre>print("Runoob") // 输出 Runoob</pre>
+<p>print 函数是一个全局函数,完整的函数签名为:</p>
+<pre>
+public func print(items: Any..., separator: String = default, terminator: String = default)
+</pre>
+<p>如果我们想让其不换行输出,只需要将最后一个参数赋值为空字符串即可:</p>
+<pre>
+for x in 0...10{
+    print("\(x) ", terminator: "")
+}
+print()
+</pre>
+<p>输出结果为：</p>
+<pre>0 1 2 3 4 5 6 7 8 9 10 </pre>
+<p>如果你需要接收用户的输入可以使用 <span class="marked">readLine()</span>:</p>
+<pre>let theInput = readLine()</pre>
+</p></p></div>

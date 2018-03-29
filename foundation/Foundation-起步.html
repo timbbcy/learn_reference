@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>Foundation 起步</h1>
+<hr/>
+<h2>什么是 Foundation？</h2>
+<ul>
+<li>Foundation 是一个免费的前端框架，用于快速开发。</li>
+<li>Foundation 包含了 HTML 和 CSS 的设计模板，提供多种 Web 上的 UI 组件，如表单、按钮、Tabs 等等。同时也提供了多种 JavaScript 插件。</li>
+<li>Foundation 移动优先，可创建响应式网页。</li>
+<li>Foundation 适用于初学者和专业人士。</li>
+<li>Foundation 已使用在 Facebook, eBay, Samsung, Amazon, Disney等。</li>
+</ul>
+<br/>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><b>什么是响应式网页设计？<br/></b><br/>
+响应式Web设计(Responsive Web design)的理念是：
+页面的设计与开发应当根据用户行为以及设备环境(系统平台、屏幕尺寸、屏幕定向等)进行相应的响应和调整。</td>
+</tr></tbody></table>
+<hr/>
+<h2>从哪里下载 Foundation?</h2>
+<p>你可以通过以下两种方式来获取 Foundation：</p>
+<p>1、从官网下载最新版本：<a href="http://foundation.zurb.com/" target="_blank">http://foundation.zurb.com/</a>。</p>
+<p>2、使用菜鸟教程官网提供的CDN（推荐）：</p>
+<pre>
+&lt;!-- css 文件 --&gt;
+&lt;link rel="stylesheet" href="http://cdn.static.runoob.com/libs/foundation/5.5.3/css/foundation.min.css"&gt;
+
+&lt;!-- jQuery 库 --&gt;
+&lt;script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- JavaScript 文件 --&gt;
+&lt;script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/foundation.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- modernizr.js 文件 --&gt;
+&lt;script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/vendor/modernizr.js"&gt;&lt;/script&gt;
+</pre>
+<p>本站静态 CDN 基于阿里云服务。</p>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><b>Foundation 使用 CDN 的优势:</b><br/>
+Foundation 使用 CDN 提高了企业站点(尤其含有大量图片和静态页面站点)的访问速度，并大大提高以上性质站点的稳定性<br/>
+<br/><strong>为什么使用 modernizr?</strong><br/>Some 
+Foundation 的组件使用了比较前前沿的 HTML5 和 CSS3 特性，但不是所有浏览器都支持。 Modernizr 是一个用于检测用户浏览器HTML5和CSS3特性的JavaScript库 - 让组件能在所有浏览器上正常运行。</td>
+</tr></tbody></table>
+<hr/>
+<h2>使用 Foundation 创建页面</h2>
+<p><strong>1. 添加 HTML5 doctype</strong></p>
+<p>Foundation 使用 HTML 元素和 CSS 属性，所以需要添加 HTML5 doctype 文档类型声明。</p>
+<p>同时我们可以设置文档的语言属性 lang 及字符编码：</p>
+<div class="example">
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">!DOCTYPE</span> <span class="highATT">html</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">html</span> <span class="highATT">lang=</span><span class="highVAL">"zh-cn"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">head</span><span class="highGT">&gt;</span><br/>    
+  <span class="highLT">&lt;</span><span class="highELE">meta</span> <span class="highATT">charset=</span><span class="highVAL">"utf-8"</span><span class="highGT">&gt;</span> <br/>  <span class="highLT">&lt;</span><span class="highELE">/head</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/html</span><span class="highGT">&gt;</span></div>
+</div>
+<p><strong>2. Foundation 5 移动优先</strong></p>
+<p>Foundation 5 为移动设备的响应式设计。框架的核心是移动优先。</p>
+<p>为了确保页面可自由缩放可以在 <code>&lt;head&gt;</code> 元素中添加以下 <code>&lt;meta&gt;</code> 标签:</p>
+<div class="example">
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">meta</span> <span class="highATT">name=</span><span class="highVAL">"viewport"</span> <span class="highATT">content=</span><span class="highVAL">"width=device-width, initial-scale=1"</span><span class="highGT">&gt;</span></div>
+</div>
+<ul>
+<li>width：控制 viewport 的大小，可以指定的一个值，如果 600，或者特殊的值，如 device-width 为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。</li><li>
+
+initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。</li></ul>
+<p><strong>3. 初始化组件</strong></p>
+<p>一些 Foundation 组件是基于 jQuery 开发的，如：模态框、下拉菜单等。你可以使用以下脚本来初始化组件：</p>
+<div class="example">
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>$(document).ready(function() {<br/>    
+  $(document).foundation();<br/>})<br/><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+</div>
+<hr/>
+<h2>基本 Foundation 页面</h2>
+<p>如何创建一个基本的 foundation 页面:</p>
+<div class="example">
+<h3>Foundation 实例</h3>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">medium-12 columns</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Foundation 页面</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">重置窗口大小，查看效果！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button small</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">我是按钮!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">medium-4 columns</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">学的不仅是技术，更是梦想！！！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">medium-4 columns</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">学的不仅是技术，更是梦想！！！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">medium-4 columns</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">学的不仅是技术，更是梦想！！！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_default" target="_blank">尝试一下 »</a></div>
+</div>

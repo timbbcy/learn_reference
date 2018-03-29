@@ -1,0 +1,384 @@
+<div class="article-intro" id="content">
+<h1>Foundation CSS 参考手册</h1>
+<hr/>
+<h2>Foundation 默认设置</h2>
+<p>Foundation 使用浏览器默认字体大小 (<code>font-size:100%</code>)。对于大多数桌面设备的浏览器来说，字体大小默认为 16px。对于移动设备的浏览器，字体默认大小为 12px。
+默认的字体为 <code>"Helvetica Neue"</code>， line-height 默认为 <code>1.5</code>。</p>
+<p>这些设置是适用于 <code>&lt;body&gt;</code> 元素内的元素。</p>
+<p>此外， <code>&lt;p&gt;</code> 元素与底部的外边距(margin-bottom) 为 1.25rem , line-height 为 1.6。</p>
+<hr/>
+<h2>文本</h2>
+<p>以下的 HTML 元素，Foundation 设置了独立的样式渲染它，不会采用浏览器默认样式。点击 "尝试一下" 查看在线实例。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%;">元素</th>
+<th style="width:70%;">描述</th>
+<th style="width:8%;">在线实例</th>
+</tr>
+<tr>
+<td>&lt;h1&gt; - &lt;h6&gt;</td>
+<td>h1 - h6 标题</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_hn" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;a&gt;</td>
+<td>浅蓝色的链接，鼠标移动到链接会有下划线</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_links" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;small&gt;</td>
+<td>浅灰色的副标题文本</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_small" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;blockquote&gt;</td>
+<td>引用内容模块
+</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_blockquote" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;strong&gt;</td>
+<td>加粗文本</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_strong" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;em&gt;</td>
+<td>斜体</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_em" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;abbr&gt;</td>
+<td>指定单词的缩写，使用该元素文本出现虚线下划线，鼠标移动上去会有提示信息</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_abbr" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;kbd&gt;</td>
+<td>接收键盘输入指令: <kbd>CTRL + P</kbd></td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_kbd" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;hr&gt;</td>
+<td>水平线</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_hr" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;code&gt;</td>
+<td>代码片段</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_code" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;ul&gt;</td>
+<td>无序列表</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_ul" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;ol&gt;</td>
+<td>有序列表</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_ol" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>&lt;dl&gt;</td>
+<td>描述性列表</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_dl" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>文本对齐</h2>
+<p>使用 CSS 类来修改文本的对齐方式：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%;">类</th>
+<th style="width:72%;">描述</th>
+<th style="width:8%;">实例</th>
+</tr>
+<tr>
+<td>.text-left</td>
+<td>左对齐文本</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_text-align" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.text-right</td>
+<td>右对齐文本</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_text-align" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.text-center</td>
+<td>居中</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_text-align" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.text-justify</td>
+<td>两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_text-justified" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>不同尺寸屏幕的对齐</h2>
+<p>使用 CSS 类来修改文本的不同尺寸屏幕的对齐方式：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%;">类</th>
+<th style="width:62%;">描述</th>
+<th style="width:8%;">实例</th>
+</tr>
+<tr>
+<td><strong>左对齐</strong></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>.small-text-left</td>
+<td>所有尺寸屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.small-only-text-left</td>
+<td>小尺寸屏幕左对齐(宽度小于 40em )</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-only-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-text-left</td>
+<td>宽度大于 40.0625em 尺寸屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-only-text-left</td>
+<td>宽度在 40.0625em 到 64em 尺寸的屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-only-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-text-left</td>
+<td>宽度大于 64.0625em 尺寸屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-only-text-left</td>
+<td>宽度在 64.0625em 到 90em 尺寸的屏幕左对齐 </td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-only-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-text-left</td>
+<td>宽度大于 90.0625em 尺寸屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-only-text-left</td>
+<td>宽度在 90.0625em 到 120em 尺寸的屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-only-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xxlarge-text-left</td>
+<td>宽度大于 120em 尺寸屏幕左对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xxlarge-text-left" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong>右对齐</strong></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>.small-text-right</td>
+<td>所有尺寸屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.small-only-text-right</td>
+<td>小尺寸屏幕右对齐(宽度小于 40em )</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-only-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-text-right</td>
+<td>宽度大于 40.0625em 尺寸屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-only-text-right</td>
+<td>宽度在 40.0625em 到 64em 尺寸的屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-only-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-text-right</td>
+<td>宽度大于 64.0625em 尺寸屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-only-text-right</td>
+<td>宽度在 64.0625em 到 90em 尺寸的屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-only-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-text-right</td>
+<td>宽度大于 90.0625em 尺寸屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-only-text-right</td>
+<td>宽度在 90.0625em 到 120em 尺寸的屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-only-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xxlarge-text-right</td>
+<td>宽度大于 120em 尺寸屏幕右对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xxlarge-text-right" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong>居中对齐</strong></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>.small-text-center</td>
+<td>所有尺寸屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.small-only-text-center</td>
+<td>小尺寸屏幕居中对齐(宽度小于 40em )</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-only-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-text-center</td>
+<td>宽度大于 40.0625em 尺寸屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-only-text-center</td>
+<td>宽度在 40.0625em 到 64em 尺寸的屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-only-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-text-center</td>
+<td>宽度大于 64.0625em 尺寸屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-only-text-center</td>
+<td>宽度在 64.0625em 到 90em 尺寸的屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-only-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-text-center</td>
+<td>宽度大于 90.0625em 尺寸屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-only-text-center</td>
+<td>宽度在 90.0625em 到 120em 尺寸的屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-only-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xxlarge-text-center</td>
+<td>宽度大于 120em 尺寸屏幕居中对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xxlarge-text-center" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong>两端对齐</strong></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>.small-text-justify</td>
+<td>所有尺寸屏幕都两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.small-only-text-justify</td>
+<td>小尺寸屏幕两端对齐(宽度小于 40em )</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_small-only-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-text-justify</td>
+<td>宽度大于 40.0625em 尺寸屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.medium-only-text-justify</td>
+<td>宽度在 40.0625em 到 64em 尺寸的屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_medium-only-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-text-justify</td>
+<td>宽度大于 64.0625em 尺寸屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.large-only-text-justify</td>
+<td>宽度在 64.0625em 到 90em 尺寸的屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_large-only-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-text-justify</td>
+<td>宽度大于 90.0625em 尺寸屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xlarge-only-text-justify</td>
+<td>宽度在 90.0625em 到 120em 尺寸的屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xlarge-only-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.xxlarge-text-justify</td>
+<td>宽度大于 120em 尺寸屏幕两端对齐</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_xxlarge-text-justify" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>其他</h2>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%;">类</th>
+<th style="width:72%;">描述</th>
+<th style="width:8%;">实例</th>
+</tr>
+<tr>
+<td>.left</td>
+<td>元素向左浮动</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_float" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.right</td>
+<td>元素向右浮动</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_float" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.clearfix</td>
+<td>清除浮动 - 必须添加在浮动元素的父元素上</td>
+<td></td>
+</tr>
+<tr>
+<td>.hide</td>
+<td>隐藏元素 (CSS <code>display: none</code>)</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_hide" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.list-inline</td>
+<td>将所有元素设置在同一行</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_list_inline" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.lead</td>
+<td>让 &lt;p&gt; 元素更突出</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_lead" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.subheader</td>
+<td>设置浅色的 &lt;h1&gt; - &lt;h6&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_txt_subheader" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+</div>

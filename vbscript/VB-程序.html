@@ -1,0 +1,95 @@
+<div class="article-intro" id="content">
+<h1>VBScript <span class="color_h1">程序</span>
+</h1>
+<hr/>
+<p class="intro">
+VBScript 可使用两种程序：
+</p>
+<ul>
+<li>子程序</li>
+<li>函数程序</li>
+</ul>
+<br/><hr/>
+<h2>VBScript 子程序</h2>
+<p>子程序：</p>
+<ul>
+<li>是一系列的语句，被封装在 Sub 和 End Sub 语句内</li>
+<li>可执行某些操作，但<b>不会返回</b>值</li>
+<li>可带有参数</li>
+</ul>
+<div class="code notranslate"><div>
+
+Sub mysub()<br/>
+<i>some statements</i><br/>
+End Sub</div></div>
+<p>或者</p>
+<div class="code notranslate"><div>
+
+Sub mysub(argument1,argument2)<br/>
+<i>some statements</i><br/>
+End Sub</div></div>
+<br/><div class="example">
+<h2 class="example">实例（仅适用于 IE）</h2>
+<div class="example_code notranslate">
+Sub mysub()<br/>
+   document.write("I was written by a sub procedure")<br/>
+End Sub
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=vbdemo_subex" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>VBScript 函数程序</h2>
+<p>函数程序</p>
+<ul>
+<li>是一系列的语句，被封装在 Function 和 End Function 语句内</li>
+<li>可执行某些操作，并<b>会返回</b>值</li>
+<li>可带有通过程序调用来向其传递的参数。</li>
+<li>如果没有参数，必须带有空的圆括号 ()</li>
+<li>通过向函数程序名赋值的方式，可使其返回值</li>
+</ul>
+<div class="code notranslate"><div>
+
+Function myfunction()<br/>
+<i>some statements</i><br/>
+  
+ myfunction=<i>some value</i><br/>
+End Function</div></div>
+<p>或者</p>
+<div class="code notranslate"><div>
+
+Function myfunction(argument1,argument2)<br/>
+<i>some statements</i><br/>
+  
+ myfunction=<i>some value</i><br/>
+End Function</div></div>
+<br/><div class="example">
+<h2 class="example">实例（仅适用于 IE）</h2>
+<div class="example_code notranslate">
+function myfunction()<br/>
+   myfunction=Date()<br/>
+end function</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=vbdemo_functionex" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>调用程序</h2>
+<p>这个简单的函数程序被调用来计算两个参数的和：</p>
+<div class="example">
+<h2 class="example">实例（仅适用于 IE）</h2>
+<div class="example_code notranslate">
+Function myfunction(a,b)<br/>
+myfunction=a+b<br/>
+End Function
+<br/><br/>
+document.write(myfunction(5,9))</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=vbdemo_proc_calc" target="_blank">尝试一下 »</a>
+</div>
+<p>函数 "myfunction" 将返回参数 "a" 和参数 "b" 的和。这里返回的是 14。</p>
+<p>当您调用程序时，您可以使用 Call 语句，如下所示：</p>
+<div class="code notranslate"><div>
+Call MyProc(argument)</div></div>
+<p>或者，您可以省略 Call 语句，如下所示：
+</p>
+<div class="code notranslate"><div>
+MyProc argument</div></div>
+<br/>
+</div>

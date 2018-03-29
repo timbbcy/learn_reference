@@ -1,0 +1,107 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- 添加 Razor 代码</span>
+</h1>
+<hr/>
+<p class="intro">在本教程中，我们将使用 C# 和 Visual Basic 代码的 Razor 标记。</p>
+<hr/>
+<h2>什么是 Razor ？</h2>
+<ul>
+<li>Razor 是一种将基于服务器的代码添加到网页中的标记语法</li>
+<li>Razor 具有传统 ASP.NET 标记的功能，但更容易使用并且更容易学习</li>
+<li>Razor 是一种服务器端标记语法，与 ASP 和 PHP 很像</li>
+<li>Razor 支持 C# 和 Visual Basic 编程语言</li>
+</ul>
+<hr/>
+<h2>添加 Razor 代码</h2>
+<p>请记住上一章实例中的网页：</p>
+<div class="code notranslate"><div>
+&lt;!DOCTYPE html&gt;<br/><br/>
+&lt;html lang="en"&gt;<br/>
+&lt;head&gt;<br/>
+   &lt;meta charset="utf-8" /&gt;<br/>
+   
+&lt;title&gt;Web Pages Demo&lt;/title&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+    &lt;h1&gt;Hello Web Pages&lt;/h1&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div></div>
+<p>现在向实例中添加一些 Razor 代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/><br/>
+&lt;html lang="en"&gt;<br/>
+&lt;head&gt;<br/>
+     &lt;meta charset="utf-8" /&gt;<br/>
+     &lt;title&gt;Web Pages Demo&lt;/title&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+     &lt;h1&gt;Hello Web Pages&lt;/h1&gt; <br/>
+     &lt;p&gt;The time is <span class="marked">@DateTime.Now</span>&lt;/p&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_webpages_cs_001" target="_blank">
+运行实例 »</a>
+</div>
+<p>该页面中包含普通的 HTML 标记，除此之外，还添加了一个 @ 标识的 Razor 代码。</p>
+<p>Razor 代码能够在服务器上实时地完成多有的动作，并将结果显示出来。（您可以指定格式化选项，否则只会显示默认项。）</p>
+<hr/>
+<h2>主要的 Razor C# 语法规则</h2>
+<ul>
+<li>Razor 代码块包含在 @{ ... } 中</li>
+<li>内联表达式（变量和函数）以 @ 开头</li>
+<li>代码语句用分号结束</li>
+<li>变量使用 var 关键字声明</li>
+<li>字符串用引号括起来</li>
+<li>C# 代码区分大小写</li>
+<li>C# 文件的扩展名是 .cshtml</li>
+</ul>
+<div class="example">
+<h2 class="example">C# 实例</h2>
+<div class="example_code notranslate">
+&lt;!-- Single statement block --&gt;<br/><span class="marked">@{ var myMessage =	"Hello World"; }</span><br/><br/>
+&lt;!-- Inline expression or variable --&gt;<br/>
+&lt;p&gt;The value of myMessage is: <span class="marked">@myMessage</span>&lt;/p&gt; <br/><br/>
+&lt;!--	Multi-statement block --&gt;<br/><span class="marked">@{<br/>
+var greeting = "Welcome to our site!";<br/>
+var weekDay = DateTime.Now.DayOfWeek;<br/>
+var greetingMessage = greeting + " Today is: " + weekDay;<br/>
+}</span><br/>&lt;p&gt;The greeting is: <span class="marked">@greetingMessage</span>&lt;/p&gt;
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_razor_cs_001" target="_blank">	运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>主要的 Razor VB 语法规则</h2>
+<ul>
+<li>Razor 代码块包含在 @Code ... End Code 中</li>
+<li>内联表达式（变量和函数）以 @ 开头</li>
+<li>变量使用 Dim 关键字声明</li>
+<li>字符串用引号括起来</li>
+<li>VB 代码不区分大小写</li>
+<li>VB 文件的扩展名是 .vbhtml</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!-- Single statement block  --&gt; <br/><span class="marked">@Code dim myMessage = "Hello World" End Code</span><br/>
+<br/>
+&lt;!-- Inline expression or variable --&gt; <br/>
+&lt;p&gt;The value of myMessage is: <span class="marked">@myMessage</span>&lt;/p&gt; <br/>
+<br/>
+&lt;!-- Multi-statement block --&gt; <br/><span class="marked">@Code<br/>
+dim greeting = "Welcome to our site!" <br/>
+dim weekDay = DateTime.Now.DayOfWeek <br/>
+dim greetingMessage = greeting &amp; " Today is: " &amp; weekDay<br/>
+End Code</span>
+<br/><br/>
+&lt;p&gt;The greeting is: <span class="marked">@greetingMessage</span>&lt;/p&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_razor_vb_001" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>更多关于 C# 和 Visual Basic</h2>
+<p>如果您想学习更多关于 Razor、C#、Visual Basic 编程语言，请查看本教程的 <a href="razor-intro.html">Razor 部分</a>。</p>
+<br/>
+</div>

@@ -1,0 +1,159 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">魔术变量</span></h1>
+<p>PHP 向它运行的任何脚本提供了大量的预定义常量。</p>
+<p>不过很多常量都是由不同的扩展库定义的，只有在加载了这些扩展库时才会出现，或者动态加载后，或者在编译时已经包括进去了。</p>
+<p>
+
+有八个魔术常量它们的值随着它们在代码中的位置改变而改变。</p><p>例如 __LINE__ 的值就依赖于它在脚本中所处的行来决定。这些特殊的常量不区分大小写，如下：</p>
+<hr/>
+<h2>__LINE__</h2>
+<p>文件中的当前行号。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">这是第 " </span><span class="hl-quotes">'</span><span class="hl-code">  . </span><span class="hl-reserved">__LINE__</span><span class="hl-code"> . </span><span class="hl-quotes">'</span><span class="hl-string"> " 行</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+这是第 “ 2 ” 行
+</pre><hr/>
+<h2>__FILE__</h2>
+<p>文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。</p>
+<p>自 PHP 4.0.2 起，__FILE__ 总是包含一个绝对路径（如果是符号连接，则是解析后的绝对路径），而在此之前的版本有时会包含一个相对路径。</p>
+<p>实例:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">该文件位于 " </span><span class="hl-quotes">'</span><span class="hl-code">  . </span><span class="hl-reserved">__FILE__</span><span class="hl-code"> . </span><span class="hl-quotes">'</span><span class="hl-string"> " </span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+该文件位于 “ E:\wamp\www\test\index.php ”
+</pre>
+<hr/>
+<h2>__DIR__</h2><p>文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。</p>
+<p>它等价于 dirname(__FILE__)。除非是根目录，否则目录中名不包括末尾的斜杠。（PHP 5.3.0中新增） </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">该文件位于 " </span><span class="hl-quotes">'</span><span class="hl-code">  . </span><span class="hl-identifier">__DIR__</span><span class="hl-code"> . </span><span class="hl-quotes">'</span><span class="hl-string"> " </span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+该文件位于 “ E:\wamp\www\test ”
+</pre>
+<hr/>
+<h2>__FUNCTION__</h2> <p>函数名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该函数被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">函数名为：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-reserved">__FUNCTION__</span><span class="hl-code"> ;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+函数名为：test
+</pre>
+<hr/>
+<h2>__CLASS__</h2> <p>类的名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。</p>
+<p>在 PHP 4 中该值总是小写字母的。类名包括其被声明的作用区域（例如 Foo\Bar）。注意自 PHP 5.4 起 __CLASS__ 对 trait 也起作用。当用在 trait 方法中时，__CLASS__ 是调用 trait 方法的类的名字。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">_print</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">类名为：</span><span class="hl-quotes">'</span><span class="hl-code">  . </span><span class="hl-reserved">__CLASS__</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">函数名为：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-reserved">__FUNCTION__</span><span class="hl-code"> ;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$t</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$t</span><span class="hl-code">-&gt;</span><span class="hl-identifier">_print</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+类名为：test
+函数名为：_print
+</pre>
+<hr/>
+<h2>__TRAIT__</h2> <p> Trait 的名字（PHP 5.4.0 新加）。自 PHP 5.4.0 起，PHP 实现了代码复用的一个方法，称为 traits。</p>
+<p>Trait 名包括其被声明的作用区域（例如 Foo\Bar）。</p>
+<p>从基类继承的成员被插入的 SayWorld Trait 中的 MyHelloWorld 方法所覆盖。其行为 MyHelloWorld 类中定义的方法一致。优先顺序是当前类中的方法会覆盖 trait 方法，而 trait 方法又覆盖了基类中的方法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Base</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">sayHello</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">Hello </span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">trait</span><span class="hl-code"> </span><span class="hl-identifier">SayWorld</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">sayHello</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">parent</span><span class="hl-code">::</span><span class="hl-identifier">sayHello</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">World!</span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">MyHelloWorld</span><span class="hl-code"> </span><span class="hl-reserved">extends</span><span class="hl-code"> </span><span class="hl-identifier">Base</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">SayWorld</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$o</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">MyHelloWorld</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$o</span><span class="hl-code">-&gt;</span><span class="hl-identifier">sayHello</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div><p>
+以上例程会输出：</p>
+<pre>
+Hello World!
+</pre><hr/>
+<h2>__METHOD__</h2> <p>类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）。</p>
+<p>实例:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">函数名为：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-reserved">__METHOD__</span><span class="hl-code"> ;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+函数名为：test
+</pre>
+<hr/>
+<h2>__NAMESPACE__</h2> <p>当前命名空间的名称（区分大小写）。此常量是在编译时定义的（PHP 5.3.0 新增）。</p>
+<p>实例:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-identifier">namespace</span><span class="hl-code"> </span><span class="hl-identifier">MyProject</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">命名空间为："</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">__NAMESPACE__</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">"</span><span class="hl-quotes">'</span><span class="hl-code">; </span><span class="hl-comment">//</span><span class="hl-comment"> 输出 "MyProject"</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+命名空间为："MyProject"
+</pre>
+</div>

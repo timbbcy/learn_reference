@@ -1,0 +1,72 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">语法</span>
+</h1>
+<hr/>
+<h2>数据库表</h2>
+<p>一个数据库通常包含一个或多个表。每个表由一个名字标识（例如:"Websites"）,表包含带有数据的记录（行）。</p>
+<p>在本教程中，我们在 MySQL 的 RUNOOB 数据库中创建了 Websites 表，用于存储网站记录。</p>
+<p>我们可以通过以下命令查看 "Websites" 表的数据：</p>
+<pre>
+mysql&gt; use RUNOOB;
+Database changed
+
+mysql&gt; set names utf8;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SELECT * FROM Websites;
++----+--------------+---------------------------+-------+---------+
+| id | name         | url                       | alexa | country |
++----+--------------+---------------------------+-------+---------+
+| 1  | Google       | https://www.google.cm/    | 1     | USA     |
+| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
+| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
+| 4  | 微博          | http://weibo.com/         | 20    | CN      |
+| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
++----+--------------+---------------------------+-------+---------+
+5 rows in set (0.01 sec)
+</pre>
+<h3>解析</h3>
+<ul>
+<li><strong>use RUNOOB;</strong> 命令用于选择数据库。</li>
+<li><strong>set names utf8;</strong> 命令用于设置使用的字符集。</li>
+<li><strong>SELECT * FROM Websites;</strong> 读取数据表的信息。</li>
+<li>
+上面的表包含五条记录（每一条对应一个网站信息）和5个列（id、name、url、alexa 和country）。</li></ul>
+<hr/>
+<h2>SQL 语句</h2>
+<p>您需要在数据库上执行的大部分工作都由 SQL 语句完成。</p>
+<p>下面的 SQL 语句从 "Websites" 表中选取所有记录：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>在本教程中，我们将为您讲解各种不同的 SQL 语句。</p>
+<hr/>
+<h2>请记住...</h2>
+<ul>
+<li>SQL 对大小写不敏感：SELECT 与 select 是相同的。</li>
+</ul>
+<hr/>
+<h2>SQL 语句后面的分号？</h2>
+<p>某些数据库系统要求在每条 SQL 语句的末端使用分号。</p>
+<p>分号是在数据库系统中分隔每条 SQL 语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的 SQL 语句。</p>
+<p>在本教程中，我们将在每条 SQL 语句的末端使用分号。</p>
+<hr/>
+<h2>一些最重要的 SQL 命令</h2>
+<ul>
+<li><b>SELECT</b> - 从数据库中提取数据</li>
+<li><b>UPDATE</b> - 更新数据库中的数据</li>
+<li><b>DELETE</b> - 从数据库中删除数据</li>
+<li><b>INSERT INTO</b> - 向数据库中插入新数据</li>
+<li><b>CREATE DATABASE</b> - 创建新数据库</li>
+<li><b>ALTER DATABASE</b> - 修改数据库</li>
+<li><b>CREATE TABLE</b> - 创建新表</li>
+<li><b>ALTER TABLE</b> - 变更（改变）数据库表</li>
+<li><b>DROP TABLE</b> - 删除表</li>
+<li><b>CREATE INDEX</b> - 创建索引（搜索键）</li>
+<li><b>DROP INDEX</b> - 删除索引
+  </li>
+</ul>
+</div>

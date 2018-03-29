@@ -1,0 +1,302 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">折叠（Collapse）插件</span></h1>
+<p>折叠（Collapse）插件可以很容易地让页面区域折叠起来。无论您用它来创建折叠导航还是内容面板，它都允许很多内容选项。</p>
+<blockquote><img src="/images/quote.png"/>如果您想要单独引用该插件的功能，那么您需要引用 <b>collapse.js</b>。同时，也需要在您的 Bootstrap 版本中引用 <a href="/bootstrap/bootstrap-transition-plugin.html">Transition（过渡）插件</a>。或者，正如 <a href="/bootstrap/bootstrap-plugins-overview.html" target="_top">Bootstrap 插件概览</a> 一章中所提到，您可以引用 <i>bootstrap.js</i> 或压缩版的 <i>bootstrap.min.js</i>。</blockquote>
+<p>您可以使用折叠（Collapse）插件：</p>
+<ul class="list">
+<li><i><b>创建可折叠的分组或折叠面板（accordion）</b></i>，如下所示：
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-group</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">accordion</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-default</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseOne</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 1 部分
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseOne</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse in</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+                vice lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-default</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseTwo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 2 部分
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseTwo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+            vice lomo.
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-default</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseThree</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 3 部分
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseThree</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+                vice lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-collapse-accordion" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="折叠面板" src="/wp-content/uploads/2014/07/accordion_demo.jpg">
+</img></div>
+<ol class="list">
+<li><b>data-toggle="collapse"</b> 添加到您想要展开或折叠的组件的链接上。</li>
+<li><b>href</b> 或 <b>data-target</b> 属性添加到父组件，它的值是子组件的 <i>id</i>。</li>
+<li><b>data-parent</b> 属性把折叠面板（accordion）的 id 添加到要展开或折叠的组件的链接上。</li>
+</ol>
+</li>
+<li><i><b>创建不带 accordion 标记的简单的可折叠组件（collapsible）</b></i>，如下所示：
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">data-target</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    简单的可折叠组件
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse in</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+    vice lomo.
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-collapse-simple" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="简单的可折叠组件" src="/wp-content/uploads/2014/07/simplecollapse_demo.jpg"/>
+</div>
+<p>正如您在实例中看到的，我们创建了一个可折叠的组件，与折叠面板（accordion）不同，我们没有添加属性 <b>data-parent</b>。</p>
+</li>
+</ul>
+<h2>用法</h2>
+<p>下表列出了折叠（Collapse）插件用于处理繁重的伸缩的 class：</p>
+<table class="reference notranslate">
+<tr><th>Class</th><th>描述</th><th>实例</th></tr>
+<tr><td>.collapse</td><td>隐藏内容。</td><td><a class="playitbtn tryitbtnsyntax" href="/try/tryit.php?filename=trybs_ref_js_collapse_simple" target="_blank">尝试一下</a></td></tr>
+<tr><td>.collapse.in</td><td>显示内容。</td><td><a class="playitbtn tryitbtnsyntax" href="/try/tryit.php?filename=trybs_ref_js_collapse_simple_in" target="_blank">尝试一下</a></td></tr>
+<tr><td>.collapsing</td><td>当过渡效果开始时被添加，当过渡效果完成时被移除。</td><td> </td></tr>
+</table>
+<p>您可以通过以下两种方式使用折叠（Collapse）插件：</p>
+<ul class="list">
+<li><b>通过 data 属性</b>：向元素添加 <b>data-toggle="collapse"</b> 和 <b>data-target</b>，自动分配可折叠元素的控制。<b>data-target</b> 属性接受一个 CSS 选择器，并会对其应用折叠效果。请确保向可折叠元素添加 class <b>.collapse</b>。如果您希望它默认情况下是打开的，请添加额外的 class <b>.in</b>。
+<p>为了向可折叠控件添加类似折叠面板的分组管理，请添加 data 属性 <b>data-parent="#selector"</b>。</p></li>
+<li><b>通过 JavaScript</b>：可通过 JavaScript 激活 collapse 方法，如下所示：
+<pre class="prettyprint">
+$('.collapse').collapse()
+</pre></li>
+</ul>
+<h2>选项</h2>
+<p>有一些选项是通过 data 属性或 JavaScript 来传递的。下表列出了这些选项：</p>
+<table class="reference notranslate">
+<tr><th>选项名称</th><th>类型/默认值</th><th>Data 属性名称</th><th>描述</th></tr>
+<tr><td>parent</td><td>selector<br/> <i>默认值：false</i></td><td>data-parent</td><td>如果提供了一个选择器，当可折叠项目显示时，指定父元素下的所有可折叠的元素将被关闭。这与传统的折叠面板（accordion）的行为类似 - 这依赖于 accordion-group 类。
+</td></tr>
+<tr><td>toggle</td><td>boolean<br/> <i>默认值：true</i></td><td>data-toggle</td><td>切换调用可折叠元素。
+</td></tr>
+</table>
+<h2>方法</h2>
+<p>下面是一些折叠（Collapse）插件中有用的方法：</p>
+<table class="reference notranslate">
+<tr><th>方法</th><th>描述</th><th>实例</th></tr>
+<tr><td><b>Options:</b> .collapse(options)</td><td>激活内容为可折叠元素。接受一个可选的 options 对象。</td><td>
+<pre class="prettyprint">
+$('#identifier').collapse({
+    toggle: false
+})
+</pre></td></tr>
+<tr><td><b>Toggle:</b> .collapse('toggle')</td><td>切换显示/隐藏可折叠元素。</td><td>
+<pre class="prettyprint">$('#identifier').collapse('toggle')
+</pre></td></tr>
+<tr><td><b>Show:</b> .collapse('show')</td><td>显示可折叠元素。</td><td>
+<pre class="prettyprint">$('#identifier').collapse('show')
+</pre></td></tr>
+<tr><td><b>Hide:</b> .collapse('hide')</td><td>隐藏可折叠元素。</td><td>
+<pre class="prettyprint">$('#identifier').collapse('hide')
+</pre></td></tr>
+</table>
+<h3>实例</h3>
+<p>下面的实例演示了方法的用法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-group</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">accordion</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-default</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseOne</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 1 部分--hide 方法
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseOne</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse in</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseTwo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 2 部分--show 方法
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseTwo</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-info</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseThree</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 3 部分--toggle 方法
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseThree</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseFour</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。第 4 部分--options 方法
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseFour</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> $</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#collapseFour</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">collapse</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">toggle</span><span class="hl-code">: </span><span class="hl-reserved">false</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+    $</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> $</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#collapseTwo</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">collapse</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">show</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+    $</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> $</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#collapseThree</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">collapse</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">toggle</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+    $</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> $</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#collapseOne</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">collapse</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">hide</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-collapse-method" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="折叠（Collapse）插件方法" src="/wp-content/uploads/2014/07/collapsepluginmethod_demo.jpg"/>
+</div>
+<h2>事件</h2>
+<p>下表列出了折叠（Collapse）插件中要用到的事件。这些事件可在函数中当钩子使用。</p>
+<table class="reference notranslate">
+<tr><th>事件</th><th>描述</th><th>实例</th></tr>
+<tr><td>show.bs.collapse</td><td>在调用 show 方法后触发该事件。</td><td>
+<pre class="prettyprint">
+$('#identifier').on('show.bs.collapse', function () {
+    // 执行一些动作...
+})
+</pre></td></tr>
+<tr><td>shown.bs.collapse</td><td>当折叠元素对用户可见时触发该事件（将等待 CSS 过渡效果完成）。</td><td>
+<pre class="prettyprint">
+$('#identifier').on('shown.bs.collapse', function () {
+    // 执行一些动作...
+})
+</pre></td></tr>
+<tr><td>hide.bs.collapse</td><td>当调用 hide 实例方法时立即触发该事件。</td><td>
+<pre class="prettyprint">
+$('#identifier').on('hide.bs.collapse', function () {
+    // 执行一些动作...
+})
+</pre></td></tr>
+<tr><td>hidden.bs.collapse</td><td>当折叠元素对用户隐藏时触发该事件（将等待 CSS 过渡效果完成）。</td><td>
+<pre class="prettyprint">
+$('#identifier').on('hidden.bs.collapse', function () {
+    // 执行一些动作...
+})
+</pre></td></tr>
+</table>
+<h3>实例</h3>
+<p>下面的实例演示了事件的用法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-group</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">accordion</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel panel-info</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-heading</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h4</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-title</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapse</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-parent</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#accordion</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#collapseexample</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                点击我进行展开，再次点击我进行折叠。--shown 事件
+                </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h4</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">collapseexample</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-collapse collapse</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">panel-body</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+                cred nesciunt sapiente ea proident. 
+                Ad vegan excepteur butcher vice lomo.
+            </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> 
+        $</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#collapseexample</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">on</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">show.bs.collapse</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">嘿，当您展开时会提示本警告</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-collapse-event" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="折叠（Collapse）插件事件" src="/wp-content/uploads/2014/07/collapsepluginevents_demo.jpg"/>
+</div>
+</div>

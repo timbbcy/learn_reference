@@ -1,0 +1,62 @@
+<div class="article-intro" id="content">
+<h1>XML DOM - <span class="color_h1">CDATASection</span> 对象</h1>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+<a href="dom-loadxmldoc.html">外部 JavaScript</a> 用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_createcdatasection" target="_blank">createCDATASection() - 创建一个 CDATA 区段节点</a></p>
+<hr/>
+<h2>CDATASection 对象</h2>
+<p>CDATASection 对象表示文档中的 CDATA 区段。</p>
+<p>CDATA 区段包含了不会被解析器解析的文本。一个 CDATA 区段中的标签不会被视为标记，同时实体也不会被展开。主要的目的是为了包含诸如 XML 片段之类的材料，而无需转义所有的分隔符。</p>
+<p>在一个 CDATA 区段中唯一被识别的分隔符是 "]]&gt;"，它可标示 CDATA 区段的结束。CDATA 区段不能进行嵌套。</p>
+<h2>CDATASection 对象属性</h2>
+<table class="reference notranslate">
+<tr>
+<th width="25%">属性</th>
+<th width="75%">描述</th>
+</tr>
+<tr>
+<td><a href="prop-cdata-data.html">data</a></td>
+<td>设置或返回此节点的文本。</td>
+</tr>
+<tr>
+<td><a href="prop-cdata-length.html">length</a></td>
+<td>返回 CDATA 区段的长度。</td>
+</tr>
+</table>
+<h2>CDATASection 对象方法</h2>
+<table class="reference notranslate">
+<tr>
+<th width="25%">方法</th>
+<th width="75%">描述</th>
+</tr>
+<tr>
+<td><a href="met-cdata-appenddata.html">appendData()</a></td>
+<td>向节点追加数据。</td>
+</tr>
+<tr>
+<td><a href="met-cdata-deletedata.html">deleteData()</a></td>
+<td>从节点删除数据。</td>
+</tr>
+<tr>
+<td><a href="met-cdata-insertdata.html">insertData()</a></td>
+<td>向节点中插入数据。</td>
+</tr>
+<tr>
+<td><a href="met-cdata-replacedata.html">replaceData()</a></td>
+<td>替换节点中的数据。</td>
+</tr>
+<tr>
+<td><a href="met-cdata-splittext.html">splitText()</a></td>
+<td>把 CDATA 节点分拆为两个节点。</td>
+</tr>
+<tr>
+<td><a href="met-cdata-substringdata.html">substringData()</a></td>
+<td>从节点提取数据。</td>
+</tr>
+</table>
+<br/>
+</div>

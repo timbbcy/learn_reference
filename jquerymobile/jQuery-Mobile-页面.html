@@ -1,0 +1,66 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">页面</span>
+</h1>
+<hr/>
+<h2>开始学习 jQuery Mobile</h2>
+<table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+尽管jQuery Mobile兼容所有的移动设备，但是并不能完全兼容PC机（由于有限的CSS3支持）。
+<br/><br/>为了更好的阅读本教程，建议您使用 Google Chrome 浏览器。</td>
+</tr></table>
+<br/><div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;body&gt;<br/>&lt;div <span class="marked">data-role="page"</span>&gt;<br/><br/>  &lt;div 
+  <span class="marked">data-role="header"</span>&gt;<br/>    &lt;h1&gt;欢迎来到我的主页&lt;/h1&gt;<br/>  &lt;/div&gt;<br/><br/>  
+  &lt;div <span class="marked">data-role="main" class="ui-content"</span>&gt;<br/>    &lt;p&gt;我现在是一个移动端开发者!!&lt;/p&gt;<br/>  
+  &lt;/div&gt;<br/><br/>  &lt;div <span class="marked">data-role="footer"</span>&gt;<br/>    &lt;h1&gt;底部文本&lt;/h1&gt;<br/>  &lt;/div&gt;<br/><br/>&lt;/div&gt;<br/>&lt;/body&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_start" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析：</h3>
+<ul>
+<li>data-role="page" 是在浏览器中显示的页面。</li>
+<li>data-role="header" 是在页面顶部创建的工具条 (通常用于标题或者搜索按钮)</li>
+<li>data-role="main" 定义了页面的内容，比如文本， 图片，表单，按钮等。</li>
+<li>"ui-content" 类用于在页面添加内边距和外边距。</li>
+<li>data-role="footer" 用于创建页面底部工具条。</li>
+<li>在这些容器中你可以添加任何 HTML 元素 - 段落, 图片, 标题, 列表等。</li>
+</ul>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>jQuery Mobile 依赖 HTML5 data-* 属性来支持各种 UI 元素、过渡和页面结构。不支持它们的浏览器将以静默方式弃用它们。</td>
+</tr></table>
+<br/><hr/>
+<h2>在页面中添加 jQuery Mobile</h2>
+<p>使用 jQuery Mobile, 你可以在单个 HTML 文件中创建多个不同的页面。</p>
+<p>你可以使用不同的href属性来区分使用同一个唯一id的页面：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;div data-role="page" <span class="marked">id="pageone"</span>&gt;<br/>
+	  &lt;div data-role="main" class="ui-content"&gt;<br/>    &lt;a <span class="marked">href="#pagetwo"</span>&gt;跳转到第二个页面&lt;/a&gt;<br/>  &lt;/div&gt;<br/>&lt;/div&gt;<br/><br/>&lt;div data-role="page" 
+	<span class="marked">id="pagetwo"</span>&gt;<br/>  &lt;div 
+	data-role="main" class="ui-content"&gt;<br/>    &lt;a <span class="marked">href="#pageone"</span>&gt;跳转到第一个页面&lt;/a&gt;<br/>  &lt;/div&gt;<br/>&lt;/div&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_pages" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>注意：</strong> 当web应用有大量的内容（文本，图片，脚本等）将会严重影响加载时间。如果你不想使用内页链接可以使用外部文件：</p>
+<pre>
+&lt;a href="externalfile.html"&gt;访问外部文件&lt;/a&gt;
+</pre>
+<hr/>
+<h2>页面作为对话框使用</h2>
+<p>对话框是用于显示页面信息显示或者表单信息的输入。</p>
+<p>在链接中添加data-rel="dialog"让用户点击链接时弹出对话框:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	&lt;div data-role="page" id="pageone"&gt;<br/>  &lt;div 
+  data-role="main" class="ui-content"&gt;<br/>    &lt;a href="#pagetwo"&gt;跳转到第二个页面&lt;/a&gt;<br/>  
+  &lt;/div&gt;<br/>&lt;/div&gt;<br/><br/>&lt;div data-role="page" 
+  <span class="marked">data-dialog="true"</span> id="pagetwo"&gt;<br/>  &lt;div 
+  data-role="main" class="ui-content"&gt;<br/>    
+  &lt;a href="#pageone"&gt;跳转到第一个页面&lt;/a&gt;<br/>  &lt;/div&gt;<br/>&lt;/div&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_dialog" target="_blank">尝试一下 »</a>
+</div>
+</div>

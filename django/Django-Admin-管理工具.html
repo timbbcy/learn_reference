@@ -1,0 +1,44 @@
+<div class="article-intro" id="content">
+<h1>Django Admin 管理工具</h1>
+<p>Django 提供了基于 web 的管理工具。</p>
+<p>Django 自动管理工具是 django.contrib 的一部分。你可以在项目的 settings.py 中的 INSTALLED_APPS 看到它：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/HelloWorld/settings.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">INSTALLED_APPS</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.admin</span><span class="hl-quotes">'</span><span class="hl-code">,
+    </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.auth</span><span class="hl-quotes">'</span><span class="hl-code">,
+    </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.contenttypes</span><span class="hl-quotes">'</span><span class="hl-code">,
+    </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.sessions</span><span class="hl-quotes">'</span><span class="hl-code">,
+    </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.messages</span><span class="hl-quotes">'</span><span class="hl-code">,
+    </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.staticfiles</span><span class="hl-quotes">'</span><span class="hl-code">,
+</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>django.contrib是一套庞大的功能集，它是Django基本代码的组成部分。</p>
+<hr/>
+<h2>激活管理工具</h2>
+<p>通常我们在生成项目时会在 urls.py 中自动设置好，我们只需去掉注释即可。</p>
+<p>配置项如下所示：</p>
+<div class="example">
+<h2 class="example"> /HelloWorld/HelloWorld/urls.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment"># urls.py</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">conf</span><span class="hl-code">.</span><span class="hl-identifier">urls</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">url</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">contrib</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">admin</span><span class="hl-code">
+</span><span class="hl-identifier">urlpatterns</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-identifier">url</span><span class="hl-brackets">(</span><span class="hl-identifier">r</span><span class="hl-quotes">'</span><span class="hl-string">^admin/</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">admin</span><span class="hl-code">.</span><span class="hl-identifier">site</span><span class="hl-code">.</span><span class="hl-identifier">urls</span><span class="hl-brackets">)</span><span class="hl-code">,
+</span><span class="hl-brackets">]</span></div>
+</div>
+</div>
+<p>当这一切都配置好后，Django 管理工具就可以运行了。
+</p>
+<hr/>
+<h2>使用管理工具</h2>
+<p>
+启动开发服务器，然后在浏览器中访问 http://127.0.0.1:8000/admin/，得到如下界面：
+</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/01/admin1.png"/>
+<p>
+你可以通过命令 <strong>python manage.py createsuperuser</strong> 来创建超级用户，如下所示：</p>
+</div>

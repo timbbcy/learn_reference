@@ -1,0 +1,106 @@
+<div class="article-intro" id="content">
+<h1>Vue.js 条件与循环</h1>
+<h2>条件判断</h2>
+<h3>v-if</h3>
+<p>条件判断使用 v-if 指令：</p>
+<div class="example">
+<h2 class="example">v-if 指令</h2>
+<p>在元素 和 template 中使用 v-if 指令：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">v-if</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">seen</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">现在你看到我了</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">template</span><span class="hl-code"> </span><span class="hl-var">v-if</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ok</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">学的不仅是技术，更是梦想！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">哈哈哈，打字辛苦啊！！！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app',
+  data: {
+    seen: true,
+    ok: true
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-if" target="_blank">尝试一下 »</a>
+</div>
+<p>这里， v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素。</p>
+<p>在字符串模板中，如 Handlebars ，我们得像这样写一个条件块：</p>
+<pre>
+&lt;!-- Handlebars 模板 --&gt;
+{{#if ok}}
+  &lt;h1&gt;Yes&lt;/h1&gt;
+{{/if}}
+</pre>
+<h3>v-else</h3>
+<p>可以用 v-else 指令给 v-if 添加一个 "else" 块：</p>
+<div class="example">
+<h2 class="example">v-else 指令</h2>
+<p>随机生成一个数字，判断是否大于0.5，然后输出对应信息：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-if</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Math.random() &gt; 0.5</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      Sorry
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-else</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      Not sorry
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app'
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-if-else" target="_blank">尝试一下 »</a>
+</div>
+<h3>v-else-if</h3>
+<p>v-else-if 在 2.1.0 新增，顾名思义，用作 v-if 的 else-if 块。可以链式的多次使用：</p>
+<div class="example">
+<h2 class="example">v-else 指令</h2>
+<p>判断 type 变量的值：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-if</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">type === 'A'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      A
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-else-if</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">type === 'B'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      B
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-else-if</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">type === 'C'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      C
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-else</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+      Not A/B/C
+    </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+new Vue({
+  el: '#app',
+  data: {
+    type: 'C'
+  }
+})
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-else-if" target="_blank">尝试一下 »</a>
+</div>
+<blockquote>
+<p>v-else 、v-else-if 必须跟在 v-if 或者 v-else-if之后。</p></blockquote>
+<h3>v-show</h3>
+<p>我们也可以使用 v-show 指令来根据条件展示元素：</p>
+<div class="example">
+<h2 class="example">v-show 指令</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">v-show</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ok</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-v-show" target="_blank">尝试一下 »</a>
+</div>
+</div>

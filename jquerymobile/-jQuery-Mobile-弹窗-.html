@@ -1,0 +1,120 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile 弹窗</h1>
+<p>弹窗是一个非常流行的对话框，弹窗可以覆盖在页面上展示。</p>
+<p>弹窗可用于显示一段文本，图片，地图或其他内容。</p>
+<iframe frameborder="0" height="110px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_popup_app.htm" width="100%"></iframe>
+<p>创建一个弹窗，需要使用 &lt;a&gt; 和 &lt;div&gt; 元素。在 &lt;a&gt; 元素上添加 data-rel="popup" 
+属性， &lt;div&gt; 元素添加 data-role="popup" 属性。
+接着我们为 &lt;div&gt; 指定 id， 然后设置 &lt;a&gt; 的 href 值为 &lt;div&gt; 指定的 id。
+ &lt;div&gt; 中的内容为弹窗显示的内容。</p>
+<p><strong>注意:</strong>  &lt;div&gt; 弹窗与点击的 &lt;a&gt; 链接必须在同一个页面上。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;<span class="marked">a href="#myPopup" data-rel="popup"</span> class="ui-btn ui-btn-inline 
+	ui-corner-all"&gt;显示弹窗&lt;/a&gt;<br/><br/>&lt;<span class="marked">div data-role="popup" id="myPopup"</span>&gt;<br/>  &lt;p&gt;这是一个简单的弹窗&lt;/p&gt;<br/>&lt;/div&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_popup_basic" target="_blank">尝试一下 »</a>
+</div>
+<p>如果你需要为弹窗添加内边距与外边距可以在 &lt;div&gt; 中添加 "ui-content" 类:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;div 
+	data-role="popup" id="myPopup" <span class="marked">
+	class="ui-content"</span>&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_popup_content" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>关闭弹窗</h2>
+<p>默认情况下，点击弹窗之外的区域或按下 "Esc" 键即可关闭弹窗。
+如果你不想点击弹窗之外的区域关闭弹窗可以在添加上添加 data-dismissible="false" 属性（不推荐）。
+你也可以在弹窗上添加关闭按钮，按钮上使用 data-rel="back" 
+属性，并通过样式来控制按钮的位置。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:75%">描述</th>
+<th style="text-align:right;">实例</th>
+</tr>
+<tr>
+<td>右侧关闭按钮</td>
+<td style="text-align:right;"><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_popup_rightclose" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>左侧关闭按钮</td>
+<td style="text-align:right;"><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_popup_leftclose" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>使用 data-dismissible 属性</td>
+<td style="text-align:right;"><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_popup_undismissible" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>定位弹窗</h2><p>
+默认情况下，弹窗会直接显示在点击元素的上方，如果需要控制弹窗的位置，可以在用于打开弹窗的点击链接上使用 data-position-to 属性。 
+</p><p>控制弹窗位置的三种方式：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:35%">属性值</th>
+<th style="width:65%">描述</th>
+</tr>
+<tr>
+<td>data-position-to="window"</td>
+<td>弹窗在窗口居中显示</td>
+</tr>
+<tr>
+<td>data-position-to="#myId"</td>
+<td>弹窗显示在知道的 #id 元素上</td>
+</tr>
+<tr>
+<td>data-position-to="origin"</td>
+<td>默认。弹窗显示在点击的元素上。</td>
+</tr>
+</tbody></table>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;a href="#myPopup1" data-rel="popup" class="ui-btn" <span class="marked">data-position-to="window"</span>&gt;Window&lt;/a&gt;<br/>&lt;a href="#myPopup2" data-rel="popup" 
+	class="ui-btn" <span class="marked">data-position-to="#demo"&gt;</span>id="demo"&lt;/a&gt;<br/>&lt;a href="#myPopup3" 
+	data-rel="popup" class="ui-btn" <span class="marked">data-position-to="origin"</span>&gt;Origin&lt;/a&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_popup_position" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>过渡</h2>
+<p>默认情况下，弹窗是没有过渡效果的。如果你需要你可以通过 data-transition="value" 属性来添加过渡效果（<a href="/jquerymobile/jquerymobile-transitions.html">jQuery Mobile 过渡</a>）：</p>
+<div class="example">
+<h2 class="example">所有过渡效果实例</h2>
+<div class="example_code">
+&lt;a href="#myPopup" data-rel="popup" class="ui-btn" <span class="marked">data-transition="fade"</span>&gt;Fade&lt;/a&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_popup_transitions" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>弹窗方向小边框</h2>
+<p>如果需要添加弹窗方向小边框，可以使用 data-arrow 属性，并指定值 
+"l" (左边), "t" (顶部), "r" (右边) or "b" (底部):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;a href="#myPopup" data-rel="popup" class="ui-btn"&gt;打开弹窗&lt;/a&gt;<br/><br/>&lt;div data-role="popup" id="myPopup" class="ui-content" 
+	<span class="marked">data-arrow="l"</span>&gt;<br/>  &lt;p&gt;左边框的方向。&lt;/p&gt;<br/>&lt;/div&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_popup_arrow" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>弹窗对话框</h2><p>你可以将弹窗制作为一个标准的对话框 (头部, 内容和底部标记):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;a href="#myPopupDialog" data-rel="popup" class="ui-btn"&gt;打开对话框弹窗&lt;/a&gt;<br/><br/>&lt;div data-role="popup" id="myPopupDialog"&gt;<br/>  &lt;div 
+	data-role="header"&gt;&lt;h1&gt;头部文本..&lt;/h1&gt;&lt;/div&gt;<br/>  &lt;div 
+	data-role="main" class="ui-content"&gt;&lt;p&gt;一些文本..&lt;/p&gt;&lt;a href="#"&gt;一些链接..&lt;/a&gt;<br/>  &lt;div data-role="footer"&gt;&lt;h1&gt;底部文本..&lt;/h1&gt;&lt;/div&gt;<br/>
+	&lt;/div&gt;
+	</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_popup_dialog" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>图片弹窗</h2>
+你可以在弹窗中显示图片:</div>

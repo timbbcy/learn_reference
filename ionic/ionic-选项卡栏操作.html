@@ -1,0 +1,291 @@
+<div class="article-intro" id="content">
+<h1>ionic 选项卡栏操作</h1>
+<hr/>
+<h2>ion-tabs</h2>
+<p>ion-tabs 是有一组页面选项卡组成的选项卡栏。可以通过点击选项来切换页面。</p><p>对于 iOS，它会出现在屏幕的底部，Android会出现在屏幕的顶部(导航栏下面)。</p>
+<h3>用法</h3>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ion-tabs</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tabs-positive tabs-icon-only</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ion-tab</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">首页</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">icon-on</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ion-ios-filing</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">icon-off</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ion-ios-filing-outline</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 标签 1 内容 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ion-tab</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ion-tab</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">关于</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">icon-on</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ion-ios-clock</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">icon-off</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ion-ios-clock-outline</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 标签 2 内容 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ion-tab</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ion-tab</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">设置</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">icon-on</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ion-ios-gear</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">icon-off</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ion-ios-gear-outline</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 标签 3 内容 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ion-tab</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ion-tabs</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=ionic_ion-tabs" target="_blank">尝试一下 »</a>
+</div>
+<p>效果如下所示：</p>
+<iframe frameborder="0" height="600" src="/try/demo_source/ionic_ion-tabs.htm"></iframe>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        delegate-handle
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>该句柄用<a href="/docs/api/service/$ionicTabsDelegate/"><code>$ionicTabsDelegate</code></a>来标识这些选项卡。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>ion-tab</h2>
+<p>隶属于ionTabs
+</p><p>
+包含一个选项卡内容。该内容仅存在于被选中的给定选项卡中。
+</p><p>
+每个ionTab都有自己的浏览历史。</p>
+<h3>用法</h3>
+<pre>
+&lt;ion-tab
+  title="Tab!"
+  icon="my-icon"
+  href="#/tab/tab-link"
+  on-select="onTabSelected()"
+  on-deselect="onTabDeselected()"&gt;
+&lt;/ion-tab&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        title
+      </td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>选项卡的标题。</p>
+</td>
+</tr>
+<tr>
+<td>
+        href
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>但触碰的时候，该选项卡将会跳转的的链接。</p>
+</td>
+</tr>
+<tr>
+<td>
+        icon
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>选项卡的图标。如果给定值，它将成为ion-on和ion-off的默认值。</p>
+</td>
+</tr>
+<tr>
+<td>
+        icon-on
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>被选中标签的图标。</p>
+</td>
+</tr>
+<tr>
+<td>
+        icon-off
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>没被选中标签的图标。</p>
+</td>
+</tr>
+<tr>
+<td>
+        badge
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>选项卡上的徽章（通常是一个数字）。</p>
+</td>
+</tr>
+<tr>
+<td>
+        badge-style
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>选项卡上微章的样式（例，tabs-positive ）。</p>
+</td>
+</tr>
+<tr>
+<td>
+        on-select
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>选项卡被选中时触发。</p>
+</td>
+</tr>
+<tr>
+<td>
+        on-deselect
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>选项卡取消选中时触发。</p>
+</td>
+</tr>
+<tr>
+<td>
+        ng-click
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>通常，点击时选项卡会被选中。如果设置了 ng-Click，它将不会被选中。 你可以用$ionicTabsDelegate.select()来指定切换标签。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>$ionicTabsDelegate</h2>
+<p>授权控制ionTabs指令。
+</p><p>
+该方法直接调用$ionicTabsDelegate服务，控制所有ionTabs指令。用$getByHandle方法控制具体的ionTabs实例。</p>
+<h3>用法</h3>
+<pre>
+&lt;body ng-controller="MyCtrl"&gt;
+  &lt;ion-tabs&gt;
+
+    &lt;ion-tab title="Tab 1"&gt;
+      你好，标签1！
+      &lt;button ng-click="selectTabWithIndex(1)"&gt;选择标签2&lt;/button&gt;
+    &lt;/ion-tab&gt;
+    &lt;ion-tab title="Tab 2"&gt;你好标签2！&lt;/ion-tab&gt;
+
+  &lt;/ion-tabs&gt;
+&lt;/body&gt;
+</pre>
+<pre>
+function MyCtrl($scope, $ionicTabsDelegate) {
+  $scope.selectTabWithIndex = function(index) {
+    $ionicTabsDelegate.select(index);
+  }
+}
+</pre>
+<h3>方法</h3>
+<pre>
+select(index, [shouldChangeHistory])
+</pre>
+<p>选择标签来匹配给定的索引。</p>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        index
+      </td>
+<td>
+<code>数值</code>
+</td>
+<td>
+<p>选择标签的索引。</p>
+</td>
+</tr>
+<tr>
+<td>
+        shouldChangeHistory
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>此选项是否应该加载这个标签的浏览历史（如果存在），并使用，或仅加载默认页面。默认为false。提示：如果一个<code>ion-nav-view</code>在选项卡里，你可能需要设置它为true。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<pre>selectedIndex()</pre>
+<p><b>返回值: </b>数值, 被选中标签的索引，如 -1。</p>
+<pre>
+$getByHandle(handle)
+</pre>
+<table class="reference" style="margin:0;">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        handle
+      </td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table><p>例如:</p> <pre>$ionicTabsDelegate.$getByHandle('my-handle').select(0);</pre>
+</div>

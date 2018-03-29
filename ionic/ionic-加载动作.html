@@ -1,0 +1,192 @@
+<div class="article-intro" id="content">
+<h1>ionic 加载动作</h1>
+<p>$ionicLoading 是 ionic 默认的一个加载交互效果。里面的内容也是可以在模板里面修改。</p>
+<h3>用法</h3>
+<pre>
+angular.module('LoadingApp', ['ionic'])
+.controller('LoadingCtrl', function($scope, $ionicLoading) {
+  $scope.show = function() {
+    $ionicLoading.show({
+      template: 'Loading...'
+    });
+  };
+  $scope.hide = function(){
+    $ionicLoading.hide();
+  };
+});
+</pre>
+<h3>方法</h3>
+<p>
+显示一个加载效果。</p>
+<pre>
+show(opts)
+</pre>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        opts
+
+      </td>
+<td>
+<code>object</code>
+</td>
+<td>
+<p>loading指示器的选项。可用属性：</p>
+<ul>
+<li><code>{string=}</code> <code>template</code> 指示器的html内容。</li>
+<li><code>{string=}</code> <code>templateUrl</code> 一个加载html模板的url作为指示器的内容。</li>
+<li><code>{boolean=}</code> <code>noBackdrop</code> 是否隐藏背景。默认情况下它会显示。</li>
+<li><code>{number=}</code> <code>delay</code> 指示器延迟多少毫秒显示。默认为不延迟。</li>
+<li><code>{number=}</code> <code>duration</code> 等待多少毫秒后自动隐藏指示器。默认情况下，指示器会一直显示，直到触发<code>.hide()</code>。</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+隐藏一个加载效果。</p>
+<pre>
+hide()
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        delegate-handle
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>该句柄定义带有<code>$ionicListDelegate</code>的列表。</p>
+</td>
+</tr>
+<tr>
+<td>
+        show-delete
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>列表项的删除按钮当前是显示还是隐藏。</p>
+</td>
+</tr>
+<tr>
+<td>
+        show-reorder
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>列表项的排序按钮当前是显示还是隐藏。</p>
+</td>
+</tr>
+<tr>
+<td>
+        can-swipe
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>列表项是否被允许滑动显示选项按钮。默认：true。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>实例</h2>
+<h3>HTML 代码：</h3>
+<pre>
+&lt;html ng-app="ionicApp"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"&gt; 
+    
+    &lt;title&gt;Ionic Modal&lt;/title&gt;
+
+     &lt;link href="http://www.runoob.com/static/ionic/css/ionic.min.css" rel="stylesheet"&gt;
+    &lt;script src="http://www.runoob.com/static/ionic/js/ionic.bundle.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body ng-controller="AppCtrl"&gt;
+    
+      &lt;ion-view title="Home"&gt;
+        &lt;ion-header-bar&gt;
+          &lt;h1 class="title"&gt;The Stooges&lt;/h1&gt;
+        &lt;/ion-header-bar&gt;
+        &lt;ion-content has-header="true"&gt;
+          &lt;ion-list&gt;
+            &lt;ion-item ng-repeat="stooge in stooges" href="#"&gt;{{stooge.name}}&lt;/ion-item&gt;
+          &lt;/ion-list&gt;
+        &lt;/ion-content&gt;
+      &lt;/ion-view&gt;
+    
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('ionicApp', ['ionic'])
+.controller('AppCtrl', function($scope, $timeout, $ionicLoading) {
+
+  // Setup the loader
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  
+  // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+  $timeout(function () {
+    $ionicLoading.hide();
+    $scope.stooges = [{name: 'Moe'}, {name: 'Larry'}, {name: 'Curly'}];
+  }, 2000);
+  
+});
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ionicloading" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<hr/>
+<h2>$ionicLoadingConfig</h2>
+<p>设置加载的默认选项:</p>
+<h3>用法:</h3>
+<pre>
+var app = angular.module('myApp', ['ionic'])
+app.constant('$ionicLoadingConfig', {
+  template: '默认加载模板……'
+});
+app.controller('AppCtrl', function($scope, $ionicLoading) {
+  $scope.showLoading = function() {
+    $ionicLoading.show(); //配置选项在 $ionicLoadingConfig 设置
+  };
+});
+</pre>
+</div>

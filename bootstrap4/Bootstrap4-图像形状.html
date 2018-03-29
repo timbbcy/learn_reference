@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 图像形状
+</h1><h2>
+圆角图片
+</h2>
+<p><span class="marked">.rounded</span> 类可以让图片显示圆角效果：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cinqueterre.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">rounded</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Cinque Terre</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_img_rounded" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>
+椭圆图片
+</h2>
+<p><span class="marked">.rounded-circle</span> 类可以设置椭圆形图片:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cinqueterre.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">rounded-circle</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Cinque Terre</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_img_circle" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>
+缩略图
+</h2>
+<p> <span class="marked">.img-thumbnail</span> 类用于设置图片缩略图(图片有边框):</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cinqueterre.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img-thumbnail</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Cinque Terre</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_img_thumbnail" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>
+图片对齐方式</h2>
+<p>使用 <span class="marked">.float-right</span> 类来设置图片右对齐，使用 <span class="marked">.float-left</span> 类设置图片左对齐:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">paris.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">float-left</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cinqueterre.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">float-right</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try2.php?filename=trybs4_img_align" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>
+响应式图片</h2>
+<p>图像有各种各样的尺寸，我们需要根据屏幕的大小自动适应。 </p>
+<p>我们可以通过在 <span class="marked">&lt;img&gt;</span>  标签中添加 <span class="marked">.img-fluid</span> 类来设置响应式图片。</p>
+<p><span class="marked">.img-fluid</span> 类设置了 <span class="marked">max-width: 100%;</span> 、
+<span class="marked">height: auto;</span> :</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img-fluid</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">img_chania.jpg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Chania</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_img_responsive" target="_blank">尝试一下 »</a></div>
+</div>

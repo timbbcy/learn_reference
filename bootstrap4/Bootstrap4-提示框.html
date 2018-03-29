@@ -1,0 +1,36 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 提示框</h1>
+<p>提示框是一个小小的弹窗，在鼠标移动到元素上显示，鼠标移到元素外就消失。</p>
+<hr/>
+<h2>如何创建提示框</h2>
+<p>通过向元素添加 <span class="marked">data-toggle="tooltip"</span> 
+来来创建提示框。 </p>
+<p><span class="marked">title</span> 属性的内容为提示框显示的内容：</p>
+<div class="example">
+<div class="example_code"><div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltip</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">我是提示内容!</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">鼠标移动到我这</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p><strong>注意:</strong> 提示框要写在 jQuery 的初始化代码里: 然后在指定的元素上调用 <span class="marked">tooltip()</span> 方法。</p>
+<p>以下实例可以在文档的任何地方使用提示框：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">[data-toggle="tooltip"]</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">tooltip</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_tooltip" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>指定提示框的位置</h2>
+<p>默认情况下提示框显示在元素上方。</p>
+<p>可以使用 <span class="marked">data-placement</span> 属性来设定提示框显示的方向: top, bottom, left 或 right:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltip</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-placement</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">top</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">我是提示内容!</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">鼠标移动到我这</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltip</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-placement</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">bottom</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">我是提示内容!</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">鼠标移动到我这</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltip</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-placement</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">left</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">我是提示内容!</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">鼠标移动到我这</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltip</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-placement</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">right</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">title</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">我是提示内容!</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">鼠标移动到我这</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_tooltip_pos" target="_blank">尝试一下 »</a></div>
+</div>

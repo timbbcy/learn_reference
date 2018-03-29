@@ -1,0 +1,74 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">&lt;anyAttribute&gt;</span> 元素</h1>
+<hr/>
+<p class="intro">&lt;anyAttribute&gt; 元素使我们有能力通过未被 schema 规定的属性来扩展 XML 文档！</p>
+<hr/>
+<p>&lt;anyAttribute&gt; 元素使我们有能力通过未被 schema 规定的属性来扩展 XML 文档！</p>
+<p>下面的例子是来自名为 "family.xsd" 的 XML schema 的一个片段。它为我们展示了针对 "person" 元素的一个声明。通过使用 &lt;anyAttribute&gt; 元素，我们就可以向 "person" 元素添加任意数量的属性：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="person"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:sequence&gt;<br/>
+           
+      &lt;xs:element name="firstname" type="xs:string"/&gt;<br/>
+           
+      &lt;xs:element name="lastname" type="xs:string"/&gt;<br/>
+       
+    &lt;/xs:sequence&gt;<br/>
+       
+    &lt;xs:anyAttribute/&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p>现在，我们希望通过 "gender" 属性来扩展 "person" 元素。在这种情况下我们就可以这样做，即使这个 schema 的作者从未声明过任何 "gender" 属性。</p>
+<p>请看这个 schema 文件，名为 "attribute.xsd"：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"<br/>
+targetNamespace="http://www.w3schools.com"<br/>
+xmlns="http://www.w3schools.com"<br/>
+elementFormDefault="qualified"&gt;<br/><br/>
+&lt;xs:attribute name="gender"&gt;<br/>
+   
+  &lt;xs:simpleType&gt;<br/>
+       
+    &lt;xs:restriction base="xs:string"&gt;<br/>
+           
+      &lt;xs:pattern value="male|female"/&gt;<br/>
+       
+    &lt;/xs:restriction&gt;<br/>
+   
+  &lt;/xs:simpleType&gt;<br/>
+&lt;/xs:attribute&gt;<br/><br/>
+&lt;/xs:schema&gt;
+</div></div>
+<p>下面这个 XML（名为 "Myfamily.xml"），使用了来自不同 schema 的成分，"family.xsd" 和 "attribute.xsd"：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+&lt;persons xmlns="http://www.microsoft.com"<br/>
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br/>
+xsi:SchemaLocation="http://www.microsoft.com family.xsd<br/>
+http://www.w3schools.com attribute.xsd"&gt;<br/><br/>
+&lt;person gender="female"&gt;<br/>
+ 
+&lt;firstname&gt;Hege&lt;/firstname&gt;<br/>
+ 
+&lt;lastname&gt;Refsnes&lt;/lastname&gt;<br/>
+&lt;/person&gt;<br/><br/>
+&lt;person gender="male"&gt;<br/>
+ 
+&lt;firstname&gt;Stale&lt;/firstname&gt;<br/>
+ 
+&lt;lastname&gt;Refsnes&lt;/lastname&gt;<br/>
+&lt;/person&gt;<br/><br/>
+&lt;/persons&gt;
+</div></div>
+<p>上面这个 XML 文件是有效的，这是因为 schema "family.xsd" 允许我们向 "person" 元素添加属性。</p>
+<p>&lt;any&gt; 和 &lt;anyAttribute&gt; 均可用于制作可扩展的文档！它们使文档有能力包含未在主 XML schema 中声明过的附加元素。</p>
+</div>

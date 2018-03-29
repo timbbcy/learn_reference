@@ -1,0 +1,131 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">按钮</span>
+</h1>
+<hr/>
+<p class="intro">Mobile 应用程序是建立在您想要显示的简单的点击事物上。</p>
+<hr/>
+<br/>
+<iframe frameborder="0" height="287px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_button_app.htm" width="100%"></iframe>
+<br/><hr/>
+<h2>在 jQuery Mobile 中创建按钮</h2>
+<p>在 jQuery Mobile 中，按钮可通过三种方式创建：</p>
+<ul>
+<li>使用 &lt;button&gt; 元素</li>
+<li>使用 &lt;input&gt; 元素</li>
+<li>使用带有 data-role="button" 的 &lt;a&gt; 元素</li>
+</ul>
+<div class="example">
+<h2 class="example">&lt;button&gt;</h2>
+<div class="example_code notranslate">
+	&lt;button&gt;按钮&lt;/button&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button_button" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<h2 class="example">&lt;input&gt;</h2>
+<div class="example_code notranslate">
+	&lt;input type="button" value="按钮"&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button_input" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<h2 class="example">&lt;a&gt;</h2>
+<div class="example_code notranslate">
+	&lt;a href="#" <span class="marked">data-role="button"</span>&gt;按钮&lt;/a&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button_a" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table2"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>在 jQuery Mobile 中，按钮会自动样式化，让它们在移动设备上更具吸引力和可用性。<strong>我们推荐您使用带有 data-role="button" 的 &lt;a&gt; 元素在页面间进行链接，使用 &lt;input&gt; 或 &lt;button&gt; 元素进行表单提交。</strong>
+</td>
+</tr></table>
+<br/><hr/>
+<h2>导航按钮</h2>
+<p>如需通过按钮在页面间进行链接，请使用带有 data-role="button" 属性的 &lt;a&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;<span class="marked">a href="#pagetwo" data-role="button"</span>&gt;访问第二个页面&lt;/a&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>内联按钮</h2>
+<p>默认情况下，按钮占满整个屏幕宽度。如果你想要一个仅是与内容一样宽的按钮，或者如果您想要并排显示两个或多个按钮，请添加 data-inline="true"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;a href="#pagetwo" data-role="button" <span class="marked">data-inline="true"</span>&gt;访问第二个页面&lt;/a&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button_inline" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>组合按钮</h2>
+<p>jQuery Mobile 提供了一个简单的方法来将按钮组合在一起。</p>
+<p>请把 data-role="controlgroup" 属性和 data-type="horizontal|vertical" 一起使用来规定是否水平或垂直组合按钮：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;div <span class="marked">data-role="controlgroup" data-type="horizontal"</span>&gt;<br/>  
+	&lt;a href="#anylink" data-role="button"&gt;按钮 1&lt;/a&gt;<br/>  &lt;a href="#anylink" 
+	data-role="button"&gt;按钮 2&lt;/a&gt;<br/>  &lt;a href="#anylink" 
+	data-role="button"&gt;按钮 3&lt;/a&gt;<br/>&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button_group" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table2"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>默认情况下，组合按钮是垂直组合，它们之间没有外边距和空间。并且只有第一个和最后一个按钮是圆角，以便它们组合在一起的时候创建一个漂亮的外观。</td>
+</tr></table>
+<br/><hr/>
+<h2>后退按钮</h2>
+<p>如需创建后退按钮，请使用 data-rel="back" 属性（这会忽略锚的 href 值）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;a href="#" data-role="button" <span class="marked">data-rel="back"</span>&gt;返回&lt;/a&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_button_back" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>更多链接按钮实例</h2>
+<table class="reference">
+<tr>
+<th style="width:25%">类</th>
+<th style="width:65%">描述</th>
+<th style="width:10%">实例</th>
+</tr>
+<tr>
+<td>ui-btn-b</td>
+<td>修改按钮颜色为黑色，字体为白色(默认为灰色背景，黑色字体)。</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_button_black" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>ui-corner-all</td>
+<td>为按钮添加圆角</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_button_corners" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>ui-mini</td>
+<td>制作小按钮</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_button_mini" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>ui-shadow</td>
+<td>为按钮添加阴影</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_button_shadow" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+</table>
+<br/>
+<table class="lamp" id="table2"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>如果你需要使用更多的样式，每个样式类使用空格隔开，如： class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow"<br/>
+<br/>默认情况下 &lt;input&gt; 按钮有圆角及阴影效果。 &lt;a&gt; 和 
+&lt;button&gt; 元素没有。</td>
+</tr></table>
+<p>
+更完整的CSS类，请查看我们的
+<a href="jquerymobile-ref-css.html">jQuery Mobile CSS 类参考手册</a>。</p>
+<p>下一章演示如何在按钮上加上图标。</p>
+</div>

@@ -1,0 +1,96 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">显示（Show）</span></h1>
+<div class="tutintro">
+<p>使用自定义效果来显示匹配的元素。</p>
+<p>如需了解更多有关 <code>.show()</code> 方法的细节，请查看 API 文档 <a href="/jqueryui/api-show.html">.show()</a>。</p>
+</div>
+<h2>.show() 演示</h2>
+<p>点击按钮预览特效。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 特效 - .show() 演示&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  .toggler { width: 500px; height: 200px; }
+  #button { padding: .5em 1em; text-decoration: none; }
+  #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
+  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    // 运行当前选中的特效
+    function runEffect() {
+      // 从中获取特效类型
+      var selectedEffect = $( "#effectTypes" ).val();
+ 
+      // 大多数的特效类型默认不需要传递选项
+      var options = {};
+      // 一些特效带有必需的参数
+      if ( selectedEffect === "scale" ) {
+        options = { percent: 100 };
+      } else if ( selectedEffect === "size" ) {
+        options = { to: { width: 280, height: 185 } };
+      }
+ 
+      // 运行特效
+      $( "#effect" ).show( selectedEffect, options, 500, callback );
+    };
+ 
+    // 回调函数
+    function callback() {
+      setTimeout(function() {
+        $( "#effect:visible" ).removeAttr( "style" ).fadeOut();
+      }, 1000 );
+    };
+ 
+    // 根据选择菜单值设置特效
+    $( "#button" ).click(function() {
+      runEffect();
+      return false;
+    });
+ 
+    $( "#effect" ).hide();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="toggler"&gt;
+  &lt;div id="effect" class="ui-widget-content ui-corner-all"&gt;
+    &lt;h3 class="ui-widget-header ui-corner-all"&gt;显示（Show）&lt;/h3&gt;
+    &lt;p&gt;
+      Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+ &lt;select name="effects" id="effectTypes"&gt;
+  &lt;option value="blind"&gt;百叶窗特效（Blind Effect）&lt;/option&gt;
+  &lt;option value="bounce"&gt;反弹特效（Bounce Effect）&lt;/option&gt;
+  &lt;option value="clip"&gt;剪辑特效（Clip Effect）&lt;/option&gt;
+  &lt;option value="drop"&gt;降落特效（Drop Effect）&lt;/option&gt;
+  &lt;option value="explode"&gt;爆炸特效（Explode Effect）&lt;/option&gt;
+  &lt;option value="fold"&gt;折叠特效（Fold Effect）&lt;/option&gt;
+  &lt;option value="highlight"&gt;突出特效（Highlight Effect）&lt;/option&gt;
+  &lt;option value="puff"&gt;膨胀特效（Puff Effect）&lt;/option&gt;
+  &lt;option value="pulsate"&gt;跳动特效（Pulsate Effect）&lt;/option&gt;
+  &lt;option value="scale"&gt;缩放特效（Scale Effect）&lt;/option&gt;
+  &lt;option value="shake"&gt;震动特效（Shake Effect）&lt;/option&gt;
+  &lt;option value="size"&gt;尺寸特效（Size Effect）&lt;/option&gt;
+  &lt;option value="slide"&gt;滑动特效（Slide Effect）&lt;/option&gt;
+&lt;/select&gt;
+ 
+&lt;a href="#" id="button" class="ui-state-default ui-corner-all"&gt;运行特效&lt;/a&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-show" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

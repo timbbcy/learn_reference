@@ -1,0 +1,42 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 树形菜单 - <span class="color_h1">创建复杂树形网格</span></h1>
+<p>树形网格（TreeGrid）可以展示有限空间上带有多列和复杂数据电子表格。本教程将演示如何将表格数据排列在分割的网格和多行表头中，以便组织共同的数据。</p>
+<img src="/wp-content/uploads/2013/12/treegrid2.png"/>
+<h4>创建树形网格（TreeGrid）</h4>
+<pre style="color:#006600">
+    &lt;table title="Complex TreeGrid" class="easyui-treegrid" style="width:550px;height:250px"
+            url="data/treegrid2_data.json"
+            rownumbers="true" showFooter="true"
+            idField="id" treeField="region"&gt;
+        &lt;thead frozen="true"&gt;
+            &lt;tr&gt;
+                &lt;th field="region" width="150"&gt;Region&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th colspan="4"&gt;2009&lt;/th&gt;
+                &lt;th colspan="4"&gt;2010&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th field="f1" width="50" align="right"&gt;1st qrt.&lt;/th&gt;
+                &lt;th field="f2" width="50" align="right"&gt;2st qrt.&lt;/th&gt;
+                &lt;th field="f3" width="50" align="right"&gt;3st qrt.&lt;/th&gt;
+                &lt;th field="f4" width="50" align="right"&gt;4st qrt.&lt;/th&gt;
+                &lt;th field="f5" width="50" align="right"&gt;1st qrt.&lt;/th&gt;
+                &lt;th field="f6" width="50" align="right"&gt;2st qrt.&lt;/th&gt;
+                &lt;th field="f7" width="50" align="right"&gt;3st qrt.&lt;/th&gt;
+                &lt;th field="f8" width="50" align="right"&gt;4st qrt.&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>正如您所看到的，树形网格（Treegrid）的使用和数据网格（Datagrid）一样。请使用 'frozen' 属性来定义冻结列，列的 'colspan' 和 'rowspan' 属性来定义多行表头。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-tree-treegrid2.zip">jeasyui-tree-treegrid2.zip</a></p>
+</div>

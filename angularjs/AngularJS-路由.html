@@ -1,0 +1,82 @@
+<div class="article-intro" id="content">
+<h1>AngularJS 路由</h1>
+<p>本章节我们将为大家介绍 AngularJS 路由。</p>
+<p>AngularJS 路由允许我们通过不同的 URL 访问不同的内容。</p>
+<p>通过 AngularJS 可以实现多视图的单页Web应用（single page web application，SPA）。</p>
+<p>通常我们的URL形式为 <b>http://runoob.com/first/page</b>，但在单页Web应用中 AngularJS 通过 <b># + 标记</b> 实现，例如：</p>
+<pre>
+http://runoob.com/#/first
+http://runoob.com/#/second
+http://runoob.com/#/third
+</pre>
+<p>
+当我们点击以上的任意一个链接时，向服务端请的地址都是一样的 (http://runoob.com/)。 因为 # 号之后的内容在向服务端请求时会被浏览器忽略掉。 所以我们就需要在客户端实现 # 号后面内容的功能实现。 AngularJS 路由 就通过 <b># + 标记</b>  帮助我们区分不同的逻辑页面并将不同的页面绑定到对应的控制器上。</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/04/angular-routing11.png"/></p>
+<p>
+在以上图形中，我们可以看到创建了两个 URL： /ShowOrders 和 /AddNewOrder。每个 URL 都有对应的视图和控制器。</p>
+<p>接下来我们来看一个简单的实例：</p>
+<pre>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;AngularJS 路由实例 - 菜鸟教程&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body ng-app='routingDemoApp'&gt;
+     
+        &lt;h2&gt;AngularJS 路由应用&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#/"&gt;首页&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#/computers"&gt;电脑&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#/printers"&gt;打印机&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#/blabla"&gt;其他&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+         
+        &lt;div ng-view&gt;&lt;/div&gt;
+        &lt;script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"&gt;&lt;/script&gt;
+        &lt;script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            angular.module('routingDemoApp',['ngRoute'])
+            .config(['$routeProvider', function($routeProvider){
+                $routeProvider
+                .when('/',{template:'这是首页页面'})
+                .when('/computers',{template:'这是电脑分类页面'})
+                .when('/printers',{template:'这是打印机页面'})
+                .otherwise({redirectTo:'/'});
+            }]);
+        &lt;/script&gt;
+     
+     
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p> <a class="tryitbtn" href="/try/try.php?filename=try_ng_routing1&amp;basepath=0" target="_blank">尝试一下 »</a> </p>
+<p>实例解析：</p>
+<ul>
+<li><p>1、载入了实现路由的 js 文件：angular-route.js。</p></li>
+<li><p>2、包含了 ngRoute 模块作为主应用模块的依赖模块。</p>
+<pre>
+angular.module('routingDemoApp',['ngRoute'])
+</pre>
+</li>
+<li><p>3、使用 ngView 指令。</p>
+<pre>&lt;div ng-view&gt;&lt;/div&gt;</pre>
+<p>该 div 内的 HTML 内容会根据路由的变化而变化。</p>
+</li>
+<li><p>4、配置 $routeProvider，AngularJS $routeProvider 用来定义路由规则。</p>
+<pre>
+module.config(['$routeProvider', function($routeProvider){
+    $routeProvider
+        .when('/',{template:'这是首页页面'})
+        .when('/computers',{template:'这是电脑分类页面'})
+        .when('/printers',{template:'这是打印机页面'})
+        .otherwise({redirectTo:'/'});
+}]);
+</pre>
+</li></ul>
+<p>AngularJS 模块的 config 函数用于配置路由规则。通过使用 configAPI，我们请求把$routeProvider注入到我们的配置函数并且使用$routeProvider.whenAPI来定义我们的路由规则。</p>
+<p>$routeProvider 为我们提供了 when(path,object) &amp; otherwise(object) 函数按顺序定义所有路由，函数包含两个参数:</p>
+<ul>
+<li>第一个参数是 URL 或者 URL 正则规则。</li>
+<li>第二个参数是路由配置对象。</li>
+</ul>
+</div>

@@ -1,0 +1,42 @@
+<div class="article-intro" id="content">
+<h1>Foundation 滑动导航(Off-Canvas)</h1>
+<hr/>
+<h2>侧边栏导航</h2>
+<p>Off-Canvas 滑动导航现在逐渐在移动页面变得越来越流行了
+(点击菜单按钮菜单从左侧滑出):</p>
+<iframe src="/try/demo_source/tryfoundation_off-canvas.htm" style="border:0;width:100%;height:190px;overflow-y:hidden;"></iframe>
+<hr/>
+<h2>创建滑动导航</h2>
+<p>创建滑动导航实例如下：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- 最外层div：页面布局 --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"off-canvas-wrap"</span>
+<span class="highATT">data-offcanvas</span><span class="highGT">&gt;</span><br/>  <span class="highCOM">&lt;!-- 内部元素: "工具栏" 内容 (图标, 链接, 
+	描述内容等)--&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"inner-wrap"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">nav</span> <span class="highATT">class=</span><span class="highVAL">"tab-bar"</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">section</span>
+<span class="highATT">class=</span><span class="highVAL">"left-small"</span><span class="highGT">&gt;</span><br/>        <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">class=</span><span class="highVAL">"left-off-canvas-toggle menu-icon"</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">span</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">/section</span><span class="highGT">&gt;</span><br/><br/>      <span class="highLT">&lt;</span><span class="highELE">section</span> <span class="highATT">class=</span><span class="highVAL">"middle 
+	tab-bar-section"</span><span class="highGT">&gt;</span><br/>        <span class="highLT">&lt;</span><span class="highELE">h1</span>
+<span class="highATT">class=</span><span class="highVAL">"title"</span><span class="highGT">&gt;</span>Off-canvas Example<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">/section</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/nav</span><span class="highGT">&gt;</span><br/><br/>    <span class="highCOM">&lt;!-- 滑动菜单 --&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">aside</span>
+<span class="highATT">class=</span><span class="highVAL">"left-off-canvas-menu"</span><span class="highGT">&gt;</span><br/>      <span class="highCOM">&lt;!-- Add 
+	links or other stuff here --&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">ul</span>
+<span class="highATT">class=</span><span class="highVAL">"off-canvas-list test"</span><span class="highGT">&gt;</span><br/>        
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">label</span><span class="highGT">&gt;</span>Heading<span class="highLT">&lt;</span><span class="highELE">/label</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>        
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>        
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>        
+	...<br/>      <span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/aside</span><span class="highGT">&gt;</span><br/>
+<br/>    <span class="highCOM">&lt;!-- 主要内容 --&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">section</span>
+<span class="highATT">class=</span><span class="highVAL">"main-section"</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Lorem Ipsum<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>....<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/section</span><span class="highGT">&gt;</span><br/><br/>    <span class="highCOM">&lt;!-- 
+	关闭菜单 --&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">class=</span><span class="highVAL">"exit-off-canvas"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span> <span class="highCOM">&lt;!-- 结束内部内容 --&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span> <span class="highCOM">&lt;!-- 结束滑动菜单 --&gt;</span><br/><br/><span class="highCOM">&lt;!-- 初始化 Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_off-canvas" target="_blank">尝试一下 »</a>
+</div>
+</div>

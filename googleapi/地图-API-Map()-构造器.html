@@ -1,0 +1,284 @@
+<div class="article-intro" id="content">
+<h1>地图 API <span class="color_h1">Map()</span> 构造器</h1>
+<br/><div class="example">
+<h2 class="example">实例</h2>
+<p class="example">创建一个  Google 地图:</p>
+<div class="example_code notranslate">
+var map=new google.maps.Map(document.getElementById("googleMap"),mapOpt);</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_ref_map" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>定义和用法</h2>
+<p>Map() 构造器创建了一个新的地图并插入到指定的HTML元素中（&lt;div&gt; 
+	元素)。</p>
+<hr/>
+<h2>语法</h2>
+<div class="code notranslate"><div>
+new google.maps.Map(<i>HTMLElement</i>,<i>MapOptions</i>)</div></div>
+<h2>参数值</h2>
+<table class="reference notranslate">
+<tbody>
+<tr>
+<th align="left" width="20%">参数</th>
+<th align="left" width="80%">描述</th>
+</tr>
+<tr>
+<td><i>HTMLElement</i></td>
+<td>规定要把地图放置在那个 HTML 元素中。</td>
+</tr>
+<tr>
+<td><i><a href="ref-mapoptions.html">MapOptions</a></i></td>
+<td>带有地图初始化变量/选项的 MapOptions 对象。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2> Map() 的方法</h2>
+<table class="reference notranslate" id="table3">
+<tbody>
+<tr>
+<th align="left" width="30%">方法</th>
+<th align="left" width="25%">返回值</th>
+<th align="left" width="55%">描述</th>
+</tr>
+<tr>
+<td>fitBounds(<i>LatLngBounds</i>)</td>
+<td>None</td>
+<td>设置要包含给定边界的视口。</td>
+</tr>
+<tr>
+<td><a href="ref-getbounds.html">getBounds()</a></td>
+<td><i>LatLng,LatLng </i></td>
+<td>返回当前视口的西南纬度/经度和东北纬度/经度。</td>
+</tr>
+<tr>
+<td><a href="ref-getcenter.html">getCenter()</a></td>
+<td><i>LatLng</i></td>
+<td>返回地图的中心的纬度/经度。</td>
+</tr>
+<tr>
+<td><a href="ref-getdiv.html">getDiv()</a></td>
+<td><i>Node</i></td>
+<td>返回包含地图的 DOM 对象。</td>
+</tr>
+<tr>
+<td><a href="ref-getheading.html">getHeading()</a></td>
+<td><i>number</i></td>
+<td>返回航拍图像的罗盘航向（支持 SATELLITE 和 HYBRID 地图类型）。</td>
+</tr>
+<tr>
+<td><a href="ref-getmaptypeid.html">getMapTypeId()</a></td>
+<td>HYBRID
+
+ROADMAP
+
+SATELLITE
+
+TERRAIN</td>
+<td>返回当前地图类型。</td>
+</tr>
+<tr>
+<td>getProjection()</td>
+<td><i>Projection</i></td>
+<td>返回当前 Projection（投影）。</td>
+</tr>
+<tr>
+<td>getStreetView()</td>
+<td><i>StreetViewPanorama</i></td>
+<td>返回绑定到地图的默认的 StreetViewPanorama。</td>
+</tr>
+<tr>
+<td>getTilt()</td>
+<td><i>number</i></td>
+<td>返回航拍图像的入射角度数（支持 SATELLITE 和 HYBRID 地图类型）。</td>
+</tr>
+<tr>
+<td><a href="ref-getzoom.html">getZoom()</a></td>
+<td><i>number</i></td>
+<td>返回地图的当前缩放级别。</td>
+</tr>
+<tr>
+<td>panBy(<i>xnumber,ynumber</i>)</td>
+<td>None</td>
+<td>通过以像素计的给定距离改变地图的中心。</td>
+</tr>
+<tr>
+<td>panTo(<i>LatLng</i>)</td>
+<td>None</td>
+<td>改变地图的中心为给定的 LatLng。</td>
+</tr>
+<tr>
+<td>panToBounds(<i>LatLngBounds</i>)</td>
+<td>None</td>
+<td>将地图平移所需的最小距离以包含给定的 LatLngBounds。</td>
+</tr>
+<tr>
+<td>setCenter(<i>LatLng</i>)</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>setHeading(<i>number</i>)</td>
+<td>None</td>
+<td>设置航拍图像的罗盘方向（以度为单位进行测量），基本方向为北方。</td>
+</tr>
+<tr>
+<td><a href="ref-setmaptypeid.html">setMapTypeId(<i>MapTypeId</i>)</a></td>
+<td>None</td>
+<td>改变要显示的地图类型。</td>
+</tr>
+<tr>
+<td>setOptions(<i>MapOptions</i>)</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>setStreetView(<i>StreetViewPanorama</i>)</td>
+<td>None</td>
+<td>绑定一个 StreetViewPanorama 到地图上。</td>
+</tr>
+<tr>
+<td>setTilt(<i>number</i>)</td>
+<td>None</td>
+<td>设置航拍图像的入射角度数（支持 SATELLITE 和 HYBRID 地图类型）。</td>
+</tr>
+<tr>
+<td>setZoom(<i>number</i>)</td>
+<td>None</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2> Map() 的属性</h2>
+<table class="reference notranslate" id="table4">
+<tbody>
+<tr>
+<th align="left" width="30%">属性</th>
+<th align="left" width="25%">类型</th>
+<th align="left" width="55%">描述</th>
+</tr>
+<tr>
+<td>controls</td>
+<td><i>Array.&lt;MVCArray.&lt;Node&gt;&gt;</i></td>
+<td>要附加到地图上的额外控件。</td>
+</tr>
+<tr>
+<td>mapTypes</td>
+<td><i>MapTypeRegistry</i></td>
+<td>按字符串 ID 划分的 MapType 实例的注册表。</td>
+</tr>
+<tr>
+<td>overlayMapTypes</td>
+<td><i>MVCArray.&lt;MapType&gt;</i></td>
+<td>要叠加的额外地图类型。</td>
+</tr>
+</tbody>
+</table>
+<h2> Map() 的事件</h2>
+<table class="reference notranslate" id="table5">
+<tbody>
+<tr>
+<th align="left" width="30%">事件</th>
+<th align="left" width="25%">参数</th>
+<th align="left" width="55%">描述</th>
+</tr>
+<tr>
+<td>bounds_changed</td>
+<td>None</td>
+<td>当可视区域范围更改时会触发此事件。</td>
+</tr>
+<tr>
+<td>center_changed</td>
+<td>None</td>
+<td>当地图 center（中心）属性更改时会触发此事件。</td>
+</tr>
+<tr>
+<td>click</td>
+<td><i>MouseEvent</i></td>
+<td>当用户点击地图（但不是点击标记或信息窗口）时会触发此事件。</td>
+</tr>
+<tr>
+<td>dblclick</td>
+<td><i>MouseEvent</i></td>
+<td>当用户双击地图时会触发此事件。请注意，触发此事件前还会触发点击事件。</td>
+</tr>
+<tr>
+<td>drag</td>
+<td>None</td>
+<td>当用户拖动地图时会反复触发此事件。</td>
+</tr>
+<tr>
+<td>dragend</td>
+<td>None</td>
+<td>当用户停止拖动地图时会触发此事件。</td>
+</tr>
+<tr>
+<td>dragstart</td>
+<td>None</td>
+<td>当用户开始拖动地图时会触发此事件。</td>
+</tr>
+<tr>
+<td>heading_changed</td>
+<td>None</td>
+<td>当地图 heading（方向）属性更改时会触发此事件。</td>
+</tr>
+<tr>
+<td>idle</td>
+<td>None</td>
+<td>当地图在平移或缩放之后变为闲置状态时会触发此事件。</td>
+</tr>
+<tr>
+<td>maptypeid_changed</td>
+<td>None</td>
+<td>当 mapTypeId 属性更改时会触发此事件。</td>
+</tr>
+<tr>
+<td>mousemove</td>
+<td><i>MouseEvent</i></td>
+<td>只要用户的鼠标在地图容器上移动，就会触发此事件。</td>
+</tr>
+<tr>
+<td>mouseout</td>
+<td><i>MouseEvent</i></td>
+<td>当用户的鼠标从地图容器上退出时会触发此事件。</td>
+</tr>
+<tr>
+<td>mouseover</td>
+<td><i>MouseEvent</i></td>
+<td>当用户的鼠标进入地图容器时会触发此事件。</td>
+</tr>
+<tr>
+<td>projection_changed</td>
+<td>None</td>
+<td>当投影更改时会触发此事件。</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>None</td>
+<td>当地图（div）更改尺寸时会触发此事件。</td>
+</tr>
+<tr>
+<td>rightclick</td>
+<td><i>MouseEvent</i></td>
+<td>当用户右击地图时会触发此事件。</td>
+</tr>
+<tr>
+<td>tilesloaded</td>
+<td>None</td>
+<td>当可见图块载入完成后会触发此事件。</td>
+</tr>
+<tr>
+<td>tilt_changed</td>
+<td>None</td>
+<td>当地图 tilt（倾斜）属性更改时会触发此事件。</td>
+</tr>
+<tr>
+<td>zoom_changed</td>
+<td>None</td>
+<td>当地图 zoom（缩放）属性更改时会触发此事件。</td>
+</tr>
+</tbody>
+</table>
+ 			
+			
+			</hr></div>

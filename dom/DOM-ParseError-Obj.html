@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">Parse Error</span> 对象</h1>
+<hr/>
+<p class="intro">微软的 parseError 对象可用于从微软的 XML 分析器取回错误信息。</p>
+<p class="intro">要查看 Firefox 如何处理解析器错误，请看本教程的下一个页面。</p>
+<hr/>
+<h2>parseError 对象</h2>
+<p>在您试图打开一个 XML 文档时，就可能发生一个解析器错误（parser-error）。</p>
+<p>通过这个 parseError 对象，您可取回错误代码、错误文本、引起错误的行等等。</p>
+<p><b>注意：</b>parseError 对象不属于 W3C DOM 标准！</p>
+<hr/>
+<h2>文件错误（File Error）</h2>
+<p>在下面的代码中，我们会试图加载一个不存在的文件，并显示某些错误属性：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=new ActiveXObject("Microsoft.XMLDOM");<br/>
+xmlDoc.async=false;<br/>
+xmlDoc.load("ksdjf.xml");<br/><br/>
+document.write("Error code: " + xmlDoc.parseError.errorCode);<br/>
+document.write("<br/>Error reason: " + xmlDoc.parseError.reason);<br/>
+document.write("<br/>Error line: " + xmlDoc.parseError.line);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=note_error" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>XML 错误（XML Error）</h2>
+<p>在下面的代码中，我们会让解析器加载一个形式不良的 XML 文档。</p>
+<p>（您可以在我们的 <a href="/xml/xml-tutorial.html">XML 教程</a>中阅读更多有关形式良好且有效的 XML。）</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=new ActiveXObject("Microsoft.XMLDOM");<br/>
+xmlDoc.async=false;<br/>
+xmlDoc.load("note_error.xml");<br/><br/>
+document.write("Error code: " + xmlDoc.parseError.errorCode);<br/>
+document.write("<br/>Error reason: " + xmlDoc.parseError.reason);<br/>
+document.write("<br/>Error line: " + xmlDoc.parseError.line);
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=note_error_two" target="_blank">尝试一下 »</a>
+</div>
+<p>查看 XML 文件：<a href="/try/demo_source/note_error.xml" target="_blank">note_error.xml</a></p>
+<hr/>
+<h2>parseError 对象的属性</h2>
+<table class="reference notranslate">
+<tr>
+<th width="20%">属性</th>
+<th width="80%">描述</th>
+</tr>
+<tr>
+<td>errorCode</td>
+<td>返回一个长整数错误代码。</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>返回一个字符串，包含错误的原因。</td>
+</tr>
+<tr>
+<td>line</td>
+<td>返回一个长整数，代表错误的行号。</td>
+</tr>
+<tr>
+<td>linepos</td>
+<td>返回一个长整数，代表错误的行位置。</td>
+</tr>
+<tr>
+<td>srcText</td>
+<td>返回一个字符串，包含引起错误的行。</td>
+</tr>
+<tr>
+<td>url</td>
+<td>返回指向被加载文档的 URL。</td>
+</tr>
+<tr>
+<td>filepos</td>
+<td>返回错误的一个长整型文件位置。</td>
+</tr>
+</table>
+<br/>
+</div>

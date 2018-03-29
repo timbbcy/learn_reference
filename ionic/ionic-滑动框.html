@@ -1,0 +1,192 @@
+<div class="article-intro" id="content">
+<h1>ionic 滑动框</h1>
+<hr/>
+<h2>ion-slide-box </h2>
+<p>滑动框是一个包含多页容器的组件，每页滑动或拖动切换：</p>
+<p>效果图如下：</p>
+<img src="/wp-content/uploads/2015/08/slideBox.gif"/>
+<h3>用法</h3>
+<pre>
+&lt;ion-slide-box on-slide-changed="slideHasChanged($index)"&gt;
+  &lt;ion-slide&gt;
+    &lt;div class="box blue"&gt;&lt;h1&gt;BLUE&lt;/h1&gt;&lt;/div&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide&gt;
+    &lt;div class="box yellow"&gt;&lt;h1&gt;YELLOW&lt;/h1&gt;&lt;/div&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide&gt;
+    &lt;div class="box pink"&gt;&lt;h1&gt;PINK&lt;/h1&gt;&lt;/div&gt;
+  &lt;/ion-slide&gt;
+&lt;/ion-slide-box&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        delegate-handle
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>该句柄用<code>$ionicSlideBoxDelegate</code>来标识这个滑动框。</p>
+</td>
+</tr>
+<tr>
+<td>
+        does-continue
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>滑动框是否开启循环滚动。</p>
+</td>
+</tr>
+<tr>
+<td>
+        auto-play
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>boolean</code>
+</td>
+<td>
+<p>设置滑动框是否循环播放，如果 does-continue 为 true，默认也为 true。</p>
+</td>
+</tr>
+<tr>
+<td>
+        slide-interval
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>数字</code>
+</td>
+<td>
+<p>等待多少毫秒开始滑动（如果继续则为true）。默认为4000。</p>
+</td>
+</tr>
+<tr>
+<td>
+        show-pager
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>滑动框的页面是否显示。</p>
+</td>
+</tr>
+<tr>
+<td>
+        pager-click
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>当点击页面时，触发该表达式（如果shou-pager为true）。传递一个'索引'变量。</p>
+</td>
+</tr>
+<tr>
+<td>
+        on-slide-changed
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>当滑动时，触发该表达式。传递一个'索引'变量。</p>
+</td>
+</tr>
+<tr>
+<td>
+        active-slide
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>表达式</code>
+</td>
+<td>
+<p>将模型绑定到当前滑动框。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>实例</h2>
+<h3>HTML 代码</h3>
+<pre>
+&lt;ion-slide-box active-slide="myActiveSlide"&gt;
+    &lt;ion-slide&gt;
+      &lt;div class="box blue"&gt;&lt;h1&gt;BLUE&lt;/h1&gt;&lt;/div&gt;
+    &lt;/ion-slide&gt;
+    &lt;ion-slide&gt;
+      &lt;div class="box yellow"&gt;&lt;h1&gt;YELLOW&lt;/h1&gt;&lt;/div&gt;
+    &lt;/ion-slide&gt;
+    &lt;ion-slide&gt;
+      &lt;div class="box pink"&gt;&lt;h1&gt;PINK&lt;/h1&gt;&lt;/div&gt;
+    &lt;/ion-slide&gt;
+&lt;/ion-slide-box&gt;
+</pre>
+<h3>CSS 代码</h3>
+<pre>
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  color: #000; 
+  background-color: #fff; text-align: center; 
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; }
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pink {
+  background-color: pink;
+}
+.box{ 
+  height:100%; 
+} 
+.box h1{
+  position:relative; top:50%; transform:translateY(-50%); 
+}
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('ionicApp', ['ionic'])
+
+.controller('SlideController', function($scope) {
+  
+  $scope.myActiveSlide = 1;
+  
+})
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-slide-box" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+</div>

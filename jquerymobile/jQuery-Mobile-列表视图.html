@@ -1,0 +1,72 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">列表视图</span>
+</h1>
+<hr/>
+<iframe frameborder="0" height="355px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_lists_app.htm" width="100%"></iframe>
+<br/><hr/>
+<h2>jQuery Mobile 列表视图</h2>
+<p> jQuery Mobile 中的列表视图是标准的HTML 列表; 有序(&lt;ol&gt;) 和
+无序(&lt;ul&gt;). </p>
+<p>列表视图是jQuery Mobile中功能强大的一个特性。它会使标准的无序或有序列表应用更广泛。应用方法就是在ul或ol标签中添加data-role="listview"属性。在每个项目(&lt;li&gt;)中添加链接，用户可以点击它：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ol <span class="marked">data-role="listview"</span>&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;列表项m&lt;/a&gt;&lt;/li&gt;<br/>
+	&lt;/ol&gt;<br/><br/>&lt;ul <span class="marked">data-role="listview"</span>&gt;<br/>
+	 
+	&lt;li&gt;&lt;a href="#"&gt;列表项&lt;/a&gt;&lt;/li&gt;<br/>&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_views" target="_blank">尝试一下 »</a>
+</div>
+<p>列表样式的圆角和边缘，使用
+data-inset="true" 属性设置:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview" <span class="marked">data-inset="true"</span>&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_inset" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>默认情况下，列表项的链接会自动变成一个按钮 
+(不需要 data-role="button")。</td>
+</tr></table>
+<br/><hr/>
+<h2>列表分隔</h2>
+<p>列表项也可以转化为列表分割项，用来组织列表，使列表项成组。</p>
+<p>指定列表分割，给列表项&lt;li&gt;元素添加 data-role="list-divider" 属性即可：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview"&gt;<br/> &lt;li <span class="marked">data-role="list-divider"</span>&gt;欧洲&lt;/li&gt;<br/>  
+	&lt;li&gt;&lt;a href="#"&gt;法国&lt;/a&gt;&lt;/li&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;德国&lt;/a&gt;&lt;/li&gt;<br/>
+	&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_dividers" target="_blank">尝试一下 »</a>
+</div>
+<p>如果你有一个字母顺序排列的列表，（例如一个电话簿）通过 &lt;ol&gt; 或者&lt;ul&gt; 元素的 data-autodividers="true" 属性设置可以配置为自动生成的项目的分隔:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;ul data-role="listview" <span class="marked">data-autodividers="true"</span>&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;Adele&lt;/a&gt;&lt;/li&gt;<br/>  
+	&lt;li&gt;&lt;a href="#"&gt;Agnes&lt;/a&gt;&lt;/li&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;Billy&lt;/a&gt;&lt;/li&gt;<br/>  
+	&lt;li&gt;&lt;a href="#"&gt;Calvin&lt;/a&gt;&lt;/li&gt;<br/>  ...<br/>&lt;/ul&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_autodividers" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>data-autodividers="true" 可以配置为自动生成的项目的分隔。默认情况下，创建的分隔文本是列表项文本的第一个大写字母。</td>
+</tr></table>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p>
+<a href="/try/try.php?filename=tryjqmob_lists_readonly" target="_blank">只读列表</a><br/>
+如何创建一个不带链接的列表 (不会是个按钮且不可点击)。</p>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_lists_panel" target="_blank">面板</a><br/>
+如何在列表中插入面板</p>
+</div>

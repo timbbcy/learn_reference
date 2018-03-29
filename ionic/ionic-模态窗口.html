@@ -1,0 +1,283 @@
+<div class="article-intro" id="content">
+<h1>ionic 模态窗口</h1>
+<hr/>
+<h2>$ionicModal</h2>
+<p>$ionicModal 可以遮住用户主界面的内容框。</p>
+<p>你可以在你的 index 文件或者是其他文件内嵌入以下代码(里面的代码可以根据你自己的业务场景相应的改变)。</p>
+<pre>
+&lt;script id="my-modal.html" type="text/ng-template"&gt;
+  &lt;ion-modal-view&gt;
+    &lt;ion-header-bar&gt;
+      &lt;h1 class="title"&gt;My Modal title&lt;/h1&gt;
+    &lt;/ion-header-bar&gt;
+    &lt;ion-content&gt;
+      Hello!
+    &lt;/ion-content&gt;
+  &lt;/ion-modal-view&gt;
+&lt;/script&gt;
+</pre>
+<p>
+然后你就可以在你的 Controller 里面的注入 $ionicModal 。然后调用你刚刚写入的模板，进行初始化操作。就像下面的代码：
+</p>
+<pre>
+angular.module('testApp', ['ionic'])
+.controller('MyController', function($scope, $ionicModal) {
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+});
+</pre>
+<h3>方法</h3>
+<pre>
+fromTemplate(templateString, options)
+</pre>
+<table class="reference" style="margin:0;">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        templateString
+      </td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>模板的字符串作为模态窗口的内容。</p>
+</td>
+</tr>
+<tr>
+<td>
+        options
+       
+      </td>
+<td>
+<code>对象</code>
+</td>
+<td>
+<p>options 会传递到 ionicModal#initialize方法中。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><b>返回:</b> 对象, 一个ionicModal控制器的实例。</p>
+<pre>
+fromTemplateUrl(templateUrl, options)
+</pre>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        templateUrl
+      </td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>载入模板的url。</p>
+</td>
+</tr>
+<tr>
+<td>
+        options
+        
+        
+      </td>
+<td>
+<code>对象</code>
+</td>
+<td>
+<p>通过ionicModal#initialize方法传递对象。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><b>返回：</b> promise对象。Promises对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。</p>
+<hr/>
+<h2>ionicModal</h2>
+<p>由$ionicModal服务实例化。
+</p><p>
+提示：当你完成每个模块清除时，确保调用remove()方法，以避免内存泄漏。
+</p><p>
+注意：一个模块从它的初始范围广播出 'modal.shown' 和 'modal.hidden' ，把自身作为一个参数来传递。</p><p>
+<h3>方法</h3>
+<pre>
+initialize(可选)</pre><p>
+创建一个新的模态窗口控制器示例。
+</p>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        options
+      </td>
+<td>
+<code>对象</code>
+</td>
+<td>
+<p>一个选项对象具有一下属性：</p>
+<ul>
+<li><code>{object=}</code> <code>范围</code> 子类的范围。默认：创建一个$rootScope子类。</li>
+<li><code>{string=}</code> <code>动画</code> 带有显示或隐藏的动画。默认：'slide-in-up'</li>
+<li><code>{boolean=}</code> <code>第一个输入框获取焦点</code> 当显示时，模态窗口的第一个输入元素是否自动获取焦点。默认：false。</li>
+<li><code>{boolean=}</code>backdropClickToClose` 点击背景时是否关闭模态窗口。默认：true。</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<pre>show()</pre>
+<p>显示模态窗口实例</p>
+<ul>
+<li>返回值: 
+<code>promise</code> promise对象,在模态窗口完成动画后得到解析</li>
+</ul>
+<pre>hide()</pre>
+<p>隐藏模态窗口。</p>
+<ul>
+<li>返回值: 
+<code>promise</code> promise对象,在模态窗口完成动画后得到解析</li>
+</ul>
+<pre>remove()</pre>
+<p>从 DOM 中移除模态窗口实例并清理。</p>
+<ul>
+<li>返回值: 
+<code>promise</code> promise对象,在模态窗口完成动画后得到解析</li>
+</ul>
+<pre>isShown()</pre>
+<ul>
+<li>返回：布尔值，用于判断模态窗口是否显示。</li>
+</ul>
+<hr/>
+<h2>
+实例</h2>
+<h3>HTML 代码</h3>
+<pre>
+&lt;html ng-app="ionicApp"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"&gt; 
+    
+    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+    &lt;link href="http://www.runoob.com/static/ionic/css/ionic.min.css" rel="stylesheet"&gt;
+    &lt;script src="http://www.runoob.com/static/ionic/js/ionic.bundle.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body ng-controller="AppCtrl"&gt;
+    
+    &lt;ion-header-bar class="bar-positive"&gt;
+      &lt;h1 class="title"&gt;Contacts&lt;/h1&gt;
+      &lt;div class="buttons"&gt;
+        &lt;button class="button button-icon ion-compose" ng-click="modal.show()"&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/ion-header-bar&gt;
+    &lt;ion-content&gt;
+      &lt;ion-list&gt;
+        &lt;ion-item ng-repeat="contact in contacts"&gt;
+          {{contact.name}}
+        &lt;/ion-item&gt;
+      &lt;/ion-list&gt;
+    &lt;/ion-content&gt;
+    
+    &lt;script id="templates/modal.html" type="text/ng-template"&gt;
+      &lt;ion-modal-view&gt;
+        &lt;ion-header-bar class="bar bar-header bar-positive"&gt;
+          &lt;h1 class="title"&gt;New Contact&lt;/h1&gt;
+          &lt;button class="button button-clear button-primary" ng-click="modal.hide()"&gt;Cancel&lt;/button&gt;
+        &lt;/ion-header-bar&gt;
+        &lt;ion-content class="padding"&gt;
+          &lt;div class="list"&gt;
+            &lt;label class="item item-input"&gt;
+              &lt;span class="input-label"&gt;First Name&lt;/span&gt;
+              &lt;input ng-model="newUser.firstName" type="text"&gt;
+            &lt;/label&gt;
+            &lt;label class="item item-input"&gt;
+              &lt;span class="input-label"&gt;Last Name&lt;/span&gt;
+              &lt;input ng-model="newUser.lastName" type="text"&gt;
+            &lt;/label&gt;
+            &lt;label class="item item-input"&gt;
+              &lt;span class="input-label"&gt;Email&lt;/span&gt;
+              &lt;input ng-model="newUser.email" type="text"&gt;
+            &lt;/label&gt;
+            &lt;button class="button button-full button-positive" ng-click="createContact(newUser)"&gt;Create&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/ion-content&gt;
+      &lt;/ion-modal-view&gt;
+    &lt;/script&gt;
+    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h3>CSS 代码</h3>
+<pre>
+body {
+  cursor: url('http://www.runoob.com/try/demo_source/finger.png'), auto;
+}
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('ionicApp', ['ionic'])
+
+.controller('AppCtrl', function($scope, $ionicModal) {
+  
+  $scope.contacts = [
+    { name: 'Gordon Freeman' },
+    { name: 'Barney Calhoun' },
+    { name: 'Lamarr the Headcrab' },
+  ];
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  
+  $scope.createContact = function(u) {        
+    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+    $scope.modal.hide();
+  };
+
+});
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-ionicmodal" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+</p></div>

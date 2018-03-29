@@ -1,0 +1,83 @@
+<div class="article-intro" id="content">
+<h1>XPath <span class="color_h1"> 轴（Axes）</span>
+</h1>
+<hr/>
+<h2>XML 实例文档</h2>
+<p>我们将在下面的例子中使用此 XML 文档：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;?</span><span class="hl-reserved">xml</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">encoding</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-brackets">?&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Harry Potter</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">29.99</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Learning XML</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">39.95</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<br/><hr/>
+<h2>XPath 轴（Axes）</h2>
+<p>轴可定义相对于当前节点的节点集。</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%;">轴名称</th>
+<th>结果</th>
+</tr>
+<tr>
+<td>ancestor</td>
+<td>选取当前节点的所有先辈（父、祖父等）。</td>
+</tr>
+<tr>
+<td>ancestor-or-self</td>
+<td>选取当前节点的所有先辈（父、祖父等）以及当前节点本身。</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td>选取当前节点的所有属性。</td>
+</tr>
+<tr>
+<td>child</td>
+<td>选取当前节点的所有子元素。</td>
+</tr>
+<tr>
+<td>descendant</td>
+<td>选取当前节点的所有后代元素（子、孙等）。</td>
+</tr>
+<tr>
+<td>descendant-or-self</td>
+<td>选取当前节点的所有后代元素（子、孙等）以及当前节点本身。</td>
+</tr>
+<tr>
+<td>following</td>
+<td>选取文档中当前节点的结束标签之后的所有节点。</td>
+</tr>
+<tr>
+<td>following-sibling</td>
+<td>选取当前节点之后的所有兄弟节点</td>
+</tr>
+<tr>
+<td>namespace</td>
+<td>选取当前节点的所有命名空间节点。</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>选取当前节点的父节点。</td>
+</tr>
+<tr>
+<td>preceding</td>
+<td>选取文档中当前节点的开始标签之前的所有节点。</td>
+</tr>
+<tr>
+<td>preceding-sibling</td>
+<td>选取当前节点之前的所有同级节点。</td>
+</tr>
+<tr>
+<td>self</td>
+<td>选取当前节点。</td>
+</tr>
+</tbody></table>
+</div>

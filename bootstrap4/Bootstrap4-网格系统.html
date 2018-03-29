@@ -1,0 +1,190 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 网格系统
+</h1>
+<p>Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多 12 列。</p>
+<p>我们也可以根据自己的需要，定义列数：</p>
+<style>
+table.grid {
+    width:100%;
+    border:none;
+    background-color:#F6F4F0;
+    padding:0px;    
+}
+table.grid tr {
+    text-align:center;
+}
+table.grid td {
+    border:4px solid white;
+    padding:6px;	    
+}
+</style>
+<table cellspacing="0" class="grid">
+<tbody><tr>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+<td width="8.33%">1</td>
+</tr>
+<tr>
+<td colspan="4">4</td>
+<td colspan="4">4</td>
+<td colspan="4">4</td>
+</tr>
+<tr>
+<td colspan="4">4</td>
+<td colspan="8">8</td>
+</tr>
+<tr>
+<td colspan="6">6</td>
+<td colspan="6">6</td>
+</tr>
+<tr>
+<td colspan="12">12</td>
+</tr>
+</tbody></table>
+<p>Bootstrap 4 的网格系统是响应式的，列会根据屏幕大小自动重新排列。</p>
+<hr/>
+<h2>网格类</h2>
+<p>Bootstrap 4 网格系统有以下 5 个类:</p>
+<ul>
+<li>.col- 针对所有设备</li>
+<li>.col-sm- 平板  - 屏幕宽度等于或大于 576px</li>
+<li>.col-md- 桌面显示器  - 屏幕宽度等于或大于 768px)</li>
+<li>.col-lg- 大桌面显示器  - 屏幕宽度等于或大于 992px)</li>
+<li>.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</li>
+</ul>
+下表总结了 Bootstrap 网格系统如何跨多个设备工作：
+<table class="reference">
+<thead>
+<tr>
+<th></th>
+<th class="text-center">
+        超小设备<br/>
+<small>&lt;576px</small>
+</th>
+<th class="text-center">
+        平板<br/>
+<small>≥576px</small>
+</th>
+<th class="text-center">
+        桌面显示器<br/>
+<small>≥768px</small>
+</th>
+<th class="text-center">
+        大桌面显示器<br/>
+<small>≥992px</small>
+</th>
+<th class="text-center">
+        超大桌面显示器<br/>
+<small>≥1200px</small>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="text-nowrap" scope="row">容器最大宽度</th>
+<td>None (auto)</td>
+<td>540px</td>
+<td>720px</td>
+<td>960px</td>
+<td>1140px</td>
+</tr>
+<tr>
+<th class="text-nowrap" scope="row">类前缀</th>
+<td><code>.col-</code></td>
+<td><code>.col-sm-</code></td>
+<td><code>.col-md-</code></td>
+<td><code>.col-lg-</code></td>
+<td><code>.col-xl-</code></td>
+</tr>
+<tr>
+<th class="text-nowrap" scope="row">列数量和</th>
+<td colspan="5">12</td>
+</tr>
+<tr>
+<th class="text-nowrap" scope="row">间隙宽度</th>
+<td colspan="5">30px
+（一个列的每边分别 15px）</td>
+</tr>
+<tr>
+<th class="text-nowrap" scope="row">可嵌套</th>
+<td colspan="5">Yes</td>
+</tr>
+<tr>
+<th class="text-nowrap" scope="row">列排序</th>
+<td colspan="5">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>以下各个类可以一起使用，从而创建更灵活的页面布局。</p>
+<hr/>
+<h2>Bootstrap 4 网格的基本结构</h2>
+<p>以下代码为 Bootstrap 4 网格的基本结构:</p>
+<div class="example">
+<h2 class="example_head">Bootstrap4  网格基本结构</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 第一个例子：控制列的宽度及在不同的设备上如何显示 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-*-*</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-*-*</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-*-*</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-*-*</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 第二个例子：或让 Bootstrap 者自动处理布局 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>第一个例子：创建一行(<b>&lt;div 
+class="row"&gt;</b>)。然后， 添加是需要的列(
+<b>.col-*-*</b> 类中设置)。 第一个星号 (*) 
+表示响应的设备: sm, md, lg 或 xl, 第二个星号 (*) 表示一个数字, 同一行的数字相加为 12。</p>
+<p>第二个例子: 不在每个 <b>col</b> 上添加数字，让 bootstrap 自动处理布局，同一行的每个列宽度相等： 两个 <b>"col"</b> ，每个就为 50% 的宽度。三个  <b>"col"</b>每个就为 33.33% 的宽度，四个  <b>"col"</b>每个就为 25% 的宽度，以此类推。同样，你可以使用 <b>.col-sm|md|lg|xl</b> 来设置列的响应规则。</p>
+<p>接下来我们可以看看实例。</p>
+<h3>创建相等宽度的列，Bootstrap 自动布局</h3>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_grid_ex" target="_blank">尝试一下 »</a></div>
+<h3>等宽响应式列</h3>
+<p>以下实例演示了如何在平板及更大屏幕上创建等宽度的响应式列。 <strong>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版</strong>:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-3</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col-sm-3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-3</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col-sm-3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-3</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col-sm-3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-3</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col-sm-3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_grid_ex1" target="_blank">尝试一下 »</a></div>
+<h3>不等宽响应式列</h3>
+<p>以下实例演示了在平板及更大屏幕上创建不等宽度的响应式列。 <strong>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版</strong>:</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">row</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-4</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col-sm-4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">col-sm-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">.col-sm-8</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_grid_ex3" target="_blank">尝试一下 »</a></div>
+</div>

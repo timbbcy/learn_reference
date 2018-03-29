@@ -1,0 +1,231 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">按钮</span></h1>
+<p>本章将通过实例讲解如何使用 Bootstrap 按钮。任何带有 class <b>.btn</b> 的元素都会继承圆角灰色按钮的默认外观。但是 Bootstrap 提供了一些选项来定义按钮的样式，具体如下表所示：</p>
+<p>以下样式可用于&lt;a&gt;, &lt;button&gt;, 或 &lt;input&gt; 元素上：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%;">类</th>
+<th style="width:73%;">描述</th>
+<th style="width:7%;">实例</th>
+</tr>
+<tr>
+<td>.btn</td>
+<td>为按钮添加基本样式</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-default</td>
+<td>默认/标准按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-default" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-primary</td>
+<td>原始按钮样式（未被操作） </td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-primary" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-success</td>
+<td>表示成功的动作</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-success" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-info</td>
+<td>该样式可用于要弹出信息的按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-info" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-warning</td>
+<td>表示需要谨慎操作的按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-warning" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-danger</td>
+<td>表示一个危险动作的按钮操作</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-danger" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-link</td>
+<td>让按钮看起来像个链接 (仍然保留按钮行为)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-link" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-lg</td>
+<td>制作一个大按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-lg" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-sm</td>
+<td>制作一个小按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-sm" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-xs</td>
+<td>制作一个超小按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-xs" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.btn-block</td>
+<td>块级按钮(拉伸至父元素100%的宽度)</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn-block" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.active</td>
+<td>按钮被点击</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn_active" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>.disabled</td>
+<td>禁用按钮</td>
+<td><a class="playitbtn tryitbtnsyntax" href="/try/try2.php?filename=trybs_ref_btn_disabled" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<p>下面的实例演示了上面所有的按钮 class：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 标准的按钮 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">默认按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 提供额外的视觉效果，标识一组按钮中的原始动作 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 表示一个成功的或积极的动作 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 信息警告消息的上下文按钮 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-info</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">信息按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 表示应谨慎采取的动作 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 表示一个危险的或潜在的负面动作 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-danger</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">危险按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 并不强调是一个按钮，看起来像一个链接，但同时保持按钮的行为 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-link</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">链接按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-button-options" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="按钮选项" src="/wp-content/uploads/2014/06/buttonoptions_demo.jpg"/>
+</div>
+<br>
+<h2 class="tutheader">按钮大小</h2>
+<p>下表列出了获得各种大小按钮的 class：</p>
+<table class="reference notranslate">
+<tr><th style="width:20%">Class</th><th>描述</th></tr>
+<tr><td>.btn-lg</td><td>这会让按钮看起来比较大。</td></tr>
+<tr><td>.btn-sm</td><td>这会让按钮看起来比较小。</td></tr>
+<tr><td>.btn-xs</td><td>这会让按钮看起来特别小。</td></tr>
+<tr><td>.btn-block</td><td>这会创建块级的按钮，会横跨父元素的全部宽度。</td></tr>
+</table>
+<p>下面的实例演示了上面所有的按钮 class：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">大的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">大的按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">默认大小的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">默认大小的按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-sm</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">小的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-sm</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">小的按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-xs</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">特别小的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-xs</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">特别小的按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg btn-block</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">块级的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg btn-block</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">块级的按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-button-size" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="按钮大小" src="/wp-content/uploads/2014/06/buttonsize_demo.jpg"/>
+</div>
+<br>
+<h2 class="tutheader">按钮状态</h2>
+<p>Bootstrap 提供了激活、禁用等按钮状态的 class，下面将进行详细讲解。</p>
+<h3>激活状态</h3>
+<p>按钮在激活时将呈现为被按压的外观（深色的背景、深色的边框、阴影）。</p>
+<p>下表列出了让按钮元素和锚元素呈激活状态的 class：</p>
+<table class="reference notranslate">
+<tr><th style="width:20%">元素</th><th>Class</th></tr>
+<tr><td>按钮元素</td><td>添加 <b>.active</b> class 来显示它是激活的。</td></tr>
+<tr><td>锚元素</td><td>添加 <b> .active</b> class 到 &lt;a&gt; 按钮来显示它是激活的。</td></tr>
+</table>
+<p>下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg </span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">默认按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">激活按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg </span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">激活的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-button-activestate" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="按钮激活状态" src="/wp-content/uploads/2014/06/buttonactivestate_demo.jpg"/>
+</div>
+<h3>禁用状态</h3>
+<p>当您禁用一个按钮时，它的颜色会变淡 50%，并失去渐变。</p>
+<p>下表列出了让按钮元素和锚元素呈禁用状态的 class：</p>
+<table class="reference notranslate">
+<tr><th style="width:20%">元素</th><th>Class</th></tr>
+<tr><td>按钮元素</td><td>添加 <b>disabled</b> <i>属性</i> 到 &lt;button&gt; 按钮。</td></tr>
+<tr><td>锚元素</td><td>添加 <b>disabled</b> <i>class</i> 到 &lt;a&gt; 按钮。</td></tr>
+</table>
+<p>下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">默认按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">disabled</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">disabled</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">禁用按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg </span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">disabled</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">disabled</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">禁用的原始按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">链接</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default btn-lg disabled</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">禁用链接</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">原始链接</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-primary btn-lg disabled</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">禁用的原始链接</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-button-disabledstate" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="按钮禁用状态" src="/wp-content/uploads/2014/06/buttondisabledstate_demo.jpg"/>
+</div>
+<br>
+<h2 class="tutheader">按钮标签</h2>
+<p>您可以在 &lt;a&gt;、&lt;button&gt; 或 &lt;input&gt; 元素上使用按钮 class。但是建议您在 &lt;button&gt; 元素上使用按钮 class，避免跨浏览器的不一致性问题。</p>
+<p>下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">链接</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">按钮</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">输入</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">btn btn-default</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">submit</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">提交</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-button-tags" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="按钮标签" src="/wp-content/uploads/2014/06/buttontags_demo.jpg"/>
+</div>
+</br></br></br></div>

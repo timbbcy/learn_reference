@@ -1,0 +1,65 @@
+<div class="article-intro" id="content">
+<h1>SQLite <span class="color_h1">Autoincrement（自动递增）</span></h1>
+<div class="tutintro">
+<p>SQLite 的 <b>AUTOINCREMENT</b> 是一个关键字，用于表中的字段值自动递增。我们可以在创建表时在特定的列名称上使用 <b>AUTOINCREMENT</b> 关键字实现该字段值的自动增加。</p>
+<p>关键字 <b>AUTOINCREMENT</b> 只能用于整型（INTEGER）字段。</p>
+</div>
+<h2>语法</h2>
+<p><b>AUTOINCREMENT</b> 关键字的基本用法如下：</p>
+<pre class="prettyprint">
+CREATE TABLE table_name(
+   column1 INTEGER AUTOINCREMENT,
+   column2 datatype,
+   column3 datatype,
+   .....
+   columnN datatype,
+);
+</pre>
+<h2>实例</h2>
+<p>假设要创建的 COMPANY 表如下所示：</p>
+<pre class="prettyprint">
+sqlite&gt; CREATE TABLE COMPANY(
+   ID INTEGER PRIMARY KEY   AUTOINCREMENT,
+   NAME           TEXT      NOT NULL,
+   AGE            INT       NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL
+);
+</pre>
+<p>现在，向 COMPANY 表插入以下记录：</p>
+<pre class="prettyprint">
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ( 'Paul', 32, 'California', 20000.00 );
+
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ('Allen', 25, 'Texas', 15000.00 );
+
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ('Teddy', 23, 'Norway', 20000.00 );
+
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ( 'Mark', 25, 'Rich-Mond ', 65000.00 );
+
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ( 'David', 27, 'Texas', 85000.00 );
+
+
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ( 'Kim', 22, 'South-Hall', 45000.00 );
+
+INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+VALUES ( 'James', 24, 'Houston', 10000.00 );
+</pre>
+<p>这将向 COMPANY 表插入 7 个元组，此时 COMPANY 表的记录如下：</p>
+<pre class="result">
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+1           Paul        32          California  20000.0
+2           Allen       25          Texas       15000.0
+3           Teddy       23          Norway      20000.0
+4           Mark        25          Rich-Mond   65000.0
+5           David       27          Texas       85000.0
+6           Kim         22          South-Hall  45000.0
+7           James       24          Houston     10000.0
+</pre>
+</div>

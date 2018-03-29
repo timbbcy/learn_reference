@@ -1,0 +1,119 @@
+<div class="article-intro" id="content">
+<h1>PHP 正则表达式(PCRE)</h1>
+<p>正则表达式(regular expression)描述了一种字符串匹配的模式，可以用来检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串等。</p>
+<p>更多正则表达式的内容可参考我们的：<a href="/regexp/regexp-tutorial.html" target="_blank">正则表达式 - 教程</a>。</p>
+<p>PHP 中我们可以使用 PCRE 扩展来匹配字符串的模式。</p>
+<h2>PCRE 函数</h2>
+<table class="reference"><tr><th>函数</th><th>描述</th></tr>
+<tr><td>
+<a href="/php/php-preg_filter.html" target="_blank">preg_filter</a> </td><td> 执行一个正则表达式搜索和替换</td></tr><tr><td>
+<a href="/php/php-preg_grep.html" target="_blank">preg_grep</a> </td><td> 返回匹配模式的数组条目</td></tr><tr><td>
+<a href="/php/php-preg_last_error.html" target="_blank">preg_last_error</a> </td><td> 返回最后一个PCRE正则执行产生的错误代码</td></tr><tr><td>
+<a href="/php/php-preg_match_all.html" target="_blank">preg_match_all</a> </td><td> 执行一个全局正则表达式匹配</td></tr><tr><td>
+<a href="/php/php-preg_match.html" target="_blank">preg_match</a> </td><td> 执行一个正则表达式匹配</td></tr><tr><td>
+<a href="/php/php-preg_quote.html" target="_blank">preg_quote</a> </td><td> 转义正则表达式字符</td></tr><tr><td>
+<a href="/php/php-preg_replace_callback_array.html" target="_blank">preg_replace_callback_array</a> </td><td> 执行一个正则表达式搜索并且使用一个回调进行替换</td></tr><tr><td>
+<a href="/php/php-preg_replace_callback.html" target="_blank">preg_replace_callback</a> </td><td> 执行一个正则表达式搜索并且使用一个回调进行替换</td></tr><tr><td>
+<a href="/php/php-preg_replace.html" target="_blank">preg_replace</a> </td><td> 执行一个正则表达式的搜索和替换</td></tr><tr><td>
+<a href="/php/php-preg_split.html" target="_blank">preg_split</a> </td><td> 通过一个正则表达式分隔字符串</td></tr></table>
+<hr/>
+<h2>PREG 常量</h2>
+<table class="reference">
+<thead>
+<tr>
+<th>常量</th>
+<th>描述</th>
+<th>自哪个版本起</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PREG_PATTERN_ORDER</code></strong></td>
+<td>
+    结果按照"规则"排序，仅用于preg_match_all()， 即$matches[0]是完整规则的匹配结果， $matches[1]是第一个子组匹配的结果，等等。
+     </td>
+<td>since</td>
+</tr>
+<tr>
+<td><strong><code>PREG_SET_ORDER</code></strong></td>
+<td>
+   结果按照"集合"排序，仅用于preg_match_all()， 即$matches[0]保存第一次匹配结果的所有结果(包含子组)信息, $matches[1]保存第二次的结果信息，等等。
+     </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong><code>PREG_OFFSET_CAPTURE</code></strong></td>
+<td>
+     查看<strong><code>PREG_SPLIT_OFFSET_CAPTURE</code></strong>的描述。
+     </td>
+<td>4.3.0</td>
+</tr>
+<tr>
+<td><strong><code>PREG_SPLIT_NO_EMPTY</code></strong></td>
+<td>
+     这个标记告诉 preg_split() 进返回非空部分。
+     </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong><code>PREG_SPLIT_DELIM_CAPTURE</code></strong></td>
+<td>
+     这个标记告诉 preg_split() 同时捕获括号表达式匹配到的内容。
+     </td>
+<td>4.0.5</td>
+</tr>
+<tr>
+<td><strong><code>PREG_SPLIT_OFFSET_CAPTURE</code></strong></td>
+<td>
+     如果设置了这个标记，每次出现的匹配子串的偏移量也会被返回。注意，这会改变返回数组中的值，
+     每个元素都是由匹配子串作为第0个元素，它相对目标字符串的偏移量作为第1个元素的数组。这个
+     标记只能用于 preg_split()。
+     </td>
+<td>4.3.0</td>
+</tr>
+<tr id="constant.preg-no-error">
+<td><strong><code>PREG_NO_ERROR</code></strong></td>
+<td>没有匹配错误时调用 preg_last_error() 返回。
+     </td>
+<td>5.2.0</td>
+</tr>
+<tr>
+<td><strong><code>PREG_INTERNAL_ERROR</code></strong></td>
+<td>如果有PCRE内部错误时调用 preg_last_error() 返回。
+     </td>
+<td>5.2.0</td>
+</tr>
+<tr>
+<td><strong><code>PREG_BACKTRACK_LIMIT_ERROR</code></strong></td>
+<td>如果调用回溯限制超出，调用preg_last_error()时返回。	
+     </td>
+<td>5.2.0</td>
+</tr>
+<tr>
+<td><strong><code>PREG_RECURSION_LIMIT_ERROR</code></strong></td>
+<td>如果递归限制超出，调用preg_last_error()时返回。
+     </td>
+<td>5.2.0</td>
+</tr>
+<tr>
+<td><strong><code>PREG_BAD_UTF8_ERROR</code></strong></td>
+<td>如果最后一个错误时由于异常的utf-8数据(仅在运行在 UTF-8 模式正则表达式下可用)。 导致的，调用preg_last_error()返回。
+     </td>
+<td>5.2.0</td>
+</tr>
+<tr id="constant.preg-bad-utf8-offset-error">
+<td><strong><code>PREG_BAD_UTF8_OFFSET_ERROR</code></strong></td>
+<td>如果偏移量与合法的urf-8代码不匹配(仅在运行在 UTF-8 模式正则表达式下可用)。 调用preg_last_error()返回。
+     </td>
+<td>5.3.0</td>
+</tr>
+<tr id="constant.pcre-version">
+<td><strong><code>PCRE_VERSION</code></strong></td>
+<td>
+     PCRE版本号和发布日期(比如： "<em>7.0 18-Dec-2006</em>")。
+     </td>
+<td>5.2.4</td>
+</tr>
+</tbody>
+</table>
+</div>

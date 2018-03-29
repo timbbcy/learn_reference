@@ -1,0 +1,144 @@
+<div class="article-intro" id="content">
+<h1>Kotlin 泛型</h1>
+<p>泛型，即 "参数化类型"，将类型参数化，可以用在类，接口，方法上。</p>
+<p>与 Java 一样，Kotlin 也提供泛型，为类型安全提供保证，消除类型强转的烦恼。</p>
+<p>声明一个泛型类:</p>
+<pre>
+class Box&lt;T&gt;(t: T) {
+    var value = t
+}
+</pre>
+<p>创建类的实例时我们需要指定类型参数:</p>
+<pre>
+val box: Box&lt;Int&gt; = Box&lt;Int&gt;(1)
+// 或者
+val box = Box(1) // 编译器会进行类型推断，1 类型 Int，所以编译器知道我们说的是 Box&lt;Int&gt;。
+</pre>
+<p>以下实例向泛型类 Box 传入整型数据和字符串：</p>
+<pre>
+class Box&lt;T&gt;(t : T) {
+    var value = t
+}
+
+fun main(args: Array&lt;String&gt;) {
+    var boxInt = Box&lt;Int&gt;(10)
+    var boxString = Box&lt;String&gt;("Runoob")
+
+    println(boxInt.value)
+    println(boxString.value)
+}
+</pre>
+<p>输出结果为：</p>
+<pre>10
+Runoob</pre>
+<p>
+定义泛型类型变量，可以完整地写明类型参数，如果编译器可以自动推定类型参数，也可以省略类型参数。
+</p><p>
+Kotlin 泛型函数的声明与 Java 相同，类型参数要放在函数名的前面：</p>
+<pre>
+fun &lt;T&gt; boxIn(value: T) = Box(value)
+
+// 以下都是合法语句
+val box4 = boxIn&lt;Int&gt;(1)
+val box5 = boxIn(1)     // 编译器会进行类型推断
+</pre>
+<p>在调用泛型函数时，如果可以推断出类型参数，可以省略泛型参数。</p>
+<p>以下实例创建了泛型函数 doPrintln，函数根据传入的不同类型做相应处理：</p>
+<pre>
+fun main(args: Array&lt;String&gt;) {
+    val age = 23
+    val name = "runoob"
+    val bool = true
+
+    doPrintln(age)    // 整型
+    doPrintln(name)   // 字符串
+    doPrintln(bool)   // 布尔型
+}
+
+fun &lt;T&gt; doPrintln(content: T) {
+
+    when (content) {
+        is Int -&gt; println("整型数字为 $content")
+        is String -&gt; println("字符串转换为大写：${content.toUpperCase()}")
+        else -&gt; println("T 不是整型，也不是字符串")
+    }
+}
+</pre>
+<p>输出结果为：</p>
+<pre>整型数字为 23
+字符串转换为大写：RUNOOB
+T 不是整型，也不是字符串
+</pre>
+<hr/>
+<h2>泛型约束</h2>
+<p>我们可以使用泛型约束来设定一个给定参数允许使用的类型。</p>
+<p>Kotlin 中使用 : 对泛型的的类型上限进行约束。</p>
+<p>最常见的约束是上界(upper bound)：</p>
+<pre>
+fun &lt;T : Comparable&lt;T&gt;&gt; sort(list: List&lt;T&gt;) {
+    // ……
+}
+</pre>
+<p>Comparable<t> 的子类型可以替代 T。 例如:</t></p>
+<pre>
+sort(listOf(1, 2, 3)) // OK。Int 是 Comparable&lt;Int&gt; 的子类型
+sort(listOf(HashMap&lt;Int, String&gt;())) // 错误：HashMap&lt;Int, String&gt; 不是 Comparable&lt;HashMap&lt;Int, String&gt;&gt; 的子类型
+</pre>
+<p>默认的上界是 Any?。</p>
+<p>对于多个上界约束条件，可以用 where 子句：</p>
+<pre>
+fun &lt;T&gt; copyWhenGreater(list: List&lt;T&gt;, threshold: T): List&lt;String&gt;
+    where T : CharSequence,
+          T : Comparable&lt;T&gt; {
+    return list.filter { it &gt; threshold }.map { it.toString() }
+}
+</pre>
+<hr/>
+<h2>型变</h2>
+<p>Kotlin 中没有通配符类型，它有两个其他的东西：声明处型变（declaration-site variance）与类型投影（type projections）。</p>
+<h3>声明处型变</h3>
+<p>声明处的类型变异使用协变注解修饰符：in、out，消费者 in, 生产者 out。</p>
+<p>使用 out 使得一个类型参数协变，协变类型参数只能用作输出，可以作为返回值类型但是无法作为入参的类型：</p>
+<pre>
+// 定义一个支持协变的类
+class Runoob&lt;out A&gt;(val a: A) {
+    fun foo(): A {
+        return a
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    var strCo: Runoob&lt;String&gt; = Runoob("a")
+    var anyCo: Runoob&lt;Any&gt; = Runoob&lt;Any&gt;("b")
+    anyCo = strCo
+    println(anyCo.foo())   // 输出 a
+}
+</pre><p>in 使得一个类型参数逆变，逆变类型参数只能用作输入，可以作为入参的类型但是无法作为返回值的类型：</p>
+<pre>
+// 定义一个支持逆变的类
+class Runoob&lt;in A&gt;(a: A) {
+    fun foo(a: A) {
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    var strDCo = Runoob("a")
+    var anyDCo = Runoob&lt;Any&gt;("b")
+    strDCo = anyDCo
+}
+</pre>
+<hr/><h2>星号投射</h2>
+<p>有些时候, 你可能想表示你并不知道类型参数的任何信息, 但是仍然希望能够安全地使用它. 这里所谓"安全地使用"是指, 对泛型类型定义一个类型投射, 要求这个泛型类型的所有的实体实例, 都是这个投射的子类型。
+</p><p>
+对于这个问题, Kotlin 提供了一种语法, 称为 星号投射(star-projection):</p>
+<ul>
+<li>假如类型定义为 Foo&lt;out T&gt; , 其中 T 是一个协变的类型参数, 上界(upper bound)为 TUpper ,Foo&lt;<em>&gt; 等价于 Foo&lt;out TUpper&gt; . 它表示, 当 T 未知时, 你可以安全地从 Foo&lt;</em>&gt; 中 读取TUpper 类型的值.</li>
+<li>假如类型定义为 Foo&lt;in T&gt; , 其中 T 是一个反向协变的类型参数, Foo&lt;<em>&gt; 等价于 Foo&lt;inNothing&gt; . 它表示, 当 T 未知时, 你不能安全地向 Foo&lt;</em>&gt; 写入 任何东西.</li>
+<li>假如类型定义为 Foo&lt;T&gt; , 其中 T 是一个协变的类型参数, 上界(upper bound)为 TUpper , 对于读取值的场合, Foo&lt;*&gt; 等价于 Foo&lt;out TUpper&gt; , 对于写入值的场合, 等价于 Foo&lt;in Nothing&gt; .</li>
+</ul><p>如果一个泛型类型中存在多个类型参数, 那么每个类型参数都可以单独的投射. 比如, 如果类型定义为interface Function&lt;in T, out U&gt; , 那么可以出现以下几种星号投射:</p>
+<ol>
+<li>Function&lt;*, String&gt; , 代表 Function&lt;in Nothing, String&gt; ;</li>
+<li>Function&lt;Int, *&gt; , 代表 Function&lt;Int, out Any?&gt; ;</li>
+<li>Function&lt;<em>, </em>&gt; , 代表 Function&lt;in Nothing, out Any?&gt; .</li>
+</ol><p>注意: 星号投射与 Java 的原生类型(raw type)非常类似, 但可以安全使用</p>
+</div>

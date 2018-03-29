@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">WHERE</span> 子句</h1>
+<hr/>
+<p class="intro">WHERE 子句用于过滤记录。</p>
+<hr/>
+<h2>SQL WHERE 子句</h2>
+<p>WHERE 子句用于提取那些满足指定标准的记录。</p>
+<h3>SQL WHERE 语法</h3>
+<div class="code notranslate"><div>
+SELECT <em>column_name</em>,<em>column_name</em><br/>
+FROM <em>table_name</em><br/>
+WHERE <em>column_name operator value</em>;</div></div>
+<br/><hr/>
+<h2>演示数据库</h2>
+<p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 "Websites" 表的数据：</p>
+<pre>
++----+--------------+---------------------------+-------+---------+
+| id | name         | url                       | alexa | country |
++----+--------------+---------------------------+-------+---------+
+| 1  | Google       | https://www.google.cm/    | 1     | USA     |
+| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
+| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
+| 4  | 微博          | http://weibo.com/         | 20    | CN      |
+| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
++----+--------------+---------------------------+-------+---------+
+</pre>
+<br/>
+<hr/>
+<h2>WHERE 子句实例</h2>
+<p>下面的 SQL 语句从 "Websites" 表中选取国家为 "CN" 的所有网站：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">CN</span><span class="hl-quotes">'</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<p><img src="//www.runoob.com/wp-content/uploads/2013/09/4B7980AC-2566-43F7-843A-256E868B92A4.jpg" width="70%"/></p>
+</div>
+</div>
+<br/>
+<hr/>
+<h2>文本字段 vs. 数值字段</h2>
+<p>SQL 使用单引号来环绕文本值（大部分数据库系统也接受双引号）。</p>
+<p>在上个实例中 'CN' 文本字段使用了单引号。</p>
+<p>如果是数值字段，请不要使用引号。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">id</span><span class="hl-code">=</span><span class="hl-number">1</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<p><img src="//www.runoob.com/wp-content/uploads/2013/09/639D2956-99CE-44E9-B960-EA14D296820E.jpg" width="70%"/></p>
+</div>
+</div>
+<br/>
+<hr/>
+<h2>WHERE 子句中的运算符</h2>
+<p>下面的运算符可以在 WHERE 子句中使用：</p>
+<table class="reference">
+<tr>
+<th width="20%">运算符</th>
+<th width="80%">描述</th>
+</tr>
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于。<b>注释：</b>在 SQL 的一些版本中，该操作符可被写成 !=</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>在某个范围内</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>搜索某种模式</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>指定针对某个列的多个可能值</td>
+</tr>
+</table>
+</div>

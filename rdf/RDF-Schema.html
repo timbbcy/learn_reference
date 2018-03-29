@@ -1,0 +1,57 @@
+<div class="article-intro" id="content">
+<h1>RDF <span class="color_h1">Schema</span> (RDFS)</h1>
+<hr/>
+<p class="intro">RDF Schema (RDFS) 是对 RDF 的一种扩展。</p>
+<hr/>
+<h2>RDF Schema 和 应用程序的类</h2>
+<p>RDF 通过类、属性和值来描述资源。</p>
+<p>此外，RDF 还需要一种定义应用程序专业的类和属性的方法。应用程序专用的类和属性必须使用对 RDF 的扩展来定义。</p>
+<p>RDF Schema 就是这样一种扩展。</p>
+<hr/>
+<h2>RDF Schema (RDFS)</h2>
+<p>RDF Schema 不提供实际的应用程序专用的类和属性，而是提供了描述应用程序专用的类和属性的框架。</p>
+<p>RDF Schema 中的类与面向对象编程语言中的类非常相似。这就使得资源能够作为类的实例和类的子类来被定义。</p>
+<hr/>
+<h2>RDFS 实例</h2>
+<p>下面的实例演示了 RDFS 的能力的某些方面：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"<br/>
+xml:base="http://www.animals.fake/animals#"&gt;<br/><br/>
+&lt;rdf:Description rdf:ID="animal"&gt;<br/>
+   
+  &lt;rdf:type
+   rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;rdf:Description rdf:ID="horse"&gt;<br/>
+   
+  &lt;rdf:type
+   rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br/>
+   
+  &lt;rdfs:subClassOf rdf:resource="#animal"/&gt;<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<p>在上面的例子中，资源 "horse" 是类 "animal" 的子类。</p>
+<hr/>
+<h2>简写的例子</h2>
+<p>由于一个 RDFS 类就是一个 RDF 资源，我们可以通过使用 rdfs:Class 取代 rdf:Description，并去掉 rdf:type 信息，来把上面的例子简写一下：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"<br/>
+xml:base="http://www.animals.fake/animals#"&gt;<br/><br/>
+&lt;rdfs:Class rdf:ID="animal" /&gt;<br/><br/>
+&lt;rdfs:Class rdf:ID="horse"&gt;<br/>
+   
+  &lt;rdfs:subClassOf rdf:resource="#animal"/&gt;<br/>
+&lt;/rdfs:Class&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<p>就是这样！</p>
+</div>

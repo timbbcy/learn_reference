@@ -1,0 +1,166 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 应用 - <span class="color_h1">创建 CRUD 应用</span></h1>
+<p>
+数据收集并妥善管理数据是网络应用共同的必要。CRUD 允许我们生成页面列表，并编辑数据库记录。本教程将向你演示如何使用 jQuery EasyUI 框架实现一个 CRUD DataGrid。
+</p>
+<p>我们将使用下面的插件：</p>
+<ul>
+<li>datagrid：向用户展示列表数据。</li>
+<li>dialog：创建或编辑一条单一的用户信息。</li>
+<li>form：用于提交表单数据。</li>
+<li>messager：显示一些操作信息。</li>
+</ul>
+<h4>步骤 1：准备数据库</h4>
+<p>我们将使用 MySql 数据库来存储用户信息。创建数据库和 'users' 表。</p>
+<img src="/wp-content/uploads/2013/12/db.png"/>
+<h4>步骤 2：创建 DataGrid 来显示用户信息</h4>
+<p>创建没有 javascript 代码的 DataGrid。</p>
+<pre style="color:#006600">
+&lt;table id="dg" title="My Users" class="easyui-datagrid" style="width:550px;height:250px"
+        url="get_users.php"
+        toolbar="#toolbar"
+        rownumbers="true" fitColumns="true" singleSelect="true"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th field="firstname" width="50"&gt;First Name&lt;/th&gt;
+            &lt;th field="lastname" width="50"&gt;Last Name&lt;/th&gt;
+            &lt;th field="phone" width="50"&gt;Phone&lt;/th&gt;
+            &lt;th field="email" width="50"&gt;Email&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+&lt;/table&gt;
+&lt;div id="toolbar"&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()"&gt;New User&lt;/a&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()"&gt;Edit User&lt;/a&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()"&gt;Remove User&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p>我们不需要写任何的 javascript 代码，就能向用户显示列表，如下图所示：</p>
+<img src="/wp-content/uploads/2013/12/list.png"/>
+<p>DataGrid 使用 'url' 属性，并赋值为 'get_users.php'，用来从服务器检索数据。</p>
+<p>get_users.php 文件的代码</p>
+<pre style="color:#006600">
+$rs = mysql_query('select * from users');
+$result = array();
+while($row = mysql_fetch_object($rs)){
+    array_push($result, $row);
+}
+
+echo json_encode($result);
+</pre>
+<h4>步骤 3：创建表单对话框</h4>
+<p>我们使用相同的对话框来创建或编辑用户。</p>
+<pre style="color:#006600">
+&lt;div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+        closed="true" buttons="#dlg-buttons"&gt;
+    &lt;div class="ftitle"&gt;User Information&lt;/div&gt;
+    &lt;form id="fm" method="post"&gt;
+        &lt;div class="fitem"&gt;
+            &lt;label&gt;First Name:&lt;/label&gt;
+            &lt;input name="firstname" class="easyui-validatebox" required="true"&gt;
+        &lt;/div&gt;
+        &lt;div class="fitem"&gt;
+            &lt;label&gt;Last Name:&lt;/label&gt;
+            &lt;input name="lastname" class="easyui-validatebox" required="true"&gt;
+        &lt;/div&gt;
+        &lt;div class="fitem"&gt;
+            &lt;label&gt;Phone:&lt;/label&gt;
+            &lt;input name="phone"&gt;
+        &lt;/div&gt;
+        &lt;div class="fitem"&gt;
+            &lt;label&gt;Email:&lt;/label&gt;
+            &lt;input name="email" class="easyui-validatebox" validType="email"&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+&lt;div id="dlg-buttons"&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()"&gt;Save&lt;/a&gt;
+    &lt;a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')"&gt;Cancel&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p>这个对话框已经创建，也没有任何的 javascript 代码:。</p>
+<img src="/wp-content/uploads/2013/12/dialog.png"/>
+<h4>步骤 4：实现创建和编辑用户</h4>
+<p>当创建用户时，打开一个对话框并清空表单数据。</p>
+<pre style="color:#006600">
+function newUser(){
+    $('#dlg').dialog('open').dialog('setTitle','New User');
+    $('#fm').form('clear');
+    url = 'save_user.php';
+}
+</pre>
+<p>当编辑用户时，打开一个对话框并从 datagrid 选择的行中加载表单数据。</p>
+<pre style="color:#006600">
+var row = $('#dg').datagrid('getSelected');
+if (row){
+    $('#dlg').dialog('open').dialog('setTitle','Edit User');
+    $('#fm').form('load',row);
+    url = 'update_user.php?id='+row.id;
+}
+</pre>
+<p>'url' 存储着当保存用户数据时表单回传的 URL 地址。</p>
+<h4>步骤 5：保存用户数据</h4>
+<p>我们使用下面的代码保存用户数据：</p>
+<pre style="color:#006600">
+function saveUser(){
+    $('#fm').form('submit',{
+        url: url,
+        onSubmit: function(){
+            return $(this).form('validate');
+        },
+        success: function(result){
+            var result = eval('('+result+')');
+            if (result.errorMsg){
+                $.messager.show({
+                    title: 'Error',
+                    msg: result.errorMsg
+                });
+            } else {
+                $('#dlg').dialog('close');        // close the dialog
+                $('#dg').datagrid('reload');    // reload the user data
+            }
+        }
+    });
+}
+</pre>
+<p>
+提交表单之前，'onSubmit' 函数将被调用，该函数用来验证表单字段值。当表单字段值提交成功，关闭对话框并重新加载 datagrid 数据。
+</p>
+<h4>步骤 6：删除一个用户</h4>
+<p>我们使用下面的代码来移除一个用户：</p>
+<pre style="color:#006600">
+function destroyUser(){
+    var row = $('#dg').datagrid('getSelected');
+    if (row){
+        $.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
+            if (r){
+                $.post('destroy_user.php',{id:row.id},function(result){
+                    if (result.success){
+                        $('#dg').datagrid('reload');    // reload the user data
+                    } else {
+                        $.messager.show({    // show error message
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    }
+                },'json');
+            }
+        });
+    }
+}
+</pre>
+<br/>
+<img src="/wp-content/uploads/2013/12/confirm.png"/>
+<p>
+移除一行之前,我们将显示一个确认对话框让用户决定是否真的移除该行数据。当移除数据成功之后，调用 'reload' 方法来刷新 datagrid 数据。
+</p>
+<h4>步骤 7：运行代码</h4>
+<p>开启 MySQL，在浏览器运行代码。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-app-crud1.zip">jeasyui-app-crud1.zip</a></p>
+</div>

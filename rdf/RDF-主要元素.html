@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>RDF <span class="color_h1">主要</span> 元素</h1>
+<hr/>
+<p><strong>RDF 的主要元素是 &lt;RDF&gt; 以及可表示某个资源的 &lt;Description&gt; 元素。</strong></p>
+<hr/>
+<h2>&lt;rdf:RDF&gt; 元素</h2>
+<p>&lt;rdf:RDF&gt; 是 RDF 文档的根元素。它把 XML 文档定义为一个 RDF 文档。它也包含了对 RDF 命名空间的引用：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"&gt;<br/>
+ 
+...<i>Description goes here...</i><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<br/><hr/>
+<h2>&lt;rdf:Description&gt; 元素</h2>
+<p>&lt;rdf:Description&gt; 元素可通过 about 属性标识一个资源。</p>
+<p>&lt;rdf:Description&gt; 元素可包含描述资源的那些元素：<p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://www.recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Description<br/>
+ rdf:about="http://www.recshop.fake/cd/Empire Burlesque"&gt;<br/>
+   
+  &lt;cd:artist&gt;Bob Dylan&lt;/cd:artist&gt;<br/>
+   
+  &lt;cd:country&gt;USA&lt;/cd:country&gt;<br/>
+   
+  &lt;cd:company&gt;Columbia&lt;/cd:company&gt;<br/>
+   
+  &lt;cd:price&gt;10.90&lt;/cd:price&gt;<br/>
+   
+  &lt;cd:year&gt;1985&lt;/cd:year&gt;<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<p>artist、country、company、price 以及 year 这些元素被定义在命名空间 http://www.recshop.fake/cd# 中。此命名空间在 RDF 之外（并非 RDF 的组成部分）。RDF 仅仅定义了这个框架。而 artist、country、company、price 以及 year 这些元素必须被其他人（公司、组织或个人等）进行定义。</p>
+<hr/>
+<h2>属性（property）来定义属性（attribute）</h2>
+<p>属性元素（property elements）也可作为属性（attributes）来被定义（取代元素）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://www.recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Description<br/>
+ rdf:about="http://www.recshop.fake/cd/Empire Burlesque"<br/>
+  cd:artist="Bob Dylan"  cd:country="USA"<br/>
+  cd:company="Columbia"  cd:price="10.90"<br/>
+  cd:year="1985" /&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<br/><hr/>
+<h2>属性（property）来定义属性（attribute）</h2>
+<p>属性元素（property elements）也可作为属性（attributes）来被定义（取代元素）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://www.recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Description<br/>
+ rdf:about="http://www.recshop.fake/cd/Empire Burlesque"&gt;<br/>
+   
+  &lt;cd:artist rdf:resource="http://www.recshop.fake/cd/dylan" /&gt;<br/>
+   
+  ...<br/>
+   
+  ...<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+<p>上面的例子中，属性 artist 没有值，但是却引用了一个对包含有关艺术家的信息的资源。</p>
+</p></p></div>

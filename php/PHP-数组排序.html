@@ -1,0 +1,109 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">数组排序</span>
+</h1>
+<hr/>
+<p class="intro">数组中的元素可以按字母或数字顺序进行降序或升序排列。</p>
+<hr/>
+<h2>PHP - 数组排序函数</h2>
+<p>在本章中，我们将一一介绍下列 PHP 数组排序函数：</p>
+<ul>
+<li>sort() - 对数组进行升序排列</li>
+<li>rsort() - 对数组进行降序排列</li>
+<li>asort() - 根据关联数组的值，对数组进行升序排列</li>
+<li>ksort() - 根据关联数组的键，对数组进行升序排列</li>
+<li>arsort() - 根据关联数组的值，对数组进行降序排列</li>
+<li>krsort() - 根据关联数组的键，对数组进行降序排列</li>
+</ul>
+<hr/>
+<h2>sort() - 对数组进行升序排列</h2>
+<p>下面的实例将 $cars 数组中的元素按照字母升序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$cars=array("Volvo","BMW","Toyota");<br/>sort($cars);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_sort_alpha" target="_blank">运行实例 »</a>
+</div>
+<p>下面的实例将 $numbers 数组中的元素按照数字升序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$numbers=array(4,6,2,22,11);<br/>sort($numbers);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_sort_num" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>rsort() - 对数组进行降序排列</h2>
+<p>下面的实例将 $cars 数组中的元素按照字母降序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$cars=array("Volvo","BMW","Toyota");<br/>rsort($cars);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_rsort_alpha" target="_blank">运行实例 »</a>
+</div>
+<p>下面的实例将 $numbers 数组中的元素按照数字降序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$numbers=array(4,6,2,22,11);<br/>rsort($numbers);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_rsort_num" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>asort() - 根据数组的值，对数组进行升序排列</h2>
+<p>下面的实例根据数组的值，对关联数组进行升序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");<br/>
+	asort($age);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_asort" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>ksort() - 根据数组的键，对数组进行升序排列</h2>
+<p>下面的实例根据数组的键，对关联数组进行升序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");<br/>
+	ksort($age);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_ksort" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>arsort() - 根据数组的值，对数组进行降序排列</h2>
+<p>下面的实例根据数组的值，对关联数组进行降序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");<br/>
+	arsort($age);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_arsort" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>krsort() - 根据数组的键，对数组进行降序排列</h2>
+<p>下面的实例根据数组的键，对关联数组进行降序排列：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;?php<br/>
+	$age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");<br/>
+	krsort($age);<br/>?&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_krsort" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>完整的 PHP Array 参考手册</h2>
+<p>如需查看所有数组函数的完整参考手册，请访问我们的 <a href="php-ref-array.html">PHP Array 参考手册</a>。</p>
+<p>该参考手册提供了每个函数的简要描述和应用实例！</p>
+</div>

@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>DTD 
+<span class="color_h1">简介</span></h1>
+<hr/>
+<p class="intro">文档类型定义（DTD）可定义合法的XML文档构建模块。它使用一系列合法的元素来定义文档的结构。
+</p>
+<p class="intro">DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。</p>
+<hr/>
+<h2>内部的 DOCTYPE 声明</h2>
+<p>假如 DTD 被包含在您的 XML 源文件中，它应当通过下面的语法包装在一个 DOCTYPE 声明中：</p>
+<div class="code notranslate"><div>
+&lt;!DOCTYPE root-element [element-declarations]&gt;
+</div></div>
+<p>带有 DTD 的 XML 文档实例（请在 IE5 以及更高的版本打开，并选择查看源代码）：</p>
+<div class="code"><div>
+
+&lt;?xml version="1.0"?&gt;<br/>
+&lt;!DOCTYPE note [<br/>
+  &lt;!ELEMENT note (to,from,heading,body)&gt;<br/>
+  &lt;!ELEMENT to      (#PCDATA)&gt;<br/>
+  &lt;!ELEMENT from    (#PCDATA)&gt;<br/>
+  &lt;!ELEMENT heading (#PCDATA)&gt;<br/>
+  &lt;!ELEMENT body    (#PCDATA)&gt;<br/>
+]&gt;<br/>
+&lt;note&gt;<br/>
+  &lt;to&gt;Tove&lt;/to&gt;<br/>
+  &lt;from&gt;Jani&lt;/from&gt;<br/>
+  &lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+  &lt;body&gt;Don't forget me this weekend&lt;/body&gt;<br/>
+&lt;/note&gt;
+</div></div>
+<p><a href="/try/xml/note_in_dtd.xml" target="_blank">在您的浏览器中打开此 XML 文件，并选择"查看源代码"命令。</a></p>
+<p>以上 DTD 解释如下：</p>
+<ul>
+<li><strong>!DOCTYPE note</strong> (第二行)定义此文档是 <strong>note</strong> 类型的文档。</li>
+<li><strong>!ELEMENT note</strong> (第三行)定义 <strong>note</strong> 元素有四个元素："to、from、heading,、body"</li>
+<li><strong>!ELEMENT to</strong> (第四行)定义 <strong>to</strong> 元素为 "#PCDATA" 类型</li>
+<li><strong>!ELEMENT from</strong> (第五行)定义 <strong>from</strong> 元素为 "#PCDATA" 类型</li>
+<li><strong>!ELEMENT heading</strong> (第六行)定义 <strong>heading</strong> 元素为 "#PCDATA" 类型</li>
+<li><strong>!ELEMENT body</strong> (第七行)定义 <strong>body</strong> 元素为 "#PCDATA" 类型</li>
+</ul>
+<hr/>
+<h2>外部文档声明</h2>
+<p>假如 DTD 位于 XML 源文件的外部，那么它应通过下面的语法被封装在一个 DOCTYPE 定义中：</p>
+<div class="code notranslate"><div>
+&lt;!DOCTYPE root-element SYSTEM "filename"&gt;
+</div></div>
+<p>这个 XML 文档和上面的 XML 文档相同，但是拥有一个外部的 DTD: （<a href="/try/xml/note_ex_dtd.xml">点击打开该文件</a>，并选择"查看源代码"命令。）</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/>
+&lt;!DOCTYPE note SYSTEM "note.dtd"&gt;<br/>
+&lt;note&gt;<br/>
+ 
+&lt;to&gt;Tove&lt;/to&gt;<br/>
+ 
+&lt;from&gt;Jani&lt;/from&gt;<br/>
+ 
+&lt;heading&gt;Reminder&lt;/heading&gt;<br/>
+ 
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br/>
+&lt;/note&gt;
+</div></div>
+<p>这是包含 DTD 的 "note.dtd" 文件：</p>
+<div class="code notranslate"><div>
+
+&lt;!ELEMENT note (to,from,heading,body)&gt;<br/>
+&lt;!ELEMENT to (#PCDATA)&gt;<br/>
+&lt;!ELEMENT from (#PCDATA)&gt;<br/>
+&lt;!ELEMENT heading (#PCDATA)&gt;<br/>
+&lt;!ELEMENT body (#PCDATA)&gt;
+
+</div></div>
+<br/><hr/>
+<h2>为什么使用 DTD？</h2>
+<p>通过 DTD，您的每一个 XML 文件均可携带一个有关其自身格式的描述。</p>
+<p>通过 DTD，独立的团体可一致地使用某个标准的 DTD 来交换数据。</p>
+<p>而您的应用程序也可使用某个标准的 DTD 来验证从外部接收到的数据。</p>
+<p>您还可以使用 DTD 来验证您自身的数据。</p>
+</div>

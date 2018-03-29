@@ -1,0 +1,72 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">AND &amp; OR</span> 运算符</h1>
+<hr/>
+<p class="intro">AND &amp; OR 运算符用于基于一个以上的条件对记录进行过滤。</p>
+<hr/>
+<h2>SQL AND &amp; OR 运算符</h2>
+<p>如果第一个条件和第二个条件都成立，则 AND 运算符显示一条记录。</p>
+<p>如果第一个条件和第二个条件中只要有一个成立，则 OR 运算符显示一条记录。</p>
+<hr/>
+<h2>演示数据库</h2>
+<p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 "Websites" 表的数据：</p>
+<pre>
++----+--------------+---------------------------+-------+---------+
+| id | name         | url                       | alexa | country |
++----+--------------+---------------------------+-------+---------+
+| 1  | Google       | https://www.google.cm/    | 1     | USA     |
+| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
+| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
+| 4  | 微博          | http://weibo.com/         | 20    | CN      |
+| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
++----+--------------+---------------------------+-------+---------+
+</pre>
+<hr/>
+<h2>AND 运算符实例</h2>
+<p>下面的 SQL 语句从 "Websites" 表中选取国家为 "CN" 且alexa排名大于 "50" 的所有网站：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">CN</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">AND</span><span class="hl-code"> </span><span class="hl-identifier">alexa</span><span class="hl-code"> &gt; </span><span class="hl-number">50</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<img src="http://www.runoob.com/wp-content/uploads/2013/09/and-or1.jpg" width="70%"/>
+</div>
+</div>
+<br/>
+<hr/>
+<h2>OR 运算符实例</h2>
+<p>下面的 SQL 语句从 "Websites" 表中选取国家为 "USA" 或者 "CN" 的所有客户：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">USA</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">OR</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">CN</span><span class="hl-quotes">'</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<img src="http://www.runoob.com/wp-content/uploads/2013/09/and-or2.jpg" width="70%"/>
+</div>
+</div>
+<br/>
+<hr/>
+<h2>结合 AND &amp; OR</h2>
+<p>您也可以把 AND 和 OR 结合起来（使用圆括号来组成复杂的表达式）。</p>
+<p>下面的 SQL 语句从 "Websites" 表中选取 alexa 排名大于 "15"  且国家为 "CN"  或 "USA" 的所有网站：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">Websites</span><span class="hl-code">
+</span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">alexa</span><span class="hl-code"> &gt; </span><span class="hl-number">15</span><span class="hl-code">
+</span><span class="hl-reserved">AND</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">CN</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">OR</span><span class="hl-code"> </span><span class="hl-identifier">country</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">USA</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>执行输出结果：</p>
+<div class="example_code">
+<img src="http://www.runoob.com/wp-content/uploads/2013/09/and-or3.jpg" width="70%"/>
+</div>
+</div>
+</div>

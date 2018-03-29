@@ -1,0 +1,95 @@
+<div class="article-intro" id="content">
+<h1>
+<span class="color_h1">&lt;AppML&gt;</span> 教程 </h1>
+<hr/>
+<table><tr>
+<td><img border="0" src="/images/pic_appml.jpg"/></td>
+<td>
+<h1>&lt;AppML&gt;</h1>
+<h1>快速和简单的</h1>
+<h1>Web 开发</h1>
+</td>
+</tr></table>
+<hr/>
+<h2>什么是 &lt;AppML&gt;?</h2>
+<p>&lt;AppML&gt; appML是一个为web应用程序设计的HTML扩展框: </p>
+<ul type="square">
+<li> XML 语言定义了应用的模型 </li>
+<li> JavaScript 运行于客户端浏览器上</li>
+<li> PHP 或者 ASP 脚本运行于服务器上 </li>
+</ul>
+<p>AppML 是应用模式语言（ <strong>A</strong>pplication <strong>M</strong>odeling
+<strong>L</strong>anguage）。</p>
+<hr/>
+<h2>学习非常简单</h2>
+<ul type="square">
+<li>超级简单的模型</li>
+<li>超级简单的属性</li>
+<li>超级简单的应用开发</li>
+<li>运行于任何平台及任何浏览器</li>
+<li>安装简单</li>
+</ul>
+<hr/>
+<h2>只有 HTML, JavaScript, 和 XML</h2>
+<p> &lt;AppML&gt;  只需要在HTML页面中包含 JavaScript，然后再服务端上存储 XML 数据：</p>
+<div class="example">
+<h2 class="example"> HTML 页面:</h2>
+<div class="example_code notranslate">
+&lt;h1&gt;My First Web Application&lt;/h1&gt;<br/><br/>
+	&lt;div id="Place01"&gt;<br/>&lt;table id="Template01" 
+class="appmltable"&gt;<br/>&lt;tr&gt;<br/>  &lt;th&gt;Customer&lt;/th&gt;<br/>  &lt;th&gt;City&lt;/th&gt;<br/>
+ &lt;th&gt;Country&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr id="appml_row"&gt;<br/>  &lt;td&gt;#CustomerName#&lt;/td&gt;<br/>
+ &lt;td&gt;#City#&lt;/td&gt;<br/>  &lt;td&gt;#Country#&lt;/td&gt;<br/>&lt;/tr&gt;<br/>&lt;/table&gt;<br/>
+	&lt;/div&gt;<br/><br/>
+&lt;script src="appml.js"&gt;&lt;/script&gt;<br/>
+&lt;script&gt;<br/>
+app=new AppML("appml.htmlx","Models/Customers");<br/>
+app.run("Place01","Template01");<br/>
+&lt;/script&gt;</div>
+<br/><h2 class="example"> XML :</h2>
+<div class="example_code notranslate">
+	&lt;appml&gt;<br/><br/>
+&lt;datasource&gt;<br/>
+&lt;database&gt;<br/>
+  &lt;connection&gt;Demo&lt;/connection&gt;<br/>
+  &lt;sql&gt;SELECT CustomerName,City,Country FROM Customers&lt;/sql&gt;<br/>
+&lt;/database&gt;<br/>
+&lt;/datasource&gt;<br/><br/>
+&lt;/appml&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryappml_tut_03" target="_blank">尝试一下 »</a>
+</div>
+<p>如果你之前已经学习了web开发，你会发现 &lt;AppML&gt; 使用非常简单。 </p>
+<p>如果你之前学习过 PHP, ASP, 或者 
+ASP.NET的开发, 你会清楚的看到使用 &lt;AppML&gt; 的好处。</p>
+<hr/>
+<h2>现代 Web 架构</h2>
+<p>&lt;AppML&gt; 是一个结合了最新的技术和现代web开发想法，使用低消耗高速简单的架构：</p>
+<ul type="square">
+<li>采用 MVC 架构</li>
+<li>极低的带宽消耗</li>
+<li>云计算的优化</li>
+<li>内容完全分离</li>
+<li>智能，灵活，快速的Web开发</li>
+<li>高度的可扩展性和可测试性</li>
+<li>简单的配置和重新配置</li>
+<li>智能支持用户账号和角色</li>
+</ul>
+<hr/>
+<h2>&lt;Appml&gt; 历史</h2>
+<p>1999年，Refsnes Data公司开始研发AppML,一种基于XML、用来定义Internet应用程序的语言。2000年9月，一个为了挪威手球联盟而进行的大型项目开始，其目的是想通过仅仅使用AppML将一个巨大的信息系统从旧的DOS环境转换到现代的Internet上。而这个主要的项目刚刚取得了巨大的成功。据开发者估计，和传统的Web开发相比，这次的开发时间被缩短了高达75%。</p>
+<p>在2007年九月中旬，AppML内容实现脱机使用，因为它支持ASP和IE。</p>
+<p>在2013年十月，AppML宣布，作为一个开放源代码的产品，在PHP、ASP.NET版本中兼容
+所有的浏览器。</p>
+<p>AppML在1999年最初的设计目标:</p>
+<ul>
+<li>AppML 应用必须运行于是有网络</li>
+<li>AppML 应用应具有平台独立性</li>
+<li>AppML 应用必须使用互联网标准 (HTTP, HTML, CSS, XML)</li>
+<li>AppML 应用必须支持各种应用的需求</li>
+<li>AppML 应用必需是自描述</li>
+<li>AppML
+应用程序必须易于开发，维护和修改</li>
+<li>AppML 应用程序必须面向未来</li>
+</ul>
+</div>

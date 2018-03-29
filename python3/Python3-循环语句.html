@@ -1,0 +1,386 @@
+<div class="article-intro" id="content">
+<h1>Python3 循环语句</h1>
+<p>本章节将为大家介绍Python循环语句的使用。</p>
+<p>Python中的循环语句有 for 和 while。</p>
+<p>Python循环语句的控制结构图如下所示：</p>
+<p>
+<img src="http://www.runoob.com/wp-content/uploads/2014/05/while_loop_1.png"/>
+</p>
+<hr/>
+<h2>
+while 循环
+</h2>
+<p>Python中while语句的一般形式：</p>
+<pre>
+while 判断条件：
+    语句
+</pre>
+<p>
+同样需要注意冒号和缩进。另外，在Python中没有do..while循环。
+</p>
+<p>以下实例使用了 while 来计算 1 到 100 的总和：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/env python3</span><span class="hl-code">
+</span><span class="hl-identifier">n</span><span class="hl-code"> = </span><span class="hl-number">100</span><span class="hl-code">
+</span><span class="hl-identifier">sum</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-identifier">counter</span><span class="hl-code"> = </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> &lt;= </span><span class="hl-identifier">n</span><span class="hl-code">:
+    </span><span class="hl-identifier">sum</span><span class="hl-code"> = </span><span class="hl-identifier">sum</span><span class="hl-code"> + </span><span class="hl-identifier">counter</span><span class="hl-code">
+</span><span class="hl-identifier">counter</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">1 到 %d 之和为: %d</span><span class="hl-quotes">"</span><span class="hl-code"> % </span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-code">,</span><span class="hl-identifier">sum</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行结果如下：</p>
+<pre>
+1 到 100 之和为: 5050
+</pre>
+<h3>无限循环</h3>
+<p>我们可以通过设置条件表达式永远不为 false 来实现无限循环，实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-identifier">var</span><span class="hl-code"> = </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">var</span><span class="hl-code"> == </span><span class="hl-number">1</span><span class="hl-code"> :  </span><span class="hl-comment"># 表达式永远为 true</span><span class="hl-code">
+</span><span class="hl-identifier">num</span><span class="hl-code"> = </span><span class="hl-builtin">int</span><span class="hl-brackets">(</span><span class="hl-builtin">input</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">输入一个数字  :</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">你输入的数字是: </span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">num</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Good bye!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上脚本，输出结果如下：</p>
+<pre>
+输入一个数字  :5
+你输入的数字是:  5
+输入一个数字  :
+</pre>
+<p>你可以使用 <b> CTRL+C</b> 来退出当前的无限循环。</p>
+<p>无限循环在服务器上客户端的实时请求非常有用。</p>
+<h3>while 循环使用 else 语句</h3><p>
+在 while … else 在条件语句为 false 时执行 else 的语句块：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-identifier">count</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">count</span><span class="hl-code"> &lt; </span><span class="hl-number">5</span><span class="hl-code">:
+   </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">count</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string"> 小于 5</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">count</span><span class="hl-code"> = </span><span class="hl-identifier">count</span><span class="hl-code"> + </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">:
+   </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">count</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string"> 大于或等于 5</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上脚本，输出结果如下：</p>
+<pre>
+0  小于 5
+1  小于 5
+2  小于 5
+3  小于 5
+4  小于 5
+5  大于或等于 5
+</pre><h3>
+简单语句组</h3><p>
+类似if语句的语法，如果你的while循环体中只有一条语句，你可以将该语句与while写在同一行中， 如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python</span><span class="hl-code">
+</span><span class="hl-identifier">flag</span><span class="hl-code"> = </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-identifier">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">flag</span><span class="hl-brackets">)</span><span class="hl-code">: </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">欢迎访问菜鸟教程!</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Good bye!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p><strong>注意：</strong>以上的无限循环你可以使用 CTRL+C 来中断循环。</p>
+<p>执行以上脚本，输出结果如下：</p>
+<pre>
+欢迎访问菜鸟教程!
+欢迎访问菜鸟教程!
+欢迎访问菜鸟教程!
+欢迎访问菜鸟教程!
+欢迎访问菜鸟教程!
+……
+</pre>
+<hr/>
+<h2>for 语句</h2>
+<p>Python for循环可以遍历任何序列的项目，如一个列表或者一个字符串。</p>
+<p>for循环的一般格式如下：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> &lt;</span><span class="hl-identifier">variable</span><span class="hl-code">&gt; </span><span class="hl-reserved">in</span><span class="hl-code"> &lt;</span><span class="hl-identifier">sequence</span><span class="hl-code">&gt;:
+    &lt;</span><span class="hl-identifier">statements</span><span class="hl-code">&gt;
+</span><span class="hl-reserved">else</span><span class="hl-code">:
+    &lt;</span><span class="hl-identifier">statements</span><span class="hl-code">&gt;</span></div>
+</div>
+</div>
+<p>Python loop循环实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-identifier">languages</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">C</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">C++</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Perl</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Python</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code"> 
+&gt;&gt;&gt; </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">languages</span><span class="hl-code">:
+...     </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-code">
+... 
+</span><span class="hl-identifier">C</span><span class="hl-code">
+</span><span class="hl-identifier">C</span><span class="hl-code">++
+</span><span class="hl-identifier">Perl</span><span class="hl-code">
+</span><span class="hl-identifier">Python</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<p>以下 for 实例中使用了 break 语句，break 语句用于跳出当前循环体：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-identifier">sites</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">Baidu</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">site</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">sites</span><span class="hl-code">:
+    </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">site</span><span class="hl-code"> == </span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">:
+        </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">break</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">循环数据 </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">site</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">:
+    </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">没有循环数据!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">完成循环!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行脚本后，在循环到 "Runoob"时会跳出循环体：</p>
+<pre>
+循环数据 Baidu
+循环数据 Google
+菜鸟教程!
+完成循环!
+</pre>
+<hr/>
+<h2>
+range()函数</h2>
+<p>如果你需要遍历数字序列，可以使用内置range()函数。它会生成数列，例如:
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">:
+...     </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">
+...
+</span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-number">2</span><span class="hl-code">
+</span><span class="hl-number">3</span><span class="hl-code">
+</span><span class="hl-number">4</span></div>
+</div>
+</div>
+<p>你也可以使用range指定区间的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-number">5</span><span class="hl-code">,</span><span class="hl-number">9</span><span class="hl-brackets">)</span><span class="hl-code"> :
+    </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-number">5</span><span class="hl-code">
+</span><span class="hl-number">6</span><span class="hl-code">
+</span><span class="hl-number">7</span><span class="hl-code">
+</span><span class="hl-number">8</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<p>
+也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'): 
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code"> :
+    </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-number">3</span><span class="hl-code">
+</span><span class="hl-number">6</span><span class="hl-code">
+</span><span class="hl-number">9</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<p>负数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-number">10</span><span class="hl-code">, -</span><span class="hl-number">100</span><span class="hl-code">, -</span><span class="hl-number">30</span><span class="hl-brackets">)</span><span class="hl-code"> :
+    </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+    
+-</span><span class="hl-number">10</span><span class="hl-code">
+-</span><span class="hl-number">40</span><span class="hl-code">
+-</span><span class="hl-number">70</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<p>您可以结合range()和len()函数以遍历一个序列的索引,如下所示:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">Google</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Baidu</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Taobao</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">QQ</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">
+&gt;&gt;&gt; </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-builtin">len</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">:
+...     </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">, </span><span class="hl-identifier">a</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">
+... 
+</span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-identifier">Google</span><span class="hl-code">
+</span><span class="hl-number">1</span><span class="hl-code"> </span><span class="hl-identifier">Baidu</span><span class="hl-code">
+</span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-identifier">Runoob</span><span class="hl-code">
+</span><span class="hl-number">3</span><span class="hl-code"> </span><span class="hl-identifier">Taobao</span><span class="hl-code">
+</span><span class="hl-number">4</span><span class="hl-code"> </span><span class="hl-identifier">QQ</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<p>还可以使用range()函数来创建一个列表：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-builtin">list</span><span class="hl-brackets">(</span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-number">3</span><span class="hl-code">, </span><span class="hl-number">4</span><span class="hl-brackets">]</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<hr/>
+<h2>
+break和continue语句及循环中的else子句
+</h2>
+<p>break 语句可以跳出 for 和 while 的循环体。如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
+实例如下：
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">letter</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">:     </span><span class="hl-comment"># 第一个实例</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">letter</span><span class="hl-code"> == </span><span class="hl-quotes">'</span><span class="hl-string">b</span><span class="hl-quotes">'</span><span class="hl-code">:
+      </span><span class="hl-reserved">break</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">当前字母为 :</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">letter</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">var</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code"> </span><span class="hl-comment"># 第二个实例</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">var</span><span class="hl-code"> &gt; </span><span class="hl-number">0</span><span class="hl-code">:              
+   </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">当期变量值为 :</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">var</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">var</span><span class="hl-code"> = </span><span class="hl-identifier">var</span><span class="hl-code"> -</span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">var</span><span class="hl-code"> == </span><span class="hl-number">5</span><span class="hl-code">:
+      </span><span class="hl-reserved">break</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Good bye!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上脚本输出结果为：</p>
+<pre>
+当前字母为 : R
+当前字母为 : u
+当前字母为 : n
+当前字母为 : o
+当前字母为 : o
+当期变量值为 : 10
+当期变量值为 : 9
+当期变量值为 : 8
+当期变量值为 : 7
+当期变量值为 : 6
+Good bye!
+</pre>
+<p>continue语句被用来告诉Python跳过当前循环块中的剩余语句，然后继续进行下一轮循环。
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">letter</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">:     </span><span class="hl-comment"># 第一个实例</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">letter</span><span class="hl-code"> == </span><span class="hl-quotes">'</span><span class="hl-string">o</span><span class="hl-quotes">'</span><span class="hl-code">:        </span><span class="hl-comment"># 字母为 o 时跳过输出</span><span class="hl-code">
+</span><span class="hl-reserved">continue</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">当前字母 :</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">letter</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">var</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code"> </span><span class="hl-comment"># 第二个实例</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">var</span><span class="hl-code"> &gt; </span><span class="hl-number">0</span><span class="hl-code">:              
+   </span><span class="hl-identifier">var</span><span class="hl-code"> = </span><span class="hl-identifier">var</span><span class="hl-code"> -</span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">var</span><span class="hl-code"> == </span><span class="hl-number">5</span><span class="hl-code">:             </span><span class="hl-comment"># 变量为 5 时跳过输出</span><span class="hl-code">
+</span><span class="hl-reserved">continue</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">当前变量值 :</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">var</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Good bye!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上脚本输出结果为：</p>
+<pre>
+当前字母 : R
+当前字母 : u
+当前字母 : n
+当前字母 : b
+当前变量值 : 9
+当前变量值 : 8
+当前变量值 : 7
+当前变量值 : 6
+当前变量值 : 4
+当前变量值 : 3
+当前变量值 : 2
+当前变量值 : 1
+当前变量值 : 0
+Good bye!
+</pre>
+<p>循环语句可以有 else 子句，它在穷尽列表(以for循环)或条件变为 false (以while循环)导致循环终止时被执行,但循环被break终止时不执行。
+</p>
+<p>
+如下实例用于查询质数的循环例子:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">n</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-number">10</span><span class="hl-brackets">)</span><span class="hl-code">:
+    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-builtin">range</span><span class="hl-brackets">(</span><span class="hl-number">2</span><span class="hl-code">, </span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">n</span><span class="hl-code"> % </span><span class="hl-identifier">x</span><span class="hl-code"> == </span><span class="hl-number">0</span><span class="hl-code">:
+            </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">等于</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">x</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">*</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">n</span><span class="hl-code">//</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">break</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">:
+        </span><span class="hl-comment"># 循环中没有找到元素</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string"> 是质数</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上脚本输出结果为：</p>
+<pre>
+2  是质数
+3  是质数
+4 等于 2 * 2
+5  是质数
+6 等于 2 * 3
+7  是质数
+8 等于 2 * 4
+9 等于 3 * 3
+</pre>
+<hr/>
+<h2>pass 语句</h2>
+<p>Python pass是空语句，是为了保持程序结构的完整性。</p>
+<p>pass 不做任何事情，一般用做占位语句，如下实例</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-reserved">True</span><span class="hl-code">:
+...     </span><span class="hl-reserved">pass</span><span class="hl-code"> </span><span class="hl-comment"># 等待键盘中断 (Ctrl+C)</span></div>
+</div>
+</div>
+<p>最小的类:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">MyEmptyClass</span><span class="hl-code">:
+...     </span><span class="hl-reserved">pass</span></div>
+</div>
+</div>
+<p>以下实例在字母为 o 时 执行 pass 语句块:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">letter</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">: 
+   </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">letter</span><span class="hl-code"> == </span><span class="hl-quotes">'</span><span class="hl-string">o</span><span class="hl-quotes">'</span><span class="hl-code">:
+      </span><span class="hl-reserved">pass</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">执行 pass 块</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">当前字母 :</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">letter</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Good bye!</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上脚本输出结果为：</p>
+<pre>
+当前字母 : R
+当前字母 : u
+当前字母 : n
+执行 pass 块
+当前字母 : o
+执行 pass 块
+当前字母 : o
+当前字母 : b
+Good bye!
+</pre>
+</div>

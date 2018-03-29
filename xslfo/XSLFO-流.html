@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<h1>XSL-FO <span class="color_h1">流</span>
+</h1>
+<hr/>
+<p class="intro">XSL-FO 页面使用来自 &lt;fo:flow&gt; 元素的数据进行填充。</p>
+<hr/>
+<h2>XSL-FO 页面序列（Page Sequences）</h2>
+<p>XSL-FO 使用 &lt;fo:page-sequence&gt; 元素来定义<b>输出页面</b>。</p>
+<p>每个<b>输出页面</b>都会引用一个定义<b>布局</b>的 page master。</p>
+<p>每个<b>输出页面</b>都有一个定义<b>输出</b>的 &lt;fo:flow&gt; 元素。</p>
+<p>每个<b>输出页面</b>均会<b>按序列（顺序）</b>被打印或显示。</p>
+<hr/>
+<h2>XSL-FO 流（Flow）</h2>
+<p>XSL-FO 页面使用来自 &lt;fo:flow&gt; 元素的内容进行填充。</p>
+<p>&lt;fo:flow&gt; 元素包含所有被打印到页面的元素。</p>
+<p>当页面被印满以后，相同的 page master 会被一遍又一遍地被使用，直到所有文本被打印为止。</p>
+<hr/>
+<h2>流动到何处？</h2>
+<p>&lt;fo:flow&gt; 元素有一个 "flow-name" 属性。</p>
+<p>flow-name 属性的值定义 &lt;fo:flow&gt; 元素的内容会去往何处。</p>
+<p>合法的值：</p>
+<ul>
+<li>xsl-region-body（进入 region-body）</li>
+<li>xsl-region-before（进入 region-before）</li>
+<li>xsl-region-after（进入 region-after）</li>
+<li>xsl-region-start（进入 region-start）</li>
+<li>xsl-region-end（进入 region-end）</li>
+</ul>
+<br/>
+</div>

@@ -1,0 +1,73 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Math（算数）</span> 对象</h1>
+<hr/>
+<p class="intro">Math（算数）对象的作用是：执行常见的算数任务。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>在线实例</h2>
+</div>
+<p><a href="/try/try.php?filename=tryjsref_round" target="_blank">round()</a><br/>
+如何使用 round()。</p>
+<p><a href="/try/try.php?filename=tryjsref_random" target="_blank">random()</a><br/>
+如何使用 random() 来返回 0 到 1 之间的随机数。</p>
+<p><a href="/try/try.php?filename=tryjsref_max" target="_blank">max()</a><br/>
+如何使用 max() 来返回两个给定的数中的较大的数。（在 ECMASCript v3 之前，该方法只有两个参数。）</p>
+<p><a href="/try/try.php?filename=tryjsref_min" target="_blank">min()</a><br/>
+如何使用 min() 来返回两个给定的数中的较小的数。（在 ECMASCript v3 之前，该方法只有两个参数。）</p>
+<hr/>
+<h2>完整的 Math 对象参考手册</h2>
+<p>我们提供 <a href="/jsref/jsref-obj-math.html">JavaScript Math 对象的参考手册</a>，其中包括所有可用于算术对象的属性和方法。</p>
+<p>该手册包含了对每个属性和方法的详细描述以及相关实例。</p>
+<hr/>
+<h2>Math 对象</h2>
+<p>Math（算数）对象的作用是：执行普通的算数任务。
+</p>
+<p>Math 对象提供多种算数值类型和函数。无需在使用这个对象之前对它进行定义。</p>
+<p><b>使用Math的属性/方法的语法：</b></p>
+<div class="code"><div>
+
+var x=Math.PI;<br/>
+var y=Math.sqrt(16);</div></div>
+<p><b>注意：</b> Math对象无需在使用这个对象之前对它进行定义。</p>
+<hr/>
+<h2>算数值</h2>
+<p>JavaScript 提供 8 种可被 Math 对象访问的算数值：</p>
+<p>你可以参考如下Javascript常量使用方法：</p>
+<div class="code"><div>
+
+Math.E<br/>
+Math.PI<br/>
+Math.SQRT2<br/>
+Math.SQRT1_2<br/>
+Math.LN2<br/>
+Math.LN10<br/>
+Math.LOG2E<br/>
+Math.LOG10E</div></div>
+<br/><hr/>
+<h2>算数方法</h2>
+<p>除了可被 Math 对象访问的算数值以外，还有几个函数（方法）可以使用。</p>
+<p>下面的例子使用了 Math 对象的 round 方法对一个数进行四舍五入。</p>
+<div class="code"><div>
+document.write(Math.round(4.7));</div></div>
+<p>上面的代码输出为：</p>
+<div class="code"><div>
+5</div></div>
+<p>下面的例子使用了 Math 对象的 random() 方法来返回一个介于 0 和 1 之间的随机数：</p>
+<div class="code"><div>
+document.write(Math.random());</div></div>
+<p>上面的代码输出为：</p>
+<div class="code"><div>
+<script>
+document.write(Math.random())
+</script>
+</div></div>
+<p>下面的例子使用了 Math 对象的 floor() 方法和 random() 来返回一个介于 0 和 11 之间的随机数：</p>
+<div class="code"><div>
+document.write(Math.floor(Math.random()*11));</div></div>
+<p>上面的代码输出为：</p>
+<div class="code"><div>
+<script>
+  document.write(Math.floor(Math.random()*11))
+</script>
+</div></div>
+</div>

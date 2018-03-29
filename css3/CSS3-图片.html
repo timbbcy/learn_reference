@@ -1,0 +1,155 @@
+<div class="article-intro" id="content">
+<h1>CSS 图片</h1>
+<p class="intro">本章节将为大家介绍如何使用 CSS 来布局图片。</p>
+<hr/>
+<h2>圆角图片</h2>
+<div class="example">
+<h3>实例</h3>
+<p>圆角图片:</p>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>    <span class="highATT">border-radius:</span><span class="highVAL"> 8px;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_round" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h3>实例</h3>
+<p>椭圆形图片:</p>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>    <span class="highATT">border-radius:</span><span class="highVAL"> 50%;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_circle" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>缩略图</h2>
+<p>我们使用 <code>border</code> 属性来创建缩略图。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>    <span class="highATT">border:</span><span class="highVAL"> 1px solid #ddd;</span><br/>    
+	<span class="highATT">border-radius:</span><span class="highVAL"> 4px;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 5px;</span><br/>}<br/><br/>
+<span class="highELE">&lt;<span style="color:black !important;">img src="paris.jpg"
+	alt="Paris"</span>&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_thumbnail" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">a </span>{<br/>    <span class="highATT">display:</span><span class="highVAL"> inline-block;</span><br/>    <span class="highATT">border:</span><span class="highVAL"> 1px solid #ddd;</span><br/>    
+	<span class="highATT">border-radius:</span><span class="highVAL"> 4px;</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 5px;</span><br/>    
+	<span class="highATT">transition:</span><span class="highVAL"> 0.3s;</span><br/>}<br/><br/><span class="highELE">a:hover </span>{<br/>    <span class="highATT">box-shadow:</span><span class="highVAL"> 0 
+	0 2px 1px rgba<br/>    (0, 140, 186, 0.5);</span><br/>}<br/><br/>
+<span class="highELE">&lt;<span style="color:black !important;">a href="paris.jpg"</span>&gt;<br/>  
+	&lt;<span style="color:black !important;">img src="paris.jpg" alt="Paris"</span>&gt;<br/>&lt;<span style="color:black !important;">/a</span>&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_thumbnail_link" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>响应式图片</h2>
+<p>响应式图片会自动适配各种尺寸的屏幕。</p>
+<p>实例中，你可以通过重置浏览器大小查看效果:</p>
+<p><img alt="Norway" src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" style="max-width:100%;height:auto;"/></p>
+<p>如果你需要自由缩放图片，且图片放大的尺寸不大于其原始的最大值，则可使用以下代码：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>    <span class="highATT">max-width:</span><span class="highVAL"> 100%;</span><br/>    <span class="highATT">height:</span><span class="highVAL"> 
+	auto;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_responsive" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示:</strong> Web 响应式设计更多内容可以参考
+<a href="/css/css-rwd-intro.html">CSS 响应式设计教程</a>。</p>
+<hr/>
+<h2>图片文本</h2>
+<p>如何定位图片文本:</p>
+<div class="example">
+<h3>实例</h3>
+<div>
+<div style="position:relative;text-align:center;">
+<img alt="Norway" src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" style="width:100%;height:auto;opacity:0.3"/>
+<div style="position:absolute;bottom:8px;left:16px;font-size:18px">左下角</div>
+<div style="position:absolute;top:8px;left:16px;font-size:18px">左上角</div>
+<div style="position:absolute;top:8px;right:16px;font-size:18px">右上角</div>
+<div style="position:absolute;bottom:8px;right:16px;font-size:18px">右下角</div>
+<div style="position:absolute;left:0%;top:50%;width:100%;font-size:18px">居中</div>
+</div>
+</div>
+<p>尝试一下:</p>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_text_top_left" target="_blank">左上角 »</a>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_text_top_right" target="_blank">右上角 »</a>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_text_bottom_left" target="_blank">左下角 »</a>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_text_bottom_right" target="_blank">右下角 »</a>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_text_center" target="_blank">居中 »</a>
+</div>
+<hr/>
+<h2>卡片式图片</h2>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">div.polaroid </span>{<br/>    <span class="highATT">width:</span><span class="highVAL"> 80%;</span><br/>    
+	<span class="highATT">background-color:</span><span class="highVAL"> white;</span><br/>    <span class="highATT">box-shadow:</span><span class="highVAL"> 0 4px 8px 0 rgba(0, 
+	0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);</span><br/>}<br/><br/><span class="highELE">img </span>{<span class="highATT">width:</span><span class="highVAL"> 100%</span>}<br/>
+<br/><span class="highELE">div.container </span>{<br/>    <span class="highATT">text-align:</span><span class="highVAL"> center;</span><br/>    
+	<span class="highATT">padding:</span><span class="highVAL"> 10px 20px;</span><br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_card" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>图片滤镜</h2>
+<p> CSS <code>filter</code> 属性用为元素添加可视效果 (例如：模糊与饱和度) 。</p>
+<p><strong>注意:</strong> Internet Explorer
+<span lang="no-bok">或 Safari 5.1 (及更早版本)</span> 不支持该属性。</p>
+<div class="example">
+<h3>实例</h3>
+<p>修改所有图片的颜色为黑白 (100% 灰度):</p>
+<div class="example_code">
+<span class="highELE">img </span>{<br/>    <span class="highATT">-webkit-filter:</span><span class="highVAL"> grayscale(100%);</span> <span class="highCOM">/* Chrome, Safari, 
+	Opera */</span><br/>   
+  
+    <span class="highATT">filter:</span><span class="highVAL"> grayscale(100%);</span><br/>}</div>
+<div>
+<iframe src="/try/demo_source/trycss_ex_images_filters.htm" style="width:100%;border:none;height:600px;"></iframe>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_ex_images_filters" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示:</strong> 访问 <a href="/cssref/css3-pr-filter.html">CSS 滤镜参考手册</a> 查看更多内容。</p>
+<hr/>
+<h2>响应式图片相册</h2>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">.responsive </span>{<br/>    
+	<span class="highATT">padding:</span><span class="highVAL"> 0 6px;</span><br/>    <span class="highATT">float:</span><span class="highVAL"> left;</span><br/>    
+	<span class="highATT">width:</span><span class="highVAL"> 24.99999%;</span><br/>}<br/><br/><span class="highELE">@media only screen and 
+	(max-width: 700px)</span>{<br/><span class="highELE">    .responsive </span>{<br/>        
+	<span class="highATT">width:</span><span class="highVAL"> 49.99999%;</span><br/>        <span class="highATT">margin:</span><span class="highVAL"> 6px 
+	0;</span><br/>    }<br/>}<br/><br/><span class="highELE">@media only screen and (max-width: 500px)</span>{<br/><span class="highELE">    
+	.responsive </span>{<br/>        <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    
+	}<br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_gallery_responsive" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>图片 Modal(模态)</h2>
+<p>本实例演示了如何结合 CSS 和 JavaScript 来一起渲染图片。 </p>
+<p>首先，我们使用 CSS 来创建 modal 窗口 (对话框), 默认是隐藏的。</p>
+<p>然后，我们使用 JavaScript 来显示模态窗口，当我们点击图片时，图片会在弹出的窗口中显示：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">// 获取模态窗口<br/></span><span class="highELE">var</span> modal = document.getElementById(<span class="highVAL">'myModal'</span>);<br/><br/><span class="highCOM">// 获取图片模态框，alt 属性作为图片弹出中文本描述<br/></span><span class="highELE">var</span> img = 
+	document.getElementById(<span class="highVAL">'myImg'</span>);<br/><span class="highELE">var</span> modalImg = document.getElementById(<span class="highVAL">"img01"</span>);<br/>
+<span class="highELE">var</span> captionText = document.getElementById(<span class="highVAL">"caption"</span>);<br/>img.onclick = 
+	<span class="highELE">function</span>(){<br/>    modal.style.display = <span class="highVAL">"block"</span>;<br/>    
+	modalImg.src = this.src;<br/>    modalImg.alt = this.alt;<br/>    
+	captionText.innerHTML = this.alt;<br/>}<br/><br/>
+<span class="highCOM">// Get the &lt;span&gt; element that closes the modal<br/></span><span class="highELE">var</span> span = 
+	document.getElementsByClassName(<span class="highVAL">"close"</span>)[<span class="highVAL">0</span>];<br/><br/><span class="highCOM">// When the user clicks 
+	on &lt;span&gt; (x), close the modal<br/></span>span.onclick = <span class="highELE">function</span>() { <br/>    
+	modal.style.display = <span class="highVAL">"none"</span>;<br/>}</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_image_modal_js" target="_blank">尝试一下 »</a>
+</div>
+</div>

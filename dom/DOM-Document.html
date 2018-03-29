@@ -1,0 +1,160 @@
+<div class="article-intro" id="content">
+<h1>XML DOM - <span class="color_h1">Document</span> 对象</h1>
+<hr/>
+<p class="intro">Document 对象代表整个 XML 文档。</p>
+<hr/>
+<h2>Document 对象</h2>
+<p>Document 对象是文档树的根，并为我们提供对文档数据的最初（或最顶层）的访问入口。</p>
+<p>由于元素节点、文本节点、注释、处理指令等均无法存在于文档之外，Document 对象也提供了创建这些对象的方法。Node 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 Document 关联起来。</p>
+<h2>Document 对象属性</h2>
+<table class="reference notranslate">
+<tr>
+<th width="40%">属性</th>
+<th width="60%">描述</th>
+</tr>
+<tr>
+<td><a href="prop-document-async.html" target="_blank">async</a></td>
+<td>规定 XML 文件的下载是否应当被异步处理。</td>
+</tr>
+<tr>
+<td><a href="prop-document-childnodes.html" target="_blank">childNodes</a></td>
+<td>返回文档的子节点的节点列表。</td>
+</tr>
+<tr>
+<td><a href="dom-prop-document-doctype.html" target="_blank">doctype</a></td>
+<td>返回与文档相关的文档类型声明（DTD，全称 Document Type Declaration）。</td>
+</tr>
+<tr>
+<td><a href="dom-prop-document-documentelement.html" target="_blank">documentElement</a></td>
+<td>返回文档的根节点。</td>
+</tr>
+<tr>
+<td><a href="dom-prop-document-documenturi.html" target="_blank">documentURI</a></td>
+<td>设置或返回文档的位置。</td>
+</tr>
+<tr>
+<td>domConfig</td>
+<td>返回 normalizeDocument() 被调用时所使用的配置。</td>
+</tr>
+<tr>
+<td><a href="prop-document-firstchild.html" target="_blank">firstChild</a></td>
+<td>返回文档的第一个子节点。</td>
+</tr>
+<tr>
+<td><a href="dom-prop-document-implementation.html" target="_blank">implementation</a></td>
+<td>返回处理该文档的 DOMImplementation 对象。</td>
+</tr>
+<tr>
+<td><a href="dom-prop-document-inputencoding.html" target="_blank">inputEncoding</a></td>
+<td>返回用于文档的编码方式（在解析时）。</td>
+</tr>
+<tr>
+<td><a href="prop-document-lastchild.html" target="_blank">lastChild</a></td>
+<td>返回文档的最后一个子节点。</td>
+</tr>
+<tr>
+<td><a href="prop-document-nodename.html" target="_blank">nodeName</a></td>
+<td>返回节点的名称（根据节点的类型）。</td>
+</tr>
+<tr>
+<td><a href="prop-document-nodetype.html" target="_blank">nodeType</a></td>
+<td>返回节点的节点类型。</td>
+</tr>
+<tr>
+<td><a href="prop-document-nodevalue.html" target="_blank">nodeValue</a></td>
+<td>设置或返回节点的值（根据节点的类型）。</td>
+</tr>
+<tr>
+<td><a href="dom-prop-document-stricterrorchecking.html" target="_blank">strictErrorChecking</a></td>
+<td>设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td><a href="prop-document-xmlencoding.html" target="_blank">xmlEncoding</a></td>
+<td>返回文档的 XML 编码。</td>
+</tr>
+<tr>
+<td><a href="prop-document-xmlstandalone.html" target="_blank">xmlStandalone</a></td>
+<td>设置或返回文档是否为 standalone。</td>
+</tr>
+<tr>
+<td><a href="prop-document-xmlversion.html" target="_blank">xmlVersion</a></td>
+<td>设置或返回文档的 XML 版本。</td>
+</tr>
+</table>
+<h2>Document 对象方法</h2>
+<table class="reference notranslate">
+<tr>
+<th width="40%">方法</th>
+<th width="60%">描述</th>
+</tr>
+<tr>
+<td>adoptNode(sourcenode)</td>
+<td>从另一个文档向本文档选定一个节点，然后返回被选节点。</td>
+</tr>
+<tr>
+<td>createAttribute(name)</td>
+<td>创建带有指定名称的属性节点，并返回新的 Attr 对象。</td>
+</tr>
+<tr>
+<td>createAttributeNS(uri,name)</td>
+<td>创建带有指定名称和命名空间的属性节点，并返回新的 Attr 对象。</td>
+</tr>
+<tr>
+<td><a href="met-document-createcdatasection.html" target="_blank">createCDATASection()</a></td>
+<td>创建 CDATA 区段节点。</td>
+</tr>
+<tr>
+<td><a href="dom-met-document-createcomment.html" target="_blank">createComment()</a></td>
+<td>创建注释节点。</td>
+</tr>
+<tr>
+<td>createDocumentFragment()</td>
+<td>创建空的 DocumentFragment 对象，并返回此对象。</td>
+</tr>
+<tr>
+<td><a href="dom-met-document-createelement.html" target="_blank">createElement()</a></td>
+<td>创建元素节点。</td>
+</tr>
+<tr>
+<td><a href="met-document-createelementns.html" target="_blank">createElementNS()</a></td>
+<td>创建带有指定命名空间的元素节点。</td>
+</tr>
+<tr>
+<td>createEntityReference(name)</td>
+<td>创建 EntityReference 对象，并返回此对象。</td>
+</tr>
+<tr>
+<td>createProcessingInstruction(target,data)</td>
+<td>创建一个 ProcessingInstruction 对象，并返回此对象。</td>
+</tr>
+<tr>
+<td><a href="dom-met-document-createtextnode.html" target="_blank">createTextNode()</a></td>
+<td>创建文本节点。</td>
+</tr>
+<tr>
+<td>getElementById(id)</td>
+<td>返回带有指定值的 ID 属性的元素。如果不存在这样的元素，则返回 null。</td>
+</tr>
+<tr>
+<td><a href="dom-met-document-getelementsbytagname.html" target="_blank">getElementsByTagName()</a></td>
+<td>返回带有指定名称的所有元素的 NodeList。</td>
+</tr>
+<tr>
+<td><a href="met-document-getelementsbytagnamens.html" target="_blank">getElementsByTagNameNS()</a></td>
+<td>返回带有指定名称和命名空间的所有元素的 NodeList。</td>
+</tr>
+<tr>
+<td>importNode(nodetoimport,deep)</td>
+<td>从另一个文档向本文档选定一个节点。该方法创建源节点的一个新的副本。如果 deep 参数设置为 true，它将导入指定节点的所有子节点。 如果设置为 false，它将只导入节点本身。该方法返回被导入的节点。</td>
+</tr>
+<tr>
+<td>normalizeDocument()</td>
+<td> </td>
+</tr>
+<tr>
+<td><a href="dom-met-document-renamenode.html" target="_blank">renameNode()</a></td>
+<td>重命名元素或属性节点。</td>
+</tr>
+</table>
+<br/>
+</div>

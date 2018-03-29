@@ -1,0 +1,185 @@
+<div class="article-intro" id="content">
+<h1>React Props</h1>
+<p>state 和 props 主要的区别在于 <b>props</b> 是不可变的，而 state 可以根据与用户交互来改变。这就是为什么有些容器组件需要定义 state 来更新和修改数据。 而子组件只能通过 props 来传递数据。</p>
+<hr/>
+<h2>使用 Props</h2>
+<p>
+以下实例演示了如何在组件中使用 props：</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-identifier">Hello</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> </span><span class="hl-identifier">name</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_component2" target="_blank">尝试一下 »</a>
+</div>
+<p>实例中 name 属性通过 this.props.name 来获取。</p>
+<hr/>
+<h2>默认 Props</h2>
+<p>你可以通过 getDefaultProps()  方法为 props 设置默认值，实例如下：
+</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">getDefaultProps</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">name</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">Runoob</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-identifier">Hello</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">HelloMessage</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_props_default" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>State 和 Props</h2>
+<p>
+以下实例演示了如何在应用中组合使用 state 和 props 。我们可以在父组件中设置 state， 并通过在子组件上使用 props 将其传递到子组件上。在 render 函数中, 我们设置 name 和 site 来获取父组件传递过来的数据。</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">WebSite</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">getInitialState</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">name</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">"</span><span class="hl-code">,
+      </span><span class="hl-identifier">site</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">http://www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+ 
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">
+      &lt;</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+        &lt;</span><span class="hl-identifier">Name</span><span class="hl-code"> </span><span class="hl-identifier">name</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-brackets">}</span><span class="hl-code"> /&gt;
+        &lt;</span><span class="hl-identifier">Link</span><span class="hl-code"> </span><span class="hl-identifier">site</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code">.</span><span class="hl-identifier">site</span><span class="hl-brackets">}</span><span class="hl-code"> /&gt;
+      &lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+    </span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">Name</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">
+      &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;
+    </span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">Link</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">
+      &lt;</span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-identifier">href</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">site</span><span class="hl-brackets">}</span><span class="hl-code">&gt;
+        </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">site</span><span class="hl-brackets">}</span><span class="hl-code">
+      &lt;/</span><span class="hl-identifier">a</span><span class="hl-code">&gt;
+    </span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+  &lt;</span><span class="hl-identifier">WebSite</span><span class="hl-code"> /&gt;,
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_props_state" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>Props 验证</h2>
+<p>Props 验证使用 <b>propTypes</b>，它可以保证我们的应用组件被正确使用，React.PropTypes 提供很多验证器 (validator) 来验证传入数据是否有效。当向 props 传入无效数据时，JavaScript 控制台会抛出警告。</p>
+<p>以下实例创建一个 Mytitle 组件，属性 title 是必须的且是字符串，非字符串类型会自动转换为字符串 ：</p>
+<div class="example">
+<h2 class="example">React 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">title</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> var title = 123;</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">MyTitle</span><span class="hl-code"> = </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">propTypes</span><span class="hl-code">: </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">title</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">string</span><span class="hl-code">.</span><span class="hl-identifier">isRequired</span><span class="hl-code">,
+  </span><span class="hl-brackets">}</span><span class="hl-code">,
+ 
+  </span><span class="hl-identifier">render</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> &lt;</span><span class="hl-identifier">h1</span><span class="hl-code">&gt; </span><span class="hl-brackets">{</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">props</span><span class="hl-code">.</span><span class="hl-identifier">title</span><span class="hl-brackets">}</span><span class="hl-code"> &lt;/</span><span class="hl-identifier">h1</span><span class="hl-code">&gt;;
+   </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">ReactDOM</span><span class="hl-code">.</span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-code">
+    &lt;</span><span class="hl-identifier">MyTitle</span><span class="hl-code"> </span><span class="hl-identifier">title</span><span class="hl-code">=</span><span class="hl-brackets">{</span><span class="hl-identifier">title</span><span class="hl-brackets">}</span><span class="hl-code"> /&gt;,
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">example</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/> <a class="tryitbtn" href="/try/try.php?filename=try_react_proptypes" target="_blank">尝试一下 »</a>
+</div>
+<p>更多验证器说明如下：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">createClass</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">propTypes</span><span class="hl-code">: </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 可以声明 prop 为指定的 JS 基本数据类型，默认情况，这些数据是可选的</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalArray</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">array</span><span class="hl-code">,
+    </span><span class="hl-identifier">optionalBool</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">bool</span><span class="hl-code">,
+    </span><span class="hl-identifier">optionalFunc</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">func</span><span class="hl-code">,
+    </span><span class="hl-identifier">optionalNumber</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-code">,
+    </span><span class="hl-identifier">optionalObject</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">object</span><span class="hl-code">,
+    </span><span class="hl-identifier">optionalString</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">string</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 可以被渲染的对象 numbers, strings, elements 或 array</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalNode</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">node</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment">  React 元素</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalElement</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">element</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 用 JS 的 instanceof 操作符声明 prop 为类的实例。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalMessage</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">instanceOf</span><span class="hl-brackets">(</span><span class="hl-identifier">Message</span><span class="hl-brackets">)</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 用 enum 来限制 prop 只接受指定的值。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalEnum</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">oneOf</span><span class="hl-brackets">(</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">News</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Photos</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 可以是多个对象类型中的一个</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalUnion</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">oneOfType</span><span class="hl-brackets">(</span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">string</span><span class="hl-code">,
+      </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-code">,
+      </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">instanceOf</span><span class="hl-brackets">(</span><span class="hl-identifier">Message</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 指定类型组成的数组</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalArrayOf</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">arrayOf</span><span class="hl-brackets">(</span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-brackets">)</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 指定类型的属性构成的对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalObjectOf</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">objectOf</span><span class="hl-brackets">(</span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-brackets">)</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 特定 shape 参数的对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">optionalObjectWithShape</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">shape</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">color</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">string</span><span class="hl-code">,
+      </span><span class="hl-identifier">fontSize</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">number</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 任意类型加上 `isRequired` 来使 prop 不可空。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">requiredFunc</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">func</span><span class="hl-code">.</span><span class="hl-identifier">isRequired</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 不可空的任意类型</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">requiredAny</span><span class="hl-code">: </span><span class="hl-identifier">React</span><span class="hl-code">.</span><span class="hl-identifier">PropTypes</span><span class="hl-code">.</span><span class="hl-identifier">any</span><span class="hl-code">.</span><span class="hl-identifier">isRequired</span><span class="hl-code">,
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">customProp</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">props</span><span class="hl-code">, </span><span class="hl-identifier">propName</span><span class="hl-code">, </span><span class="hl-identifier">componentName</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">!/</span><span class="hl-identifier">matchme</span><span class="hl-code">/.</span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-identifier">props</span><span class="hl-brackets">[</span><span class="hl-identifier">propName</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Error</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Validation failed!</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+      </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-comment">/*</span><span class="hl-comment"> ... </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+</div>

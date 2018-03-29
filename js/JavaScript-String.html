@@ -1,0 +1,185 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">字符串（String）</span> 对象</h1>
+<hr/>
+<p class="intro">String 对象用于处理已有的字符块。</p>
+<hr/>
+<h2>JavaScript 字符串</h2>
+<p>一个字符串用于存储一系列字符就像 "John Doe".</p>
+<p>一个字符串可以使用单引号或双引号：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code ">
+var
+carname="Volvo XC60";<br/>
+var
+carname='Volvo XC60';</div>
+</div>
+<p>你使用位置（索引）可以访问字符串中任何的字符：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var character=carname[7];</div>
+</div>
+<p>字符串的索引从零开始, 所以字符串第一字符为 [0],第二个字符为 [1], 等等。</p>
+<p>你可以在字符串中使用引号，如下实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+var answer="It's alright";<br/>
+var answer="He is called 'Johnny'";<br/>
+var answer='He is called "Johnny"';</div>
+</div>
+<p>或者你可以在字符串中使用转义字符(\)使用引号：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+var answer='It\'s alright';<br/>
+var answer="He is called \"Johnny\"";</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_datatypes_string" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>字符串（String）</h2>
+<p>字符串（String）使用长度属性<strong>length</strong>来计算字符串的长度：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	var txt="Hello World!";<br/>document.write(txt.length);<br/><br/>var txt="ABCDEFGHIJKLMNOPQRSTUVWXYZ";<br/>document.write(txt.length);</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_string_length" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>在字符串中查找字符串</h2>
+<p>字符串使用 indexOf() 来定位字符串中某一个指定的字符首次出现的位置：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	var str="Hello world, welcome to the universe.";<br/>var n=str.indexOf("welcome");</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_string_indexof" target="_blank">尝试一下 »</a>
+</div>
+<p>如果没找到对应的字符函数返回-1</p>
+<p> lastIndexOf() 方法在字符串末尾开始查找字符串出现的位置。</p>
+<hr/>
+<h2>内容匹配</h2>
+<p><strong>match()</strong>函数用来查找字符串中特定的字符，并且如果找到的话，则返回这个字符。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		var str="Hello world!";<br/>document.write(str.match("world") + "&lt;br&gt;");<br/>
+	document.write(str.match("World") + "&lt;br&gt;");<br/>document.write(str.match("world!"));</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_string_match" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>替换内容</h2>
+<p><strong>replace()</strong> 方法在字符串中用某些字符替换另一些字符。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	str="Please visit Microsoft!"<br/>var n=str.replace("Microsoft","Runoob");<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_string_replace" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>字符串大小写转换</h2>
+<p>字符串大小写转换使用函数 <strong>toUpperCase() </strong>
+/<strong> toLowerCase()</strong>:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var txt="Hello World!";       // 
+String<br/>
+var txt1=txt.toUpperCase();   // txt1 文本会转换为大写<br/>
+var txt2=txt.toLowerCase();   // txt2 文本会转换为小写</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_string_toupper" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>字符串转为数组</h2>
+<p>字符串使用<strong>split()</strong>函数转为数组:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+txt="a,b,c,d,e"   // String<br/>
+txt.split(",");   // 使用逗号分隔<br/>txt.split(" ");   // 使用空格分隔<br/>txt.split("|");   // 使用竖线分隔 
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_string_split" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>特殊字符</h2>
+<p>Javascript 中可以使用反斜线（\）插入特殊符号，如：撇号,引号等其他特殊符号。</p>
+<p>查看如下 JavaScript 代码:</p>
+<div class="code notranslate"><div>
+
+var txt="We are the so-called "Vikings" from the north.";<br/>
+document.write(txt);</div></div>
+<p>在JavaScript中，字符串的开始和停止使用单引号或双引号。这意味着，上面的字符串将被切成： We are the so-called</p>
+<p>解决以上的问题可以使用反斜线来转义引号：</p>
+<div class="code"><div>
+
+var txt="We are the so-called \"Vikings\" from the north.";<br/>
+document.write(txt);</div></div>
+<p>JavaScript将输出正确的文本字符串：We are the so-called "Vikings" from the north.</p>
+<p>下表列出其他特殊字符，可以使用反斜线转义特殊字符：</p>
+<table class="reference ">
+<tr>
+<th align="left">代码</th>
+<th align="left">输出</th>
+</tr>
+<tr>
+<td>\'</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\"</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>斜杆</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>tab</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>空格</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>字符串属性和方法</h2>
+<p>属性:</p>
+<ul>
+<li>length</li>
+<li>prototype</li>
+<li>constructor</li>
+</ul>
+<p>方法:</p>
+<ul>
+<li>charAt()</li>
+<li>charCodeAt()</li>
+<li>concat()</li>
+<li>fromCharCode()</li>
+<li>indexOf()</li>
+<li>lastIndexOf()</li>
+<li>match()</li>
+<li>replace()</li>
+<li>search()</li>
+<li>slice()</li>
+<li>split()</li>
+<li>substr()</li>
+<li>substring()</li>
+<li>toLowerCase()</li>
+<li>toUpperCase()</li>
+<li>valueOf()</li>
+</ul>
+</div>

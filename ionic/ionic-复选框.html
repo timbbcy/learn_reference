@@ -1,0 +1,98 @@
+<div class="article-intro" id="content">
+<h1>ionic 复选框</h1>
+<p>ionic 复选框（checkbox）与普通的 HTML 复选框没什么区别，以下实例演示了 ionic 复选框 ion-checkbox 的应用。</p>
+<pre>
+&lt;ion-checkbox ng-model="isChecked"&gt;复选框标签&lt;/ion-checkbox&gt;
+</pre>
+<hr/>
+<h2>实例</h2><p>实例中，会根据复选框是否选中，修改 checked 值，true 为选中， false 为未选中。</p>
+<h3>HTML 代码</h3>
+<pre>
+&lt;ion-header-bar class="bar-positive"&gt;
+  &lt;h1 class="title"&gt;复选框&lt;/h1&gt;
+&lt;/ion-header-bar&gt;
+         
+&lt;ion-content&gt;
+  
+  &lt;div class="list"&gt;
+    
+    &lt;ion-checkbox ng-repeat="item in devList"
+                  ng-model="item.checked" 
+                  ng-checked="item.checked"&gt;
+      {{ item.text }}
+    &lt;/ion-checkbox&gt;
+    
+    &lt;div class="item"&gt;
+      &lt;div ng-bind="devList | json"&gt;&lt;/div&gt; 
+    &lt;/div&gt;
+    
+    &lt;div class="item item-divider"&gt; 
+      Notifications
+    &lt;/div&gt;
+    
+    &lt;ion-checkbox ng-model="pushNotification.checked"
+                  ng-change="pushNotificationChange()"&gt;
+      Push Notifications
+    &lt;/ion-checkbox&gt;
+    
+    &lt;div class="item"&gt;
+      &lt;div ng-bind="pushNotification | json"&gt;&lt;/div&gt; 
+    &lt;/div&gt;
+    
+    &lt;ion-checkbox ng-model="emailNotification"
+                  ng-true-value="'Subscribed'"
+                  ng-false-value="'Unubscribed'"&gt;
+      Newsletter
+    &lt;/ion-checkbox&gt;
+    &lt;div class="item"&gt;
+      &lt;div ng-bind="emailNotification | json"&gt;&lt;/div&gt; 
+    &lt;/div&gt;
+    
+  &lt;/div&gt;
+  
+&lt;/ion-content&gt;
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('starter', ['ionic'])
+
+.run(function($ionicPlatform) {
+$ionicPlatform.ready(function() {
+  // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+  // for form inputs)
+  if(window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+  }
+  if(window.StatusBar) {
+    StatusBar.styleDefault();
+  }
+});
+})
+
+.controller( 'actionsheetCtl',['$scope',function($scope){
+
+  $scope.devList = [
+      { text: "HTML5", checked: true },
+      { text: "CSS3", checked: false },
+      { text: "JavaScript", checked: false }
+    ];
+
+    $scope.pushNotificationChange = function() {
+      console.log('Push Notification Change', $scope.pushNotification.checked);
+    };
+
+    $scope.pushNotification = { checked: true };
+    $scope.emailNotification = 'Subscribed';
+
+}])
+</pre>
+<p>css 代码：</p>
+<pre>
+body {
+  cursor: url('http://www.runoob.com/try/demo_source/finger.png'), auto;
+}
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_ion-checkbox" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>效果如下所示：</p>
+<iframe frameborder="0" height="400" src="/try/demo_source/ionic_ion-checkbox.htm"></iframe>
+</div>

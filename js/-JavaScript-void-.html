@@ -1,0 +1,70 @@
+<div class="article-intro" id="content">
+<h1><span class="color_h1">javascript:void(0)</span> 含义
+</h1>
+<p class="intro">我们经常会使用到 javascript:void(0) 这样的代码，那么在 JavaScript 中 javascript:void(0) 代表的是什么意思呢？</p>
+<p class="intro">javascript:void(0) 中最关键的是 void 关键字，
+void 是 JavaScript 中非常重要的关键字，该操作符指定要计算一个表达式但是不返回值。
+</p>
+<p>语法格式如下：</p>
+<pre>
+&lt;head&gt;
+&lt;script type="text/javascript"&gt;
+&lt;!--
+void func()
+javascript:void func()
+
+或者
+
+void(func())
+javascript:void(func())
+//--&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+</pre>
+<p>下面的代码创建了一个超级链接，当用户点击以后不会发生任何事。</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code"> 
+&lt;a href="javascript:void(0)"&gt;单击此处什么也不会发生&lt;/a&gt;
+</div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_void&amp;basepath=0" target="_blank">尝试一下 »</a> </div>
+<p>当用户链接时，void(0) 计算为 0，但 Javascript 上没有任何效果。</p>
+<p>以下实例中，在用户点击链接后显示警告信息：</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code"> 
+&lt;head&gt;<br/>
+&lt;script type="text/javascript"&gt;<br/>
+&lt;!--<br/>
+//--&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+&lt;a href="javascript:void(alert('Warning!!!'))"&gt;点我!&lt;/a&gt;<br/>
+&lt;/body&gt;
+</div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_void1&amp;basepath=0" target="_blank">尝试一下 »</a> </div>
+<p>以下实例中参数 a 将返回 undefined :</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code"> 
+&lt;head&gt;<br/>
+&lt;script type="text/javascript"&gt;<br/>
+&lt;!--<br/>
+function getValue(){<br/>
+  var a,b,c;<br/>
+  a = void ( b = 5, c = 7 );<br/>
+  document.write('a = ' + a + ' b = ' + b +' c = ' + c );<br/>
+}<br/>
+//--&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;
+</div> <br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_void2&amp;basepath=0" target="_blank">尝试一下 »</a> </div>
+<hr/>
+<h2>href="#"与href="javascript:void(0)"的区别</h2>
+<p><strong>#</strong> 包含了一个位置信息，默认的锚是<strong>#top</strong> 也就是网页的上端。</p>
+<p> 而javascript:void(0), 仅仅表示一个死链接。</p>
+<p>在页面很长的时候会使用 <strong>#</strong> 来定位页面的具体位置，格式为：<strong># + id</strong>。</p>
+<p>如果你要定义一个死链接请使用 javascript:void(0) 。
+</p>
+<div class="example"> <h2 class="example">实例</h2> <div class="example_code"> 
+&lt;a href="javascript:void(0);"&gt;点我没有反应的!&lt;/a&gt;<br>
+&lt;a href="#pos"&gt;点我定位到指定位置!&lt;/a&gt;<br>
+&lt;br&gt;<br>
+...<br>
+&lt;br&gt;<br>
+&lt;p id="pos"&gt;尾部定位点&lt;/p&gt;
+</br></br></br></br></br></div> <br/><a class="tryitbtn" href="/try/demo_source/tryjs_void3.htm" target="_blank">尝试一下 »</a> </div>
+</div>

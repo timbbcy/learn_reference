@@ -1,0 +1,63 @@
+<div class="article-intro" id="content">
+<h1>
+jQuery Mobile 过滤
+</h1>
+<hr/>
+<iframe frameborder="0" height="400px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_filters_app.htm" width="100%"></iframe>
+<h2>可过滤元素</h2>
+<p>所有的元素如果有一个或更多的子元素均可过滤。 </p>
+<p><strong>如何创建搜索字段:</strong></p>
+<ul>
+<li>你想过滤的元素必须使用
+	data-filter="true" 属性。</li>
+<li>创建 &lt;input&gt; 元素并指定 id，元素上加上
+	data-type="search" 属性。这样就能创建基本的搜索字段。将 &lt;input&gt; 元素放置于一个表单中，表单 &lt;form&gt; 元素使用 "ui-filterable" 类 - 该类会调整搜索字段与过滤元素的外边距。</li>
+<li>接着为过滤的元素添加 data-input 属性。该值需要是 &lt;input&gt; 元素的 id。</li>
+</ul>
+<p>接下来我们创建一个可过滤的列表：</p>
+<div class="example">
+<h2 class="example">列表中搜索元素</h2>
+<div class="example_code">
+<span class="marked">&lt;form class="ui-filterable"&gt;<br/>  &lt;input id="myFilter" 
+	data-type="search"&gt;<br/>&lt;/form&gt;</span><br/><br/>&lt;ul data-role="listview" 
+	<span class="marked">data-filter="true" data-input="#myFilter"</span>&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;Adele&lt;/a&gt;&lt;/li&gt;<br/>  
+	&lt;li&gt;&lt;a href="#"&gt;Billy&lt;/a&gt;&lt;/li&gt;<br/>  &lt;li&gt;&lt;a href="#"&gt;Calvin&lt;/a&gt;&lt;/li&gt;<br/>
+	&lt;/ul&gt;<br/> </div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_filter" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>提示:</strong> 可以在搜索字段中使用 placeholder 属性来设置提示信息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;input 
+	id="myFilter" data-type="search" <span class="marked">placeholder="根据名称搜索.."</span>&gt;<br/> </div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_filter_placeholder" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>自定义过滤</h2>
+<p>一般的插入到各个列表项的文本就是作为过滤的文本使用(如 A 对应 "Adele" 或 "B" 
+对应 "Billy")。 但是，如果你想指定自定义的过滤的文本，你需要在子元素中使用 data-filtertext 属性:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+	&lt;li <span class="marked">data-filtertext="fav"</span>&gt;&lt;a href="#"&gt;Adele&lt;/a&gt;&lt;/li&gt;<br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lists_filtertext" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp" id="table1"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>如果你在元素中使用了 data-filtertext 属性，元素的源文本内容在过滤时将被忽略， 这时你如果还要查找列表项"Adele"，需要使用的关键字为：f, a, v 或 fav。</td>
+</tr></tbody></table>
+<div class="tryit_ex">
+<img alt="实例" src="/images/tryitimg.gif" style="width:40px;height:46px"/><h2>更多实例</h2>
+</div>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_filters_collapsibles" target="_blank">过滤折叠列表</a><br/>
+如何过滤折叠的列表。</p>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_filters_tables" target="_blank">过滤表格</a><br/>
+如何过滤表格内容。</p>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_filters_div" target="_blank">过滤 &lt;div&gt; 元素</a><br/>
+如何过滤 &lt;div&gt; 元素中包含的子 &lt;p&gt; 元素。</p>
+</div>

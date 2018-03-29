@@ -1,0 +1,144 @@
+<div class="article-intro" id="content">
+<h1>ionic 表单和输入框</h1>
+<p>
+list 类同样可以用于 input 元素。item-input 和 item 类指定了文本框及其标签。</p>
+<h3>输入框属性：placeholder</h3>
+<p>
+以下实例中，默认为100%宽度（左右两侧没有边框），并使用 placeholder 属性设置输入字段预期值的提示信息。
+<pre>
+&lt;div class="list"&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;input type="text" placeholder="First Name"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;input type="text" placeholder="Last Name"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;textarea placeholder="Comments"&gt;&lt;/textarea&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item_input" target="_blank">尝试一下 »</a></p>
+<h3>输入框属性：input-label</h3>
+<p>使用 input-label 将标签放置于输入框 input 的左侧。</p>
+<pre>
+&lt;div class="list"&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;span class="input-label"&gt;用户名：&lt;/span&gt;
+    &lt;input type="text"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;span class="input-label"&gt;密码：&lt;/span&gt;
+    &lt;input type="password"&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item_input-label" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>堆叠标签</h2>
+<p>堆叠标签通常位于输入框的头部。每个选项使用 item-stacked-label 类指定。
+每个输入框需要指定 input-label。以下实例也使用了 placeholder 属性来设置信息输入提示。</p>
+<pre>
+&lt;div class="list"&gt;
+  &lt;label class="item item-input item-stacked-label"&gt;
+    &lt;span class="input-label"&gt;First Name&lt;/span&gt;
+    &lt;input type="text" placeholder="John"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input item-stacked-label"&gt;
+    &lt;span class="input-label"&gt;Last Name&lt;/span&gt;
+    &lt;input type="text" placeholder="Suhr"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input item-stacked-label"&gt;
+    &lt;span class="input-label"&gt;Email&lt;/span&gt;
+    &lt;input type="text" placeholder="john@suhr.com"&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item-stacked-label" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>浮动标签</h2>
+<p>浮动标签类似于堆叠标签，但浮动标签有一个动画的效果，每个选项需要指定 item-floating-label 类，输入标签需要指定 input-label。</p>
+<pre>
+&lt;div class="list"&gt;
+  &lt;label class="item item-input item-floating-label"&gt;
+    &lt;span class="input-label"&gt;First Name&lt;/span&gt;
+    &lt;input type="text" placeholder="First Name"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input item-floating-label"&gt;
+    &lt;span class="input-label"&gt;Last Name&lt;/span&gt;
+    &lt;input type="text" placeholder="Last Name"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input item-floating-label"&gt;
+    &lt;span class="input-label"&gt;Email&lt;/span&gt;
+    &lt;input type="text" placeholder="Email"&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item-floating-label" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>内嵌表单</h2>
+<p>默认情况下每个输入域宽度都是100%，但我们可以使用 list list-inset 或 card 类设置表单的内边距(padding)，
+card 类带有阴影。</p>
+<pre>
+&lt;div class="list list-inset"&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;input type="text" placeholder="First Name"&gt;
+  &lt;/label&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;input type="text" placeholder="Last Name"&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item-input_list-inset" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>内嵌输入域</h2>
+<p>
+使用 list-inset 设置内嵌实体列表。
+使用 item-input-inset 样式可以内嵌一个按钮。
+</p>
+<pre>
+&lt;div class="list"&gt;
+
+  &lt;div class="item item-input-inset"&gt;
+    &lt;label class="item-input-wrapper"&gt;
+      &lt;input type="text" placeholder="Email"&gt;
+    &lt;/label&gt;
+    &lt;button class="button button-small"&gt;
+      Submit
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item-input-inset" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>带图标的输入框</h2>
+<p>
+
+item-input  输入框可以很简单的添加图标。
+图标可以在 &lt;input&gt; 前添加。</p>
+<pre>
+&lt;div class="list list-inset"&gt;
+  &lt;label class="item item-input"&gt;
+    &lt;i class="icon ion-search placeholder-icon"&gt;&lt;/i&gt;
+    &lt;input type="text" placeholder="Search"&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_item-input-search" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>头部输入框</h2>
+<p>输入框可放置在头部，并可添加提交或取消按钮。</p>
+<pre>
+&lt;div class="bar bar-header item-input-inset"&gt;
+  &lt;label class="item-input-wrapper"&gt;
+    &lt;i class="icon ion-ios-search placeholder-icon"&gt;&lt;/i&gt;
+    &lt;input type="search" placeholder="搜索"&gt;
+  &lt;/label&gt;
+  &lt;button class="button button-clear"&gt;
+    取消
+  &lt;/button&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_header_item-input-search" target="_blank">尝试一下 »</a></p>
+</p></div>

@@ -1,0 +1,100 @@
+<div class="article-intro" id="content">
+<h1><span class="color_h1">Linux </span> 安装</h1>
+<p>本章节我们将为大家介绍Linux的安装。</p>
+<p>本章节以 centos6.4 为例。</p>
+<p>centos 下载地址：</p>
+<p>可以去官网下载最新版本：<a href="https://www.centos.org/download/" target="_blank">https://www.centos.org/download/</a></p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/06/1497342019-2668-2a90-3944-9027-0352de39b1fe.jpg"/></p>
+<p>以下针对各个版本的ISO镜像文件，进行一一说明：</p>
+<ul><li><strong>CentOS-7.0-x86_64-DVD-1503-01.iso  </strong>:            标准安装版，一般下载这个就可以了（推荐）
+</li><li><strong>CentOS-7.0-x86_64-NetInstall-1503-01.iso </strong>:      网络安装镜像（从网络安装或者救援系统）
+</li><li><strong>CentOS-7.0-x86_64-Everything-1503-01.iso</strong>:     对完整版安装盘的软件进行补充，集成所有软件。（包含centos7的一套完整的软件包，可以用来安装系统或者填充本地镜像）
+</li><li><strong>CentOS-7.0-x86_64-GnomeLive-1503-01.iso</strong>:   GNOME桌面版
+</li><li><strong>CentOS-7.0-x86_64-KdeLive-1503-01.iso</strong>:         KDE桌面版
+</li><li><strong>CentOS-7.0-x86_64-livecd-1503-01.iso  </strong>:          光盘上运行的系统，类拟于winpe 
+</li><li><strong>CentOS-7.0-x86_64-minimal-1503-01.iso  </strong>:       精简版，自带的软件最少</li></ul>
+<blockquote><p><strong>注：</strong>建议安装64位Linux系统。</p>
+<p>旧版本下载地址：<a href="https://wiki.centos.org/Download" target="_blank">https://wiki.centos.org/Download</a></p>
+</blockquote>
+<p>接下来你需要将下载的Linux系统刻录成光盘或U盘。</p>
+<p><strong>注：</strong>你也可以在Window上安装VMware虚拟机来安装Linux系统。</p>
+<hr/>
+<h2>Linux 安装步骤</h2>
+<p>1、首先，使用光驱或U盘或你下载的Linux ISO文件进行安装。 </p>
+<p>界面说明：</p>
+<p><img alt="image001" class="attachment-full" height="482" src="http://www.runoob.com/wp-content/uploads/2014/06/image001.png" width="576"/></p>
+<p>Install or upgrade an existing system 安装或升级现有的系统</p>
+<p>install system with basic video driver 安装过程中采用基本的显卡驱动</p>
+<p>Rescue installed system 进入系统修复模式</p>
+<p>Boot from local drive   退出安装从硬盘启动</p>
+<p>Memory test  内存检测</p>
+<p>注：用联想E49安装时选择第一项安装时会出现屏幕显示异常的问题，后改用第二项安装时就没有出现问题</p>
+<p>2、这时直接"skip"就可以了</p>
+<p><img alt="image002" class="attachment-full" height="364" src="http://www.runoob.com/wp-content/uploads/2014/06/image002.png" width="576"/></p>
+<p>3、出现引导界面，点击"next"</p>
+<p><img alt="image003" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image003.png" width="576"/></p>
+<p>4、选中"English（English）"否则会有部分乱码问题</p>
+<p><img alt="image004" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image004.png" width="576"/></p>
+<p>5、键盘布局选择"U.S.English"</p>
+<p><img alt="image005" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image005.png" width="576"/></p>
+<p>6、选择"Basic Storage Devices"点击"Next"</p>
+<p><img alt="image006" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image006.png" width="576"/></p>
+<p>7、询问是否忽略所有数据，新电脑安装系统选择"Yes,discard any data"</p>
+<p><img alt="image007" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image007.png" width="576"/></p>
+<p>8、Hostname填写格式"英文名.姓"</p>
+<p><img alt="image008" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image008.png" width="576"/></p>
+<p>9、网络设置安装图示顺序点击就可以了</p>
+<p><img alt="image009" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image009.png" width="576"/></p>
+<p>10、时区可以在地图上点击，选择"shanghai"并取消System clock uses UTC前面的对勾</p>
+<p><img alt="image010" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image010.png" width="576"/></p>
+<p>11、设置root的密码</p>
+<p><img alt="image011" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image011.png" width="576"/></p>
+<p>12、硬盘分区，一定要按照图示点选</p>
+<p><img alt="image012" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image012.png" width="576"/></p>
+<p>13、调整分区，必须要有/home这个分区，如果没有这个分区，安装部分软件会出现不能安装的问题</p>
+<p><img alt="image013" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image013.png" width="576"/></p>
+<p>14、询问是否格式化分区</p>
+<p><img alt="image014" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image014.png" width="576"/></p>
+<p>15、将更改写入到硬盘</p>
+<p><img alt="image015" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image015.png" width="576"/></p>
+<p>16、引导程序安装位置</p>
+<p><img alt="image016" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image016.png" width="576"/></p>
+<p>17、最重要的一步，也是本教程最关键的一步，也是其他教程没有提及的一步，按图示顺序点击</p>
+<p><img alt="image017" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image017.png" width="576"/></p>
+<p>18、取消以下内容的所有选项</p>
+<p><strong>Applications</strong></p>
+<p><strong>Base System</strong></p>
+<p><strong>Servers</strong></p>
+<p>并对Desktops进行如下设置</p>
+<p>即取消如下选项：</p>
+<p><strong>Desktop Debugging and Performance Tools</strong></p>
+<p><strong>Desktop Platform</strong></p>
+<p><strong>Remote Desktop Clients</strong></p>
+<p><strong>Input Methods</strong><strong>中仅保留ibus-pinyin-1.3.8-1.el6.x86_64,其他的全部取消</strong></p>
+<p><img alt="image018" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image018.png" width="576"/></p>
+<p><img alt="image019" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image019.png" width="576"/></p>
+<p>19、选中Languages，并选中右侧的Chinese Support然后点击红色区域</p>
+<p><img alt="image020" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image020.png" width="576"/></p>
+<p>20、调整完成后如下图所示</p>
+<p><img alt="image021" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image021.png" width="576"/></p>
+<p>21、至此，一个最精简的桌面环境就设置完成了，</p>
+<p><img alt="image022" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image022.png" width="576"/></p>
+<p>22、安装完成，重启</p>
+<p><img alt="image023" class="attachment-full" height="472" src="http://www.runoob.com/wp-content/uploads/2014/06/image023.png" width="576"/></p>
+<p>23、重启之后，的License Information</p>
+<p><img alt="image024" class="attachment-full" height="370" src="http://www.runoob.com/wp-content/uploads/2014/06/image024.png" width="576"/></p>
+<p>24、Create User</p>
+<p>Username：填写您的英文名（不带.姓）</p>
+<p>Full Name：填写您的英文名.姓（首字母大写）</p>
+<p><img alt="image025" class="attachment-full" height="370" src="http://www.runoob.com/wp-content/uploads/2014/06/image025.png" width="576"/></p>
+<p>25、"Date and Time" 选中 "Synchronize data and time over the network"</p>
+<p>Finsh之后系统将重启</p>
+<p><img alt="image026" class="attachment-full" height="370" src="http://www.runoob.com/wp-content/uploads/2014/06/image026.png" width="576"/></p>
+<p>26、第一次登录，登录前不要做任何更改，这个很重要！！！登录之后紧接着退出</p>
+<p>第二次登录，选择语言，在红色区域选择下拉小三角，选other，选中"汉语（中国）"</p>
+<p><img alt="image027" class="attachment-full" height="370" src="http://www.runoob.com/wp-content/uploads/2014/06/image027.png" width="576"/></p>
+<p><img alt="image028" class="attachment-full" height="370" src="http://www.runoob.com/wp-content/uploads/2014/06/image028.png" width="576"/></p>
+<p>27、登录之后，请一定按照如下顺序点击！</p>
+<p>至此，CentOS安装完成，如有其他问题，请随时与我联系！！</p>
+<p><img alt="image029" class="attachment-full" height="370" src="http://www.runoob.com/wp-content/uploads/2014/06/image029.png" width="576"/></p>
+</div>

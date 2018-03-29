@@ -1,0 +1,35 @@
+<div class="article-intro">
+<h2>本节引言</h2>
+<blockquote><p>本节和下一节文件下载一样，慎入...现在实际开发涉及文件上传不会自己写上传代码，一般
+会集成第三网络库来做图片上传，比如android-async-http，okhttp等，另外还有七牛也提供
+了下载和上传的API，喜欢的可以去官网查看相关的API文档！本节的话有兴趣看看就好！
+<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/09/37937851.jpg"/></p></blockquote>
+<hr/>
+<h2>1.项目用到的图片上传的关键方法：</h2>
+<p>思前想后，还是决定先贴下公司项目中用到的图片上传的核心方法，这里用到一个第三方的库：
+android-async-http.jar，自己到github下下这个库~然后调用一下下面的方法即可，自己改下url!</p>
+<p>上传图片的核心方法如下：</p>
+<pre>
+private void sendImage(Bitmap bm)
+{
+    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+    bm.compress(Bitmap.CompressFormat.PNG, 60, stream);
+    byte[] bytes = stream.toByteArray();
+    String img = new String(Base64.encodeToString(bytes, Base64.DEFAULT));
+    AsyncHttpClient client = new AsyncHttpClient();
+    RequestParams params = new RequestParams();
+    params.add("img", img);
+    client.post("http:xxx/postIcon", params, new AsyncHttpResponseHandler() {
+        @Override
+        public void onSuccess(int i, Header[] headers, byte[] bytes) {
+            Toast.makeText(MainActivity.this, "Upload Success!", Toast.LENGTH_LONG).show();
+
+        }
+        @Override
+        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+            Toast.makeText(MainActivity.this, "Upload Fail!", Toast.LENGTH_LONG).show();
+        }
+    });
+}
+</pre>
+<hr/><h2>2.使用HttpConnection上传文件：</h2></div>

@@ -1,0 +1,62 @@
+<div class="article-intro" id="content">
+<h1>Scala Iterator（迭代器）</h1>
+<p><a href="scala-collections.html"><img alt="Scala 集合" class="navup" src="/images/up.gif"/> Scala 集合</a></p>
+<p>Scala Iterator（迭代器）不是一个集合，它是一种用于访问集合的方法。</p>
+<p>迭代器 it 的两个基本操作是 <b>next</b> 和 <b>hasNext</b>。</p>
+<p>调用 <b>it.next()</b> 会返回迭代器的下一个元素，并且更新迭代器的状态。</p>
+<p>调用 <b>it.hasNext()</b> 用于检测集合中是否还有元素。</p>
+<p>让迭代器 it 逐个返回所有元素最简单的方法是使用 while 循环：</p>
+<pre>
+object Test {
+   def main(args: Array[String]) {
+      val it = Iterator("Baidu", "Google", "Runoob", "Taobao")
+      
+      while (it.hasNext){
+         println(it.next())
+      }
+   }
+}
+</pre><p>执行以上代码，输出结果为：</p>
+<pre>
+$ scalac Test.scala 
+$ scala Test
+Baidu
+Google
+Runoob
+Taobao
+</pre>
+<hr/>
+<h2>查找最大与最小元素</h2>
+<p>你可以使用 <b>it.min</b> 和 <b>it.max</b> 方法从迭代器中查找最大与最小元素，实例如下:</p>
+<pre>object Test {
+   def main(args: Array[String]) {
+      val ita = Iterator(20,40,2,50,69, 90)
+      val itb = Iterator(20,40,2,50,69, 90)
+      
+      println("最大元素是：" + ita.max )
+      println("最小元素是：" + itb.min )
+
+   }
+}</pre><p>执行以上代码，输出结果为：</p>
+<pre>
+$ scalac Test.scala 
+$ scala Test
+最大元素是：90
+最小元素是：2
+</pre>
+<hr/>
+<h2>获取迭代器的长度</h2>
+<p>你可以使用 <b>it.size</b> 或 <b>it.length</b> 方法来查看迭代器中的元素个数。实例如下：</p>
+<pre>
+object Test {
+   def main(args: Array[String]) {
+      val ita = Iterator(20,40,2,50,69, 90)
+      val itb = Iterator(20,40,2,50,69, 90)
+      
+      println("ita.size 的值: " + ita.size )
+      println("itb.length 的值: " + itb.length )
+
+   }
+}
+</pre>
+</div>

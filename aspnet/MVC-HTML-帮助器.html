@@ -1,0 +1,119 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET MVC <span class="color_h1">- HTML 帮助器</span>
+</h1>
+<hr/>
+<p class="intro">HTML 帮助器用于修改 HTML 输出。</p>
+<hr/>
+<h2>HTML 帮助器</h2>
+<p>通过 MVC，HTML 帮助器类似于传统的 ASP.NET Web Form 控件。</p>
+<p>就像 ASP.NET 中的 Web Form 控件，HTML 帮助器用于修改 HTML。但是 HTML 帮助器是更轻量级的。与 Web Form 控件不同，HTML 帮助器没有事件模型和视图状态。</p>
+<p>在大多数情况下，HTML 帮助器仅仅是一个返回字符串的方法。</p>
+<p>通过 MVC，您可以创建您自己的帮助器，或者直接使用内建的 HTML 帮助器。</p>
+<hr/>
+<h2>标准的 HTML 帮助器</h2>
+<p>MVC 包含了大多数常用的 HTML 元素类型的标准帮助器，比如 HTML 链接和 HTML 表单元素。</p>
+<hr/>
+<h2>HTML 链接</h2>
+<p>呈现 HTML 链接的最简单的方法是使用 HTML.ActionLink() 帮助器。</p>
+<p>通过 MVC，Html.ActionLink() 不连接到视图。它创建一个连接到控制器操作。</p>
+<p>Razor 语法：</p>
+<div class="code notranslate">
+<div>@Html.ActionLink("About this Website", "About")</div>
+</div>
+<p>ASP 语法：</p>
+<div class="code notranslate">
+<div>&lt;%=Html.ActionLink("About this Website", "About")%&gt;</div>
+</div>
+<p>第一个参数是链接文本，第二个参数是控制器操作的名称。</p>
+<p>上面的 Html.ActionLink() 帮助器，输出以下的 HTML：</p>
+<div class="code notranslate">
+<div>&lt;a href="/Home/About"&gt;About this Website&lt;/a&gt;</div>
+</div>
+<p>Html.ActionLink() 帮助器的一些属性：</p>
+<table class="reference notranslate">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>.linkText</td>
+<td>URL 文本（标签），定位点元素的内部文本。</td>
+</tr>
+<tr>
+<td>.actionName</td>
+<td>操作（action）的名称。</td>
+</tr>
+<tr>
+<td>.routeValues</td>
+<td>传递给操作（action)的值，是一个包含路由参数的对象。</td>
+</tr>
+<tr>
+<td>.controllerName</td>
+<td>控制器的名称。</td>
+</tr>
+<tr>
+<td>.htmlAttributes</td>
+<td>URL 的属性设置，是一个包含要为该元素设置的 HTML 特性的对象。</td>
+</tr>
+<tr>
+<td>.protocol</td>
+<td>URL 协议，如 "http" 或 "https"。</td>
+</tr>
+<tr>
+<td>.hostname</td>
+<td>URL 的主机名。</td>
+</tr>
+<tr>
+<td>.fragment</td>
+<td>URL 片段名称（定位点名称）。</td>
+</tr>
+</table>
+<p><strong>注释：</strong>您可以向控制器操作传递值。例如，您可以向数据库 Edit 操作传递数据库记录的 id：</p>
+<p>Razor 语法 C#：</p>
+<div class="code notranslate">
+<div>@Html.ActionLink("Edit Record", "Edit", new {Id=3})</div>
+</div>
+<p>Razor 语法 VB：</p>
+<div class="code notranslate">
+<div>@Html.ActionLink("Edit Record", "Edit", New With{.Id=3})</div>
+</div>
+<p>上面的 Html.ActionLink() 帮助器，输出以下的 HTML：</p>
+<div class="code notranslate">
+<div>&lt;a href="/Home/Edit/3"&gt;Edit Record&lt;/a&gt;</div>
+</div>
+<hr/>
+<h2>HTML 表单元素</h2>
+<p>以下 HTML 帮助器可用于呈现（修改和输出）HTML 表单元素：</p>
+<ul>
+<li>BeginForm()</li>
+<li>EndForm()</li>
+<li>TextArea()</li>
+<li>TextBox()</li>
+<li>CheckBox()</li>
+<li>RadioButton()</li>
+<li>ListBox()</li>
+<li>DropDownList()</li>
+<li>Hidden()</li>
+<li>Password()</li>
+</ul>
+<p>ASP.NET 语法 C#：</p>
+<div class="code notranslate">
+<div>&lt;%= Html.ValidationSummary("Create was unsuccessful. Please correct the 
+	errors and try again.") %&gt;<br/>&lt;% using (Html.BeginForm()){%&gt;<br/>&lt;p&gt;<br/>
+	&lt;label for="FirstName"&gt;First Name:&lt;/label&gt;<br/>&lt;%= Html.TextBox("FirstName") 
+	%&gt;<br/>&lt;%= Html.ValidationMessage("FirstName", "*") %&gt;<br/>&lt;/p&gt;<br/>&lt;p&gt;<br/>
+	&lt;label for="LastName"&gt;Last Name:&lt;/label&gt;<br/>&lt;%= Html.TextBox("LastName") %&gt;<br/>
+	&lt;%= Html.ValidationMessage("LastName", "*") %&gt;<br/>&lt;/p&gt;<br/>&lt;p&gt;<br/>&lt;label 
+	for="Password"&gt;Password:&lt;/label&gt;<br/>&lt;%= Html.Password("Password") %&gt;<br/>&lt;%= 
+	Html.ValidationMessage("Password", "*") %&gt;<br/>&lt;/p&gt;<br/>&lt;p&gt;<br/>&lt;label 
+	for="Password"&gt;Confirm Password:&lt;/label&gt;<br/>&lt;%= Html.Password("ConfirmPassword") 
+	%&gt;<br/>&lt;%= Html.ValidationMessage("ConfirmPassword", "*") %&gt;<br/>&lt;/p&gt;<br/>&lt;p&gt;<br/>
+	&lt;label for="Profile"&gt;Profile:&lt;/label&gt;<br/>&lt;%= Html.TextArea("Profile", new 
+	{cols=60, rows=10})%&gt;<br/>&lt;/p&gt;<br/>&lt;p&gt;<br/>&lt;%= Html.CheckBox("ReceiveNewsletter") 
+	%&gt;<br/>&lt;label for="ReceiveNewsletter" style="display:inline"&gt;Receive 
+	Newsletter?&lt;/label&gt;<br/>&lt;/p&gt;<br/>&lt;p&gt;<br/>&lt;input type="submit" value="Register" 
+	/&gt;<br/>&lt;/p&gt;<br/>&lt;%}%&gt;<br/>
+</div>
+</div>
+<br/><br/>
+</div>

@@ -1,0 +1,113 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">函数参数</span>
+</h1>
+<hr/>
+<p class="intro">JavaScript 函数对参数的值没有进行任何的检查。</p>
+<hr/>
+<h2>函数显式参数(Parameters)与隐式参数(Arguments)</h2>
+<p>在先前的教程中，我们已经学习了函数的显式参数:</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">functionName</span><span class="hl-brackets">(</span><span class="hl-identifier">parameter1</span><span class="hl-code">, </span><span class="hl-identifier">parameter2</span><span class="hl-code">, </span><span class="hl-identifier">parameter3</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 要执行的代码……</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>函数显式参数在函数定义时列出。</p>
+<p>函数隐式参数在函数调用时传递给函数真正的值。</p>
+<hr/>
+<h2>参数规则</h2>
+<p>JavaScript 函数定义时显式参数没有指定数据类型。</p>
+<p>JavaScript 函数对隐式参数没有进行类型检测。</p>
+<p>JavaScript 函数对隐式参数的个数没有进行检测。</p>
+<hr/>
+<h2>默认参数</h2>
+<p>如果函数在调用时未提供隐式参数，参数会默认设置为：
+<strong>undefined</strong> </p>
+<p>有时这是可以接受的，但是建议最好为参数设置一个默认值： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code">, </span><span class="hl-identifier">y</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">y</span><span class="hl-code"> === </span><span class="hl-identifier">undefined</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">y</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_undefined" target="_blank">尝试一下 »</a>
+</div>
+<p>或者，更简单的方式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code">, </span><span class="hl-identifier">y</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">y</span><span class="hl-code"> = </span><span class="hl-identifier">y</span><span class="hl-code"> || </span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_undefined2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>如果y已经定义 ， y || 返回 y, 因为 y 是 true, 否则返回 0, 因为 undefined 为 false。</td>
+</tr></table>
+<p>如果函数调用时设置了过多的参数，参数将无法被引用，因为无法找到对应的参数名。
+只能使用 arguments 对象来调用。</p>
+<hr/>
+<h2> Arguments 对象</h2>
+<p>JavaScript 函数有个内置的对象 arguments 
+对象。</p>
+<p> argument 对象包含了函数调用的参数数组。</p>
+<p>通过这种方式你可以很方便的找到最大的一个参数的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">findMax</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-number">123</span><span class="hl-code">, </span><span class="hl-number">500</span><span class="hl-code">, </span><span class="hl-number">115</span><span class="hl-code">, </span><span class="hl-number">44</span><span class="hl-code">, </span><span class="hl-number">88</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">findMax</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">, </span><span class="hl-identifier">max</span><span class="hl-code"> = </span><span class="hl-identifier">arguments</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+    
+    </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">arguments</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code"> &lt; </span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">max</span><span class="hl-code">;
+ 
+    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">arguments</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">arguments</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code"> &gt; </span><span class="hl-identifier">max</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">max</span><span class="hl-code"> = </span><span class="hl-identifier">arguments</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">max</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_arguments" target="_blank">尝试一下 »</a>
+</div>
+<p>或者创建一个函数用来统计所有数值的和：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">sumAll</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-number">123</span><span class="hl-code">, </span><span class="hl-number">500</span><span class="hl-code">, </span><span class="hl-number">115</span><span class="hl-code">, </span><span class="hl-number">44</span><span class="hl-code">, </span><span class="hl-number">88</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">sumAll</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">, </span><span class="hl-identifier">sum</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">arguments</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">sum</span><span class="hl-code"> += </span><span class="hl-identifier">arguments</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">sum</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_arguments_sum" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>通过值传递参数</h2>
+<p>在函数中调用的参数是函数的隐式参数。</p>
+<p>
+JavaScript 隐式参数通过值来传递：函数仅仅只是获取值。
+</p>
+<p>如果函数修改参数的值，不会修改显式参数的初始值（在函数外定义）。</p>
+<p>隐式参数的改变在函数外是不可见的。</p>
+<hr/>
+<h2>通过对象传递参数</h2>
+<p>在JavaScript中，可以引用对象的值。</p>
+<p>因此我们在函数内部修改对象的属性就会修改其初始的值。</p>
+<p>修改对象属性可作用于函数外部（全局变量）。</p>
+<p>修改对象属性在函数外是可见的。</p>
+</div>

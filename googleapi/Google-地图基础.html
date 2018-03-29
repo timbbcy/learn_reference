@@ -1,0 +1,135 @@
+<div class="article-intro" id="content">
+<h1>Google Maps <span class="color_h1">基础</span>
+</h1>
+<hr/>
+<h2>创建一个简单的 Google 地图</h2>
+<p>现在让我们创建一个简单的 Google 地图。</p>
+<p>以下是显示了英国伦敦的 Google 地图：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://maps.googleapis.com/maps/api/js?key=AIzaSyBzE9xAESye6Kde-3hT-6B90nfwUkcS8Yw&amp;sensor=false</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+function initialize()
+{
+    var mapProp = {
+        center:new google.maps.LatLng(51.508742,-0.120850),
+        zoom:5,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
+ 
+google.maps.event.addDomListener(window, 'load', initialize);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">googleMap</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">width:500px;height:380px;</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_first" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>实例解析</h2>
+<p>我们以以上实例来解析 Google 地图的创建过程。</p>
+<h2>应用为什么要声明 HTML5?</h2>
+<div class="code notranslate"><div>
+&lt;!DOCTYPE html&gt;</div></div>
+<p>大多数浏览器使用 "标准模式" 的 HTML5 文档渲染页面，这就意味着你的应用是兼容各大浏览器的。</p>
+<p>另外，如果没有DOCTYPE标签，浏览器则使用混杂模式 (quirks mode)进行渲染页面内容。</p>
+<p><b>提示：</b> 应该注意的是一些"混杂模式 "中的CSS并不能使用于标准模式中。在具体的应用中，所有基于百分比的大小都必须从父块元素继承 。如果在父模块中没有指定大小，默认值为 0 x 0 像素。如果你想使用百分比，可以在&lt;style&gt; 标签中声明，如下所示：</p>
+<div class="code notranslate"><div>
+&lt;style type="text/css"&gt;<br/>
+html {height:100%}<br/>
+body {height:100%;margin:0;padding:0}<br/>
+#googleMap {height:100%}<br/>
+&lt;/style&gt;</div></div>
+<p>这个样式声明表明地图模块的（GoogleMap）应
+HTML高度为100%。</p>
+<hr/>
+<h2>添加 Google 地图  API Key</h2>
+<p>在以下实例中第一个&lt;script&gt; 标签中必须包含 Google 地图 API：</p>
+<div class="code notranslate"><div>
+&lt;script src="http://maps.googleapis.com/maps/api/js?key=<i><b>YOUR_API_KEY</b></i>&amp;sensor=<b><i>TRUE_OR_FALSE</i></b>"&gt;&lt;/script&gt;</div></div>
+<p>将google生成的 API key 放置于 <b>key</b> 参数中(key=<i>YOUR_API_KEY)</i>。</p>
+<p>The <b>sensor</b> 参数是必须的，该参数用于指明应用程序是否使用一个传感器 (类似 GPS 导航) 来定位用户的位置。参数值可以设置为 true 或者 false。</p>
+<p><b>HTTPS</b></p>
+<p>如果你的应用是安全的HTTP(HTTPS:HTTP Secure)应用,你可以使用 HTTPS  来加载 Google 
+地图 API：</p>
+<div class="code notranslate"><div>
+&lt;script src="https://maps.googleapis.com/maps/api/js?key=<i><b>YOUR_API_KEY</b></i>&amp;sensor=<b><i>TRUE_OR_FALSE</i></b>"&gt;&lt;/script&gt;</div></div>
+<p><b>异步加载</b></p>
+<p>同样我们也可以在页面完全载入后再加载 Google 地图  API。</p>
+<p>以下实例使用了 window.onload 来实现页面完全载入后加载 Google 地图 。
+ loadScript() 函数创建了加载 Google 地图 API &lt;script&gt; 标签。此外在标签的末尾添加了
+callback=initialize 参数， initialize()作为回调函数会在API完全载入后执行：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">loadScript</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">script</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">script</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">script</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">text/javascript</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-identifier">script</span><span class="hl-code">.</span><span class="hl-identifier">src</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">https://maps.googleapis.com/maps/api/js?key=AIzaSyBzE9xAESye6Kde-3hT-6B90nfwUkcS8Yw&amp;sensor=false&amp;callback=initialize</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">body</span><span class="hl-code">.</span><span class="hl-identifier">appendChild</span><span class="hl-brackets">(</span><span class="hl-identifier">script</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">window</span><span class="hl-code">.</span><span class="hl-identifier">onload</span><span class="hl-code"> = </span><span class="hl-identifier">loadScript</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_async" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>定义地图属性</h2>
+<p>在初始化地图前，我们需要先创建一个 Map 属性对象来定义一些地图的属性：</p>
+<div class="code notranslate"><div>
+var mapProp = {<br/>
+  center:new google.maps.LatLng(51.508742,-0.120850),<br/>
+  zoom:7,<br/>
+  mapTypeId: google.maps.MapTypeId.ROADMAP<br/>
+};</div></div>
+<p><b>center（中心点）</b></p>
+<p>中心属性指定了地图的中心，该中心通过坐标（纬度，经度）在地图上创建一个中心点。</p>
+<p><b>Zoom（缩放级数）</b></p>
+<p> zoom 属性指定了地图的 缩放级数。zoom: 0 显示了整个地球地图的完全缩放。</p>
+<p><b>MapTypeId（地图的初始类型）</b></p>
+<p> mapTypeId 属性指定了地图的初始类型。</p>
+<p>mapTypeId包括如下四种类型：</p>
+<ul>
+<li>google.maps.MapTypeId.HYBRID：显示卫星图像的主要街道透明层</li>
+<li>google.maps.MapTypeId.ROADMAP：显示普通的街道地图</li>
+<li>google.maps.MapTypeId.SATELLITE：显示卫星图像</li>
+<li>google.maps.MapTypeId.TERRAIN：显示带有自然特征（如地形和植被）的地图</li></ul>
+<hr/>
+<h2>在哪里显示 Google 地图</h2>
+<p>通常 Google 地图使用于 &lt;div&gt; 元素中：</p>
+<div class="code notranslate"><div>
+&lt;div id="googleMap" style="width:500px;height:380px;"&gt;&lt;/div&gt;</div></div>
+<p><b>注意：</b> 地图将以div中设置的大小来显示地图的大小，所以我们可以在 &lt;div&gt; 元素中设置地图的大小。</p>
+<hr/>
+<h2>创建一个 Map 对象</h2>
+<div class="code notranslate"><div>
+var map=new google.maps.Map(document.getElementById("googleMap")<br/>
+,mapProp);</div></div>
+<p>以上代码使用参数(mapProp)在&lt;div&gt; 元素 (id为googleMap) 创建了一个新的地图。</p>
+<p><b>提示：</b>如果想在页面中创建多个地图，你只需要添加新的地图对象即可。</p>
+<p>以下实例定义了四个地图实例 (四个地图使用了不同的地图类型):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">map</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Map</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">googleMap</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">,</span><span class="hl-identifier">mapProp</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">map2</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Map</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">googleMap2</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">,</span><span class="hl-identifier">mapProp2</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">map3</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Map</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">googleMap3</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">,</span><span class="hl-identifier">mapProp3</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">map4</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Map</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">googleMap4</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">,</span><span class="hl-identifier">mapProp4</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_many" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>加载地图</h2>
+<p>窗口载入后通过执行 initialize() 函数来初始化 Map 对象，这样可以确保在页面完全载入后再加载 Google 地图：</p>
+<div class="code notranslate"><div>
+google.maps.event.addDomListener(window, 'load', initialize);</div></div>
+</div>

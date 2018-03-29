@@ -1,0 +1,56 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">数据库访问 - DBI 教程</span></h1>
+<div class="tutintro">
+<p>本章节将向您讲解如何使用 Ruby 访问数据库。<i>Ruby DBI</i> 模块为 Ruby 脚本提供了类似于 Perl DBI 模块的独立于数据库的接口。</p>
+<p>DBI 即 Database independent interface，代表了 Ruby 独立于数据库的接口。DBI 在 Ruby 代码与底层数据库之间提供了一个抽象层，允许您简单地实现数据库切换。它定义了一系列方法、变量和规范，提供了一个独立于数据库的一致的数据库接口。</p>
+<p>DBI 可与下列进行交互：</p>
+<ul class="list">
+<li>ADO (ActiveX Data Objects)</li>
+<li>DB2</li>
+<li>Frontbase</li>
+<li>mSQL</li>
+<li>MySQL</li>
+<li>ODBC</li>
+<li>Oracle</li>
+<li>OCI8 (Oracle)</li>
+<li>PostgreSQL</li>
+<li>Proxy/Server</li>
+<li>SQLite</li>
+<li>SQLRelay</li>
+</ul>
+</div>
+<h2 class="tutheader">DBI 应用架构</h2>
+<p>DBI 独立于任何在后台中可用的数据库。无论您使用的是 Oracle、MySQL、Informix，您都可以使用 DBI。下面的架构图清晰地说明了这点。</p>
+<img alt="Ruby DBI 架构" src="/wp-content/uploads/2014/05/ruby_dbi.jpg"/>
+<p>Ruby DBI 一般的架构使用两个层：</p>
+<ul class="list">
+<li>数据库接口（DBI）层。该层是独立于数据库，并提供了一系列公共访问方法，方法的使用不分数据库服务器类型。</li>
+<li>数据库驱动（DBD）层。该层是依赖于数据库，不同的驱动提供了对不同的数据库引擎的访问。MySQL、PostgreSQL、InterBase、Oracle 等分别使用不同的驱动。每个驱动都负责解释来自 DBI 层的请求，并把这些请求映射为适用于给定类型的数据库服务器的请求。</li>
+</ul>
+<h2 class="tutheader">安装</h2>
+<p>如果您想要编写 Ruby 脚本来访问 MySQL 数据库，您需要先安装 Ruby MySQL 模块。</p>
+<h3>安装 Mysql 开发包</h3>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment"># Ubuntu</span><span class="hl-code">
+</span><span class="hl-identifier">sudo</span><span class="hl-code"> </span><span class="hl-identifier">apt</span><span class="hl-code">-</span><span class="hl-identifier">get</span><span class="hl-code"> </span><span class="hl-identifier">install</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">-</span><span class="hl-identifier">client</span><span class="hl-code">
+</span><span class="hl-identifier">sudo</span><span class="hl-code"> </span><span class="hl-identifier">apt</span><span class="hl-code">-</span><span class="hl-identifier">get</span><span class="hl-code"> </span><span class="hl-identifier">install</span><span class="hl-code"> </span><span class="hl-identifier">libmysqlclient15</span><span class="hl-code">-</span><span class="hl-identifier">dev</span><span class="hl-code">
+</span><span class="hl-comment"># Centos</span><span class="hl-code">
+</span><span class="hl-identifier">yum</span><span class="hl-code"> </span><span class="hl-identifier">install</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">-</span><span class="hl-identifier">devel</span></div>
+</div>
+</div>
+<p>Mac OS 系统需要修改 ~/.bash_profile 或 ~/.profile 文件，添加如下代码:</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">MYSQL</span><span class="hl-code">=/</span><span class="hl-identifier">usr</span><span class="hl-code">/</span><span class="hl-identifier">local</span><span class="hl-code">/</span><span class="hl-identifier">mysql</span><span class="hl-code">/</span><span class="hl-identifier">bin</span><span class="hl-code">
+</span><span class="hl-identifier">export</span><span class="hl-code"> </span><span class="hl-identifier">PATH</span><span class="hl-code">=</span><span class="hl-var">$PATH</span><span class="hl-code">:</span><span class="hl-var">$MYSQL</span><span class="hl-code">
+</span><span class="hl-identifier">export</span><span class="hl-code"> </span><span class="hl-identifier">DYLD_LIBRARY_PATH</span><span class="hl-code">=/</span><span class="hl-identifier">usr</span><span class="hl-code">/</span><span class="hl-identifier">local</span><span class="hl-code">/</span><span class="hl-identifier">mysql</span><span class="hl-code">/</span><span class="hl-identifier">lib</span><span class="hl-code">:</span><span class="hl-var">$DYLD_LIBRARY_PATH</span></div>
+</div>
+</div>
+<p>或者使用软连接：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">sudo</span><span class="hl-code"> </span><span class="hl-identifier">ln</span><span class="hl-code"> -</span><span class="hl-identifier">s</span><span class="hl-quotes"> /</span><span class="hl-string">usr</span><span class="hl-quotes">/</span><span class="hl-identifier">local</span><span class="hl-code">/</span><span class="hl-identifier">mysql</span><span class="hl-code">/</span><span class="hl-identifier">lib</span><span class="hl-code">/</span><span class="hl-identifier">libmysqlclient</span><span class="hl-number">.18</span><span class="hl-code">.</span><span class="hl-identifier">dylib</span><span class="hl-quotes"> /</span><span class="hl-string">usr</span><span class="hl-quotes">/</span><span class="hl-identifier">lib</span><span class="hl-code">/</span><span class="hl-identifier">libmysqlclient</span><span class="hl-number">.18</span><span class="hl-code">.</span><span class="hl-identifier">dylib</span></div>
+</div>
+</div>
+<h3>使用 RubyGems 安装 DBI（推荐）</h3></div>

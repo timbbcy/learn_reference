@@ -1,0 +1,92 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">元素替换(Element Substitution)</span>
+</h1>
+<hr/>
+<p class="intro">通过 XML Schema，一个元素可对另一个元素进行替换。</p>
+<hr/>
+<h2>元素替换</h2>
+<p>让我们举例说明：我们的用户来自英国和挪威。我们希望有能力让用户选择在 XML 文档中使用挪威语的元素名称还是英语的元素名称。</p>
+<p>为了解决这个问题，我们可以在 XML schema 中定义一个 <em>substitutionGroup</em>。首先，我们声明主元素，然后我们会声明次元素，这些次元素可声明它们能够替换主元素。</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="name" type="xs:string"/&gt;<br/>
+&lt;xs:element name="navn" substitutionGroup="name"/&gt;
+</div></div>
+<p>在上面的例子中，"name" 元素是主元素，而 "navn" 元素可替代 "name" 元素。</p>
+<p>请看一个 XML schema 的片段：</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="name" type="xs:string"/&gt;<br/>
+&lt;xs:element name="navn" substitutionGroup="name"/&gt;<br/><br/>
+&lt;xs:complexType name="custinfo"&gt;<br/>
+   
+  &lt;xs:sequence&gt;<br/>
+       
+    &lt;xs:element ref="name"/&gt;<br/>
+   
+  &lt;/xs:sequence&gt;<br/>
+&lt;/xs:complexType&gt;<br/><br/>
+&lt;xs:element name="customer" type="custinfo"/&gt;<br/>
+&lt;xs:element name="kunde" substitutionGroup="customer"/&gt;
+</div></div>
+<p>有效的 XML 文档类似这样（根据上面的 schema）：</p>
+<div class="code notranslate"><div>
+
+&lt;customer&gt;<br/>
+   
+  &lt;name&gt;John Smith&lt;/name&gt;<br/>
+&lt;/customer&gt;
+</div></div>
+<p>或类似这样：</p>
+<div class="code notranslate"><div>
+
+&lt;kunde&gt;<br/>
+   
+  &lt;navn&gt;John Smith&lt;/navn&gt;<br/>
+&lt;/kunde&gt;
+</div></div>
+<br/><hr/>
+<h2>阻止元素替换</h2>
+<p>为防止其他的元素替换某个指定的元素，请使用 block 属性：</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="name" type="xs:string" block="substitution"/&gt;
+</div></div>
+<p>请看某个 XML schema 的片段：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="name" type="xs:string" block="substitution"/&gt;<br/>
+&lt;xs:element name="navn" substitutionGroup="name"/&gt;<br/><br/>
+&lt;xs:complexType name="custinfo"&gt;<br/>
+   
+  &lt;xs:sequence&gt;<br/>
+       
+    &lt;xs:element ref="name"/&gt;<br/>
+   
+  &lt;/xs:sequence&gt;<br/>
+&lt;/xs:complexType&gt;<br/><br/>
+&lt;xs:element name="customer" type="custinfo" block="substitution"/&gt;<br/>
+&lt;xs:element name="kunde" substitutionGroup="customer"/&gt;
+</div></div>
+<p>合法的 XML 文档应该类似这样（根据上面的 schema）：</p>
+<div class="code notranslate"><div>
+
+&lt;customer&gt;<br/>
+   
+  &lt;name&gt;John Smith&lt;/name&gt;<br/>
+&lt;/customer&gt;
+</div></div>
+<p>但是下面的文档不再合法：</p>
+<div class="code notranslate"><div>
+
+&lt;kunde&gt;<br/>
+   
+  &lt;navn&gt;John Smith&lt;/navn&gt;<br/>
+&lt;/kunde&gt;
+</div></div>
+<br/><hr/>
+<h2>使用 substitutionGroup</h2>
+<p>可替换元素的类型必须和主元素相同，或者从主元素衍生而来。假如可替换元素的类型与主元素的类型相同，那么您就不必规定可替换元素的类型了。</p>
+<p>请注意，substitutionGroup 中的所有元素（主元素和可替换元素）必须被声明为全局元素，否则就无法工作！</p>
+<hr/>
+<h2>什么是全局元素（Global Elements）？</h2>
+<p>全局元素指 "schema" 元素的直接子元素！本地元素（Local elements）指嵌套在其他元素中的元素。</p>
+</div>

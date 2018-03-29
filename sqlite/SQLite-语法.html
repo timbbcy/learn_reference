@@ -1,0 +1,253 @@
+<div class="article-intro" id="content">
+<h1>SQLite <span class="color_h1">语法</span></h1>
+<p>SQLite 是遵循一套独特的称为语法的规则和准则。本教程列出了所有基本的 SQLite 语法，向您提供了一个 SQLite 快速入门。</p>
+<h2 class="tutheader">大小写敏感性</h2>
+<p>有个重要的点值得注意，SQLite 是<b>不区分大小写</b>的，但也有一些命令是大小写敏感的，比如 <b>GLOB</b> 和 <b>glob</b> 在 SQLite 的语句中有不同的含义。</p>
+<h2 class="tutheader">注释</h2>
+<p>SQLite 注释是附加的注释，可以在 SQLite 代码中添加注释以增加其可读性，他们可以出现在任何空白处，包括在表达式内和其他 SQL 语句的中间，但它们不能嵌套。</p>
+<p>SQL 注释以两个连续的 "-" 字符（ASCII 0x2d）开始，并扩展至下一个换行符（ASCII 0x0a）或直到输入结束，以先到者为准。</p>
+<p>您也可以使用 C 风格的注释，以 "/*" 开始，并扩展至下一个 "*/" 字符对或直到输入结束，以先到者为准。SQLite的注释可以跨越多行。</p>
+<pre class="prettyprint">
+sqlite&gt;.help -- This is a single line comment
+</pre>
+<h2 class="tutheader">SQLite 语句</h2>
+<p>所有的 SQLite 语句可以以任何关键字开始，如 SELECT、INSERT、UPDATE、DELETE、ALTER、DROP 等，所有的语句以分号（;）结束。</p>
+<h2>SQLite ANALYZE 语句：</h2>
+<pre class="prettyprint">
+ANALYZE;
+or
+ANALYZE database_name;
+or
+ANALYZE database_name.table_name;
+</pre>
+<h2>SQLite AND/OR 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION-1 {AND|OR} CONDITION-2;
+</pre>
+<h2>SQLite ALTER TABLE 语句：</h2>
+<pre class="prettyprint">
+ALTER TABLE table_name ADD COLUMN column_def...;
+</pre>
+<h2>SQLite ALTER TABLE 语句（Rename）：</h2>
+<pre class="prettyprint">
+ALTER TABLE table_name RENAME TO new_table_name;
+</pre>
+<h2>SQLite ATTACH DATABASE 语句：</h2>
+<pre class="prettyprint">
+ATTACH DATABASE 'DatabaseName' As 'Alias-Name';
+</pre>
+<h2>SQLite BEGIN TRANSACTION 语句：</h2>
+<pre class="prettyprint">
+BEGIN;
+or
+BEGIN EXCLUSIVE TRANSACTION;
+</pre>
+<h2>SQLite BETWEEN 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name BETWEEN val-1 AND val-2;
+</pre>
+<h2>SQLite COMMIT 语句：</h2>
+<pre class="prettyprint">
+COMMIT;
+</pre>
+<h2>SQLite CREATE INDEX 语句：</h2>
+<pre class="prettyprint">
+CREATE INDEX index_name
+ON table_name ( column_name COLLATE NOCASE );
+</pre>
+<h2>SQLite CREATE UNIQUE INDEX 语句：</h2>
+<pre class="prettyprint">
+CREATE UNIQUE INDEX index_name
+ON table_name ( column1, column2,...columnN);
+</pre>
+<h2>SQLite CREATE TABLE 语句：</h2>
+<pre class="prettyprint">
+CREATE TABLE table_name(
+   column1 datatype,
+   column2 datatype,
+   column3 datatype,
+   .....
+   columnN datatype,
+   PRIMARY KEY( one or more columns )
+);
+</pre>
+<h2>SQLite CREATE TRIGGER 语句：</h2>
+<pre class="prettyprint">
+CREATE TRIGGER database_name.trigger_name 
+BEFORE INSERT ON table_name FOR EACH ROW
+BEGIN 
+   stmt1; 
+   stmt2;
+   ....
+END;
+</pre>
+<h2>SQLite CREATE VIEW 语句：</h2>
+<pre class="prettyprint">
+CREATE VIEW database_name.view_name  AS
+SELECT statement....;
+</pre>
+<h2>SQLite CREATE VIRTUAL TABLE 语句：</h2>
+<pre class="prettyprint">
+CREATE VIRTUAL TABLE database_name.table_name USING weblog( access.log );
+or
+CREATE VIRTUAL TABLE database_name.table_name USING fts3( );
+</pre>
+<h2>SQLite COMMIT TRANSACTION 语句：</h2>
+<pre class="prettyprint">
+COMMIT;
+</pre>
+<h2>SQLite COUNT 子句：</h2>
+<pre class="prettyprint">
+SELECT COUNT(column_name)
+FROM   table_name
+WHERE  CONDITION;
+</pre>
+<h2>SQLite DELETE 语句：</h2>
+<pre class="prettyprint">
+DELETE FROM table_name
+WHERE  {CONDITION};
+</pre>
+<h2>SQLite DETACH DATABASE 语句：</h2>
+<pre class="prettyprint">
+DETACH DATABASE 'Alias-Name';
+</pre>
+<h2>SQLite DISTINCT 子句：</h2>
+<pre class="prettyprint">
+SELECT DISTINCT column1, column2....columnN
+FROM   table_name;
+</pre>
+<h2>SQLite DROP INDEX 语句：</h2>
+<pre class="prettyprint">
+DROP INDEX database_name.index_name;
+</pre>
+<h2>SQLite DROP TABLE 语句：</h2>
+<pre class="prettyprint">
+DROP TABLE database_name.table_name;
+</pre>
+<h2>SQLite DROP VIEW 语句：</h2>
+<pre>
+DROP VIEW view_name;
+</pre>
+<h2>SQLite DROP TRIGGER 语句：</h2>
+<pre>
+DROP TRIGGER trigger_name
+</pre>
+<h2>SQLite EXISTS 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name EXISTS (SELECT * FROM   table_name );
+</pre>
+<h2>SQLite EXPLAIN 语句：</h2>
+<pre class="prettyprint">
+EXPLAIN INSERT statement...;
+or 
+EXPLAIN QUERY PLAN SELECT statement...;
+</pre>
+<h2>SQLite GLOB 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name GLOB { PATTERN };
+</pre>
+<h2>SQLite GROUP BY 子句：</h2>
+<pre class="prettyprint">
+SELECT SUM(column_name)
+FROM   table_name
+WHERE  CONDITION
+GROUP BY column_name;
+</pre>
+<h2>SQLite HAVING 子句：</h2>
+<pre class="prettyprint">
+SELECT SUM(column_name)
+FROM   table_name
+WHERE  CONDITION
+GROUP BY column_name
+HAVING (arithematic function condition);
+</pre>
+<h2>SQLite INSERT INTO 语句：</h2>
+<pre class="prettyprint">
+INSERT INTO table_name( column1, column2....columnN)
+VALUES ( value1, value2....valueN);
+</pre>
+<h2>SQLite IN 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name IN (val-1, val-2,...val-N);
+</pre>
+<h2>SQLite Like 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name LIKE { PATTERN };
+</pre>
+<h2>SQLite NOT IN 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name NOT IN (val-1, val-2,...val-N);
+</pre>
+<h2>SQLite ORDER BY 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION
+ORDER BY column_name {ASC|DESC};
+</pre>
+<h2>SQLite PRAGMA 语句：</h2>
+<pre class="prettyprint">
+PRAGMA pragma_name;
+
+For example:
+
+PRAGMA page_size;
+PRAGMA cache_size = 1024;
+PRAGMA table_info(table_name);
+</pre>
+<h2>SQLite RELEASE SAVEPOINT 语句：</h2>
+<pre class="prettyprint">
+RELEASE savepoint_name;
+</pre>
+<h2>SQLite REINDEX 语句：</h2>
+<pre class="prettyprint">
+REINDEX collation_name;
+REINDEX database_name.index_name;
+REINDEX database_name.table_name;
+</pre>
+<h2>SQLite ROLLBACK 语句：</h2>
+<pre class="prettyprint">
+ROLLBACK;
+or
+ROLLBACK TO SAVEPOINT savepoint_name;
+</pre>
+<h2>SQLite SAVEPOINT 语句：</h2>
+<pre class="prettyprint">
+SAVEPOINT savepoint_name;
+</pre>
+<h2>SQLite SELECT 语句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name;
+</pre>
+<h2>SQLite UPDATE 语句：</h2>
+<pre class="prettyprint">
+UPDATE table_name
+SET column1 = value1, column2 = value2....columnN=valueN
+[ WHERE  CONDITION ];
+</pre>
+<h2>SQLite VACUUM 语句：</h2>
+<pre class="prettyprint">
+VACUUM;
+</pre>
+<h2>SQLite WHERE 子句：</h2>
+<pre class="prettyprint">
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION;
+</pre>
+</div>

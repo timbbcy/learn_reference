@@ -1,0 +1,160 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">语法规则</span>
+</h1>
+<hr/>
+<p class="intro">XML 的语法规则很简单，且很有逻辑。这些规则很容易学习，也很容易使用。</p>
+<hr/>
+<h2>XML 文档必须有根元素</h2>
+<p>XML 必须包含根元素，它是所有其他元素的父元素，比如以下实例中 root 就是根元素：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">root</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">child</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">subchild</span><span class="hl-brackets">&gt;</span><span class="hl-code">.....</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">subchild</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">child</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">root</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>以下实例中 note 是根元素：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;?</span><span class="hl-reserved">xml</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">encoding</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-brackets">?&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tove</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">Jani</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">Reminder</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">Don't forget me this weekend!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<hr/>
+<h2> XML 声明</h2><p>
+XML 声明文件的可选部分，如果存在需要放在文档的第一行，如下所示：
+</p>
+<pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;</pre>
+<blockquote><p>以上实例包含 XML 版本（<version="1.0"），甚至包含字符编码（encoding="utf-8"）。< p=""><p>UTF-8 也是 HTML5, CSS, JavaScript, PHP, 和 SQL 的默认编码。</p></version="1.0"），甚至包含字符编码（encoding="utf-8"）。<></p></blockquote>
+<hr/>
+<h2>所有的 XML 元素都必须有一个关闭标签</h2>
+<p>在 HTML 中，某些元素不必有一个关闭标签：</p>
+<pre>
+&lt;p&gt;This is a paragraph.
+&lt;br&gt;</pre>
+<p>在 XML 中，省略关闭标签是非法的。所有元素都<b>必须</b>有关闭标签：</p>
+<pre>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;br /&gt;
+</pre>
+<p><b>注释：</b>从上面的实例中，您也许已经注意到 XML 声明没有关闭标签。这不是错误。声明不是 XML 文档本身的一部分，它没有关闭标签。</p>
+<hr/>
+<h2>XML 标签对大小写敏感</h2>
+<p>XML 标签对大小写敏感。标签 &lt;Letter&gt; 与标签 &lt;letter&gt; 是不同的。</p>
+<p>必须使用相同的大小写来编写打开标签和关闭标签：</p>
+<pre>
+&lt;Message&gt;这是错误的&lt;/message&gt;
+&lt;message&gt;这是正确的&lt;/message&gt;
+</pre>
+<p><b>注释：</b>打开标签和关闭标签通常被称为开始标签和结束标签。不论您喜欢哪种术语，它们的概念都是相同的。</p>
+<hr/>
+<h2>XML 必须正确嵌套</h2>
+<p>在 HTML 中，常会看到没有正确嵌套的元素：</p>
+<pre>
+&lt;b&gt;&lt;i&gt;This text is bold and italic&lt;/b&gt;&lt;/i&gt;
+</pre>
+<p>在 XML 中，所有元素都<b>必须</b>彼此正确地嵌套：</p>
+<pre>
+&lt;b&gt;&lt;i&gt;This text is bold and italic&lt;/i&gt;&lt;/b&gt;
+</pre>
+<p>在上面的实例中，正确嵌套的意思是：由于 &lt;i&gt; 元素是在 &lt;b&gt; 元素内打开的，那么它必须在 &lt;b&gt; 元素内关闭。</p>
+<hr/>
+<hr/>
+<h2>XML 属性值必须加引号</h2>
+<p>与 HTML 类似，XML 元素也可拥有属性（名称/值的对）。</p>
+<p>在 XML 中，XML 的属性值必须加引号。</p>
+<p>请研究下面的两个 XML 文档。
+第一个是错误的，第二个是正确的：</p>
+<pre>
+&lt;note date=12/11/2007&gt;
+&lt;to&gt;Tove&lt;/to&gt;
+&lt;from&gt;Jani&lt;/from&gt;
+&lt;/note&gt;
+</pre>
+<pre>
+&lt;note date="12/11/2007"&gt;
+&lt;to&gt;Tove&lt;/to&gt;
+&lt;from&gt;Jani&lt;/from&gt;
+&lt;/note&gt;
+</pre>
+<p>在第一个文档中的错误是，note 元素中的 date 属性没有加引号。</p>
+<hr/>
+<h2>实体引用</h2>
+<p>在 XML 中，一些字符拥有特殊的意义。</p>
+<p>如果您把字符 "&lt;" 放在 XML 元素中，会发生错误，这是因为解析器会把它当作新元素的开始。</p>
+<p>这样会产生 XML 错误：</p>
+<pre>&lt;message&gt;if salary &lt; 1000 then&lt;/message&gt;</pre>
+<p>为了避免这个错误，请用<b>实体引用</b>来代替 "&lt;" 字符：</p>
+<pre>
+&lt;message&gt;if salary &amp;lt; 1000 then&lt;/message&gt;
+</pre>
+<p>在 XML 中，有 5 个预定义的实体引用：</p>
+<table class="reference" style="width:50%">
+<tr>
+<td>&amp;lt;</td>
+<td>&lt;</td>
+<td>less than</td>
+</tr>
+<tr>
+<td>&amp;gt;</td>
+<td>&gt;</td>
+<td>greater than</td>
+</tr>
+<tr>
+<td>&amp;amp;</td>
+<td>&amp;</td>
+<td>ampersand </td>
+</tr>
+<tr>
+<td>&amp;apos;</td>
+<td>'</td>
+<td>apostrophe</td>
+</tr>
+<tr>
+<td>&amp;quot;</td>
+<td>"</td>
+<td>quotation mark</td>
+</tr>
+</table>
+<p>
+<b>注释：</b>在 XML 中，只有字符 "&lt;" 和 "&amp;" 确实是非法的。大于号是合法的，但是用实体引用来代替它是一个好习惯。</p>
+<hr/>
+<h2>XML 中的注释</h2>
+<p>在 XML 中编写注释的语法与 HTML 的语法很相似。</p>
+<pre>
+&lt;!-- This is a comment --&gt;
+</pre>
+<hr/>
+<h2>在 XML 中，空格会被保留</h2>
+<p>HTML 会把多个连续的空格字符裁减（合并）为一个：</p>
+<table class="reference notranslate">
+<tr>
+<td>
+HTML:
+</td>
+<td>Hello           Tove
+</td>
+</tr>
+<tr>
+<td>
+Output:
+</td>
+<td>Hello Tove</td>
+</tr>
+</table>
+<p>在 XML 中，文档中的空格不会被删减。</p>
+<hr/>
+<h2>XML 以 LF 存储换行</h2>
+<p>在 Windows 应用程序中，换行通常以一对字符来存储：回车符（CR）和换行符（LF）。</p>
+<p>在 Unix 和 Mac OSX 中，使用 LF 来存储新行。</p>
+<p>在旧的 Mac 系统中，使用 CR 来存储新行。</p>
+<p>XML 以 LF 存储换行。</p>
+<br/>
+</div>

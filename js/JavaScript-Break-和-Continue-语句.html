@@ -1,0 +1,88 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Break 和 Continue 语句</span>
+</h1>
+<hr/>
+<p class="intro">break 语句用于跳出循环。</p>
+<p class="intro">continue 用于跳过循环中的一个迭代。</p>
+<hr/>
+<h2>Break 语句</h2>
+<p>我们已经在本教程之前的章节中见到过 break 语句。它用于跳出 switch() 语句。</p>
+<p>break 语句可用于跳出循环。</p>
+<p>continue 语句跳出循环后，会继续执行该循环之后的代码（如果有的话）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-number">10</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">==</span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">break</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">The number is </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_break" target="_blank">尝试一下 »</a>
+</div>
+<p>由于这个 if 语句只有一行代码，所以可以省略花括号：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-number">10</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">==</span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">break</span><span class="hl-code">;
+    </span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">The number is </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<br/><hr/>
+<h2>Continue 语句</h2>
+<p><strong>continue 语句</strong>中断循环中的迭代，如果出现了指定的条件，然后继续循环中的下一个迭代。
+该例子跳过了值 3：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;=</span><span class="hl-number">10</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">==</span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">continue</span><span class="hl-code">;
+    </span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">The number is </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_continue" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>JavaScript 标签</h2>
+<p>正如您在 switch 语句那一章中看到的，可以对 JavaScript 语句进行标记。</p>
+<p>如需标记 JavaScript 语句，请在语句之前加上冒号：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">label</span><span class="hl-code">:
+</span><span class="hl-identifier">statements</span></div></div>
+</div>
+<p>break 和 continue 语句仅仅是能够跳出代码块的语句。</p>
+<p>语法:</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">break</span><span class="hl-code"> </span><span class="hl-identifier">labelname</span><span class="hl-code">; 
+ 
+</span><span class="hl-reserved">continue</span><span class="hl-code"> </span><span class="hl-identifier">labelname</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>continue 语句（带有或不带标签引用）只能用在循环中。</p>
+<p>break 语句（不带标签引用），只能用在循环或 switch 中。</p>
+<p>通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">cars</span><span class="hl-code">=</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">BMW</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Volvo</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Saab</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Ford</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-identifier">list</span><span class="hl-code">: 
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-number">2</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-reserved">break</span><span class="hl-code"> </span><span class="hl-identifier">list</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-number">3</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-number">4</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-number">5</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_break_list" target="_blank">尝试一下 »</a>
+</div>
+</div>

@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<script> 
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".panel").slideToggle("slow");
+});
+});
+</script>
+<style type="text/css"> 
+div.panel,p.flip
+{
+width:90%;
+margin:auto;
+padding:5px;
+text-align:center;
+background:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+div.panel
+{
+height:100px;
+display:none;
+}
+</style>
+<h1>jQuery 效果 - <span class="color_h1">滑动</span>
+</h1>
+<hr/>
+<p class="intro">jQuery 滑动方法可使元素上下滑动。</p>
+<p class="flip">点击这里，隐藏/显示面板</p>
+<div class="panel">
+<p>一寸光阴一寸金，因此，我们为您提供快捷易懂的学习内容。
+</p>
+<p>在这里，您可以通过一种易懂的便利的模式获得您需要的任何知识。</p>
+</div>
+<hr/>
+<h2>实例</h2>
+<p><a href="/try/try.php?filename=tryjquery_slide_down" target="_blank">jQuery slideDown()</a><br/>
+演示 jQuery slideDown() 方法。</p>
+<p><a href="/try/try.php?filename=tryjquery_slide_up" target="_blank">jQuery slideUp()</a><br/>
+演示 jQuery slideUp() 方法。</p>
+<p><a href="/try/try.php?filename=tryjquery_slide_toggle" target="_blank">jQuery slideToggle()</a><br/>
+演示 jQuery slideToggle() 方法。</p>
+<hr/>
+<h2>jQuery 滑动方法</h2>
+<p>通过 jQuery，您可以在元素上创建滑动效果。</p>
+<p>jQuery 拥有以下滑动方法：</p>
+<ul>
+<li>slideDown()</li>
+<li>slideUp()</li>
+<li>slideToggle()</li>
+</ul>
+<hr/>
+<h2>jQuery slideDown() 方法</h2>
+<p>jQuery slideDown() 方法用于向下滑动元素。</p>
+<p><b>语法:</b></p>
+<div class="code"><div>
+$(<i>selector</i>).slideDown(<i>speed,callback</i>);</div></div>
+<p>可选的 speed 参数规定效果的时长。它可以取以下值："slow"、"fast" 或毫秒。</p>
+<p>可选的 callback 参数是滑动完成后所执行的函数名称。</p>
+<p>下面的例子演示了 slideDown() 方法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#flip</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#panel</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">slideDown</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_slide_down" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery slideUp() 方法</h2>
+<p>jQuery slideUp() 方法用于向上滑动元素。</p>
+<p><b>语法:</b></p>
+<div class="code"><div>
+$(<i>selector</i>).slideUp(<i>speed,callback</i>);</div></div>
+<p>可选的 speed 参数规定效果的时长。它可以取以下值："slow"、"fast" 或毫秒。</p>
+<p>可选的 callback 参数是滑动完成后所执行的函数名称。</p>
+<p>下面的例子演示了 slideUp() 方法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#flip</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#panel</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">slideUp</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_slide_up" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery slideToggle() 方法</h2>
+<p>jQuery slideToggle() 方法可以在 slideDown() 与 slideUp() 方法之间进行切换。</p>
+<p>如果元素向下滑动，则 slideToggle() 可向上滑动它们。</p>
+<p>如果元素向上滑动，则 slideToggle() 可向下滑动它们。</p>
+<div class="code"><div>
+$(<i>selector</i>).slideToggle(<i>speed,callback</i>);</div></div>
+<p>可选的 speed 参数规定效果的时长。它可以取以下值："slow"、"fast" 或毫秒。</p>
+<p>可选的 callback 参数是滑动完成后所执行的函数名称。</p>
+<p>下面的例子演示了 slideToggle() 方法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#flip</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#panel</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">slideToggle</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_slide_toggle" target="_blank">尝试一下 »</a>
+</div>
+</div>

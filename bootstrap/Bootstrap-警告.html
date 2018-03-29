@@ -1,0 +1,95 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">警告（Alerts）</span></h1>
+<p>本章将讲解警告（Alerts）以及 Bootstrap 所提供的用于警告的 class。警告（Alerts）向用户提供了一种定义消息样式的方式。它们为典型的用户操作提供了上下文信息反馈。</p>
+<p>您可以为警告框添加一个可选的关闭按钮。为了创建一个内联的可取消的警告框，请使用 <a href="/bootstrap/bootstrap-alert-plugin.html" target="_blank">警告（Alerts） jQuery 插件</a>。</p>
+<p>您可以通过创建一个 &lt;div&gt;，并向其添加一个 <b>.alert</b> class 和四个上下文 class（即<b> .alert-success、.alert-info、.alert-warning、.alert-danger</b>）之一，来添加一个基本的警告框。下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功！很好地完成了提交。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-info</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">信息！请注意这个信息。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告！请不要提交。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-danger</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">错误！请进行一些更改。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-alert" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="警告（Alerts）" src="/wp-content/uploads/2014/06/alert_demo.jpg"/>
+</div>
+<h2>可取消的警告（Dismissal Alerts）</h2>
+<p>创建一个可取消的警告（Dismissal Alert）步骤如下：</p>
+<ul class="list">
+<li>通过创建一个 &lt;div&gt;，并向其添加一个 <b>.alert</b> class 和四个上下文 class（即<b> .alert-success、.alert-info、.alert-warning、.alert-danger</b>）之一，来添加一个基本的警告框。</li>
+<li>同时向上面的 &lt;div&gt; class 添加可选的 <b>.alert-dismissable</b>。</li>
+<li>添加一个关闭按钮。</li>
+</ul>
+<p>下面的实例演示了这点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success alert-dismissable</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-hidden</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">true</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-special">&amp;times;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            成功！很好地完成了提交。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-info alert-dismissable</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-hidden</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">true</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-special">&amp;times;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            信息！请注意这个信息。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-warning alert-dismissable</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-hidden</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">true</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-special">&amp;times;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            警告！请不要提交。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-danger alert-dismissable</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">aria-hidden</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">true</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-special">&amp;times;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            错误！请进行一些更改。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<blockquote><img src="/images/quote.png"/>请确保使用带有 <i>data-dismiss="alert"</i> data 属性的 &lt;button&gt; 元素。</blockquote>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-alert-dismissal" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="可取消的警告（Dismissal Alerts）" src="/wp-content/uploads/2014/06/dismissalalert_demo.jpg">
+</img></div>
+<h2>警告（Alerts）中的链接</h2>
+<p>在警告（Alerts）中创建链接的步骤如下：</p>
+<ul class="list">
+<li>通过创建一个 &lt;div&gt;，并向其添加一个 <b>.alert</b> class 和四个上下文 class（即<b> .alert-success、.alert-info、.alert-warning、.alert-danger</b>）之一，来添加一个基本的警告框。</li>
+<li>使用 <b>.alert-link</b> 实体类来快速提供带有匹配颜色的链接。</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert-link</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功！很好地完成了提交。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-info</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert-link</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">信息！请注意这个信息。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert-link</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告！请不要提交。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-danger</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert-link</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">错误！请进行一些更改。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-alert-links" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="警告（Alerts）中的链接" src="/wp-content/uploads/2014/06/linksinalert_demo.jpg"/>
+</div>
+</div>

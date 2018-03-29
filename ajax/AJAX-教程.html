@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<script>
+function loadXMLDoc()
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","/try/ajax/ajax_info.txt",true);
+xmlhttp.send();
+}
+</script>
+<h1>AJAX <span class="color_h1">教程</span>
+</h1>
+<br/><div class="tutintro">
+<p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
+<p>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。</p>
+<p>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
+<p>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。</p>
+</div>
+<br/><div class="example">
+<h2 class="example">AJAX 实例</h2>
+<div class="example_result notranslate">
+<div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+<button onclick="loadXMLDoc()" type="button">修改内容</button>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryajax_first" target="_blank">尝试一下 »</a>
+</div>
+<br/><br/><p class="tutintro"><a href="ajax-intro.html"><b>现在开始学习 AJAX !</b></a></p>
+<hr/><h2>阅读本教程前，您需要了解的知识：</h2>
+<p>阅读本教程，您需要有以下基础：</p>
+<ul>
+<li>HTML 和 CSS 基础</li>
+<li>JavaScript 基础</li>
+</ul>
+<p>如果您想学习这些基础知识，您可以在我们的首页找到相应的教程<a href="/">菜鸟教程</a>。</p>
+<hr/><h2>AJAX 应用</h2>
+<ul><li><p>
+运用XHTML+CSS来表达资讯；</p></li><li><p>
+运用JavaScript操作DOM（Document Object Model）来执行动态效果；</p></li><li><p>
+运用XML和XSLT操作资料;</p></li><li><p>
+运用XMLHttpRequest或新的Fetch API与网页服务器进行异步资料交换；</p></li><li><p>
+注意：AJAX与Flash、Silverlight和Java Applet等RIA技术是有区分的。</p></li></ul>
+</div>

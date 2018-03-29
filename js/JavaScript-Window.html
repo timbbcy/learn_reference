@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Window - 浏览器对象模型</span>
+</h1>
+<hr/>
+<p class="intro">浏览器对象模型 (BOM) 使 JavaScript 有能力与浏览器"对话"。</p>
+<hr/>
+<h2>浏览器对象模型 (BOM)</h2>
+<p>浏览器对象模型（<strong>B</strong>rowser <strong>O</strong>bject
+<strong>M</strong>odel (BOM)）尚无正式标准。</p>
+<p>由于现代浏览器已经（几乎）实现了 JavaScript 交互性方面的相同方法和属性，因此常被认为是 BOM 的方法和属性。</p>
+<hr/>
+<h2>Window 对象</h2>
+<p>所有浏览器都支持 window 对象。它表示浏览器窗口。</p>
+<p>所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。</p>
+<p>全局变量是 window 对象的属性。</p>
+<p>全局函数是 window 对象的方法。</p>
+<p>甚至 HTML DOM 的 document 也是 window 对象的属性之一：</p>
+<div class="code notranslate">
+<div>
+	window.document.getElementById("header");
+</div>
+</div>
+<p>与此相同：</p>
+<div class="code notranslate">
+<div>
+	document.getElementById("header");
+</div>
+</div>
+<br/><hr/>
+<h2>Window 尺寸</h2>
+<p>有三种方法能够确定浏览器窗口的尺寸。</p>
+<p>对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：</p>
+<ul>
+<li>window.innerHeight - 浏览器窗口的内部高度(包括滚动条)</li>
+<li>window.innerWidth - 浏览器窗口的内部宽度(包括滚动条)</li>
+</ul>
+<p>对于 Internet Explorer 8、7、6、5：</p>
+<ul>
+<li>document.documentElement.clientHeight</li>
+<li>document.documentElement.clientWidth</li>
+</ul>
+<p>或者</p>
+<ul>
+<li>document.body.clientHeight</li>
+<li>document.body.clientWidth</li>
+</ul>
+<p>实用的 JavaScript 方案（涵盖所有浏览器）： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	var w=window.innerWidth<br/>|| document.documentElement.clientWidth<br/>|| 
+	document.body.clientWidth;<br/><br/>var h=window.innerHeight<br/>|| 
+	document.documentElement.clientHeight<br/>|| document.body.clientHeight; </div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_win_inner" target="_blank">尝试一下 »</a>
+</div>
+<p>
+该例显示浏览器窗口的高度和宽度：（不包括工具栏/滚动条）</p>
+<hr/>
+<h2>其他 Window 方法</h2>
+<p>一些其他方法：</p>
+<ul>
+<li>window.open() - 打开新窗口</li>
+<li>window.close() - 关闭当前窗口</li>
+<li>window.moveTo() - 移动当前窗口</li>
+<li>window.resizeTo() - 调整当前窗口的尺寸</li>
+</ul>
+</div>

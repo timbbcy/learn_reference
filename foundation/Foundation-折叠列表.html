@@ -1,0 +1,64 @@
+<div class="article-intro" id="content">
+<h1>Foundation 折叠列表</h1>
+<p>
+在你想隐藏部分内容的显示时，可以使用折叠列表。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"accordion"</span> <span class="highATT">data-accordion</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"accordion-navigation"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#demo"</span><span class="highGT">&gt;</span>Simple 
+	Collapsible<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"demo"</span> <span class="highATT">class=</span><span class="highVAL">"content"</span><span class="highGT">&gt;</span><br/>      
+	菜鸟教程 -- 学的不仅是技术，更是梦想！！！<br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/><br/><span class="highCOM">&lt;!-- 初始化 Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_accordion" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析</h3>
+<p><code>.accordion</code> 类和 <code>data-accordion</code> 属性用于创建一个可折叠的元素。
+ <code>.accordion-navigation</code> 类用于渲染可折叠元素。实际的内容在 <code>.content</code> 类 (&lt;div class="content") 中，点击按钮既可以显示。</p>
+<p>我们在列表项中添加 <code>&lt;a&gt;</code> 元素来控制（显示/隐藏）可折叠的内容。然后锚链接使用与可折叠内容内容相同的id (&lt;a href=#demo" 与 &lt;div 
+id="demo"&gt; 相关联)。</p>
+<p><strong>注意：</strong> 可折叠的效果需要初始化 Foundation JS。</p>
+<p>默认情况下，可折叠内容是隐藏的。我们可以通过在 <code>&lt;div&gt;</code> 上添加 <code>.active</code> 类让其默认是显示的：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"demo"</span> <span class="highATT">class=</span><span class="highVAL">"content active"</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_accordion_active" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>手风琴效果</h2>
+<p>手风琴效果用于延展与设置可折叠内容。</p>
+<p>手风琴效果通过使用多个不同的锚链接与id来创建：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"accordion"</span> <span class="highATT">data-accordion</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span>
+<span class="highATT">class=</span><span class="highVAL">"accordion-navigation"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#demo"</span><span class="highGT">&gt;</span>手风琴实例 
+	1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"demo"</span> <span class="highATT">class=</span><span class="highVAL">"content active"</span><span class="highGT">&gt;</span><br/>      
+	Demo 1 - 菜鸟教程 -- 学的不仅是技术，更是梦想！！！<br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"accordion-navigation"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#demo2"</span><span class="highGT">&gt;</span>手风琴实例 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"demo2"</span>
+<span class="highATT">class=</span><span class="highVAL">"content"</span><span class="highGT">&gt;</span><br/>      Demo 2 - Lorem ipsum 
+	dolor sit amet....<br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">class=</span><span class="highVAL">"accordion-navigation"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#demo3"</span><span class="highGT">&gt;</span>手风琴实例 
+	3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"demo3"</span> <span class="highATT">class=</span><span class="highVAL">"content"</span><span class="highGT">&gt;</span><br/>      
+	Demo 3 - 菜鸟教程 -- 学的不仅是技术，更是梦想！！！<br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_accordion_group" target="_blank">尝试一下 »</a>
+</div>
+<p>默认情况下，手风琴列表项有一个是打开的。如果你想关闭所有可以使用 <code>data-options="multi_expand:true;"</code> 属性:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"accordion"</span> <span class="highATT">data-accordion
+	data-options=</span><span class="highVAL">"multi_expand:true;"</span><span class="highGT">&gt;</span><br/>  ..<br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_accordion_multiple" target="_blank">尝试一下 »</a>
+</div>
+</div>

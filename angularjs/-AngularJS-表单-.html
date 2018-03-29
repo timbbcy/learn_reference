@@ -1,0 +1,187 @@
+<div class="article-intro" id="content">
+<h1>AngularJS <span class="color_h1">表单</span></h1>
+<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+<hr/>
+<p class="intro">AngularJS 表单是输入控件的集合。</p>
+<hr/>
+<h2>HTML 控件</h2>
+<p>以下 HTML input 元素被称为 HTML 控件:</p>
+<ul>
+<li>input 元素</li>
+<li>select 元素</li>
+<li>button 元素</li>
+<li>textarea 元素</li>
+</ul>
+<hr/>
+<h2>数据绑定</h2>
+<p>Input 控件使用 ng-model 指令来实现数据绑定。</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">firstname</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div><p>
+通过以上代码应用有了一个名为 firstname 的属性。
+</p><p>
+它通过 ng-model 指令来绑定到你的应用。
+</p><p>
+
+firstname 属性可以在 controller 中使用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">app</span><span class="hl-code"> = </span><span class="hl-identifier">angular</span><span class="hl-code">.</span><span class="hl-identifier">module</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">myApp</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">app</span><span class="hl-code">.</span><span class="hl-identifier">controller</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">formCtrl</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_form_binding" target="_blank">尝试一下 »</a>
+</div>
+<p>
+也可以在应用的其他地方使用:
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+First Name: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">firstname</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">You entered: {{firstname}}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_form_expression" target="_blank">尝试一下 »</a>
+</div>
+<hr/><h2>
+Checkbox（复选框）</h2>
+<p>checkbox 的值为 true 或 false，可以使用 ng-model 指令绑定，它的值可以用于应用中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>复选框选中后显示 h1 标签内容：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    Check to show a header:
+    </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">checkbox</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myVar</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-code"> </span><span class="hl-var">ng-show</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myVar</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">My Header</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_form_checkbox" target="_blank">尝试一下 »</a>
+</div>
+<hr/><h2>单选框</h2>
+<p>我们可以使用 ng-model 来绑定单选按钮到你的应用中。</p>
+<p>
+单选框使用同一个 ng-model ，可以有不同的值，但只有被选中的单选按钮的值会被使用。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>根据选中的单选按钮，显示信息：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    选择一个选项:
+    </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">radio</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myVar</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">dogs</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dogs
+    </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">radio</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myVar</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tuts</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tutorials
+    </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">radio</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myVar</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cars</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Cars
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_form_radio" target="_blank">尝试一下 »</a>
+</div>
+<p>
+ myVar 的值可以是 dogs, tuts, 或 cars。</p>
+<hr/><h2>下拉菜单</h2>
+<p>
+使用 ng-model 指令可以将下拉菜单绑定到你的应用中。</p>
+<p>
+ng-model 属性的值为你在下拉菜单选中的选项：
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>根据选中的下拉菜单选项，显示信息：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+选择一个选项:
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">select</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myVar</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">dogs</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Dogs
+    </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tuts</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tutorials
+    </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cars</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Cars
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">select</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_form_select" target="_blank">尝试一下 »</a>
+</div>
+<p>
+ myVar 的值可以是 dogs, tuts, 或 cars。</p>
+<h2>HTML 表单</h2>
+<p>HTML 表单通常与 HTML 控件同时存在。</p>
+<hr/>
+<h2> AngularJS 表单实例</h2>
+<div ng-app="myEx" ng-controller="ExampleController">
+<form novalidate="">
+    First Name:<br/>
+<input ng-model="user.firstName" type="text"/><br/>
+    Last Name:<br/>
+<input ng-model="user.lastName" type="text"/>
+<br/><br/>
+<button ng-click="reset()">RESET</button>
+</form>
+<p>form = {{user}}</p>
+<p>master = {{master}}</p>
+</div>
+<script>
+angular.module('myEx', []).controller('ExampleController', function($scope) {
+    $scope.master = {"firstName":"John","lastName":"Doe"};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</script>
+<hr/>
+<div class="example"><h2 class="example">应用程序代码</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myApp</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-controller</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">formCtrl</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-code"> </span><span class="hl-var">novalidate</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    First Name:</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">user.firstName</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+    Last Name:</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-model</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">user.lastName</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">br</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">ng-click</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">reset()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">RESET</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">form = {{user}}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">master = {{master}}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {firstName: "John", lastName: "Doe"};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=try_ng_form" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>novalidate</strong> 属性是在 HTML5 中新增的。禁用了使用浏览器的默认验证。</td>
+</tr></tbody></table>
+<hr/>
+<h2>实例解析</h2>
+<p>
+<strong>ng-app</strong> 指令定义了 AngularJS 应用。</p>
+<p>
+<strong>ng-controller</strong> 指令定义了应用控制器。</p>
+<p>
+<strong>ng-model</strong> 指令绑定了两个 input 元素到模型的 <strong>
+user</strong> 对象。</p>
+<p>
+<strong>formCtrl</strong> 函数设置了
+<strong>master</strong> 对象的初始值，并定义了 <strong>reset()</strong> 方法。</p>
+<p>
+<strong>reset()</strong> 方法设置了 <strong>user</strong> 
+对象等于 <strong>master</strong> 对象。 </p>
+<p>
+<strong>ng-click</strong> 指令调用了 <strong>reset()</strong> 
+方法，且在点击按钮时调用。</p>
+<p>
+novalidate 属性在应用中不是必须的，但是你需要在 AngularJS 表单中使用，用于重写标准的 HTML5 验证。</p>
+</div>

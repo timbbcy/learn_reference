@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM <span class="color_h1">节点</span>
+</h1>
+<hr/>
+<p class="intro">在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML。</p>
+<hr/>
+<h2>DOM Nodes</h2>
+<h2>DOM 节点</h2>
+<p>根据 W3C 的 HTML DOM 标准，HTML 文档中的所有内容都是节点：</p>
+<ul>
+<li>整个文档是一个文档节点</li>
+<li>每个 HTML 元素是元素节点</li>
+<li>HTML 元素内的文本是文本节点</li>
+<li>每个 HTML 属性是属性节点</li>
+<li>注释是注释节点</li>
+</ul>
+<hr/>
+<h2>HTML DOM 节点树</h2>
+<p>HTML DOM 将 HTML 文档视作树结构。这种结构被称为<strong>节点树</strong>：</p>
+<div class="example">
+<h2 class="example_head">HTML DOM 树实例</h2>
+<div class="example_code notranslate" style="text-align:center">
+<img alt="DOM HTML tree" border="0" height="266" src="//www.runoob.com/wp-content/uploads/2013/09/ct_htmltree.gif" width="486"/>
+</div>
+</div>
+<p通过 dom，树中的所有节点均可通过="" html="" javascript="" p="" 元素（节点）均可被修改，也可以创建或删除节点。<="" 进行访问。所有="">
+<hr/>
+<h2>节点父、子和同胞</h2>
+<p>节点树中的节点彼此拥有层级关系。</p>
+<p>我们常用<strong>父（parent）</strong>、<strong>子（child）</strong>和<strong>同胞（sibling）</strong>等术语来描述这些关系。父节点拥有子节点。同级的子节点被称为同胞（兄弟或姐妹）。</p>
+<ul>
+<li>在节点树中，顶端节点被称为根（root）。</li>
+<li>每个节点都有父节点、除了根（它没有父节点）。</li>
+<li>一个节点可拥有任意数量的子节点。</li>
+<li>同胞是拥有相同父节点的节点。</li>
+</ul>
+<p>下面的图片展示了节点树的一部分，以及节点之间的关系：</p>
+<p style="text-align:center">
+<img alt="Node tree" border="0" height="255" src="//www.runoob.com/wp-content/uploads/2013/09/dom_navigate.gif" width="362"/></p>
+<p>请看下面的 HTML 片段：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">DOM 教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">DOM 课程1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>从上面的 HTML 中：</p>
+<ul>
+<li>&lt;html&gt; 节点没有父节点；它是根节点</li>
+<li>&lt;head&gt; 和 &lt;body&gt; 的父节点是 &lt;html&gt; 节点</li>
+<li>文本节点 "Hello world!" 的父节点是 &lt;p&gt; 节点</li>
+</ul>
+<p>并且：</p>
+<ul>
+<li>&lt;html&gt; 节点拥有两个子节点：&lt;head&gt; 和 &lt;body&gt;</li>
+<li>&lt;head&gt; 节点拥有两个子节点：&lt;meta&gt; 与 &lt;title&gt; 节点</li>
+<li>&lt;title&gt; 节点也拥有一个子节点：文本节点 "DOM 教程"</li>
+<li>&lt;h1&gt; 和 &lt;p&gt; 节点是同胞节点，同时也是 &lt;body&gt; 的子节点</li>
+</ul>
+<p>并且：</p>
+<ul>
+<li>&lt;head&gt; 元素是 &lt;html&gt; 元素的首个子节点</li>
+<li>&lt;body&gt; 元素是 &lt;html&gt; 元素的最后一个子节点</li>
+<li>&lt;h1&gt; 元素是 &lt;body&gt; 元素的首个子节点</li>
+<li>&lt;p&gt; 元素是 &lt;body&gt; 元素的最后一个子节点</li>
+</ul><hr/>
+<h2>警告！</h2>
+<p>DOM 处理中的常见错误是希望元素节点包含文本。</p>
+<p>在本例中：<em>&lt;title&gt;DOM 教程&lt;/title&gt;</em>，元素节点 &lt;title&gt;，包含值为 "DOM 教程" 的<em>文本节点</em>。</p>
+<p>可通过节点的 <em>innerHTML</em> 属性来访问文本节点的值。</p>
+<p>您将在稍后的章节中学习更多有关 innerHTML 属性的知识。</p>
+</p通过></div>

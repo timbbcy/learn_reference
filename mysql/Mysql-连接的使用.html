@@ -1,0 +1,170 @@
+<div class="article-intro" id="content">
+<h1>Mysql 连接的使用</h1>
+<p>在前几章节中，我们已经学会了如何在一张表中读取数据，这是相对简单的，但是在真正的应用中经常需要从多个数据表中读取数据。</p>
+<p>本章节我们将向大家介绍如何使用 MySQL 的 JOIN 在两个或多个表中查询数据。</p>
+<p>你可以在 SELECT, UPDATE 和 DELETE 语句中使用 Mysql 的 JOIN 来联合多表查询。</p>
+<p>JOIN 按照功能大致分为如下三类：
+</p>
+<ul><li>
+<strong>INNER JOIN（内连接,或等值连接）</strong>：获取两个表中字段匹配关系的记录。</li><li>
+<strong>LEFT JOIN（左连接）：</strong>获取左表所有记录，即使右表没有对应匹配的记录。</li><li>
+<strong>RIGHT JOIN（右连接）：</strong> 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。</li></ul>
+<p>本章节使用的数据库结构及数据下载：<a download="" href="//static.runoob.com/download/runoob-mysql-join-test.sql">runoob-mysql-join-test.sql</a>。</p>
+<hr/>
+<h2>在命令提示符中使用 INNER JOIN</h2>
+<p>我们在RUNOOB数据库中有两张表 tcount_tbl 和 runoob_tbl。两张数据表数据如下：</p>
+<h3>实例</h3>
+<p>
+尝试以下实例：</p>
+<div class="example">
+<h2 class="example">测试实例数据</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">;
+</span><span class="hl-identifier">Database</span><span class="hl-code"> </span><span class="hl-identifier">changed</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">tcount_tbl</span><span class="hl-code">;
++---------------+--------------+
+| </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++---------------+--------------+
+| 菜鸟教程  | </span><span class="hl-number">10</span><span class="hl-code">           |
+| </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">20</span><span class="hl-code">           |
+| </span><span class="hl-identifier">Google</span><span class="hl-code">        | </span><span class="hl-number">22</span><span class="hl-code">           |
++---------------+--------------+
+</span><span class="hl-number">3</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code">;
++-----------+---------------+---------------+-----------------+
+| </span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_title</span><span class="hl-code">  | </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">submission_date</span><span class="hl-code"> |
++-----------+---------------+---------------+-----------------+
+| </span><span class="hl-number">1</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">PHP</span><span class="hl-code">    | 菜鸟教程  | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">12</span><span class="hl-code">      |
+| </span><span class="hl-number">2</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">MySQL</span><span class="hl-code">  | 菜鸟教程  | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">12</span><span class="hl-code">      |
+| </span><span class="hl-number">3</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">Java</span><span class="hl-code">   | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2015</span><span class="hl-code">-</span><span class="hl-number">05</span><span class="hl-code">-</span><span class="hl-number">01</span><span class="hl-code">      |
+| </span><span class="hl-number">4</span><span class="hl-code">         | 学习 </span><span class="hl-identifier">Python</span><span class="hl-code"> | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2016</span><span class="hl-code">-</span><span class="hl-number">03</span><span class="hl-code">-</span><span class="hl-number">06</span><span class="hl-code">      |
+| </span><span class="hl-number">5</span><span class="hl-code">         | 学习 </span><span class="hl-var">C</span><span class="hl-code">      | </span><span class="hl-identifier">FK</span><span class="hl-code">            | </span><span class="hl-number">2017</span><span class="hl-code">-</span><span class="hl-number">04</span><span class="hl-code">-</span><span class="hl-number">05</span><span class="hl-code">      |
++-----------+---------------+---------------+-----------------+
+</span><span class="hl-number">5</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>
+接下来我们就使用MySQL的<strong>INNER JOIN(也可以省略 INNER 使用 JOIN，效果一样)</strong>来连接以上两张表来读取runoob_tbl表中所有runoob_author字段在tcount_tbl表对应的runoob_count字段值：</p>
+<div class="example">
+<h2 class="example">INNER JOIN</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code">, </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-reserved">INNER</span><span class="hl-code"> </span><span class="hl-reserved">JOIN</span><span class="hl-code"> </span><span class="hl-identifier">tcount_tbl</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> </span><span class="hl-reserved">ON</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> = </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">;
++-------------+-----------------+----------------+
+| </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++-------------+-----------------+----------------+
+| </span><span class="hl-number">1</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">2</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">3</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
+| </span><span class="hl-number">4</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
++-------------+-----------------+----------------+
+</span><span class="hl-number">4</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.00</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>以上 SQL 语句等价于：</p>
+<div class="example">
+<h2 class="example">WHERE 子句</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code">, </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">tcount_tbl</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> = </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">;
++-------------+-----------------+----------------+
+| </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++-------------+-----------------+----------------+
+| </span><span class="hl-number">1</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">2</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">3</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
+| </span><span class="hl-number">4</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
++-------------+-----------------+----------------+
+</span><span class="hl-number">4</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div><p>
+<img src="http://www.runoob.com/wp-content/uploads/2014/03/img_innerjoin.gif"/></p>
+<hr/>
+<h2>
+MySQL LEFT JOIN</h2>
+<p>MySQL left join 与 join 有所不同。  MySQL LEFT JOIN 会读取左边数据表的全部数据，即便右边表无对应数据。</p>
+<h3>实例</h3>
+<p>尝试以下实例，以 <strong>runoob_tbl</strong> 为左表，<strong>tcount_tbl</strong> 为右表，理解 MySQL LEFT JOIN 的应用：</p>
+<div class="example">
+<h2 class="example"> LEFT JOIN</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code">, </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-reserved">LEFT</span><span class="hl-code"> </span><span class="hl-reserved">JOIN</span><span class="hl-code"> </span><span class="hl-identifier">tcount_tbl</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> </span><span class="hl-reserved">ON</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> = </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">;
++-------------+-----------------+----------------+
+| </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++-------------+-----------------+----------------+
+| </span><span class="hl-number">1</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">2</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">3</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
+| </span><span class="hl-number">4</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
+| </span><span class="hl-number">5</span><span class="hl-code">           | </span><span class="hl-identifier">FK</span><span class="hl-code">              | </span><span class="hl-reserved">NULL</span><span class="hl-code">           |
++-------------+-----------------+----------------+
+</span><span class="hl-number">5</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div><p>以上实例中使用了 LEFT JOIN，该语句会读取左边的数据表 runoob_tbl 的所有选取的字段数据，即便在右侧表 tcount_tbl中 没有对应的 runoob_author 字段值。</p>
+<img src="http://www.runoob.com/wp-content/uploads/2014/03/img_leftjoin.gif"/>
+<hr/>
+<h2>
+MySQL RIGHT JOIN</h2>
+<p>MySQL RIGHT JOIN 会读取右边数据表的全部数据，即便左边边表无对应数据。</p>
+<h3>实例</h3>
+<p>尝试以下实例，以 <strong>runoob_tbl</strong> 为左表，<strong>tcount_tbl</strong> 为右表，理解MySQL RIGHT JOIN的应用：</p>
+<div class="example">
+<h2 class="example"> RIGHT JOIN </h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code">, </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-reserved">RIGHT</span><span class="hl-code"> </span><span class="hl-reserved">JOIN</span><span class="hl-code"> </span><span class="hl-identifier">tcount_tbl</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> </span><span class="hl-reserved">ON</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> = </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code">;
++-------------+-----------------+----------------+
+| </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">a</span><span class="hl-code">.</span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">b</span><span class="hl-code">.</span><span class="hl-identifier">runoob_count</span><span class="hl-code"> |
++-------------+-----------------+----------------+
+| </span><span class="hl-number">1</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">2</span><span class="hl-code">           | 菜鸟教程    | </span><span class="hl-number">10</span><span class="hl-code">             |
+| </span><span class="hl-number">3</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
+| </span><span class="hl-number">4</span><span class="hl-code">           | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">      | </span><span class="hl-number">20</span><span class="hl-code">             |
+| </span><span class="hl-reserved">NULL</span><span class="hl-code">        | </span><span class="hl-reserved">NULL</span><span class="hl-code">            | </span><span class="hl-number">22</span><span class="hl-code">             |
++-------------+-----------------+----------------+
+</span><span class="hl-number">5</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
+</div>
+</div><p>以上实例中使用了 RIGHT JOIN，该语句会读取右边的数据表 tcount_tbl 的所有选取的字段数据，即便在左侧表 runoob_tbl 中没有对应的runoob_author 字段值。</p>
+<img src="http://www.runoob.com/wp-content/uploads/2014/03/img_rightjoin.gif"/>
+<hr/>
+<h2>在 PHP 脚本中使用 JOIN</h2>
+<p>PHP 中使用 mysqli_query() 函数来执行 SQL 语句，你可以使用以上的相同的 SQL 语句作为 mysqli_query() 函数的参数。</p>
+<p>尝试如下实例:</p>
+<div class="example">
+<h2 class="example">MySQL ORDER BY 测试：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$dbhost</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">localhost:3306</span><span class="hl-quotes">'</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> mysql服务器主机地址</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbuser</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">;            </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$dbpass</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> mysql用户名密码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$dbhost</span><span class="hl-code">, </span><span class="hl-var">$dbuser</span><span class="hl-code">, </span><span class="hl-var">$dbpass</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$conn</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">连接失败: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 设置编码，防止中文乱码</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a INNER JOIN tcount_tbl b ON a.runoob_author = b.runoob_author</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">无法读取数据: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 MySQL JOIN 测试&lt;h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;教程 ID&lt;/td&gt;&lt;td&gt;作者&lt;/td&gt;&lt;td&gt;登陆次数&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQL_ASSOC</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['runoob_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_count']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;/table&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<p>输出结果如下图所示：</p><div class="example_code">
+<img src="//www.runoob.com/wp-content/uploads/2014/03/75178A78-101C-44E3-B5B5-F20B3E7445CB.jpg"/>
+</div>
+</div>
+</div>

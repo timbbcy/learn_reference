@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">滚屏事件</span>
+</h1>
+<hr/>
+<p class="intro">jQuery Mobile 提供了两种滚屏事件：滚屏开始时触发和滚动结束时触发。</p>
+<hr/>
+<h2>jQuery Mobile 滚屏开始（Scrollstart）</h2>
+<p>scrollstart 事件是在用户开始滚动页面时触发：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	$(document).on("scrollstart",function(){<br/>  alert("开始滚动!");<br/>});</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_events_scrollstart" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<strong>注意：</strong>iOS 设备在滚屏时锁定 DOM 操作，这意味着当用户滚屏时不可能改变任何东西。然而，jQuery 团队正在为此寻找解决方案。</td>
+</tr></table>
+<br/><hr/>
+<h2>jQuery Mobile 滚屏结束（Scrollstop）</h2>
+<p>scrollstop 事件是在用户停止滚动页面时触发：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	$(document).on("scrollstop",function(){<br/>  alert("停止滚动!");<br/>});</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_events_scrollstop" target="_blank">尝试一下 »</a>
+</div>
+<br/><br/>
+</div>

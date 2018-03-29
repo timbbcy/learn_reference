@@ -1,0 +1,103 @@
+<div class="article-intro" id="content">
+<h1>AngularJS 动画
+</h1>
+<p class="intro">
+AngularJS 提供了动画效果，可以配合 CSS 使用。</p>
+<p>AngularJS 使用动画需要引入 angular-animate.min.js 库。</p>
+<pre>
+&lt;script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular-animate.min.js"&gt;&lt;/script&gt;
+</pre>
+<p>还需在应用中使用模型 ngAnimate：</p>
+<pre>
+&lt;body ng-app="ngAnimate"&gt;
+</pre>
+<hr/>
+<h2>什么是动画？</h2>
+<p>动画是通过改变 HTML 元素产生的动态变化效果。</p>
+<div class="example">
+<h3>实例</h3>
+<p>勾选复选框隐藏 DIV:</p>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">body</span> <span class="highATT">ng-app=</span><span class="highVAL">"ngAnimate"</span><span class="highGT">&gt;</span><br/><br/>隐藏 DIV: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"checkbox"</span> <span class="highATT">ng-model=</span><span class="highVAL">"myCheck"</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-hide=</span><span class="highVAL">"myCheck"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_animation" target="_blank">尝试一下 »</a>
+</div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>应用中动画不宜太多，但合适的使用动画可以增加页面的丰富性，也可以更易让用户理解。</td>
+</tr></tbody></table>
+<p>如果我们应用已经设置了应用名，可以把 ngAnimate 直接添加在模型中：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<div class="htmlHigh">
+<span class="highLT">&lt;</span><span class="highELE">body</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>隐藏 DIV: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"checkbox"</span> <span class="highATT">ng-model=</span><span class="highVAL">"myCheck"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-hide=</span><span class="highVAL">"myCheck"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/></div>
+<div class="jsHigh">
+<span class="highELE">var</span> app = 
+	angular.module(<span class="highVAL">'myApp'</span>, [<span class="highVAL">'ngAnimate'</span>]);<br/></div>
+<div class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div></div> <br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_animation2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>ngAnimate 做了什么?</h2>
+<p>ngAnimate 模型可以添加或移除 class 。</p>
+<p>ngAnimate 模型并不能使 HTML 元素产生动画，但是 ngAnimate 会监测事件，类似隐藏显示 HTML 元素 ，如果事件发生 ngAnimate 就会使用预定义的 class 来设置 HTML 元素的动画。</p>
+<p>AngularJS 添加/移除 class 的指令:</p>
+<ul>
+<li><code>ng-show</code></li>
+<li><code>ng-hide</code></li>
+<li><code>ng-class</code></li>
+<li><code>ng-view</code></li>
+<li><code>ng-include</code></li>
+<li><code>ng-repeat</code></li>
+<li><code>ng-if</code></li>
+<li><code>ng-switch</code></li>
+</ul>
+<p><code>ng-show</code> 和 <code>ng-hide</code> 指令用于添加或移除 <code>ng-hide</code> class 的值。</p>
+<p>其他指令会在进入 DOM 会添加 <code>ng-enter</code> 类，移除 DOM 会添加 <code>ng-leave</code> 属性。</p>
+<p>当 HTML 元素位置改变时，<code>ng-repeat</code> 指令同样可以添加 <code>ng-move</code> 类 。 </p>
+<p>此外， 在动画完成后，HTML 元素的类集合将被移除。例如：
+<code>ng-hide</code> 指令会添加一下类：</p>
+<ul>
+<li><code>ng-animate</code></li>
+<li><code>ng-hide-animate</code></li>
+<li><code>ng-hide-add</code> (如果元素将被隐藏)</li>
+<li><code>ng-hide-remove</code> (如果元素将显示)</li>
+<li><code>ng-hide-add-active</code> (如果元素将隐藏)</li>
+<li><code>ng-hide-remove-active</code> (如果元素将显示)</li>
+</ul>
+<hr/>
+<h2>使用 CSS 动画</h2>
+<p>我们可以使用 CSS transition(过渡) 或 CSS 动画让 HTML 元素产生动画效果，该部分内容你可以参阅我们的
+<a href="/css/css3-transitions.html">CSS 过渡教程</a>，
+<a href="/css/css3-animations.html">CSS 动画教程</a>。</p>
+<hr/>
+<h2>CSS 过渡</h2>
+<p>CSS 过渡可以让我们平滑的将一个 CSS 属性值修改为另外一个：</p>
+<div class="example">
+<h3>实例</h3>
+<p>在 DIV 元素设置了 <code>.ng-hide</code> 类时，过渡需要花费 0.5 秒，高度从 100px 变为 0:</p>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">style</span><span class="highGT">&gt;</span><br/>div {<br/>    transition: all linear 0.5s;<br/>    
+	background-color: lightblue;<br/>    height: 100px;<br/>}<br/>.ng-hide 
+	{<br/>    height: 0;<br/>}<br/><span class="highLT">&lt;</span><span class="highELE">/style</span><span class="highGT">&gt;</span><br/></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_animation_css" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>CSS 动画</h2>
+<p>CSS 动画允许你平滑的修改 CSS 属性值:</p>
+<div class="example">
+<h3>实例</h3>
+<p>在 DIV 元素设置了 <code>.ng-hide</code> 类时,  <code>myChange</code> 
+动画将执行，它会平滑的将高度从 100px 变为 0:</p>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">style</span><span class="highGT">&gt;</span><br/>@keyframes myChange {<br/>    from {<br/>        
+	height: 100px;<br/>    } to {<br/>        
+	height: 0;<br/>    }<br/>}<br/>div {<br/>    
+	height: 100px;<br/>    background-color: lightblue;<br/>}<br/>
+	div.ng-hide {<br/>    animation: 0.5s myChange;<br/>}<br/><span class="highLT">&lt;</span><span class="highELE">/style</span><span class="highGT">&gt;</span><br/></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_animation_css2" target="_blank">尝试一下 »</a>
+</div>
+</div>

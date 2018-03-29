@@ -1,0 +1,105 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">- E4X</span>
+</h1>
+<hr/>
+<p>E4X 向 JavaScript 添加了对 XML 的直接支持。</p>
+<hr/>
+<div class="example">
+<h2 class="example_head">E4X 实例</h2>
+<div class="example_code notranslate">
+var employees=<br/>
+&lt;employees&gt;<br/>
+&lt;person&gt;<br/>
+    &lt;name&gt;Tove&lt;/name&gt;<br/>
+    &lt;age&gt;32&lt;/age&gt;<br/>
+&lt;/person&gt;<br/>
+&lt;person&gt;<br/>
+    &lt;name&gt;Jani&lt;/name&gt;<br/>
+    &lt;age&gt;26&lt;/age&gt;<br/>
+&lt;/person&gt;<br/>
+&lt;/employees&gt;;<br/><br/>
+document.write(employees.person.(name == "Tove").age);</div>
+<p><b>这个实例仅适用于 Firefox！</b></p>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=trye4x_demo" target="_blank">尝试一下 »</a>
+</p>
+</div>
+<br/><hr/>
+<h2>作为一个 JavaScript 对象的 XML</h2>
+<p>E4X 是正式的 JavaScript 标准，增加了对 XML 的直接支持。</p>
+<p>使用 E4X，您可以用声明 Date 或 Array 对象变量的方式声明 XML 对象变量：</p>
+<div class="code notranslate"><div>
+<b>var x = new XML()</b><br/><br/>
+var y = new Date()<br/><br/>
+var z = new Array()
+
+</div></div>
+<hr/>
+<h2>E4X 是一个 ECMAScript（JavaScript）标准</h2>
+<p>ECMAScript 是 JavaScript 的正式名称。ECMA-262（JavaScript 1.3）是在 1999 年 12 月标准化的。</p>
+<p>E4X 是 JavaScript 的扩展，增加了对 XML 的直接支持。ECMA-357（E4X）是在 2004 年 6 月标准化的。</p>
+<p>ECMA 组织（成立于 1961 年），是专门用于信息和通信技术（ICT）和消费电子（CE）的标准化。 ECMA 制定的标准为：</p>
+<ul>
+<li>JavaScript</li>
+<li>C# 语言</li>
+<li>国际字符集</li>
+<li>光盘</li>
+<li>磁带</li>
+<li>数据压缩</li>
+<li>数据通信</li>
+<li>等等...</li>
+</ul>
+<hr/>
+<h2>没有使用 E4X</h2>
+<p>下面的实例是一个跨浏览器的实例，实例加载一个现有的 XML 文档（"note.xml"）到 XML 解析器，并显示消息说明：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var xmlDoc;<br/>
+//code for Internet Explorer<br/>
+if (window.ActiveXObject)<br/>
+{<br/>
+xmlDoc = new ActiveXObject("Microsoft.XMLDOM");<br/>
+xmlDoc.async=false;<br/>
+xmlDoc.load("note.xml");<br/>
+displaymessage();<br/>
+}<br/>
+// code for Mozilla, Firefox, etc.<br/>
+else (document.implementation &amp;&amp; document.implementation.createDocument)<br/>
+{<br/>
+xmlDoc= document.implementation.createDocument("","",null);<br/>
+xmlDoc.load("note.xml");<br/>
+xmlDoc.onload=displaymessage;<br/>
+}<br/><br/>
+function displaymessage()<br/>
+{<br/>
+document.write(xmlDoc.getElementsByTagName("body")[0].firstChild.nodeValue);<br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=note_parsertest_crossbrowser" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>使用 E4X</h2>
+<p>下面的实例是上面的实例相同，但是使用了 E4X：</p>
+<div class="code notranslate"><div>
+
+var xmlDoc=new XML();<br/>
+xmlDoc.load("note.xml");<br/>
+document.write(xmlDoc.body);
+
+</div></div>
+<p>简单多了，是不是？</p>
+<hr/>
+<h2>浏览器支持</h2>
+<p><span class="txt"><b>Firefox</b> 是目前唯一对 E4X 的支持比较好的浏览器。</span></p>
+<p><span class="txt">目前还没有支持 E4X 的有 <b>Opera</b>、<b>Chrome</b> 或 <b>Safari</b>。</span></p>
+<p><span class="txt">到目前为止，没有迹象显示在 <b>Internet Explorer</b> 中对 E4X 的支持。</span></p>
+<hr/>
+<h2>E4X 的未来</h2>
+<p>E4X 没有得到广泛的支持。也许它提供的实用功能太少，尚未被其他的解决方案涉及：</p>
+<ul type="square">
+<li>对于完整的 XML 处理，您还需要学习 <a href="/dom/dom-tutorial.html">XML DOM</a> 和 <a href="/xpath/xpath-tutorial.html">XPath</a>
+</li>
+<li>对于访问 XMLHttpRequests，<a href="/json/json-tutorial.html">JSON</a> 是首选的格式。</li>
+<li>对于简单的文档处理，<a href="/jquery/jquery-tutorial.html">JQuery</a> 选择更容易。</li>
+</ul>
+<br/>
+</div>

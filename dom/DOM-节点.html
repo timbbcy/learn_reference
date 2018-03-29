@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">节点</span>
+</h1>
+<hr/>
+<p class="intro">在 DOM 中，XML 文档中的每个成分都是一个节点。</p>
+<hr/>
+<h2>DOM 节点</h2>
+<p>根据 DOM，XML 文档中的每个成分都是一个<b>节点</b>。</p>
+<p>DOM 是这样规定的：</p>
+<ul>
+<li>整个文档是一个文档节点</li>
+<li>每个 XML 元素是一个元素节点</li>
+<li>包含在 XML 元素中的文本是文本节点</li>
+<li>每一个 XML 属性是一个属性节点</li>
+<li>注释是注释节点</li>
+</ul>
+<hr/>
+<h2>DOM 实例</h2>
+<p>请看下面的 XML 文件（<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>）：</p>
+<div class="example">
+<h2 class="example">books.xml 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;?</span><span class="hl-reserved">xml</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">encoding</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-brackets">?&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">cooking</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Everyday Italian</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Giada De Laurentiis</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2005</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">30.00</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">children</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Harry Potter</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">J K. Rowling</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2005</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">29.99</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">web</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">XQuery Kick Start</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">James McGovern</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Per Bothner</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Kurt Cagle</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">James Linn</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Vaidyanathan Nagarajan</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">49.99</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">web</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cover</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">paperback</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-code"> </span><span class="hl-var">lang</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">en</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Learning XML</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Erik T. Ray</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">39.95</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>在上面的 XML 中，根节点是 &lt;bookstore&gt;。文档中的所有其他节点都被包含在 &lt;bookstore&gt; 中。</p>
+<p>根节点 &lt;bookstore&gt; 有四个 &lt;book&gt; 节点。</p>
+<p>第一个 &lt;book&gt; 节点有四个节点：&lt;title&gt;、&lt;author&gt;、&lt;year&gt; 和 &lt;price&gt;，其中每个节点都包含一个文本节点，"Everyday Italian"、"Giada 
+De Laurentiis"、"2005" 和 "30.00"。</p>
+<hr/>
+<h2>文本总是存储在文本节点中</h2>
+<p>在 DOM 处理中一个普遍的错误是，认为元素节点包含文本。</p>
+<p>不过，元素节点的文本是存储在文本节点中的。</p>
+<p>在这个实例中：<b>&lt;year&gt;2005&lt;/year&gt;</b>，元素节点 &lt;year&gt;，拥有一个值为 "2005" 的文本节点。</p>
+<p>"2005" <b>不是</b> &lt;year&gt; 元素的值！</p>
+<br/>
+</div>

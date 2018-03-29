@@ -1,0 +1,110 @@
+<div class="article-intro" id="content">
+<h1>Django 模板</h1>
+<p>在上一章节中我们使用 django.http.HttpResponse() 来输出 "Hello World！"。该方式将数据与视图混合在一起，不符合 Django 的 MVC 思想。</p>
+<p>
+本章节我们将为大家详细介绍 Django 模板的应用，模板是一个文本，用于分离文档的表现形式和内容。</p>
+<hr/>
+<h2>模板应用实例</h2>
+<p>我们接着上一章节的项目将在 HelloWorld 目录底下创建 templates 目录并建立 hello.html文件，整个目录结构如下：</p>
+<pre>
+HelloWorld/
+|-- HelloWorld
+|   |-- __init__.py
+|   |-- __init__.pyc
+|   |-- settings.py
+|   |-- settings.pyc
+|   |-- urls.py
+|   |-- urls.pyc
+|   |-- view.py
+|   |-- view.pyc
+|   |-- wsgi.py
+|   `-- wsgi.pyc
+|-- manage.py
+`-- templates
+    `-- hello.html
+</pre>
+<p>hello.html 文件代码如下：</p>
+<div class="example">
+<h2 class="example">HelloWorld/templates/hello.html 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ hello }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>从模板中我们知道变量使用了双括号。</p>
+<p>接下来我们需要向Django说明模板文件的路径，修改HelloWorld/settings.py，修改 TEMPLATES 中的 DIRS 为 <b>[BASE_DIR+"/templates",]</b>，如下所示:</p>
+<div class="example">
+<h2 class="example">HelloWorld/HelloWorld/settings.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">...</span><span class="hl-identifier">TEMPLATES</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+    {
+        </span><span class="hl-quotes">'</span><span class="hl-string">BACKEND</span><span class="hl-quotes">'</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">django.template.backends.django.DjangoTemplates</span><span class="hl-quotes">'</span><span class="hl-code">,
+        </span><span class="hl-quotes">'</span><span class="hl-string">DIRS</span><span class="hl-quotes">'</span><span class="hl-code">: </span><span class="hl-brackets">[</span><span class="hl-identifier">BASE_DIR</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">/templates</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-brackets">]</span><span class="hl-code">,       </span><span class="hl-comment"># 修改位置</span><span class="hl-code">
+</span><span class="hl-quotes">'</span><span class="hl-string">APP_DIRS</span><span class="hl-quotes">'</span><span class="hl-code">: </span><span class="hl-reserved">True</span><span class="hl-code">,
+        </span><span class="hl-quotes">'</span><span class="hl-string">OPTIONS</span><span class="hl-quotes">'</span><span class="hl-code">: {
+            </span><span class="hl-quotes">'</span><span class="hl-string">context_processors</span><span class="hl-quotes">'</span><span class="hl-code">: </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-quotes">'</span><span class="hl-string">django.template.context_processors.debug</span><span class="hl-quotes">'</span><span class="hl-code">,
+                </span><span class="hl-quotes">'</span><span class="hl-string">django.template.context_processors.request</span><span class="hl-quotes">'</span><span class="hl-code">,
+                </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.auth.context_processors.auth</span><span class="hl-quotes">'</span><span class="hl-code">,
+                </span><span class="hl-quotes">'</span><span class="hl-string">django.contrib.messages.context_processors.messages</span><span class="hl-quotes">'</span><span class="hl-code">,
+            </span><span class="hl-brackets">]</span><span class="hl-code">,
+        },
+    },
+</span><span class="hl-brackets">]</span><span class="hl-code">
+...</span></div>
+</div>
+</div>
+<p>我们现在修改 view.py，增加一个新的对象，用于向模板提交数据：</p>
+<div class="example">
+<h2 class="example">HelloWorld/HelloWorld/view.py 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment"># -*- coding: utf-8 -*-</span><span class="hl-code">
+</span><span class="hl-comment">#from django.http import HttpResponse</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">shortcuts</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">hello</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-brackets">)</span><span class="hl-code">:
+    </span><span class="hl-identifier">context</span><span class="hl-code">          = {}
+    </span><span class="hl-identifier">context</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">hello</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Hello World!</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">hello.html</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">context</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>可以看到，我们这里使用 render 来替代之前使用的 HttpResponse。render 还使用了一个字典 context 作为参数。
+</p>
+<p>context 字典中元素的键值 "hello" 对应了模板中的变量 "{{ hello }}"。</p>
+<p>再访问访问 http://127.0.0.1:8000/hello，可以看到页面：</p>
+<img src="//www.runoob.com/wp-content/uploads/2015/01/3905D923-C6B7-487E-B952-9DBCC06CC4CA.jpg"/>
+<p>这样我们就完成了使用模板来输出数据，从而实现数据与视图分离。</p><p>接下来我们将具体介绍模板中常用的语法规则。</p>
+<hr/>
+<h2>Django 模板标签</h2>
+<h3>if/else 标签</h3>
+<p>基本语法格式如下：</p>
+<pre>
+{% if condition %}
+     ... display
+{% endif %}
+</pre>
+<p>或者：</p>
+<pre>
+{% if condition1 %}
+   ... display 1
+{% elif condition2 %}
+   ... display 2
+{% else %}
+   ... display 3
+{% endif %}
+</pre>
+<p>根据条件判断是否输出。if/else 支持嵌套。</p>
+<p>{% if %} 标签接受 and ， or 或者 not 关键字来对多个变量做判断 ，或者对变量取反（ not )，例如：</p>
+<pre>
+{% if athlete_list and coach_list %}
+     athletes 和 coaches 变量都是可用的。
+{% endif %}
+</pre>
+<h3> for 标签</h3>
+<p>
+{% for %} 允许我们在一个序列上迭代。 </p>
+<p>与Python的 for 语句的情形类似，循环语法是 for X in Y ，Y是要迭代的序列而X是在每一个特定的循环中使用的变量名称。 
+</p>
+<p>
+每一次循环中，模板系统会渲染在 {% for %} 和 {% endfor %} 之间的所有内容。
+</p>
+例如，给定一个运动员列表 athlete_list 变量，我们可以使用下面的代码来显示这个列表：
+</div>

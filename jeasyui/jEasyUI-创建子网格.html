@@ -1,0 +1,106 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">创建子网格</span></h1>
+<p>
+使用数据网格（datagrid）的详细视图，用户可以展开一行来显示附加的详细信息。
+任何内容都可以加载作为行详细，子网格也可以动态加载。
+本教程将向您展示如何在主网格上创建一个子网格。
+</p>
+<img src="/wp-content/uploads/2013/12/datagrid22.png"/>
+<h4>步骤 1：创建主网格</h4>
+<pre style="color:#006600">
+&lt;table id="dg" style="width:700px;height:250px"
+        url="datagrid22_getdata.php" 
+        title="DataGrid - SubGrid"
+        singleSelect="true" fitColumns="true"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+            &lt;th field="productid" width="100"&gt;Product ID&lt;/th&gt;
+            &lt;th field="listprice" align="right" width="80"&gt;List Price&lt;/th&gt;
+            &lt;th field="unitcost" align="right" width="80"&gt;Unit Cost&lt;/th&gt;
+            &lt;th field="attr1" width="220"&gt;Attribute&lt;/th&gt;
+            &lt;th field="status" width="60" align="center"&gt;Status&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+&lt;/table&gt;
+</pre>
+<h4>步骤 2：设置详细视图来显示子网格</h4>
+<p>为了使用详细视图，请记得在页面头部引用视图脚本文件。</p>
+<pre style="color:#006600">
+&lt;script type="text/javascript" src="http://www.w3cschool.cc/try/jeasyui/datagrid-detailview.js"&gt;&lt;/script&gt;
+</pre>
+<pre style="color:#006600">
+$('#dg').datagrid({
+    view: detailview,
+    detailFormatter:function(index,row){
+        return '&lt;div style="padding:2px"&gt;&lt;table class="ddv"&gt;&lt;/table&gt;&lt;/div&gt;';
+    },
+    onExpandRow: function(index,row){
+        var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
+        ddv.datagrid({
+            url:'datagrid22_getdetail.php?itemid='+row.itemid,
+            fitColumns:true,
+            singleSelect:true,
+            rownumbers:true,
+            loadMsg:'',
+            height:'auto',
+            columns:[[
+                {field:'orderid',title:'Order ID',width:100},
+                {field:'quantity',title:'Quantity',width:100},
+                {field:'unitprice',title:'Unit Price',width:100}
+            ]],
+            onResize:function(){
+                $('#dg').datagrid('fixDetailRowHeight',index);
+            },
+            onLoadSuccess:function(){
+                setTimeout(function(){
+                    $('#dg').datagrid('fixDetailRowHeight',index);
+                },0);
+            }
+        });
+        $('#dg').datagrid('fixDetailRowHeight',index);
+    }
+});
+</pre>
+<p>
+当用户点击展开按钮（'+'）时，'onExpandRow' 事件将被触发。
+我们创建一个新的带有三列的子网格。
+当子网格数据加载成功时或者改变尺寸大小时，请记得对主网格调用 'fixDetailRowHeight' 方法。
+</p>
+<h4>步骤 3：服务器端代码</h4>
+<div>datagrid22_getdata.php</div>
+<pre style="color:#006600">
+$result = array();
+
+include 'conn.php';
+
+$rs = mysql_query("select * from item where itemid in (select itemid from lineitem)");
+
+$items = array();
+while($row = mysql_fetch_object($rs)){
+    array_push($items, $row);
+}
+
+echo json_encode($items);
+</pre>
+<div>datagrid22_getdetail.php</div>
+<pre style="color:#006600">
+include 'conn.php';
+
+$itemid = mysql_real_escape_string($_REQUEST['itemid']);
+
+$rs = mysql_query("select * from lineitem where itemid='$itemid'");
+$items = array();
+while($row = mysql_fetch_object($rs)){
+    array_push($items, $row);
+}
+echo json_encode($items);
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid22.zip">jeasyui-datagrid-datagrid22.zip</a></p>
+</div>

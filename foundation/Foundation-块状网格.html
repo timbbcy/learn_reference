@@ -1,0 +1,39 @@
+<div class="article-intro" id="content">
+<h1>Foundation 块状网格</h1>
+<p>块状网格用于均分页面内容：例如一行内要显示四张图片，不管什么屏幕下都需要均分宽度。</p>
+<p>可以使用 <code>&lt;ul&gt;</code> 元素加上 <code>.small|medium|large-block-grid-<em>num</em></code> 
+类来创建块状网格。<em>num</em> 用于指定均分是数量：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"small-block-grid-3"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"newyork.jpg"</span>
+<span class="highATT">alt=</span><span class="highVAL">"New York"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"paris.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"Paris"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"sanfran.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"San Francisco"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_grid_block" target="_blank">尝试一下 »</a></div>
+<p>另一个实例，使用段落：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"small-block-grid-3"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Just a Simple Example 
+	Text...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Just a Simple Example Text...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Just a Simple Example Text...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_grid_block2" target="_blank">尝试一下 »</a></div>
+<hr/>
+<h2>不同尺寸屏幕显示不同数量</h2>
+<p>
+
+通过添加多个网格块类可以设置不同尺寸屏幕显示不同的块数量:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"small-block-grid-2 medium-block-grid-3 large-block-grid-4"</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"newyork.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"New York"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"paris.jpg"</span>
+<span class="highATT">alt=</span><span class="highVAL">"Paris"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"sanfran.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"San 
+	Francisco"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">img</span> <span class="highATT">src=</span><span class="highVAL">"newyork.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"New York"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>
+</div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_grid_block3" target="_blank">尝试一下 »</a></div>
+</div>

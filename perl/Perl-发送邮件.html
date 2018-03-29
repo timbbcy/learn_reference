@@ -1,0 +1,186 @@
+<div class="article-intro" id="content">
+<h1>Perl 发送邮件</h1>
+<p>如果你的程序在 Linux/Unix 系统上运行，你就可以在 Perl 中使用 <b>sendmail</b> 工具来发送邮件。</p>
+<p>以下是一个简单的脚本实例用于发送邮件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 接收邮箱，这里我设置为我的 QQ 邮箱，你需要修改它为你自己的邮箱</span><span class="hl-code">
+</span><span class="hl-var">$to</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">429240967@qq.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#发送者邮箱</span><span class="hl-code">
+</span><span class="hl-var">$from</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">test@runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#标题</span><span class="hl-code">
+</span><span class="hl-var">$subject</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程 Perl 发送邮件测试</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">这是一封使用 Perl 发送的邮件。</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">open</span><span class="hl-brackets">(</span><span class="hl-identifier">MAIL</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">|/usr/sbin/sendmail -t</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 邮件头部</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">To: </span><span class="hl-var">$to</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">From: </span><span class="hl-var">$from</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Subject: </span><span class="hl-var">$subject</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-comment"># 邮箱信息</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-var">$message</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">close</span><span class="hl-brackets">(</span><span class="hl-identifier">MAIL</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">邮件发送成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+邮件发送成功
+</pre>
+<blockquote>
+<p>正常情况下，以上邮件会被 QQ 邮箱拦截，我么可以把它加入白名单，操作方式可以点击：<a href="https://kf.qq.com/faq/120322fu63YV130805rYRFzu.html" target="_blank">https://kf.qq.com/faq/120322fu63YV130805rYRFzu.html</a></p></blockquote>
+<p>加入白名单后就可以正常接收邮件了。</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/06/FAA63A9E-9AE1-4217-B440-FCA908900B1E.jpg" width="70%"/></p>
+<h3>发送 HTML 格式邮件</h3>
+<p>我们可以在邮件头部添加 <b>Content-type: text/html\n</b> 来发送 HTML 格式的邮件，实例如下： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 接收邮箱，这里我设置为我的 QQ 邮箱，你需要修改它为你自己的邮箱</span><span class="hl-code">
+</span><span class="hl-var">$to</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">429240967@qq.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#发送者邮箱</span><span class="hl-code">
+</span><span class="hl-var">$from</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">test@runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#标题</span><span class="hl-code">
+</span><span class="hl-var">$subject</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程 Perl 发送邮件测试</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h1&gt;这是一封使用 Perl 发送的邮件&lt;h1&gt;&lt;p&gt;你好，我来自菜鸟教程，地址是:http://www.runoob.com。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">open</span><span class="hl-brackets">(</span><span class="hl-identifier">MAIL</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">|/usr/sbin/sendmail -t</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 邮件头部</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">To: </span><span class="hl-var">$to</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">From: </span><span class="hl-var">$from</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Subject: </span><span class="hl-var">$subject</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Content-type: text/html</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-comment"># 邮箱信息</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">MAIL</span><span class="hl-code"> </span><span class="hl-var">$message</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">close</span><span class="hl-brackets">(</span><span class="hl-identifier">MAIL</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">邮件发送成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行成功后，查看邮件内容，如下所示：</p>
+<p> <img src="//www.runoob.com/wp-content/uploads/2016/06/FAA63A9E-9AE1-4217-B440-FCA908900B1E.jpg" width="70%"/></p>
+<hr/>
+<h2>使用 MIME::Lite 模块</h2>
+<p>如果你使用的是 window 系统，没有 sendmail 工具。这时你就可以使用 perl 的 MIME:Lite 模块作为邮件客户端来发送邮件。</p>
+<p>MIME:Lite 模块 下载地址为：<a href="http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MIME-Lite-3.030.tar.gz">MIME-Lite-3.030.tar.gz</a>。</p>
+<p>这里我们直接用 cpan 来安装(需要 root 权限)，不用下载：</p>
+<pre>
+$ cpan -i MIME::Lite
+……
+  /usr/bin/make install  -- OK
+</pre>
+<p>安装成功后，我们来演示一个实例：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use MIME::Lite</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 接收邮箱，这里我设置为我的 QQ 邮箱，你需要修改它为你自己的邮箱</span><span class="hl-code">
+</span><span class="hl-var">$to</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">429240967@qq.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment"># 抄送者，多个使用逗号隔开</span><span class="hl-code">
+</span><span class="hl-comment"># $cc = 'test1@runoob.com, test2@runoob.com';</span><span class="hl-code">
+</span><span class="hl-comment">#发送者邮箱</span><span class="hl-code">
+</span><span class="hl-var">$from</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">test@runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#标题</span><span class="hl-code">
+</span><span class="hl-var">$subject</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程 Perl 发送邮件测试</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">这是一封使用 Perl 发送的邮件，使用了 MIME::Lite 模块。</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$msg</span><span class="hl-code"> =</span><span class="hl-special"> MIME::Lite</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-string">From</span><span class="hl-code">     =&gt;</span><span class="hl-code"> </span><span class="hl-var">$from</span><span class="hl-code">,
+                 </span><span class="hl-string">To</span><span class="hl-code">       =&gt;</span><span class="hl-code"> </span><span class="hl-var">$to</span><span class="hl-code">,
+                 </span><span class="hl-string">Cc</span><span class="hl-code">       =&gt;</span><span class="hl-code"> </span><span class="hl-var">$cc</span><span class="hl-code">,
+                 </span><span class="hl-string">Subject</span><span class="hl-code">  =&gt;</span><span class="hl-code"> </span><span class="hl-var">$subject</span><span class="hl-code">,
+                 </span><span class="hl-string">Data</span><span class="hl-code">     =&gt;</span><span class="hl-code"> </span><span class="hl-var">$message</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;
+                 
+</span><span class="hl-var">$msg</span><span class="hl-code">-&gt;</span><span class="hl-reserved">send</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">邮件发送成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行成功后，查看邮件内容，如下所示：</p>
+<p> <img src="//www.runoob.com/wp-content/uploads/2016/06/71DCF087-EB4E-4D43-B077-0E7E9FE8EEFD.jpg" width="70%"/></p>
+<h3>发送 HTML 格式邮件</h3>
+<p>我们可以在邮件头部添加 <b>Content-type: text/html\n</b> 来发送 HTML 格式的邮件，实例如下： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use MIME::Lite</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 接收邮箱，这里我设置为我的 QQ 邮箱，你需要修改它为你自己的邮箱</span><span class="hl-code">
+</span><span class="hl-var">$to</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">429240967@qq.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment"># 抄送者，多个使用逗号隔开</span><span class="hl-code">
+</span><span class="hl-comment"># $cc = 'test1@runoob.com, test2@runoob.com';</span><span class="hl-code">
+</span><span class="hl-comment">#发送者邮箱</span><span class="hl-code">
+</span><span class="hl-var">$from</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">test@runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#标题</span><span class="hl-code">
+</span><span class="hl-var">$subject</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程 Perl 发送邮件测试</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h1&gt;这是一封使用 Perl 发送的邮件&lt;h1&gt;&lt;p&gt;使用了 MIME::Lite 模块。&lt;/p&gt;&lt;p&gt;来自菜鸟教程，地址是:http://www.runoob.com。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$msg</span><span class="hl-code"> =</span><span class="hl-special"> MIME::Lite</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-string">From</span><span class="hl-code">     =&gt;</span><span class="hl-code"> </span><span class="hl-var">$from</span><span class="hl-code">,
+                 </span><span class="hl-string">To</span><span class="hl-code">       =&gt;</span><span class="hl-code"> </span><span class="hl-var">$to</span><span class="hl-code">,
+                 </span><span class="hl-string">Cc</span><span class="hl-code">       =&gt;</span><span class="hl-code"> </span><span class="hl-var">$cc</span><span class="hl-code">,
+                 </span><span class="hl-string">Subject</span><span class="hl-code">  =&gt;</span><span class="hl-code"> </span><span class="hl-var">$subject</span><span class="hl-code">,
+                 </span><span class="hl-string">Data</span><span class="hl-code">     =&gt;</span><span class="hl-code"> </span><span class="hl-var">$message</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 添加头部信息</span><span class="hl-code">
+</span><span class="hl-var">$msg</span><span class="hl-code">-&gt;</span><span class="hl-identifier">attr</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">content-type</span><span class="hl-quotes">"</span><span class="hl-code"> =&gt; </span><span class="hl-quotes">"</span><span class="hl-string">text/html</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;                         
+</span><span class="hl-var">$msg</span><span class="hl-code">-&gt;</span><span class="hl-reserved">send</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">邮件发送成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行成功后，查看邮件内容，如下所示：</p>
+<p> <img src="//www.runoob.com/wp-content/uploads/2016/06/F9C72C91-8226-4A1B-9E17-F172261FAE12.jpg" width="70%"/></p>
+<h3>发送带有附件的邮件</h3>
+<p>发送带有附件的邮件实例如下： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use MIME::Lite</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 接收邮箱，这里我设置为我的 QQ 邮箱，你需要修改它为你自己的邮箱</span><span class="hl-code">
+</span><span class="hl-var">$to</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">429240967@qq.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment"># 抄送者，多个使用逗号隔开</span><span class="hl-code">
+</span><span class="hl-comment"># $cc = 'test1@runoob.com, test2@runoob.com';</span><span class="hl-code">
+</span><span class="hl-comment">#发送者邮箱</span><span class="hl-code">
+</span><span class="hl-var">$from</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">test@runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">#标题</span><span class="hl-code">
+</span><span class="hl-var">$subject</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程 Perl 发送邮件测试</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$message</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">这是一封使用 Perl 发送的邮件，使用了 MIME::Lite 模块，包含了附件。</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$msg</span><span class="hl-code"> =</span><span class="hl-special"> MIME::Lite</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-string">From</span><span class="hl-code">     =&gt;</span><span class="hl-code"> </span><span class="hl-var">$from</span><span class="hl-code">,
+                 </span><span class="hl-string">To</span><span class="hl-code">       =&gt;</span><span class="hl-code"> </span><span class="hl-var">$to</span><span class="hl-code">,
+                 </span><span class="hl-string">Cc</span><span class="hl-code">       =&gt;</span><span class="hl-code"> </span><span class="hl-var">$cc</span><span class="hl-code">,
+                 </span><span class="hl-string">Subject</span><span class="hl-code">  =&gt;</span><span class="hl-code"> </span><span class="hl-var">$subject</span><span class="hl-code">,
+                 </span><span class="hl-string">Type</span><span class="hl-code">     =&gt;</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">multipart/mixed</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-comment"># 附件标记</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+ 
+</span><span class="hl-var">$msg</span><span class="hl-code">-&gt;</span><span class="hl-identifier">attach</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">
+</span><span class="hl-string">Type</span><span class="hl-code"> =&gt;</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">TEXT</span><span class="hl-quotes">'</span><span class="hl-code">,
+              </span><span class="hl-string">Data</span><span class="hl-code"> =&gt;</span><span class="hl-code"> </span><span class="hl-var">$message</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;</span><span class="hl-comment"># 指定附件信息</span><span class="hl-code">
+</span><span class="hl-var">$msg</span><span class="hl-code">-&gt;</span><span class="hl-identifier">attach</span><span class="hl-brackets">(</span><span class="hl-string">Type</span><span class="hl-code">        =&gt;</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">TEXT</span><span class="hl-quotes">'</span><span class="hl-code">,
+             </span><span class="hl-string">Path</span><span class="hl-code">        =&gt;</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">./runoob.txt</span><span class="hl-quotes">'</span><span class="hl-code">,   </span><span class="hl-comment"># 当前目录下</span><span class="hl-code">
+</span><span class="hl-string">Filename</span><span class="hl-code">    =&gt;</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">runoob.txt</span><span class="hl-quotes">'</span><span class="hl-code">,
+             </span><span class="hl-string">Disposition</span><span class="hl-code"> =&gt;</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">attachment</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$msg</span><span class="hl-code">-&gt;</span><span class="hl-reserved">send</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">邮件发送成功</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行成功后，查看邮件内容，如下所示：</p>
+<p> <img src="//www.runoob.com/wp-content/uploads/2016/06/39897BBF-6B5A-467C-9F6C-ABD36752EDF3.jpg" width="70%"/></p>
+<p>你可以通过使用多个 $msg-&gt;attach 来添加多个附件。</p>
+</div>

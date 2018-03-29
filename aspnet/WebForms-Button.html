@@ -1,0 +1,48 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- Button 控件</span>
+</h1>
+<hr/>
+<p class="intro">Button 控件用于显示一个下压按钮。</p>
+<hr/>
+<h2>Button 控件</h2>
+<p>Button 控件用于显示一个下压按钮。下压按钮可能是一个提交按钮或者是一个命令按钮。在默认情况下，这个控件是提交按钮。</p>
+<p>提交按钮没有命令名称，当它被点击时，它会把页面传回到服务器。您可以编写一些事件句柄，当提交按钮被点击时，用来控制动作的执行。</p>
+<p>命令按钮有命令名称，并且允许您在页面上创建多个 Button 控件。您可以编写一些时间句柄，当命令按钮被点击时，用来控制动作的执行。</p>
+<p>Button 控件的特性和属性列在我们的 <a href="aspnet-ref-webcontrols.html" target="_blank">WebForms 控件参考手册页面</a>。</p>
+<p>下面的实例演示了一个简单的 Button 控件：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Button id="b1" Text="Submit" runat="server" /&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<br/><hr/>
+<h2>添加脚本</h2>
+<p>表单通常通过点击按钮进行提交。</p>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 TextBox 控件、一个 Button 控件和一个 Label 控件。当提交按钮被触发时，submit 子例程将被执行。submit 子例程将写入一行文本到 Label 控件中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;script runat="server"&gt;<br/>
+Sub submit(sender As Object, e As EventArgs)<br/>
+lbl1.Text="Your name is " &amp; txt1.Text<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+Enter your name:<br/>
+&lt;asp:TextBox id="txt1" runat="server" /&gt;<br/>
+&lt;asp:Button OnClick="submit" Text="Submit" runat="server" /&gt;<br/>
+&lt;p&gt;&lt;asp:Label id="lbl1" runat="server" /&gt;&lt;/p&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_textbox" target="_blank">演示实例 »</a>
+</div>
+<br/>
+</div>

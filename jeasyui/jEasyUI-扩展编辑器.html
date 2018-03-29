@@ -1,0 +1,60 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">扩展编辑器</span></h1>
+<p>
+一些常见的编辑器（editor）添加到数据网格（datagrid），以便用户编辑数据。
+所有的编辑器（editor）都定义在 $.fn.datagrid.defaults.editors 对象中，这个可以继承扩展以便支持新的编辑器（editor）。
+本教程将向您展示如何添加一个新的 numberspinner 编辑器到数据网格（datagrid）。
+</p>
+<img src="/wp-content/uploads/2013/12/datagrid23.png"/>
+<h4>继承扩展 numberspinner 编辑器</h4>
+<pre style="color:#006600">
+    $.extend($.fn.datagrid.defaults.editors, {
+        numberspinner: {
+            init: function(container, options){
+                var input = $('&lt;input type="text"&gt;').appendTo(container);
+                return input.numberspinner(options);
+            },
+            destroy: function(target){
+                $(target).numberspinner('destroy');
+            },
+            getValue: function(target){
+                return $(target).numberspinner('getValue');
+            },
+            setValue: function(target, value){
+                $(target).numberspinner('setValue',value);
+            },
+            resize: function(target, width){
+                $(target).numberspinner('resize',width);
+            }
+        }
+    });
+</pre>
+<h4>在 html 标记中创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" style="width:600px;height:250px"
+            url="data/datagrid_data.json" title="Editable DataGrid" iconCls="icon-edit"
+            singleSelect="true" idField="itemid" fitColumns="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="60"&gt;Item ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right" editor="{type:'numberbox',options:{precision:1}}"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right" editor="numberspinner"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="180" editor="text"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center" editor="{type:'checkbox',options:{on:'P',off:''}}"&gt;Status&lt;/th&gt;
+                &lt;th field="action" width="80" align="center" formatter="formatAction"&gt;Action&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>
+我们分配 numberspinner 编辑器到 'unit cost' 字段。
+当开始编辑一行，用户可以通过 numberspinner 编辑器来编辑数据。
+</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid23.zip">jeasyui-datagrid-datagrid23.zip</a></p>
+</div>

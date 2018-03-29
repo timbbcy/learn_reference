@@ -1,0 +1,60 @@
+<div class="article-intro" id="content">
+<h1>SVG <span class="color_h1">&lt;ellipse&gt;</span>
+</h1>
+<hr/>
+<h2>SVG 椭圆 - &lt;ellipse&gt;</h2>
+<h2>实例 1</h2>
+<p>&lt;ellipse&gt; 元素是用来创建一个椭圆：</p>
+<p>椭圆与圆很相似。不同之处在于椭圆有不同的x和y半径，而圆的x和y半径是相同的：</p>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">svg</span><span class="hl-code"> </span><span class="hl-var">xmlns</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.w3.org/2000/svg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ellipse</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">300</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">80</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">rx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ry</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">50</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fill:yellow;stroke:purple;stroke-width:2</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">svg</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_ellipse" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/ellipse1.svg">查看SVG文件</a>（右键单击SVG图形预览源）。</p>
+<p><b>代码解析：</b></p>
+<ul>
+<li>CX属性定义的椭圆中心的x坐标</li>
+<li>CY属性定义的椭圆中心的y坐标</li>
+<li>RX属性定义的水平半径</li>
+<li>RY属性定义的垂直半径</li>
+</ul>
+<hr/>
+<h2>实例 2</h2>
+<p>下面的例子创建了三个累叠而上的椭圆：</p>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">svg</span><span class="hl-code"> </span><span class="hl-var">xmlns</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.w3.org/2000/svg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ellipse</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">240</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">rx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">220</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ry</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">30</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fill:purple</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ellipse</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">220</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">70</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">rx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">190</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ry</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">20</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fill:lime</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ellipse</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">210</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">45</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">rx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">170</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ry</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">15</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fill:yellow</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">svg</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_ellipse2" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/ellipse2.svg">查看SVG文件</a>（右键单击SVG图形预览源）。</p>
+<hr/>
+<h2>实例 3</h2>
+<p>下面的例子组合了两个椭圆（一个黄的和一个白的）：</p>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">svg</span><span class="hl-code"> </span><span class="hl-var">xmlns</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.w3.org/2000/svg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ellipse</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">240</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">50</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">rx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">220</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ry</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">30</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fill:yellow</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ellipse</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">220</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">50</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">rx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">190</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ry</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">20</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">fill:white</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">svg</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_ellipse3" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/ellipse3.svg">查看SVG文件</a>（右键单击SVG图形预览源）。</p>
+<br/>
+</div>

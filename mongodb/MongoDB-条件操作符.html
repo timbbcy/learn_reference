@@ -1,0 +1,126 @@
+<div class="article-intro" id="content">
+<h1>MongoDB <span class="color_h1">条件操作符</span></h1>
+<br/><h2 class="tutheader">描述</h2>
+<p>条件操作符用于比较两个表达式并从mongoDB集合中获取数据。</p>
+<p>在本章节中，我们将讨论如何在MongoDB中使用条件操作符。</p>
+<p>MongoDB中条件操作符有：</p>
+<ul>
+<li>(&gt;) 大于 - $gt</li>
+<li>(&lt;) 小于 - $lt</li>
+<li>(&gt;=) 大于等于 - $gte</li>
+<li>(&lt;= ) 小于等于 - $lte</li>
+</ul>
+<p><strong>我们使用的数据库名称为"runoob" 我们的集合名称为"col"，以下为我们插入的数据。</strong></p>
+<p>为了方便测试，我们可以先使用以下命令清空集合 "col" 的数据：</p>
+<pre>
+db.col.remove({})
+</pre>
+<p>插入以下数据
+<pre>
+&gt;db.col.insert({
+    title: 'PHP 教程', 
+    description: 'PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。',
+    by: '菜鸟教程',
+    url: 'http://www.runoob.com',
+    tags: ['php'],
+    likes: 200
+})
+</pre>
+<br>
+<pre>
+&gt;db.col.insert({title: 'Java 教程', 
+    description: 'Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。',
+    by: '菜鸟教程',
+    url: 'http://www.runoob.com',
+    tags: ['java'],
+    likes: 150
+})
+</pre>
+<br>
+<pre>
+&gt;db.col.insert({title: 'MongoDB 教程', 
+    description: 'MongoDB 是一个 Nosql 数据库',
+    by: '菜鸟教程',
+    url: 'http://www.runoob.com',
+    tags: ['mongodb'],
+    likes: 100
+})
+</pre>
+<p>使用find()命令查看数据：</p>
+<pre>
+&gt; db.col.find()
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+</pre>
+<br/><h2 class="tutheader">MongoDB (&gt;) 大于操作符 - $gt</h2>
+<p>如果你想获取 "col" 集合中 "likes" 大于 100 的数据，你可以使用以下命令：</p>
+<pre>db.col.find({"likes" : {$gt : 100}})</pre>
+<p>类似于SQL语句：</p>
+<pre>
+Select * from col where likes &gt; 100;
+</pre>
+<p>输出结果：</p>
+<pre>
+&gt; db.col.find({"likes" : {$gt : 100}})
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+&gt; 
+</pre>
+<br/><h2 class="tutheader">MongoDB（&gt;=）大于等于操作符 - $gte</h2>
+<p>如果你想获取"col"集合中 "likes"  大于等于 100 的数据，你可以使用以下命令：</p>
+<pre>db.col.find({likes : {$gte : 100}})
+</pre>
+<p>类似于SQL语句：</p>
+<pre>
+Select * from col where likes &gt;=100;
+</pre>
+<p>输出结果：</p><p>
+<pre>
+&gt; db.col.find({likes : {$gte : 100}})
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+&gt; 
+</pre>
+<br/><h2 class="tutheader">MongoDB (&lt;) 小于操作符 - $lt</h2>
+<p>如果你想获取"col"集合中 "likes"  小于 150 的数据，你可以使用以下命令：</p>
+<pre>db.col.find({likes : {$lt : 150}})
+</pre>
+<p>类似于SQL语句：</p>
+<pre>
+Select * from col where likes &lt; 150;
+</pre>
+<p>输出结果：</p><p>
+<pre>
+&gt; db.col.find({likes : {$lt : 150}})
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+</pre>
+<br/><h2 class="tutheader">MongoDB (&lt;=) 小于操作符 - $lte</h2>
+<p>如果你想获取"col"集合中 "likes"  小于等于 150 的数据，你可以使用以下命令：</p>
+<pre>db.col.find({likes : {$lte : 150}})
+</pre>
+<p>类似于SQL语句：</p>
+<pre>
+Select * from col where likes &lt;= 150;
+</pre>
+<p>输出结果：</p>
+<pre>
+&gt; db.col.find({likes : {$lte : 150}})
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+</pre>
+<br/><h2 class="tutheader">MongoDB 使用 (&lt;) 和 (&gt;) 查询 - $lt 和 $gt</h2>
+<p>如果你想获取"col"集合中 "likes"  大于100，小于 200 的数据，你可以使用以下命令：</p>
+<pre>db.col.find({likes : {$lt :200, $gt : 100}})</pre>
+<p>类似于SQL语句：</p>
+<pre>
+Select * from col where likes&gt;100 AND  likes&lt;200;
+</pre>
+<p>输出结果：</p><p>
+<pre>
+&gt; db.col.find({likes : {$lt :200, $gt : 100}})
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
+&gt; 
+</pre>
+</p></p></p></br></br></p></div>

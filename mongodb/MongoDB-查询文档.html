@@ -1,0 +1,123 @@
+<div class="article-intro" id="content">
+<h1>MongoDB 查询文档</h1>
+<p>MongoDB 查询文档使用 find() 方法。</p>
+<p>find() 方法以非结构化的方式来显示所有文档。</p>
+<h3>语法</h3>
+<p>MongoDB 查询数据的语法格式如下：</p>
+<pre>db.collection.find(query, projection)</pre>
+<ul><li>
+<strong>query</strong> ：可选，使用查询操作符指定查询条件</li><li>
+<strong>projection</strong> ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。</li></ul>
+<p>如果你需要以易读的方式来读取数据，可以使用 pretty() 方法，语法格式如下：</p>
+<pre>
+&gt;db.col.find().pretty()
+</pre>
+<p>pretty() 方法以格式化的方式来显示所有文档。</p>
+<h3>实例</h3>
+<p>以下实例我们查询了集合 col 中的数据：</p>
+<pre>
+&gt; db.col.find().pretty()
+{
+        "_id" : ObjectId("56063f17ade2f21f36b03133"),
+        "title" : "MongoDB 教程",
+        "description" : "MongoDB 是一个 Nosql 数据库",
+        "by" : "菜鸟教程",
+        "url" : "http://www.runoob.com",
+        "tags" : [
+                "mongodb",
+                "database",
+                "NoSQL"
+        ],
+        "likes" : 100
+}
+</pre>
+<p>除了 find() 方法之外，还有一个 findOne() 方法，它只返回一个文档。</p>
+<hr/>
+<h2>MongoDB 与 RDBMS Where 语句比较</h2>
+<p>如果你熟悉常规的 SQL 数据，通过下表可以更好的理解 MongoDB 的条件语句查询：</p>
+<table class="reference">
+<thead>
+<tr>
+<th>操作</th>
+<th>格式</th>
+<th>范例</th>
+<th>RDBMS中的类似语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td><code>{&lt;key&gt;:&lt;value&gt;</code>}</td>
+<td><code>db.col.find({"by":"菜鸟教程"}).pretty()</code></td>
+<td><code>where by = '菜鸟教程'</code></td>
+</tr>
+<tr>
+<td>小于</td>
+<td><code>{&lt;key&gt;:{$lt:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({"likes":{$lt:50}}).pretty()</code></td>
+<td><code>where likes &lt; 50</code></td>
+</tr>
+<tr>
+<td>小于或等于</td>
+<td><code>{&lt;key&gt;:{$lte:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({"likes":{$lte:50}}).pretty()</code></td>
+<td><code>where likes &lt;= 50</code></td>
+</tr>
+<tr>
+<td>大于</td>
+<td><code>{&lt;key&gt;:{$gt:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({"likes":{$gt:50}}).pretty()</code></td>
+<td><code>where likes &gt; 50</code></td>
+</tr>
+<tr>
+<td>大于或等于</td>
+<td><code>{&lt;key&gt;:{$gte:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({"likes":{$gte:50}}).pretty()</code></td>
+<td><code>where likes &gt;= 50</code></td>
+</tr>
+<tr>
+<td>不等于</td>
+<td><code>{&lt;key&gt;:{$ne:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({"likes":{$ne:50}}).pretty()</code></td>
+<td><code>where likes != 50</code></td>
+</tr>
+</tbody>
+</table>
+<hr/><h2>MongoDB AND 条件</h2>
+<p>MongoDB 的 find() 方法可以传入多个键(key)，每个键(key)以逗号隔开，即常规 SQL  的 AND 条件。</p>
+<p>语法格式如下：</p>
+<pre>
+&gt;db.col.find({key1:value1, key2:value2}).pretty()
+</pre>
+<h3>实例</h3>
+<p>以下实例通过 <strong>by</strong> 和 <strong>title</strong> 键来查询 <b>菜鸟教程</b> 中 <b>MongoDB 教程</b> 的数据</p>
+<pre>
+&gt; db.col.find({"by":"菜鸟教程", "title":"MongoDB 教程"}).pretty()
+{
+        "_id" : ObjectId("56063f17ade2f21f36b03133"),
+        "title" : "MongoDB 教程",
+        "description" : "MongoDB 是一个 Nosql 数据库",
+        "by" : "菜鸟教程",
+        "url" : "http://www.runoob.com",
+        "tags" : [
+                "mongodb",
+                "database",
+                "NoSQL"
+        ],
+        "likes" : 100
+}
+</pre>
+<p>以上实例中类似于 WHERE 语句：<strong>WHERE by='菜鸟教程' AND title='MongoDB 教程'</strong></p>
+<hr/><h2>MongoDB OR 条件</h2>
+<p>MongoDB OR 条件语句使用了关键字 <b>$or</b>,语法格式如下：</p>
+<pre>
+&gt;db.col.find(
+   {
+      $or: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()
+</pre>
+<h3>实例</h3>
+<p>以下实例中，我们演示了查询键 <b>by</b> 值为 </p></div>

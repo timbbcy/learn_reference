@@ -1,0 +1,51 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">取得选中行数据</span></h1>
+<p>本实例演示如何取得选中行数据。</p>
+<img src="/wp-content/uploads/2013/12/datagrid3_1.png"/>
+<p>数据网格（datagrid）组件包含两种方法来检索选中行数据：</p>
+<ul>
+<li>getSelected：取得第一个选中行数据，如果没有选中行，则返回 null，否则返回记录。</li>
+<li>getSelections：取得所有选中行数据，返回元素记录的数组数据。</li>
+</ul>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" class="easyui-datagrid" style="width:600px;height:250px"
+            url="data/datagrid_data.json"
+            title="Load Data" iconCls="icon-save"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<h4>使用演示</h4>
+<p>取得选中行数据：</p>
+<pre style="color:#006600">
+    var row = $('#tt').datagrid('getSelected');
+    if (row){
+        alert('Item ID:'+row.itemid+"\nPrice:"+row.listprice);
+    }
+</pre>
+<p>取得所有选中行的 itemid：</p>
+<pre style="color:#006600">
+    var ids = [];
+    var rows = $('#tt').datagrid('getSelections');
+    for(var i=0; i&lt;rows.length; i++){
+        ids.push(rows[i].itemid);
+    }
+    alert(ids.join('\n'));
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid3.zip">jeasyui-datagrid-datagrid3.zip</a></p>
+</div>

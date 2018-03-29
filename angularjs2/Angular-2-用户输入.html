@@ -1,0 +1,151 @@
+<div class="article-intro" id="content">
+<h1>Angular 2 用户输入</h1>
+<p>用户点击链接、按下按钮或者输入文字时，这些用户的交互行为都会触发 DOM 事件。</p>
+<p>本章中，我们将学习如何使用 Angular 事件绑定语法来绑定这些事件。</p>
+<p>以下Gif图演示了该实例的操作：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2016/09/angular2-1.gif"/></p>
+<p>源代码可以再文章末尾下载。</p>
+<hr/>
+<h2>绑定到用户输入事件</h2>
+<p>我们可以使用 Angular 事件绑定机制来响应任何 DOM 事件 。</p>
+<p>以下实例将绑定了点击事件：</p>
+<pre>
+&lt;button (click)="onClickMe()"&gt;点我!&lt;/button&gt;
+</pre>
+<p>等号左边的 (click) 表示把该按钮的点击事件作为绑定目标 。 等号右边，引号中的文本是一个 模板语句 </p>
+<p>完整代码如下：</p>
+<div class="example">
+<h2 class="example">app/click-me.component.ts 文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">Component</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-identifier">from</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">@angular/core</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">click-me</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">button</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">click</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">onClickMe()</span><span class="hl-quotes">"</span><span class="hl-code">&gt;点我!&lt;/</span><span class="hl-identifier">button</span><span class="hl-code">&gt;
+    </span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">clickMessage</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">`
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">ClickMeComponent</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">clickMessage</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+  </span><span class="hl-identifier">onClickMe</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">clickMessage</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程!</span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<hr/>
+<h2>通过 $event 对象取得用户输入</h2>
+<p>我们可以绑定到所有类型的事件。</p>
+<p>让我们试试绑定到一个输入框的 keyup 事件，并且把用户输入的东西回显到屏幕上。</p>
+<div class="example">
+<h2 class="example">app/keyup.component.ts (v1) 文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">key-up1</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">keyup</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">onKey($event)</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">values</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+  `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">KeyUpComponent_v1</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">values</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+ 
+  </span><span class="hl-comment">/*</span><span class="hl-comment">
+  // 非强类型
+  onKey(event:any) {
+    this.values += event.target.value + ' | ';
+  }
+  </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 强类型</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">onKey</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-code">: </span><span class="hl-identifier">KeyboardEvent</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">values</span><span class="hl-code"> += </span><span class="hl-brackets">(</span><span class="hl-code">&lt;</span><span class="hl-identifier">HTMLInputElement</span><span class="hl-code">&gt;</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">target</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-code"> + </span><span class="hl-quotes">'</span><span class="hl-string"> | </span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以上代码中我们监听了一个事件并捕获用户输入，Angular 把事件对象存入 $event 变量中。</p>
+<p>组件的 onKey() 方法是用来从事件对象中提取出用户输入的，再将输入的值累加到 values 的属性。</p>
+<hr/>
+<h2>从一个模板引用变量中获得用户输入</h2>
+<p>你可以通过使用局部模板变量来显示用户数据，模板引用变量通过在标识符前加上井号 (#) 来实现。</p>
+<p>下面的实例演示如何使用局部模板变量：</p>
+<div class="example">
+<h2 class="example">app/loop-back.component.ts 文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">loop-back</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> #</span><span class="hl-identifier">box</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">keyup</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">0</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">box</span><span class="hl-code">.</span><span class="hl-identifier">value</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+  `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">LoopbackComponent</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>我们在 <code>&lt;input&gt;</code> 元素上定义了一个名叫 <code>box</code> 的模板引用变量。
+ <code>box</code> 变量引用的就是 <code>&lt;input&gt;</code> 元素本身，这意味着我们可以获得 input 元素的 <code>value</code> 值，并通过插值表达式把它显示在 <code>&lt;p&gt;</code> 标签中。</p>
+<p>我们可以使用模板引用变量来修改以上 keyup 的实例：</p>
+<div class="example">
+<h2 class="example">app/keyup.components.ts (v2) 文件：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">key-up2</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> #</span><span class="hl-identifier">box</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">keyup</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">onKey(box.value)</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">values</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+  `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">KeyUpComponent_v2</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">values</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-identifier">onKey</span><span class="hl-brackets">(</span><span class="hl-identifier">value</span><span class="hl-code">: </span><span class="hl-identifier">string</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">values</span><span class="hl-code"> += </span><span class="hl-identifier">value</span><span class="hl-code"> + </span><span class="hl-quotes">'</span><span class="hl-string"> | </span><span class="hl-quotes">'</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<hr/>
+<h2>按键事件过滤 ( 通过 key.enter)
+</h2>
+<p>我们可以只在用户按下回车 (enter) 键的时候才获取输入框的值。</p>
+<p>(keyup) 事件处理语句会听到每一次按键，我们可以过滤按键，比如每一个 $event.keyCode，只有在按下回车键才更新 values 属性。</p>
+<p>Angular 可以为我们过滤键盘事件，通过绑定到 Angular 的 keyup.enter 伪事件监听回车键的事件。</p>
+<div class="example">
+<h2 class="example">app/keyup.components.ts (v3)：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">key-up3</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> #</span><span class="hl-identifier">box</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">keyup</span><span class="hl-code">.</span><span class="hl-identifier">enter</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">values=box.value</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">values</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+  `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">KeyUpComponent_v3</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">values</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<hr/>
+<h2>blur( 失去焦点 ) 事件</h2>
+<p>接下来我们可以使用blur( 失去焦点 ) 事件，它可以再元素失去焦点后更新 values 属性。</p>
+<p>以下实例同时监听输入回车键与输入框失去焦点的事件。</p>
+<div class="example">
+<h2 class="example">app/keyup.components.ts (v4)：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">@</span><span class="hl-identifier">Component</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">selector</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">key-up4</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">template</span><span class="hl-code">: `
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> #</span><span class="hl-identifier">box</span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-identifier">keyup</span><span class="hl-code">.</span><span class="hl-identifier">enter</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">values=box.value</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-identifier">blur</span><span class="hl-brackets">)</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">values=box.value</span><span class="hl-quotes">"</span><span class="hl-code">&gt;
+ 
+    &lt;</span><span class="hl-identifier">p</span><span class="hl-code">&gt;</span><span class="hl-brackets">{</span><span class="hl-brackets">{</span><span class="hl-identifier">values</span><span class="hl-brackets">}</span><span class="hl-brackets">}</span><span class="hl-code">&lt;/</span><span class="hl-identifier">p</span><span class="hl-code">&gt;
+  `
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">export</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">KeyUpComponent_v4</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">values</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div><p>本文所使用的源码可以通过以下方式下载，不包含 node_modules 和 typings 目录。</p>
+<p><a class="download" href="http://www.runoob.com/wp-content/uploads/2013/08/angular-quickstart.zip">源代码下载</a></p>
+</div>

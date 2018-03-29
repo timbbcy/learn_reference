@@ -1,0 +1,346 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">按钮（Button）</span></h1>
+<div class="tutintro">
+<p>用带有适当的悬停（hover）和激活（active）的样式的可主题化按钮来加强标准表单元素（比如按钮、输入框、锚）的功能。</p>
+<p>如需了解更多有关 button 部件的细节，请查看 API 文档 <a href="/jqueryui/api-button.html">按钮部件（Button Widget）</a>。</p>
+</div>
+<h2>默认功能</h2>
+<p>可用于按钮的标记实例：一个 button 元素，一个类型为 submit 的 input 元素和一个锚。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 按钮（Button） - 默认功能&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "input[type=submit], a, button" )
+      .button()
+      .click(function( event ) {
+        event.preventDefault();
+      });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;button&gt;一个 button 元素&lt;/button&gt;
+ 
+&lt;input type="submit" value="一个提交按钮"&gt;
+ 
+&lt;a href="#"&gt;一个锚&lt;/a&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-button" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>复选框</h2>
+<p>通过 button 部件把复选框显示为切换按钮样式。与复选框相关的 label 元素作为按钮文本。</p>
+<p>本实例通过在一个公共的容器上调用 <code>.buttonset()</code>，演示了三个显示为按钮样式的复选框。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 按钮（Button） - 复选框&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#check" ).button();
+    $( "#format" ).buttonset();
+  });
+  &lt;/script&gt;
+  &lt;style&gt;
+  #format { margin-top: 2em; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;input type="checkbox" id="check"&gt;&lt;label for="check"&gt;切换&lt;/label&gt;
+ 
+&lt;div id="format"&gt;
+  &lt;input type="checkbox" id="check1"&gt;&lt;label for="check1"&gt;B&lt;/label&gt;
+  &lt;input type="checkbox" id="check2"&gt;&lt;label for="check2"&gt;I&lt;/label&gt;
+  &lt;input type="checkbox" id="check3"&gt;&lt;label for="check3"&gt;U&lt;/label&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-button-checkbox" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>图标</h2>
+<p>一些带有文本和图标的各种组合的按钮</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 按钮（Button） - 图标&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "button:first" ).button({
+      icons: {
+        primary: "ui-icon-locked"
+      },
+      text: false
+    }).next().button({
+      icons: {
+        primary: "ui-icon-locked"
+      }
+    }).next().button({
+      icons: {
+        primary: "ui-icon-gear",
+        secondary: "ui-icon-triangle-1-s"
+      }
+    }).next().button({
+      icons: {
+        primary: "ui-icon-gear",
+        secondary: "ui-icon-triangle-1-s"
+      },
+      text: false
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;button&gt;只带有图标的按钮&lt;/button&gt;
+&lt;button&gt;图标在左侧的按钮&lt;/button&gt;
+&lt;button&gt;带有两个图标的按钮&lt;/button&gt;
+&lt;button&gt;带有两个图标且不带文本的按钮&lt;/button&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-button-icons" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>单选</h2>
+<p>三个单选按钮转变为一套按钮。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 按钮（Button） - 单选&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#radio" ).buttonset();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;form&gt;
+  &lt;div id="radio"&gt;
+    &lt;input type="radio" id="radio1" name="radio"&gt;&lt;label for="radio1"&gt;选择 1&lt;/label&gt;
+    &lt;input type="radio" id="radio2" name="radio" checked="checked"&gt;&lt;label for="radio2"&gt;选择 2&lt;/label&gt;
+    &lt;input type="radio" id="radio3" name="radio"&gt;&lt;label for="radio3"&gt;选择 3&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-button-radio" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>分割按钮</h2>
+<p></p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 按钮（Button） - 分割按钮&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+    .ui-menu { position: absolute; width: 100px; }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#rerun" )
+      .button()
+      .click(function() {
+        alert( "Running the last action" );
+      })
+      .next()
+        .button({
+          text: false,
+          icons: {
+            primary: "ui-icon-triangle-1-s"
+          }
+        })
+        .click(function() {
+          var menu = $( this ).parent().next().show().position({
+            my: "left top",
+            at: "left bottom",
+            of: this
+          });
+          $( document ).one( "click", function() {
+            menu.hide();
+          });
+          return false;
+        })
+        .parent()
+          .buttonset()
+          .next()
+            .hide()
+            .menu();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div&gt;
+  &lt;div&gt;
+    &lt;button id="rerun"&gt;运行最后的动作&lt;/button&gt;
+    &lt;button id="select"&gt;选择一个动作&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;打开...&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;保存&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;删除&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-button-splitbutton" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>工具栏</h2>
+<p>一个多媒体播放器的工具栏。请看基础的标记：一些 button 元素，Shuffle 按钮是一个类型为 checkbox 的 input，Repeat 选项是三个类型为 radio 的 input。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 按钮（Button） - 工具栏&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;style&gt;
+  #toolbar {
+    padding: 4px;
+    display: inline-block;
+  }
+  /* support: IE7 */
+  *+html #toolbar {
+    display: inline;
+  }
+  &lt;/style&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#beginning" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-start"
+      }
+    });
+    $( "#rewind" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-prev"
+      }
+    });
+    $( "#play" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-play"
+      }
+    })
+    .click(function() {
+      var options;
+      if ( $( this ).text() === "play" ) {
+        options = {
+          label: "pause",
+          icons: {
+            primary: "ui-icon-pause"
+          }
+        };
+      } else {
+        options = {
+          label: "play",
+          icons: {
+            primary: "ui-icon-play"
+          }
+        };
+      }
+      $( this ).button( "option", options );
+    });
+    $( "#stop" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-stop"
+      }
+    })
+    .click(function() {
+      $( "#play" ).button( "option", {
+        label: "play",
+        icons: {
+          primary: "ui-icon-play"
+        }
+      });
+    });
+    $( "#forward" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-next"
+      }
+    });
+    $( "#end" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-end"
+      }
+    });
+    $( "#shuffle" ).button();
+    $( "#repeat" ).buttonset();
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="toolbar" class="ui-widget-header ui-corner-all"&gt;
+  &lt;button id="beginning"&gt;开头&lt;/button&gt;
+  &lt;button id="rewind"&gt;快退&lt;/button&gt;
+  &lt;button id="play"&gt;播放&lt;/button&gt;
+  &lt;button id="stop"&gt;停止&lt;/button&gt;
+  &lt;button id="forward"&gt;快进&lt;/button&gt;
+  &lt;button id="end"&gt;结尾&lt;/button&gt;
+ 
+  &lt;input type="checkbox" id="shuffle"&gt;&lt;label for="shuffle"&gt;Shuffle&lt;/label&gt;
+ 
+  &lt;span id="repeat"&gt;
+    &lt;input type="radio" id="repeat0" name="repeat" checked="checked"&gt;&lt;label for="repeat0"&gt;No Repeat&lt;/label&gt;
+    &lt;input type="radio" id="repeat1" name="repeat"&gt;&lt;label for="repeat1"&gt;Once&lt;/label&gt;
+    &lt;input type="radio" id="repeatall" name="repeat"&gt;&lt;label for="repeatall"&gt;All&lt;/label&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-button-toolbar" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

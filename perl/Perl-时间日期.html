@@ -1,0 +1,345 @@
+<div class="article-intro" id="content">
+<h1>Perl 时间日期</h1>
+<p>本章节我们为大家介绍 Perl 语言对时间日期的处理。</p>
+<p>Perl中处理时间的函数有如下几种：</p>
+<ul><li><b>
+1、time() 函数：</b>返回从1970年1月1日起累计的秒数</li><li><b>
+2、localtime() 函数：</b>获取本地时区时间</li><li><b>
+3、gmtime() 函数： </b>获取格林威治时间</li></ul>
+<hr/>
+<h2>当前时间和日期</h2>
+<p>接下来让我们看下  <b>localtime()</b> 函数，该函数在没有参数的情况下返回当前的时间和日期。</p>
+<p>以下 9 个符号代表不同的时间日期参数：</p>
+<pre>
+sec,     # 秒， 0 到 61
+min,     # 分钟， 0 到 59
+hour,    # 小时， 0 到 24
+mday,    # 天， 1 到 31
+mon,     # 月， 0 到 11
+year,    # 年，从 1900 开始
+wday,    # 星期几，0-6,0表示周日
+yday,    # 一年中的第几天,0-364,365
+isdst    # 如果夏令时有效，则为真
+</pre>
+<p>实例演示如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">@months</span><span class="hl-code"> = </span><span class="hl-quotes">qw(</span><span class="hl-string"> 一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月 </span><span class="hl-quotes">)</span><span class="hl-code">;
+</span><span class="hl-var">@days</span><span class="hl-code"> = </span><span class="hl-quotes">qw(</span><span class="hl-string">星期天 星期一 星期二 星期三 星期四 星期五 星期六</span><span class="hl-quotes">)</span><span class="hl-code">;
+ 
+</span><span class="hl-brackets">(</span><span class="hl-var">$sec</span><span class="hl-code">,</span><span class="hl-var">$min</span><span class="hl-code">,</span><span class="hl-var">$hour</span><span class="hl-code">,</span><span class="hl-var">$mday</span><span class="hl-code">,</span><span class="hl-var">$mon</span><span class="hl-code">,</span><span class="hl-var">$year</span><span class="hl-code">,</span><span class="hl-var">$wday</span><span class="hl-code">,</span><span class="hl-var">$yday</span><span class="hl-code">,</span><span class="hl-var">$isdst</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-reserved">localtime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$mday</span><span class="hl-string"> </span><span class="hl-var">$months</span><span class="hl-string">[</span><span class="hl-var">$mon</span><span class="hl-string">] </span><span class="hl-var">$days</span><span class="hl-string">[</span><span class="hl-var">$wday</span><span class="hl-string">]</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>以上实例执行输出结果为：</p>
+<pre>
+12 六月 星期天
+</pre>
+<p>
+如果直接调用 localtime() ，它返回系统当期设置时区的时间，实例如下：
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$datestring</span><span class="hl-code"> = </span><span class="hl-reserved">localtime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">时间日期为：</span><span class="hl-var">$datestring</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>以上实例执行输出结果为：</p>
+<pre>
+时间日期为：Sun Jun 12 11:27:31 2016
+</pre>
+<hr/>
+<h2>格林威治时间 (GMT)</h2>
+<p>函数 <b>gmtime()</b> 与 localtime() 类似，但它返回标准格林威治时间。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$local_datestring</span><span class="hl-code"> = </span><span class="hl-reserved">localtime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">本地时间日期为：</span><span class="hl-var">$local_datestring</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$gmt_datestring</span><span class="hl-code"> = </span><span class="hl-reserved">gmtime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">GMT 时间日期为：</span><span class="hl-var">$gmt_datestring</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>以上实例执行输出结果为：</p>
+<pre>
+本地时间日期为：Sun Jun 12 11:32:14 2016
+GMT 时间日期为：Sun Jun 12 03:32:14 2016
+</pre>
+<p>从实例中我们可以看出，中国的时间和格林威治时间相差了8小时。</p>
+<hr/>
+<h2>格式化日期和时间</h2>
+<p>
+我们可以使用 localtime() 函数的 9 个时间元素来输出需要制定的格式时间。格式化输出使用 printf() 函数：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-var">$sec</span><span class="hl-code">,</span><span class="hl-var">$min</span><span class="hl-code">,</span><span class="hl-var">$hour</span><span class="hl-code">,</span><span class="hl-var">$mday</span><span class="hl-code">,</span><span class="hl-var">$mon</span><span class="hl-code">,</span><span class="hl-var">$year</span><span class="hl-code">,</span><span class="hl-var">$wday</span><span class="hl-code">,</span><span class="hl-var">$yday</span><span class="hl-code">,</span><span class="hl-var">$isdst</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-reserved">localtime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">printf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">格式化时间：HH:MM:SS</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">printf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">%02d:%02d:%02d</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$hour</span><span class="hl-code">, </span><span class="hl-var">$min</span><span class="hl-code">, </span><span class="hl-var">$sec</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div><p>以上实例执行输出结果为：</p>
+<pre>
+格式化时间：HH:MM:SS
+11:35:23
+</pre>
+<hr/>
+<h2>新纪元时间(Epoch Time)</h2>
+<p>我们可以使用  time() 函数来获取新纪元时间，该函数返回从1970年1月1日起累计的秒数。实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-var">$epoc</span><span class="hl-code"> = </span><span class="hl-reserved">time</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">从1970年1月1日起累计的秒数为：</span><span class="hl-var">$epoc</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>以上实例执行输出结果为：</p>
+<pre>
+从1970年1月1日起累计的秒数为：1465702883
+</pre>
+<p>我们可以输出一个我们想要的时间格式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-var">$sec</span><span class="hl-code">,</span><span class="hl-var">$min</span><span class="hl-code">,</span><span class="hl-var">$hour</span><span class="hl-code">,</span><span class="hl-var">$mday</span><span class="hl-code">,</span><span class="hl-var">$mon</span><span class="hl-code">,</span><span class="hl-var">$year</span><span class="hl-code">,</span><span class="hl-var">$wday</span><span class="hl-code">,</span><span class="hl-var">$yday</span><span class="hl-code">,</span><span class="hl-var">$isdst</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-reserved">localtime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">当期时间和日期：</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">printf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">%d-%d-%d %d:%d:%d</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-var">$year</span><span class="hl-code">+</span><span class="hl-number">1900</span><span class="hl-code">,</span><span class="hl-var">$mon</span><span class="hl-code">+</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-var">$mday</span><span class="hl-code">,</span><span class="hl-var">$hour</span><span class="hl-code">,</span><span class="hl-var">$min</span><span class="hl-code">,</span><span class="hl-var">$sec</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$epoc</span><span class="hl-code"> = </span><span class="hl-reserved">time</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$epoc</span><span class="hl-code"> = </span><span class="hl-var">$epoc</span><span class="hl-code"> - </span><span class="hl-number">24</span><span class="hl-code"> * </span><span class="hl-number">60</span><span class="hl-code"> * </span><span class="hl-number">60</span><span class="hl-code">;   </span><span class="hl-comment"># 一天前的时间秒数</span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-var">$sec</span><span class="hl-code">,</span><span class="hl-var">$min</span><span class="hl-code">,</span><span class="hl-var">$hour</span><span class="hl-code">,</span><span class="hl-var">$mday</span><span class="hl-code">,</span><span class="hl-var">$mon</span><span class="hl-code">,</span><span class="hl-var">$year</span><span class="hl-code">,</span><span class="hl-var">$wday</span><span class="hl-code">,</span><span class="hl-var">$yday</span><span class="hl-code">,</span><span class="hl-var">$isdst</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-reserved">localtime</span><span class="hl-brackets">(</span><span class="hl-var">$epoc</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">昨天时间和日期：</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">printf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">%d-%d-%d %d:%d:%d</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-var">$year</span><span class="hl-code">+</span><span class="hl-number">1900</span><span class="hl-code">,</span><span class="hl-var">$mon</span><span class="hl-code">+</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-var">$mday</span><span class="hl-code">,</span><span class="hl-var">$hour</span><span class="hl-code">,</span><span class="hl-var">$min</span><span class="hl-code">,</span><span class="hl-var">$sec</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>以上实例执行输出结果为：</p>
+<pre>
+当期时间和日期：2017-3-15 12:47:54
+昨天时间和日期：2017-3-14 12:47:54
+</pre>
+<hr/>
+<h2>POSIX 函数 strftime()</h2>
+<p>
+函数 strftime() 可以将时间格式化为我们想要的格式。</p>
+<p>下表列出了一些格式化的符号，* 号表示想要依赖本地时间：</p>
+<table class="reference">
+<tbody><tr>
+<th>符号</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+<tr>
+<td><code>%a</code></td>
+<td>星期几的简称（ Sun..Sat） *</td>
+<td><code>Thu</code></td>
+</tr>
+<tr>
+<td><code>%A</code></td>
+<td>星期几的全称（ Sunday..Saturday） * </td>
+<td><code>Thursday</code></td>
+</tr>
+<tr>
+<td><code>%b</code></td>
+<td>月的简称（Jan..Dec） *</td>
+<td><code>Aug</code></td>
+</tr>
+<tr>
+<td><code>%B</code></td>
+<td>月的全称（January..December） *</td>
+<td><code>August</code></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>日期和时间 *</td>
+<td><code>Thu Aug 23 14:55:02 2001</code></td>
+</tr>
+<tr>
+<td><code>%C</code></td>
+<td>年份除于100，并取整 (<code>00-99</code>)</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>一个月的第几天 (<code>01-31</code>)</td>
+<td><code>23</code></td>
+</tr>
+<tr>
+<td><code>%D</code></td>
+<td>日期, <code>MM/DD/YY</code> 相等于<code>%m/%d/%y</code></td>
+<td><code>08/23/01</code></td>
+</tr>
+<tr>
+<td><code>%e</code></td>
+<td>一个月的第几天，使用空格填充个位数 (<code> 1-31</code>)</td>
+<td><code>23</code></td>
+</tr>
+<tr>
+<td><code>%F</code></td><td> <code>YYYY-MM-DD</code> 的简写类似于 <code>%Y-%m-%d</code></td>
+<td><code>2001-08-23</code></td>
+</tr>
+<tr>
+<td><code>%g</code></td>
+<td>年份的最后两位数 (<code>00-99</code>)</td>
+<td><code>01</code></td>
+</tr>
+<tr>
+<td><code>%g</code></td>
+<td>年</td>
+<td><code>2001</code></td>
+</tr>
+<tr>
+<td><code>%h</code></td>
+<td>月的简称 * (和<code>%b</code>选项相同)</td>
+<td><code>Aug</code></td>
+</tr>
+<tr>
+<td><code>%H</code></td><td>24 小时制 (<code>00-23</code>)</td>
+<td><code>14</code></td>
+</tr>
+<tr>
+<td><code>%I</code></td>
+<td>12 小时制 (<code>01-12</code>)</td>
+<td><code>02</code></td>
+</tr>
+<tr>
+<td><code>%j</code></td>
+<td>一年的第几天 (<code>001-366</code>)</td>
+<td><code>235</code></td>
+</tr>
+<tr>
+<td><code>%m</code></td>
+<td>月 (<code>01-12</code>)</td>
+<td><code>08</code></td>
+</tr>
+<tr>
+<td><code>%M</code></td>
+<td>分钟 (<code>00-59</code>)</td>
+<td><code>55</code></td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>新行 (<code>'\n'</code>)</td>
+<td><code> </code></td>
+</tr>
+<tr>
+<td><code>%p</code></td><td>显示出AM或PM</td>
+<td><code>PM</code></td></tr>
+<tr>
+<td><code>%r</code></td>
+<td>时间（hh：mm：ss AM或PM），12小时
+ *</td>
+<td><code>02:55:02 pm</code></td>
+</tr>
+<tr>
+<td><code>%R</code></td>
+<td>24 小时 <code>HH:MM</code> 时间格式,相等于 <code>%H:%M</code></td>
+<td><code>14:55</code></td>
+</tr>
+<tr>
+<td><code>%S</code></td>
+<td>秒数 (<code>00-61</code>)</td>
+<td><code>02</code></td>
+</tr>
+<tr>
+<td><code>%t</code></td>
+<td>水平制表符 (<code>'\t'</code>)</td>
+<td><code> </code></td>
+</tr>
+<tr>
+<td><code>%T</code></td>
+<td>时间（24小时制）（hh:mm:ss），相等于<code>%H:%M:%S</code></td>
+<td><code>14:55</code></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>ISO 8601 的星期几格式，星期一为<code>1</code> (<code>1-7</code>)</td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>%U</code></td>
+<td>一年中的第几周，星期天为第一天(<code>00-53</code>)</td>
+<td><code>33</code></td>
+</tr>
+<tr>
+<td><code>%V</code></td>
+<td>ISO 8601 第几周 (<code>00-53</code>)</td>
+<td><code>34</code></td>
+</tr>
+<tr>
+<td><code>%w</code></td>
+<td>一个星期的第几天（0代表星期天） (<code>0-6</code>)</td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>%W</code></td>
+<td>一年的第几个星期，星期一为第一天 (<code>00-53</code>)</td>
+<td><code>34</code></td>
+</tr>
+<tr>
+<td><code>%x</code></td>
+<td>显示日期的格式（mm/dd/yy） *</td>
+<td><code>08/23/01</code></td>
+</tr>
+<tr>
+<td><code>%X</code></td>
+<td>显示时间格式 *</td>
+<td><code>14:55:02</code></td>
+</tr>
+<tr>
+<td><code>%y</code></td>
+<td>年，两位数 (<code>00-99</code>)</td>
+<td><code>01</code></td></tr>
+<tr>
+<td><code>%Y</code></td>
+<td>年</td>
+<td><code>2001</code></td>
+</tr>
+<tr>
+<td><code>%z</code></td>
+<td>ISO 8601与UTC的时区偏移(1 minute=1, 1 hour=100)<p>
+</p></td>
+<td><code>+100</code></td>
+</tr>
+<tr>
+<td><code>%Z</code></td>
+<td> 当前时区的名称,如"中国标准时间" *<p>
+</p></td>
+<td><code>CDT</code></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td> <code>%</code> 符号</td>
+<td><code>%</code></td>
+</tr>
+</tbody></table>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use POSIX</span><span class="hl-code"> </span><span class="hl-quotes">qw(</span><span class="hl-string">strftime</span><span class="hl-quotes">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$datestring</span><span class="hl-code"> = </span><span class="hl-identifier">strftime</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">%Y-%m-%d %H:%M:%S</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">localtime</span><span class="hl-code">;
+</span><span class="hl-reserved">printf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">时间日期 - </span><span class="hl-var">$datestring</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">#  GMT 格式化时间日期</span><span class="hl-code">
+</span><span class="hl-var">$datestring</span><span class="hl-code"> = </span><span class="hl-identifier">strftime</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">%Y-%m-%d %H:%M:%S</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">gmtime</span><span class="hl-code">;
+</span><span class="hl-reserved">printf</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">时间日期 - </span><span class="hl-var">$datestring</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div><p>以上实例执行输出结果为：</p>
+<pre>
+时间日期 - 2016-06-12 12:15:13
+时间日期 - 2016-06-12 04:15:13
+</pre>
+</div>

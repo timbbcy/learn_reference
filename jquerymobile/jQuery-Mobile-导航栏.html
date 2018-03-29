@@ -1,0 +1,131 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">导航栏</span>
+</h1>
+<p>导航栏是由一组水平排列的链接组成，通常包含在头部或尾部内。</p>
+<iframe frameborder="0" height="120px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_navbars_app.htm" width="100%"></iframe>
+<p>默认情况下，导航栏中的链接将自动变成按钮（不需要 data-role="button"）。</p>
+<p>使用 data-role="navbar" 属性来定义导航栏：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;div data-role="header"&gt;<br/> 
+		&lt;div <span class="marked">data-role="navbar"</span>&gt;<br/>    &lt;ul&gt;<br/>      &lt;li&gt;&lt;a href="#anylink"&gt;首页&lt;/a&gt;&lt;/li&gt;<br/>      &lt;li&gt;&lt;a href="#anylink"&gt;页面二&lt;/a&gt;&lt;/li&gt;<br/>      
+		&lt;li&gt;&lt;a href="#anylink"&gt;搜索&lt;/a&gt;&lt;/li&gt;<br/>    &lt;/ul&gt;<br/>
+		 
+		&lt;/div&gt;<br/>&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_navbars" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>默认情况下，按钮的宽度与它的内容一样。使用一个无序列表来平均地划分按钮的宽度：1 个按钮占 100% 宽度，2 个按钮则各占 50% 的宽度，3 个按钮则每个占 33.3% 的宽度，依此类推。然而，如果您在导航栏中指定了超过 5 个按钮，将会拆成多行（查看"更多实例"）。<br/>
+</td>
+</tr></table>
+<hr/>
+<h2>导航按钮图标</h2>
+<p>我们可以使用 data-icon 属性为导航按钮添加图标:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;a href="#anylink" <span class="marked">data-icon="search"</span>&gt;搜索&lt;/a&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_navbars2" target="_blank">尝试一下 »</a>
+</div>
+<p>data-icon 属性与在图标章节中的 CSS 类使用相同的值。CSS 类使用方法 class="ui-icon-<em>value</em>", 
+data-icon 属性使用方法 data-icon="<em>value</em>"。</p>
+<table class="reference">
+<tbody><tr></tr>
+<tr>
+<th style="width:35%">属性值</th>
+<th style="width:50%">描述</th>
+<th style="width:15%">图标</th>
+</tr>
+<tr>
+<td>data-icon="home"</td>
+<td>首页</td>
+<td style="background-image:url('/wp-content/uploads/2013/10/home.jpg');background-repeat:no-repeat;"></td>
+</tr>
+<tr>
+<td>data-icon="arrow-r"</td>
+<td>右边箭头</td>
+<td style="background-image:url('/wp-content/uploads/2013/10/arrow-r.jpg');background-repeat:no-repeat;"></td>
+</tr>
+<tr>
+<td>data-icon="search"</td>
+<td>搜索</td>
+<td style="background-image:url('/wp-content/uploads/2013/10/search.jpg');background-repeat:no-repeat;"></td>
+</tr>
+</tbody></table>
+<p>如需查看所有 jQuery Mobile 按钮图标的完整参考手册，请访问我们的 <a href="jquerymobile-ref-icons.html">jQuery Mobile 图标参考手册</a>。</p>
+<hr/>
+<h2>定位图标</h2>
+<p>就像 "ui-btn-icon-<em>position</em>" 类一样 (图标章节有详细说明), 你可以设置图标显示的位置：  top（头部）, right（右侧）, bottom（底部） 或 left（左侧）。</p>
+<p>图标位置在导航栏容器上设置，使用 <strong>data-iconpos</strong> 属性来指定位置：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:30%">属性值</th>
+<th style="width:55%">描述</th>
+<th style="width:15%">实例</th>
+</tr>
+<tr>
+<td>data-iconpos="top"</td>
+<td>图标顶部对齐</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_navbars_pos_top" style="width:75px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>data-iconpos="right"</td>
+<td>图标右侧对齐</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_navbars_pos_right" style="width:75px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>data-iconpos="bottom"</td>
+<td>图标底部对齐</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_navbars_pos_bottom" style="width:75px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>data-iconpos="left"</td>
+<td>图标左侧对齐</td>
+<td><a class="tryitbtn" href="/try/tryit.php?filename=tryjqmob_navbars_pos_left" style="width:75px;padding-top:0px;padding-bottom:1px" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<table class="lamp" id="table2"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td> 默认情况， 导航按钮的图标位于文本之上 (data-iconpos="top")。</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>激活按钮</h2>
+<p>当导航栏中的某个链接被点击，它将获得被选中（按下）的外观。</p>
+<p>如果想在不点击链接时获得这种外观，请使用 class="ui-btn-active"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;li&gt;&lt;a href="#anylink" <span class="marked">class="ui-btn-active"</span>&gt;首页&lt;/a&gt;&lt;/li&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_navbars_class_active" target="_blank">尝试一下 »</a>
+</div>
+<p>对于多个页面，您可能想要每个按钮的选中外观代表当前用户所在的页面。要做到这一点，请添加 "ui-state-persist" 和 "ui-btn-active" 到链接的 class：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;li&gt;&lt;a href="#anylink" 
+		<span class="marked">class="ui-btn-active ui-state-persist"</span>&gt;首页&lt;/a&gt;&lt;/li&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_navbars_class_persist" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/try.php?filename=tryjqmob_navbars_content" target="_blank">内容中的导航栏</a><br/>
+如何在 data-role="content" 内添加导航栏。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_navbars_footer" target="_blank">尾部中的导航栏</a><br/>
+如何在尾部内添加导航栏。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_navbars_footer_icons" target="_blank">导航栏中的定位图标</a><br/>
+如何在尾部内的导航栏中定位图标。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_navbars_wrap" target="_blank">超过 5 个按钮</a><br/>
+导航栏中 10 个按钮的演示。</p>
+</div>

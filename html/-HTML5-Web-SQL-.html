@@ -1,0 +1,197 @@
+<div class="article-intro" id="content">
+<h1>HTML5 Web SQL 数据库
+</h1>
+<p>Web SQL 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。</p>
+<p>如果你是一个 Web 后端程序员，应该很容易理解 SQL 的操作。</p>
+<p>你也可以参考我们的 <a href="/sql/sql-tutorial.html">SQL 教程</a>，了解更多数据库操作知识。</p>
+<p>Web SQL 数据库可以在最新版的  Safari, Chrome 和 Opera 浏览器中工作。</p>
+<hr/>
+<h2>核心方法</h2>
+<p>以下是规范中定义的三个核心方法：</p>
+<ol>
+<li><strong>openDatabase</strong>：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。</li>
+<li><strong>transaction</strong>：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。</li>
+<li><strong>executeSql</strong>：这个方法用于执行实际的 SQL 查询。</li>
+</ol>
+<hr/>
+<h2>打开数据库</h2>
+<p>我们可以使用 openDatabase() 方法来打开已存在的数据库，如果数据库不存在，则会创建一个新的数据库，使用代码如下：</p>
+<pre>
+var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+</pre>
+<p>openDatabase() 方法对应的五个参数说明：</p>
+<ol>
+<li>数据库名称</li>
+<li>版本号</li>
+<li>描述文本</li>
+<li>数据库大小</li>
+<li>创建回调</li>
+</ol>
+<p>第五个参数，创建回调会在创建数据库后被调用。</p>
+<hr/>
+<h2>执行查询操作</h2>
+<p>执行操作使用 database.transaction() 函数：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">db</span><span class="hl-code"> = </span><span class="hl-identifier">openDatabase</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mydb</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">1.0</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Test DB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CREATE TABLE IF NOT EXISTS LOGS (id unique, log)</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div></div>
+<p>上面的语句执行后会在 'mydb' 数据库中创建一个名为 LOGS 的表。</p>
+<hr/>
+<h2>插入数据</h2>
+<p>在执行上面的创建表语句后，我们可以插入一些数据：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">db</span><span class="hl-code"> = </span><span class="hl-identifier">openDatabase</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mydb</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">1.0</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Test DB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CREATE TABLE IF NOT EXISTS LOGS (id unique, log)</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div></div>
+<p>我们也可以使用动态值来插入数据：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">db</span><span class="hl-code"> = </span><span class="hl-identifier">openDatabase</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mydb</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">1.0</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Test DB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CREATE TABLE IF NOT EXISTS LOGS (id unique, log)</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id,log) VALUES (?, ?)</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-identifier">e_id</span><span class="hl-code">, </span><span class="hl-identifier">e_log</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div></div>
+<p>
+实例中的 e_id 和 e_log 是外部变量，executeSql 会映射数组参数中的每个条目给 "?"。
+</p>
+<hr/>
+<h2>读取数据</h2>
+<p>以下实例演示了如何读取数据库中已经存在的数据：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">db</span><span class="hl-code"> = </span><span class="hl-identifier">openDatabase</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mydb</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">1.0</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Test DB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CREATE TABLE IF NOT EXISTS LOGS (id unique, log)</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">SELECT * FROM LOGS</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-code">, </span><span class="hl-identifier">results</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">len</span><span class="hl-code"> = </span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">rows</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">, </span><span class="hl-identifier">i</span><span class="hl-code">;
+      </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;查询记录条数: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">len</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+      </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> +=  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+    
+      </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">len</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">rows</span><span class="hl-code">.</span><span class="hl-identifier">item</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+      </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">, </span><span class="hl-reserved">null</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div></div>
+<hr/>
+<h2>完整实例</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">db</span><span class="hl-code"> = </span><span class="hl-identifier">openDatabase</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mydb</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">1.0</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Test DB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">msg</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CREATE TABLE IF NOT EXISTS LOGS (id unique, log)</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">&lt;p&gt;数据表已创建，且插入了两条数据。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> =  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">SELECT * FROM LOGS</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-code">, </span><span class="hl-identifier">results</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">len</span><span class="hl-code"> = </span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">rows</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">, </span><span class="hl-identifier">i</span><span class="hl-code">;
+    </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;查询记录条数: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">len</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> +=  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+ 
+    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">len</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;&lt;b&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">rows</span><span class="hl-code">.</span><span class="hl-identifier">item</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/b&gt;&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> +=  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">, </span><span class="hl-reserved">null</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryhtml5_websql" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行结果如下图所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2015/12/websql.jpg"/></p>
+<hr/>
+<h2>删除记录</h2>
+<p>删除记录使用的格式如下：</p>
+<pre>
+db.transaction(function (tx) {
+    tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+});
+</pre>
+<p>删除指定的数据id也可以是动态的：</p>
+<pre>
+db.transaction(function(tx) {
+    tx.executeSql('DELETE FROM LOGS WHERE id=?', [id]);
+});
+</pre>
+<hr/>
+<h2>更新记录</h2>
+<p>更新记录使用的格式如下：</p>
+<pre>
+db.transaction(function (tx) {
+    tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=2');
+});
+</pre>
+<p>更新指定的数据id也可以是动态的：</p>
+<pre>
+db.transaction(function(tx) {
+    tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=?', [id]);
+});
+</pre>
+<hr/>
+<h2>完整实例</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">db</span><span class="hl-code"> = </span><span class="hl-identifier">openDatabase</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mydb</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">1.0</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">Test DB</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-code"> * </span><span class="hl-number">1024</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">msg</span><span class="hl-code">;
+ 
+ </span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">CREATE TABLE IF NOT EXISTS LOGS (id unique, log)</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">&lt;p&gt;数据表已创建，且插入了两条数据。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> =  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+ </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+ </span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">DELETE FROM LOGS  WHERE id=1</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+      </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">&lt;p&gt;删除 id 为 1 的记录。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+      </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> =  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+ </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+ </span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">UPDATE LOGS SET log=</span><span class="hl-special">\'</span><span class="hl-string">www.w3cschool.cc</span><span class="hl-special">\'</span><span class="hl-string"> WHERE id=2</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+      </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">&lt;p&gt;更新 id 为 2 的记录。&lt;/p&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+      </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> =  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+ </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+ </span><span class="hl-identifier">db</span><span class="hl-code">.</span><span class="hl-identifier">transaction</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">tx</span><span class="hl-code">.</span><span class="hl-identifier">executeSql</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">SELECT * FROM LOGS</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">tx</span><span class="hl-code">, </span><span class="hl-identifier">results</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">len</span><span class="hl-code"> = </span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">rows</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">, </span><span class="hl-identifier">i</span><span class="hl-code">;
+       </span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;查询记录条数: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">len</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+       </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> +=  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+       
+       </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">len</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">msg</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">&lt;p&gt;&lt;b&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">results</span><span class="hl-code">.</span><span class="hl-identifier">rows</span><span class="hl-code">.</span><span class="hl-identifier">item</span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/b&gt;&lt;/p&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+          </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">querySelector</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#status</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> +=  </span><span class="hl-identifier">msg</span><span class="hl-code">;
+       </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">, </span><span class="hl-reserved">null</span><span class="hl-brackets">)</span><span class="hl-code">;
+ </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryhtml5_websql2" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例运行结果如下图所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2015/12/8E8CF48D-A590-4577-B338-715C0034D029.png" width="40%"/></p>
+</div>

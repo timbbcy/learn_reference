@@ -1,0 +1,100 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">替换节点</span>
+</h1>
+<hr/>
+<p class="intro">replaceChild() 方法替换指定节点。</p>
+<p class="intro">nodeValue 属性替换文本节点中的文本。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_replacechild" target="_blank">替换元素节点</a><br/>
+本例使用 replaceChild() 来替换第一个 &lt;book&gt; 节点。</p>
+<p><a href="/try/try.php?filename=try_dom_replacedata2" target="_blank">替换文本节点中的数据</a><br/>
+本例使用 nodeValue 属性来替换文本节点中的数据。</p>
+<hr/>
+<h2>替换元素节点</h2>
+<p>replaceChild() 方法用于替换节点。</p>
+<p>下面的代码片段替换第一个 &lt;book&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">documentElement</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建新的 book 元素, title 元素及 node 节点</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">newNode</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">book</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">newTitle</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">newText</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">createTextNode</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">A Notebook</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 将 text 节点添加到 title 节点中</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">newTitle</span><span class="hl-code">.</span><span class="hl-identifier">appendChild</span><span class="hl-brackets">(</span><span class="hl-identifier">newText</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> 将 title 节点添加到  book 节点中</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">newNode</span><span class="hl-code">.</span><span class="hl-identifier">appendChild</span><span class="hl-brackets">(</span><span class="hl-identifier">newTitle</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">y</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">book</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 使用新节点替换第一个 book 节点</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">replaceChild</span><span class="hl-brackets">(</span><span class="hl-identifier">newNode</span><span class="hl-code">,</span><span class="hl-identifier">y</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_replacechild" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>创建一个新的元素节点 &lt;book&gt;</li>
+<li>创建一个新的元素节点 &lt;title&gt;</li>
+<li>创建一个新的文本节点，带有文本 "A Notebook"</li>
+<li>向新元素节点 &lt;title&gt; 追加这个新文本节点</li>
+<li>向新元素节点 &lt;book&gt; 追加这个新元素节点 &lt;title&gt;</li>
+<li>把第一个 &lt;book&gt; 元素节点替换为新的 &lt;book&gt; 元素节点</li>
+</ol>
+<hr/>
+<h2>替换文本节点中的数据</h2>
+<p>replaceData() 方法用于替换文本节点中的数据。</p>
+<p>replaceData() 方法有三个参数：</p>
+<ul>
+<li>offset - 在何处开始替换字符。offset 值以 0 开始。</li>
+<li>length - 要替换多少字符</li>
+<li>string - 要插入的字符串</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0].childNodes[0];<br/><br/>
+x.replaceData(0,8,"Easy");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_replacedata" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;title&gt; 元素节点的文本节点</li>
+<li>使用 replaceData 方法把文本节点的前 8 个字符替换为 "Easy"</li>
+</ol>
+<hr/>
+<h2>使用 nodeValue 属性代替</h2>
+<p>用 nodeValue 属性来替换文本节点中数据会更加容易。</p>
+<p>下面的代码片段将用 "Easy Italian" 替换第一个 &lt;title&gt; 元素中的文本节点值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0].childNodes[0];<br/><br/>
+x.nodeValue="Easy Italian";
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_replacedata2" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中
+</li>
+<li>获取第一个 &lt;title&gt; 元素节点的文本节点</li>
+<li>使用 nodeValue 属性来更改这个文本节点的文本</li>
+</ol>
+<p>您可以在<a href="dom-nodes-set.html">改变节点</a>这一章中阅读更多有关更改节点值的内容。</p>
+<br/>
+</div>

@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<h1>MongoDB 正则表达式</h1>
+<p>正则表达式是使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。</p>
+<p>许多程序设计语言都支持利用正则表达式进行字符串操作。</p>
+<p>MongoDB 使用 <strong>$regex</strong> 操作符来设置匹配字符串的正则表达式。</p>
+<p>
+ MongoDB使用PCRE (Perl Compatible Regular Expression) 作为正则表达式语言。</p>
+<p>不同于全文检索，我们使用正则表达式不需要做任何配置。</p>
+<p>考虑以下 <strong>posts</strong> 集合的文档结构，该文档包含了文章内容和标签：</p>
+<pre>
+{
+   "post_text": "enjoy the mongodb articles on runoob",
+   "tags": [
+      "mongodb",
+      "runoob"
+   ]
+}
+</pre>
+<hr/>
+<h2>使用正则表达式</h2>
+<p>以下命令使用正则表达式查找包含 runoob 字符串的文章：</p>
+<pre>
+&gt;db.posts.find({post_text:{$regex:"runoob"}})
+</pre>
+<p>以上查询也可以写为：</p>
+<pre>
+&gt;db.posts.find({post_text:/runoob/})
+</pre>
+<hr/>
+<h2>不区分大小写的正则表达式</h2>
+<p>如果检索需要不区分大小写，我们可以设置 $options 为 $i。</p>
+<p>以下命令将查找不区分大小写的字符串 runoob：</p>
+<pre>
+&gt;db.posts.find({post_text:{$regex:"runoob",$options:"$i"}})
+</pre>
+<p>集合中会返回所有包含字符串 runoob 的数据，且不区分大小写：</p>
+<pre>
+{
+   "_id" : ObjectId("53493d37d852429c10000004"),
+   "post_text" : "hey! this is my post on  runoob", 
+   "tags" : [ "runoob" ]
+} 
+</pre>
+<hr/>
+<h2>数组元素使用正则表达式</h2>
+<p>我们还可以在数组字段中使用正则表达式来查找内容。
+这在标签的实现上非常有用，如果你需要查找包含以 run 开头的标签数据(ru 或 run 或 runoob)，
+你可以使用以下代码：</p>
+<pre>
+&gt;db.posts.find({tags:{$regex:"run"}})
+</pre>
+<hr/>
+<h2>优化正则表达式查询</h2>
+<ul>
+<li>如果你的文档中字段设置了索引，那么使用索引相比于正则表达式匹配查找所有的数据查询速度更快。</li></ul></div>

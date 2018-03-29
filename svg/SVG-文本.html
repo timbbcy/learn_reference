@@ -1,0 +1,101 @@
+<div class="article-intro" id="content">
+<h1>SVG <span class="color_h1">&lt;text&gt;</span>
+</h1>
+<hr/>
+<h2>SVG 文本 - &lt;text&gt;</h2>
+<p> &lt;text&gt; 元素用于定义文本。</p>
+<hr/>
+<h2>实例 1</h2>
+<p>写一个文本：</p>
+<object data="/try/demo_source/text1.svg" height="60" type="image/svg+xml" width="500">
+<embed src="/try/demo_source/text1.svg" type="image/svg+xml"/>
+</object><p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+ 
+&lt;text x="0" y="15" fill="red"&gt;I 
+love SVG&lt;/text&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_text" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/text1.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。</p><hr/>
+<h2>实例 2</h2>
+<p>旋转的文字：</p>
+<object data="/try/demo_source/text2.svg" height="60" type="image/svg+xml" width="500">
+<embed src="/try/demo_source/text2.svg" type="image/svg+xml"/>
+</object><p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+ 
+&lt;text x="0" y="15" fill="red" 
+transform="rotate(30 20,40)"&gt;I 
+love SVG&lt;/text&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_text2" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/text2.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。</p><hr/>
+<h2>实例 3</h2>
+<p>路径上的文字：</p>
+<object data="/try/demo_source/text3.svg" height="100" type="image/svg+xml" width="500">
+<embed src="/try/demo_source/text3.svg" type="image/svg+xml"/>
+</object><p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"<br/>
+xmlns:xlink="http://www.w3.org/1999/xlink"&gt;<br/>
+   &lt;defs&gt;<br/>
+    &lt;path id="path1" d="M75,20 a1,1 0 0,0 100,0" /&gt;<br/>
+  &lt;/defs&gt;<br/>
+  &lt;text x="10" y="100" style="fill:red;"&gt;<br/>
+    &lt;textPath xlink:href="#path1"&gt;I love SVG I love SVG&lt;/textPath&gt;<br/>
+  &lt;/text&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_text3" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/text3.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。</p><hr/>
+<h2>实例 4</h2>
+<p>元素可以安排任何分小组与&lt;tspan&gt; 元素的数量。每个&lt;tspan&gt; 元素可以包含不同的格式和位置。几行文本(与 &lt;tspan&gt; 元素):</p>
+<object data="/try/demo_source/text4.svg" height="100" type="image/svg+xml" width="500">
+<embed src="/try/demo_source/text4.svg" type="image/svg+xml"/>
+</object><p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+  &lt;text x="10" y="20" style="fill:red;"&gt;Several lines:<br/>
+    &lt;tspan x="10" y="45"&gt;First line&lt;/tspan&gt;<br/>
+    &lt;tspan x="10" y="70"&gt;Second line&lt;/tspan&gt;<br/>
+  &lt;/text&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_text4" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/text4.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。</p><hr/>
+<h2>实例 5</h2>
+<p>作为链接文本（ &lt;a&gt; 元素）：</p>
+<object data="/try/demo_source/text5.svg" height="60" type="image/svg+xml" width="500">
+<embed src="/try/demo_source/text5.svg" type="image/svg+xml"/>
+</object><p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"<br/>
+xmlns:xlink="http://www.w3.org/1999/xlink"&gt;<br/>
+  &lt;a xlink:href="http://www.w3schools.com/svg/" 
+target="_blank"&gt;<br/>
+    &lt;text x="0" y="15" fill="red"&gt;I love SVG&lt;/text&gt;<br/>
+  &lt;/a&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_text5" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/text5.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。</p>
+</div>

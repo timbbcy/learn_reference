@@ -1,0 +1,123 @@
+<div class="article-intro" id="content">
+<h1>Foundation 下拉菜单</h1>
+<p>Foundation 下拉菜单允许用户从预定义的下拉列表中选取一个值：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- Trigger the Dropdown --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">data-dropdown=</span><span class="highVAL">"id01"</span> <span class="highATT">class=</span><span class="highVAL">"button dropdown"</span><span class="highGT">&gt;</span>Dropdown Button<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Dropdown content --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id01"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_dropdown" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析</h3>
+<p><code>.dropdown</code> 类为按钮添加一个向下的箭头符号"图标。</p>
+<p>使用按钮或链接的 <code>data-dropdown="<em>id</em>"</code> 属性来打开下拉菜单。</p>
+<p><em>id</em> 值需要与下拉菜单的内容 (id01) 匹配。</p>
+<p>在 &lt;div&gt;, &lt;nav&gt;, <code>&lt;ul&gt;</code> 中添加 <code>.f-dropdown</code> 类和 <code>data-dropdown-content</code> 属性来创建下拉菜单的内容。</p>
+<p>最后初始化 Foundation JS。</p>
+<p><strong>注意:</strong> 在小屏幕上，所有的下拉菜单的宽度是100%。</p>
+<hr/>
+<h2>下拉菜单尺寸</h2>
+<p>使用 <code>.tiny</code>, <code>.small</code>, <code>.medium</code>, <code>.large</code> 或 <code>.mega</code> 
+来修改下拉菜单的宽度。</p>
+<p><strong>注意:</strong> 在小屏幕上，所有的下拉菜单的宽度是100%。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- Tiny Dropdown: 
+	max-width is 200px --&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id01"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown 
+	tiny"</span><span class="highGT">&gt;</span>..<br/><br/><span class="highCOM">&lt;!-- Small Dropdown: max-width is 300px --&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id02"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown 
+	small"</span><span class="highGT">&gt;</span>..<br/><br/><span class="highCOM">&lt;!-- Medium Dropdown: max-width is 500px --&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id03"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown 
+	medium"</span><span class="highGT">&gt;</span><br/><br/><span class="highCOM">&lt;!-- Large Dropdown: max-width is 800px --&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id04"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown 
+	large"</span><span class="highGT">&gt;</span>..<br/><br/><span class="highCOM">&lt;!-- 
+	Mega Dropdown: 100% width --&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id04"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown 
+	mega"</span><span class="highGT">&gt;</span>..<br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_dropdown_size" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>下拉菜单边距</h2>
+<p>可以使用 <code>.content</code> 类为下拉菜单添加内边距：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- Default Dropdown --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id01"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown"</span><span class="highGT">&gt;</span>..<br/>
+<br/><span class="highCOM">&lt;!-- Dropdown with padding --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id02"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown 
+	content"</span><span class="highGT">&gt;</span>..</div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_dropdown_content" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>其他实例</h2>
+<p> &lt;div&gt; 下拉菜单中添加多媒体元素：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">data-dropdown=</span><span class="highVAL">"id01"</span> <span class="highATT">class=</span><span class="highVAL">"button dropdown"</span><span class="highGT">&gt;</span>Dropdown Button<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">id=</span><span class="highVAL">"id01"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown medium content"</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">h4</span><span class="highGT">&gt;</span>Paris Title<span class="highLT">&lt;</span><span class="highELE">/h4</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Some text.. some text..<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">img</span>
+<span class="highATT">src=</span><span class="highVAL">"paris.jpg"</span> <span class="highATT">alt=</span><span class="highVAL">"Paris"</span> <span class="highATT">width=</span><span class="highVAL">"400"</span> <span class="highATT">height=</span><span class="highVAL">"300"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Paris, je 
+	t'aime.<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_dropdown_content2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>下拉菜单方向</h2>
+<p>默认情况下下拉菜单在底部，可以通过添加 <code>data-options="align:left|right|top"</code> 来修改其方向：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">data-dropdown=</span><span class="highVAL">"id01"</span> <span class="highATT">data-options=</span><span class="highVAL">"align:right"</span> <span class="highATT">class=</span><span class="highVAL">"button 
+	dropdown"</span><span class="highGT">&gt;</span>Right<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">data-dropdown=</span><span class="highVAL">"id02"</span> <span class="highATT">data-options=</span><span class="highVAL">"align:top"</span>
+<span class="highATT">class=</span><span class="highVAL">"button dropdown"</span><span class="highGT">&gt;</span>Top<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">data-dropdown=</span><span class="highVAL">"id03"</span>
+<span class="highATT">data-options=</span><span class="highVAL">"align:bottom"</span> <span class="highATT">class=</span><span class="highVAL">"button dropdown"</span><span class="highGT">&gt;</span>Bottom<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span>
+<span class="highATT">data-dropdown=</span><span class="highVAL">"id04"</span> <span class="highATT">data-options=</span><span class="highVAL">"align:left"</span> <span class="highATT">class=</span><span class="highVAL">"button 
+	dropdown"</span><span class="highGT">&gt;</span>Left<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_dropdown_directions" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>下拉菜单触发条件</h2>
+<p>默认情况下，下拉菜单在点击按钮后显示。如果你需要在鼠标移动上去后显示，可以在按钮上使用 <code>data-options="is_hover:true"</code> 属性:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">data-dropdown=</span><span class="highVAL">"id01"</span> <span class="highATT">data-options=</span><span class="highVAL">"is_hover:true"</span> <span class="highATT">class=</span><span class="highVAL">"button dropdown"</span><span class="highGT">&gt;</span>Hover 
+	over me<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id01"</span> <span class="highATT">data-dropdown-content class=</span><span class="highVAL">"f-dropdown"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_dropdown_hover" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>分割按钮</h2>
+<p>我们可以在按钮上添加 <code>.split</code> 类来设置一个分割效果的按钮，分割后会在
+&lt;span&gt; 元素上生成一个方向向下的图标按钮:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">class=</span><span class="highVAL">"button split"</span><span class="highGT">&gt;</span>Split Button <br/>  <span class="highLT">&lt;</span><span class="highELE">span</span>
+<span class="highATT">data-dropdown=</span><span class="highVAL">"id01"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">id=</span><span class="highVAL">"id01"</span> <span class="highATT">data-dropdown-content 
+	class=</span><span class="highVAL">"f-dropdown"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">li</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span>Link 3<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_split" target="_blank">尝试一下 »</a>
+</div>
+</div>

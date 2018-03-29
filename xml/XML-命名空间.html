@@ -1,0 +1,183 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">命名空间</span>
+</h1>
+<hr/>
+<p class="intro">XML 命名空间提供避免元素命名冲突的方法。</p>
+<hr/>
+<h2>命名冲突</h2>
+<p>在 XML 中，元素名称是由开发者定义的，当两个不同的文档使用相同的元素名时，就会发生命名冲突。</p>
+<p>这个 XML 携带 HTML 表格的信息：</p>
+<div class="code notranslate"><div>
+&lt;table&gt;<br/>
+    
+   &lt;tr&gt;<br/>
+      
+   &lt;td&gt;Apples&lt;/td&gt;<br/>
+      
+   &lt;td&gt;Bananas&lt;/td&gt;<br/>
+    
+   &lt;/tr&gt;<br/>
+&lt;/table&gt;</div></div>
+<p>这个 XML 文档携带有关桌子的信息（一件家具）：</p>
+<div class="code notranslate"><div>
+&lt;table&gt;<br/>
+    
+   &lt;name&gt;African Coffee Table&lt;/name&gt;<br/>
+    
+   &lt;width&gt;80&lt;/width&gt;<br/>
+    
+   &lt;length&gt;120&lt;/length&gt;<br/>
+&lt;/table&gt;</div></div>
+<p>假如这两个 XML 文档被一起使用，由于两个文档都包含带有不同内容和定义的 &lt;table&gt; 元素，就会发生命名冲突。</p>
+<p>XML 解析器无法确定如何处理这类冲突。</p>
+<hr/>
+<h2>使用前缀来避免命名冲突</h2>
+<p>在 XML 中的命名冲突可以通过使用名称前缀从而容易地避免。</p>
+<p>该 XML 携带某个 HTML 表格和某件家具的信息：</p>
+<div class="code notranslate"><div>
+&lt;h:table&gt;<br/>
+    
+   &lt;h:tr&gt;<br/>
+      
+   &lt;h:td&gt;Apples&lt;/h:td&gt;<br/>
+      
+   &lt;h:td&gt;Bananas&lt;/h:td&gt;<br/>
+    
+   &lt;/h:tr&gt;<br/>
+&lt;/h:table&gt;<br/><br/>
+&lt;f:table&gt;<br/>
+  &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;<br/>
+  &lt;f:width&gt;80&lt;/f:width&gt;<br/>
+  &lt;f:length&gt;120&lt;/f:length&gt;<br/>
+&lt;/f:table&gt;
+
+
+</div></div>
+<p>在上面的实例中，不会有冲突，因为两个 &lt;table&gt; 元素有不同的名称。</p>
+<hr/>
+<h2>XML 命名空间 - xmlns 属性</h2>
+<p>当在 XML 中使用前缀时，一个所谓的用于前缀的<b>命名空间</b>必须被定义。</p>
+<p>命名空间是在元素的开始标签的 <b>xmlns 属性</b>中定义的。</p>
+<p>命名空间声明的语法如下。xmlns:<i>前缀</i>="<i>URI</i>"。</p>
+<div class="code notranslate"><div>
+ 
+  
+  &lt;root&gt;<br/><br/>
+  &lt;h:table <span class="marked">xmlns:h="http://www.w3.org/TR/html4/"</span>&gt;<br/>
+    &lt;h:tr&gt;<br/>
+      &lt;h:td&gt;Apples&lt;/h:td&gt;<br/>
+      &lt;h:td&gt;Bananas&lt;/h:td&gt;<br/>
+    &lt;/h:tr&gt;<br/>
+  &lt;/h:table&gt;<br/><br/>
+  &lt;f:table <span class="marked">xmlns:f="http://www.w3cschool.cc/furniture"</span>&gt;<br/>
+    &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;<br/>
+    &lt;f:width&gt;80&lt;/f:width&gt;<br/>
+    &lt;f:length&gt;120&lt;/f:length&gt;<br/>
+  &lt;/f:table&gt;<br/><br/>
+  &lt;/root&gt;
+  
+ 
+</div></div>
+<p>在上面的实例中，&lt;table&gt; 标签的 xmlns 属性定义了 h: 和 f: 前缀的合格命名空间。</p>
+<p>当命名空间被定义在元素的开始标签中时，所有带有相同前缀的子元素都会与同一个命名空间相关联。</p>
+<p>命名空间，可以在他们被使用的元素中或者在 XML 根元素中声明：</p>
+<div class="code notranslate"><div>
+ 
+ &lt;root <span class="marked">xmlns:h="http://www.w3.org/TR/html4/"<br/>
+  xmlns:f="http://www.w3cschool.cc/furniture"</span>&gt;<br/><br/>
+  &lt;h:table&gt;<br/>
+    &lt;h:tr&gt;<br/>
+      &lt;h:td&gt;Apples&lt;/h:td&gt;<br/>
+      &lt;h:td&gt;Bananas&lt;/h:td&gt;<br/>
+    &lt;/h:tr&gt;<br/>
+  &lt;/h:table&gt;<br/><br/>
+  &lt;f:table&gt;<br/>
+    &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;<br/>
+    &lt;f:width&gt;80&lt;/f:width&gt;<br/>
+    &lt;f:length&gt;120&lt;/f:length&gt;<br/>
+  &lt;/f:table&gt;<br/><br/>
+  &lt;/root&gt;
+  
+ 
+</div></div>
+<p><b>注释：</b>命名空间 URI 不会被解析器用于查找信息。</p>
+<p>其目的是赋予命名空间一个惟一的名称。不过，很多公司常常会作为指针来使用命名空间指向实际存在的网页，这个网页包含关于命名空间的信息。</p>
+<p>请访问 <a href="http://www.w3.org/TR/html4/" target="_blank">http://www.w3.org/TR/html4/</a>。</p>
+<hr/>
+<h2>统一资源标识符（URI，全称 Uniform Resource Identifier）</h2>
+<p><b>统一资源标识符</b>（URI）是一串可以标识因特网资源的字符。</p>
+<p>最常用的 URI 是用来标识因特网域名地址的<b>统一资源定位器</b>（URL）。另一个不那么常用的 URI 是<b>统一资源命名</b>（URN）。</p>
+<p>在我们的实例中，我们仅使用 URL。</p>
+<hr/>
+<h2>默认的命名空间</h2>
+<p>为元素定义默认的命名空间可以让我们省去在所有的子元素中使用前缀的工作。它的语法如下：</p>
+<div class="code notranslate"><div>
+  
+    xmlns="<i>namespaceURI</i>"
+  
+</div></div>
+<p>这个 XML 携带 HTML 表格的信息：</p>
+<div class="code notranslate"><div>
+
+&lt;table xmlns="http://www.w3.org/TR/html4/"&gt;<br/>
+    
+   &lt;tr&gt;<br/>
+      
+   &lt;td&gt;Apples&lt;/td&gt;<br/>
+      
+   &lt;td&gt;Bananas&lt;/td&gt;<br/>
+    
+   &lt;/tr&gt;<br/>
+  &lt;/table&gt;
+
+</div></div>
+<p>这个XML携带有关一件家具的信息：</p>
+<div class="code notranslate"><div>
+ 
+  &lt;table xmlns="http://www.w3schools.com/furniture"&gt;<br/>
+    
+   &lt;name&gt;African Coffee Table&lt;/name&gt;<br/>
+    
+   &lt;width&gt;80&lt;/width&gt;<br/>
+    
+   &lt;length&gt;120&lt;/length&gt;<br/>
+&lt;/table&gt;
+  
+ 
+</div></div>
+<br/><hr/>
+<h2>实际使用中的命名空间</h2>
+<p>XSLT 是一种用于把 XML 文档转换为其他格式的 XML 语言，比如 HTML。</p>
+<p>在下面的 XSLT 文档中，您可以看到，大多数的标签是 HTML 标签。</p>
+<p>非 HTML 的标签都有前缀 xsl，并由此命名空间标识：xmlns:xsl="http://www.w3.org/1999/XSL/Transform"：</p>
+<div class="code notranslate"><div>
+ 
+  &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/><br/>
+  &lt;xsl:stylesheet version="1.0"<br/>
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<br/><br/>
+  &lt;xsl:template match="/"&gt;<br/>
+  &lt;html&gt;<br/>
+  &lt;body&gt;<br/>
+    &lt;h2&gt;My CD Collection&lt;/h2&gt;<br/>
+    &lt;table border="1"&gt;<br/>
+      &lt;tr&gt;<br/>
+        &lt;th align="left"&gt;Title&lt;/th&gt;<br/>
+        &lt;th align="left"&gt;Artist&lt;/th&gt;<br/>
+      &lt;/tr&gt;<br/>
+      &lt;xsl:for-each select="catalog/cd"&gt;<br/>
+      &lt;tr&gt;<br/>
+        &lt;td&gt;&lt;xsl:value-of select="title"/&gt;&lt;/td&gt;<br/>
+        &lt;td&gt;&lt;xsl:value-of select="artist"/&gt;&lt;/td&gt;<br/>
+      &lt;/tr&gt;<br/>
+      &lt;/xsl:for-each&gt;<br/>
+    &lt;/table&gt;<br/>
+  &lt;/body&gt;<br/>
+  &lt;/html&gt;<br/>
+  &lt;/xsl:template&gt;<br/><br/>
+  &lt;/xsl:stylesheet&gt;
+ 
+
+</div></div>
+<p>如果您想要学习有关 XSLT 的知识，请在我们的<a href="/">首页</a>查找 XSLT 教程。</p>
+<br/>
+</div>

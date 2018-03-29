@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">方向改变事件</span>
+</h1>
+<hr/>
+<h2>jQuery Mobile 方向改变（orientationchange）事件</h2>
+<p>当用户垂直或水平旋转移动设备时，触发方向改变（orientationchange）事件。</p>
+<script>
+$(document).ready(function(){
+  $("#btn").click(function(){
+    $(".iphone").css({
+    '-webkit-transform':'rotate(90deg)',
+    '-moz-transform':'rotate(90deg)',
+    '-o-transform':'rotate(90deg)',
+    '-ms-transform':'rotate(90deg)'
+    });
+   });
+  $("#btn2").click(function(){
+    $(".iphone").css({
+    '-webkit-transform':'rotate(0deg)',
+    '-moz-transform':'rotate(0deg)',
+    '-o-transform':'rotate(0deg)',
+    '-ms-transform':'rotate(0deg)'
+    });
+  });
+});
+</script>
+<div class="desc" style="float:left;text-align:center;width:300px"><button id="btn">水平旋转</button></div>
+<div class="desc" style="float:right;text-align:center;width:350px"><button id="btn2">垂直旋转</button></div>
+<br/><br/><br/><br/><div style="text-align:center"><img alt="Mobile" class="iphone" src="/wp-content/uploads/2013/10/iphone5.png"/></div>
+<br/><br/><p>如需使用方向改变（orientationchange）事件，请附加它到 window 对象：</p>
+<pre>
+$(window).on("orientationchange",function(){
+    alert("方向有改变!");
+});
+</pre>
+<p>回调函数可有一个参数，event 对象，返回移动设备的方向："纵向"（设备保持在垂直位置）或"横向"（设备保持在水平位置）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	$(window).on("orientationchange",function(event){<br/>  
+	alert("方向是: " + event.orientation);<br/>});</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_events_orientationchange" target="_blank">尝试一下 »</a>
+</div>
+<p>由于方向改变（orientationchange）事件绑定到 window 对象，我们可以使用 window.orientation 属性来设置不同的样式，以便区分纵向和横向的视图：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	$(window).on("orientationchange",function(){<br/>  if(window.orientation 
+	== 0) // Portrait<br/>  {<br/>    $("p").css({"background-color":"yellow","font-size":"300%"});<br/>  
+	}<br/>  else // Landscape<br/>  {<br/>    $("p").css({"background-color":"pink","font-size":"200%"});<br/>  
+	}<br/>});</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_events_orientationchange2" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>window.orientation 属性针对纵向视图返回 0，针对横向视图返回 90 或 -90。</td>
+</tr></table>
+<br/><br/>
+</div>

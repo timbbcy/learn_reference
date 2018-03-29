@@ -1,0 +1,595 @@
+<div class="article-intro" id="content">
+<h1>Swift 运算符</h1>
+<p>运算符是一个符号，用于告诉编译器执行一个数学或逻辑运算。</p>
+<p>Swift 提供了以下几种运算符：</p>
+<ul class="list">
+<li>算术运算符</li>
+<li>比较运算符</li>
+<li>逻辑运算符</li>
+<li>位运算符</li>
+<li>赋值运算符</li>
+<li>区间运算符</li>
+<li>其他运算符</li>
+</ul>
+<p>本章节我们将为大家详细介绍算术运算符、关系运算符、逻辑运算符、位运算符、赋值运算符及其他运算符。</p>
+<hr/>
+<h2>算术运算符</h2>
+<p>以下表格列出了 Swift 语言支持的算术运算符，其中变量 A 为 10，变量 B 为 20：</p>
+<table class="reference">
+<tbody><tr>
+<th>运算符</th>
+<th>描述</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>+</td>
+<td>加号</td>
+<td>A + B 结果为 30</td>
+</tr>
+<tr>
+<td>−</td>
+<td>减号</td>
+<td>A − B 结果为 -10</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘号</td>
+<td>A * B 结果为 200</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除号</td>
+<td>B / A 结果为 2</td>
+</tr>
+<tr>
+<td>%</td>
+<td>求余</td>
+<td>B % A 结果为 0</td>
+</tr>
+</tbody></table>
+<blockquote><p><strong>注意：</strong>swift3 中已经取消了<span class="marked">++</span>、<span class="marked">--</span>。</p></blockquote>
+<h3>实例</h3>
+<p>以下为算术运算的简单实例：</p>
+<pre>
+import Cocoa
+
+var A = 10
+var B = 20
+
+print("A + B 结果为：\(A + B)")
+print("A - B 结果为：\(A - B)")
+print("A * B 结果为：\(A * B)")
+print("B / A 结果为：\(B / A)")
+A += 1   // 类似 A++
+print("A += 1 后 A 的值为 \(A)")
+B -= 1   // 类似 B--
+print("B -= 1 后 B 的值为 \(B)")
+</pre><p>以上程序执行结果为：</p>
+<pre>
+A + B 结果为：30
+A - B 结果为：-10
+A * B 结果为：200
+B / A 结果为：2
+A += 1 后 A 的值为 11
+B -= 1 后 B 的值为 19
+</pre><hr/>
+<h2>比较运算符</h2>
+<p>以下表格列出了 Swift 语言支持的比较运算符，其中变量 A 为 10，变量 B 为 20：</p>
+<table class="reference">
+<tbody><tr>
+<th>运算符</th>
+<th>描述</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>==</td>
+<td>等于</td>
+<td>(A == B) 为 false。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+<td>(A != B) 为 true。</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+<td>(A &gt; B) 为 false。</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+<td>(A &lt; B) 为 true。</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+<td>(A &gt;= B) 为 false。</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+<td>(A &lt;= B) 为 true。</td>
+</tr>
+</tbody></table>
+<h3>实例</h3>
+<p>以下为比较运算的简单实例：</p>
+<pre>
+import Cocoa
+
+var A = 10
+var B = 20
+
+print("A == B 结果为：\(A == B)")
+print("A != B 结果为：\(A != B)")
+print("A &gt; B 结果为：\(A &gt; B)")
+print("A &lt; B 结果为：\(A &lt; B)")
+print("A &gt;= B 结果为：\(A &gt;= B)")
+print("A &lt;= B 结果为：\(A &lt;= B)")
+</pre><p>以上程序执行结果为：</p>
+<pre>
+A == B 结果为：false
+A != B 结果为：true
+A &gt; B 结果为：false
+A &lt; B 结果为：true
+A &gt;= B 结果为：false
+A &lt;= B 结果为：true
+</pre>
+<hr/>
+<h2>逻辑运算符</h2>
+<p>以下表格列出了 Swift 语言支持的逻辑运算符，其中变量 A 为 true，变量 B 为 false：</p>
+<table class="reference">
+<tbody><tr>
+<th>运算符</th>
+<th>描述</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与。如果运算符两侧都为 TRUE 则为 TRUE。</td>
+<td>(A &amp;&amp; B) 为 false。</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或。 如果运算符两侧至少有一个为 TRUE 则为 TRUE。</td>
+<td>(A || B) 为 true。</td>
+</tr>
+<tr>
+<td>!</td>
+<td>逻辑非。布尔值取反，使得true变false，false变true。</td>
+<td>!(A &amp;&amp; B) 为 true。</td>
+</tr>
+</tbody></table>
+<p>以下为逻辑运算的简单实例：</p>
+<pre>
+import Cocoa
+
+var A = true
+var B = false
+
+print("A &amp;&amp; B 结果为：\(A &amp;&amp; B)")
+print("A || B 结果为：\(A || B)")
+print("!A 结果为：\(!A)")
+print("!B 结果为：\(!B)")
+</pre><p>以上程序执行结果为：</p>
+<pre>
+A &amp;&amp; B 结果为：false
+A || B 结果为：true
+!A 结果为：false
+!B 结果为：true
+</pre>
+<hr/>
+<h2>位运算符</h2>
+<p>位运算符用来对二进制位进行操作，~,&amp;,|,^分别为取反，按位与与，按位与或，按位与异或运算，如下表实例：</p>
+<table class="reference">
+<tbody><tr>
+<th>p</th>
+<th>q</th>
+<th>p &amp; q</th>
+<th>p | q</th>
+<th>p ^ q</th>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>如果指定 A = 60; 及 B = 13; 两个变量对应的二进制为：
+</p><pre>
+A = 0011 1100
+
+B = 0000 1101
+</pre><p>
+进行位运算：
+</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:5%;">运算符</th>
+<th style="width:30%;">描述</th>
+<th style="width:40%;">图解</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与。按位与运算符对两个数进行操作，然后返回一个新的数，这个数的每个位都需要两个输入数的同一位都为1时才为1。</td>
+<td><img src="http://www.runoob.com/wp-content/uploads/2015/10/8370_140612144422_1.png"/></td>
+<td>(A &amp; B) 结果为 12, 二进制为 0000 1100</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或。按位或运算符|比较两个数，然后返回一个新的数，这个数的每一位设置1的条件是两个输入数的同一位都不为0(即任意一个为1，或都为1)。</td>
+<td><img src="http://www.runoob.com/wp-content/uploads/2015/10/8370_140612144511_1.png"/></td>
+<td>(A | B) 结果为 61, 二进制为 0011 1101</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或. 按位异或运算符^比较两个数，然后返回一个数，这个数的每个位设为1的条件是两个输入数的同一位不同，如果相同就设为0。</td>
+<td><img src="http://www.runoob.com/wp-content/uploads/2015/10/8370_140612144558_1.png"/></td>
+<td>(A ^ B) 结果为 49, 二进制为 0011 0001</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位取反运算符~对一个操作数的每一位都取反。</td>
+<td><img src="http://www.runoob.com/wp-content/uploads/2015/10/8370_140612144245_1.png"/></td>
+<td>(~A ) 结果为 -61, 二进制为 1100 0011 in 2's complement form.</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>按位左移。左移操作符（&lt;&lt;）将操作数的所有位向左移动指定的位数。</td>
+<td>
+<p>下图展示了11111111 &lt;&lt; 1（11111111 左移一位）的结果。蓝色数字表示被移动位，灰色表示被丢弃位，空位用橙色的0填充。</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/10/leftbit.jpg"/>
+<td>A &lt;&lt; 2 结果为 240, 二进制为 1111 0000</td>
+</td></tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>按位右移。右移操作符（&lt;&lt;）将操作数的所有位向又移动指定的位数。</td>
+<td>
+<p>下图展示了11111111 &gt;&gt; 1（11111111 右移一位）的结果。蓝色数字表示被移动位，灰色表示被丢弃位，空位用橙色的0填充。</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/10/rightbit.jpg"/>
+<td>A &gt;&gt; 2 结果为 15, 二进制为 0000 1111</td>
+</td></tr>
+</tbody></table>
+<p>以下为位运算的简单实例：</p>
+<pre>
+import Cocoa
+
+var A = 60  // 二进制为 0011 1100
+var B = 13 // 二进制为 0000 1101
+
+print("A&amp;B 结果为：\(A&amp;B)")
+print("A|B 结果为：\(A|B)")
+print("A^B 结果为：\(A^B)")
+print("~A 结果为：\(~A)")
+</pre><p>以上程序执行结果为：</p>
+<pre>
+A&amp;B 结果为：12
+A|B 结果为：61
+A^B 结果为：49
+~A 结果为：-61
+</pre>
+<hr/>
+<h2>赋值运算</h2>
+<p>下表列出了 Swift 语言的基本赋值运算：</p>
+<table class="reference">
+<tbody><tr>
+<th>运算符</th>
+<th>描述</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>=</td>
+<td>简单的赋值运算，指定右边操作数赋值给左边的操作数。</td>
+<td>C = A + B 将 A + B 的运算结果赋值给 C</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>相加后再赋值，将左右两边的操作数相加后再赋值给左边的操作数。</td>
+<td>C += A 相当于 C = C + A</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>相减后再赋值，将左右两边的操作数相减后再赋值给左边的操作数。</td>
+<td>C -= A 相当于 C = C - A</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>相乘后再赋值，将左右两边的操作数相乘后再赋值给左边的操作数。</td>
+<td>C *= A 相当于 C = C * A</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>相除后再赋值，将左右两边的操作数相除后再赋值给左边的操作数。</td>
+<td>C /= A 相当于 C = C / A</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>求余后再赋值，将左右两边的操作数求余后再赋值给左边的操作数。</td>
+<td>C %= A is equivalent to C = C % A</td>
+</tr>
+<tr>
+<td>&lt;&lt;=</td>
+<td>按位左移后再赋值</td>
+<td>C &lt;&lt;= 2 相当于 C = C &lt;&lt; 2</td>
+</tr>
+<tr>
+<td>&gt;&gt;=</td>
+<td>按位右移后再赋值</td>
+<td>C &gt;&gt;= 2 相当于 C = C &gt;&gt; 2</td>
+</tr>
+<tr>
+<td>&amp;=</td>
+<td>按位与运算后赋值</td>
+<td>C &amp;= 2 相当于 C = C &amp; 2</td>
+</tr>
+<tr>
+<td>^=</td>
+<td>按位异或运算符后再赋值</td>
+<td>C ^= 2 相当于 C = C ^ 2</td>
+</tr>
+<tr>
+<td>|=</td>
+<td>按位或运算后再赋值</td>
+<td>C |= 2 相当于 C = C | 2</td>
+</tr>
+</tbody></table>
+<p>以下为赋值运算的简单实例：</p>
+<pre>
+import Cocoa
+
+var A = 10
+var B = 20
+var C = 100
+
+C = A + B
+print("C 结果为：\(C)")
+
+C += A
+print("C 结果为：\(C)")
+
+C -= A
+print("C 结果为：\(C)")
+
+C *= A
+print("C 结果为：\(C)")
+
+C /= A
+print("C 结果为：\(C)")
+
+//以下测试已注释，可去掉注释测试每个实例
+/*
+C %= A
+print("C 结果为：\(C)")
+
+
+C &lt;&lt;= A
+print("C 结果为：\(C)")
+
+C &gt;&gt;= A
+print("C 结果为：\(C)")
+
+C &amp;= A
+print("C 结果为：\(C)")
+
+C ^= A
+print("C 结果为：\(C)")
+
+C |= A
+print("C 结果为：\(C)")
+*/
+</pre><p>以上程序执行结果为：</p>
+<pre>
+C 结果为：30
+C 结果为：40
+C 结果为：30
+C 结果为：300
+C 结果为：30
+</pre>
+<hr/>
+<h2>区间运算符</h2>
+<p>Swift 提供了两个区间的运算符。</p>
+<table class="reference">
+<tbody><tr>
+<th>运算符</th>
+<th>描述</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>闭区间运算符
+
+</td>
+<td>闭区间运算符（a...b）定义一个包含从a到b(包括a和b)的所有值的区间，b必须大于等于a。 ‌ 闭区间运算符在迭代一个区间的所有值时是非常有用的，如在for-in循环中：</td>
+<td>1...5 区间值为 1, 2, 3, 4 和 5</td>
+</tr>
+<tr>
+<td>半开区间运算符</td>
+<td>半开区间（a..<b）定义一个从a到b但不包括b的区间。 td="" 之所以称为半开区间，是因为该区间包含第一个值而不包括最后的值。<="">
+<td>1..&lt; 5 区间值为 1, 2, 3, 和 4</td>
+</b）定义一个从a到b但不包括b的区间。></td></tr>
+</tbody></table>
+<p>以下为区间运算的简单实例：</p>
+<pre>
+import Cocoa
+
+print("闭区间运算符:")
+for index in 1...5 {
+    print("\(index) * 5 = \(index * 5)")
+}
+
+print("半开区间运算符:")
+for index in 1..&lt;5 {
+    print("\(index) * 5 = \(index * 5)")
+}
+</pre>
+<p>以上程序执行结果为：</p>
+<pre>
+闭区间运算符:
+1 * 5 = 5
+2 * 5 = 10
+3 * 5 = 15
+4 * 5 = 20
+5 * 5 = 25
+半开区间运算符:
+1 * 5 = 5
+2 * 5 = 10
+3 * 5 = 15
+4 * 5 = 20
+</pre>
+<h2>其他运算符</h2>
+<p>Swift 提供了其他类型的的运算符，如一元、二元和三元运算符。</p>
+<ul>
+<li>一元运算符对单一操作对象操作（如<code>-a</code>）。一元运算符分前置运算符和后置运算符，前置运算符需紧跟在操作对象之前（如<code>!b</code>），后置运算符需紧跟在操作对象之后（例如c!）。<strong>备注：</strong>在Java／C没有类似c！的语法， 在Swift中用在Optional类型取值。</li>
+<li>二元运算符操作两个操作对象（如<code>2 + 3</code>），是中置的，因为它们出现在两个操作对象之间。</li>
+<li>三元运算符操作三个操作对象，和 C 语言一样，Swift 只有一个三元运算符，就是三目运算符（<code>a ? b : c</code>）。</li>
+</ul>
+<table class="reference">
+<tbody><tr>
+<th>运算符</th>
+<th>描述</th>
+<th style="width:25%;">实例</th>
+</tr>
+<tr>
+<td>一元减</td>
+<td>数字前添加 - 号前缀</td>
+<td>-3 或 -4</td>
+</tr>
+<tr>
+<td>一元加</td>
+<td>数字前添加 + 号前缀</td>
+<td>+6 结果为 6</td>
+</tr>
+<tr>
+<td>三元运算符</td>
+<td><span class="marked">condition ? X : Y</span></td>
+<td>如果 <strong>condition</strong> 为 true ，值为 X ，否则为 Y</td>
+</tr>
+</tbody></table>
+<p>以下为一元、二元、三元的运算的简单实例：</p>
+<pre>
+import Cocoa
+
+var A = 1
+var B = 2
+var C = true
+var D = false
+print("-A 的值为：\(-A)")
+print("A + B 的值为：\(A + B)")
+print("三元运算：\(C ? A : B )")
+print("三元运算：\(D ? A : B )")
+</pre>
+<p>以上程序执行结果为：</p>
+<pre>
+-A 的值为：-1
+A + B 的值为：3
+三元运算：1
+三元运算：2
+</pre>
+<hr/>
+<h2>运算符优先级</h2>
+<p>在一个表达式中可能包含多个有不同运算符连接起来的、具有不同数据类型的数据对象；由于表达式有多种运算，不同的运算顺序可能得出不同结果甚至出现错误运算错误，因为当表达式中含多种运算时，必须按一定顺序进行结合，才能保证运算的合理性和结果的正确性、唯一性。
+</p><p>
+优先级从上到下依次递减，最上面具有最高的优先级，逗号操作符具有最低的优先级。</p><p>
+相同优先级中，按结合顺序计算。大多数运算是从左至右计算，只有三个优先级是从右至左结合的，它们是单目运算符、条件运算符、赋值运算符。</p><p>
+基本的优先级需要记住：
+</p><ul><li>
+指针最优，单目运算优于双目运算。如正负号。</li><li>
+先乘除（模），后加减。</li><li>
+先算术运算，后移位运算，最后位运算。请特别注意：1 &lt;&lt; 3 + 2 &amp; 7 等价于 (1 &lt;&lt; (3 + 2))&amp;7</li><li>
+逻辑运算最后计算</li></ul>
+<table class="reference">
+<tbody><tr>
+<th>运算符类型</th>
+<th>运算符</th>
+<th>结合方向</th>
+</tr>
+<tr>
+<td>表达式运算</td>
+<td>() [] . </td>
+<td>左到右</td>
+</tr>
+<tr>
+<td>一元运算符</td>
+<td><p>* &amp; + - ! ~ </p>
+<p>* / %</p>
+<p>+ -</p>
+<p>&gt;&gt; &lt;&lt;</p>
+<p>&lt; &gt; &lt;= &gt;=</p>
+<p>== !=</p>
+</td>
+<td style="vertical-align:middle;">左到右</td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><p>&amp;</p>
+<p>^</p>
+<p>|</p>
+<p>&amp;&amp;</p>
+<p>||</p>
+</td>
+<td style="vertical-align:middle;">左到右</td>
+</tr>
+<tr>
+<td>三元运算符</td>
+<td>?:</td>
+<td>右到左</td>
+</tr>
+<tr>
+<td>赋值运算符</td>
+<td>= += -= *= /= %= &gt;&gt;= &lt;&lt;= &amp;= ^= |=</td>
+<td>右到左</td>
+</tr>
+<tr>
+<td>逗号</td>
+<td>,</td>
+<td>左到右</td>
+</tr>
+</tbody></table>
+<p>以下为运算符优先级简单实例：</p>
+<pre>
+import Cocoa
+
+var A = 0
+
+A = 2 + 3 * 4 % 5
+print("A 的值为：\(A)")
+</pre><p>以上程序执行结果为：</p>
+<pre>
+A 的值为：4
+</pre>
+<p><b>实例解析：</b></p>
+<p>根据运算符优先级，可以将以上程序的运算解析为以下步骤，表达式相当于：</p>
+<pre>2 + ((3 * 4) % 5)
+</pre>
+<p>第一步计算：
+(3 * 4) = 12，所以表达式相当于：</p>
+<p><pre>
+2 + (12 % 5)</pre><p>
+第二步计算 12 % 5 = 2，所以表达式相当于：</p>
+<pre>
+2 + 2</pre><p>
+此时可以容易地看出计算的结果为 4。</p>
+</p></div>

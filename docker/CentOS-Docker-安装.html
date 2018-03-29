@@ -1,0 +1,69 @@
+<div class="article-intro" id="content">
+<h1>CentOS Docker 安装</h1>
+<p>Docker支持以下的CentOS版本：</p>
+<ul>
+<li>CentOS 7 (64-bit)</li>
+<li>CentOS 6.5 (64-bit) 或更高的版本</li>
+</ul>
+<hr/>
+<h2>前提条件</h2>
+<p>目前，CentOS 仅发行版本中的内核支持 Docker。</p>
+<p>Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。</p>
+<p>Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统内核版本为 2.6.32-431 或者更高版本。</p>
+<hr/>
+<h2>使用 yum 安装（CentOS 7下）</h2>
+<p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。</p>
+通过 <strong>uname -r </strong>命令查看你当前的内核版本
+<pre>
+[root@runoob ~]# uname -r 3.10.0-327.el7.x86_64
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker08.png"/></p>
+<h3>安装 Docker</h3>
+<p>Docker 软件包和依赖包已经包含在默认的 CentOS-Extras 软件源里，安装命令如下：</p>
+<pre>
+[root@runoob ~]# yum -y install docker
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker09.png"/></p>
+<p>安装完成。</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker10.png"/></p>
+<p>启动 Docker 后台服务</p>
+<pre>
+[root@runoob ~]# service docker start
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker11.png"/></p>
+<p>测试运行 hello-world</p>
+<pre>
+[root@runoob ~]#docker run hello-world
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker12.png"/></p>
+<p>由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行。</p>
+<hr/>
+<h2>使用脚本安装 Docker</h2>
+<p>1、使用 <code>sudo</code> 或 <code>root</code> 权限登录 Centos。</p>
+<p>2、确保 yum 包更新到最新。</p>
+<pre>
+$ sudo yum update
+</pre>
+<p>3、执行 Docker 安装脚本。</p>
+<pre>
+$ curl -fsSL https://get.docker.com/ | sh
+</pre>
+<p>执行这个脚本会添加 <code>docker.repo</code> 源并安装 Docker。</p>
+<p>4、启动 Docker 进程。</p>
+<pre>
+$ sudo service docker start
+</pre>
+<p>5、验证 <code>docker</code> 是否安装成功并在容器中执行一个测试的镜像。</p>
+<pre>
+$ sudo docker run hello-world
+</pre>
+<p>到此，docker 在 CentOS 系统的安装完成。</p>
+<hr/>
+<h2>镜像加速</h2>
+<p>鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：<span class="marked">http://hub-mirror.c.163.com</span>。</p>
+<p>新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。</p>
+<p>请在该配置文件中加入（没有该文件的话，请先建一个）：</p>
+<pre>{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}</pre>
+</div>

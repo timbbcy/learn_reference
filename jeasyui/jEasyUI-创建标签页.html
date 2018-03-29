@@ -1,0 +1,35 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 布局 - <span class="color_h1">创建标签页（Tabs）</span></h1>
+<p>
+本教程将向您延时如何使用 easyui 创建一个 Tabs 组件。
+Tabs 有多个可以动态地添加或移除的面板（panel）。
+您可以使用 Tabs 来在相同的页面上显示不同的实体。
+</p>
+<p>
+Tabs 一次仅仅显示一个面板（panel），每个面板（panel）都有标题、图标和关闭按钮。
+当 Tabs 被选中时，将显示对应的面板（panel）的内容。
+</p>
+<img src="/wp-content/uploads/2013/12/tabs1.png"/>
+<p>从 HTML 标记创建 Tabs，包含一个 DIV 容器和一些 DIV 面板（panel）。</p>
+<pre style="color:#006600">
+    &lt;div class="easyui-tabs" style="width:400px;height:100px;"&gt;
+        &lt;div title="First Tab" style="padding:10px;"&gt;
+            First Tab
+        &lt;/div&gt;
+        &lt;div title="Second Tab" closable="true" style="padding:10px;"&gt;
+            Second Tab
+        &lt;/div&gt;
+        &lt;div title="Third Tab" iconCls="icon-reload" closable="true" style="padding:10px;"&gt;
+            Third Tab
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<p>我们创建一个带有三个面板（panel）的 Tabs 组件，第二个和第三个面板（panel）可以通过点击关闭按钮进行关闭。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-layout-tabs1.zip">jeasyui-layout-tabs1.zip</a></p>
+</div>

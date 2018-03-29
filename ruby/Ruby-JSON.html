@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<h1>Ruby JSON</h1>
+<p>本章节我们将为大家介绍如何使用 Ruby 语言来编码和解码 JSON 对象。</p>
+<hr/>
+<h2>环境配置</h2>
+<p>在使用 Ruby 编码或解码 JSON 数据前，我们需要先安装 Ruby JSON 模块。在安装该模块前你需要先安装 Ruby gem，我们使用 Ruby gem 安装 JSON 模块。
+但是，如果你使用的是最新版本的 Ruby，可能已经安装了 gem，解析来我们就可以使用以下命令来安装Ruby JSON 模块：</p>
+<pre>
+$gem install json
+</pre><hr/>
+<h2>使用 Ruby 解析 JSON</h2>
+<p>以下为JSON数据，将该数据存储在 input.json 文件中：</p>
+<div class="example">
+<h2 class="example">input.json 文件</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">President</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">Alan Isaac</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-quotes">"</span><span class="hl-string">CEO</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">David Richardson</span><span class="hl-quotes">"</span><span class="hl-code">,
+  
+  </span><span class="hl-quotes">"</span><span class="hl-string">India</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">Sachin Tendulkar</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">Virender Sehwag</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">Gautam Gambhir</span><span class="hl-quotes">"</span><span class="hl-code">,
+  </span><span class="hl-brackets">]</span><span class="hl-code">,
+ 
+  </span><span class="hl-quotes">"</span><span class="hl-string">Srilanka</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">Lasith Malinga</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">Angelo Mathews</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">Kumar Sangakkara</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">,
+ 
+  </span><span class="hl-quotes">"</span><span class="hl-string">England</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">Alastair Cook</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">Jonathan Trott</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">Kevin Pietersen</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以下的 Ruby 程序用于解析以上 JSON 文件；</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">rubygems</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">json</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-reserved">require</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">pp</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-identifier">json</span><span class="hl-code"> = </span><span class="hl-identifier">File</span><span class="hl-code">.</span><span class="hl-identifier">read</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">input.json</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">obj</span><span class="hl-code"> = </span><span class="hl-identifier">JSON</span><span class="hl-code">.</span><span class="hl-identifier">parse</span><span class="hl-brackets">(</span><span class="hl-identifier">json</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">pp</span><span class="hl-code"> </span><span class="hl-identifier">obj</span></div>
+</div>
+</div>
+<p>以上实例执行结果为：</p>
+<pre>
+{"President"=&gt;"Alan Isaac",
+ "CEO"=&gt;"David Richardson",
+
+ "India"=&gt;
+  ["Sachin Tendulkar", "Virender Sehwag", "Gautam Gambhir"],
+
+"Srilanka"=&gt;
+  ["Lasith Malinga ", "Angelo Mathews", "Kumar Sangakkara"],
+
+ "England"=&gt;
+  ["Alastair Cook", "Jonathan Trott", "Kevin Pietersen"]
+}
+</pre>
+</div>

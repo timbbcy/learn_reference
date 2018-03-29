@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">空元素</span>
+</h1>
+<hr/>
+<p class="intro">空的复合元素不能包含内容，只能含有属性。</p>
+<hr/>
+<h2>复合空元素：
+</h2>
+<p>一个空的 XML 元素：</p>
+<div class="code notranslate"><div>
+&lt;product prodid="1345" /&gt;
+</div></div>
+<p>上面的 "product" 元素根本没有内容。为了定义无内容的类型，我们就必须声明一个在其内容中只能包含元素的类型，但是实际上我们并不会声明任何元素，比如这样：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="product"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:complexContent&gt;<br/>
+           
+      &lt;xs:restriction base="xs:integer"&gt;<br/>
+               
+        &lt;xs:attribute name="prodid" type="xs:positiveInteger"/&gt;<br/>
+           
+      &lt;/xs:restriction&gt;<br/>
+       
+    &lt;/xs:complexContent&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p>在上面的例子中，我们定义了一个带有复合内容的复合类型。complexContent 元素给出的信号是，我们打算限定或者拓展某个复合类型的内容模型，而 integer 限定则声明了一个属性但不会引入任何的元素内容。</p>
+<p>但是，也可以更加紧凑地声明此 "product" 元素：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="product"&gt;<br/>
+   
+  &lt;xs:complexType&gt;<br/>
+       
+    &lt;xs:attribute name="prodid" type="xs:positiveInteger"/&gt;<br/>
+   
+  &lt;/xs:complexType&gt;<br/>
+&lt;/xs:element&gt;
+</div></div>
+<p>或者您可以为一个 complexType 元素起一个名字，然后为 "product" 元素设置一个 type 属性并引用这个 complexType 名称（通过使用此方法，若干个元素均可引用相同的复合类型）：</p>
+<div class="code notranslate"><div>
+
+&lt;xs:element name="product" type="prodtype"/&gt;<br/><br/>
+&lt;xs:complexType name="prodtype"&gt;<br/>
+   
+  &lt;xs:attribute name="prodid" type="xs:positiveInteger"/&gt;<br/>
+&lt;/xs:complexType&gt;
+</div></div>
+</div>

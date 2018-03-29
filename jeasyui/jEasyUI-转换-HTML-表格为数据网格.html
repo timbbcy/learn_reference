@@ -1,0 +1,81 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">转换 HTML 表格为数据网格</span></h1>
+<p>本实例演示如何转换表格（table）为数据网格（datagrid）。</p>
+<img src="/wp-content/uploads/2013/12/datagrid1_1.png"/>
+<p>
+数据网格（datagrid）的列信息是定义在 &lt;thead&gt; 标记中，数据是定义在 &lt;tbody&gt; 标记中。确保为所有的数据列设置 field 名称，请看下面的实例：
+</p>
+<pre style="color:#006600">
+    &lt;table id="tt" class="easyui-datagrid" style="width:400px;height:auto;"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="name1" width="50"&gt;Col 1&lt;/th&gt;
+                &lt;th field="name2" width="50"&gt;Col 2&lt;/th&gt;
+                &lt;th field="name3" width="50"&gt;Col 3&lt;/th&gt;
+                &lt;th field="name4" width="50"&gt;Col 4&lt;/th&gt;
+                &lt;th field="name5" width="50"&gt;Col 5&lt;/th&gt;
+                &lt;th field="name6" width="50"&gt;Col 6&lt;/th&gt;
+            &lt;/tr&gt;                          
+        &lt;/thead&gt;                           
+        &lt;tbody&gt;                            
+            &lt;tr&gt;                           
+                &lt;td&gt;Data 1&lt;/td&gt;            
+                &lt;td&gt;Data 2&lt;/td&gt;            
+                &lt;td&gt;Data 3&lt;/td&gt;            
+                &lt;td&gt;Data 4&lt;/td&gt;            
+                &lt;td&gt;Data 5&lt;/td&gt;            
+                &lt;td&gt;Data 6&lt;/td&gt;            
+            &lt;/tr&gt;                          
+            &lt;tr&gt;                           
+                &lt;td&gt;Data 1&lt;/td&gt;            
+                &lt;td&gt;Data 2&lt;/td&gt;            
+                &lt;td&gt;Data 3&lt;/td&gt;            
+                &lt;td&gt;Data 4&lt;/td&gt;            
+                &lt;td&gt;Data 5&lt;/td&gt;            
+                &lt;td&gt;Data 6&lt;/td&gt;            
+            &lt;/tr&gt;                          
+            &lt;tr&gt;                           
+                &lt;td&gt;Data 1&lt;/td&gt;            
+                &lt;td&gt;Data 2&lt;/td&gt;            
+                &lt;td&gt;Data 3&lt;/td&gt;            
+                &lt;td&gt;Data 4&lt;/td&gt;            
+                &lt;td&gt;Data 5&lt;/td&gt;            
+                &lt;td&gt;Data 6&lt;/td&gt;            
+            &lt;/tr&gt;                          
+            &lt;tr&gt;                           
+                &lt;td&gt;Data 1&lt;/td&gt;            
+                &lt;td&gt;Data 2&lt;/td&gt;            
+                &lt;td&gt;Data 3&lt;/td&gt;            
+                &lt;td&gt;Data 4&lt;/td&gt;            
+                &lt;td&gt;Data 5&lt;/td&gt;            
+                &lt;td&gt;Data 6&lt;/td&gt;            
+            &lt;/tr&gt;                          
+        &lt;/tbody&gt;                           
+    &lt;/table&gt;
+</pre>
+<p>非常棒，您可以定义一个复杂的表头，例如：</p>
+<pre style="color:#006600">
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th field="name1" width="50" rowspan="2"&gt;Col 1&lt;/th&gt;
+            &lt;th field="name2" width="50" rowspan="2"&gt;Col 2&lt;/th&gt;
+            &lt;th field="name3" width="50" rowspan="2"&gt;Col 3&lt;/th&gt;
+            &lt;th colspan="3"&gt;Details&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th field="name4" width="50"&gt;Col 4&lt;/th&gt;
+            &lt;th field="name5" width="50"&gt;Col 5&lt;/th&gt;
+            &lt;th field="name6" width="50"&gt;Col 6&lt;/th&gt;
+        &lt;/tr&gt;                          
+    &lt;/thead&gt;
+</pre>
+<p>现在您可以看见，复杂表头已经创建。</p>
+<img src="/wp-content/uploads/2013/12/datagrid1_2.png"/>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid1.zip">jeasyui-datagrid-datagrid1.zip</a></p>
+</div>

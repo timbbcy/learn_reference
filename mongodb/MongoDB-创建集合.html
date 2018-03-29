@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<h1>MongoDB 创建集合</h1>
+<p>本章节我们为大家介绍如何使用 MongoDB 来创建集合。</p>
+<p>MongoDB 中使用 <strong>createCollection()</strong> 方法来创建集合。</p>
+<p>语法格式：</p>
+<pre>db.createCollection(name, options)</pre>
+<p>参数说明：</p>
+<ul>
+<li>name: 要创建的集合名称</li>
+<li>options: 可选参数, 指定有关内存大小及索引的选项</li>
+</ul>
+<p>options 可以是如下参数：</p>
+<table class="reference">
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capped</td>
+<td>布尔</td>
+<td>（可选）如果为 true，则创建固定集合。固定集合是指有着固定大小的集合，当达到最大值时，它会自动覆盖最早的文档。<br/><strong>当该值为 true 时，必须指定 size 参数。</strong></td>
+</tr>
+<tr>
+<td>autoIndexId</td>
+<td>布尔</td>
+<td>（可选）如为 true，自动在 _id 字段创建索引。默认为 false。</td>
+</tr>
+<tr>
+<td>size</td>
+<td>数值</td>
+<td>（可选）为固定集合指定一个最大值（以字节计）。<br/><strong>如果 capped 为 true，也需要指定该字段。</strong></td>
+</tr>
+<tr>
+<td>max</td>
+<td>数值</td>
+<td>（可选）指定固定集合中包含文档的最大数量。</td>
+</tr>
+</tbody>
+</table>
+<p>在插入文档时，MongoDB 首先检查固定集合的 size 字段，然后检查 max 字段。
+</p>
+<h3>实例</h3>
+<p>在 test 数据库中创建 runoob 集合：</p>
+<pre>&gt; use test
+switched to db test
+&gt; db.createCollection("runoob")
+{ "ok" : 1 }
+&gt;</pre>
+<p>如果要查看已有集合，可以使用 show collections 命令：</p>
+<pre>&gt; show collections
+runoob
+system.indexes</pre>
+<p>下面是带有几个关键参数的 createCollection() 的用法：</p>
+<p>创建固定集合  mycol，整个集合空间大小 6142800 KB, 文档最大个数为 10000 个。</p>
+<pre>&gt; db.createCollection("mycol", { capped : true, autoIndexId : true, size : 
+   6142800, max : 10000 } )
+{ "ok" : 1 }
+&gt;</pre>
+<p>在 MongoDB 中，你不需要创建集合。当你插入一些文档时，MongoDB 会自动创建集合。</p>
+<pre>&gt; db.mycol2.insert({"name" : "菜鸟教程"})
+&gt; show collections
+mycol2
+...</pre>
+</div>

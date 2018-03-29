@@ -1,0 +1,305 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>本节我们继续来学习Android中的Drawable资源，上一节我们学习了：<br/>
+<strong>ColorDrawable</strong>；<br/><strong>NinePatchDrawable</strong>；<br/>
+<strong>ShapeDrawable</strong>；<br/><strong>GradientDrawable</strong>！<br/>这四个Drawable~
+而本节我们继续来学习接下来的五个Drawable，他们分别是：<br/>
+<strong>BitmapDrawable</strong>；<br/><strong>InsertDrawable</strong>；<br/><strong>ClipDrawable</strong>；<br/>
+<strong>RotateDrawable</strong>；<br/><strong>AnimationDrawable</strong>!<br/>
+还是贴下13种Drawable的导图：</p>
+<p><img alt="此处输入链接的描述" src="http://www.runoob.com/wp-content/uploads/2015/10/57840489.jpg"/></p>
+<p>好的，开始本节内容~</p></blockquote>
+<hr/>
+<h2>1.BitmapDrawable</h2>
+<blockquote><p>对Bitmap的一种封装,可以设置它包装的bitmap在BitmapDrawable区域中的绘制方式,有:
+平铺填充,拉伸填或保持图片原始大小!以&lt;<strong>bitmap</strong>&gt;为根节点!
+可选属性如下：</p>
+<ul>
+<li><strong>src</strong>:图片资源~</li>
+<li><strong>antialias</strong>:是否支持抗锯齿</li>
+<li><strong>filter</strong>:是否支持位图过滤,支持的话可以是图批判显示时比较光滑</li>
+<li><strong>dither</strong>:是否对位图进行抖动处理</li>
+<li><strong>gravity</strong>:若位图比容器小,可以设置位图在容器中的相对位置</li>
+<li><strong>tileMode</strong>:指定图片平铺填充容器的模式,设置这个的话,gravity属性会被忽略,有以下可选值:
+             <strong>disabled</strong>(整个图案拉伸平铺),<strong>clamp</strong>(原图大小),
+             <strong>repeat</strong>(平铺),<strong>mirror</strong>(镜像平铺)</li>
+</ul>
+<p>对应的效果图：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/98559776.jpg"/></p></blockquote>
+<p><strong>①XML定义BitmapDrawable</strong>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;  
+&lt;bitmap xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:dither="true"  
+    android:src="@drawable/ic_launcher"  
+    android:tileMode="mirror" /&gt;
+</pre>
+<p><strong>②实现相同效果的Java代码</strong>:</p>
+<pre>
+BitmapDrawable bitDrawable = new BitmapDrawable(bitmap);  
+bitDrawable.setDither(true);  
+bitDrawable.setTileModeXY(TileMode.MIRROR,TileMode.MIRROR);  
+</pre>
+<hr/>
+<h2>2.InsetDrawable</h2>
+<blockquote><p>表示把一个Drawable嵌入到另外一个Drawable的内部，并且在内部留一些间距,
+类似与Drawable的padding属性,但<strong>padding</strong>表示的是<strong>Drawable的内容与Drawable本身的边距</strong>!
+而<strong>InsetDrawable</strong>表示的是<strong>两个Drawable与容器之间的边距</strong>,当控件需要的<strong>背景比实际的边框
+小的时候</strong>,比较适合使用InsetDrawable,比如使用这个可以解决我们自定义Dialog与屏幕之间
+的一个间距问题,相信做过的朋友都知道,即使我们设置了layout_margin的话也是没用的,这个
+时候就可以用到这个InsetDrawable了!只需为InsetDrawable设置一个insetXxx设置不同
+方向的边距,然后为设置为Dialog的背景即可！</p></blockquote>
+<p>相关属性如下：</p>
+<blockquote><ul>
+<li>1.<strong>drawable</strong>:引用的Drawable,如果为空,必须有一个Drawable类型的子节点!</li>
+<li>2.<strong>visible</strong>:设置Drawable是否额空间</li>
+<li>3.<strong>insetLeft</strong>,<strong>insetRight</strong>,<strong>insetTop</strong>,<strong>insetBottm</strong>:设置左右上下的边距</li>
+</ul>
+</blockquote>
+<p><strong>①XML中使用</strong>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;  
+&lt;inset xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:drawable="@drawable/test1"  
+    android:insetBottom="10dp"  
+    android:insetLeft="10dp"  
+    android:insetRight="10dp"  
+    android:insetTop="10dp" /&gt; 
+</pre>
+<p><strong>在Java代码中使用</strong>：</p>
+<pre>
+InsetDrawable insetDrawable = new InsetDrawable(getResources()  
+        .getDrawable(R.drawable.test1), 10, 10, 10, 10); 
+</pre>
+<p><strong>使用效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/22768448.jpg"/></p>
+<hr/>
+<h2>3.ClipDrawable</h2>
+<blockquote><p>Clip可以译为剪的意思,我们可以把ClipDrawable理解为从位图上剪下一个部分;
+Android中的进度条就是使用ClipDrawable来实现的,他根据设置level的值来决定剪切
+区域的大小,根节点是&lt;<strong>clip</strong>&gt;</p></blockquote>
+<p><strong>相关属性如下</strong>：</p>
+<blockquote><ul>
+<li><strong>clipOrietntion</strong>:设置剪切的方向,可以设置水平和竖直2个方向</li>
+<li><strong>gravity</strong>:从那个位置开始裁剪</li>
+<li><strong>drawable</strong>:引用的drawable资源,为空的话需要有一个Drawable类型的子节点
+ps:这个Drawable类型的子节点:就是在&lt;clip里&gt;加上这样的语句:
+<bitmap android:src="@drawable/test4" gravity="center">这样...</bitmap></li>
+</ul>
+</blockquote>
+<p><strong>使用示例</strong>：</p>
+<p>核心：通过代码修改ClipDrawable的level的值！Level的值是0~10000！</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/44267367.jpg"/></p>
+<p><strong>代码实现</strong>：</p>
+<p><strong>①定义一个ClipDrawable的资源xml</strong>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;clip xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clipOrientation="horizontal"
+    android:drawable="@mipmap/ic_bg_meizi"
+    android:gravity="left" /&gt; 
+</pre>
+<p><strong>②在activity_main主布局文件中设置一个ImageView,将src设置为clipDrawable!</strong>
+<strong>记住是src哦,如果你写成了blackground的话可是会报空指针的哦!!!!</strong></p>
+<pre>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;ImageView
+        android:id="@+id/img_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/clip_bg" /&gt;
+
+&lt;/LinearLayout&gt;  
+</pre>
+<p><strong>③MainActivity.java通过setLevel设置截取区域大小</strong>:</p>
+<pre>
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView img_show;
+    private ClipDrawable cd;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x123) {
+                cd.setLevel(cd.getLevel() + 500);
+            }
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img_show = (ImageView) findViewById(R.id.img_show);
+        // 核心实现代码
+        cd = (ClipDrawable) img_show.getDrawable();
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(0x123);
+                if (cd.getLevel() &gt;= 10000) {
+                    timer.cancel();
+                }
+            }
+        }, 0, 300);
+    }
+}
+</pre>
+<p>好的，有点意思，妹子图别问我拿，百度上一堆哈~<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/61293536.jpg"/></p>
+<hr/>
+<h2>4.RotateDrawable</h2>
+<blockquote><p>用来对Drawable进行旋转,也是通过setLevel来控制旋转的,最大值也是:10000</p></blockquote>
+<p><strong>相关属性如下</strong>：</p>
+<blockquote><ul>
+<li><strong>fromDegrees</strong>:起始的角度,,对应最低的level值,默认为0</li>
+<li><strong>toDegrees</strong>:结束角度,对应最高的level值,默认360</li>
+<li><strong>pivotX</strong>:设置参照点的x坐标,取值为0~1,默认是50%,即0.5</li>
+<li><strong>pivotY</strong>:设置参照点的Y坐标,取值为0~1,默认是50%,即0.5
+ps:如果出现旋转图片显示不完全的话可以修改上述两个值解决!</li>
+<li><strong>drawable</strong>:设置位图资源</li>
+<li><strong>visible</strong>:设置drawable是否可见!</li>
+</ul>
+</blockquote>
+<p><strong>角度图如下</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/70168328.jpg"/></p>
+<p><strong>使用示例</strong>：</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/35137047.jpg"/></p>
+<p><strong>代码实现</strong>：</p>
+<p>在第三点的clipDrawable上做一点点修改即可!</p>
+<p><strong>①定义一个rotateDrawable资源文件</strong>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/ic_launcher"
+    android:fromDegrees="-180"
+    android:pivotX="50%"
+    android:pivotY="50%" /&gt;  
+</pre>
+<p><strong>②activity_main.xml中修改下src指向上述drawable即可,MainActivity只需要把ClipDrawable</strong>
+<strong>改成rotateDrawable即可!</strong></p>
+<pre>
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView img_show;
+    private RotateDrawable cd;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x123) {
+                if (cd.getLevel() &gt;= 10000)
+                    Toast.makeText(MainActivity.this, "转完了~",
+                            Toast.LENGTH_LONG).show();
+                cd.setLevel(cd.getLevel() + 400);
+            }
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img_show = (ImageView) findViewById(R.id.img_show);
+        // 核心实现代码
+        cd = (RotateDrawable) img_show.getDrawable();
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(0x123);
+                if (cd.getLevel() &gt;= 10000) {
+                    timer.cancel();
+                }
+            }
+        }, 0, 100);
+    }
+}
+</pre>
+<hr/>
+<h2>5.AnimationDrawable</h2>
+<blockquote><p>本节最后一个Drawable，AnimationDrawable是用来实现Android中帧动画的,就是把一系列的
+Drawable，按照一定得顺序一帧帧地播放；Android中动画比较丰富,有传统补间动画,平移,
+缩放等等效果,但是这里我们仅仅介绍这个AnimationDrawable实现帧动画,关于alpha,scale,
+translate,rotate等,后续在动画章节再进行详细的介绍~</p><p>
+我们这里使用&lt;<strong>animation-list</strong>&gt;作为根节点</p></blockquote>
+<p><strong>相关属性方法</strong>:</p>
+<blockquote><p><strong>oneshot</strong>:设置是否循环播放,false为循环播放!!!
+<strong>duration</strong>:帧间隔时间,通常我们会设置为300毫秒
+我们获得AniamtionDrawable实例后，需要调用它的start()方法播放动画，另外要注意
+在OnCreate()方法中调用的话,是没有任何效果的,因为View还没完成初始化,我们可以
+用简单的handler来延迟播放动画!当然还有其他的方法,可见下述链接:
+<a href="http://www.runoob.com/w3cnote/android-animationdrawable.html">Android AnimationDrawable运行的几种方式</a>
+使用AnimationDrawable来实现帧动画真的是非常方便的~</p></blockquote>
+<p><strong>使用示例</strong>：</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/71886461.jpg"/></p>
+<p><strong>代码实现</strong>：</p>
+<p>①<strong>先定义一个AnimationDrawable的xml资源文件</strong>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"&gt;
+
+    &lt;item
+        android:drawable="@mipmap/ic_pull_to_refresh_loading01"
+        android:duration="100" /&gt;
+
+    &lt;item
+        android:drawable="@mipmap/ic_pull_to_refresh_loading02"
+        android:duration="100" /&gt;
+    &lt;item
+        android:drawable="@mipmap/ic_pull_to_refresh_loading03"
+        android:duration="100" /&gt;
+    &lt;item
+        android:drawable="@mipmap/ic_pull_to_refresh_loading04"
+        android:duration="100" /&gt;
+    &lt;item
+        android:drawable="@mipmap/ic_pull_to_refresh_loading05"
+        android:duration="100" /&gt;
+    &lt;item
+        android:drawable="@mipmap/ic_pull_to_refresh_loading06"
+        android:duration="100" /&gt;
+
+&lt;/animation-list&gt; 
+</pre>
+<p><strong>②activity_main.xml设置下src,然后MainActivity中</strong>:</p>
+<pre>
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView img_show;
+    private AnimationDrawable ad;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img_show = (ImageView) findViewById(R.id.img_show);
+        // 核心实现代码
+        ad = (AnimationDrawable) img_show.getDrawable();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ad.start();
+            }
+        }, 300);
+    }
+}
+</pre>
+<p>嘿嘿，超简单有木有，以后在一些需要用到帧动画的地方，直接上<strong>AnimationDrawable</strong>，
+当然，只适合于不需要进行控制的帧动画，比如上面这个就是超表下拉刷新时候的进度条素材
+做成的一个简单帧动画！根据自己的需求自行拓展~</p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/67081602.jpg"/>
+本节又介绍了另外的五个Drawable，很有趣是吧，还不快快将他们应用到你的实际开发当中~
+嘻嘻，就说这么多，谢谢!另外刚刚有读者私信我说以前的文章别删行不行，嗯，这里说下
+只删除一些重复的，比如和这个雷同的那几节~当然我也会备份！删除的文章都会备份的~
+所以放心！</p></blockquote> </div>

@@ -1,0 +1,37 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Window Navigator</span>
+</h1>
+<hr/>
+<p class="intro">window.navigator 对象包含有关访问者浏览器的信息。</p>
+<hr/>
+<h2>Window Navigator</h2>
+<p><strong>window.navigator</strong>  对象在编写时可不使用 window 这个前缀。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+&lt;div id="example"&gt;&lt;/div&gt;<br>
+&lt;script&gt;<br>
+txt = "&lt;p&gt;浏览器代号: " + navigator.appCodeName + "&lt;/p&gt;";<br>
+txt+= "&lt;p&gt;浏览器名称: " + navigator.appName + "&lt;/p&gt;";<br>
+txt+= "&lt;p&gt;浏览器版本: " + navigator.appVersion + "&lt;/p&gt;";<br>
+txt+= "&lt;p&gt;启用Cookies: " + navigator.cookieEnabled + "&lt;/p&gt;";<br>
+txt+= "&lt;p&gt;硬件平台: " + navigator.platform + "&lt;/p&gt;";<br>
+txt+= "&lt;p&gt;用户代理: " + navigator.userAgent + "&lt;/p&gt;";<br/>
+txt+= "&lt;p&gt;用户代理语言: " + navigator.systemLanguage + "&lt;/p&gt;";<br/>
+document.getElementById("example").innerHTML=txt;<br/>
+&lt;/script&gt;
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_nav_all" target="_blank">尝试一下 »</a>
+</br></br></br></br></br></br></br></div>
+<br/><hr/>
+<h2>警告!!!</h2>
+<p>来自 navigator 对象的信息具有误导性，不应该被用于检测浏览器版本，这是因为：</p>
+<ul>
+<li>navigator 数据可被浏览器使用者更改</li>
+<li>一些浏览器对测试站点会识别错误</li>
+<li>浏览器无法报告晚于浏览器发布的新操作系统</li>
+</ul>
+<hr/>
+<h2>浏览器检测</h2>
+<p>由于 navigator 可误导浏览器检测，使用对象检测可用来嗅探不同的浏览器。</p>
+<p>由于不同的浏览器支持不同的对象，您可以使用对象来检测浏览器。例如，由于只有 Opera 支持属性 "window.opera"，您可以据此识别出 Opera。</p>
+<p>例子：if (window.opera) {...some action...}</p>
+</div>

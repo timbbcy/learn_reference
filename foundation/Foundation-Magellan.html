@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>Foundation 麦哲伦（Magellan）导航</h1>
+<iframe src="/try/demo_source/tryfoundation_magellan.htm" style="border:0;width:100%;height:290px;overflow-y:hidden;"></iframe>
+<hr/>
+<h2>如何创建麦哲伦导航</h2>
+<p>麦哲伦导航就是一个导航索引，创建方式如下:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">data-magellan-expedition=</span><span class="highVAL">"fixed"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">dl</span> <span class="highATT">class=</span><span class="highVAL">"sub-nav"</span><span class="highGT">&gt;</span><br/>    
+  <span class="highLT">&lt;</span><span class="highELE">dd</span> <span class="highATT">data-magellan-arrival=</span><span class="highVAL">"page1"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#page1"</span><span class="highGT">&gt;</span>Page 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/dd</span><span class="highGT">&gt;</span><br/>    
+  <span class="highLT">&lt;</span><span class="highELE">dd</span> <span class="highATT">data-magellan-arrival=</span><span class="highVAL">"page2"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#page2"</span><span class="highGT">&gt;</span>Page 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/dd</span><span class="highGT">&gt;</span><br/>  
+  <span class="highLT">&lt;</span><span class="highELE">/dl</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">h3</span> <span class="highATT">data-magellan-destination=</span><span class="highVAL">"page1"</span><span class="highGT">&gt;</span>Page1<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">name=</span><span class="highVAL">"page1"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>...<br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">h3</span> <span class="highATT">data-magellan-destination=</span><span class="highVAL">"page2"</span><span class="highGT">&gt;</span>Page2<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">name=</span><span class="highVAL">"page2"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>...<br/><br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>$(document).ready(function() {<br/>    
+  $(document).foundation();<br/>})<br/><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_magellan" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析</h3>
+<p>在 &lt;div&gt; 元素上添加 <code>data-magellan-expedition="fixed"</code> 属性来创建麦哲伦导航。</p>
+<p>然后在 <code>&lt;dd&gt;</code> 
+或 <code>&lt;li&gt;</code> 上添加  <code>data-magellan-arrival="<em>value</em>"</code> 属性，后面添加一个与该属性值一样的链接(page1)。</p>
+<p>使用 <code>data-magellan-destination="value"</code> 属性来控制麦哲伦导航的目标, 后面紧跟的 <code>&lt;a&gt;</code> 元素添加 <code>name="<em>value</em>"</code> 属性。两个属性的值必须与 <code>data-magellan-arrival</code> 的值一致 (<strong>page1</strong>)。</p>
+<p>最后，初始化 Foundation JS ，用户在滚动页面时导航就会根据当前显示的内容自动切换。</p>
+<hr/>
+<h2>麦哲伦导航头部工具条</h2>
+<p>麦哲伦导航使用头部工具条实例：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">data-magellan-expedition=</span><span class="highVAL">"fixed"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">nav</span> <span class="highATT">class=</span><span class="highVAL">"top-bar"</span> <span class="highATT">data-topbar</span><span class="highGT">&gt;</span><br/>    
+  ...<br/><br/>    <span class="highLT">&lt;</span><span class="highELE">section</span> <span class="highATT">class=</span><span class="highVAL">"top-bar-section"</span><span class="highGT">&gt;</span><br/>      
+  <span class="highLT">&lt;</span><span class="highELE">ul</span> <span class="highATT">class=</span><span class="highVAL">"left"</span><span class="highGT">&gt;</span><br/>        <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">data-magellan-arrival=</span><span class="highVAL">"page1"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span>
+<span class="highATT">href=</span><span class="highVAL">"#page1"</span><span class="highGT">&gt;</span>Page 1<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>        
+  <span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">data-magellan-arrival=</span><span class="highVAL">"page2"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#page2"</span><span class="highGT">&gt;</span>Page 2<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>      
+  <span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">/section</span><span class="highGT">&gt;</span><br/><br/>  <span class="highLT">&lt;</span><span class="highELE">/nav</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">h3</span> <span class="highATT">data-magellan-destination=</span><span class="highVAL">"page1"</span><span class="highGT">&gt;</span>Page1<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">name=</span><span class="highVAL">"page1"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>...<br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">h3</span> <span class="highATT">data-magellan-destination=</span><span class="highVAL">"page2"</span><span class="highGT">&gt;</span>Page2<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">name=</span><span class="highVAL">"page2"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>...</div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_magellan_topbar" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>麦哲伦导航内边距</h2>
+<p>默认情况下，麦哲伦导航的 <code>&lt;div&gt;</code> 元素有 10px 的内边距。可以使用 CSS 移除它：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">[data-magellan-expedition], [data-magellan-expedition-clone] </span>{<br/>    <span class="highATT">padding:</span><span class="highVAL"> 0;</span><br/>}<br/></div><br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_magellan_topbar2" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>麦哲伦导航选项</h2>
+<p>使用 data-options 属性修改麦哲伦导航的设置, 例如 <code>&lt;div data-magellan-expedition="fixed" data-options="destination_threshold:60"&gt;</code>:</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:13%;">名称</th>
+<th style="width:10%;">类型</th>
+<th style="width:10%;">默认</th>
+<th style="width:52%;">描述</th>
+<th style="width:7%;">实例</th>
+</tr>
+<tr>
+<td>active_class</td>
+<td>string</td>
+<td>active</td>
+<td>指定激活链接的类</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_js_magellan_active" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>number</td>
+<td>0</td>
+<td>指定导航在什么时候需要固定位置。会根据滚动条滚动计算，默认为 0 (auto)。</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_js_magellan_threshold" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>destination_threshold</td>
+<td>number</td>
+<td>20</td>
+<td>设该值设定了导航链接显示为激活（蓝色背景）时导航列表距离顶部的值。</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_js_magellan_destination" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td>fixed_top</td>
+<td>number</td>
+<td>0</td>
+<td>指定了导航条距离头部的像素值</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_ref_js_magellan_fixedtop" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+</div>

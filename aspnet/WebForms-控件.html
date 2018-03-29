@@ -1,0 +1,109 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- 服务器控件</span>
+</h1>
+<hr/>
+<p class="intro">服务器控件是服务器可理解的标签。</p>
+<hr/>
+<h2>经典 ASP 的局限性</h2>
+<p>下面列出的代码是从上一章中复制的：</p>
+<div class="code notranslate"><div>
+
+&lt;html&gt;<br/>
+&lt;body bgcolor="yellow"&gt;<br/>
+&lt;center&gt;<br/>
+&lt;h2&gt;Hello Runoob!&lt;/h2&gt;<br/>
+&lt;p&gt;<span class="marked">&lt;%Response.Write(now())%&gt;</span>&lt;/p&gt;<br/>
+&lt;/center&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>上面的代码反映出经典 ASP 的局限性：代码块必须放置在您想要输出显示的位置。</p>
+<p>通过经典 ASP，想要把可执行代码从 HTML 页面中分离出来是不可能的。这让页面变得难以阅读，也难以维护。</p>
+<hr/>
+<h2>ASP.NET - 服务器控件</h2>
+<p>ASP.NET 通过服务器控件，已经解决了上述的"意大利面条式代码"问题。</p>
+<p>服务器控件是服务器可理解的标签。</p>
+<p>有三种类型的服务器控件：</p>
+<ul>
+<li>HTML 服务器控件 - 创建的 HTML 标签</li>
+<li>Web 服务器控件 - 新的 ASP.NET 标签</li>
+<li>Validation 服务器控件 - 用于输入验证</li>
+</ul>
+<hr/>
+<h2>ASP.NET - HTML 服务器控件</h2>
+<p>HTML 服务器控件是服务器可理解的 HTML 标签。</p>
+<p>ASP.NET 文件中的 HTML 元素，默认是作为文本进行处理的。要想让这些元素可编程，需向 HTML 元素中添加 runat="server" 属性。这个属性表示，该元素将被作为服务器控件进行处理。同时需要添加 id 属性来标识服务器控件。id 引用可用于操作运行时的服务器控件。</p>
+<p><b>注释：</b>所有 HTML 服务器控件必须位于带有 runat="server" 属性的 &lt;form&gt; 标签内。runat="server" 属性表明了该表单必须在服务器上进行处理。同时也表明了包含在它内部的控件可被服务器脚本访问。</p>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 HtmlAnchor 服务器控件。然后我们在一个事件句柄（事件句柄是一种针对给定事件执行代码的子例程）中操作 HtmlAnchor 控件的 HRef 属性。Page_Load 事件是 ASP.NET 可理解的多种事件中的一种：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+link1.HRef="http://www.runoob.com"<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;a id="link1" runat="server"&gt;Visit RUNOOB!&lt;/a&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>可执行代码本身已经被移到 HTML 之外了。</p>
+<hr/>
+<h2>ASP.NET - Web 服务器控件</h2>
+<p>Web 服务器控件是服务器可理解的特殊 ASP.NET 标签。</p>
+<p>就像 HTML 服务器控件，Web 服务器控件也是在服务器上创建的，它们同样需要 runat="server" 属性才能生效。然而，Web 服务器控件没有必要映射任何已存在的 HTML 元素，它们可以表示更复杂的元素。</p>
+<p>创建 Web 服务器控件的语法是：</p>
+<div class="code notranslate"><div>
+&lt;asp:control_name id="some_id" runat="server" /&gt;</div></div>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 Button 服务器控件。然后我们为 Click 事件创建一个事件句柄，用来改变按钮上的文本：</p>
+<div class="code notranslate"><div>
+
+&lt;script runat="server"&gt;<br/>
+Sub submit(Source As Object, e As EventArgs)<br/>
+button1.Text="You clicked me!"<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;asp:Button id="button1" Text="Click me!"<br/>
+runat="server" OnClick="submit"/&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<br/><hr/>
+<h2>ASP.NET - Validation 服务器控件</h2>
+<p>Validation 服务器控件是用来验证用户输入的。如果用户输入没有通过验证，将显示一条错误消息给用户。</p>
+<p>每种 validation 控件执行一种指定类型的验证（比如验证某个指定的值或者某个范围的值）。</p>
+<p>在默认情况下，当 Button、ImageButton、LinkButton 控件被点击时，会执行页面验证。您可以设置 CausesValidation 为 false ，来阻止按钮控件被点击时进行验证。</p>
+<p>创建 Validation 服务器控件的语法是：</p>
+<div class="code notranslate"><div>
+&lt;asp:control_name id="some_id" runat="server" /&gt;</div></div>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 TextBox 控件、一个 Button 控件、一个 RangeValidator 控件。如果验证失败，文本 "The value must be from 1 to 100!" 将会显示在 RangeValidator 控件中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;form runat="server"&gt;<br/>
+&lt;p&gt;Enter a number from 1 to 100:<br/>
+&lt;asp:TextBox id="tbox1" runat="server" /&gt;<br/>
+&lt;br /&gt;&lt;br /&gt;<br/>
+&lt;asp:Button Text="Submit" runat="server" /&gt;<br/>
+&lt;/p&gt;<br/><br/>
+&lt;p&gt;<br/>
+&lt;asp:RangeValidator<br/>
+ControlToValidate="tbox1"<br/>
+MinimumValue="1"<br/>
+MaximumValue="100"<br/>
+Type="Integer"<br/>
+Text="The value must be from 1 to 100!"<br/>
+runat="server" /&gt;<br/>
+&lt;/p&gt;<br/>
+&lt;/form&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+</div>
+</div>

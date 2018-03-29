@@ -1,0 +1,75 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- 事件</span>
+</h1>
+<hr/>
+<p class="intro">事件句柄是一种针对给定事件来执行代码的子例程。</p>
+<hr/>
+<h2>ASP.NET - 事件句柄</h2>
+<p>请看下面的代码：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+lbl1.Text="The date and time is " &amp; now()<br/>
+%&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;form runat="server"&gt;<br/>
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;<br/>
+&lt;/form&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>上面的代码将在何时被执行？答案是："不知道..."。</p>
+<hr/>
+<h2>Page_Load 事件</h2>
+<p>Page_Load 事件是 ASP.NET 可理解的众多事件之一。Page_Load 事件会在页面加载时被触发， ASP.NET 将自动调用 Page_Load 子例程，并执行其中的代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+lbl1.Text="The date and time is " &amp; now()<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;form runat="server"&gt;<br/>
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;<br/>
+&lt;/form&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_pageload" target="_blank">演示实例 »</a>
+</div>
+<p><b>注释：</b>Page_Load 事件不包含对象引用或事件参数！</p>
+<hr/>
+<h2>Page.IsPostBack 属性</h2>
+<p>
+Page_Load 子例程会在页面每次加载时运行。如果您只想在页面第一次加载时执行 Page_Load 子例程中的代码，那么您可以使用 Page.IsPostBack 属性。如果 Page.IsPostBack 属性设置为 false，则页面第一次被载入，如果设置为 true，则页面被传回到服务器（比如，通过点击表单上的按钮）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;script runat="server"&gt;<br/>
+Sub Page_Load<br/>
+if Not Page.IsPostBack then<br/>
+  lbl1.Text="The date and time is " &amp; now()<br/>
+end if<br/>
+End Sub<br/><br/>
+Sub submit(s As Object, e As EventArgs)<br/>
+lbl2.Text="Hello World!"<br/>
+End Sub<br/>
+&lt;/script&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;form runat="server"&gt;<br/>
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;<br/>
+&lt;h3&gt;&lt;asp:label id="lbl2" runat="server" /&gt;&lt;/h3&gt;<br/>
+&lt;asp:button text="Submit" onclick="submit" runat="server" /&gt;<br/>
+&lt;/form&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showaspx.php?filename=demo_pageispostback" target="_blank">演示实例 »</a>
+</div>
+<p>上面的实例仅在页面第一次加载时显示 "The date and time is...." 消息。当用户点击 Submit 按钮是，submit 子例程将会在第二个 label 中写入 "Hello World!"，但是第一个 label 中的日期和时间不会改变。</p>
+<br/>
+</div>

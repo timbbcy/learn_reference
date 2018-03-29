@@ -1,0 +1,140 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">用法</span>
+</h1>
+<hr/>
+<p class="intro">HTML 中的脚本必须位于 &lt;script&gt; 与 &lt;/script&gt; 标签之间。</p>
+<p class="intro">脚本可被放置在 HTML 页面的 &lt;body&gt; 和 &lt;head&gt; 部分中。</p>
+<hr/>
+<h2>&lt;script&gt; 标签</h2>
+<p>如需在 HTML 页面中插入 JavaScript，请使用  &lt;script&gt; 标签。</p>
+<p>&lt;script&gt; 和 &lt;/script&gt;  会告诉 JavaScript 在何处开始和结束。</p>
+<p> &lt;script&gt; 和 &lt;/script&gt;  之间的代码行包含了 JavaScript:</p>
+<div class="code notranslate">
+<div>
+<span class="marked">
+	&lt;script&gt;<br/>
+alert("我的第一个 JavaScript");<br/>
+&lt;/script&gt;</span>
+</div>
+</div>
+<p>您无需理解上面的代码。只需明白，浏览器会解释并执行位于 &lt;script&gt; 和 &lt;/script&gt;之间的 JavaScript 代码 
+</p>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+那些老旧的实例可能会在  &lt;script&gt; 标签中使用 type="text/javascript"。现在已经不必这样做了。JavaScript 是所有现代浏览器以及 HTML5 中的默认脚本语言。</td>
+</tr></table>
+<br/><hr/>
+<h2> &lt;body&gt; 中的 JavaScript </h2>
+<p>在本例中，JavaScript 会在页面加载时向 HTML 的 &lt;body&gt; 写文本：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+.
+.
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+document.write("</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是一个标题</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">");
+document.write("</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是一个段落</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">");
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+.
+.
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_intro_document_write" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>JavaScript 函数和事件</h2>
+<p>上面例子中的 JavaScript 语句，会在页面加载时执行。</p>
+<p>通常，我们需要在某个事件发生时执行代码，比如当用户点击按钮时。</p>
+<p>如果我们把 JavaScript 代码放入函数中，就可以在事件发生时调用该函数。</p>
+<p>您将在稍后的章节学到更多有关 JavaScript 函数和事件的知识。</p>
+<hr/>
+<h2>在 &lt;head&gt; 或者 &lt;body&gt; 的JavaScript </h2>
+<p>您可以在 HTML 文档中放入不限数量的脚本。</p>
+<p>脚本可位于 HTML 的 &lt;body&gt; 或 &lt;head&gt; 部分中，或者同时存在于两个部分中。</p>
+<p>通常的做法是把函数放入 &lt;head&gt; 部分中，或者放在页面底部。这样就可以把它们安置到同一处位置，不会干扰页面的内容。</p>
+<hr/>
+<h2>&lt;head&gt; 中的 JavaScript 函数</h2>
+<p>在本例中，我们把一个 JavaScript 函数放置到 HTML 页面的 &lt;head&gt; 部分。</p>
+<p>该函数会在点击按钮时被调用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+function myFunction()
+{
+    document.getElementById("demo").innerHTML="我的第一个 JavaScript 函数";
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">我的 Web 页面</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">一个段落</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myFunction()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">尝试一下</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_whereto_head" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>&lt;body&gt; 中的 JavaScript 函数</h2>
+<p>在本例中，我们把一个 JavaScript 函数放置到 HTML 页面的 &lt;body&gt; 部分。</p>
+<p>该函数会在点击按钮时被调用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">我的 Web 页面</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">一个段落</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myFunction()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">尝试一下</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+function myFunction()
+{
+    document.getElementById("demo").innerHTML="我的第一个 JavaScript 函数";
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_whereto_body" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>外部的 JavaScript</h2>
+<p>也可以把脚本保存到外部文件中。外部文件通常包含被多个网页使用的代码。</p>
+<p>外部 JavaScript 文件的文件扩展名是 .js。</p>
+<p>如需使用外部文件，请在 &lt;script&gt; 标签的 "src" 属性中设置该 .js 文件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myScript.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_externalexample" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以将脚本放置于 &lt;head&gt; 或者 &lt;body&gt;中，放在 &lt;script&gt; 标签中的脚本与外部引用的脚本运行效果完全一致。<br/></p>
+<p>myScript.js  文件代码如下：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">我的第一个 JavaScript 函数</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+外部脚本不能包含  &lt;script&gt; 标签。</td>
+</tr></table>
+</div>

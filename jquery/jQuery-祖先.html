@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>jQuery 遍历 - <span class="color_h1">祖先</span>
+</h1>
+<hr/>
+<p class="intro">祖先是父、祖父或曾祖父等等。
+</p>
+<p class="intro">通过 jQuery，您能够向上遍历 DOM 树，以查找元素的祖先。</p>
+<hr/>
+<h2>向上遍历 DOM 树</h2>
+<p>这些 jQuery 方法很有用，它们用于向上遍历 DOM 树：</p>
+<ul>
+<li>parent()</li>
+<li>parents()</li>
+<li>parentsUntil()</li>
+</ul>
+<hr/>
+<h2>jQuery parent() 方法</h2>
+<p>parent() 方法返回被选元素的直接父元素。</p>
+<p>该方法只会向上一级对 DOM 树进行遍历。</p>
+<p>下面的例子返回每个 &lt;span&gt; 元素的的直接父元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">span</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">parent</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_parent" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery parents() 方法</h2>
+<p>parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (&lt;html&gt;)。</p>
+<p>下面的例子返回所有 &lt;span&gt; 元素的所有祖先：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">span</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">parents</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_parents" target="_blank">尝试一下 »</a>
+</div>
+<p>您也可以使用可选参数来过滤对祖先元素的搜索。</p>
+<p>下面的例子返回所有 &lt;span&gt; 元素的所有祖先，并且它是 &lt;ul&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">span</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">parents</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">ul</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_parents2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery parentsUntil() 方法</h2>
+<p>parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。</p>
+<p>下面的例子返回介于 &lt;span&gt; 与 &lt;div&gt; 元素之间的所有祖先元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">span</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">parentsUntil</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_parentsuntil" target="_blank">尝试一下 »</a>
+</div>
+</div>

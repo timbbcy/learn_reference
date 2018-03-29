@@ -1,0 +1,87 @@
+<div class="article-intro" id="content">
+<h1><span class="color_h1">现实生活中的</span> XML
+</h1>
+<hr/>
+<p class="intro">如何使用 XML 来交换信息的一些实例。</p>
+<hr/>
+<h2>实例：XML 新闻</h2>
+<p><b>XMLNews 是用于交换新闻和其他信息的规范。</b></p>
+<p>对新闻的供求双方来说，通过使用这种标准，可以使各种类型的新闻信息通过不同软硬件以及编程语言进行的制作、接收和存档更加容易：</p>
+<div class="code notranslate"><div>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;nitf&gt;<br/>
+ 
+&lt;head&gt;<br/>
+   
+&lt;title&gt;Colombia Earthquake&lt;/title&gt;<br/>
+ 
+&lt;/head&gt;<br/>
+ 
+&lt;body&gt;<br/>
+   
+&lt;headline&gt;<br/>
+       
+  &lt;hl1&gt;143 Dead in Colombia Earthquake&lt;/hl1&gt;<br/>
+   
+&lt;/headline&gt;<br/>
+   
+&lt;byline&gt;<br/>
+       
+  &lt;bytag&gt;By Jared Kotler, Associated Press Writer&lt;/bytag&gt;<br/>
+   
+&lt;/byline&gt;<br/>
+   
+&lt;dateline&gt;<br/>
+       
+  &lt;location&gt;Bogota, Colombia&lt;/location&gt;<br/>
+       
+  &lt;date&gt;Monday January 25 1999 7:28 ET&lt;/date&gt;<br/>
+   
+&lt;/dateline&gt;<br/>
+ 
+&lt;/body&gt;<br/>
+&lt;/nitf&gt;</div></div>
+<br/><hr/>
+<h2>实例：XML 气象服务</h2>
+<p>XML 国家气象服务案例，来自 NOAA（National Oceanic and Atmospheric Administration）：</p>
+<div class="code notranslate"><div>
+&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;<br/>
+&lt;current_observation&gt;<br/><br/>
+&lt;credit&gt;NOAA's National Weather Service&lt;/credit&gt;<br/>
+&lt;credit_URL&gt;http://weather.gov/&lt;/credit_URL&gt;<br/><br/>
+&lt;image&gt;<br/>
+ 
+&lt;url&gt;http://weather.gov/images/xml_logo.gif&lt;/url&gt;<br/>
+ 
+&lt;title&gt;NOAA's National Weather Service&lt;/title&gt;<br/>
+ 
+&lt;link&gt;http://weather.gov&lt;/link&gt;<br/>
+&lt;/image&gt;<br/><br/>
+&lt;location&gt;New York/John F. Kennedy Intl Airport, NY&lt;/location&gt;<br/>
+&lt;station_id&gt;KJFK&lt;/station_id&gt;<br/>
+&lt;latitude&gt;40.66&lt;/latitude&gt;<br/>
+&lt;longitude&gt;-73.78&lt;/longitude&gt;<br/>
+&lt;observation_time_rfc822&gt;Mon, 11 Feb 2008 06:51:00 -0500 EST<br/>
+&lt;/observation_time_rfc822&gt;<br/><br/>
+&lt;weather&gt;A Few Clouds&lt;/weather&gt;<br/>
+&lt;temp_f&gt;11&lt;/temp_f&gt;<br/>
+&lt;temp_c&gt;-12&lt;/temp_c&gt;<br/>
+&lt;relative_humidity&gt;36&lt;/relative_humidity&gt;<br/>
+&lt;wind_dir&gt;West&lt;/wind_dir&gt;<br/>
+&lt;wind_degrees&gt;280&lt;/wind_degrees&gt;<br/> 
+&lt;wind_mph&gt;18.4&lt;/wind_mph&gt;<br/>
+&lt;wind_gust_mph&gt;29&lt;/wind_gust_mph&gt;<br/> 
+&lt;pressure_mb&gt;1023.6&lt;/pressure_mb&gt;<br/>
+&lt;pressure_in&gt;30.23&lt;/pressure_in&gt;<br/>
+&lt;dewpoint_f&gt;-11&lt;/dewpoint_f&gt;<br/>
+&lt;dewpoint_c&gt;-24&lt;/dewpoint_c&gt;<br/>
+&lt;windchill_f&gt;-7&lt;/windchill_f&gt;<br/>
+&lt;windchill_c&gt;-22&lt;/windchill_c&gt;<br/>
+&lt;visibility_mi&gt;10.00&lt;/visibility_mi&gt;<br/><br/>
+&lt;icon_url_base&gt;http://weather.gov/weather/images/fcicons/&lt;/icon_url_base&gt;<br/>
+&lt;icon_url_name&gt;nfew.jpg&lt;/icon_url_name&gt;<br/>
+&lt;disclaimer_url&gt;http://weather.gov/disclaimer.html&lt;/disclaimer_url&gt;<br/>
+&lt;copyright_url&gt;http://weather.gov/disclaimer.html&lt;/copyright_url&gt;<br/><br/>
+&lt;/current_observation&gt;</div></div>
+<br/><br/>
+</div>

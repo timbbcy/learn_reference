@@ -1,0 +1,28 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">异常处理</span></h1>
+<p>当编写JSP程序的时候，程序员可能会遗漏一些BUG，这些BUG可能会出现在程序的任何地方。JSP代码中通常有以下几类异常:</p>
+<ul>
+<li>
+检查型异常:检查型异常就是一个典型的用户错误或者一个程序员无法预见的错误。举例来说，如果一个文件将要被打开，但是无法找到这个文件，则一个异常被抛出。这些异常不能再编译期被简单地忽略。</li>
+<li>
+运行时异常:一个运行时异常可能已经被程序员避免，这种异常在编译期将会被忽略。</li>
+<li>
+错误:错误不是异常，但问题是它超出了用户或者程序员的控制范围。错误通常会在代码中被忽略，您几乎不能拿它怎么样。举例来说，栈溢出错误。这些错误都会在编译期被忽略。</li>
+</ul><p>
+本节将会给出几个简单而优雅的方式来处理运行时异常和错误。</p><hr/>
+<h2>
+使用Exception对象</h2><p>
+exception对象是Throwable子类的一个实例，只在错误页面中可用。下表列出了Throwable类中一些重要的方法:</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+<strong>序号</strong></th>
+<th>
+<strong>方法</strong><strong>&amp;</strong><strong>描述</strong></th>
+</tr>
+<tr>
+<td>
+1</td>
+<td>
+<strong>public String getMessage()</strong></td></tr></tbody></table></div>

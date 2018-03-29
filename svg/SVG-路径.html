@@ -1,0 +1,38 @@
+<div class="article-intro" id="content">
+<h1>SVG <span class="color_h1">&lt;path&gt;</span>
+</h1>
+<hr/>
+<h2>SVG 路径 - &lt;path&gt;</h2>
+<p>&lt;path&gt; 元素用于定义一个路径。</p>
+<p>下面的命令可用于路径数据：</p>
+<ul class="dd">
+<li>M = moveto</li>
+<li>L = lineto</li>
+<li>H = horizontal lineto</li>
+<li>V = vertical lineto</li>
+<li>C = curveto</li>
+<li>S = smooth curveto</li>
+<li>Q = quadratic Bézier curve</li>
+<li>T = smooth quadratic Bézier curveto</li>
+<li>A = elliptical Arc</li>
+<li>Z = closepath</li>
+</ul>
+<p><strong>注意：</strong>以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。</p>
+<hr/>
+<h2>实例 1</h2>
+<p>上面的例子定义了一条路径，它开始于位置150 0，到达位置75 200，然后从那里开始到225 200，最后在150 0关闭路径。</p>
+<object data="/try/demo_source/path1.svg" height="210" type="image/svg+xml" width="500">
+<embed src="/try/demo_source/path1.svg" type="image/svg+xml"/>
+</object>
+<p>下面是SVG代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;<br/>
+ 
+&lt;path d="M150 0 L75 200 L225 200 Z" /&gt;<br/>
+&lt;/svg&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_path" target="_blank">尝试一下 »</a>
+</div>
+<p>对于Opera用户：<a href="/try/demo_source/path1.svg" target="_blank">查看SVG文件</a>（右键单击SVG图形预览源）。</p></div>

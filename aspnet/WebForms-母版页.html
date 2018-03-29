@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- 母版页</span>
+</h1>
+<hr/>
+<p class="intro">母版页为您的网站的其他页面提供模版。</p>
+<hr/>
+<h2>母版页</h2>
+<p>母版页允许您为您的 web 应用程序中的所有页面（或页面组）创建一致的外观和行为。</p>
+<p>母版页为其他页面提供模版，带有共享的布局和功能。母版页为内容定义了可被内容页覆盖的占位符。输出结果是母版页和内容页的组合。</p>
+<p>内容页包含您想要显示的内容。</p>
+<p>当用户请求内容页时，ASP.NET 会对页面进行合并以生成结合了母版页布局和内容页内容的输出。</p>
+<hr/>
+<h2>母版页实例</h2>
+<div class="code notranslate"><div>
+
+&lt;%@ Master %&gt;<br/><br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/>
+&lt;h1&gt;Standard Header From Masterpage&lt;/h1&gt;<br/>&lt;asp:ContentPlaceHolder id="CPH1" runat="server"&gt;<br/>
+&lt;/asp:ContentPlaceHolder&gt;<br/>&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>上面的母版页是一个为其他页面设计的普通 HTML 模版页。</p>
+<p><b>@ Master</b> 指令定义它为一个母版页。</p>
+<p>母版页为单独的内容包含占位标签 <b>&lt;asp:ContentPlaceHolder&gt;</b>。</p>
+<p><b>id="CPH1"</b> 属性标识占位符，在相同母版页中允许多个占位符。</p>
+<p>这个母版页被保存为 <b>"master1.master"</b>。</p>
+<p><img alt="lamp" height="15" src="/images/lamp.gif" width="15"/> 注释：母版页也能够包含代码，允许动态的内容。</p>
+<hr/>
+<h2>内容页实例</h2>
+<div class="code notranslate"><div>
+
+&lt;%@ Page MasterPageFile="master1.master" %&gt;<br/><br/>
+&lt;asp:Content
+ContentPlaceHolderId="CPH1" runat="server"&gt;<br/> 
+&lt;h2&gt;Individual Content&lt;/h2&gt;<br/>
+ 
+&lt;p&gt;Paragraph 1&lt;/p&gt;<br/>
+ 
+&lt;p&gt;Paragraph 2&lt;/p&gt;<br/>
+&lt;/asp:Content&gt;</div></div>
+<p>上面的内容页是站点中独立的内容页中的一个。</p>
+<p><b>@ Page</b> 指令定义它为一个标准的内容页。</p>
+<p>内容页包含内容标签 <b>&lt;asp:Content&gt;</b>，该标签引用了母版页（ContentPlaceHolderId="CPH1"）。</p>
+<p>这个内容页被保存为 <b>"mypage1.aspx"</b>。</p>
+<p>当用户请求该页面时，ASP.NET 就会将母版页与内容页进行合并。</p>
+<p><a href="/try/demo_source/mypage1.aspx.htm" target="_blank">点击这里显示 mypage1.aspx</a></p>
+<p><img alt="lamp" height="15" src="/images/lamp.gif" width="15"/>注释：内容文本必须位于 &lt;asp:Content&gt; 标签内部。标签外的内容文本是不允许的。</p>
+<hr/>
+<h2>带控件的内容页</h2>
+<div class="code notranslate"><div>
+
+&lt;%@ Page MasterPageFile="master1.master" %&gt;<br/><br/>
+&lt;asp:Content
+ContentPlaceHolderId="CPH1" runat="server"&gt;<br/> 
+&lt;h2&gt;RUNOOB&lt;/h2&gt;<br/>
+ 
+&lt;form runat="server"&gt;<br/>
+   
+&lt;asp:TextBox id="textbox1" runat="server" /&gt;<br/>
+   
+&lt;asp:Button id="button1" runat="server" text="Button" /&gt;<br/>
+ 
+&lt;/form&gt;<br/>
+&lt;/asp:Content&gt;</div></div>
+<p>上面的内容页演示了如何把 .NET 控件插入内容页，就像插入一个普通的页面中。</p>
+<p><a href="/try/demo_source/mypage2.aspx.htm" target="_blank">点击这里显示 mypage2.aspx</a></p>
+<br/>
+</div>

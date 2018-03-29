@@ -1,0 +1,103 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">发送电子邮件</span>
+</h1>
+<hr/>
+<p class="intro">PHP 允许您从脚本直接发送电子邮件。</p>
+<hr/>
+<h2>PHP mail() 函数</h2>
+<p>PHP mail() 函数用于从脚本中发送电子邮件。</p>
+<p><b>语法</b></p>
+<div class="code notranslate"><div>
+
+mail(to,subject,message,headers,parameters)
+
+</div></div>
+<br/><table class="reference notranslate">
+<tr>
+<th align="left" valign="top" width="20%">参数</th>
+<th align="left" valign="top" width="80%">描述</th>
+</tr>
+<tr>
+<td valign="top">to</td>
+<td valign="top">必需。规定 email 接收者。</td>
+</tr>
+<tr>
+<td valign="top">subject</td>
+<td valign="top">必需。规定 email 的主题。<b>注释：</b>该参数不能包含任何新行字符。</td>
+</tr>
+<tr>
+<td valign="top">message</td>
+<td valign="top">必需。定义要发送的消息。应使用 LF (\n) 来分隔各行。每行应该限制在 70 个字符内。</td>
+</tr>
+<tr>
+<td valign="top">headers</td>
+<td valign="top">可选。规定附加的标题，比如 From、Cc 和 Bcc。应当使用 CRLF (\r\n) 分隔附加的标题。</td>
+</tr>
+<tr>
+<td valign="top">parameters</td>
+<td valign="top">可选。对邮件发送程序规定额外的参数。</td>
+</tr>
+</table>
+<p><b>注释：</b>PHP 运行邮件函数需要一个已安装且正在运行的邮件系统(如：sendmail、postfix、qmail等)。所用的程序通过在 php.ini 文件中的配置设置进行定义。请在我们的 <a href="php-ref-mail.html">PHP Mail 参考手册</a> 阅读更多内容。</p>
+<hr/>
+<h2>PHP 简易 E-Mail</h2>
+<p>通过 PHP 发送电子邮件的最简单的方式是发送一封文本 email。</p>
+<p>在下面的实例中，我们首先声明变量($to, $subject, $message, $from, $headers)，然后我们在 mail() 函数中使用这些变量来发送了一封 E-mail：</p>
+<pre>
+&lt;?php
+$to = "someone@example.com";         // 邮件接收者
+$subject = "参数邮件";                // 邮件标题
+$message = "Hello! 这是邮件的内容。";  // 邮件正文
+$from = "someonelse@example.com";   // 邮件发送者
+$headers = "From:" . $from;         // 头部信息设置
+mail($to,$subject,$message,$headers);
+echo "邮件已发送";
+?&gt;
+</pre>
+<br/><hr/>
+<h2>PHP Mail 表单</h2>
+<p>通过 PHP，您能够在自己的站点制作一个反馈表单。下面的实例向指定的 e-mail 地址发送了一条文本消息：</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;?php
+if (isset($_REQUEST['email'])) { // 如果接收到邮箱参数则发送邮件
+    // 发送邮件
+    $email = $_REQUEST['email'] ;
+    $subject = $_REQUEST['subject'] ;
+    $message = $_REQUEST['message'] ;
+    mail("someone@example.com", $subject,
+    $message, "From:" . $email);
+    echo "邮件发送成功";
+} else { // 如果没有邮箱参数则显示表单
+    echo "&lt;form method='post' action='mailform.php'&gt;
+    Email: &lt;input name='email' type='text'&gt;&lt;br&gt;
+    Subject: &lt;input name='subject' type='text'&gt;&lt;br&gt;
+    Message:&lt;br&gt;
+    &lt;textarea name='message' rows='15' cols='40'&gt;
+    &lt;/textarea&gt;&lt;br&gt;
+    &lt;input type='submit'&gt;
+    &lt;/form&gt;";
+}
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<br/>
+实例解释：<ul>
+<li>首先，检查是否填写了邮件输入框</li>
+<li>如果未填写（比如在页面被首次访问时），输出 HTML 表单</li>
+<li>如果已填写（在表单被填写后），从表单发送电子邮件</li>
+<li>当填写完表单点击提交按钮后，页面重新载入，可以看到邮件输入被重置，同时显示邮件发送成功的消息</li>
+</ul>
+<p><b>注释：</b>这个简易发送 e-mail 不安全，在本教程的下一章中，您将阅读到更多关于电子邮件脚本中的安全隐患，我们将为您讲解如何验证用户输入使它更安全。</p>
+<hr/>
+<h2>PHP Mail 参考手册</h2>
+<p>如需查看更多关于 PHP mail() 函数的信息，请访问我们的 <a href="php-ref-mail.html">PHP Mail 参考手册</a>。</p>
+</div>

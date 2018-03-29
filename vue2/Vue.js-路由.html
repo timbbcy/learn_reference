@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>Vue.js 路由</h1>
+<p>本章节我们将为大家介绍 Vue.js  路由。</p>
+<p>Vue.js 路由允许我们通过不同的 URL 访问不同的内容。</p>
+<p>通过 Vue.js 可以实现多视图的单页Web应用（single page web application，SPA）。</p>
+<p>Vue.js 路由需要载入 <a href="https://github.com/vuejs/vue-router" rel="external" target="_blank">vue-router 库</a></p>
+<p>中文文档地址：<a href="http://router.vuejs.org/zh-cn/" rel="external" target="_blank">vue-router文档</a>。</p>
+<hr/>
+<h2>安装</h2>
+<h3>1、直接下载 / CDN</h3>
+<pre>
+https://unpkg.com/vue-router/dist/vue-router.js
+</pre>
+<h3>NPM</h3>
+<p>推荐使用淘宝镜像：</p>
+<pre>
+cnpm install vue-router</pre>
+<hr/>
+<h2>简单实例</h2>
+<p>Vue.js + vue-router 可以很简单的实现单页应用。</p>
+<p>以下实例中我们将 vue-router 加进来，然后配置组件和路由映射，再告诉 vue-router 在哪里渲染它们。代码如下所示：</p>
+<div class="example">
+<h2 class="example">HTML 代码</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://unpkg.com/vue/dist/vue.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://unpkg.com/vue-router/dist/vue-router.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello App!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 使用 router-link 组件来导航. </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 通过传入 `to` 属性指定链接. </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">router-link</span><span class="hl-code"> </span><span class="hl-var">to</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/foo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Go to Foo</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">router-link</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">router-link</span><span class="hl-code"> </span><span class="hl-var">to</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/bar</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Go to Bar</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">router-link</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 路由出口 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 路由匹配到的组件将渲染在这里 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">router-view</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">router-view</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<div class="example">
+<h2 class="example">JavaScript 代码</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">//</span><span class="hl-comment"> 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 1. 定义（路由）组件。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 可以从其他文件 import 进来</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">const</span><span class="hl-code"> </span><span class="hl-identifier">Foo</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">template</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">&lt;div&gt;foo&lt;/div&gt;</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">const</span><span class="hl-code"> </span><span class="hl-identifier">Bar</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">template</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">&lt;div&gt;bar&lt;/div&gt;</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 2. 定义路由</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 每个路由应该映射一个组件。 其中"component" 可以是</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 通过 Vue.extend() 创建的组件构造器，</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 或者，只是一个组件配置对象。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 我们晚点再讨论嵌套路由。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">const</span><span class="hl-code"> </span><span class="hl-identifier">routes</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">path</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">/foo</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">component</span><span class="hl-code">: </span><span class="hl-identifier">Foo</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">,
+  </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-identifier">path</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">/bar</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">component</span><span class="hl-code">: </span><span class="hl-identifier">Bar</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 3. 创建 router 实例，然后传 `routes` 配置</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 你还可以传别的配置参数, 不过先这么简单着吧。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">const</span><span class="hl-code"> </span><span class="hl-identifier">router</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">VueRouter</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">routes</span><span class="hl-code"> </span><span class="hl-comment">//</span><span class="hl-comment"> （缩写）相当于 routes: routes</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 4. 创建和挂载根实例。</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 记得要通过 router 配置参数注入路由，</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 从而让整个应用都有路由功能</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">const</span><span class="hl-code"> </span><span class="hl-identifier">app</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Vue</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">router</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">.$</span><span class="hl-identifier">mount</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">#app</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 现在，应用已经启动了！</span><span class="hl-comment"></span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=vue2-routing&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<h3>NPM 路由实例</h3>
+<p>接下来我们演示了一个使用 npm 简单的路由实例，开始前，请先下载该实例源代码：</p>
+<a class="download" href="http://static.runoob.com/download/vue-2.0-simple-routing-example-master.zip">路由实例</a>
+<p>你也可以在 Github 上下载：<a href="https://github.com/chrisvfritz/vue-2.0-simple-routing-example" target="_blank">https://github.com/chrisvfritz/vue-2.0-simple-routing-example</a></p>
+<p>下载完后，解压该目录，重命名目录为 vue-demo，vu 并进入该目录，执行以下命令：</p>
+<pre>
+# 安装依赖，使用淘宝资源命令 cnpm
+cnpm install
+
+# 启动应用，地址为 localhost:8080
+cnpm run dev
+</pre>
+<p>如果你需要发布到正式环境可以执行以下命令：</p>
+<pre>
+cnpm run build
+</pre>
+<p>执行成功后，访问 http://localhost:8080 即可看到如下界面：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2017/01/30646E50-8956-47F0-9DBE-4A2023B873E7.jpg"/></p>
+</div>

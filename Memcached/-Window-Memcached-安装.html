@@ -1,0 +1,50 @@
+<div class="article-intro" id="content">
+<h1>Window 下安装 Memcached</h1>
+<p>官网上并未提供 Memcached 的Window平台安装包，我们可以使用以下链接来下载，你需要根据自己的系统平台及需要的版本号点击对应的链接下载即可：</p>
+<ul>
+<li>
+32位系统 1.2.5版本：<a href="http://static.runoob.com/download/memcached-1.2.5-win32-bin.zip" target="_blank">http://static.runoob.com/download/memcached-1.2.5-win32-bin.zip</a></li><li>
+32位系统 1.2.6版本：<a href="http://static.runoob.com/download/memcached-1.2.6-win32-bin.zip" target="_blank">http://static.runoob.com/download/memcached-1.2.6-win32-bin.zip</a></li><li>
+32位系统 1.4.4版本：<a href="http://static.runoob.com/download/memcached-win32-1.4.4-14.zip" target="_blank">http://static.runoob.com/download/memcached-win32-1.4.4-14.zip</a></li><li>
+64位系统 1.4.4版本：<a href="http://static.runoob.com/download/memcached-win64-1.4.4-14.zip" target="_blank">http://static.runoob.com/download/memcached-win64-1.4.4-14.zip</a></li><li>
+32位系统 1.4.5版本：<a href="http://static.runoob.com/download/memcached-1.4.5-x86.zip" target="_blank">http://static.runoob.com/download/memcached-1.4.5-x86.zip</a></li><li>
+64位系统 1.4.5版本：<a href="http://static.runoob.com/download/memcached-1.4.5-amd64.zip" target="_blank">http://static.runoob.com/download/memcached-1.4.5-amd64.zip</a></li></ul>
+<p>在 1.4.5 版本以前 memcached 可以作为一个服务安装，而在 1.4.5 及之后的版本删除了该功能。因此我们以下介绍两个不同版本
+1.4.4 及 1.4.5的不同安装方法：</p>
+<hr/>
+<h2>memcached &lt;1.4.5  版本安装</h2>
+<p>1、解压下载的安装包到指定目录。</p>
+<p>2、在 1.4.5 版本以前 memcached 可以作为一个服务安装，使用管理员权限运行以下命令：</p>
+<pre>
+c:\memcached\memcached.exe -d install
+</pre>
+<p><b>注意：</b>你需要使用真实的路径替代 c:\memcached\memcached.exe。</p>
+<p>3、然后我们可以使用以下命令来启动和关闭 memcached 服务：</p>
+<pre>
+c:\memcached\memcached.exe -d start
+c:\memcached\memcached.exe -d stop
+</pre>
+<p>4、如果要修改 memcached 的配置项, 可以在命令行中执行 <em>regedit.exe</em> 命令打开注册表并找到 "<em>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached</em>" 来进行修改。</p>
+<p>如果要提供 memcached 使用的缓存配置 可以修改 <em>ImagePath</em> 为:</p>
+<pre>"c:\memcached\memcached.exe" -d runservice -m 512</pre>
+<p><b>-m 512</b> 意思是设置 memcached 最大的缓存配置为512M。</p>
+<p>此外我们还可以通过使用 "<em>c:\memcached\memcached.exe -h</em>" 命令查看更多的参数配置。</p>
+<p>5、如果我们需要卸载 memcached ，可以使用以下命令：</p>
+<pre>
+c:\memcached\memcached.exe -d uninstall
+</pre>
+<hr/>
+<h2>memcached &gt;= 1.4.5 版本安装</h2>
+<p>1、解压下载的安装包到指定目录。</p>
+<p>2、在 memcached1.4.5 版本之后，memcached 不能作为服务来运行，需要使用任务计划中来开启一个普通的进程，在 window 启动时设置 memcached自动执行。</p><p>我们使用管理员身份执行以下命令将 memcached 添加来任务计划表中：</p>
+<pre>
+schtasks /create /sc onstart /tn memcached /tr "'c:\memcached\memcached.exe' -m 512"
+</pre>
+<p><b>注意：</b>你需要使用真实的路径替代 c:\memcached\memcached.exe。</p>
+<p><b>注意：</b><b>-m 512</b> 意思是设置 memcached 最大的缓存配置为512M。</p>
+<p><b>注意：</b>我们可以通过使用 "<em>c:\memcached\memcached.exe -h</em>" 命令查看更多的参数配置。</p>
+<p>3、如果需要删除 memcached 的任务计划可以执行以下命令：</p>
+<pre>
+schtasks /delete /tn memcached
+</pre>
+</div>

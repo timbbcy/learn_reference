@@ -1,0 +1,15 @@
+<div class="article-intro" id="content">
+<h1>C 标准库 - <span class="color_h1">&lt;assert.h&gt;</span></h1>
+<h2>简介</h2>
+<p>C 标准库的 <b>assert.h</b>头文件提供了一个名为 <b>assert</b> 的宏，它可用于验证程序做出的假设，并在假设为假时输出诊断消息。</p>
+<p>已定义的宏 <b>assert</b> 指向另一个宏 <b>NDEBUG</b>，宏 <b>NDEBUG</b> 不是 &lt;assert.h&gt; 的一部分。如果已在引用 &lt;assert.h&gt; 的源文件中定义 NDEBUG 为宏名称，则 <b>assert</b> 宏的定义如下：</p>
+<pre>
+#define assert(ignore) ((void)0)
+</pre>
+<h2>库宏</h2>
+<p>下面列出了头文件 assert.h 中定义的唯一的函数：</p>
+<table class="reference notranslate">
+<tr><th style="width:5%">序号</th><th>函数 &amp; 描述</th></tr>
+<tr><td>1</td><td><a href="c-macro-assert.html">void assert(int expression)</a><br/>这实际上是一个宏，不是一个函数，可用于在 C 程序中添加诊断。</td></tr>
+</table>
+</div>

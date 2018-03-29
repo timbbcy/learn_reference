@@ -1,0 +1,65 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">Autocomplete</span></h1>
+<div class="tutintro">
+<p>jQuery Autocomplete 插件根据用户输入值进行搜索和过滤，让用户快速找到并从预设值列表中选择。通过给 Autocomplete 字段焦点或者在其中输入字符，插件开始搜索匹配的条目并显示供选择的值的列表。通过输入更多的字符，用户可以过滤列表以获得更好的匹配。</p>
+<p>该插件现在是 <a href="http://www.w3cschool.cc/jqueryui/example-autocomplete.html">jQuery UI</a> 的一部分，独立的版本不会再更新了。目前版本是 1.6。</p>
+<p>访问 <a href="https://jqueryui.com/autocomplete/" target="_blank">jQuery Autocomplete 官网</a>，下载 jQuery Autocomplete 插件。</p>
+<p>如需了解更多有关 Autocomplete 的细节，请查看 API 文档 <a href="http://www.w3cschool.cc/jqueryui/api-autocomplete.html">自动完成部件（Autocomplete Widget）</a>。</p>
+</div>
+<h2>实例演示</h2>
+<p>jQuery Autocomplete 插件演示。</p>
+<pre>
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI Autocomplete - Default functionality&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.10.2.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div class="ui-widget"&gt;
+  &lt;label for="tags"&gt;Tags: &lt;/label&gt;
+  &lt;input id="tags"&gt;
+&lt;/div&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jquery-plugin-autocomplete" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

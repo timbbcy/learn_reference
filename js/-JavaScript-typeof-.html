@@ -1,0 +1,98 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">typeof, null, 和 undefined</span></h1>
+<hr/>
+<p class="intro">JavaScript typeof, null, undefined, valueOf()。<br/>
+</p>
+<hr/>
+<h2>typeof 操作符</h2>
+<p>你可以使用 typeof 操作符来检测变量的数据类型。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">typeof</span> <span class="highVAL">"John"</span>                <span class="highCOM">// 返回 string <br/></span>
+<span class="highELE">typeof</span> <span class="highVAL">3.14</span>                  <span class="highCOM">// 返回 number<br/></span>
+<span class="highELE">typeof</span> <span class="highVAL">false</span>                 <span class="highCOM">// 返回 boolean<br/></span>
+<span class="highELE">typeof</span> [<span class="highVAL">1</span>,<span class="highVAL">2</span>,<span class="highVAL">3</span>,<span class="highVAL">4</span>]             <span class="highCOM">// 返回 object<br/></span>
+<span class="highELE">typeof</span> {name:<span class="highVAL">'John'</span>, age:34} <span class="highCOM">// 返回 object
+</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_typeof" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td> 在JavaScript中，数组是一种特殊的对象类型。 因此 typeof [1,2,3,4] 
+返回 object。  </td>
+</tr></tbody></table>
+<p></p>
+<hr/>
+<h2>null</h2>
+<p>在 JavaScript 中 null 表示 "什么都没有"。</p>
+<p>null是一个只有一个值的特殊类型。表示一个空对象引用。</p>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px">
+<img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+用 typeof 检测 null 返回是object。</td>
+</tr></tbody></table>
+<p></p>
+<p>你可以设置为 null 来清空对象:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span>
+person = <span class="highVAL">null</span>;           <span class="highCOM">// 值为 null(空), 但类型为对象<br/></span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_null" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以设置为 undefined 来清空对象:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span>
+person = undefined;     <span class="highCOM">// 值为 undefined, 
+    类型为 undefined<br/></span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_undefined_1" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>undefined</h2>
+<p>在 JavaScript 中, <strong>undefined</strong> 是一个没有设置值的变量。</p>
+<p> <strong>typeof</strong> 一个没有值的变量会返回 <strong>
+undefined</strong>。 </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span> person;                  <span class="highCOM">// 值为 undefined(空), 类型是undefined</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_undefined" target="_blank">尝试一下 »</a>
+</div>
+<p>任何变量都可以通过设置值为 <strong>undefined</strong> 来清空。
+类型为 <strong>undefined</strong>.</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	person = undefined;          <span class="highCOM">// 值为 undefined, 
+    类型是undefined</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_undefined_2" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>undefined 和 null 的区别</h2>
+<div class="example"><h2 class="example">实例</h2>
+<p>null 和 undefined 的值相等，但类型不等：</p>
+<div class="example_code">
+<span class="highELE">typeof</span> undefined             
+    <span class="highCOM">// undefined<br/></span><span class="highELE">typeof</span> <span class="highVAL">null</span>                  
+    <span class="highCOM">// object<br/></span><span class="highVAL">null</span> === undefined           
+    <span class="highCOM">// false<br/></span><span class="highVAL">null</span> == undefined            
+    <span class="highCOM">// true</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_undefined_3" target="_blank">尝试一下 »</a>
+</div>
+</div>

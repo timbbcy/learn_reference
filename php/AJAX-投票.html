@@ -1,0 +1,162 @@
+<div class="article-intro" id="content">
+<h1>PHP 实例 - <span class="color_h1">AJAX 投票</span>
+</h1>
+<hr/>
+<h2>AJAX 投票</h2>
+<p>在下面的实例中，我们将演示一个投票程序，通过它，投票结果在网页不进行刷新的情况下被显示。</p>
+<div id="poll">
+<script>
+function getVote(int)
+{
+  if (window.XMLHttpRequest)
+  {// IE7+, Firefox, Chrome, Opera, Safari 执行代码
+    xmlhttp=new XMLHttpRequest();
+  }
+  else
+  {// IE6, IE5 执行代码
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+      document.getElementById("poll").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","/try/demo_source/poll_vote.php?vote="+int,true);
+  xmlhttp.send();
+}
+</script>
+<h3>你喜欢 PHP 和 AJAX 吗?</h3>
+<form id="form">
+是: 
+<input name="vote" onclick="getVote(this.value)" type="radio" value="0"/>
+<br/>
+否: 
+<input name="vote" onclick="getVote(this.value)" type="radio" value="1"/>
+</form>
+</div>
+<hr/>
+<h2>实例解释 - HTML 页面</h2>
+<p>当用户选择上面的某个选项时，会执行名为 "getVote()" 的函数。该函数由 "onclick" 事件触发。
+</p>
+<p><strong>poll.html</strong> 文件代码如下：</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;script&gt;
+function getVote(int) {
+  if (window.XMLHttpRequest) {
+    // IE7+, Firefox, Chrome, Opera, Safari 执行代码
+    xmlhttp=new XMLHttpRequest();
+  } else {
+    // IE6, IE5 执行代码
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+    {
+      document.getElementById("poll").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","poll_vote.php?vote="+int,true);
+  xmlhttp.send();
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id="poll"&gt;
+&lt;h3&gt;你喜欢 PHP 和 AJAX 吗?&lt;/h3&gt;
+&lt;form&gt;
+是:
+&lt;input type="radio" name="vote" value="0" onclick="getVote(this.value)"&gt;
+&lt;br&gt;否:
+&lt;input type="radio" name="vote" value="1" onclick="getVote(this.value)"&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>getVote() 函数会执行以下步骤：</p>
+<ul>
+<li>创建 XMLHttpRequest 对象</li>
+<li>创建在服务器响应就绪时执行的函数</li>
+<li>向服务器上的文件发送请求</li>
+<li>请注意添加到 URL 末端的参数（q）（包含下拉列表的内容）</li>
+</ul>
+<hr/>
+<h2>PHP 文件</h2>
+<p>上面这段通过 JavaScript 调用的服务器页面是名为 "<strong>poll_vote.php</strong>" 的 PHP 文件：</p>
+<pre>
+&lt;?php
+$vote = htmlspecialchars($_REQUEST['vote']);
+
+// 获取文件中存储的数据
+$filename = "poll_result.txt";
+$content = file($filename);
+
+// 将数据分割到数组中
+$array = explode("||", $content[0]);
+$yes = $array[0];
+$no = $array[1];
+
+if ($vote == 0)
+{
+  $yes = $yes + 1;
+}
+
+if ($vote == 1)
+{
+  $no = $no + 1;
+}
+
+// 插入投票数据
+$insertvote = $yes."||".$no;
+$fp = fopen($filename,"w");
+fputs($fp,$insertvote);
+fclose($fp);
+?&gt;
+
+&lt;h2&gt;结果:&lt;/h2&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+  &lt;td&gt;是:&lt;/td&gt;
+  &lt;td&gt;
+  &lt;span style="display: inline-block; background-color:green;
+      width:&lt;?php echo(100*round($yes/($no+$yes),2)); ?&gt;px;
+      height:20px;" &gt;&lt;/span&gt;
+  &lt;?php echo(100*round($yes/($no+$yes),2)); ?&gt;%
+  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+  &lt;td&gt;否:&lt;/td&gt;
+  &lt;td&gt;
+  &lt;span style="display: inline-block; background-color:red;
+      width:&lt;?php echo(100*round($no/($no+$yes),2)); ?&gt;px;
+      height:20px;"&gt;&lt;/span&gt;
+  &lt;?php echo(100*round($no/($no+$yes),2)); ?&gt;%
+  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+<p>当所选的值从 JavaScript 发送到 PHP 文件时，将发生：</p>
+<ol>
+<li>获取 "poll_result.txt" 文件的内容</li>
+<li>把文件内容放入变量，并向被选变量累加 1</li>
+<li>把结果写入 "poll_result.txt" 文件</li>
+<li>输出图形化的投票结果</li>
+</ol>
+<hr/>
+<h2>文本文件</h2>
+<p>文本文件（<strong>poll_result.txt</strong>）中存储来自投票程序的数据。 </p>
+<p>它存储的数据如下所示：</p>
+<pre>
+3||4
+</pre>
+<p>第一个数字表示 "Yes" 的投票数，第二个数字表示 "No" 的投票数。</p>
+<p><b>注释：</b>请记得只允许您的 Web 服务器来编辑该文本文件。<b>不要</b>让其他人获得访问权，除了 Web 服务器 (PHP)。</p>
+</div>

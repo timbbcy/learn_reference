@@ -1,0 +1,99 @@
+<div class="article-intro" id="content">
+<h1>Swift 方法</h1>
+<p>Swift 方法是与某些特定类型相关联的函数</p>
+<p>在 Objective-C 中，类是唯一能定义方法的类型。但在 Swift 中，你不仅能选择是否要定义一个类/结构体/枚举，还能灵活的在你创建的类型（类/结构体/枚举）上定义方法。</p>
+<hr/>
+<h2>实例方法</h2>
+<p>在 Swift 语言中，实例方法是属于某个特定类、结构体或者枚举类型实例的方法。</p>
+<p>实例方法提供以下方法：</p>
+<ul>
+<li><p>可以访问和修改实例属性</p></li>
+<li><p>提供与实例目的相关的功能</p></li>
+</ul>
+<p>实例方法要写在它所属的类型的前后大括号({})之间。</p>
+<p>实例方法能够隐式访问它所属类型的所有的其他实例方法和属性。
+</p><p>实例方法只能被它所属的类的某个特定实例调用。</p><p>实例方法不能脱离于现存的实例而被调用。</p>
+<h3>语法</h3>
+<pre>
+func funcname(Parameters) -&gt; returntype
+{
+    Statement1
+    Statement2
+    ……
+    Statement N
+    return parameters
+}
+</pre>
+<h3>实例</h3>
+<pre>
+import Cocoa
+
+class Counter {
+    var count = 0
+    func increment() {
+        count += 1
+    }
+    func incrementBy(amount: Int) {
+        count += amount
+    }
+    func reset() {
+        count = 0
+    }
+}
+// 初始计数值是0
+let counter = Counter()
+
+// 计数值现在是1
+counter.increment()
+
+// 计数值现在是6
+counter.incrementBy(amount: 5)
+print(counter.count)
+
+// 计数值现在是0
+counter.reset()
+print(counter.count)
+</pre><p>以上程序执行输出结果为：</p>
+<pre>
+6
+0
+</pre>
+<p>Counter类定义了三个实例方法：</p>
+<ul>
+<li><b>increment</b> 让计数器按 1 递增；</li>
+<li><b>incrementBy(amount: Int)</b> 让计数器按一个指定的整数值递增；</li>
+<li><b>reset</b> 将计数器重置为0。</li>
+</ul><p><b>Counter</b> 这个类还声明了一个可变属性 <b>count</b>，用它来保持对当前计数器值的追踪。</p>
+<hr/>
+<h2>方法的局部参数名称和外部参数名称</h2>
+<p>Swift 函数参数可以同时有一个局部名称（在函数体内部使用）和一个外部名称（在调用函数时使用</p>
+<p>Swift 中的方法和 Objective-C 中的方法极其相似。像在 Objective-C 中一样，Swift 中方法的名称通常用一个介词指向方法的第一个参数，比如：with，for，by等等。</p>
+<p>Swift 默认仅给方法的第一个参数名称一个局部参数名称;默认同时给第二个和后续的参数名称为全局参数名称。</p>
+<p>
+以下实例中 'no1' 在swift中声明为局部参数名称。'no2' 用于全局的声明并通过外部程序访问。</p>
+<pre>
+import Cocoa
+
+class division {
+    var count: Int = 0
+    func incrementBy(no1: Int, no2: Int) {
+        count = no1 / no2
+        print(count)
+    }
+}
+
+let counter = division()
+counter.incrementBy(no1: 1800, no2: 3)
+counter.incrementBy(no1: 1600, no2: 5)
+counter.incrementBy(no1: 11000, no2: 3)
+</pre>
+<p>以上程序执行输出结果为：</p>
+<pre>
+600
+320
+3666
+</pre>
+<h3>是否提供外部名称设置</h3>
+<p>我们强制在第一个参数添加外部名称把这个局部名称当作外部名称使用（Swift 2.0前是使用 # 号）。
+</p>
+相反，我们呢也可以使用下划线（_）设置第二个及后续的参数不提供一个外部名称。</div>

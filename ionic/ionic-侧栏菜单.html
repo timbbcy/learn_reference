@@ -1,0 +1,323 @@
+<div class="article-intro" id="content">
+<h1>ionic 侧栏菜单</h1>
+<p>一个容器元素包含侧边菜单和主要内容。通过把主要内容区域从一边拖动到另一边，来让左侧或右侧的侧栏菜单进行切换。</p>
+<p>效果图如下所示：</p>
+<img src="https://www.runoob.com/wp-content/uploads/2015/08/sidemenu.gif"/>
+<h3>用法</h3><p>
+要使用侧栏菜单，添加一个父元素&lt;ion-side-menus&gt;，一个中间内容 &lt;ion-side-menu-content&gt;，和一个或更多 &lt;ion-side-menu&gt; 指令。</p>
+<pre>
+&lt;ion-side-menus&gt;
+  &lt;!-- 中间内容 --&gt;
+  &lt;ion-side-menu-content ng-controller="ContentController"&gt;
+  &lt;/ion-side-menu-content&gt;
+
+  &lt;!-- 左侧菜单 --&gt;
+  &lt;ion-side-menu side="left"&gt;
+  &lt;/ion-side-menu&gt;
+
+  &lt;!-- 右侧菜单 --&gt;
+  &lt;ion-side-menu side="right"&gt;
+  &lt;/ion-side-menu&gt;
+&lt;/ion-side-menus&gt;
+</pre>
+<pre>
+function ContentController($scope, $ionicSideMenuDelegate) {
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+}
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_side-menus" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        enable-menu-with-back-views
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>在返回按钮显示时，确认是否启用侧边栏菜单。</p>
+</td>
+</tr>
+<tr>
+<td>delegate-handle
+</td>
+<td>字符串</td>
+<td>该句柄用于标识带有$ionicScrollDelegate的滚动视图。</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>ion-side-menu-content </h2>
+<p>一个可见主体内容的容器，同级的一个或多个ionSideMenu 指令。</p>
+<h3>用法</h3>
+<pre>
+&lt;ion-side-menu-content
+  drag-content="true"&gt;
+&lt;/ion-side-menu-content&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        drag-content
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>内容是否可被拖动。默认为true。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>ion-side-menu</h2>
+<p>一个侧栏菜单的容器，同级的一个ion-side-menu-content 指令。</p>
+<h3>用法</h3>
+<pre>
+&lt;ion-side-menu
+  side="left"
+  width="myWidthValue + 20"
+  is-enabled="shouldLeftSideMenuBeEnabled()"&gt;
+&lt;/ion-side-menu&gt;
+</pre>
+<h3>API</h3>
+<table class="reference">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        side
+      </td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+<p>侧栏菜单当前在哪一边。可选的值有: 'left' 或 'right'。</p>
+</td>
+</tr>
+<tr>
+<td>
+        is-enabled
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>该侧栏菜单是否可用。</p>
+</td>
+</tr>
+<tr>
+<td>
+        width
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>数值</code>
+</td>
+<td>
+<p>侧栏菜单应该有多少像素的宽度。默认为275。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>menu-toggle</h2>
+<p>在一个指定的侧栏中切换菜单。</p>
+<h3>用法</h3>
+<p>下面是一个在导航栏内链接的例子。点击此链接会自动打开指定的侧栏菜单。</p>
+<pre>
+&lt;ion-view&gt;
+  &lt;ion-nav-buttons side="left"&gt;
+   &lt;button menu-toggle="left" class="button button-icon icon ion-navicon"&gt;&lt;/button&gt;
+  &lt;/ion-nav-buttons&gt;
+ ...
+&lt;/ion-view&gt;
+</pre>
+<h2>menu-close</h2>
+<p>关闭当前打开的侧栏菜单。</p>
+<h3>用法</h3>
+<p>下面是一个在导航栏内链接的例子。点击此链接会自动打开指定的侧栏菜单。</p>
+<pre>
+&lt;a menu-close href="#/home" class="item"&gt;首页&lt;/a&gt;
+</pre>
+<hr/>
+<h2>$ionicSideMenuDelegate
+</h2>
+<p>该方法直接触发$ionicSideMenuDelegate服务，来控制所有侧栏菜单。用$getByHandle方法控制特定情况下的ionSideMenus。</p>
+<h3>用法</h3>
+<pre>
+&lt;body ng-controller="MainCtrl"&gt;
+  &lt;ion-side-menus&gt;
+    &lt;ion-side-menu-content&gt;
+      内容!
+      &lt;button ng-click="toggleLeftSideMenu()"&gt;
+        切换左侧侧栏菜单
+      &lt;/button&gt;
+    &lt;/ion-side-menu-content&gt;
+    &lt;ion-side-menu side="left"&gt;
+      左侧菜单!
+    &lt;ion-side-menu&gt;
+  &lt;/ion-side-menus&gt;
+&lt;/body&gt;
+</pre>
+<pre>
+function MainCtrl($scope, $ionicSideMenuDelegate) {
+  $scope.toggleLeftSideMenu = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+}
+</pre>
+<h3>方法</h3>
+<pre>
+toggleLeft([isOpen])</pre><p>
+切换左侧侧栏菜单（如果存在）。
+</p>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        isOpen
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否打开或关闭菜单。默认：切换菜单。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<pre>
+toggleRight([isOpen])
+</pre>
+<p>切换右侧侧栏菜单（如果存在）。</p>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        isOpen
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>是否打开或关闭菜单。默认：切换菜单。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<pre>
+getOpenRatio()
+</pre>
+<p>获取打开菜单内容超出菜单宽度的比例。比如，一个宽度为100px的菜单被宽度为50px以50%的比例打开，将会返回一个比例值为0.5。
+</p><p><b>
+返回值: </b>浮点 0 表示没被打开，如果左侧菜单处于已打开或正在打开为0 到 1，如果右侧菜单处于已打开或正在打开为0 到-1。</p>
+<pre>
+isOpen()</pre>
+<p><b>
+返回值: </b>布尔值，判断左侧或右侧菜单是否已经打开。
+</p>
+<pre>
+isOpenLeft()</pre><p><b>
+返回值: </b>布尔值左侧菜单是否已经打开。</p><pre>
+isOpenRight()</pre><p><b>
+返回值: </b>布尔值右侧菜单是否已经打开。</p>
+<pre>
+canDragContent([canDrag])
+</pre>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        canDrag
+        
+        <div><em>(可选)</em></div>
+</td>
+<td>
+<code>布尔值</code>
+</td>
+<td>
+<p>设置是否可以拖动内容打开侧栏菜单。</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><b>返回值:</b> 布尔值，是否可以拖动内容打开侧栏菜单。</p>
+<pre>$getByHandle(handle)</pre>
+<table class="reference">
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+        handle
+      </td>
+<td>
+<code>字符串</code>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<p>例如:</p><pre>$ionicSideMenuDelegate.$getByHandle('my-handle').toggleLeft();</pre>
+</div>

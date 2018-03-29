@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">字符串变量</span>
+</h1>
+<hr/>
+<p class="intro">字符串变量用于存储并处理文本。</p>
+<hr/>
+<h2>PHP 中的字符串变量</h2>
+<p>字符串变量用于包含有字符的值。</p>
+<p>在创建字符串之后，我们就可以对它进行操作了。您可以直接在函数中使用字符串，或者把它存储在变量中。</p>
+<p>在下面的实例中，我们创建一个名为 txt 的字符串变量，并赋值为 "Hello world!" 。然后我们输出 txt 变量的值：</p>
+<div class="example"><h2 class="example">实例</h2><div class="example_code"><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$txt</br></span><span style="color: #007700">=</span><span style="color: #DD0000">"Hello world!"</span><span style="color: #007700">;<br>echo </br></span><span style="color: #0000BB">$txt</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</div><br/><a class="showbtn" href="/try/runcode.php?filename=demo_string_echo&amp;type=php" target="_blank">运行实例 »</a></div>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<b>注释：</b>当您赋一个文本值给变量时，请记得给文本值加上单引号或者双引号。</td>
+</tr></table>
+<p>现在，让我们来看看一些常用的操作字符串的函数和运算符。</p>
+<hr/>
+<h2>PHP 并置运算符</h2>
+<p>在 PHP 中，只有一个字符串运算符。</p>
+<p>并置运算符 (.) 用于把两个字符串值连接起来。</p>
+<p>下面的实例演示了如何将两个字符串变量连接在一起：</p>
+<div class="example"><h2 class="example">实例</h2><div class="example_code"><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$txt1</br></span><span style="color: #007700">=</span><span style="color: #DD0000">"Hello world!"</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">$txt2</span><span style="color: #007700">=</span><span style="color: #DD0000">"What a nice day!"</span><span style="color: #007700">;<br>echo </br></span><span style="color: #0000BB">$txt1 </span><span style="color: #007700">. </span><span style="color: #DD0000">" " </span><span style="color: #007700">. </span><span style="color: #0000BB">$txt2</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</div></div>
+<p>上面的代码将输出：Hello world! What a nice day!
+</p>
+<p><strong>提示：</strong>在上面的代码中，我们已经使用了两次并置运算符。这是由于我们需要在两个字符串之间插入一个空格。</p>
+<hr/>
+<h2>PHP strlen() 函数</h2>
+<p>有时知道字符串值的长度是很有用的。</p>
+<p>strlen() 函数返回字符串的长度（字符数）。</p>
+<p>下面的实例返回字符串 "Hello world!" 的长度：</p>
+<div class="example"><h2 class="example">实例</h2><div class="example_code"><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br/></span><span style="color: #007700">echo </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello world!"</span><span style="color: #007700">);<br/></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</div><br/><a class="showbtn" href="/try/runcode.php?filename=demo_string_length&amp;type=php" target="_blank">运行实例 »</a></div>
+<p>上面的代码将输出：12</p>
+<p><strong>提示：</strong>strlen() 常常用在循环和其他函数中，因为那时确定字符串何时结束是很重要的。（例如，在循环中，我们需要在字符串中的最后一个字符之后结束循环。）</p>
+<hr/>
+<h2>PHP strpos() 函数</h2>
+<p>strpos() 函数用于在字符串内查找一个字符或一段指定的文本。</p>
+<p>如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。</p>
+<p>下面的实例在字符串 "Hello world!" 中查找文本 "world"：</p>
+<div class="example"><h2 class="example">实例</h2><div class="example_code"><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br/></span><span style="color: #007700">echo </span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello world!"</span><span style="color: #007700">,</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br/></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</div><br/><a class="showbtn" href="/try/runcode.php?filename=demo_string_pos&amp;type=php" target="_blank">运行实例 »</a></div>
+<p>上面的代码将输出：6</p>
+<p><strong>提示：</strong>在上面的实例中，字符串 "world" 的位置是 6。之所以是 6 而不是 7 的原因是，字符串中第一个字符的位置是 0，而不是 1。</p>
+<hr/>
+<h2>完整的 PHP String 参考手册</h2>
+<p>如需查看所有字符串函数的完整参考手册，请访问我们的 <a href="php-ref-string.html">PHP String 参考手册</a>。</p>
+<p>该参考手册提供了每个函数的简要描述和应用实例！</p>
+</div>

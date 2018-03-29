@@ -1,0 +1,71 @@
+<div class="article-intro" id="content">
+<h1>Docker Hello World </h1>
+<p>Docker 允许你在容器内运行应用程序， 使用 <strong>docker run</strong> 命令来在容器内运行一个应用程序。</p>
+<p>输出Hello world</p>
+<pre>
+runoob@runoob:~$ docker run ubuntu:15.10 /bin/echo "Hello world"
+Hello world
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker19.png"/></p>
+<p>各个参数解析：</p>
+<ul><li>
+<p><strong>docker:</strong> Docker 的二进制执行文件。</p></li><li>
+<p><strong>run:</strong>与前面的 docker 组合来运行一个容器。</p></li><li>
+<p><strong>ubuntu:15.10</strong>指定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像。</p></li><li>
+<p><strong>/bin/echo "Hello world": </strong>在启动的容器里执行的命令</p></li></ul>
+<p>以上命令完整的意思可以解释为：Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo "Hello world"，然后输出结果。</p>
+<hr/>
+<h2>运行交互式的容器</h2>
+<p>我们通过docker的两个参数 -i -t，让docker运行的容器实现"对话"的能力</p>
+<pre>
+runoob@runoob:~$ docker run -i -t ubuntu:15.10 /bin/bash
+root@dc0050c79503:/#
+</pre><p>各个参数解析：</p>
+<ul><li>
+<p><strong>-t:</strong>在新容器内指定一个伪终端或终端。</p></li><li>
+<p><strong>-i:</strong>允许你对容器内的标准输入 (STDIN) 进行交互。</p></li></ul>
+<p>此时我们已进入一个 ubuntu15.10系统的容器</p>
+<p>我们尝试在容器中运行命令<strong> cat /proc/version</strong>和<strong>ls</strong>分别查看当前系统的版本信息和当前目录下的文件列表</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker20.png"/></p>
+<p>我们可以通过运行exit命令或者使用CTRL+D来退出容器。</p>
+<hr/>
+<h2>启动容器（后台模式）</h2>
+<p>使用以下命令创建一个以进程方式运行的容器</p>
+<pre>
+runoob@runoob:~$ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+2b1b7a428627c51ab8810d541d759f072b4fc75487eed05812646b8534a2fe63
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker21.png"/></p>
+<p>在输出中，我们没有看到期望的"hello world"，而是一串长字符</p>
+<p><strong>2b1b7a428627c51ab8810d541d759f072b4fc75487eed05812646b8534a2fe63</strong></p>
+<p>这个长字符串叫做容器ID，对每个容器来说都是唯一的，我们可以通过容器ID来查看对应的容器发生了什么。</p>
+<p>首先，我们需要确认容器有在运行，可以通过 <strong>docker ps</strong> 来查看</p>
+<pre>
+runoob@runoob:~$ docker ps
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker22.png"/></p>
+<p><strong>CONTAINER ID:</strong>容器ID</p>
+<p><strong>NAMES:</strong>自动分配的容器名称</p>
+<p>在容器内使用docker logs命令，查看容器内的标准输出</p>
+<pre>
+runoob@runoob:~$ docker logs 2b1b7a428627
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker23.png"/></p>
+<pre>
+runoob@runoob:~$ docker logs amazing_cori
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker24.png"/></p>
+<hr/>
+<h2>停止容器</h2>
+<p>我们使用 <strong>docker stop</strong> 命令来停止容器: </p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker25.png"/></p>
+<p>通过docker ps查看，容器已经停止工作:</p>
+<pre>
+runoob@runoob:~$ docker ps
+</pre>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker26.png"/></p>
+<p>也可以用下面的命令来停止:</p>
+<pre>
+runoob@runoob:~$ docker stop amazing_cori
+</pre>
+</div>

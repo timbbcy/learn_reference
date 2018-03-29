@@ -1,0 +1,63 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1"> MySQL 创建数据库</span></h1>
+<hr/>
+<p class="intro">数据库存有一个或多个表。 </p>
+<p class="intro">你需要 CREATE 权限来创建或删除 MySQL 
+数据库。</p>
+<hr/>
+<h2>使用 MySQLi 和 PDO 创建 MySQL 数据库</h2>
+<p>CREATE DATABASE 语句用于在 MySQL 中创建数据库。</p>
+<p>在下面的实例中，创建了一个名为 "myDB" 的数据库：</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>$password = 
+	"password";<br/><br/>// 创建连接<br/>$conn = 
+	new mysqli($servername, $username, $password);<br/>
+	// 检测连接<br/>
+	if ($conn-&gt;connect_error) {<br/>
+    die("连接失败: " . $conn-&gt;connect_error);<br/>}
+<br/>
+<br/>// 创建数据库<br/>
+	$sql = "CREATE DATABASE myDB";<br/>if ($conn-&gt;query($sql) === TRUE) {<br/>    
+	echo "数据库创建成功";<br/>} else {<br/>    echo 
+	"Error creating database: " . $conn-&gt;error;<br/>}<br/><br/>$conn-&gt;close();<br/>
+?&gt;
+</div>
+<br/>
+</div>
+<br/>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>注意：</strong> 当你创建一个新的数据库时，你必须为 mysqli 对象指定三个参数 (servername, username 和 
+password)。<br/><br/><strong>Tip:</strong> 如果你使用其他端口（默认为3306），为数据库参数添加空字符串，如: new mysqli("localhost", 
+"username", "password", "", port)</td>
+</tr></tbody></table>
+<br/>
+<div class="example">
+<h2 class="example">实例 (MySQLi Procedural)</h2>
+<div class="example_code">
+&lt;?php<br/>$servername = "localhost";<br/>$username = "username";<br/>$password = 
+	"password";<br/><br/>// 创建连接<br/>
+$conn = mysqli_connect($servername, 
+	$username, $password);<br/>
+	// 检测连接<br/>
+	if (!$conn) {<br/>
+    die("连接失败: " . mysqli_connect_error());<br/>}<br/><br/>// 创建数据库<br/>
+	$sql = "CREATE 
+	DATABASE myDB";<br/>
+	if (mysqli_query($conn, $sql)) {<br/>    echo "数据库创建成功";<br/>} else {<br/>    echo "Error 
+	creating database: " . mysqli_error($conn);<br/>}<br/><br/>mysqli_close($conn);<br/>
+?&gt;
+</div>
+<br/>
+</div>
+<p><strong>注意：</strong> 以下使用 PDO 实例创建数据库 "myDBPDO":</p>
+<div class="example"><h2 class="example">实例</h2><p>使用 PDO：</p><div class="example_code"><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$servername </br></span><span style="color: #007700">= </span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">$username </span><span style="color: #007700">= </span><span style="color: #DD0000">"username"</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">$password </span><span style="color: #007700">= </span><span style="color: #DD0000">"password"</span><span style="color: #007700">;<br> <br>try {<br>    </br></br></br></span><span style="color: #0000BB">$conn </span><span style="color: #007700">= new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysql:host=</span><span style="color: #0000BB">$servername</span><span style="color: #DD0000">;dbname=myDB"</span><span style="color: #007700">, </span><span style="color: #0000BB">$username</span><span style="color: #007700">, </span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br> <br>    </br></br></span><span style="color: #FF8000">// 设置 PDO 错误模式为异常<br>    </br></span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_EXCEPTION</span><span style="color: #007700">);<br>    </br></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"CREATE DATABASE myDBPDO"</span><span style="color: #007700">;<br> <br>    </br></br></span><span style="color: #FF8000">// 使用 exec() ，因为没有结果返回<br>    </br></span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br> <br>    echo </br></br></span><span style="color: #DD0000">"数据库创建成功&lt;br&gt;"</span><span style="color: #007700">;<br>}<br>catch(</br></br></span><span style="color: #0000BB">PDOException $e</span><span style="color: #007700">)<br>{<br>    echo </br></br></span><span style="color: #0000BB">$sql </span><span style="color: #007700">. </span><span style="color: #DD0000">"&lt;br&gt;" </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br>}<br> <br/></br></br></span><span style="color: #0000BB">$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</div></div>
+<p><strong>提示：</strong> 使用 PDO 的最大好处是在数据库查询过程出现问题时可以使用异常类来
+处理问题。如果  try{ } 代码块出现异常，脚本会停止执行并会跳到第一个 catch(){ } 代码块执行代码。
+在以上捕获的代码块中我们输出了 SQL 语句并生成错误信息。 </p>
+</div>

@@ -1,0 +1,75 @@
+<div class="article-intro" id="content">
+<h1>CSS <span class="color_h1">组合选择符</span>
+</h1>
+<hr/>
+<h2>CSS 组合选择符</h2>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>组合选择符说明了两个选择器直接的关系。</td>
+</tr></table>
+<p>CSS组合选择符包括各种简单选择符的组合方式。</p>
+<p>在 CSS3 中包含了四种组合方式:</p>
+<ul>
+<li>后代选取器(以空格分隔)</li>
+<li>子元素选择器(以大于号分隔）</li>
+<li>相邻兄弟选择器（以加号分隔）</li>
+<li>普通兄弟选择器（以破折号分隔）</li>
+</ul>
+<hr/>
+<h2>后代选取器</h2>
+<p>后代选取器匹配所有值得元素的后代元素。</p>
+<p>以下实例选取所有 &lt;p&gt; 元素插入到 &lt;div&gt; 元素中: </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-var">yellow</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_sel_element_element" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>子元素选择器</h2>
+<p>与后代选择器相比，子元素选择器（Child selectors）只能选择作为某元素子元素的元素。</p>
+<p>以下实例选择了&lt;div&gt;元素中所有直接子元素 &lt;p&gt; ：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">&gt;</span><span class="hl-identifier">p</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-var">yellow</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_sel_element_gt" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>相邻兄弟选择器</h2>
+<p>相邻兄弟选择器（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素。</p>
+<p>如果需要选择紧接在另一个元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器（Adjacent sibling selector）。</p>
+<p>以下实例选取了所有位于 &lt;div&gt; 元素后的第一个 &lt;p&gt; 元素:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">+</span><span class="hl-identifier">p</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-var">yellow</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_sel_element_pluss" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>后续兄弟选择器</h2>
+<p>后续兄弟选择器选取所有指定元素之后的相邻兄弟元素。</p>
+<p>以下实例选取了所有 &lt;div&gt; 元素之后的所有相邻兄弟元素 &lt;p&gt; : </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">~</span><span class="hl-identifier">p</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-var">yellow</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_sel_element_tilde" target="_blank">尝试一下 »</a>
+</div>
+</div>

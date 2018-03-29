@@ -1,0 +1,133 @@
+<div class="article-intro" id="content">
+<h1>ionic 按钮</h1>
+<p>按钮是移动app不可或缺的一部分，不同风格的app，需要的不同按钮的样式。</p>
+<p>默认情况下，按钮显示样式为：<b>display: inline-block</b>。</p>
+<pre>
+&lt;button class="button"&gt;
+  Default
+&lt;/button&gt;
+
+&lt;button class="button button-light"&gt;
+  button-light
+&lt;/button&gt;
+
+&lt;button class="button button-stable"&gt;
+  button-stable
+&lt;/button&gt;
+
+&lt;button class="button button-positive"&gt;
+  button-positive
+&lt;/button&gt;
+
+&lt;button class="button button-calm"&gt;
+  button-calm
+&lt;/button&gt;
+
+&lt;button class="button button-balanced"&gt;
+  button-balanced
+&lt;/button&gt;
+
+&lt;button class="button button-energized"&gt;
+  button-energized
+&lt;/button&gt;
+
+&lt;button class="button button-assertive"&gt;
+  button-assertive
+&lt;/button&gt;
+
+&lt;button class="button button-royal"&gt;
+  button-royal
+&lt;/button&gt;
+
+&lt;button class="button button-dark"&gt;
+  button-dark
+&lt;/button&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_button" target="_blank">尝试一下 »</a></p>
+<p>button-block 样式按钮显示为：<b>display: block</b>，它将完全填充父元素的宽度，包含了内边距属性padding。</p>
+<pre>
+&lt;button class="button button-block button-positive"&gt;
+  Block Button
+&lt;/button&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_button-block" target="_blank">尝试一下 »</a></p>
+<p>使用 button-full 类，可以让按钮显示完全宽度，且不包含内边距padding。</p>
+<pre>
+&lt;button class="button button-full button-positive"&gt;
+  Full Width Block Button
+&lt;/button&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_button-full" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>不同大小的按钮</h2>
+<p>button-large 设置为大按钮，button-small 设置为小按钮。</p>
+<pre>
+&lt;button class="button button-small button-assertive"&gt;
+  Small Button
+&lt;/button&gt;
+&lt;button class="button button-large button-positive"&gt;
+  Large Button
+&lt;/button&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_button-size" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>无背景按钮</h2>
+<p>button-outline 设置背景为透明。</p>
+<pre>
+&lt;button class="button button-outline button-positive"&gt;
+  Outlined Button
+&lt;/button&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_button-outline" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>无背景与边框按钮</h2>
+<p>button-clear 设置按钮背景为透明，且无边框。</p>
+<pre>
+&lt;button class="button button-clear button-positive"&gt;
+  Clear Button
+&lt;/button&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_button-clear" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>图标按钮</h2>
+<p>我们可以在按钮上添加图标。</p>
+<pre>
+&lt;button class="button icon-left ion-home"&gt;Home&lt;/button&gt;
+
+&lt;button class="button icon-left ion-star button-positive"&gt;Favorites&lt;/button&gt;
+
+&lt;a class="button icon-right ion-chevron-right button-calm"&gt;Learn More&lt;/a&gt;
+
+&lt;a class="button icon-left ion-chevron-left button-clear button-dark"&gt;Back&lt;/a&gt;
+
+&lt;button class="button icon ion-gear-a"&gt;&lt;/button&gt;
+
+&lt;a class="button button-icon icon ion-settings"&gt;&lt;/a&gt;
+
+&lt;a class="button button-outline icon-right ion-navicon button-balanced"&gt;Reorder&lt;/a&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_bar-header_icon" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>头部/底部添加按钮</h2>
+<p>
+头部/底部可以添加按钮，按钮的样式根据头部/底部来设定，所以你不需要为按钮添加额外的样式。</p>
+<pre>
+&lt;div class="bar bar-header"&gt;
+  &lt;button class="button icon ion-navicon"&gt;&lt;/button&gt;
+  &lt;h1 class="title"&gt;Header Buttons&lt;/h1&gt;
+  &lt;button class="button"&gt;Edit&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_bar-header" target="_blank">尝试一下 »</a></p>
+<p>button-clear 类可以设置无背景和边框的头部/底部按钮。</p>
+<pre>
+&lt;div class="bar bar-header"&gt;
+  &lt;button class="button button-icon icon ion-navicon"&gt;&lt;/button&gt;
+  &lt;div class="h1 title"&gt;Header Buttons&lt;/div&gt;
+  &lt;button class="button button-clear button-positive"&gt;Edit&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_bar-header_button-clear" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>按钮栏</h2>
+我们可以使用 button-bar 类来设置按钮栏。以下实例中，我们在头部和内容中添加了按钮栏。</div>

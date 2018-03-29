@@ -1,0 +1,179 @@
+<div class="article-intro" id="content">
+<h1>JavaScript 代码规范</h1>
+<hr/>
+<p class="intro">所有的 JavaScript 
+项目适用同一种规范。</p>
+<hr/>
+<h2>JavaScript 代码规范</h2>
+<p>代码规范通常包括以下几个方面:</p>
+<ul>
+<li>变量和函数的命名规则</li>
+<li>空格，缩进，注释的使用规则。</li>
+<li>其他常用规范……</li>
+</ul>
+<p>规范的代码可以更易于阅读与维护。</p>
+<p>代码规范一般在开发前规定，可以跟你的团队成员来协商设置。</p>
+<hr/>
+<h2>变量名</h2>
+<p>变量名推荐使用驼峰法来命名(<strong>camelCase</strong>): </p>
+<div class="example">
+<div class="example_code">
+firstName = <span class="highVAL">"John"</span>;<br/>lastName = <span class="highVAL">"Doe"</span>;<br/><br/>price = <span class="highVAL">19.90</span>;<br/>
+ tax = <span class="highVAL">0.20</span>;<br/><br/>fullPrice = price + (price * tax);</div>
+</div>
+<hr/>
+<h2>空格与运算符</h2>
+<p>通常运算符 ( = + - * / ) 前后需要添加空格:</p>
+<div class="example">
+<h3>实例:</h3>
+<div class="example_code">
+<span class="highELE">var</span> x = y + z;<br/><span class="highELE">var</span> values = [<span class="highVAL">"Volvo"</span>, <span class="highVAL">"Saab"</span>, 
+ <span class="highVAL">"Fiat"</span>];</div>
+</div>
+<hr/>
+<h2>代码缩进</h2>
+<p>通常使用 4 个空格符号来缩进代码块：</p>
+<div class="example">
+<h3>函数:</h3>
+<div class="example_code">
+<span class="highELE">function</span> toCelsius(fahrenheit) {<br/>
+    <span class="highELE">return</span> (<span class="highVAL">5</span> / <span class="highVAL">9</span>) * (fahrenheit - <span class="highVAL">32</span>);<br/>
+}
+</div>
+</div>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>不推荐使用 TAB 键来缩进，因为不同编辑器 TAB 键的解析不一样。</td>
+</tr></tbody></table>
+<hr/>
+<h2>语句规则</h2>
+<p>简单语句的通用规则:</p>
+<ul>
+<li>一条语句通常以分号作为结束符。</li>
+</ul>
+<div class="example">
+<h3>实例:</h3>
+<div class="example_code">
+<span class="highELE">var</span> values = [<span class="highVAL">"Volvo"</span>, <span class="highVAL">"Saab"</span>, 
+ <span class="highVAL">"Fiat"</span>];<br/><br/><span class="highELE">var</span> person = {<br/>    firstName: <span class="highVAL">"John"</span>,<br/>    
+ lastName: <span class="highVAL">"Doe"</span>,<br/>    age: <span class="highVAL">50</span>,<br/>    eyeColor: 
+ <span class="highVAL">"blue"</span><br/>};</div>
+</div>
+<p>复杂语句的通用规则:</p>
+<ul>
+<li>将左花括号放在第一行的结尾。</li>
+<li>左花括号前添加一空格。</li>
+<li>将右花括号独立放在一行。</li>
+<li>不要以分号结束一个复杂的声明。</li>
+</ul>
+<div class="example">
+<h3>函数:</h3>
+<div class="example_code">
+<span class="highELE">function</span> toCelsius(fahrenheit) {<br/>
+    <span class="highELE">return</span> (<span class="highVAL">5</span> / <span class="highVAL">9</span>) * (fahrenheit - <span class="highVAL">32</span>);<br/>
+}
+</div>
+</div><br/>
+<div class="example">
+<h3>循环:</h3>
+<div class="example_code">
+<span class="highELE">for</span> (i = <span class="highVAL">0</span>; i &lt; <span class="highVAL">5</span>; i++) {<br/>    x += i;<br/>}</div>
+</div><br/>
+<div class="example">
+<h3>条件语句:</h3>
+<div class="example_code">
+<span class="highELE">if</span> (time &lt; <span class="highVAL">20</span>) {<br/>    greeting = <span class="highVAL">"Good day"</span>;<br/>} <span class="highELE">else</span> {<br/>    
+ greeting = <span class="highVAL">"Good evening"</span>;<br/>}</div>
+</div><hr/>
+<h2>对象规则</h2>
+<p>对象定义的规则:</p>
+<ul>
+<li>将左花括号与类名放在同一行。</li>
+<li>冒号与属性值间有个空格。</li>
+<li>字符串使用双引号，数字不需要。</li>
+<li>最后一个属性-值对后面不要添加逗号。</li>
+<li>将右花括号独立放在一行，并以分号作为结束符号。</li>
+</ul>
+<div class="example">
+<h3>实例:</h3>
+<div class="example_code">
+<span class="highELE">var</span> person = {<br/>    firstName: <span class="highVAL">"John"</span>,<br/>    
+ lastName: <span class="highVAL">"Doe"</span>,<br/>    age: <span class="highVAL">50</span>,<br/>    eyeColor: 
+ <span class="highVAL">"blue"</span><br/>};</div>
+</div>
+<p>短的对象代码可以直接写成一行:</p>
+<div class="example">
+<h3>实例:</h3>
+<div class="example_code">
+<span class="highELE">var</span> person = {firstName:<span class="highVAL">"John"</span>, lastName:<span class="highVAL">"Doe"</span>, age:<span class="highVAL">50</span>, eyeColor:<span class="highVAL">"blue"</span>};</div>
+</div>
+<hr/><h2>
+每行代码字符小于 80</h2>
+<p>为了便于阅读每行字符建议小于数 80 个。</p>
+<p>如果一个 JavaScript 语句超过了 80 个字符，建议在 运算符或者逗号后换行。</p>
+<div class="example">
+<h3>实例:</h3>
+<div class="example_code">
+document.getElementById(<span class="highVAL">"demo"</span>).innerHTML =<br/>
+    <span class="highVAL">"Hello Runoob."</span>;
+</div><br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_line_break" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>命名规则</h2>
+<p>一般很多代码语言的命名规则都是类似的，例如:</p>
+<ul>
+<li>变量和函数为小驼峰法标识, 即除第一个单词之外，其他单词首字母大写（ <strong>lowerCamelCase</strong>）</li>
+<li>全局变量为大写 (<strong>UPPERCASE </strong>)</li>
+<li>常量 (如 PI)  为大写 (<strong>UPPERCASE </strong>)</li>
+</ul>
+<p>变量命名你是否使用这几种规则： <strong>hyp-hens</strong>, <strong>camelCase</strong>, 或
+<strong>under_scores</strong> ?</p>
+<p><strong>HTML 和 CSS 的横杠(-)字符:</strong></p>
+<p>HTML5 属性可以以 data- (如：data-quantity, data-price) 作为前缀。</p>
+<p>CSS 使用 - 来连接属性名 (font-size)。</p>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td style="width: 888px"> - 通常在 JavaScript 中被认为是减法，所以不允许使用。</td>
+</tr></tbody></table><p>
+<strong>下划线:</strong></p>
+<p>很多程序员比较喜欢使用下划线(如：date_of_birth), 特别是在 SQL 
+数据库中。</p>
+<p>PHP 语言通常都使用下划线。</p>
+<p><strong>帕斯卡拼写法(PascalCase):</strong></p>
+<p>帕斯卡拼写法(PascalCase) 在 C 语言中语言较多。</p>
+<p>驼峰法：</p>
+<p> JavaScript 中通常推荐使用驼峰法，jQuery 及其他 JavaScript 库都使用驼峰法。</p>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>变量名不要以 $ 作为开始标记，会与很多 JavaScript 库冲突。</td>
+</tr></tbody></table>
+<hr/>
+<h2>HTML 载入外部 JavaScript 文件</h2>
+<p>使用简洁的格式载入 JavaScript 文件 ( type 属性不是必须的):</p>
+<div class="example">
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">script</span> <span class="highATT">src=</span><span class="highVAL">"myscript.js"</span><span class="highGT">&gt;</span>
+</div>
+</div>
+<hr/>
+<h2>使用 JavaScript 访问 HTML 元素</h2>
+<p>一个糟糕的 HTML 格式可能会导致 JavaScript 执行错误。</p>
+<p>以下两个 JavaScript 语句会输出不同结果:</p>
+<div class="example"><h3>实例</h3>
+<div class="example_code">
+<span class="highELE">var</span> obj =
+	getElementById(<span class="highVAL">"Demo"</span>)<br/><br/><span class="highELE">var</span> obj = getElementById(<span class="highVAL">"demo"</span>)
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryhtml_syntax_javascript" target="_blank">尝试一下 »</a>
+</div>
+<p>HTML 与 JavaScript 尽量使用相同的命名规则。</p>
+<p><a href="/html/html5-syntax.html">访问 HTML(5) 代码规范</a>。</p>
+<hr/>
+<h2>文件扩展名</h2>
+<p>HTML 文件后缀可以是 <strong>.html</strong>  (或r <strong>.htm</strong>)。</p>
+<p>CSS 文件后缀是 <strong>.css</strong> 。</p>
+<p>JavaScript 文件后缀是 <strong>.js</strong> 。</p><hr/><h2>使用小写文件名</h2>
+<p> 大多 Web 服务器 (Apache, Unix) 对大小写敏感： london.jpg 不能通过 London.jpg 访问。 </p>
+<p> 其他 Web 服务器 (Microsoft, IIS) 对大小写不敏感： london.jpg 可以通过 London.jpg 或 london.jpg 访问。 </p>
+<p> 你必须保持统一的风格，我们建议统一使用小写的文件名。</p>
+</div>

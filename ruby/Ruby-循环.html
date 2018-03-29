@@ -1,0 +1,347 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">循环</span></h1>
+<p class="intro">Ruby 中的循环用于执行相同的代码块若干次。本章节将详细介绍 Ruby 支持的所有循环语句。</p>
+<h2 class="tutheader">Ruby <i>while</i> 语句</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">conditional</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-reserved">do</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div><p>
+或者 </p>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">conditional</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-code">:</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>当 <i>conditional</i> 为真时，执行 <i>code</i>。</p>
+<p>语法中 do 或 : 可以省略不写。但若要在一行内写出 while 式，则必须以 do 或 : 隔开条件式或程式区块。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-var">$num</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-var">$i</span><span class="hl-code"> &lt; </span><span class="hl-var">$num</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在循环语句中 i = #$i</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> +=</span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=while_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+在循环语句中 i = 0
+在循环语句中 i = 1
+在循环语句中 i = 2
+在循环语句中 i = 3
+在循环语句中 i = 4
+</pre>
+<h2 class="tutheader">Ruby <i>while</i> 修饰符</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">code</span><span class="hl-code"> </span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">condition</span><span class="hl-code">
+ 
+或者
+ 
+</span><span class="hl-reserved">begin</span><span class="hl-code">
+</span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code"> </span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-identifier">conditional</span></div>
+</div>
+</div>
+<p>当 <i>conditional</i> 为真时，执行 <i>code</i>。</p>
+<p>如果 <i>while</i> 修饰符跟在一个没有 <i>rescue</i> 或 ensure 子句的 <i>begin</i> 语句后面，<i>code</i> 会在 <i>conditional</i> 判断之前执行一次。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-var">$num</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">
+</span><span class="hl-reserved">begin</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在循环语句中 i = #$i</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> +=</span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code"> </span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-var">$i</span><span class="hl-code"> &lt; </span><span class="hl-var">$num</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=while_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+在循环语句中 i = 0
+在循环语句中 i = 1
+在循环语句中 i = 2
+在循环语句中 i = 3
+在循环语句中 i = 4
+</pre>
+<h2 class="tutheader">Ruby <i>until</i> 语句</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">until</span><span class="hl-code"> </span><span class="hl-identifier">conditional</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-reserved">do</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>当 <i>conditional</i> 为假时，执行 <i>code</i>。</p>
+<p>语法中 do 可以省略不写。但若要在一行内写出 until 式，则必须以 do 隔开条件式或程式区块。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-var">$num</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">
+</span><span class="hl-reserved">until</span><span class="hl-code"> </span><span class="hl-var">$i</span><span class="hl-code"> &gt; </span><span class="hl-var">$num</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在循环语句中 i = #$i</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> +=</span><span class="hl-number">1</span><span class="hl-code">;
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=until_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+在循环语句中 i = 0
+在循环语句中 i = 1
+在循环语句中 i = 2
+在循环语句中 i = 3
+在循环语句中 i = 4
+在循环语句中 i = 5
+</pre>
+<h2 class="tutheader">Ruby <i>until</i> 修饰符</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">code</span><span class="hl-code"> </span><span class="hl-reserved">until</span><span class="hl-code"> </span><span class="hl-identifier">conditional</span><span class="hl-code">
+ 
+或者
+ 
+</span><span class="hl-reserved">begin</span><span class="hl-code">
+</span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code"> </span><span class="hl-reserved">until</span><span class="hl-code"> </span><span class="hl-identifier">conditional</span></div>
+</div>
+</div>
+<p>当 <i>conditional</i> 为 false 时，执行 <i>code</i>。</p>
+<p>如果 <i>until</i> 修饰符跟在一个没有 <i>rescue</i> 或 ensure 子句的 <i>begin</i> 语句后面，<i>code</i> 会在 <i>conditional</i> 判断之前执行一次。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-var">$num</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">
+</span><span class="hl-reserved">begin</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">在循环语句中 i = #$i</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">$i</span><span class="hl-code"> +=</span><span class="hl-number">1</span><span class="hl-code">;
+</span><span class="hl-reserved">end</span><span class="hl-code"> </span><span class="hl-reserved">until</span><span class="hl-code"> </span><span class="hl-var">$i</span><span class="hl-code"> &gt; </span><span class="hl-var">$num</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=until_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+在循环语句中 i = 0
+在循环语句中 i = 1
+在循环语句中 i = 2
+在循环语句中 i = 3
+在循环语句中 i = 4
+在循环语句中 i = 5
+</pre>
+<h2 class="tutheader">Ruby <i>for</i> 语句</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">variable</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-code">, </span><span class="hl-identifier">variable</span><span class="hl-code"> ...</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">expression</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-reserved">do</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">code</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>先计算表达式得到一个对象，然后针对 <i>expression</i> 中的每个元素分别执行一次 <i>code</i>。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">0.</span><span class="hl-number">.5</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">局部变量的值为 #{i}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=for_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>在这里，我们已经定义了范围 0..5。语句 for i in 0..5 允许 i 的值从 0 到 5（包含 5）。</p>
+<p>以上实例输出结果为：</p>
+<pre>
+局部变量的值为 0
+局部变量的值为 1
+局部变量的值为 2
+局部变量的值为 3
+局部变量的值为 4
+局部变量的值为 5
+</pre>
+<p><i>for...in</i> 循环几乎是完全等价于：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">(</span><span class="hl-identifier">expression</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">variable</span><span class="hl-brackets">[</span><span class="hl-code">, </span><span class="hl-identifier">variable</span><span class="hl-code">...</span><span class="hl-brackets">]</span><span class="hl-code">| </span><span class="hl-identifier">code</span><span class="hl-code"> </span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>但是，for 循环不会为局部变量创建一个新的作用域。</p>
+<p>语法中 do 可以省略不写。但若要在一行内写出 for 式，则必须以 do 隔开条件式或程式区块。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-brackets">(</span><span class="hl-number">0.</span><span class="hl-number">.5</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">each</span><span class="hl-code"> </span><span class="hl-reserved">do</span><span class="hl-code"> |</span><span class="hl-identifier">i</span><span class="hl-code">|
+   </span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">局部变量的值为 #{i}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=for_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+局部变量的值为 0
+局部变量的值为 1
+局部变量的值为 2
+局部变量的值为 3
+局部变量的值为 4
+局部变量的值为 5
+</pre>
+<h2 class="tutheader">Ruby <i>break</i> 语句</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">break</span></div>
+</div>
+</div>
+<p>终止最内部的循环。如果在块内调用，则终止相关块的方法（方法返回 nil）。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">0.</span><span class="hl-number">.5</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> &gt; </span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-reserved">then</span><span class="hl-code">
+</span><span class="hl-reserved">break</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">局部变量的值为 #{i}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=for_demo3&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+局部变量的值为 0
+局部变量的值为 1
+局部变量的值为 2
+</pre>
+<h2 class="tutheader">Ruby <i>next</i> 语句</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">next</span></div>
+</div>
+</div>
+<p>跳到循环的下一个迭代。如果在块内调用，则终止块的执行（<i>yield</i> 表达式返回 nil）。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">0.</span><span class="hl-number">.5</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-reserved">then</span><span class="hl-code">
+</span><span class="hl-reserved">next</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">局部变量的值为 #{i}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=next_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>以上实例输出结果为：</p>
+<pre>
+局部变量的值为 2
+局部变量的值为 3
+局部变量的值为 4
+局部变量的值为 5
+</pre>
+<h2 class="tutheader">Ruby <i>redo</i> 语句</h2>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">redo</span></div>
+</div>
+</div>
+<p>重新开始最内部循环的该次迭代，不检查循环条件。如果在块内调用，则重新开始 <i>yield</i> 或 <i>call</i>。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">0.</span><span class="hl-number">.5</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-reserved">then</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">局部变量的值为 #{i}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">redo</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>这将产生以下结果，并会进入一个无限循环：</p>
+<pre>
+局部变量的值为 0
+局部变量的值为 0
+............................
+</pre>
+<h2 class="tutheader">Ruby <i>retry</i> 语句</h2>
+<blockquote>
+<p>注意：1.9以及之后的版本不支持在循环中使用retry。</p></blockquote>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">retry</span></div>
+</div>
+</div>
+<p>如果 <i>retry</i> 出现在 begin 表达式的 rescue 子句中，则从 begin 主体的开头重新开始。</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">begin</span><span class="hl-code">
+</span><span class="hl-identifier">do_something</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 抛出的异常</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">rescue</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 处理错误</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">retry</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 重新从 begin 开始</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>如果 retry 出现在迭代内、块内或者 for 表达式的主体内，则重新开始迭代调用。迭代的参数会重新评估。</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">1.</span><span class="hl-number">.5</span><span class="hl-code">
+</span><span class="hl-reserved">retry</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">some_condition</span><span class="hl-code"> </span><span class="hl-comment">#</span><span class="hl-comment"> 重新从 i == 1 开始</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-number">1.</span><span class="hl-number">.5</span><span class="hl-code">
+</span><span class="hl-reserved">retry</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> &gt; </span><span class="hl-number">2</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">局部变量的值为 #{i}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span></div>
+</div>
+</div>
+<p>这将产生以下结果，并会进入一个无限循环：</p>
+<pre>
+局部变量的值为 1
+局部变量的值为 2
+局部变量的值为 1
+局部变量的值为 2
+局部变量的值为 1
+局部变量的值为 2
+............................
+</pre>
+</div>

@@ -1,0 +1,87 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">弹窗</span>
+</h1>
+<hr/>
+<p class="intro">可以在 JavaScript 中创建三种消息框：警告框、确认框、提示框。</p>
+<hr/>
+<h2>警告框</h2>
+<p>警告框经常用于确保用户可以得到某些信息。</p>
+<p>当警告框出现后，用户需要点击确定按钮才能继续进行操作。 </p>
+<h3><b>语法</b></h3>
+<div class="code notranslate"><div>
+	window.alert("<i>sometext</i>");</div></div>
+<p><strong>window.alert()</strong> 方法可以不带上window对象，直接使用<strong>alert()</strong>方法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;head&gt;<br/>
+&lt;script&gt;<br/>
+function myFunction()<br/>
+{<br/>
+    alert("你好，我是一个警告框！");<br/>
+}<br/>
+&lt;/script&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;input type="button" onclick="myFunction()" value="显示警告框"&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_alert" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>确认框</h2>
+<p>确认框通常用于验证是否接受用户操作。</p>
+<p>当确认卡弹出时，用户可以点击 "确认" 或者 "取消" 来确定用户操作。 </p>
+<p>当你点击 "确认", 确认框返回 true， 如果点击 "取消", 确认框返回 false。</p>
+<h3><b>语法</b></h3>
+<div class="code "><div>
+	window.confirm("<i>sometext</i>");</div></div>
+<p><strong>window.confirm()</strong> 方法可以不带上window对象，直接使用<strong>confirm()</strong>方法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+var r=confirm("按下按钮");<br/>
+if (r==true)<br/>
+{<br/>
+    x="你按下了\"确定\"按钮!";<br/>
+}<br/>
+else<br/>
+{<br/>
+    x="你按下了\"取消\"按钮!";<br/>
+}
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_confirm" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>提示框</h2>
+<p>提示框经常用于提示用户在进入页面前输入某个值。</p>
+<p>当提示框出现后，用户需要输入某个值，然后点击确认或取消按钮才能继续操纵。</p>
+<p>如果用户点击确认，那么返回值为输入的值。如果用户点击取消，那么返回值为 null。</p>
+<h3><b>语法</b></h3>
+<div class="code notranslate"><div>
+	window.prompt("<i>sometext</i>","<i>defaultvalue</i>");</div></div>
+<p><strong>window.prompt()</strong> 方法可以不带上window对象，直接使用<strong>prompt()</strong>方法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+var person=prompt("请输入你的名字","Harry Potter");<br/>
+if (person!=null &amp;&amp; person!="")<br/>
+{<br/>
+    x="你好 " + person + "! 今天感觉如何?";<br/>
+    document.getElementById("demo").innerHTML=x;<br/>
+}
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_prompt" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>换行</h2>
+<p>弹窗使用 反斜杠 + "n"(\n) 来设置换行。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+alert("Hello\nHow are you?");<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_alert2" target="_blank">尝试一下 »</a>
+</div>
+</div>

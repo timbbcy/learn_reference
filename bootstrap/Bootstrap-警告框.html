@@ -1,0 +1,142 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">警告框（Alert）插件</span></h1>
+<p>警告框（Alert）消息大多是用来向终端用户显示诸如警告或确认消息的信息。使用警告框（Alert）插件，您可以向所有的警告框消息添加可取消（dismiss）功能。</p>
+<h2>用法</h2>
+<p>您可以有以下两种方式启用警告框的可取消（dismissal）功能：</p>
+<ul class="list">
+<li><b>通过 data 属性</b>：通过数据 API（Data API）添加可取消功能，只需要向关闭按钮添加 <b>data-dismiss="alert"</b>，就会自动为警告框添加关闭功能。
+<pre class="prettyprint">
+&lt;a class="close" data-dismiss="alert" href="#" aria-hidden="true"&gt;
+    &amp;times;
+&lt;/a&gt;
+</pre>
+</li>
+<li><b>通过 JavaScript</b>：通过 JavaScript 添加可取消功能：
+<pre class="prettyprint">
+$(".alert").alert()
+</pre>
+</li>
+</ul>
+<h3>实例</h3>
+<p>下面的实例演示了通过 data 属性使用警告框（Alert）插件的用法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-special">&amp;times;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">您的网络连接有问题。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-alert" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="警告框（Alert）插件" src="/wp-content/uploads/2014/07/alertmessages_demo.jpg"/>
+</div>
+<h2>选项</h2>
+<p><i>没有选项。</i></p>
+<h2>方法</h2>
+<p>下面是一些警告框（Alert）插件中有用的方法：</p>
+<table class="reference notranslate">
+<tr><th>方法</th><th>描述</th><th>实例</th></tr>
+<tr><td>.alert()</td><td>该方法让所有的警告框都带有关闭功能。</td><td>
+<pre class="prettyprint">
+$('#identifier').alert();
+</pre></td></tr>
+<tr><td><b>Close Method</b> .alert('close')</td><td>关闭所有的警告框。</td><td>
+<pre class="prettyprint">
+$('#identifier').alert('close');
+</pre></td></tr>
+</table>
+<blockquote>如需在关闭时启用动画效果，请确保添加了 <b>.fade</b> 和 <b>.in</b> class。</blockquote>
+<h3>实例</h3>
+<p>下面的实例演示了 <b>.alert()</b> 方法的用法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告框（Alert）插件 alert() 方法</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myAlert</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-special">&amp;times;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">结果是成功的。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myAlert</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-special">&amp;times;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">您的网络连接有问题。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.close</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+        $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#myAlert</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-alert-method1" target="_blank">尝试一下 »</a>
+</div>
+<p>下面的实例演示了 <b>.alert('close')</b> 方法的用法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告框（Alert）插件 alert('close') 方法</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h3</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myAlert</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-special">&amp;times;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">结果是成功的。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myAlert</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-warning</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-special">&amp;times;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">警告！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">您的网络连接有问题。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.close</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+        $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#myAlert</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">close</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-alert-method2" target="_blank">尝试一下 »</a>
+</div>
+<p>您可以看到所有的警告框都应用了关闭功能，即关闭任意的警告框，其他剩余的警告框也会被关闭。</p>
+<h2>事件</h2>
+<p>下表列出了警告框（Alert）插件中要用到的事件。这些事件可在函数中当钩子使用。</p>
+<table class="reference notranslate">
+<tr><th>事件</th><th>描述</th><th>实例</th></tr>
+<tr><td>close.bs.alert</td><td>当调用 <i>close</i> 实例方法时立即触发该事件。</td><td>
+<pre class="prettyprint">
+$('#myalert').bind('close.bs.alert', function () {
+  // 执行一些动作...
+})
+</pre></td></tr>
+<tr><td>closed.bs.alert</td><td>当警告框被关闭时触发该事件（将等待 CSS 过渡效果完成）。</td><td>
+<pre class="prettyprint">
+$('#myalert').bind('closed.bs.alert', function () {
+    // 执行一些动作...
+})
+</pre></td></tr>
+</table>
+<h3>实例</h3>
+<p>下面的实例演示了警告框（Alert）插件的事件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myAlert</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert alert-success</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">close</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-dismiss</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">alert</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-special">&amp;times;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">成功！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">strong</span><span class="hl-brackets">&gt;</span><span class="hl-code">结果是成功的。
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#myAlert</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">bind</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">closed.bs.alert</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">警告消息框被关闭。</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-alert-event" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="警告框（Alert）插件事件" src="/wp-content/uploads/2014/07/alertpluginevents_demo.jpg"/>
+</div>
+</div>

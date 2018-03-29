@@ -1,0 +1,312 @@
+<div class="article-intro" id="content">
+<h1>Perl 文件操作</h1>
+<p>Perl 使用一种叫做文件句柄类型的变量来操作文件。</p>
+<p>从文件读取或者写入数据需要使用文件句柄。</p>
+<p>文件句柄(file handle)是一个I/O连接的名称。
+<p>Perl提供了三种文件句柄:STDIN,STDOUT,STDERR，分别代表标准输入、标准输出和标准出错输出。</p>
+<p>Perl 中打开文件可以使用以下方式：</p>
+<pre>
+open FILEHANDLE, EXPR
+open FILEHANDLE
+
+sysopen FILEHANDLE, FILENAME, MODE, PERMS
+sysopen FILEHANDLE, FILENAME, MODE
+</pre>
+<p>参数说明:</p>
+<ul>
+<li>FILEHANDLE：文件句柄，用于存放一个文件唯一标识符。</li>
+<li>EXPR：文件名及文件访问类型组成的表达式。</li>
+<li>MODE：文件访问类型。</li>
+<li>PERMS：访问权限位(permission bits)。</li>
+</ul>
+<hr/>
+<h2>Open 函数</h2>
+<p>以下代码我们使用 open 函数以只读的方式(&lt;)打开文件 file.txt：</p>
+<pre>
+open(DATA, "&lt;file.txt");
+</pre>
+<p><b>&lt;</b>表示只读方式。</p>
+<p>
+代码中的 DATA 为文件句柄用于读取文件，以下实例将打开文件并将文件内容输出：
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">open</span><span class="hl-brackets">(</span><span class="hl-identifier">DATA</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">&lt;file.txt</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">file.txt 文件无法打开, </span><span class="hl-var">$!</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-code">&lt;</span><span class="hl-identifier">DATA</span><span class="hl-code">&gt;</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$_</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以下代码以写入( &gt; )的方式打开文件 file.txt:</p>
+<pre>
+open(DATA, "&gt;file.txt") or die "file.txt 文件无法打开, $!";
+</pre>
+<p><b>&gt;</b>表示写入方式。</p>
+<p>如果你需要以读写方式打开文件，可以在 &gt; 或 &lt; 字符前添加 + 号：</p>
+<pre>
+open(DATA, "+&lt;file.txt"); or die "file.txt 文件无法打开, $!";
+</pre>
+<p>这种方式不会删除文件原来的内容，如果要删除，格式如下所示：</p>
+<pre>
+open DATA, "+&gt;file.txt" or die "file.txt 文件无法打开, $!";
+</pre>
+<p>如果要向文件中追加数据，则在追加数据之前，只需要以追加方式打开文件即可：</p>
+<pre>open(DATA,"&gt;&gt;file.txt") || die "file.txt 文件无法打开, $!";</pre>
+<p>&gt;&gt; 表示向现有文件的尾部追加数据，如果需要读取要追加的文件内容可以添加 + 号：</p>
+<pre>
+open(DATA,"+&gt;&gt;file.txt") || die "file.txt 文件无法打开, $!";
+</pre>
+<p>下表列出了不同的访问模式：</p>
+<table class="reference">
+<tbody><tr><th style="width:20%">模式</th><th>描述</th></tr>
+<tr><td>&lt; 或 r</td><td>只读方式打开，将文件指针指向文件头。</td></tr>
+<tr><td>&gt; 或 w</td><td>写入方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建之。</td></tr>
+<tr><td>&gt;&gt; 或 a</td><td>写入方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。</td></tr>
+<tr><td>+&lt; 或 r+</td><td>读写方式打开，将文件指针指向文件头。</td></tr>
+<tr><td>+&gt; 或 w+</td><td>读写方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建之。</td></tr>
+<tr><td>+&gt;&gt; 或 a+</td><td>读写方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。</td></tr>
+</tbody></table>
+<hr/>
+<h2>Sysopen函数</h2>
+<p><b>sysopen</b> 函数类似于 open 函数，只是它们的参数形式不一样。</p>
+<p>以下实例是以读写(+&lt;filename)的方式打开文件：</p>
+<pre>
+sysopen(DATA, "file.txt", O_RDWR);
+</pre>
+<p>如果需要在更新文件前清空文件，则写法如下：</p>
+<pre>
+sysopen(DATA, "file.txt", O_RDWR|O_TRUNC );
+</pre><p>你可以使用 O_CREAT 来创建一个新的文件， O_WRONLY 为只写模式， O_RDONLY 为只读模式。</p>
+<p>The <b>PERMS</b> 参数为八进制属性值，表示文件创建后的权限，默认为 <b>0x666</b>。</p>
+<p>下表列出了可能的模式值：</p>
+<table class="reference">
+<tbody><tr><th style="width:20%">模式</th><th>描述</th></tr>
+<tr><td>O_RDWR</td><td>读写方式打开，将文件指针指向文件头。</td></tr>
+<tr><td>O_RDONLY</td><td>只读方式打开，将文件指针指向文件头。</td></tr>
+<tr><td>O_WRONLY</td><td>写入方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建之。</td></tr>
+<tr><td>O_CREAT</td><td>创建文件</td></tr>
+<tr><td>O_APPEND</td><td>追加文件</td></tr>
+<tr><td>O_TRUNC</td><td>将文件大小截为零</td></tr>
+<tr><td>O_EXCL	</td><td>如果使用O_CREAT时文件存在,就返回错误信息,它可以测试文件是否存在</td></tr>
+<tr><td>O_NONBLOCK</td><td>	非阻塞I/O使我们的操作要么成功，要么立即返回错误，不被阻塞。 </td></tr>
+</tbody></table>
+<hr/>
+<h2>Close 函数</h2>
+<p>在文件使用完后，要关闭文件，以刷新与文件句柄相关联的输入输出缓冲区，关闭文件的语法如下：
+</p>
+<pre>
+close FILEHANDLE
+close
+</pre>
+<p>FILEHANDLE 为指定的文件句柄，如果成功关闭则返回 true。</p>
+<pre>
+close(DATA) || die "无法关闭文件";
+</pre>
+<hr/>
+<h2>读写文件</h2>
+<p>
+向文件读写信息有以下几种不同的方式：
+</p>
+<h3>&lt;FILEHANDL&gt; 操作符</h3>
+<p>从打开的文件句柄读取信息的主要方法是 &lt;FILEHANDLE&gt; 操作符。在标量上下文中，它从文件句柄返回单一行。例如：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程网址?</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$name</span><span class="hl-code"> = &lt;</span><span class="hl-identifier">STDIN</span><span class="hl-code">&gt;;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">网址：</span><span class="hl-var">$name</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>以上程序执行后，会显示以下信息，我们输入网址后 print 语句就会输出：</p><p>
+<img src="http://www.runoob.com/wp-content/uploads/2016/06/EE8BD01A-9407-4668-9AAD-807171F8B9D8.jpg" width="50%"/></p>
+<p>当我们使用 &lt;FILEHANDLE&gt; 操作符时，它会返回文件句柄中每一行的列表，例如我们可以导入所有的行到数组中。</p>
+<p>实现创建 import.txt 文件，内容如下：</p>
+<pre>
+$ cat import.txt 
+1
+2
+3
+</pre>
+<p>读取 import.txt 并将每一行放到 @lines 数组中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">open</span><span class="hl-brackets">(</span><span class="hl-identifier">DATA</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">&lt;import.txt</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">or</span><span class="hl-code"> </span><span class="hl-reserved">die</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">无法打开数据</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">@lines</span><span class="hl-code"> = &lt;</span><span class="hl-identifier">DATA</span><span class="hl-code">&gt;;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-var">@lines</span><span class="hl-code">;    </span><span class="hl-comment"># 输出数组内容</span><span class="hl-code">
+</span><span class="hl-reserved">close</span><span class="hl-brackets">(</span><span class="hl-identifier">DATA</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+1
+2
+3
+</pre>
+<h3>getc 函数</h3>
+<p>xgetc 函数从指定的 FILEHANDLE 返回单一的字符，如果没指定返回 STDIN：</p>
+<pre>
+getc FILEHANDLE
+getc
+</pre>
+<p>如果发生错误，或在文件句柄在文件末尾，则返回 undef。</p>
+<hr/>
+<h2>read 函数</h2>
+<p>
+read 函数用于从缓冲区的文件句柄读取信息。</p><p>这个函数用于从文件读取二进制数据。
+</p>
+<pre>
+read FILEHANDLE, SCALAR, LENGTH, OFFSET
+read FILEHANDLE, SCALAR, LENGTH
+</pre>
+<p>参数说明:</p>
+<ul>
+<li>FILEHANDLE：文件句柄，用于存放一个文件唯一标识符。</li>
+<li>SCALAR：存贮结果，如果没有指定OFFSET，数据将放在SCALAR的开头。否则数据放在SCALAR中的OFFSET字节之后。</li>
+<li>LENGTH：读取的内容长度。</li>
+<li>OFFSET：偏移量。</li>
+</ul>
+<p>
+如果读取成功返回读取的字节数，如果在文件结尾返回 0，如果发生错误返回 undef。
+</p>
+<h3>print 函数</h3>
+<p>
+对于所有从文件句柄中读取信息的函数，在后端主要的写入函数为 print：</p>
+<pre>
+print FILEHANDLE LIST
+print LIST
+print
+</pre>
+<p>利用文件句柄和 print 函数可以把程序运行的结果发给输出设备(STDOUT：标准输出)，例如：</p>
+<pre>
+print "Hello World!\n";
+</pre>
+<h3>文件拷贝</h3>
+<p>以下实例我们将打开一个已存在的文件 file1.txt ，并读取它的每一行写入到文件 file2.txt 中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 只读方式打开文件</span><span class="hl-code">
+</span><span class="hl-reserved">open</span><span class="hl-brackets">(</span><span class="hl-identifier">DATA1</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">&lt;file1.txt</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 打开新文件并写入</span><span class="hl-code">
+</span><span class="hl-reserved">open</span><span class="hl-brackets">(</span><span class="hl-identifier">DATA2</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">&gt;file2.txt</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 拷贝数据</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-code">&lt;</span><span class="hl-identifier">DATA1</span><span class="hl-code">&gt;</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-identifier">DATA2</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">close</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">DATA1</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">close</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">DATA2</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<h3>文件重命名</h3>
+<p>以下实例，我们将已存在的文件 file1.txt 重命名为 file2.txt，指定的目录是在 /usr/runoob/test/ 下：</p>
+<pre>
+#!/usr/bin/perl
+
+rename ("/usr/runoob/test/file1.txt", "/usr/runoob/test/file2.txt" );
+</pre>
+<p>函数 <b>renames</b> 只接受两个参数，只对已存在的文件进行重命名。</p>
+<h3>删除文件</h3>
+<p>以下实例我们演示了如何使用 <b>unlink</b> 函数来删除文件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">unlink</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">/usr/runoob/test/file1.txt</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<hr/>
+<h2>指定文件位置</h2>
+<p>你可以使用 <b>tell</b> 函数来获取文件的位置，并通过使用 <b>seek</b> 函数来指定文件内的的位置：</p>
+<h3>tell 函数</h3>
+<p>tell 函数用于获取文件位置：</p>
+<pre>tell FILEHANDLE
+tell</pre>
+<p>如果指定 FILEHANDLE 该函数返回文件指针的位置，以字节计。如果没有指定则返回默认选取的文件句柄。</p>
+<h3>seek 函数</h3>
+<p>seek()函数是通过文件句柄来移动文件读写指针的方式来读取或写入文件的，以字节为单位进行读取和写入：</p>
+<pre>
+seek FILEHANDLE, POSITION, WHENCE
+</pre>
+<p>参数说明:</p>
+<ul>
+<li>FILEHANDLE：文件句柄，用于存放一个文件唯一标识符。</li>
+<li>POSITION：表示文件句柄(读写位置指针)要移动的字节数。</li>
+<li>WHENCE：表示文件句柄(读写位置指针)开始移动时的起始位置，可以取的值为0、1、2；分别表示文件开头、当前位置和文件尾。</li>
+</ul>
+<p>以下实例为从文件开头读取 256 个字节：</p>
+<pre>
+seek DATA, 256, 0;
+</pre>
+<hr/>
+<h2>文件信息</h2>
+<p>Perl 的文件操作也可以先测试文件是否存在，是否可读写等。</p>
+<p>我么可以先创建 file1.txt  文件，内如如下：</p>
+<pre>
+$ cat file1.txt 
+www.runoob.com
+</pre>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$file</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">/usr/test/runoob/file1.txt</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-var">$size</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">e</span><span class="hl-code"> </span><span class="hl-var">$file</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">是一个二进制文件</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">B</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">是一个socket(套接字)</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">S</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">是一个文本文件</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">T</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">是一个特殊块文件</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">b</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">是一个特殊字符文件</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">c</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">是一个目录</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">d</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">文件存在</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-identifier">x</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">push</span><span class="hl-code"> </span><span class="hl-var">@description</span><span class="hl-code">, </span><span class="hl-brackets">(</span><span class="hl-brackets">(</span><span class="hl-var">$size</span><span class="hl-code"> = -</span><span class="hl-identifier">s</span><span class="hl-code"> </span><span class="hl-identifier">_</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> ? </span><span class="hl-quotes">"</span><span class="hl-var">$size</span><span class="hl-string"> 字节</span><span class="hl-quotes">"</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">空</span><span class="hl-quotes">'</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-var">$file</span><span class="hl-string"> 信息：</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">join</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">, </span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-var">@description</span><span class="hl-brackets">)</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div><p>执行以上程序，输出结果为：</p>
+<pre>
+file1.txt 信息：是一个文本文件, 15 字节
+</pre>
+<p>文件测试操作符如下表所示：</p>
+<table class="reference">
+<tbody><tr><th style="width:20%">操作符</th><th>描述</th></tr>
+<tr><td>-A</td><td>文件上一次被访问的时间(单位：天)</td></tr>
+<tr><td>-B </td><td>是否为二进制文件</td></tr>
+<tr><td>-C </td><td>文件的(inode)索引节点修改时间(单位：天)</td></tr>
+<tr><td>-M </td><td>文件上一次被修改的时间(单位：天)</td></tr>
+<tr><td>-O </td><td>文件被真实的UID所有</td></tr>
+<tr><td>-R </td><td>文件或目录可以被真实的UID/GID读取</td></tr>
+<tr><td>-S </td><td>为socket(套接字)</td></tr>
+<tr><td>-T </td><td>是否为文本文件</td></tr>
+<tr><td>-W </td><td>文件或目录可以被真实的UID/GID写入</td></tr>
+<tr><td>-X </td><td>文件或目录可以被真实的UID/GID执行</td></tr>
+<tr><td>-b </td><td>为block-special (特殊块)文件(如挂载磁盘)</td></tr>
+<tr><td>-c </td><td>为character-special (特殊字符)文件(如I/O 设备)</td></tr>
+<tr><td>-d </td><td>为目录</td></tr>
+<tr><td>-e </td><td>文件或目录名存在</td></tr>
+<tr><td>-f </td><td>为普通文件</td></tr>
+<tr><td>-g </td><td>文件或目录具有setgid属性</td></tr>
+<tr><td>-k </td><td>文件或目录设置了sticky位</td></tr>
+<tr><td>-l </td><td>为符号链接</td></tr>
+<tr><td>-o </td><td>文件被有效UID所有</td></tr>
+<tr><td>-p </td><td>文件是命名管道(FIFO)</td></tr>
+<tr><td>-r </td><td>文件可以被有效的UID/GID读取</td></tr>
+<tr><td>-s </td><td>文件或目录存在且不为0(返回字节数)   </td></tr>
+<tr><td>-t </td><td>文件句柄为TTY(系统函数isatty()的返回结果；不能对文件名使用这个测试)</td></tr>
+<tr><td>-u </td><td>文件或目录具有setuid属性</td></tr>
+<tr><td>-w </td><td>文件可以被有效的UID/GID写入</td></tr>
+<tr><td>-x </td><td>文件可以被有效的UID/GID执行</td></tr>
+<tr><td>-z</td><td>文件存在，大小为0(目录恒为false)，即是否为空文件，</td></tr>
+</tbody></table>
+</p></div>

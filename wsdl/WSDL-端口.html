@@ -1,0 +1,85 @@
+<div class="article-intro" id="content">
+<h1>WSDL <span class="color_h1">端口</span>
+</h1>
+<hr/>
+<p class="intro"><b>&lt;portType&gt;</b> 元素是最重要的 WSDL 元素。</p>
+<hr/>
+<h2>WSDL 端口</h2>
+<p><em>&lt;portType&gt;</em> 元素是最重要的 WSDL 元素。<p>
+<p>它可描述一个 web service、可被执行的操作，以及相关的消息。<p>
+<p>可以把 &lt;portType&gt; 元素比作传统编程语言中的一个函数库（或一个模块、或一个类）。<p>
+<hr/>
+<h2>操作类型</h2>
+<p>请求-响应是最普通的操作类型，不过 WSDL 定义了四种类型：</p>
+<table class="reference notranslate">
+<tbody><tr>
+<th>类型</th>
+<th>定义</th>
+</tr>
+<tr>
+<td>One-way</td>
+<td>此操作可接受消息，但不会返回响应。</td>
+</tr>
+<tr>
+<td>Request-response</td>
+<td>此操作可接受一个请求并会返回一个响应</td>
+</tr>
+<tr>
+<td>Solicit-response</td>
+<td>此操作可发送一个请求，并会等待一个响应。</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td>此操作可发送一条消息，但不会等待响应。</td>
+</tr>
+</tbody></table>
+<br/><hr/>
+<h2>One-Way 操作</h2>
+<p>一个 one-way 操作的例子：</p>
+<div class="code notranslate"><div>
+
+&lt;message name="newTermValues"&gt;<br/>
+    
+   &lt;part name="term" type="xs:string"/&gt;<br/>
+    
+   &lt;part name="value" type="xs:string"/&gt;<br/>
+&lt;/message&gt;<br/><br/>
+&lt;portType name="glossaryTerms"&gt;<br/>
+    
+   &lt;operation name="setTerm"&gt;<br/>
+         
+      &lt;input name="newTerm" message="newTermValues"/&gt;<br/>
+    
+   &lt;/operation&gt;<br/>
+&lt;/portType &gt;
+</div></div>
+<p>在这个例子中，端口 "glossaryTerms" 定义了一个名为 "setTerm" 的 one-way 操作。
+ </p>
+<p>这个 "setTerm" 操作可接受新术语表项目消息的输入，这些消息使用一条名为 "newTermValues" 的消息，此消息带有输入参数 "term" 和 "value"。不过，没有为这个操作定义任何输出。 </p>
+<hr/>
+<h2>Request-Response 操作</h2>
+<p>一个 request-response 操作的例子：</p>
+<div class="code notranslate"><div>
+
+&lt;message name="getTermRequest"&gt;<br/>
+    
+   &lt;part name="term" type="xs:string"/&gt;<br/>
+&lt;/message&gt;<br/><br/>
+&lt;message name="getTermResponse"&gt;<br/>
+    
+   &lt;part name="value" type="xs:string"/&gt;<br/>
+&lt;/message&gt;<br/><br/>
+&lt;portType name="glossaryTerms"&gt;<br/>
+   
+  &lt;operation name="getTerm"&gt;<br/>
+     
+  &lt;input message="getTermRequest"/&gt;<br/>
+     
+  &lt;output message="getTermResponse"/&gt;<br/>
+   
+  &lt;/operation&gt;<br/>
+&lt;/portType&gt;
+</div></div>
+<p>在这个例子中，端口 "glossaryTerms" 定义了一个名为 "getTerm" 的 request-response 操作。</p>
+<p>"getTerm" 操作会请求一个名为 "getTermRequest" 的输入消息，此消息带有一个名为 "term" 的参数，并将返回一个名为 "getTermResponse" 的输出消息，此消息带有一个名为 "value" 的参数。</p>
+</p></p></p></p></p></p></div>

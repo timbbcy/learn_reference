@@ -1,0 +1,222 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>本节给大家带来的是Andoird基本UI控件中的RadioButton和Checkbox;
+先说下本节要讲解的内容是：RadioButton和Checkbox的<br/>
+<strong>1.基本用法<br/>
+2.事件处理；<br/>
+3.自定义点击效果；<br/>
+4.改变文字与选择框的相对位置；<br>
+5.修改文字与选择框的距离</br></strong></p></blockquote>
+<p>其实这两个控件有很多地方都是类似的，除了单选和多选，事件处理，其他的都是类似的！
+另外还有一个ListView上Checkbox的错位的问题，我们会在ListView那一章对这个问题进行
+解决，好的，开始本节内容~
+本节官方文档API：<a href="http://androiddoc.qiniudn.com/reference/android/widget/RadioButton.html">RadioButton</a>；<a href="http://androiddoc.qiniudn.com/reference/android/widget/CheckBox.html">CheckBox</a>；</p>
+<hr/>
+<h2>1.基本用法与事件处理：</h2>
+<hr/>
+<h3>1）RadioButton(单选按钮)</h3>
+<blockquote><p>如题单选按钮，就是只能够选中一个，所以我们需要把RadioButton放到RadioGroup按钮组中，从而实现
+单选功能！先熟悉下如何使用RadioButton，一个简单的性别选择的例子：
+另外我们可以为外层RadioGroup设置orientation属性然后设置RadioButton的排列方式，是竖直还是水平~</p></blockquote>
+<p><strong>效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/33533989.jpg"/></p>
+<p>PS:笔者的手机是Android 5.0.1的，这里的RadioButton相比起旧版本的RadioButton，稍微好看一点~</p>
+<p><strong>布局代码如下：</strong></p>
+<pre>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" &gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择性别"
+        android:textSize="23dp"
+        /&gt;
+
+    &lt;RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"&gt;
+
+        &lt;RadioButton
+            android:id="@+id/btnMan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男"
+            android:checked="true"/&gt;
+
+        &lt;RadioButton
+            android:id="@+id/btnWoman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女"/&gt;
+    &lt;/RadioGroup&gt;
+
+    &lt;Button
+        android:id="@+id/btnpost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"/&gt;
+
+&lt;/LinearLayout&gt;
+</pre>
+<p><strong>获得选中的值：</strong></p>
+<p>这里有两种方法，</p>
+<p><strong>第一种</strong>是为RadioButton设置一个事件监听器setOnCheckChangeListener</p>
+<p><strong>例子代码如下：</strong></p>
+<pre>
+RadioGroup radgroup = (RadioGroup) findViewById(R.id.radioGroup);
+        //第一种获得单选按钮值的方法  
+        //为radioGroup设置一个监听器:setOnCheckedChanged()  
+        radgroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radbtn = (RadioButton) findViewById(checkedId);
+                Toast.makeText(getApplicationContext(), "按钮组值发生改变,你选了" + radbtn.getText(), Toast.LENGTH_LONG).show();
+            }
+        });
+</pre>
+<p><strong>运行效果图：</strong>
+<img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/27462378.jpg"/><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/55316099.jpg"/></p>
+<p>PS：另外有一点要切记，要为每个RadioButton添加一个id，不然单选功能会生效！！！</p>
+<p><strong>第二种</strong>方法是通过单击其他按钮获取选中单选按钮的值，当然我们也可以直接获取，这个看需求~</p>
+<p><strong>例子代码如下：</strong></p>
+<pre>
+Button btnchange = (Button) findViewById(R.id.btnpost);
+        RadioGroup radgroup = (RadioGroup) findViewById(R.id.radioGroup);
+        //为radioGroup设置一个监听器:setOnCheckedChanged()  
+        btnchange.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i &lt; radgroup.getChildCount(); i++) {
+                    RadioButton rd = (RadioButton) radgroup.getChildAt(i);
+                    if (rd.isChecked()) {
+                        Toast.makeText(getApplicationContext(), "点击提交按钮,获取你选择的是:" + rd.getText(), Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                }
+            }
+        });
+</pre>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/85345690.jpg"/></p>
+<p><strong>代码解析：</strong>
+这里我们为提交按钮设置了一个setOnClickListener事件监听器,每次点击的话遍历一次RadioGroup判断哪个按钮被选中我们可以通过下述方法获得RadioButton的相关信息！</p>
+<ul><li>
+<strong>getChildCont</strong>( )获得按钮组中的单选按钮的数目；</li><li>
+<strong>getChinldAt</strong>(i):根据索引值获取我们的单选按钮</li><li>
+<strong>isChecked</strong>( ):判断按钮是否选中</li></ul>
+<hr/>
+<h3>2）CheckBox(复选框)</h3>
+<blockquote><p>如题复选框，即可以同时选中多个选项，至于获得选中的值，同样有两种方式：
+1.为每个CheckBox添加事件：setOnCheckedChangeListener
+2.弄一个按钮，在点击后，对每个checkbox进行判断:isChecked()；</p></blockquote>
+<p><strong>运行效果图：</strong></p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/8897873.jpg"/></p>
+<p><strong>实现代码：</strong></p>
+<pre>
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,CompoundButton.OnCheckedChangeListener{
+
+    private CheckBox cb_one;
+    private CheckBox cb_two;
+    private CheckBox cb_three;
+    private Button btn_send;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        cb_one = (CheckBox) findViewById(R.id.cb_one);
+        cb_two = (CheckBox) findViewById(R.id.cb_two);
+        cb_three = (CheckBox) findViewById(R.id.cb_three);
+        btn_send = (Button) findViewById(R.id.btn_send);
+
+        cb_one.setOnCheckedChangeListener(this);
+        cb_two.setOnCheckedChangeListener(this);
+        cb_three.setOnCheckedChangeListener(this);
+        btn_send.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+       if(compoundButton.isChecked()) Toast.makeText(this,compoundButton.getText().toString(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View view) {
+        String choose = "";
+        if(cb_one.isChecked())choose += cb_one.getText().toString() + "";
+        if(cb_two.isChecked())choose += cb_two.getText().toString() + "";
+        if(cb_three.isChecked())choose += cb_three.getText().toString() + "";
+        Toast.makeText(this,choose,Toast.LENGTH_SHORT).show();
+    }
+}
+</pre>
+<hr/>
+<h2>2.自定义点击效果</h2>
+<blockquote><p>虽然5.0后的RadioButton和Checkbox都比旧版本稍微好看了点，但是对于我们来说
+可能还是不喜欢或者需求，需要自己点击效果！实现起来很简单，先编写一个自定义
+的selctor资源，设置选中与没选中时的切换图片~！</p></blockquote>
+<p>实现效果图如下：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/07/88423721.jpg"/></p>
+<p>PS:这里素材的原因，有点小...</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item
+        android:state_enabled="true"
+        android:state_checked="true"
+        android:drawable="@mipmap/ic_checkbox_checked"/&gt;
+    &lt;item
+        android:state_enabled="true"
+        android:state_checked="false"
+        android:drawable="@mipmap/ic_checkbox_normal" /&gt;
+&lt;/selector&gt;
+</pre>
+<p>写好后，我们有两种方法设置，也可以说一种吧！你看看就知道了~</p>
+<p>①android:button属性设置为上述的selctor
+</p><pre>
+android:button="@drawable/rad_btn_selctor"
+</pre><p>
+②在style中定义一个属性，然后通过android style属性设置，先往style添加下述代码：
+</p>
+<pre>
+    &lt;style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox"&gt;
+        &lt;item name="android:button"&gt;@drawable/rad_btn_selctor&lt;/item&gt;
+    &lt;/style&gt;
+</pre><p>
+然后布局那里:
+</p><pre>
+style="@style/MyCheckBox"
+</pre>
+<hr/>
+<h2>3.改变文字与选择框的相对位置</h2>
+<blockquote><p>这个实现起来也很简单，还记得我们之前学TextView的时候用到的drawableXxx吗？
+要控制选择框的位置，两部即可！设置：</p>
+<p><strong>Step 1.</strong> android:button="@null"<br/>
+<strong>Step 2.</strong> android:drawableTop="@android:drawable/btn_radio"<br/>
+当然我们可以把drawableXxx替换成自己喜欢的效果！</p></blockquote>
+<hr/>
+<h2>4.修改文字与选择框的距离</h2>
+<blockquote><p>有时，我们可能需要调节文字与选择框之间的距离，让他们看起来稍微没那么挤，我们可以：<br/>
+1.在XML代码中控制：
+使用android:paddingXxx = "xxx" 来控制距离<br/>
+2.在Java代码中，稍微好一点，动态计算paddingLeft!</p></blockquote>
+<p><strong>示例代码如下：</strong></p>
+<pre>
+rb.setButtonDrawable(R.drawable.rad_btn_selctor);
+int rb_paddingLeft = getResources().getDrawable(R.mipmap.ic_checkbox_checked).getIntrinsicWidth()+5; 
+rb.setPadding(rb_paddingLeft, 0, 0, 0);
+</pre>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>好的，关于RadioButton和Checkbox就讲到这里，如果有什么写得不对的，不好的，或者有好的建议欢迎指出
+万分感激~谢谢...</p></blockquote> </div>

@@ -1,0 +1,43 @@
+<div class="article-intro" id="content">
+<h1>PHP MySQL <span class="color_h1">Where 子句</span>
+</h1>
+<hr/>
+<p class="intro">WHERE 子句用于过滤记录。</p>
+<hr/>
+<h2>WHERE 子句</h2>
+<p>WHERE 子句用于提取满足指定标准的的记录。</p>
+<h3>语法</h3>
+<pre>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator value
+</pre>
+<p>如需学习更多关于 SQL 的知识，请访问我们的 <a href="#">SQL 
+教程</a>。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysqli_query() 函数。该函数用于向 MySQL 连接发送查询或命令。</p>
+<h3>实例</h3>
+<p>下面的实例将从 "Persons" 表中选取所有 FirstName='Peter' 的行：</p>
+<pre>
+&lt;?php
+$con=mysqli_connect("localhost","username","password","database");
+// 检测连接
+if (mysqli_connect_errno())
+{
+    echo "连接失败: " . mysqli_connect_error();
+}
+
+$result = mysqli_query($con,"SELECT * FROM Persons
+WHERE FirstName='Peter'");
+
+while($row = mysqli_fetch_array($result))
+{
+    echo $row['FirstName'] . " " . $row['LastName'];
+    echo "&lt;br&gt;";
+}
+?&gt;
+</pre>
+<p>以上代码将输出：</p>
+<pre>
+Peter Griffin
+</pre>
+</div>

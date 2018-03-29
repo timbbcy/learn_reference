@@ -1,0 +1,68 @@
+<div class="article-intro" id="content">
+<h1>Go 语言递归函数
+</h1>
+<p>递归，就是在运行的过程中调用自己。
+</p>
+<p>语法格式如下：</p>
+<pre>
+func recursion() {
+   recursion() /* 函数调用自身 */
+}
+
+func main() {
+   recursion()
+}
+</pre>
+<p>Go 语言支持递归。但我们在使用递归时，开发者需要设置退出条件，否则递归将陷入无限循环中。</p>
+<p>递归函数对于解决数学上的问题是非常有用的，就像计算阶乘，生成斐波那契数列等。</p>
+<hr/>
+<h2>阶乘</h2>
+<p>以下实例通过 Go 语言的递归函数实例阶乘：</p>
+<pre>
+package main
+
+import "fmt"
+
+func Factorial(n uint64)(result uint64) {
+    if (n &gt; 0) {
+        result = n * Factorial(n-1)
+        return result
+    }
+    return 1
+}
+
+func main() {  
+    var i int = 15
+    fmt.Printf("%d 的阶乘是 %d\n", i, Factorial(uint64(i)))
+}
+</pre>
+<p>以上实例执行输出结果为：</p>
+<pre>
+15 的阶乘是 1307674368000
+</pre>
+<hr/>
+<h2>斐波那契数列</h2>
+<p>以下实例通过 Go 语言的递归函数实现斐波那契数列：</p>
+<pre>
+package main
+
+import "fmt"
+
+func fibonacci(n int) int {
+  if n &lt; 2 {
+   return n
+  }
+  return fibonacci(n-2) + fibonacci(n-1)
+}
+
+func main() {
+    var i int
+    for i = 0; i &lt; 10; i++ {
+       fmt.Printf("%d\t", fibonacci(i))
+    }
+}
+</pre><p>以上实例执行输出结果为：</p>
+<pre>
+0    1    1    2    3    5    8    13    21    34
+</pre>
+</div>

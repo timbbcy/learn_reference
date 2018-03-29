@@ -1,0 +1,87 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">添加查询功能</span></h1>
+<p>
+本实例演示如何从数据库得到数据，并将它们显示在数据网格（datagrid）中。然后演示如何根据用户输入的搜索关键词搜寻显示结果。
+</p>
+<img src="/wp-content/uploads/2013/12/datagrid24.png"/>
+<h4>创建数据网格（DataGrid）</h4>
+<p>
+创建带有分页功能的数据网格（datagrid），然后添加工具栏到其中。
+</p>
+<pre style="color:#006600">
+    &lt;table id="tt" class="easyui-datagrid" style="width:600px;height:250px"
+            url="datagrid24_getdata.php" toolbar="#tb"
+            title="Load Data" iconCls="icon-save"
+            rownumbers="true" pagination="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>工具栏定义如下：</p>
+<pre style="color:#006600">
+    &lt;div id="tb" style="padding:3px"&gt;
+        &lt;span&gt;Item ID:&lt;/span&gt;
+        &lt;input id="itemid" style="line-height:26px;border:1px solid #ccc"&gt;
+        &lt;span&gt;Product ID:&lt;/span&gt;
+        &lt;input id="productid" style="line-height:26px;border:1px solid #ccc"&gt;
+        &lt;a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()"&gt;Search&lt;/a&gt;
+    &lt;/div&gt;
+</pre>
+<p>
+当用户输入查询值并按下查询按钮时，'doSearch' 函数将被调用：
+</p>
+<pre style="color:#006600">
+    function doSearch(){
+        $('#tt').datagrid('load',{
+            itemid: $('#itemid').val(),
+            productid: $('#productid').val()
+        });
+    }
+</pre>
+<p>
+上面的代码调用了 'load' 方法来加载新的数据网格（datagrid）数据。我们需要传递 'itemid' 和 'productid' 参数到服务器。
+</p>
+<h4>服务器端代码</h4>
+<pre style="color:#006600">
+    include 'conn.php';
+    
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+    $itemid = isset($_POST['itemid']) ? mysql_real_escape_string($_POST['itemid']) : '';
+    $productid = isset($_POST['productid']) ? mysql_real_escape_string($_POST['productid']) : '';
+    
+    $offset = ($page-1)*$rows;
+    
+    $result = array();
+    
+    $where = "itemid like '$itemid%' and productid like '$productid%'";
+    $rs = mysql_query("select count(*) from item where " . $where);
+    $row = mysql_fetch_row($rs);
+    $result["total"] = $row[0];
+    
+    $rs = mysql_query("select * from item where " . $where . " limit $offset,$rows");
+    
+    $items = array();
+    while($row = mysql_fetch_object($rs)){
+        array_push($items, $row);
+    }
+    $result["rows"] = $items;
+    
+    echo json_encode($result);
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid24.zip">jeasyui-datagrid-datagrid24.zip</a></p>
+</div>

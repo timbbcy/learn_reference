@@ -1,0 +1,136 @@
+<div class="article-intro" id="content">
+<h1>数据访问对象模式</h1>
+<p>数据访问对象模式（Data Access Object Pattern）或 DAO 模式用于把低级的数据访问 API 或操作从高级的业务服务中分离出来。以下是数据访问对象模式的参与者。</p>
+<ul class="list">
+<li><b>数据访问对象接口（Data Access Object Interface）</b> - 该接口定义了在一个模型对象上要执行的标准操作。</li>
+<li><b>数据访问对象实体类（Data Access Object concrete class）</b> - 该类实现了上述的接口。该类负责从数据源获取数据，数据源可以是数据库，也可以是 xml，或者是其他的存储机制。</li>
+<li><b>模型对象/数值对象（Model Object/Value Object）</b> - 该对象是简单的 POJO，包含了 get/set 方法来存储通过使用 DAO 类检索到的数据。</li>
+</ul>
+<h2>实现</h2>
+<p>我们将创建一个作为模型对象或数值对象的 <i>Student</i> 对象。<i>StudentDao</i> 是数据访问对象接口。<i>StudentDaoImpl</i> 是实现了数据访问对象接口的实体类。<i>DaoPatternDemo</i>，我们的演示类使用 <i>StudentDao</i> 来演示数据访问对象模式的用法。</p>
+<img alt="数据访问对象模式的 UML 图" src="/wp-content/uploads/2014/08/dao_pattern_uml_diagram.jpg"/>
+<h2>步骤 1</h2>
+<p>创建数值对象。</p>
+<p><i>Student.java</i></p>
+<pre class="prettyprint">
+public class Student {
+   private String name;
+   private int rollNo;
+
+   Student(String name, int rollNo){
+      this.name = name;
+      this.rollNo = rollNo;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public int getRollNo() {
+      return rollNo;
+   }
+
+   public void setRollNo(int rollNo) {
+      this.rollNo = rollNo;
+   }
+}
+</pre>
+<h2>步骤 2</h2>
+<p>创建数据访问对象接口。</p>
+<p><i>StudentDao.java</i></p>
+<pre class="prettyprint">
+import java.util.List;
+
+public interface StudentDao {
+   public List&lt;Student&gt; getAllStudents();
+   public Student getStudent(int rollNo);
+   public void updateStudent(Student student);
+   public void deleteStudent(Student student);
+}
+
+</pre>
+<h2>步骤 3</h2>
+<p>创建实现了上述接口的实体类。</p>
+<p><i>StudentDaoImpl.java</i></p>
+<pre class="prettyprint">
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentDaoImpl implements StudentDao {
+    
+   //列表是当作一个数据库
+   List&lt;Student&gt; students;
+
+   public StudentDaoImpl(){
+      students = new ArrayList&lt;Student&gt;();
+      Student student1 = new Student("Robert",0);
+      Student student2 = new Student("John",1);
+      students.add(student1);
+      students.add(student2);        
+   }
+   @Override
+   public void deleteStudent(Student student) {
+      students.remove(student.getRollNo());
+      System.out.println("Student: Roll No " + student.getRollNo() 
+         +", deleted from database");
+   }
+
+   //从数据库中检索学生名单
+   @Override
+   public List&lt;Student&gt; getAllStudents() {
+      return students;
+   }
+
+   @Override
+   public Student getStudent(int rollNo) {
+      return students.get(rollNo);
+   }
+
+   @Override
+   public void updateStudent(Student student) {
+      students.get(student.getRollNo()).setName(student.getName());
+      System.out.println("Student: Roll No " + student.getRollNo() 
+         +", updated in the database");
+   }
+}
+</pre>
+<h2>步骤 4</h2>
+<p>使用 <i>StudentDao</i> 来演示数据访问对象模式的用法。</p>
+<p><i>DaoPatternDemo.java</i></p>
+<pre class="prettyprint">
+public class DaoPatternDemo {
+   public static void main(String[] args) {
+      StudentDao studentDao = new StudentDaoImpl();
+
+      //输出所有的学生
+      for (Student student : studentDao.getAllStudents()) {
+         System.out.println("Student: [RollNo : "
+            +student.getRollNo()+", Name : "+student.getName()+" ]");
+      }
+
+
+      //更新学生
+      Student student =studentDao.getAllStudents().get(0);
+      student.setName("Michael");
+      studentDao.updateStudent(student);
+
+      //获取学生
+      studentDao.getStudent(0);
+      System.out.println("Student: [RollNo : "
+         +student.getRollNo()+", Name : "+student.getName()+" ]");        
+   }
+}
+</pre>
+<h2>步骤 5</h2>
+<p>验证输出。</p>
+<pre class="result">
+Student: [RollNo : 0, Name : Robert ]
+Student: [RollNo : 1, Name : John ]
+Student: Roll No 0, updated in the database
+Student: [RollNo : 0, Name : Michael ]
+</pre>
+</div>

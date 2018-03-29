@@ -1,0 +1,77 @@
+<div class="article-intro" id="content">
+<h1>C# <span class="color_h1">变量</span></h1>
+<div class="tutintro">
+<p>一个变量只不过是一个供程序操作的存储区的名字。在 C# 中，每个变量都有一个特定的类型，类型决定了变量的内存大小和布局。范围内的值可以存储在内存中，可以对变量进行一系列操作。</p>
+<p>我们已经讨论了各种数据类型。C# 中提供的基本的值类型大致可以分为以下几类：</p>
+<table class="reference notranslate">
+<tr><th style="width:25%;">类型</th><th>举例</th></tr>
+<tr><td>整数类型</td><td>sbyte、byte、short、ushort、int、uint、long、ulong 和 char</td></tr>
+<tr><td>浮点型</td><td>float 和 double</td></tr>
+<tr><td>十进制类型</td><td>decimal</td></tr>
+<tr><td>布尔类型</td><td>true 或 false 值，指定的值</td></tr>
+<tr><td>空类型</td><td>可为空值的数据类型</td></tr>
+</table>
+<p>C# 允许定义其他值类型的变量，比如 <b>enum</b>，也允许定义引用类型变量，比如 <b>class</b>。这些我们将在以后的章节中进行讨论。在本章节中，我们只研究基本变量类型。</p>
+</div>
+<h2 class="tutheader">C# 中的变量定义</h2>
+<p>C# 中变量定义的语法：</p>
+<pre class="prettyprint">
+&lt;data_type&gt; &lt;variable_list&gt;;
+</pre>
+<p>在这里，data_type 必须是一个有效的 C# 数据类型，可以是 char、int、float、double 或其他用户自定义的数据类型。variable_list 可以由一个或多个用逗号分隔的标识符名称组成。</p>
+<p>一些有效的变量定义如下所示：</p>
+<pre class="prettyprint">
+int i, j, k;
+char c, ch;
+float f, salary;
+double d;
+</pre>
+<p>您可以在变量定义时进行初始化：</p>
+<pre class="prettyprint">
+int i = 100;
+</pre>
+<h2 class="tutheader">C# 中的变量初始化</h2>
+<p>变量通过在等号后跟一个常量表达式进行初始化（赋值）。初始化的一般形式为：</p>
+<pre class="prettyprint">
+variable_name = value;
+</pre>
+<p>变量可以在声明时被初始化（指定一个初始值）。初始化由一个等号后跟一个常量表达式组成，如下所示：</p>
+<pre class="prettyprint">
+&lt;data_type&gt; &lt;variable_name&gt; = value;
+</pre>
+<p>一些实例：</p>
+<pre class="prettyprint">
+int d = 3, f = 5;    /* 初始化 d 和 f. */
+byte z = 22;         /* 初始化 z. */
+double pi = 3.14159; /* 声明 pi 的近似值 */
+char x = 'x';        /* 变量 x 的值为 'x' */
+</pre>
+<p>正确地初始化变量是一个良好的编程习惯，否则有时程序会产生意想不到的结果。</p>
+<p>请看下面的实例，使用了各种类型的变量：</p>
+<pre class="prettyprint">
+namespace VariableDefinition
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            short a;
+            int b ;
+            double c;
+
+            /* 实际初始化 */
+            a = 10;
+            b = 20;
+            c = a + b;
+            Console.WriteLine("a = {0}, b = {1}, c = {2}", a, b, c);
+            Console.ReadLine();
+        }
+    }
+}
+</pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre class="result">
+a = 10, b = 20, c = 30
+</pre>
+<h2 class="tutheader">接受来自用户的值</h2>
+<b>System</b> 命名空间中的 <b>Console</b> 类提供了一个函数 <b>ReadLine()</b>，用于接收来自用户的输入，并把它存储到一个变量中。</div>

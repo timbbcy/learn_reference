@@ -1,0 +1,113 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">File</span> 对象</h1>
+<hr/>
+<p class="intro">File 对象用于返回关于指定文件的信息。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_datelastmodified" target="_blank">文件最后被修改的时间？</a><br/>
+本例演示如何使用 DateLastModified 属性来取得指定文件最后被修改的日期和时间。</p>
+<p><a href="/try/showasp.php?filename=demo_datelastaccessed" target="_blank">文件最后被访问的时间？</a><br/>
+此例演示如何使用 DateLastAccessed 属性来取得指定文件最后被访问的日期和时间。</p>
+<p><a href="/try/showasp.php?filename=demo_attributes" target="_blank">返回指定文件的属性</a><br/>
+本例演示如何使用 Attributes 来返回指定文件的属性。</p>
+<hr/>
+<h2>File 对象</h2>
+<p>File 对象用于返回关于指定文件的信息。</p>
+<p>如需操作 File 对象的相关属性和方法，您需要通过 FileSystemObject 对象来创建 File 对象的实例。首先，创建一个 FileSystemObject 对象，然后通过 FileSystemObject 对象的 GetFile 方法，或者通过 Folder 对象的 Files 属性来实例化 File 对象。</p>
+<p>下面的代码使用 FileSystemObject 对象的 GetFile 方法来实例化 File 对象，并使用 DateCreated 属性来返回指定文件的创建日期：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;%<br/>
+Dim fs,f<br/>
+Set fs=Server.CreateObject("Scripting.FileSystemObject")<br/>
+Set f=fs.GetFile("c:\test.txt")<br/>
+Response.Write("File created: " &amp; f.DateCreated)<br/>
+set f=nothing<br/>
+set fs=nothing<br/>
+%&gt;</div>
+<br/><a class="showbtn" href="/try/showasp.php?filename=demo_datecreated" target="_blank">演示实例 »</a>
+</div>
+<p>File 对象的属性和方法描述如下：</p>
+<h3>属性</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" valign="top" width="28%">属性</th>
+<th align="left" valign="top" width="72%">描述</th>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-attributes-file.html">Attributes</a></td>
+<td valign="top">设置或返回指定文件的属性。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-datecreated-file.html">DateCreated</a></td>
+<td valign="top">返回指定文件被创建的日期和时间。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-datelastaccessed-file.html">DateLastAccessed</a></td>
+<td valign="top">返回指定文件最后被访问的日期和时间。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-datelastmodified-file.html">DateLastModified</a></td>
+<td valign="top">返回指定文件最后被修改的日期和时间。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-drive-file.html">Drive</a></td>
+<td valign="top">返回指定文件或文件夹所在的驱动器的驱动器字母。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-name-file.html">Name</a></td>
+<td valign="top">设置或返回指定文件的名称。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-parentfolder-file.html">ParentFolder</a></td>
+<td valign="top">返回指定文件的父文件夹对象。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-path-file.html">Path</a></td>
+<td valign="top">返回指定文件的路径。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-shortname-file.html">ShortName</a></td>
+<td valign="top">返回指定文件的短名称（8.3 命名约定）。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-shortpath-file.html">ShortPath</a></td>
+<td valign="top">返回指定文件的短路径（8.3 命名约定）。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-size-file.html">Size</a></td>
+<td valign="top">返回指定文件的尺寸（字节）。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="prop-type-file.html">Type</a></td>
+<td valign="top">返回指定文件的类型。</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" valign="top" width="28%">方法</th>
+<th align="left" valign="top" width="72%">描述</th>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-copy-file.html">Copy</a></td>
+<td valign="top">把指定文件从一个位置拷贝到另一个位置。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-delete-file.html">Delete</a></td>
+<td valign="top">删除指定文件。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-move-file.html">Move</a></td>
+<td valign="top">把指定文件从一个位置移动到另一个位置。</td>
+</tr>
+<tr valign="top">
+<td valign="top"><a href="met-openastextstream.html">OpenAsTextStream</a></td>
+<td valign="top">打开指定文件，并返回一个 TextStream 对象来访问此文件。</td>
+</tr>
+</table>
+<br/>
+</div>

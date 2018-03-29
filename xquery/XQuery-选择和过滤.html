@@ -1,0 +1,125 @@
+<div class="article-intro" id="content">
+<h1>XQuery <span class="color_h1">选择</span> 和 <span class="color_h1">过滤</span>
+</h1>
+<hr/>
+<h2>XML实例文档</h2>
+<p>我们将在下面的例子中继续使用这个 "books.xml" 文档（和上面的章节所使用的 XML 文件相同）。
+</p>
+<p><a href="/try/xml/books.xml" target="_blank">在您的浏览器中查看 "books.xml" 文件</a>。</p>
+<hr/>
+<h2>选择和过滤元素
+</h2>
+<p>正如在前面的章节所看到的，我们使用路径表达式或 FLWOR 表达式来选取和过滤元素。
+</p>
+<p>请看下面的 FLWOR 表达式：</p>
+<div class="code notranslate"><div>
+
+for $x in doc("books.xml")/bookstore/book<br/>
+where $x/price&gt;30<br/>
+order by $x/title<br/>
+return $x/title
+</div></div>
+<ul>
+<li>for - （可选） 向每个由 in 表达式返回的项目捆绑一个变量</li>
+<li>let - （可选） </li>
+<li>where - （可选） 设定一个条件</li>
+<li>order by - （可选） 设定结果的排列顺序</li>
+<li>return - 规定在结果中返回的内容</li>
+</ul>
+<h2>for 语句</h2>
+<p>for 语句可将变量捆绑到由 in 表达式返回的每个项目。for 语句可产生迭代。在同一个 FLWOR 表达式中可存在多重 for 语句。
+</p>
+<p>如需在一个 for 语句中进行指定次数地循环，您可使用关键词 to ：</p>
+<div class="code notranslate"><div>
+
+for $x in (1 to 5)<br/>
+return &lt;test&gt;{$x}&lt;/test&gt;
+</div></div>
+<p>结果：</p>
+<div class="code notranslate"><div>
+
+&lt;test&gt;1&lt;/test&gt;<br/>
+&lt;test&gt;2&lt;/test&gt;<br/>
+&lt;test&gt;3&lt;/test&gt;<br/>
+&lt;test&gt;4&lt;/test&gt;<br/>
+&lt;test&gt;5&lt;/test&gt;
+</div></div>
+<p>关键词 <strong>at </strong>可用于计算迭代：</p>
+<div class="code notranslate"><div>
+for $x at $i in doc("books.xml")/bookstore/book/title<br/>
+return &lt;book&gt;{$i}. {data($x)}&lt;/book&gt;
+</div></div>
+<p>结果：</p>
+<div class="code notranslate"><div>
+
+&lt;book&gt;1. Everyday Italian&lt;/book&gt;<br/>
+&lt;book&gt;2. Harry Potter&lt;/book&gt;<br/>
+&lt;book&gt;3. XQuery Kick Start&lt;/book&gt;<br/>
+&lt;book&gt;4. Learning XML&lt;/book&gt;
+</div></div>
+<p>在 for 语句中同样允许多个 in 表达式。请使用逗号来分割每一个 in 表达式：</p>
+<div class="code notranslate"><div>
+
+for $x in (10,20), $y in (100,200)<br/>
+return &lt;test&gt;x={$x} and y={$y}&lt;/test&gt;
+</div></div>
+<p>结果：</p>
+<div class="code notranslate"><div>
+
+&lt;test&gt;x=10 and y=100&lt;/test&gt;<br/>
+&lt;test&gt;x=10 and y=200&lt;/test&gt;<br/>
+&lt;test&gt;x=20 and y=100&lt;/test&gt;<br/>
+&lt;test&gt;x=20 and y=200&lt;/test&gt;
+</div></div>
+<h2>let 语句
+</h2>
+<p>let 语句可完成变量分配，并可避免多次重复相同的表达式。let 语句不会导致迭代。</p>
+<div class="code notranslate"><div>
+
+let $x := (1 to 5)<br/>
+return &lt;test&gt;{$x}&lt;/test&gt;
+</div></div>
+<p>结果：</p>
+<div class="code notranslate"><div>
+&lt;test&gt;1 2 3 4 5&lt;/test&gt;
+</div></div>
+<h2>where 语句
+</h2>
+<p>where 语句用于为结果设定一个或多个条件（criteria）。</p>
+<div class="code notranslate"><div>
+where $x/price&gt;30 and $x/price&lt;100
+</div></div>
+<h2>order by 语句
+</h2>
+<p>order by 语句用于规定结果的排序次序。在这里，我们要根据 category 和 title 来对结果进行排序：</p>
+<div class="code notranslate"><div>
+
+for $x in doc("books.xml")/bookstore/book<br/>
+order by $x/@category, $x/title<br/>
+return $x/title
+</div></div>
+<p>结果：</p>
+<div class="code notranslate"><div>
+
+&lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Learning XML&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;
+</div></div>
+<h2>return 语句：
+</h2>
+<p>return 语句规定要返回的内容。</p>
+<div class="code notranslate"><div>
+
+for $x in doc("books.xml")/bookstore/book<br/>
+return $x/title
+</div></div>
+<p>结果：</p>
+<div class="code notranslate"><div>
+
+&lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Harry Potter&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;XQuery Kick Start&lt;/title&gt;<br/>
+&lt;title lang="en"&gt;Learning XML&lt;/title&gt;
+</div></div>
+</div>

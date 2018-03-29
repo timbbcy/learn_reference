@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">安装</span>
+</h1>
+<hr/>
+<h2>在你的网页中添加 jQuery Mobile </h2>
+<p>你可以通过以下几种方式将jQuery Mobile添加到你的网页中：</p>
+<ul>
+<li>从 CDN 中加载 jQuery Mobile  (推荐)</li>
+<li> 从jQuerymobile.com 下载 jQuery Mobile库</li>
+</ul>
+<hr/>
+<h2>从 CDN 中加载 jQuery Mobile</h2>
+<table class="lamp" id="table2"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。.</td>
+</tr></table>
+<p>使用 jQuery 内核, 你不需要在电脑上安装任何东西; 你仅仅需要在你的网页中加载以下层叠样式 (.css) 和  JavaScript 库 (.js) 就能够使用 jQuery Mobile:</p>
+<div class="example">
+<h2 class="example">jQuery Mobile CDN:</h2>
+<div class="example_code">
+&lt;head&gt;<br/><br/>&lt;!-- meta使用viewport以确保页面可自由缩放 --&gt;<br/>&lt;meta name="viewport" content="width=device-width, 
+  initial-scale=1"&gt;<br/><br/>&lt;!-- 引入 jQuery Mobile 样式 --&gt;<br/>
+  &lt;link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"&gt;<br/>
+<br/>&lt;!-- 引入 jQuery 库 --&gt;<br/>
+  &lt;script src="http://code.jquery.com/jquery-1.11.3.min.js"&gt;&lt;/script&gt;<br/>
+<br/>&lt;!-- 引入 jQuery Mobile 库 --&gt;<br/>
+  &lt;script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"&gt;&lt;/script&gt;<br/><br/>
+&lt;/head&gt;
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lib_jquery1" target="_blank">尝试一下 »</a>
+</div>
+<p>国内用户推荐使用百度CDN：</p>
+<div class="example">
+<h2 class="example">jQuery Mobile CDN(百度):</h2>
+<div class="example_code">
+&lt;head&gt;<br/><br/>&lt;!-- meta使用viewport以确保页面可自由缩放 --&gt;<br/>&lt;meta name="viewport" content="width=device-width, 
+  initial-scale=1"&gt;<br/><br/>&lt;!-- 引入 jQuery Mobile 样式 --&gt;<br/>
+  &lt;link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css"&gt;<br/>
+<br/>&lt;!-- 引入 jQuery 库 --&gt;<br/>
+  &lt;script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;<br/>
+<br/>&lt;!-- 引入 jQuery Mobile 库 --&gt;<br/>
+  &lt;script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"&gt;&lt;/script&gt;<br/><br/>
+&lt;/head&gt;
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjqmob_lib_jquery" target="_blank">尝试一下 »</a>
+</div>
+<p>本教程引用的库为百度 CDN 资源库。</p>
+<br/><hr/>
+<h2>下载 jQuery Mobile</h2>
+<p>如果你想将 jQuery Mobile 放于你的主机中,你可以从
+<a href="http://jquerymobile.com/download/" target="_blank">jQuerymobile.com</a>下载该文件。</p>
+<pre>
+&lt;head&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;link rel="stylesheet" href="jquery.mobile-1.4.5.css"&gt;
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.mobile-1.4.5.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+</pre>
+<p><b>提示：</b> 将下载的文件放置于与网页同一目录下。<br/></p>
+<table class="lamp" id="table1"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<b>你是否想知道为什么在 &lt;script&gt; 标签中 没有插入 type="text/javascript" ?</b><br/><br/>
+在 HTML5 已经不需要该属性。 JavaScript 在所有现代浏览器中是 HTML5 的默认脚本语言！</td>
+</tr></table>
+</div>

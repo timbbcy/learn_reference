@@ -1,0 +1,30 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">多维数组</span>
+</h1>
+<hr/>
+<p class="intro">一个数组中的值可以是另一个数组，另一个数组的值也可以是一个数组。依照这种方式，我们可以创建二维或者三维数组：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	&lt;?php<br/>// 二维数组:<br/>$cars = array<br/>  (<br/>  
+	    array("Volvo",100,96),<br/>    array("BMW",60,59),<br/>    array("Toyota",110,100)<br/>  );<br/>?&gt;</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_array_multi" target="_blank">运行实例 »</a>
+</div>
+<hr/>
+<h2>PHP - 多维数组</h2>
+<p>多维数组是包含一个或多个数组的数组。</p>
+<p>在多维数组中，主数组中的每一个元素也可以是一个数组，子数组中的每一个元素也可以是一个数组。</p>
+<h3>实例</h3>
+<p>在这个实例中，我们创建了一个自动分配 ID 键的多维数组：</p>
+<div class="example"><h2 class="example">实例</h2><div class="example_code"><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$sites </br></span><span style="color: #007700">= array<br>(<br>    </br></br></span><span style="color: #DD0000">"runoob"</span><span style="color: #007700">=&gt;array<br>    (<br>        </br></br></span><span style="color: #DD0000">"菜鸟教程"</span><span style="color: #007700">,<br>        </br></span><span style="color: #DD0000">"http://www.runoob.com"<br>    </br></span><span style="color: #007700">),<br>    </br></span><span style="color: #DD0000">"google"</span><span style="color: #007700">=&gt;array<br>    (<br>        </br></br></span><span style="color: #DD0000">"Google 搜索"</span><span style="color: #007700">,<br>        </br></span><span style="color: #DD0000">"http://www.google.com"<br>    </br></span><span style="color: #007700">),<br>    </br></span><span style="color: #DD0000">"taobao"</span><span style="color: #007700">=&gt;array<br>    (<br>        </br></br></span><span style="color: #DD0000">"淘宝"</span><span style="color: #007700">,<br>        </br></span><span style="color: #DD0000">"http://www.taobao.com"<br/>    </span><span style="color: #007700">)<br/>);<br/>print(</span><span style="color: #DD0000">"&lt;pre&gt;"</span><span style="color: #007700">); </span><span style="color: #FF8000">// 格式化输出数组<br/></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$sites</span><span style="color: #007700">);<br/>print(</span><span style="color: #DD0000">"&lt;/pre&gt;"</span><span style="color: #007700">);<br/></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</div></div>
+<p>上面的数组将输出如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/08/198533EB-73EE-4AA7-8025-A6C0F778D4F0.jpg" width="70%"/></p>
+<h3>实例 2</h3>
+<p>让我们试着显示上面数组中的某个值：</p>
+<pre>echo $sites['runoob'][0] . '地址为：' . $sites['runoob'][1];</pre>
+<p>上面的代码将输出：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/08/11B02D8A-8855-4BCE-9DE9-5DA9BB4AE936.jpg" width="70%"/></p>
+</div>

@@ -1,0 +1,49 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">Switch</span> 语句</h1>
+<hr/>
+<p class="intro">switch 语句用于根据多个不同条件执行不同动作。</p>
+<hr/>
+<h2>PHP Switch 语句</h2>
+<p>如果您希望<strong>有选择地执行若干代码块之一</strong>，请使用 switch 语句。</p>
+<div class="example">
+<h2 class="example">语法</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">switch</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-identifier">label1</span><span class="hl-code">:
+    如果 </span><span class="hl-identifier">n</span><span class="hl-code">=</span><span class="hl-identifier">label1</span><span class="hl-code">，此处代码将执行;
+    </span><span class="hl-reserved">break</span><span class="hl-code">;
+</span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-identifier">label2</span><span class="hl-code">:
+    如果 </span><span class="hl-identifier">n</span><span class="hl-code">=</span><span class="hl-identifier">label2</span><span class="hl-code">，此处代码将执行;
+    </span><span class="hl-reserved">break</span><span class="hl-code">;
+</span><span class="hl-reserved">default</span><span class="hl-code">:
+    如果 </span><span class="hl-identifier">n</span><span class="hl-code"> 既不等于 </span><span class="hl-identifier">label1</span><span class="hl-code"> 也不等于 </span><span class="hl-identifier">label2</span><span class="hl-code">，此处代码将执行;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div></div>
+<p>工作原理：首先对一个简单的表达式 <i>n</i>（通常是变量）进行一次计算。将表达式的值与结构中每个 case 的值进行比较。如果存在匹配，则执行与 case 关联的代码。代码执行后，使用 <b>break</b> 来阻止代码跳入下一个 case 中继续执行。<strong>default</strong> 语句用于不存在匹配（即没有 case 为真）时执行。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$favcolor</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">red</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">switch</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$favcolor</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">red</span><span class="hl-quotes">"</span><span class="hl-code">:
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">你喜欢的颜色是红色!</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">break</span><span class="hl-code">;
+</span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">blue</span><span class="hl-quotes">"</span><span class="hl-code">:
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">你喜欢的颜色是蓝色!</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">break</span><span class="hl-code">;
+</span><span class="hl-reserved">case</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">green</span><span class="hl-quotes">"</span><span class="hl-code">:
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">你喜欢的颜色是绿色!</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">break</span><span class="hl-code">;
+</span><span class="hl-reserved">default</span><span class="hl-code">:
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">你喜欢的颜色不是 红, 蓝, 或绿色!</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/><a class="showbtn" href="/try/showphp.php?filename=demo_switch" target="_blank">运行实例 »</a>
+</div>
+</div>

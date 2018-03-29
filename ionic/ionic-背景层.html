@@ -1,0 +1,48 @@
+<div class="article-intro" id="content">
+<h1>ionic 背景层</h1>
+<p>我们经常需要在 UI 上，例如在弹出框、加载框、其他弹出层中显示或隐藏背景层。</p>
+<p>在组件中可以使用$ionicBackdrop.retain()来显示背景层，使用$ionicBackdrop.release()隐藏背景层。</p>
+<p>每次调用retain后，背景会一直显示，直到调用release消除背景层。</p>
+<hr/>
+<h2>实例</h2>
+<h3>HTML 代码</h3>
+<pre>
+&lt;body ng-app="starter" ng-controller="actionsheetCtl" &gt;
+    &lt;ion-pane&gt;
+        &lt;ion-content &gt;
+            &lt;h2 ng-click="action()"&gt;$ionicBackdrop&lt;/h2&gt;
+        &lt;/ion-content&gt;
+    &lt;/ion-pane&gt;
+&lt;/body&gt;
+</pre>
+<h3>JavaScript 代码</h3>
+<pre>
+angular.module('starter', ['ionic'])
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if(window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+
+.controller( 'actionsheetCtl',['$scope','$timeout' ,'$ionicBackdrop',function($scope,$timeout,$ionicBackdrop){
+
+    $scope.action = function() {
+       $ionicBackdrop.retain();
+       $timeout(function() {    //默认让它1秒后消失
+         $ionicBackdrop.release();
+       }, 1000);
+    }; 
+}])
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_actionbackdrop" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>显示效果如下图所示：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/08/ionicBackdrop.gif"/>
+</div>

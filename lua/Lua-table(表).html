@@ -1,0 +1,77 @@
+<div class="article-intro" id="content">
+<h1>Lua table(表)</h1>
+<p>table 是 Lua 的一种数据结构用来帮助我们创建不同的数据类型，如：数字、字典等。</p>
+<p>Lua table 使用关联型数组，你可以用任意类型的值来作数组的索引，但这个值不能是 nil。</p>
+<p>Lua table 是不固定大小的，你可以根据自己需要进行扩容。</p>
+<p>Lua也是通过table来解决模块（module）、包（package）和对象（Object）的。
+例如string.format表示使用"format"来索引table string。</p>
+<hr/><h2>table(表)的构造</h2>
+<p>构造器是创建和初始化表的表达式。表是Lua特有的功能强大的东西。最简单的构造函数是{}，用来创建一个空表。可以直接初始化数组:</p>
+<pre>
+-- 初始化表
+mytable = {}
+
+-- 指定值
+mytable[1]= "Lua"
+
+-- 移除引用
+mytable = nil
+-- lua 垃圾回收会释放内存
+</pre>
+<p>当我们为 table a 并设置元素，然后将 a 赋值给 b，则 a 与 b 都指向同一个内存。如果 a 设置为 nil
+，则 b 同样能访问 table 的元素。如果没有指定的变量指向a，Lua的垃圾回收机制会清理相对应的内存。</p>
+<p>以下实例演示了以上的描述情况：</p>
+<pre>
+-- 简单的 table
+mytable = {}
+print("mytable 的类型是 ",type(mytable))
+
+mytable[1]= "Lua"
+mytable["wow"] = "修改前"
+print("mytable 索引为 1 的元素是 ", mytable[1])
+print("mytable 索引为 wow 的元素是 ", mytable["wow"])
+
+-- alternatetable和mytable的是指同一个 table
+alternatetable = mytable
+
+print("alternatetable 索引为 1 的元素是 ", alternatetable[1])
+print("mytable 索引为 wow 的元素是 ", alternatetable["wow"])
+
+alternatetable["wow"] = "修改后"
+
+print("mytable 索引为 wow 的元素是 ", mytable["wow"])
+
+-- 释放变量
+alternatetable = nil
+print("alternatetable 是 ", alternatetable)
+
+-- mytable 仍然可以访问
+print("mytable 索引为 wow 的元素是 ", mytable["wow"])
+
+mytable = nil
+print("mytable 是 ", mytable)
+</pre>
+<p>以上代码执行结果为：</p>
+<pre>
+mytable 的类型是     table
+mytable 索引为 1 的元素是     Lua
+mytable 索引为 wow 的元素是     修改前
+alternatetable 索引为 1 的元素是     Lua
+mytable 索引为 wow 的元素是     修改前
+mytable 索引为 wow 的元素是     修改后
+alternatetable 是     nil
+mytable 索引为 wow 的元素是     修改后
+mytable 是     nil
+</pre>
+<hr/>
+<h2>Table 操作</h2>
+<p>以下列出了 Table 操作常用的方法：</p>
+<table class="reference">
+<tbody><tr><th style="width:5%">序号</th><th>方法 &amp; 用途</th></tr>
+<tr><td>1</td><td><b>table.concat (table [, sep [, start [, end]]]):</b><p>concat是concatenate(连锁, 连接)的缩写. table.concat()函数列出参数中指定table的数组部分从start位置到end位置的所有元素, 元素间以指定的分隔符(sep)隔开。</p></td></tr>
+<tr><td>2</td><td><b>table.insert (table, [pos,] value):</b><p>在table的数组部分指定位置(pos)插入值为value的一个元素. pos参数可选, 默认为数组部分末尾.</p></td></tr>
+<tr><td>3</td><td><b>table.maxn (table)</b><p>指定table中所有正数key值中最大的key值. 如果不存在key值为正数的元素, 则返回0。(<b style="color:red;">Lua5.2之后该方法已经不存在了,本文使用了自定义函数实现</b>)</p></td></tr>
+<tr><td>4</td><td><b>table.remove (table [, pos])</b><p>返回table数组部分位于pos位置的元素. 其后的元素会被前移. pos参数可选, 默认为table长度, 即从最后一个元素删起。</p></td></tr>
+<tr><td>5</td><td><b>table.sort (table [, comp])</b><p>对给定的table进行升序排序。 </p></td></tr>
+</tbody></table>
+<p>接下来我们来看下这几个方法的实例。</p></div>

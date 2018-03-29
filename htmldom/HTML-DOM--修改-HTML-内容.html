@@ -1,0 +1,87 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM - <span class="color_h1"> 修改 HTML 内容</span>
+</h1>
+<hr/>
+<p class="intro">通过 HTML DOM，JavaScript 能够访问 HTML 文档中的每个元素。<br/></p>
+<hr/>
+<h2>改变 HTML 内容</h2>
+<p>改变元素内容的最简单的方法是使用 innerHTML 属性。</p>
+<p>下面的例子更改 &lt;p&gt; 元素的 HTML 内容：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+document.getElementById("p1").innerHTML="新文本!";
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">段落通过脚本来修改内容。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changetext" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>改变 HTML 样式</h2>
+<p>通过 HTML DOM，您能够访问 HTML 对象的样式对象。</p>
+<p>下面的例子更改段落的 HTML 样式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p2</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+document.getElementById("p2").style.color="blue";
+document.getElementById("p2").style.fontFamily="Arial";
+document.getElementById("p2").style.fontSize="larger";
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changestyle1" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>使用事件</h2>
+<p>HTML DOM 允许您在事件发生时执行代码。</p>
+<p>当 HTML 元素"有事情发生"时，浏览器就会生成事件：</p>
+<ul>
+<li>在元素上点击</li>
+<li>加载页面</li>
+<li>改变输入字段</li>
+</ul>
+<p>你可以在下一章学习更多有关事件的内容。</p>
+<p>下面两个例子在按钮被点击时改变 &lt;body&gt; 元素的背景色：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">document.body.style.backgroundColor='lavender';</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">修改背景颜色</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changebackground2" target="_blank">尝试一下 »</a>
+</div>
+<p>在本例中，由函数执行相同的代码：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+function ChangeBackground()
+{
+    document.body.style.backgroundColor="lavender";
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ChangeBackground()</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">修改背景颜色</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changestyle" target="_blank">尝试一下 »</a>
+</div>
+<p>下面的例子在按钮被点击时改变 &lt;p&gt; 元素的文本：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+function ChangeText()
+{
+    document.getElementById("p1").innerHTML="Hello Runoob!";
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ChangeText()</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">value</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">修改文本</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changetext2" target="_blank">尝试一下 »</a>
+</div>
+</div>

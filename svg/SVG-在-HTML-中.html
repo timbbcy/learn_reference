@@ -1,0 +1,64 @@
+<div class="article-intro" id="content">
+<h1>SVG 在  <span class="color_h1">HTML</span> 页面</h1>
+<hr/>
+<p class="intro">SVG 文件可通过以下标签嵌入 HTML 文档：&lt;embed&gt;、&lt;object&gt; 或者 &lt;iframe&gt;。</p>
+<p class="intro">SVG的代码可以直接嵌入到HTML页面中，或您可以直接链接到SVG文件。</p>
+<hr/>
+<h2>使用 &lt;embed&gt; 标签</h2>
+<p>&lt;embed&gt;:</p>
+<ul>
+<li>优势：所有主要浏览器都支持，并允许使用脚本</li>
+<li>缺点：不推荐在HTML4和XHTML中使用（但在HTML5允许）</li>
+</ul>
+<p><b>语法:</b></p>
+<div class="code notranslate"><div>
+&lt;embed src="circle1.svg" type="image/svg+xml" /&gt;
+</div></div>
+<p><b>结果：</b></p>
+<hr/>
+<h2>使用 &lt;object&gt; 标签</h2>
+<p>&lt;object&gt;:</p>
+<ul>
+<li>优势：所有主要浏览器都支持，并支持HTML4，XHTML和HTML5标准</li>
+<li>缺点：不允许使用脚本。</li>
+</ul>
+<p><b>语法:</b></p>
+<div class="code notranslate"><div>
+&lt;object data="circle1.svg" 
+type="image/svg+xml"&gt;&lt;/object&gt;
+</div></div>
+<p><b>结果：</b></p>
+<hr/>
+<h2>使用 &lt;iframe&gt; 标签</h2>
+<p>&lt;iframe&gt;:</p>
+<ul>
+<li>优势：所有主要浏览器都支持，并允许使用脚本</li>
+<li>缺点：不推荐在HTML4和XHTML中使用（但在HTML5允许）</li>
+</ul>
+<p><b>语法:</b></p>
+<div class="code notranslate"><div>
+&lt;iframe src="circle1.svg"&gt;&lt;/iframe&gt;
+</div></div>
+<p><b>结果:</b></p>
+<hr/>
+<h2>直接在HTML嵌入SVG代码</h2>
+<p class="elem_d11">在Firefox、Internet Explorer9、谷歌Chrome和Safari中，你可以直接在HTML嵌入SVG代码。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">svg</span><span class="hl-code"> </span><span class="hl-var">xmlns</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.w3.org/2000/svg</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">circle</span><span class="hl-code"> </span><span class="hl-var">cx</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">100</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">cy</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">50</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">r</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">40</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">stroke</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">black</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">stroke-width</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">2</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">fill</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">red</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">svg</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trysvg_circle" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2 class="tutheader">链接到SVG文件</h2>
+<p>您还可以用&lt;a&gt;标签链接到一个SVG文件：链接到SVG文件</p>
+<p>您还可以用&lt;a&gt;标签链接到一个SVG文件：</p>
+<div class="code notranslate"><div>
+&lt;a href="circle1.svg"&gt;View SVG file&lt;/a&gt;
+</div></div>
+<p><b>结果:</b></p>
+<a href="/try/demo_source/circle1.svg" target="_blank">查看 SVG 文件</a>
+</div>

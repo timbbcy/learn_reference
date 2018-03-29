@@ -1,0 +1,92 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">Request</span> 对象</h1>
+<hr/>
+<p class="intro">Request 对象用于从访客那里获取信息。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>QueryString 集合实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_simplequerystring" target="_blank">当用户点击链接时发送查询信息</a><br/>
+本例演示如何在链接中向页面发送查询信息，并在目标页面中取回这些信息（在本例中是同一页面）。</p>
+<p><a href="/try/showasp.php?filename=demo_simplereqquery" target="_blank">QueryString 集合的简单应用</a><br/>
+本例演示如何使用 QueryString 集合从表单取回值。（此表单使用 GET 方法，这意味着所发送的信息对用户来说是可见的。）</p>
+<p><a href="/try/showasp.php?filename=demo_simplereqquery" target="_blank">如何使用来自表单的信息</a><br/>
+本例演示如何使用从表单取回的值。此表单使用 GET 方法。</p>
+<p><a href="/try/showasp.php?filename=demo_reqquery2" target="_blank">来自表单的更多信息</a><br/>
+本例演示如果输入字段包含若干相同的名称，QueryString 集合会包含什么内容。它将展示如何使用 Count 关键词来对 "name" 属性进行计数。此表单使用 GET 方法。</p>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>Form 集合实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_simpleform1" target="_blank">Form 集合的简单应用</a><br/>
+本例演示如何使用 Form 集合从表单取回值。（此表单使用 POST 方法，这意味着所发送的信息对用户来说是不可见的。）</p>
+<p><a href="/try/showasp.php?filename=demo_simpleform" target="_blank">如何使用来自表单的信息</a><br/>
+本例演示如何使用从表单取回的值。此表单使用了 POST 方法。</p>
+<p><a href="/try/showasp.php?filename=demo_form2" target="_blank">来自表单的更多信息</a><br/>
+本例演示如果输入字段包含若干相同的名称，Form 集合会包含什么内容。它将展示如何使用 Count 关键词来对 "name" 属性进行计数。此表单使用了 POST 方法。</p>
+<p><a href="/try/showasp.php?filename=demo_radiob" target="_blank">带有单选按钮的表单</a><br/>
+本例演示如何使用 Form 集合通过单选按钮与用户进行交互。此表单使用 POST 方法。</p>
+<p><a href="/try/showasp.php?filename=demo_checkboxes" target="_blank">带有复选框的表单</a><br/>
+本例演示如何使用 Form 集合通过复选框与用户进行交互。此表单使用 POST 方法。</p>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>其他实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_server" target="_blank">获取服务器变量</a><br/>
+本例演示如何取得访客的浏览器类型、IP 地址等信息。</p>
+<p><a href="/try/showasp.php?filename=demo_cookies" target="_blank">创建 welcome cookie</a><br/>
+本例演示如何创建一个 Welcome Cookie。</p>
+<p><a href="/try/showasp.php?filename=demo_totalbytes" target="_blank">探测用户发送的字节总数</a><br/>
+本例演示如何探测用户在 Request 对象中发送的字节总数。</p>
+<hr/>
+<h2>Request 对象</h2>
+<p>当浏览器向服务器请求页面时，这个行为就被称为一个 request（请求）。Request 对象用于从用户那里获取信息。它的集合、属性和方法描述如下：</p>
+<h3>集合</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">集合</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td>ClientCertificate</td>
+<td>包含了存储在客户证书中的所有的字段值。</td>
+</tr>
+<tr valign="top">
+<td><a href="coll-cookies-request.html">Cookies</a></td>
+<td>包含了 HTTP 请求中发送的所有的 cookie 值。</td>
+</tr>
+<tr valign="top">
+<td><a href="coll-form.html">Form</a></td>
+<td>包含了使用 post 方法由表单发送的所有的表单（输入）值。</td>
+</tr>
+<tr valign="top">
+<td><a href="coll-querystring.html">QueryString</a></td>
+<td>包含了 HTTP 查询字符串中所有的变量值。</td>
+</tr>
+<tr valign="top">
+<td><a href="coll-servervariables.html">ServerVariables</a></td>
+<td>包含了所有的服务器变量值。</td>
+</tr>
+</table>
+<h3>属性</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">属性</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr>
+<td valign="top"><a href="prop-totalbytes.html">TotalBytes</a></td>
+<td valign="top">返回在请求正文中客户端发送的字节总数。</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">方法</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td><a href="met-binaryread.html">BinaryRead</a></td>
+<td>取回作为 post 请求的一部分而从客户端发送至服务器的数据，并把它存储在一个安全的数组中。</td>
+</tr>
+</table>
+<br/>
+</div>

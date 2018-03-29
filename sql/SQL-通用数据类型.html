@@ -1,0 +1,183 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">通用数据类型</span>
+</h1>
+<hr/>
+<p class="intro">数据类型定义列中存放的值的种类。</p>
+<hr/>
+<h2>SQL 通用数据类型</h2>
+<p>数据库表中的每个列都要求有名称和数据类型。Each column in a database table is required to have a name and a data type.</p>
+<p>SQL 开发人员必须在创建 SQL 表时决定表中的每个列将要存储的数据的类型。数据类型是一个标签，是便于 SQL 了解每个列期望存储什么类型的数据的指南，它也标识了 SQL 如何与存储的数据进行交互。</p>
+<p>下面的表格列出了 SQL 中通用的数据类型：</p>
+<table class="reference notranslate">
+<tr>
+<th width="25%">数据类型</th>
+<th width="75%">描述</th>
+</tr>
+<tr>
+<td>CHARACTER(n)</td>
+<td>字符/字符串。固定长度 n。</td>
+</tr>
+<tr>
+<td>VARCHAR(n) 或<br/>CHARACTER VARYING(n)</td>
+<td>字符/字符串。可变长度。最大长度 n。</td>
+</tr>
+<tr>
+<td>BINARY(n)</td>
+<td>二进制串。固定长度 n。</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td>存储 TRUE 或 FALSE 值</td>
+</tr>
+<tr>
+<td>VARBINARY(n) 或<br/>BINARY VARYING(n)</td>
+<td>二进制串。可变长度。最大长度 n。</td>
+</tr>
+<tr>
+<td>INTEGER(p)</td>
+<td>整数值（没有小数点）。精度 p。</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>整数值（没有小数点）。精度 5。</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>整数值（没有小数点）。精度 10。</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>整数值（没有小数点）。精度 19。</td>
+</tr>
+<tr>
+<td>DECIMAL(p,s)</td>
+<td>精确数值，精度 p，小数点后位数 s。例如：decimal(5,2) 是一个小数点前有 3 位数小数点后有 2 位数的数字。</td>
+</tr>
+<tr>
+<td>NUMERIC(p,s)</td>
+<td>精确数值，精度 p，小数点后位数 s。（与 DECIMAL 相同）</td>
+</tr>
+<tr>
+<td>FLOAT(p)</td>
+<td>近似数值，尾数精度 p。一个采用以 10 为基数的指数计数法的浮点数。该类型的 size 参数由一个指定最小精度的单一数字组成。</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>近似数值，尾数精度 7。</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>近似数值，尾数精度 16。</td>
+</tr>
+<tr>
+<td>DOUBLE PRECISION</td>
+<td>近似数值，尾数精度 16。</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>存储年、月、日的值。</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>存储小时、分、秒的值。</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>存储年、月、日、小时、分、秒的值。</td>
+</tr>
+<tr>
+<td>INTERVAL</td>
+<td>由一些整数字段组成，代表一段时间，取决于区间的类型。</td>
+</tr>
+<tr>
+<td>ARRAY</td>
+<td>元素的固定长度的有序集合</td>
+</tr>
+<tr>
+<td>MULTISET</td>
+<td>元素的可变长度的无序集合</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>存储 XML 数据</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>SQL 数据类型快速参考手册</h2>
+<p>然而，不同的数据库对数据类型定义提供不同的选择。</p>
+<p>下面的表格显示了各种不同的数据库平台上一些数据类型的通用名称：</p>
+<table class="reference notranslate">
+<tr>
+<th width="17%">数据类型</th>
+<th width="17%">Access</th>
+<th width="21%">SQLServer</th>
+<th width="15%">Oracle</th>
+<th width="15%">MySQL</th>
+<th width="15%">PostgreSQL</th>
+</tr>
+<tr>
+<td><i>boolean</i></td>
+<td>Yes/No</td>
+<td>Bit</td>
+<td>Byte</td>
+<td>N/A</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td><i>integer</i></td>
+<td>Number (integer)</td>
+<td>Int</td>
+<td>Number</td>
+<td>Int<br/>Integer</td>
+<td>Int<br/>Integer</td>
+</tr>
+<tr>
+<td><i>float</i></td>
+<td>Number (single)</td>
+<td>Float<br/>Real</td>
+<td>Number</td>
+<td>Float</td>
+<td>Numeric</td>
+</tr>
+<tr>
+<td><i>currency</i></td>
+<td>Currency</td>
+<td>Money</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Money</td>
+</tr>
+<tr>
+<td><i>string (fixed)</i></td>
+<td>N/A</td>
+<td>Char</td>
+<td>Char</td>
+<td>Char</td>
+<td>Char</td>
+</tr>
+<tr>
+<td><i>string (variable)</i></td>
+<td>Text (&lt;256)<br/>Memo (65k+)</td>
+<td>Varchar</td>
+<td>Varchar<br/>Varchar2</td>
+<td>Varchar</td>
+<td>Varchar</td>
+</tr>
+<tr>
+<td><i>binary object</i></td>
+<td>OLE Object Memo</td>
+<td>Binary (fixed up to 8K)<br/>Varbinary (&lt;8K)<br/>Image (&lt;2GB)</td>
+<td>Long<br/>Raw</td>
+<td>Blob<br/>Text</td>
+<td>Binary<br/>Varbinary</td>
+</tr>
+</table>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+<p><strong>注释：</strong>在不同的数据库中，同一种数据类型可能有不同的名称。即使名称相同，尺寸和其他细节也可能不同！
+<strong>请总是检查文档！</strong></p>
+</td>
+</tr></table>
+<br/><br/>
+</div>

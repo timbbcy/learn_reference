@@ -1,0 +1,80 @@
+<div class="article-intro" id="content">
+<h1>Foundation 按钮</h1>
+<hr/>
+<h2>按钮样式</h2>
+<p>Foundation 提供了 6 种按钮样式。 <code>.button</code> 类创建了一个蓝色的按钮并附有内边距。不同颜色按钮类为： <code>.secondary</code>, <code>.success</code>, <code>.info</code>, <code>.warning</code> 或 <code>.alert</code>:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Default<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button secondary"</span><span class="highGT">&gt;</span>Secondary<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button success"</span><span class="highGT">&gt;</span>Success<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button info"</span><span class="highGT">&gt;</span>Info<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span>
+<span class="highATT">class=</span><span class="highVAL">"button warning"</span><span class="highGT">&gt;</span>Warning<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span>
+<span class="highATT">class=</span><span class="highVAL">"button alert"</span><span class="highGT">&gt;</span>Alert<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_styles" target="_blank">尝试一下 »</a>
+</div><p>按钮类可以使用在 <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, 或 
+<code>&lt;input&gt;</code> 元素:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span> <span class="highATT">class=</span><span class="highVAL">"button info"</span> <span class="highATT">role=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Link Button<span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button info"</span><span class="highGT">&gt;</span>Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"button"</span>
+<span class="highATT">class=</span><span class="highVAL">"button info"</span> <span class="highATT">value=</span><span class="highVAL">"Input Button"</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"submit"</span>
+<span class="highATT">class=</span><span class="highVAL">"button info"</span> <span class="highATT">value=</span><span class="highVAL">"Submit Button"</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_elements" target="_blank">尝试一下 »</a>
+</div><br/>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>为什么将 a 标签的 href 设置为 # ?<br/></strong><br/>当我们不希望链接点击跳转并得到 "404" 
+页面时，我们可以将 a 标签的 href 设置为 #。  </td>
+</tr></tbody></table>
+<hr/>
+<h2>按钮大小</h2>
+<p>我们可以使用 <code>.large</code>, <code>.small</code> 或 <code>.tiny</code> 类来设置按钮大小：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button large"</span><span class="highGT">&gt;</span>Large<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Default<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span>
+<span class="highATT">class=</span><span class="highVAL">"button small"</span><span class="highGT">&gt;</span>Small<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button 
+	tiny"</span><span class="highGT">&gt;</span>Tiny<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_sizes" target="_blank">尝试一下 »</a>
+</div><hr/>
+<h2>圆角按钮</h2>
+<p>可以使用 <code>.radius</code> 和 <code>.round</code> 类来设置圆角按钮：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Default Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button 
+	radius"</span><span class="highGT">&gt;</span>Radius Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button 
+	round"</span><span class="highGT">&gt;</span>Round Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_rounded" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>延展按钮</h2>
+<p>可以使用 <code>.expand</code> 类来设置按钮的宽度为 100%:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Default Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button expand"</span><span class="highGT">&gt;</span>Expanded Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_expanded" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>禁用按钮</h2>
+<p>可以使用 <code>.disabled</code> 类来设置按钮不可点击:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button"</span><span class="highGT">&gt;</span>Default Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">button</span>
+<span class="highATT">type=</span><span class="highVAL">"button"</span> <span class="highATT">class=</span><span class="highVAL">"button disabled"</span><span class="highGT">&gt;</span>Disabled Button<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_button_disabled" target="_blank">尝试一下 »</a>
+</div>
+</div>

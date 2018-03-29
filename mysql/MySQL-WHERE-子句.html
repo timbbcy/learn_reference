@@ -1,0 +1,65 @@
+<div class="article-intro" id="content">
+<h1>MySQL WHERE 子句</h1>
+<p>
+我们知道从 MySQL 表中使用 SQL SELECT 语句来读取数据。</p><p>
+如需有条件地从表中选取数据，可将 WHERE 子句添加到 SELECT 语句中。</p>
+<h3>
+语法</h3>
+<p>
+以下是 SQL SELECT 语句使用 WHERE 子句从数据表中读取数据的通用语法：</p>
+<pre>
+SELECT field1, field2,...fieldN FROM table_name1, table_name2...
+[WHERE condition1 [AND [OR]] condition2.....
+</pre><ul><li>
+查询语句中你可以使用一个或者多个表，表之间使用逗号<span class="marked">,</span> 分割，并使用WHERE语句来设定查询条件。</li><li>
+
+你可以在 WHERE 子句中指定任何条件。</li><li>
+
+你可以使用 AND 或者 OR 指定一个或多个条件。</li><li>
+
+WHERE 子句也可以运用于 SQL 的 DELETE 或者 UPDATE 命令。</li><li>
+WHERE 子句类似于程序语言中的 if 条件，根据 MySQL 表中的字段值来读取指定的数据。</li></ul>
+<p>以下为操作符列表，可用于 WHERE 子句中。
+</p>
+<p>
+下表中实例假定 A 为 10, B 为 20
+</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:10%">操作符</th><th style="width:45%">描述</th><th>实例</th>
+</tr>
+<tr>
+<td>=</td><td> 等号，检测两个值是否相等，如果相等返回true</td><td> (A = B) 返回false。 </td>
+</tr>
+<tr>
+<td>&lt;&gt;, !=  </td><td> 不等于，检测两个值是否相等，如果不相等返回true</td><td> (A != B) 返回 true。 </td>
+</tr>
+<tr>
+<td>&gt;</td><td> 大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td><td> (A &gt; B) 返回false。 </td>
+</tr>
+<tr>
+<td>&lt;</td><td> 小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td><td> (A &lt; B) 返回 true。 </td>
+</tr>
+<tr>
+<td>&gt;=</td><td>  大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td><td> (A &gt;= B) 返回false。</td>
+</tr>
+<tr>
+<td>&lt;=</td><td> 小于等于号，检测左边的值是否小于于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td><td> (A &lt;= B) 返回 true。 </td>
+</tr>
+</tbody></table>
+<p>如果我们想再 MySQL 数据表中读取指定的数据，WHERE 子句是非常有用的。</p>
+<p>使用主键来作为 WHERE 子句的条件查询是非常快速的。</p>
+<p>如果给定的条件在表中没有任何匹配的记录，那么查询不会返回任何数据。</p>
+<hr/>
+<h2>从命令提示符中读取数据</h2>
+<p>我们将在SQL SELECT语句使用WHERE子句来读取MySQL数据表 runoob_tbl 中的数据：</p>
+<p>实例</p>
+<p>以下实例将读取 runoob_tbl 表中 runoob_author 字段值为 Sanjay 的所有记录：</p>
+<div class="example">
+<h2 class="example">SQL SELECT WHERE 子句</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_author</span><span class="hl-code">=</span><span class="hl-quotes">'</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">'</span><span class="hl-code">;</span></div>
+</div>
+<p>输出结果：</p>
+<div class="example_code">
+<img src="//www.runoob.com/wp-content/uploads/2014/03/CED9CA9C-E4C7-4809-875C-A7E48F430059.jpg"/></div></div></div>

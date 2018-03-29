@@ -1,0 +1,214 @@
+<div class="article-intro" id="content">
+<h1>Highcharts 配置语法</h1>
+<p>本章节我们将为大家介绍使用 Highcharts 生成图表的一些配置。</p>
+<h3>第一步：创建 HTML 页面</h3>
+<p>创建一个 HTML 页面，引入 jQuery 和 Highcharts 库：</p>
+<p>文件名：HighchartsTest.htm</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Highcharts 教程 | 菜鸟教程&lt;/title&gt;
+    &lt;script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
+   &lt;script src="/try/demo_source/highcharts.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="container" style="width: 550px; height: 400px; margin: 0 auto"&gt;&lt;/div&gt;
+&lt;script language="JavaScript"&gt;
+$(document).ready(function() {
+     
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>实例中 id 为 container 的 div 用于包含 Highcharts 绘制的图表。</p>
+<h3>第二步: 创建配置文件</h3><p>
+Highcharts 库使用 json 格式来配置。</p>
+<pre>
+$('#container').highcharts(json);
+</pre>
+<p>这里 json 表示使用 json 数据格式和 json 格式的配置来绘制图表。步骤如下：
+</p>
+<h4>标题</h4>
+<p>为图表配置标题：</p>
+<pre>
+var title = {
+  text: '月平均气温'   
+};
+</pre>
+<h4>副标题</h4>
+<p>为图表配置副标题：</p>
+<pre>
+var subtitle = {
+  text: 'Source: runoob.com'
+};
+</pre>
+<h3>X 轴</h3>
+<p>配置要在 X 轴显示的项。
+</p>
+<pre>
+var xAxis = {
+   categories: ['一月', '二月', '三月', '四月', '五月', '六月'
+      ,'七月', '八月', '九月', '十月', '十一月', '十二月']
+};
+</pre>
+<h3>Y 轴</h3>
+<p>配置要在 Y 轴显示的项。
+</p>
+<pre>
+var yAxis = {
+   title: {
+      text: 'Temperature (\xB0C)'
+   },
+   plotLines: [{
+      value: 0,
+      width: 1,
+      color: '#808080'
+   }]
+};
+</pre>
+<h3>提示信息</h3>
+<p>配置提示信息：</p>
+<pre>
+var tooltip = {
+   valueSuffix: '\xB0C'
+}
+</pre>
+<h3>展示方式</h3>
+<p>配置图表向右对齐：</p>
+<pre>
+var legend = {
+   layout: 'vertical',
+   align: 'right',
+   verticalAlign: 'middle',
+   borderWidth: 0
+};
+</pre>
+<h3>数据</h3>
+<p>配置图表要展示的数据。每个系列是个数组，每一项在图片中都会生成一条曲线。</p>
+<pre>
+var series =  [
+   {
+      name: 'Tokyo',
+      data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 
+         26.5, 23.3, 18.3, 13.9, 9.6]
+   }, 
+   {
+      name: 'New York',
+      data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 
+         24.1, 20.1, 14.1, 8.6, 2.5]
+   }, 
+   {
+      name: 'Berlin',
+      data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 
+         17.9, 14.3, 9.0, 3.9, 1.0]
+   }, 
+   {
+      name: 'London',
+      data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 
+         16.6, 14.2, 10.3, 6.6, 4.8]
+   }
+];
+</pre>
+<h3>第三步: 创建 json 数据</h3>
+<p>组合是由配置信息:</p>
+<pre>
+var json = {};
+
+json.title = title;
+json.subtitle = subtitle;
+json.xAxis = xAxis;
+json.yAxis = yAxis;
+json.tooltip = tooltip;
+json.legend = legend;
+json.series = series;
+Step 4: Draw the chart
+$('#container').highcharts(json);
+</pre>
+<h3>实例</h3><p>以下为完整的实例(HighchartsTest.htm)：</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8" /&gt;
+&lt;title&gt;Highcharts 教程 | 菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://code.highcharts.com/highcharts.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="container" style="width: 550px; height: 400px; margin: 0 auto"&gt;&lt;/div&gt;
+&lt;script language="JavaScript"&gt;
+$(document).ready(function() {
+   var title = {
+       text: '月平均气温'   
+   };
+   var subtitle = {
+        text: 'Source: runoob.com'
+   };
+   var xAxis = {
+       categories: ['一月', '二月', '三月', '四月', '五月', '六月'
+              ,'七月', '八月', '九月', '十月', '十一月', '十二月']
+   };
+   var yAxis = {
+      title: {
+         text: 'Temperature (\xB0C)'
+      },
+      plotLines: [{
+         value: 0,
+         width: 1,
+         color: '#808080'
+      }]
+   };   
+
+   var tooltip = {
+      valueSuffix: '\xB0C'
+   }
+
+   var legend = {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+   };
+
+   var series =  [
+      {
+         name: 'Tokyo',
+         data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
+            26.5, 23.3, 18.3, 13.9, 9.6]
+      }, 
+      {
+         name: 'New York',
+         data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8,
+            24.1, 20.1, 14.1, 8.6, 2.5]
+      }, 
+      {
+         name: 'Berlin',
+         data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6,
+            17.9, 14.3, 9.0, 3.9, 1.0]
+      }, 
+      {
+         name: 'London',
+         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 
+            16.6, 14.2, 10.3, 6.6, 4.8]
+      }
+   ];
+
+   var json = {};
+
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+
+   $('#container').highcharts(json);
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=HighchartsTest" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>以上实例输出结果为：</p>
+<iframe frameborder="0" height="471" src="/try/demo_source/HighchartsTest.htm" width="100%"></iframe>
+</div>

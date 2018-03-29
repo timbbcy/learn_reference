@@ -1,0 +1,74 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM - <span class="color_h1">修改</span>
+</h1>
+<hr/>
+<p class="intro">修改 HTML = 改变元素、属性、样式和事件。</p>
+<hr/>
+<h2>修改 HTML 元素</h2>
+<p>修改 HTML DOM 意味着许多不同的方面：</p>
+<ul>
+<li>改变 HTML 内容</li>
+<li>改变 CSS 样式</li>
+<li>改变 HTML 属性</li>
+<li>创建新的 HTML 元素</li>
+<li>删除已有的 HTML 元素</li>
+<li>改变事件（处理程序）</li>
+</ul>
+<p>在接下来的章节，我们会深入学习修改 HTML DOM 的常用方法。</p>
+<hr/>
+<h2>创建 HTML 内容</h2>
+<p>改变元素内容的最简单的方法是使用 innerHTML 属性。</p>
+<p>下面的例子改变一个 &lt;p&gt; 元素的 HTML 内容：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+document.getElementById("p1").innerHTML="新文本!";
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">段落通过脚本来修改内容。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changetext" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>我们将在下面的章节为您解释例子中的细节。</td>
+</tr></table>
+<br/><hr/>
+<h2>改变 HTML 样式</h2>
+<p>通过 HTML DOM，您能够访问 HTML 元素的样式对象。</p>
+<p>下面的例子改变一个段落的 HTML 样式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p2</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello world!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+document.getElementById("p2").style.color="blue";
+document.getElementById("p2").style.fontFamily="Arial";
+document.getElementById("p2").style.fontSize="larger";
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_changestyle1" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>创建新的 HTML 元素</h2>
+<p>如需向 HTML DOM 添加新元素，您首先必须创建该元素（元素节点），然后把它追加到已有的元素上。</p>
+<div class="example">
+<h2 class="example"> 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">div1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是一个段落。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">p2</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是另一个段落。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+var para=document.createElement("p");
+var node=document.createTextNode("这是一个新段落。");
+para.appendChild(node);
+var element=document.getElementById("div1");
+element.appendChild(para);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_elementcreate" target="_blank">尝试一下 »</a>
+</div>
+</div>

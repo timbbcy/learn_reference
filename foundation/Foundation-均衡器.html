@@ -1,0 +1,85 @@
+<div class="article-intro" id="content">
+<h1>Foundation 均衡器(Equalizer)</h1>
+<p>我们可以在容器元素添加 <code>data-equalizer</code> 属性，并为每个子元素添加 <code>data-equalizer-watch</code> 属性来创建一个相同高度的均衡器。最高的元素决定了其他元素的高度。</p>
+<p><strong>注意:</strong> 滑块需要使用 JavaScript。所以你需要初始化
+oundation JS:</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span> <span class="highATT">data-equalizer</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-4 columns 
+	panel"</span> <span class="highATT">data-equalizer-watch</span><span class="highGT">&gt;</span><br/>    Lorem ipsum...<br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-4 columns panel"</span> <span class="highATT">data-equalizer-watch</span><span class="highGT">&gt;</span><br/>
+	    Sed ut...<br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-4 columns panel"</span>
+<span class="highATT">data-equalizer-watch</span><span class="highGT">&gt;</span><br/>    Lorem ipsum...<br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highCOM">&lt;!-- Initialize Foundation JS --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	$(document).ready(function() {<br/>    
+	$(document).foundation();<br/>})<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_equalizer" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>不同屏幕的均衡器</h2>
+<p>在均衡器上通过添加 <code>data-equalizer-mq="<em>value</em>"</code> 属性为不同屏幕尺寸设置相同高度。值可以是以下之一：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:20%;">值</th>
+<th style="width:70%;">描述</th>
+<th style="width:8%;">实例</th>
+</tr>
+<tr>
+<td><code>medium-up</code></td>
+<td><strong>默认。</strong> 创建相同高度的容器，宽度大于 40.063em</td>
+<td></td>
+</tr>
+<tr>
+<td><code>large-up</code></td>
+<td>创建相同高度的容器，宽度大于 64.063em</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_equalizer_large" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><code>xlarge-up</code></td>
+<td>创建相同高度的容器，宽度大于 90.063em</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_equalizer_xlarge" target="_blank">尝试一下</a></td>
+</tr>
+<tr>
+<td><code>xxlarge-up</code></td>
+<td>创建相同高度的容器，宽度大于 120.063em</td>
+<td><a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_equalizer_xxlarge" target="_blank">尝试一下</a></td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>嵌套内容</h2>
+<p>为 <code>data-equalizer</code> 和 <code>data-equalizer-watch</code> 属性添加相同的值。 这会一起连接到均衡器容器。
+重复多次嵌套均衡器，确保他们是匹配的：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highCOM">&lt;!-- The Equalized Container --&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span> <span class="highATT">data-equalizer=</span><span class="highVAL">"first"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-4 
+	columns"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"panel"</span>
+<span class="highATT">data-equalizer-watch=</span><span class="highVAL">"first"</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Panel<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/><br/>      <span class="highCOM">&lt;!-- An Equalized 
+	Container Inside The Equalized Container --&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span> <span class="highATT">data-equalizer=</span><span class="highVAL">"second"</span><span class="highGT">&gt;</span><br/>        
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"panel"</span> <span class="highATT">data-equalizer-watch=</span><span class="highVAL">"second"</span><span class="highGT">&gt;</span><br/>          
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Nested Panel<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>          
+	<span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Lorem ipsum...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>        <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>        
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"panel"</span> <span class="highATT">data-equalizer-watch=</span><span class="highVAL">"second"</span><span class="highGT">&gt;</span><br/>          
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Nested Panel<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>          
+	<span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Lorem ipsum...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>        <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>        
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"panel"</span> <span class="highATT">data-equalizer-watch=</span><span class="highVAL">"second"</span><span class="highGT">&gt;</span><br/>          
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Nested Panel<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>          
+	<span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Lorem ipsum...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>        <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>      <span class="highCOM">&lt;!-- End Nested Equalized Container 
+	--&gt;</span><br/><br/>    <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"medium-4 columns"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"panel"</span>
+<span class="highATT">data-equalizer-watch=</span><span class="highVAL">"first"</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Panel<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Ut enim...<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span> <br/>    
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"medium-4 columns"</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"panel"</span> <span class="highATT">data-equalizer-watch=</span><span class="highVAL">"first"</span><span class="highGT">&gt;</span><br/>      
+	<span class="highLT">&lt;</span><span class="highELE">h3</span><span class="highGT">&gt;</span>Panel<span class="highLT">&lt;</span><span class="highELE">/h3</span><span class="highGT">&gt;</span><br/>      <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>Lorem ipsum....<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+<br/>
+<a class="tryitbtn" href="/try/try2.php?filename=tryfoundation_equalizer_nested" target="_blank">尝试一下 »</a>
+</div>
+</div>

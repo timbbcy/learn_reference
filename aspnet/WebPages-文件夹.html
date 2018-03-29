@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- 文件夹</span>
+</h1>
+<hr/>
+<p class="intro">本章介绍有关文件夹和文件夹路径的知识。</p>
+<hr/>
+<p>在本章中，您将学到：</p>
+<ul>
+<li>逻辑文件夹结构和物理文件夹结构</li>
+<li>虚拟名称和物理名称</li>
+<li>Web URL 和 Web 路径</li>
+</ul>
+<hr/>
+<h2>逻辑文件夹结构</h2>
+<p>
+下面是典型的 ASP.NET 网站文件夹结构：</p>
+<img alt="Folders" height="113" src="/wp-content/uploads/2013/07/31.jpg" style="border:1px solid lightgrey" width="494"/><ul>
+<li>"Account" 文件夹包含登录和安全文件</li>
+<li>"App_Data" 文件夹包含数据库和数据文件</li>
+<li>"Images" 文件夹包含图片</li>
+<li>"Scripts" 文件夹包含浏览器脚本</li>
+<li>"Shared" 文件夹包含公共的文件（比如布局和样式文件）</li>
+</ul>
+<hr/>
+<h2>物理文件夹结构</h2>
+<p>
+在上述网站中的"Images"文件夹在计算机上的物理文件夹结构可能如下：</p>
+<p>
+C:\Documents\MyWebSites\Demo\Images <br/></p>
+<hr/>
+<h2>虚拟名称和物理名称</h2>
+<p>
+以上面的例子为例：</p>
+<p>
+网站图片的虚拟名称可能是"Images/pic31.jpg"。</p>
+<p>
+对应的物理名称是"C:\Documents\MyWebSites\Demo\Images\pic31.jpg"。</p>
+<hr/>
+<h2>URL 和路径</h2>
+<p>URL 是用来访问网站中的文件：
+<a href="/html/html-tutorial.html">http://www.runoob.com/html/html-tutorial.html</a> </p>
+<p>URL 对应于服务器上的物理文件：C:\MyWebSites\runoob\html\html-tutorial.html <br/></p>
+<p>虚拟路径是物理路径的一种简写表示。如果您使用虚拟路径，当您更改域名或者将您的网页移到其他服务器上时，您可以不用更新路径。</p>
+<table style="width: 100%">
+<tr>
+<td>URL</td>
+<td>http://www.runoob.com/html/html-tutorial.html</td>
+</tr>
+<tr>
+<td>服务器名称</td>
+<td>RUNOOB</td>
+</tr>
+<tr>
+<td>虚拟路径</td>
+<td>/html/html-tutorial.html</td>
+</tr>
+<tr>
+<td>物理路径</td>
+<td>C:\MyWebSites\runoob\html\html-tutorial.html</td>
+</tr>
+</table>
+<p>磁盘驱动器的根目录如下书写 C: ，但是网站的根目录是  / （斜线）。</p>
+<p>Web 文件夹的虚拟路径通常是与物理文件夹不相同。</p>
+<p>在您的代码中，根据您的编码需要决定使用物理路径和和虚拟路径。</p>
+<p>ASP.NET 文件夹路径有 3 种工具：~ 运算符、Server.MapPath 方法 和 Href 方法。</p>
+<hr/>
+<h2>~ 运算符</h2>
+<p>使用 ~ 运算符，在编程代码中规定虚拟路径。</p>
+<p>如果您使用 ~ 运算符，在您的站点迁移到其他不同的文件夹或者位置时，您可以不用更改您的任何代码：</p>
+<div class="code notranslate"><div>
+var myImagesFolder = "~/images";<br/>
+var myStyleSheet = "~/styles/StyleSheet.css";
+</div></div>
+<br/><hr/>
+<h2>Server.MapPath 方法</h2>
+<p>Server.MapPath 方法将虚拟路径（/index.html）转换成服务器能理解的物理路径（C:\Documents\MyWebSites\Demo\default.html）。</p>
+<p>当您需要打开服务器上的数据文件时，您可以使用这个方法（只有提供完整的物理路径才能访问数据文件）：</p>
+<div class="code notranslate"><div>
+	var pathName = "~/dataFile.txt";<br/>var fileName = Server.MapPath(pathName);</div></div>
+<p>在本教程的下一章中，您会学到更多关于读取（和写入）服务器上的数据文件的知识。</p>
+<hr/>
+<h2>Href 方法</h2>
+<p>Href 方法将代码中的使用的路径转换成浏览器可以理解的路径（浏览器无法理解 ~ 运算符）。</p>
+<p>您可以使用 Href 方法创建资源（比如图像文件 和 CSS 文件）的路径。</p>
+<p>一般会在 HTML 中的 &lt;a&gt;、&lt;img&gt; 和 &lt;link&gt; 元素中使用此方法:</p>
+<div class="code notranslate"><div>
+@{var myStyleSheet = "~/Shared/Site.css";}<br/><br/>&lt;!-- This creates a link 
+to the CSS file. --&gt;<br/>&lt;link rel="stylesheet" type="text/css" href="@Href(myStyleSheet)" 
+/&gt;<br/><br/>&lt;!-- Same as : --&gt;<br/>&lt;link rel="stylesheet" type="text/css" href="/Shared/Site.css" 
+/&gt;</div></div>
+<p>Href 方法是 WebPage 对象的一种方法。</p>
+<br/>
+</div>

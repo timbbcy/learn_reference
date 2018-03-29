@@ -1,0 +1,73 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET MVC <span class="color_h1">- 视图</span>
+</h1>
+<hr/>
+<p class="intro">为了学习 ASP.NET MVC，我们将构建一个 Internet 应用程序。</p>
+<p class="intro">第 5 部分：添加用于显示应用程序的视图。</p>
+<hr/>
+<h2>Views 文件夹</h2>
+<p><strong>Views</strong> 文件夹存储的是与应用程序显示（用户界面）相关的文件（HTML 文件）。根据所采用的语言内容，这些文件可能扩展名可能是 html、asp、aspx、cshtml 和 vbhtml。</p>
+<p>Views 文件夹中包含每个控制器对应的一个文件夹。</p>
+<p>在 Views 文件夹中，Visual Web Developer 已经创建了一个 Account 文件夹、一个 Home 文件夹、一个 Shared 文件夹。</p>
+<p>Account 文件夹包含用于用户账号注册和登录的页面。</p>
+<p>Home 文件夹用于存储诸如 home 页和 about 页之类的应用程序页面。</p>
+<p>Shared 文件夹用于存储控制器间分享的视图（母版页和布局页）。</p>
+<p> <img alt="Views" height="437" src="/wp-content/uploads/2013/08/pic_mvc_views.jpg" width="229"/></p>
+<hr/>
+<h2>ASP.NET 文件类型</h2>
+<p>在 Views 文件夹中可以看到以下 HTML 文件类型：</p>
+<table class="reference notranslate">
+<tr>
+<th>文件类型</th>
+<th>扩展名</th>
+</tr>
+<tr>
+<td>纯 HTML</td>
+<td>.htm or .html</td>
+</tr>
+<tr>
+<td>经典 ASP</td>
+<td>.asp</td>
+</tr>
+<tr>
+<td>经典 ASP.NET</td>
+<td>.aspx</td>
+</tr>
+<tr>
+<td>ASP.NET Razor C#</td>
+<td>.cshtml</td>
+</tr>
+<tr>
+<td>ASP.NET Razor VB</td>
+<td>.vbhtml</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>Index 文件</h2>
+<p>文件 Index.cshtml 表示应用程序的 Home 页面。它是应用程序的默认文件（首页文件）。</p>
+<p>在文件中写入以下内容：</p>
+<div class="code notranslate">
+<div>@{ViewBag.Title = "Home Page";}<br/><br/>&lt;h1&gt;Welcome to 
+	runoob.com&lt;/h1&gt;<br/><br/>&lt;p&gt;Put Home Page content here&lt;/p&gt;</div>
+</div>
+<br/><hr/>
+<h2>About 文件</h2>
+<p>文件 About.cshtml 表示应用程序的 About 页面。</p>
+<p>在文件中写入以下内容：</p>
+<div class="code notranslate">
+<div>@{ViewBag.Title = "About Us";}<br/><br/>
+	&lt;h1&gt;About Us&lt;/h1&gt;<br/><br/>&lt;p&gt;Put About Us content here&lt;/p&gt;</div>
+</div>
+<br/><hr/>
+<h2>运行应用程序</h2>
+<p>选择 Debug，从 Visual Web Developer 菜单中启动调试 Start Debugging（或者按 F5）。 </p>
+<p>您的应用程序将显示如下：</p>
+<p>
+<img alt="MVC Application" height="336" src="/wp-content/uploads/2013/08/pic_mvc_app.jpg" width="634"/><br/></p>
+<p>点击 "Home" 标签页和 "About" 标签页，看看它是如何运作的。</p>
+<hr/>
+<h2>祝贺您</h2>
+<p>祝贺您。您已经创建好了您的第一个 MVC 应用程序。</p>
+<p><strong>注释：</strong>您暂时还不能点击 "Movies" 标签页。我们将在本教程的后面章节中为 "Movies" 标签页添加代码。</p>
+<br/>
+</div>

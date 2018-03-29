@@ -1,0 +1,53 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 表单 - <span class="color_h1">表单验证</span></h1>
+<p>本教程将向您展示如何验证一个表单。easyui 框架提供一个 validatebox 插件来验证一个表单。在本教程中，我们将创建一个联系表单，并应用 validatebox 插件来验证表单。然后您可以根据自己的需求来调整这个表单。</p>
+<img src="/wp-content/uploads/2013/12/form3.png"/>
+<h4>创建表单（form）</h4>
+<p>让我们创建一个简单的联系表单，带有 name、email、subject 和 message 字段：</p>
+<pre style="color:#006600">
+    &lt;div style="padding:3px 2px;border-bottom:1px solid #ccc"&gt;Form Validation&lt;/div&gt;
+    &lt;form id="ff" method="post"&gt;
+        &lt;div&gt;
+            &lt;label for="name"&gt;Name:&lt;/label&gt;
+            &lt;input class="easyui-validatebox" type="text" name="name" required="true"&gt;&lt;/input&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;label for="email"&gt;Email:&lt;/label&gt;
+            &lt;input class="easyui-validatebox" type="text" name="email" required="true" validType="email"&gt;&lt;/input&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;label for="subject"&gt;Subject:&lt;/label&gt;
+            &lt;input class="easyui-validatebox" type="text" name="subject" required="true"&gt;&lt;/input&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;label for="message"&gt;Message:&lt;/label&gt;
+            &amp;lt;textarea name="message" style="height:60px;"&amp;gt;&amp;lt;/textarea&amp;gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;input type="submit" value="Submit"&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+</pre>
+<p>我们添加一个样式名为 easyui-validatebox 到 input 标记，所以 input 标记将根据 validType 属性应用验证。</p>
+<h4>当表单无效时阻止表单提交</h4>
+<p>当用户点击表单的 submit 按钮时，如果表单是无效的，我们应该阻止表单提交。</p>
+<pre style="color:#006600">
+    $('#ff').form({
+        url:'form3_proc.php',
+        onSubmit:function(){
+            return $(this).form('validate');
+        },
+        success:function(data){
+            $.messager.alert('Info', data, 'info');
+        }
+    });
+</pre>
+<p>如果表单是无效的，将显示一个提示信息。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-form-form3.zip">jeasyui-form-form3.zip</a></p>
+</div>

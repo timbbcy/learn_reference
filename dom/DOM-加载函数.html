@@ -1,0 +1,111 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">加载函数</span>
+</h1>
+<hr/>
+<p class="intro">
+加载 XML 文档中的代码可以存储在一个函数中。</p>
+<hr/>
+<h2>loadXMLDoc() 函数</h2>
+<p>为了使前一页中的代码易于维护（检查旧的浏览器），它应该写成一个函数：</p>
+<div class="example">
+<h2 class="example">loadxmldoc.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-identifier">dname</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-builtin">window</span><span class="hl-code">.</span><span class="hl-identifier">XMLHttpRequest</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">xhttp</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">XMLHttpRequest</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">xhttp</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">ActiveXObject</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Microsoft.XMLHTTP</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">xhttp</span><span class="hl-code">.</span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">GET</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-identifier">dname</span><span class="hl-code">,</span><span class="hl-reserved">false</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">xhttp</span><span class="hl-code">.</span><span class="hl-identifier">send</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">xhttp</span><span class="hl-code">.</span><span class="hl-identifier">responseXML</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>上面的函数可以存储在 HTML 页面的 &lt;head&gt; 部分，并从页面中的脚本调用。</p>
+<p><img alt="lamp" height="15" src="/images/lamp.gif" width="15"/><b>上面描述的函数，用于本教程中所有 XML 文档实例！</b></p>
+<hr/>
+<h2>loadXMLDoc() 的外部 JavaScript</h2>
+<p>为了使上述代码更容易维护，以确保在所有页面中使用相同的代码，我们把函数存储在一个外部文件中。</p>
+<p>文件名为 "loadxmldoc.js"，且在 HTML 页面中的 head 部分被加载。然后，页面中的脚本调用 loadXMLDoc() 函数。</p>
+<p>下面的实例使用 loadXMLDoc() 函数加载 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">loadxmldoc.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+xmlDoc=loadXMLDoc("books.xml");
+ 
+code goes here.....
+ 
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_parsertest" target="_blank">尝试一下 »</a>
+</div>
+<p>如何从 XML 文件中获得数据，将在下一章中讲解。</p>
+<hr/>
+<h2>loadXMLString() 函数</h2>
+<p>为了使前一页中的代码易于维护（检查旧的浏览器），它应该写成一个函数：</p>
+<div class="example">
+<h2 class="example">loadxmlstring.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">loadXMLString</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-builtin">window</span><span class="hl-code">.</span><span class="hl-identifier">DOMParser</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">parser</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">DOMParser</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">parser</span><span class="hl-code">.</span><span class="hl-identifier">parseFromString</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">text/xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">else</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> Internet Explorer</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">ActiveXObject</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Microsoft.XMLDOM</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">async</span><span class="hl-code">=</span><span class="hl-reserved">false</span><span class="hl-code">;
+        </span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">loadXML</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">xmlDoc</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>上面的函数可以存储在 HTML 页面的 &lt;head&gt; 部分，并从页面中的脚本调用。</p>
+<p><img alt="lamp" height="15" src="/images/lamp.gif" width="15"/><b>上面描述的函数，用于本教程中所有 XML 字符串实例！</b></p>
+<hr/>
+<h2>loadXMLString() 的外部 JavaScript</h2>
+<p>我们已经把 loadXMLString() 函数存储在名为 "loadxmlstring.js" 文件中。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">loadxmlstring.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">&lt;bookstore&gt;</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-identifier">text</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;book&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-identifier">text</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;title&gt;Everyday Italian&lt;/title&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-identifier">text</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;author&gt;Giada De Laurentiis&lt;/author&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-identifier">text</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;year&gt;2005&lt;/year&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-identifier">text</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;/book&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">text</span><span class="hl-code">=</span><span class="hl-identifier">text</span><span class="hl-code">+</span><span class="hl-quotes">"</span><span class="hl-string">&lt;/bookstore&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLString</span><span class="hl-brackets">(</span><span class="hl-identifier">text</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">code</span><span class="hl-code"> </span><span class="hl-identifier">goes</span><span class="hl-code"> </span><span class="hl-identifier">here</span><span class="hl-code">.....</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_parsertest2" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+</div>

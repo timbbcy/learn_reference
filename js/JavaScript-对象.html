@@ -1,0 +1,208 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">对象</span></h1>
+<hr/>
+<p class="intro">JavaScript 对象是拥有属性和方法的数据。</p>
+<hr/>
+<h2>真实生活中的对象，属性和方法</h2>
+<p>真实生活中，一辆汽车是一个对象。 </p>
+<p>对象有它的属性，如重量和颜色等，方法有启动停止等:</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:370px">
+对象
+</th>
+<th>
+属性
+</th>
+<th>
+方法
+</th>
+</tr>
+<tr>
+<td>
+<img src="/images/objectExplained.gif" style="width:368px;height:230px"/>
+</td>
+<td>
+<br/>car.name = Fiat<br/><br/>
+car.model = 500<br/><br/>
+car.weight = 850kg<br/><br/>
+car.color = white
+</td>
+<td>
+<br/>car.start()<br/><br/>
+car.drive()<br/><br/>
+car.brake()
+<br/><br/>car.stop()</td>
+</tr>
+</tbody></table>
+<p>所有汽车都有这些属性，但是每款车的属性都不尽相同。</p>
+<p>所有汽车都拥有这些方法，但是它们被执行的时间都不尽相同。</p>
+<hr/>
+<h2>JavaScript 对象</h2>
+<p>在 JavaScript中，几乎所有的事物都是对象。</p>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px">
+<img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+在
+JavaScript 中，对象是非常重要的，当你理解了对象，就可以了解 JavaScript 。</td>
+</tr></tbody></table>
+<p></p>
+<p>你已经学习了 JavaScript 变量的赋值。</p>
+<p>以下代码为变量 <strong>car</strong> 设置值为 "Fiat" : </p>
+<div class="example">
+<div class="example_code">
+<span class="highELE">var</span> car = <span class="highVAL">"Fiat"</span>;
+</div>
+</div>
+<p>对象也是一个变量，但对象可以包含多个值（多个变量）。 </p>
+<div class="example">
+<div class="example_code">
+<span class="highELE">var</span> car = {type:<span class="highVAL">"Fiat"</span>, model:<span class="highVAL">500</span>, color:<span class="highVAL">"white"</span>};
+</div>
+</div>
+<p>在以上实例中，3 个值 ("Fiat", 500, "white") 赋予变量 car。</p>
+<p>在以上实例中，3 个变量 (type, model, color) 赋予变量 car。</p>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px">
+<img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+JavaScript 对象是变量的容器。</td>
+</tr></tbody></table>
+<p></p>
+<hr/>
+<h2>对象定义</h2>
+<p>你可以使用字符来定义和创建 JavaScript 对象:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span> person = {firstName:<span class="highVAL">"John"</span>, lastName:<span class="highVAL">"Doe"</span>, age:<span class="highVAL">50</span>, eyeColor:<span class="highVAL">"blue"</span>};<br/>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_object_create_1" target="_blank">尝试一下 »</a>
+</div>
+<p>定义 JavaScript 对象可以跨越多行，空格跟换行不是必须的： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span> person = {<br/>
+    firstName:<span class="highVAL">"John"</span>,<br/>
+    lastName:<span class="highVAL">"Doe"</span>,<br/>
+    age:<span class="highVAL">50</span>,<br/>
+    eyeColor:<span class="highVAL">"blue"</span><br/>
+};
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_object_create_2" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>对象属性</h2>
+<p>可以说 "JavaScript 对象是变量的容器"。</p>
+<p>但是，我们通常认为 "JavaScript 对象是键值对的容器"。</p>
+<p>键值对通常写法为 <strong>name : value</strong> (键与值以冒号分割)。</p>
+<p>键值对在 JavaScript 对象通常称为 <strong>对象属性</strong>。</p>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px">
+<img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+JavaScript 对象是属性变量的容器。</td>
+</tr></tbody></table>
+<p></p>
+<p>对象键值对的写法类似于：</p>
+<ul>
+<li>PHP 中的关联数组</li>
+<li>Python 中的字典</li>
+<li>C 语言中的哈希表</li>
+<li>Java 中的哈希映射</li>
+<li>Ruby 和 Perl 中的哈希表</li>
+</ul>
+<hr/>
+<h2>访问对象属性</h2>
+<p>你可以通过两种方式访问对象属性: </p>
+<div class="example">
+<h2 class="example">实例 1</h2>
+<div class="example_code">
+person.lastName;</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_object_properties_1" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">实例 2</h2>
+<div class="example_code">
+ person[<span class="highVAL">"lastName"</span>];
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_object_properties_2" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>对象方法</h2>
+<p>对象的方法定义了一个函数，并作为对象的属性存储。 </p>
+<p>对象方法通过添加 () 调用 (作为一个函数)。</p>
+<p>该实例访问了 person 对象的 fullName() 方法:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+name = person.fullName();</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_object_method" target="_blank">尝试一下 »</a>
+</div>
+<p>如果你要访问 person 对象的 fullName 属性，它将作为一个定义函数的字符串返回：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+name = person.fullName;</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_object_function" target="_blank">尝试一下 »</a>
+</div>
+<p> </p>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px">
+<img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+JavaScript 对象是属性和方法的容器。</td>
+</tr></tbody></table>
+<p></p>
+<p>在随后的教程中你将学习到更多关于函数，属性和方法的知识。 </p>
+<hr/>
+<h2>访问对象方法</h2>
+<p>你可以使用以下语法创建对象方法：</p>
+<div class="code"><div>
+<i>methodName : function() { code lines }</i>
+</div></div>
+<p>你可以使用以下语法访问对象方法：</p>
+<div class="code"><div>
+<i>objectName.methodName()</i></div></div>
+<p>通常 fullName() 是作为 person 对象的一个方法，
+fullName 是作为一个属性。 </p>
+<p>有多种方式可以创建，使用和修改 JavaScript 对象。</p>
+<p>同样也有多种方式用来创建，使用和修改属性和方法。</p>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px">
+<img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+在随后的教程中，你将学习到更多关于对象的知识。</td>
+</tr></tbody></table>
+<p></p>
+<hr/>
+<h2>更多实例</h2>
+<p><a href="/try/tryit.php?filename=tryjs_object_create_1" target="_blank">
+创建 JavaScript 对象 I</a></p>
+<p><a href="/try/tryit.php?filename=tryjs_object_create_2" target="_blank">
+创建 JavaScript 对象 II</a></p>
+<p><a href="/try/tryit.php?filename=tryjs_object_properties_1" target="_blank">
+访问对象属性 I</a></p>
+<p><a href="/try/tryit.php?filename=tryjs_object_properties_2" target="_blank">
+访问对象属性 II</a></p>
+<p><a href="/try/tryit.php?filename=tryjs_object_method" target="_blank">
+函数属性作为一个方法访问</a></p>
+<p><a href="/try/tryit.php?filename=tryjs_object_function" target="_blank">
+函数属性作为一个属性访问</a></p>
+</div>

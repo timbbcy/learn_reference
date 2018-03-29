@@ -1,0 +1,107 @@
+<div class="article-intro" id="content">
+<h1>JSON 数组</h1>
+<hr/>
+<h2>数组作为 JSON 对象</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">[</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">]</span></div>
+</div>
+</div>
+<p>JSON 数组在中括号中书写。</p>
+<p>JSON 中数组值必须是合法的 JSON 数据类型（字符串, 数字, 对象, 数组, 布尔值或 null）。</p>
+<p>JavaScript 中，数组值可以是以上的 JSON 数据类型，也可以是 JavaScript 的表达式，包括函数，日期，及 <i>undefined</i>。</p>
+<hr/>
+<h2>JSON 对象中的数组</h2>
+<p>对象属性的值可以是一个数组：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">网站</span><span class="hl-quotes">"</span><span class="hl-code">,
+</span><span class="hl-quotes">"</span><span class="hl-string">num</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">3</span><span class="hl-code">,
+</span><span class="hl-quotes">"</span><span class="hl-string">sites</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-brackets">[</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>我们可以使用索引值来访问数组：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_array_access" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>循环数组</h2>
+<p>你可以使用 for-in 来访问数组：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code"> += </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_array_loop_in" target="_blank">尝试一下 »</a>
+</div>
+<p>你也可以使用 for 循环：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code"> += </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_array_loop" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>嵌套 JSON 对象中的数组</h2>
+<p>JSON 对象中数组可以包含另外一个数组，或者另外一个 JSON 对象：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">myObj</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">网站</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">num</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-number">3</span><span class="hl-code">,
+    </span><span class="hl-quotes">"</span><span class="hl-string">sites</span><span class="hl-quotes">"</span><span class="hl-code">: </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Google</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">info</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-brackets">[</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Android</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Google 搜索</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Google 翻译</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">,
+        </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Runoob</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">info</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-brackets">[</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟工具</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">菜鸟微信</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">,
+        </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">name</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Taobao</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">info</span><span class="hl-quotes">"</span><span class="hl-code">:</span><span class="hl-brackets">[</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">淘宝</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">网购</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>我们可以使用 for-in  来循环访问每个数组：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code"> += </span><span class="hl-quotes">"</span><span class="hl-string">&lt;h1&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">name</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/h1&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">j</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">info</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code"> += </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">info</span><span class="hl-brackets">[</span><span class="hl-identifier">j</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_array_nested" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>修改数组值</h2>
+<p>你可以使用索引值来修改数组值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Github</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_array_modify" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>删除数组元素</h2>
+<p>我们可以使用 <b>delete</b> 关键字来删除数组元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">delete</span><span class="hl-code"> </span><span class="hl-identifier">myObj</span><span class="hl-code">.</span><span class="hl-identifier">sites</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjson_array_delete" target="_blank">尝试一下 »</a>
+</div>
+</div>

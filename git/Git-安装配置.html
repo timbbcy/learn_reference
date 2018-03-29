@@ -1,0 +1,126 @@
+<div class="article-intro" id="content">
+<h1>Git 安装配置</h1>
+<p>在使用Git前我们需要先安装 Git。Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。</p>
+<p>Git 各平台安装包下载地址为：<a href="http://git-scm.com/downloads" target="_blank">http://git-scm.com/downloads</a>
+<hr/>
+<h2>Linux 平台上安装</h2>
+<p>Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具。
+</p>
+<p>在有 yum 的系统上（比如 Fedora）或者有 apt-get 的系统上（比如 Debian 体系），可以用下面的命令安装：
+</p>
+<p>各 Linux 系统可以很简单多使用其安装包管理工具进行安装：</p>
+<h3>Debian/Ubuntu</h3>
+<p>Debian/Ubuntu Git 安装命令为：</p>
+<pre>
+$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
+  libz-dev libssl-dev
+
+$ apt-get install git-core
+
+$ git --version
+git version 1.8.1.2
+</pre>
+<h3>Centos/RedHat</h3>
+<p>如果你使用的系统是 Centos/RedHat 安装命令为：</p>
+<pre>
+$ yum install curl-devel expat-devel gettext-devel \
+  openssl-devel zlib-devel
+
+$ yum -y install git-core
+
+$ git --version
+git version 1.7.1
+</pre>
+<hr/>
+<h2>Windows 平台上安装</h2>
+<p>
+在 Windows 平台上安装 Git 同样轻松，有个叫做 msysGit 的项目提供了安装包，可以到 GitHub 的页面上下载 exe 安装文件并运行：
+</p>
+<p>安装包下载地址：<a href="http://msysgit.github.io/" target="_blank">http://msysgit.github.io/</a></p>
+<img alt="Windows 上安装 Git" height="413" src="//www.runoob.com/wp-content/uploads/2015/02/20140127131250906" width="523"/>
+<p>
+完成安装之后，就可以使用命令行的 git 工具（已经自带了 ssh 客户端）了，另外还有一个图形界面的 Git 项目管理工具。</p><p>
+在开始菜单里找到"Git"-&gt;"Git Bash"，会弹出 Git 命令窗口，你可以在该窗口进行 Git 操作。</p>
+<hr/>
+<h2>Mac 平台上安装</h2>
+<p>
+在 Mac 平台上安装 Git 最容易的当属使用图形化的 Git 安装工具，下载地址为：</p>
+<p><a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank">http://sourceforge.net/projects/git-osx-installer/</a>
+</p>
+<p>安装界面如下所示：</p>
+</p><img alt="18333fig0107-tn" height="252" src="//www.runoob.com/wp-content/uploads/2015/02/18333fig0107-tn.png" width="350"/>
+<hr/>
+<h2> Git 配置</h2>
+<p>Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。</p>
+<p>这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：
+</p>
+<ul>
+<li> <code>/etc/gitconfig</code> 文件：系统中对所有用户都普遍适用的配置。若使用 <code>git config</code> 时用 <code>--system</code> 选项，读写的就是这个文件。</li>
+<li> <code>~/.gitconfig</code> 文件：用户目录下的配置文件只适用于该用户。若使用 <code>git config</code> 时用 <code>--global</code> 选项，读写的就是这个文件。</li>
+<li>  当前项目的 Git 目录中的配置文件（也就是工作目录中的 <code>.git/config</code> 文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以 <code>.git/config</code> 里的配置会覆盖 <code>/etc/gitconfig</code> 中的同名变量。</li>
+</ul>
+<p>
+在 Windows 系统上，Git 会找寻用户主目录下的 .gitconfig 文件。主目录即 $HOME 变量指定的目录，一般都是 C:\Documents and Settings\$USER。</p>
+<p>此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。
+</p>
+<h3>用户信息</h3>
+<p>配置个人的用户名称和电子邮件地址：</p>
+<pre>
+$ git config --global user.name "runoob"
+$ git config --global user.email test@runoob.com
+</pre>
+<p>
+如果用了 <strong>--global</strong> 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
+<p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。
+</p>
+<h3>文本编辑器</h3>
+<p>设置Git默认使用的文本编辑器,
+一般可能会是 Vi 或者 Vim。如果你有其他偏好，比如 Emacs 的话，可以重新设置：:</p>
+<pre>
+$ git config --global core.editor emacs
+</pre>
+<h3>差异分析工具</h3>
+<p>
+还有一个比较常用的是，在解决合并冲突时使用哪种差异分析工具。比如要改用 vimdiff 的话：
+</p>
+<pre>
+$ git config --global merge.tool vimdiff
+</pre>
+<p>
+Git 可以理解 kdiff3，tkdiff，meld，xxdiff，emerge，vimdiff，gvimdiff，ecmerge，和 opendiff 等合并工具的输出信息。</p>
+<p>当然，你也可以指定使用自己开发的工具，具体怎么做可以参阅第七章。
+</p>
+<h3>
+查看配置信息</h3>
+<p>
+要检查已有的配置信息，可以使用 git config --list 命令：
+</p>
+<pre>
+$ git config --list
+http.postbuffer=2M
+user.name=runoob
+user.email=test@runoob.com
+</pre>
+<p>
+有时候会看到重复的变量名，那就说明它们来自不同的配置文件（比如 /etc/gitconfig 和 ~/.gitconfig），不过最终 Git 实际采用的是最后一个。
+</p>
+<p>这些配置我们也可以在 <strong>~/.gitconfig</strong> 或 <strong>/etc/gitconfig</strong> 看到，如下所示：</p>
+<pre>
+vim ~/.gitconfig 
+</pre>
+<p>显示内容如下所示：</p>
+<pre>
+[http]
+    postBuffer = 2M
+[user]
+    name = runoob
+    email = test@runoob.com
+</pre>
+<p>
+也可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：
+</p>
+<pre>
+$ git config user.name
+runoob
+</pre>
+</div>

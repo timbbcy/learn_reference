@@ -1,0 +1,214 @@
+<div class="article-intro" id="content">
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color:#3e8e41;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown2:hover .dropdown-content {
+    display: block;
+}
+
+.right {
+	right:0;
+}
+@media only screen and (max-width: 600px) {
+.dropdown {
+	display:inline;
+}
+  .dropbtn {
+   width: 100%;
+   margin-top:55px;
+  }
+  .dropbtn2 {
+   margin-top:5px;
+  }
+    .dropspan {
+   width: 100%;
+   margin-top:5px;
+  }
+
+  .dropimg {
+   margin-top:55px;
+  }
+  .right {
+	left:0;
+	min-width:300px;
+}
+
+}
+
+@media only screen and (max-width: 346px) {
+.right {
+	left:0;
+	min-width:252px;
+}
+
+}
+.show {display:block;}
+</style>
+<h1>CSS 下拉菜单</h1>
+<p>使用 CSS 创建一个鼠标移动上去后显示下拉菜单的效果。</p>
+<hr/>
+<h2>下拉菜单实例</h2>
+<h3>实例演示 1</h3>
+<div class="dropdown dropdown2">
+<span class="dropspan">文本下拉菜单</span>
+<div class="dropdown-content" style="padding:8px 16px;min-width:150px;text-align:center">
+<p>菜鸟教程</p>
+<p>www.runoob.com</p>
+</div>
+</div>
+<p style="clear:both"></p>
+<p style="margin-top:30px"></p>
+<h3>实例演示 2</h3>
+<div class="dropdown dropdown2">
+<button class="dropbtn">下拉菜单</button>
+<div class="dropdown-content">
+<a href="void(0)">菜鸟教程 1</a>
+<a href="void(0)">菜鸟教程 2</a>
+<a href="void(0)">菜鸟教程 3</a>
+</div>
+</div><p style="clear:both"></p>
+<p style="margin-top:30px"></p><h3>实例演示 3</h3>
+<div class="dropdown dropdown2">
+<span></span><img alt="Trolltunga Norway" class="dropimg" height="50" src="http://www.runoob.com/wp-content/uploads/2015/09/banner.jpg" width="100"/>
+<div class="dropdown-content right">
+<div class="img">
+<img alt="Trolltunga Norway" height="200" src="http://www.runoob.com/wp-content/uploads/2015/09/banner.jpg" width="400"/>
+<div style="padding:15px;text-align:center">学的不仅是技术，更是梦想！</div>
+</div>
+</div>
+</div><p style="clear:both"></p>
+<hr/>
+<h2>基本下拉菜单</h2>
+<p>当鼠标移动到指定元素上时，会出现下拉菜单。</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">&lt;style&gt;<br/>.dropdown </span>{<br/>    <span class="highATT">position:</span><span class="highVAL"> relative;</span><br/>    
+	<span class="highATT">display:</span><span class="highVAL"> inline-block;</span><br/>}<br/><br/><span class="highELE">.dropdown-content </span>{<br/>    <span class="highATT">display:</span><span class="highVAL"> 
+	none;</span><br/>    <span class="highATT">position:</span><span class="highVAL"> absolute;</span><br/>    
+	<span class="highATT">background-color:</span><span class="highVAL"> #f9f9f9;</span><br/>    <span class="highATT">min-width:</span><span class="highVAL"> 160px;</span><br/>    
+	<span class="highATT">box-shadow:</span><span class="highVAL"> 0px 8px 16px 0px rgba(0,0,0,0.2);</span><br/>    <span class="highATT">padding:</span><span class="highVAL"> 
+	12px 16px;</span><br/>    <span class="highATT">z-index:</span><span class="highVAL"> 1;</span><br/>}<br/><br/><span class="highELE">.dropdown:hover 
+	.dropdown-content </span>{<br/>    <span class="highATT">display:</span><span class="highVAL"> block;</span><br/>}<br/><span class="highELE">&lt;/style&gt;<br/><br/><span class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"dropdown"</span><span class="highGT">&gt;</span><br/>
+	  <span class="highLT">&lt;</span><span class="highELE">span</span><span class="highGT">&gt;</span><span style="color:black">Mouse over me</span><span class="highLT">&lt;</span><span class="highELE">/span</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"dropdown-content"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span><span style="color:black">Hello World!</span><span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></span></span></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss_dropdown_text" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析</h3>
+<p><b>HTML 部分：</b></p>
+<p>我们可以使用任何的 HTML 元素来打开下拉菜单，如：&lt;span&gt;, 或 a &lt;button&gt; 元素。</p>
+<p>使用容器元素 (如： &lt;div&gt;)  来创建下拉菜单的内容，并放在任何你想放的位置上。</p>
+<p>使用 &lt;div&gt; 元素来包裹这些元素，并使用 CSS 来设置下拉内容的样式。</p>
+<p><b>CSS 部分：</b></p>
+<p> <code>.dropdown</code> 类使用 <code>position:relative</code>, 这将设置下拉菜单的内容放置在下拉按钮 (使用 <code>position:absolute</code>) 的右下角位置。</p>
+<p> <code>.dropdown-content</code> 类中是实际的下拉菜单。默认是隐藏的，在鼠标移动到指定元素后会显示。 注意 <code>min-width</code> 的值设置为 160px。你可以随意修改它。 <strong>注意:</strong> 如果你想设置下拉内容与下拉按钮的宽度一致，可设置 <code>width</code> 为 100% ( <code>overflow:auto</code> 设置可以在小尺寸屏幕上滚动)。</p>
+<p>我们使用 <code>box-shadow</code> 属性让下拉菜单看起来像一个"卡片"。</p>
+<p> <code>:hover</code> 选择器用于在用户将鼠标移动到下拉按钮上时显示下拉菜单。</p>
+<hr/>
+<h2>下拉菜单</h2>
+<p>创建下拉菜单，并允许用户选取列表中的某一项：</p>
+<div class="dropdown dropdown2">
+<button class="dropbtn dropbtn2">下拉菜单</button>
+<div class="dropdown-content">
+<a href="void(0)">菜鸟教程 1</a>
+<a href="void(0)">菜鸟教程 2</a>
+<a href="void(0)">菜鸟教程 3</a>
+</div>
+</div>
+<p>这个实例类似前面的实例，当我们在下拉列表中添加了链接，并设置了样式：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">&lt;style&gt;<br/><span class="highCOM">/* 下拉按钮样式 */</span><br/>.dropbtn {<br/>    
+	<span class="highATT">background-color:</span><span class="highVAL"> #4CAF50;</span><br/>    <span class="highATT">color:</span><span class="highVAL"> white;</span><br/>    
+	<span class="highATT">padding:</span><span class="highVAL"> 16px;</span><br/>    <span class="highATT">font-size:</span><span class="highVAL"> 16px;</span><br/>    
+	<span class="highATT">border:</span><span class="highVAL"> none;</span><br/>    <span class="highATT">cursor:</span><span class="highVAL"> pointer;</span><br/>}<br/><br/><span class="highCOM">/* 
+	容器 &lt;div&gt; - 需要定位下拉内容 */</span><br/><span class="highELE">.dropdown </span>{<br/>    <span class="highATT">position:</span><span class="highVAL"> relative;</span><br/>    <span class="highATT">display:</span><span class="highVAL"> 
+	inline-block;</span><br/>}<br/><br/><span class="highCOM">/* 下拉内容 (默认隐藏) */</span><br/>
+<span class="highELE">.dropdown-content </span>{<br/>    <span class="highATT">display:</span><span class="highVAL"> none;</span><br/>    <span class="highATT">position:</span><span class="highVAL"> 
+	absolute;</span><br/>    <span class="highATT">background-color:</span><span class="highVAL"> #f9f9f9;</span><br/>    
+	<span class="highATT">min-width:</span><span class="highVAL"> 160px;</span><br/>    <span class="highATT">box-shadow:</span><span class="highVAL"> 
+	0px 8px 16px 0px rgba(0,0,0,0.2);</span><br/>}<br/><br/><span class="highCOM">/* 下拉菜单的链接 */</span><br/>
+<span class="highELE">.dropdown-content a </span>{<br/>    <span class="highATT">color:</span><span class="highVAL"> black;</span><br/>    
+	<span class="highATT">padding:</span><span class="highVAL"> 12px 16px;</span><br/>    <span class="highATT">text-decoration:</span><span class="highVAL"> none;</span><br/>    
+	<span class="highATT">display:</span><span class="highVAL"> block;</span><br/>}<br/><br/><span class="highCOM">/* 鼠标移上去后修改下拉菜单链接颜色 */</span><br/>
+<span class="highELE">.dropdown-content a:hover </span>{<span class="highATT">background-color:</span><span class="highVAL"> #f1f1f1</span>}<br/><br/><span class="highCOM">/* 
+	在鼠标移上去后显示下拉菜单 */</span><br/><span class="highELE">.dropdown:hover .dropdown-content </span>{<br/>    
+	<span class="highATT">display:</span><span class="highVAL"> block;</span><br/>}<br/><br/><span class="highCOM">/* 当下拉内容显示后修改下拉按钮的背景颜色 */</span><br/><span class="highELE">.dropdown:hover .dropbtn </span>{<br/>    
+	<span class="highATT">background-color:</span><span class="highVAL"> #3e8e41;</span><br/>}<br/><span class="highELE">&lt;/style&gt;<br/><br/><span class="htmlHigh"><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"dropdown"</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">class=</span><span class="highVAL">"dropbtn"</span><span class="highGT">&gt;</span><span style="color:black">下拉菜单</span><span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/>  
+	<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"dropdown-content"</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span><span style="color:black">菜鸟教程 
+	1</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>    
+	<span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span><span style="color:black">菜鸟教程 2</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>    <span class="highLT">&lt;</span><span class="highELE">a</span> <span class="highATT">href=</span><span class="highVAL">"#"</span><span class="highGT">&gt;</span><span style="color:black">菜鸟教程 3</span><span class="highLT">&lt;</span><span class="highELE">/a</span><span class="highGT">&gt;</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></span></span></span></div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss_dropdown_button" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>下拉内容对齐方式</h2>
+<h3>float:left;</h3>
+<div class="dropdown dropdown2" style="float:left">
+<button class="dropbtn dropbtn2">左</button>
+<div class="dropdown-content" style="min-width:160px">
+<a href="void(0)">菜鸟教程 1</a>
+<a href="void(0)">菜鸟教程 2</a>
+<a href="void(0)">菜鸟教程 3</a>
+</div>
+</div>
+<p style="clear:both"></p>
+<p style="margin-top:30px"></p>
+<h3>float:right;</h3>
+<div class="dropdown dropdown2" style="float:right">
+<button class="dropbtn dropbtn2">右</button>
+<div class="dropdown-content" style="min-width:160px">
+<a href="void(0)">菜鸟教程 1</a>
+<a href="void(0)">菜鸟教程 2</a>
+<a href="void(0)">菜鸟教程 3</a>
+</div>
+</div>
+<p style="clear:both"></p>
+<p style="margin-top:30px">如果你想设置右浮动的下拉菜单内容方向是从右到左，而不是从左到右，可以添加以下代码 <code>right: 0;</code></p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highELE">.dropdown-content </span>{<br/>    <span class="highATT">right:</span><span class="highVAL"> 0;</span><br/>}<br/></div>
+<a class="tryitbtn" href="/try/tryit.php?filename=trycss_dropdown_right" target="_blank">尝试一下 »</a><br/>
+</div>
+<hr/><h2>更多实例</h2>
+<p><a href="/try/tryit.php?filename=trycss_dropdown_image" target="_blank">图片下拉</a><br/>
+该实例演示了如何如何在下拉菜单中添加图片。</p>
+<p><a href="/try/tryit.php?filename=trycss_dropdown_navbar" target="_blank">导航条下拉</a><br/>
+该实例演示了如何在导航条上添加下拉菜单。</p>
+</div>

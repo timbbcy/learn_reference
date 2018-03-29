@@ -1,0 +1,250 @@
+<div class="article-intro" id="content">
+<script>
+
+var H='....';
+var H=H.split('');
+var M='.....';
+var M=M.split('');
+var S='......';
+var S=S.split('');
+var Ypos=0;
+var Xpos=0;
+var Ybase=8;
+var Xbase=8;
+var dots=12;
+
+function clock(){
+var time=new Date ();
+var secs=time.getSeconds();
+var sec=-1.57 + Math.PI * secs/30;
+var mins=time.getMinutes();
+var min=-1.57 + Math.PI * mins/30;
+var hr=time.getHours();
+var hrs=-1.57 + Math.PI * hr/6 + Math.PI*parseInt(time.getMinutes())/360;
+for (i=0; i < dots; ++i){
+document.getElementById("dig" + (i+1)).style.top=0-15+40*Math.sin(-0.49+dots+i/1.9).toString() + "px";
+document.getElementById("dig" + (i+1)).style.left=0-14+40*Math.cos(-0.49+dots+i/1.9).toString() + "px";
+}
+for (i=0; i < S.length; i++){
+document.getElementById("sec" + (i+1)).style.top =Ypos+i*Ybase*Math.sin(sec).toString() + "px";
+document.getElementById("sec" + (i+1)).style.left=Xpos+i*Xbase*Math.cos(sec).toString() + "px";
+}
+for (i=0; i < M.length; i++){
+document.getElementById("min" + (i+1)).style.top =Ypos+i*Ybase*Math.sin(min).toString() + "px";
+document.getElementById("min" + (i+1)).style.left=Xpos+i*Xbase*Math.cos(min).toString() + "px";
+}
+for (i=0; i < H.length; i++){
+document.getElementById("hour" + (i+1)).style.top =Ypos+i*Ybase*Math.sin(hrs).toString() + "px";
+document.getElementById("hour" + (i+1)).style.left=Xpos+i*Xbase*Math.cos(hrs).toString() + "px";
+} 
+setTimeout('clock()',50);
+}
+window.onload=clock;
+
+</script>
+<style type="text/css">
+div.dig, div.hour, div.min, div.sec
+{
+position:absolute;
+}
+div.hour, div.min, div.sec
+{
+width:2px;
+height:2px;
+font-size:2px;
+}
+div.dig
+{
+width:30px;
+height:30px;
+font-family:arial,verdana,sans-serif;
+font-size:10px;
+color:#000000;
+text-align:center;
+padding-top:10px
+}
+div.min
+{
+background:#0000FF;
+}
+div.hour
+{
+background:#000000;
+}
+div.sec
+{
+background:#FF0000;
+}
+</style>
+<h1>JavaScript <span class="color_h1">计时事件</span>
+</h1>
+<hr/>
+<div class="example">
+<table><tr>
+<td>
+<div style="width:120px;height:100px;position:relative;left:58px;top:50px;">
+<div class="dig" id="dig1">1</div>
+<div class="dig" id="dig2">2</div>
+<div class="dig" id="dig3">3</div>
+<div class="dig" id="dig4">4</div>
+<div class="dig" id="dig5">5</div>
+<div class="dig" id="dig6">6</div>
+<div class="dig" id="dig7">7</div>
+<div class="dig" id="dig8">8</div>
+<div class="dig" id="dig9">9</div>
+<div class="dig" id="dig10">10</div>
+<div class="dig" id="dig11">11</div>
+<div class="dig" id="dig12">12</div>
+<div class="hour" id="hour1"></div>
+<div class="hour" id="hour2"></div>
+<div class="hour" id="hour3"></div>
+<div class="hour" id="hour4"></div>
+<div class="min" id="min1"></div>
+<div class="min" id="min2"></div>
+<div class="min" id="min3"></div>
+<div class="min" id="min4"></div>
+<div class="min" id="min5"></div>
+<div class="sec" id="sec1"></div>
+<div class="sec" id="sec2"></div>
+<div class="sec" id="sec3"></div>
+<div class="sec" id="sec4"></div>
+<div class="sec" id="sec5"></div>
+<div class="sec" id="sec6"></div>
+</div>
+</td>
+<td>
+<p class="tutintro">JavaScript 一个设定的时间间隔之后来执行代码</p>
+<p class="tutintro">我们称之为计时事件</p>
+</td>
+</tr></table>
+</div>
+<hr/>
+<h2>JavaScript 计时事件</h2>
+<p>通过使用 JavaScript，我们有能力做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。我们称之为计时事件。
+</p>
+<p>在 JavaScritp 中使用计时事件是很容易的，两个关键方法是:</p>
+<ul>
+<li>setInterval() - 间隔指定的毫秒数不停地执行指定的代码。</li>
+<li>setTimeout() -  在指定的毫秒数后执行指定代码。</li>
+</ul>
+<p><b>注意:</b> setInterval() 和 setTimeout() 是 HTML DOM Window对象的两个方法。</p>
+<hr/>
+<h2>setInterval() 方法</h2>
+<p> setInterval() 间隔指定的毫秒数不停地执行指定的代码</p>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+	window.setInterval("<i>javascript function</i>",<i>milliseconds</i>);</div></div>
+<p><strong>window.setInterval()</strong> 方法可以不使用window前缀，直接使用函数<strong>setInterval()</strong>。</p>
+<p>setInterval() 第一个参数是函数（function）。</p>
+<p>第二个参数间隔的毫秒数</p>
+<p><b>注意:</b> 1000 毫秒是一秒。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>每三秒弹出 "hello" ：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">setInterval</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Hello</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-code">,</span><span class="hl-number">3000</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_setinterval1" target="_blank">尝试一下 »</a>
+</div>
+<p>实例展示了如何使用 setInterval() 方法，但是每三秒弹出一次对用户体验并不好。</p>
+<p>以下实例将显示当前时间。  setInterval() 方法设置每秒钟执行一次代码，就是手表一样。 
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>显示当前时间</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myVar</span><span class="hl-code">=</span><span class="hl-identifier">setInterval</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-identifier">myTimer</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-code">,</span><span class="hl-number">1000</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myTimer</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">d</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-builtin">Date</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">t</span><span class="hl-code">=</span><span class="hl-identifier">d</span><span class="hl-code">.</span><span class="hl-identifier">toLocaleTimeString</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">t</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_setinterval2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>如何停止执行?</h2>
+<p>clearInterval() 方法用于停止 setInterval() 方法执行的函数代码。</p>
+<h3>语法</h3>
+<div class="code notranslate"><div>
+	window.clearInterval(<em>intervalVariable</em>)</div></div>
+<p><strong>window.clearInterval()</strong> 方法可以不使用window前缀，直接使用函数<strong>clearInterval()</strong>。</p>
+<p>要使用 clearInterval() 方法, 在创建计时方法时你必须使用全局变量：</p>
+<div class="code notranslate"><div>
+	myVar=setInterval("<i>javascript function</i>",<i>milliseconds</i>);</div></div>
+<p>然后你可以使用clearInterval() 方法来停止执行。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>以下例子,我们添加了 "停止" 按钮：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">button</span><span class="hl-code"> </span><span class="hl-var">onclick</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myStopFunction()</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">停止</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">button</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+var myVar=setInterval(function(){myTimer()},1000);
+function myTimer(){
+    var d=new Date();
+    var t=d.toLocaleTimeString();
+    document.getElementById("demo").innerHTML=t;
+}
+function myStopFunction(){
+    clearInterval(myVar);
+}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_setinterval3" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>setTimeout() 方法</h2>
+<h3>语法</h3>
+<div class="code"><div>
+	myVar= window.setTimeout("<i>javascript function</i>",<i> milliseconds</i>);</div></div>
+<p>setTimeout() 方法会返回某个值。在上面的语句中，值被储存在名为 myVar 的变量中。假如你希望取消这个 setTimeout()，你可以使用这个变量名来指定它。</p>
+<p>setTimeout() 的第一个参数是含有 JavaScript 语句的字符串。这个语句可能诸如 "alert('5 seconds!')"，或者对函数的调用，诸如 alertMsg。</p>
+<p>第二个参数指示从当前起多少毫秒后执行第一个参数。</p>
+<p class="tip"><span>提示：</span>1000 毫秒等于一秒。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>等待3秒，然后弹出 "Hello":</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">setTimeout</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Hello</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-code">,</span><span class="hl-number">3000</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_timing1" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>如何停止执行?</h2>
+<p> clearTimeout() 方法用于停止执行setTimeout()方法的函数代码。</p>
+<h3>语法</h3>
+<div class="code">
+<div>
+window.clearTimeout(<em>timeoutVariable</em>)</div>
+</div>
+<p><strong>window.clearTimeout()</strong> 方法可以不使用window 前缀。</p>
+<p>要使用clearTimeout() 方法, 你必须在创建超时方法中（setTimeout）使用全局变量:</p>
+<div class="code ">
+<div>
+myVar=setTimeout("<i>javascript function</i>",<i>milliseconds</i>);</div>
+</div>
+<p>如果函数还未被执行，你可以使用 clearTimeout() 方法来停止执行函数代码。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<p>以下是同一个实例, 但是添加了 "Stop the alert" 按钮:</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myVar</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">myVar</span><span class="hl-code">=</span><span class="hl-identifier">setTimeout</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Hello</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">}</span><span class="hl-code">,</span><span class="hl-number">3000</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myStopFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">clearTimeout</span><span class="hl-brackets">(</span><span class="hl-identifier">myVar</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_settimeout2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/try.php?filename=tryjs_timing2" target="_blank">另一个简单的计时</a></p>
+<p><a a="" href="/try/try.php?filename=tryjs_timing_clock" target="_blank" 使用计时创建时钟。<=""></a></p>
+</div>

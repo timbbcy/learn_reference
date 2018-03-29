@@ -1,0 +1,50 @@
+<div class="article-intro" id="content">
+<h1>C# <span class="color_h1">枚举（Enum）</span></h1>
+<div class="tutintro">
+<p>枚举是一组命名整型常量。枚举类型是使用 <b>enum</b> 关键字声明的。</p>
+<p>C# 枚举是值类型。换句话说，枚举包含自己的值，且不能继承或传递继承。</p>
+</div>
+<h2 class="tutheader">声明 <i>enum</i> 变量</h2>
+<p>声明枚举的一般语法：</p>
+<pre class="prettyprint">
+enum &lt;enum_name&gt;
+{ 
+    enumeration list 
+};
+</pre>
+<p>其中，</p>
+<ul class="list">
+<li><i>enum_name</i> 指定枚举的类型名称。</li>
+<li><i>enumeration list</i> 是一个用逗号分隔的标识符列表。</li>
+</ul>
+<p>枚举列表中的每个符号代表一个整数值，一个比它前面的符号大的整数值。默认情况下，第一个枚举符号的值是 0.例如：</p>
+<pre class="prettyprint">
+enum Days { Sun, Mon, tue, Wed, thu, Fri, Sat };
+</pre>
+<h2 class="tutheader">实例</h2>
+<p>下面的实例演示了枚举变量的用法：</p>
+<pre class="prettyprint">
+using System;
+namespace EnumApplication
+{
+   class EnumProgram
+   {
+      enum Days { Sun, Mon, tue, Wed, thu, Fri, Sat };
+
+      static void Main(string[] args)
+      {
+         int WeekdayStart = (int)Days.Mon;
+         int WeekdayEnd = (int)Days.Fri;
+         Console.WriteLine("Monday: {0}", WeekdayStart);
+         Console.WriteLine("Friday: {0}", WeekdayEnd);
+         Console.ReadKey();
+      }
+   }
+}
+</pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre class="result">
+Monday: 1
+Friday: 5
+</pre>
+</div>

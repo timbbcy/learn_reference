@@ -1,0 +1,35 @@
+<div class="article-intro" id="content">
+<h1>RDF <span class="color_h1">集合</span>
+</h1>
+<hr/>
+<p class="intro">RDF 集合用于描述仅包含指定成员的组。</p>
+<hr/>
+<h2>rdf:parseType="Collection" 属性</h2>
+<p>正如在前面的章节所看到的，我们无法关闭一个容器。容器规定了所包含的资源为成员 - 它没有规定其他的成员是不被允许的。</p>
+<p>RDF 集合用于描述仅包含指定成员的组。</p>
+<p>集合是通过属性 rdf:parseType="Collection" 来描述的。</p>
+<h3>实例</h3>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0"?&gt;<br/><br/>
+&lt;rdf:RDF<br/>
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"<br/>
+xmlns:cd="http://recshop.fake/cd#"&gt;<br/><br/>
+&lt;rdf:Description<br/>
+rdf:about="http://recshop.fake/cd/Beatles"&gt;<br/>
+ 
+&lt;cd:artist rdf:parseType="Collection"&gt;<br/>
+   
+&lt;rdf:Description  rdf:about="http://recshop.fake/cd/Beatles/George"/&gt;<br/>
+   
+&lt;rdf:Description rdf:about="http://recshop.fake/cd/Beatles/John"/&gt;<br/>
+   
+&lt;rdf:Description rdf:about="http://recshop.fake/cd/Beatles/Paul"/&gt;<br/>
+   
+&lt;rdf:Description rdf:about="http://recshop.fake/cd/Beatles/Ringo"/&gt;<br/>
+ 
+&lt;/cd:artist&gt;<br/>
+&lt;/rdf:Description&gt;<br/><br/>
+&lt;/rdf:RDF&gt;
+</div></div>
+</div>

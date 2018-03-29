@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>jQuery - <span class="color_h1">AJAX get() 和 post() 方法</span>
+</h1>
+<hr/>
+<p class="intro">jQuery get() 和 post() 方法用于通过 HTTP GET 或 POST 请求从服务器请求数据。</p>
+<hr/>
+<h2>HTTP 请求：GET vs. POST</h2>
+<p>两种在客户端和服务器端进行请求-响应的常用方法是：GET 和 POST。</p>
+<ul>
+<li><em>GET</em> - 从指定的资源请求数据</li>
+<li><em>POST</em> - 向指定的资源提交要处理的数据</li>
+</ul>
+<p>GET 基本上用于从服务器获得（取回）数据。注释：GET 方法可能返回缓存数据。</p>
+<p>POST 也可用于从服务器获取数据。不过，POST 方法不会缓存数据，并且常用于连同请求一起发送数据。</p>
+<p>如需学习更多有关 GET 和 POST 以及两方法差异的知识，请阅读我们的 <a href="/tags/html-httpmethods.html" title="HTTP 方法：GET 对比 POST">HTTP 方法 - GET 对比 POST</a>。</p>
+<hr/>
+<h2>jQuery $.get() 方法</h2>
+<p>$.get() 方法通过 HTTP GET 请求从服务器上请求数据。</p>
+<h3>语法：</h3>
+<div class="code">
+<div>
+$.get(<i>URL</i>,<i>callback</i>);</div></div>
+<p>必需的 <i>URL</i> 参数规定您希望请求的 URL。</p>
+<p>可选的 <i>callback</i> 参数是请求成功后所执行的函数名。</p>
+<p>下面的例子使用 $.get() 方法从服务器上的一个文件中取回数据：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $.</span><span class="hl-identifier">get</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo_test.php</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">data</span><span class="hl-code">,</span><span class="hl-identifier">status</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">数据: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">data</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-string">状态: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">status</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_ajax_get" target="_blank">尝试一下 »</a>
+</div>
+<p>$.get() 的第一个参数是我们希望请求的 URL（"demo_test.php"）。</p>
+<p>第二个参数是回调函数。第一个回调参数存有被请求页面的内容，第二个回调参数存有请求的状态。</p>
+<p><b>提示：</b> 这个 PHP 文件 ("demo_test.php") 类似这样：</p>
+<div class="example">
+<h2 class="example">demo_test.php 文件代码:</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">这是个从PHP文件中读取的数据。</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+<br/><hr/>
+<h2>jQuery $.post() 方法</h2>
+<p>$.post() 方法通过 HTTP POST 请求向服务器提交数据。</p>
+<p><b>语法:</b></p>
+<div class="code">
+<div>
+$.post(<i>URL,data,callback</i>);
+</div>
+</div>
+<p>必需的 <i>URL</i> 参数规定您希望请求的 URL。</p>
+<p>可选的 <i>data</i> 参数规定连同请求发送的数据。</p>
+<p>可选的 <i>callback</i> 参数是请求成功后所执行的函数名。</p>
+<p>下面的例子使用 $.post() 连同请求一起发送数据：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $.</span><span class="hl-identifier">post</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">/try/ajax/demo_test_post.php</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">name</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">菜鸟教程</span><span class="hl-quotes">"</span><span class="hl-code">,
+        </span><span class="hl-identifier">url</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">http://www.runoob.com</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">,
+        </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">data</span><span class="hl-code">,</span><span class="hl-identifier">status</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">alert</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">数据: </span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">data</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-string">状态: </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">status</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_ajax_post" target="_blank">尝试一下 »</a>
+</div>
+<p>$.post() 的第一个参数是我们希望请求的 URL ("demo_test_post.php")。</p>
+<p>然后我们连同请求（name 和 url）一起发送数据。</p>
+<p>"demo_test_post.php" 中的 PHP 脚本读取这些参数，对它们进行处理，然后返回结果。</p>
+<p>第三个参数是回调函数。第一个回调参数存有被请求页面的内容，而第二个参数存有请求的状态。</p>
+<p><b>提示：</b> 这个 PHP 文件 ("demo_test_post.php") 类似这样：</p>
+<div class="example">
+<h2 class="example">demo_test_post.php 文件代码:</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$name</span><span class="hl-code"> = </span><span class="hl-reserved">isset</span><span class="hl-brackets">(</span><span class="hl-var">$_POST</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">name</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> ? </span><span class="hl-identifier">htmlspecialchars</span><span class="hl-brackets">(</span><span class="hl-var">$_POST</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">name</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$url</span><span class="hl-code"> = </span><span class="hl-reserved">isset</span><span class="hl-brackets">(</span><span class="hl-var">$_POST</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">url</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> ? </span><span class="hl-identifier">htmlspecialchars</span><span class="hl-brackets">(</span><span class="hl-var">$_POST</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">url</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">网站名: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-var">$name</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">URL 地址: </span><span class="hl-quotes">'</span><span class="hl-code"> .</span><span class="hl-var">$url</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+</div>

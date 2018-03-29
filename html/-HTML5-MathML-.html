@@ -1,0 +1,123 @@
+<div class="article-intro" id="content">
+<h1>HTML5 MathML</h1>
+<p>HTML5 可以在文档中使用 MathML 元素，对应的标签是 &lt;math&gt;...&lt;/math&gt; 。</p>
+<p>MathML 是数学标记语言，是一种基于XML（标准通用标记语言的子集）的标准，用来在互联网上书写数学符号和公式的置标语言。</p>
+<blockquote><p><strong>注意：</strong>大部分浏览器都支持 MathML 标签，如果你的浏览器不支持该标签，可以使用最新版的 Firefox 或 Safari 浏览器查看。</p></blockquote>
+<hr/>
+<h2>MathML 实例</h2>
+<p>以下是一个简单的 MathML 实例：</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;meta charset="UTF-8"&gt;
+      &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+   &lt;/head&gt;
+    
+   &lt;body&gt;
+    
+      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+        
+         &lt;mrow&gt;
+            &lt;msup&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+            &lt;mo&gt;+&lt;/mo&gt;
+                
+            &lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+            &lt;mo&gt;=&lt;/mo&gt;
+                
+            &lt;msup&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+         &lt;/mrow&gt;
+            
+      &lt;/math&gt;
+        
+   &lt;/body&gt;
+&lt;/html&gt; 
+</pre>
+<p><a class="tryitbtn" href="/try/try.php?filename=tryhtml5_mathml" target="_blank">尝试一下 »</a></p>
+<p>运行结果图，如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2015/12/mathml1.jpg"/></p>
+<p>以下实例添加了一些运算符：</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;meta charset="UTF-8"&gt;
+      &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+   &lt;/head&gt;
+    
+   &lt;body&gt;
+    
+      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+        
+         &lt;mrow&gt;            
+            &lt;mrow&gt;
+                
+               &lt;msup&gt;
+                  &lt;mi&gt;x&lt;/mi&gt;
+                  &lt;mn&gt;2&lt;/mn&gt;
+               &lt;/msup&gt;
+                    
+               &lt;mo&gt;+&lt;/mo&gt;
+                    
+               &lt;mrow&gt;
+                  &lt;mn&gt;4&lt;/mn&gt;
+                  &lt;mo&gt;⁢&lt;/mo&gt;
+                  &lt;mi&gt;x&lt;/mi&gt;
+               &lt;/mrow&gt;
+                    
+               &lt;mo&gt;+&lt;/mo&gt;
+               &lt;mn&gt;4&lt;/mn&gt;
+                    
+            &lt;/mrow&gt;
+                
+            &lt;mo&gt;=&lt;/mo&gt;
+            &lt;mn&gt;0&lt;/mn&gt;
+                 
+         &lt;/mrow&gt;
+      &lt;/math&gt;
+        
+   &lt;/body&gt;
+&lt;/html&gt; 
+</pre><p><a class="tryitbtn" href="/try/try.php?filename=tryhtml5_mathml1" target="_blank">尝试一下 »</a></p>
+<p>运行结果图，如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2015/12/mathml2-1.jpg"/></p>
+<p> 以下实例是一个 2×2 矩阵，可以在 Firefox 3.5 以上版本查看到效果：</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;meta charset="UTF-8"&gt;
+      &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+   &lt;/head&gt;
+    
+   &lt;body&gt;
+      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+        
+         &lt;mrow&gt;
+            &lt;mi&gt;A&lt;/mi&gt;
+            &lt;mo&gt;=&lt;/mo&gt;
+            
+            &lt;mfenced open="[" close="]"&gt;
+            
+               &lt;mtable&gt;
+                  &lt;mtr&gt;
+                     &lt;mtd&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mtd&gt;
+                     &lt;mtd&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/mtd&gt;
+                  &lt;/mtr&gt;
+                    
+                  &lt;mtr&gt;
+                     &lt;mtd&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;/mtd&gt;
+                     &lt;mtd&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;/mtd&gt;
+                  &lt;/mtr&gt;
+               &lt;/mtable&gt;
+               
+            &lt;/mfenced&gt;
+         &lt;/mrow&gt;
+      &lt;/math&gt;
+      
+   &lt;/body&gt;
+&lt;/html&gt; 
+</pre><p><a class="tryitbtn" href="/try/try.php?filename=tryhtml5_mathml2" target="_blank">尝试一下 »</a></p>
+<p>运行结果图，如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2015/12/mathml3.jpg"/></p>
+</div>

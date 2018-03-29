@@ -1,0 +1,293 @@
+<div class="article-intro" id="content">
+<h1>Node.js 连接 MySQL</h1>
+<p>本章节我们将为大家介绍如何使用 Node.js 来连接 MySQL，并对数据库进行操作。</p>
+<p>如果你还没有 MySQL 的基本知识，可以参考我们的教程：<a href="/mysql/mysql-tutorial.html" target="_blank">MySQL 教程</a>。
+<p>本教程使用到的 Websites 表 SQL 文件：<a download="" href="//static.runoob.com/download/websites.sql" target="_blank">websites.sql</a>。</p>
+<h3>安装驱动</h3>
+<p>本教程使用了<a href="/nodejs/nodejs-npm.html#taobaonpm" target="_blank">淘宝定制的 cnpm 命令</a>进行安装：</p>
+<pre>
+$ cnpm install mysql
+</pre>
+<h3>连接数据库</h3>
+<p>在以下实例中根据你的实际配置修改数据库用户名、及密码及数据库名：</p>
+<div class="example">
+<h2 class="example">test.js 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">      = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mysql</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">connection</span><span class="hl-code"> = </span><span class="hl-identifier">mysql</span><span class="hl-code">.</span><span class="hl-identifier">createConnection</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">host</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">user</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">password</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">,
+  </span><span class="hl-identifier">database</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">test</span><span class="hl-quotes">'</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">connect</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">SELECT 1 + 1 AS solution</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">error</span><span class="hl-code">, </span><span class="hl-identifier">results</span><span class="hl-code">, </span><span class="hl-identifier">fields</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">error</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">throw</span><span class="hl-code"> </span><span class="hl-identifier">error</span><span class="hl-code">;
+  </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">The solution is: </span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">results</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">solution</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>执行以下命令输出就结果为：</p>
+<div class="example_code">
+$ node test.js<br/>
+The solution is:  2
+</div>
+</div>
+<h3>数据库连接参数说明：</h3>
+<table class="reference">
+<tr><th>参数</th><th>描述</th></tr>
+<tr><td>
+host</td><td>主机地址 （默认：localhost）</td></tr><tr><td>
+
+　　user</td><td>用户名</td></tr><tr><td>
+
+　　password</td><td>密码</td></tr><tr><td>
+
+　　port</td><td>端口号 （默认：3306）</td></tr><tr><td>
+
+　　database</td><td>数据库名</td></tr><tr><td>
+
+　　charset</td><td>连接字符集（默认：'UTF8_GENERAL_CI'，注意字符集的字母都要大写）</td></tr><tr><td>
+
+　　localAddress</td><td>此IP用于TCP连接（可选）</td></tr><tr><td>
+
+　　socketPath</td><td>连接到unix域路径，当使用 host 和 port 时会被忽略</td></tr><tr><td>
+
+　　timezone</td><td>时区（默认：'local'）</td></tr><tr><td>
+
+　　connectTimeout</td><td>连接超时（默认：不限制；单位：毫秒）</td></tr><tr><td>
+
+　　stringifyObjects</td><td>是否序列化对象</td></tr><tr><td>
+
+　　typeCast</td><td>是否将列值转化为本地JavaScript类型值 （默认：true）</td></tr><tr><td>
+
+　　queryFormat</td><td>自定义query语句格式化方法</td></tr><tr><td>
+
+　　supportBigNumbers</td><td>数据库支持bigint或decimal类型列时，需要设此option为true （默认：false）</td></tr><tr><td>
+
+　　bigNumberStrings</td><td>supportBigNumbers和bigNumberStrings启用 强制bigint或decimal列以JavaScript字符串类型返回（默认：false）</td></tr><tr><td>
+
+　　dateStrings</td><td>强制timestamp,datetime,data类型以字符串类型返回，而不是JavaScript Date类型（默认：false）</td></tr><tr><td>
+
+　　debug</td><td>开启调试（默认：false）</td></tr><tr><td>
+
+　　multipleStatements</td><td>是否许一个query中有多个MySQL语句 （默认：false）</td></tr><tr><td>
+
+　　flags</td><td>用于修改连接标志</td></tr><tr><td>
+
+　　ssl</td><td>使用ssl参数（与crypto.createCredenitals参数格式一至）或一个包含ssl配置文件名称的字符串，目前只捆绑Amazon RDS的配置文件</td></tr></table>
+<p>更多说明可参见：<a href="https://github.com/mysqljs/mysql" target="_blank">https://github.com/mysqljs/mysql</a></p>
+<hr/>
+<h2>数据库操作( CURD )</h2>
+<p>在进行数据库操作前，你需要将本站提供的 Websites 表 SQL 文件<a download="" href="//static.runoob.com/download/websites.sql" target="_blank">websites.sql</a> 导入到你的 MySQL 数据库中。</p>
+<p>本教程测试的 MySQL 用户名为 root，密码为 123456，数据库为 test，你需要根据自己配置情况修改。</p>
+<h3>查询数据</h3>
+<p>将上面我们提供的 SQL 文件导入数据库后，执行以下代码即可查询出数据：</p>
+<div class="example">
+<h2 class="example">查询数据</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">  = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mysql</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">connection</span><span class="hl-code"> = </span><span class="hl-identifier">mysql</span><span class="hl-code">.</span><span class="hl-identifier">createConnection</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">host</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">user</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,              
+  </span><span class="hl-identifier">password</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">port</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">3306</span><span class="hl-quotes">'</span><span class="hl-code">,                   
+  </span><span class="hl-identifier">database</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">test</span><span class="hl-quotes">'</span><span class="hl-code">, 
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">; 
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">connect</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT * FROM websites</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment">查</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-identifier">sql</span><span class="hl-code">,</span><span class="hl-identifier">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-code">, </span><span class="hl-identifier">result</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">[SELECT ERROR] - </span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">err</span><span class="hl-code">.</span><span class="hl-identifier">message</span><span class="hl-brackets">)</span><span class="hl-code">;
+          </span><span class="hl-reserved">return</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">--------------------------SELECT----------------------------</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+       </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-identifier">result</span><span class="hl-brackets">)</span><span class="hl-code">;
+       </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">------------------------------------------------------------</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>执行以下命令输出就结果为：</p>
+<div class="example_code">
+<pre>
+$ node test.js
+--------------------------SELECT----------------------------
+[ RowDataPacket {
+    id: 1,
+    name: 'Google',
+    url: 'https://www.google.cm/',
+    alexa: 1,
+    country: 'USA' },
+  RowDataPacket {
+    id: 2,
+    name: '淘宝',
+    url: 'https://www.taobao.com/',
+    alexa: 13,
+    country: 'CN' },
+  RowDataPacket {
+    id: 3,
+    name: '菜鸟教程',
+    url: 'http://www.runoob.com/',
+    alexa: 4689,
+    country: 'CN' },
+  RowDataPacket {
+    id: 4,
+    name: '微博',
+    url: 'http://weibo.com/',
+    alexa: 20,
+    country: 'CN' },
+  RowDataPacket {
+    id: 5,
+    name: 'Facebook',
+    url: 'https://www.facebook.com/',
+    alexa: 3,
+    country: 'USA' } ]
+------------------------------------------------------------
+</pre>
+</div>
+</div>
+<h3>插入数据</h3>
+<p>我们可以向数据表 websties 插入数据：</p>
+<div class="example">
+<h2 class="example">插入数据</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">  = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mysql</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">connection</span><span class="hl-code"> = </span><span class="hl-identifier">mysql</span><span class="hl-code">.</span><span class="hl-identifier">createConnection</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">host</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">user</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,              
+  </span><span class="hl-identifier">password</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">port</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">3306</span><span class="hl-quotes">'</span><span class="hl-code">,                   
+  </span><span class="hl-identifier">database</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">test</span><span class="hl-quotes">'</span><span class="hl-code">, 
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">; 
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">connect</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">addSql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">INSERT INTO websites(Id,name,url,alexa,country) VALUES(0,?,?,?,?)</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">addSqlParams</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">菜鸟工具</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">https://c.runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">23453</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">CN</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment">增</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-identifier">addSql</span><span class="hl-code">,</span><span class="hl-identifier">addSqlParams</span><span class="hl-code">,</span><span class="hl-identifier">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-code">, </span><span class="hl-identifier">result</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">[INSERT ERROR] - </span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">err</span><span class="hl-code">.</span><span class="hl-identifier">message</span><span class="hl-brackets">)</span><span class="hl-code">;
+         </span><span class="hl-reserved">return</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">--------------------------INSERT----------------------------</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+       </span><span class="hl-comment">//</span><span class="hl-comment">console.log('INSERT ID:',result.insertId);        </span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">INSERT ID:</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">result</span><span class="hl-brackets">)</span><span class="hl-code">;        
+       </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">-----------------------------------------------------------------</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>执行以下命令输出就结果为：</p>
+<div class="example_code">
+<pre>
+$ node test.js
+--------------------------INSERT----------------------------
+INSERT ID: OkPacket {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 6,
+  serverStatus: 2,
+  warningCount: 0,
+  message: '',
+  protocol41: true,
+  changedRows: 0 }
+-----------------------------------------------------------------
+</pre>
+</div>
+</div>
+<p>执行成功后，查看数据表，即可以看到添加的数据：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/03/1E2D27C5-45F3-4E57-90D3-4AE35AEB17F7.jpg"/></p>
+<h3>更新数据</h3>
+<p>我们也可以对数据库的数据进行修改：</p>
+<div class="example">
+<h2 class="example">更新数据</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">  = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mysql</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">connection</span><span class="hl-code"> = </span><span class="hl-identifier">mysql</span><span class="hl-code">.</span><span class="hl-identifier">createConnection</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">host</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">user</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,              
+  </span><span class="hl-identifier">password</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">port</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">3306</span><span class="hl-quotes">'</span><span class="hl-code">,                   
+  </span><span class="hl-identifier">database</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">test</span><span class="hl-quotes">'</span><span class="hl-code">, 
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">; 
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">connect</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">modSql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">UPDATE websites SET name = ?,url = ? WHERE Id = ?</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">modSqlParams</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">菜鸟移动站</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">https://m.runoob.com</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-number">6</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment">改</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-identifier">modSql</span><span class="hl-code">,</span><span class="hl-identifier">modSqlParams</span><span class="hl-code">,</span><span class="hl-identifier">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-code">, </span><span class="hl-identifier">result</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">[UPDATE ERROR] - </span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">err</span><span class="hl-code">.</span><span class="hl-identifier">message</span><span class="hl-brackets">)</span><span class="hl-code">;
+         </span><span class="hl-reserved">return</span><span class="hl-code">;
+   </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">--------------------------UPDATE----------------------------</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">UPDATE affectedRows</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">result</span><span class="hl-code">.</span><span class="hl-identifier">affectedRows</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">-----------------------------------------------------------------</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>执行以下命令输出就结果为：</p>
+<div class="example_code">
+<pre>
+--------------------------UPDATE----------------------------
+UPDATE affectedRows 1
+-----------------------------------------------------------------
+</pre>
+</div>
+</div>
+<p>执行成功后，查看数据表，即可以看到更新的数据：</p>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/03/A5C8911B-E07B-48DD-9C3E-28F1E73A1A30.jpg"/></p>
+<h3>删除数据</h3>
+<p>我们可以使用以下代码来删除 id 为 6 的数据:</p>
+<div class="example">
+<h2 class="example">删除数据</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">mysql</span><span class="hl-code">  = </span><span class="hl-identifier">require</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">mysql</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">connection</span><span class="hl-code"> = </span><span class="hl-identifier">mysql</span><span class="hl-code">.</span><span class="hl-identifier">createConnection</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">host</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">localhost</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">user</span><span class="hl-code">     : </span><span class="hl-quotes">'</span><span class="hl-string">root</span><span class="hl-quotes">'</span><span class="hl-code">,              
+  </span><span class="hl-identifier">password</span><span class="hl-code"> : </span><span class="hl-quotes">'</span><span class="hl-string">123456</span><span class="hl-quotes">'</span><span class="hl-code">,       
+  </span><span class="hl-identifier">port</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">3306</span><span class="hl-quotes">'</span><span class="hl-code">,                   
+  </span><span class="hl-identifier">database</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">test</span><span class="hl-quotes">'</span><span class="hl-code">, 
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">; 
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">connect</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">var</span><span class="hl-code"> </span><span class="hl-identifier">delSql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">DELETE FROM websites where id=6</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment">删</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-identifier">delSql</span><span class="hl-code">,</span><span class="hl-identifier">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-code">, </span><span class="hl-identifier">result</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-identifier">err</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">[DELETE ERROR] - </span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">err</span><span class="hl-code">.</span><span class="hl-identifier">message</span><span class="hl-brackets">)</span><span class="hl-code">;
+          </span><span class="hl-reserved">return</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">--------------------------DELETE----------------------------</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+       </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">DELETE affectedRows</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">result</span><span class="hl-code">.</span><span class="hl-identifier">affectedRows</span><span class="hl-brackets">)</span><span class="hl-code">;
+       </span><span class="hl-identifier">console</span><span class="hl-code">.</span><span class="hl-identifier">log</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">-----------------------------------------------------------------</span><span class="hl-special">\n</span><span class="hl-special">\n</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;  
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">connection</span><span class="hl-code">.</span><span class="hl-identifier">end</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>执行以下命令输出就结果为：</p>
+<div class="example_code">
+<pre>
+--------------------------DELETE----------------------------
+DELETE affectedRows 1
+-----------------------------------------------------------------
+</pre>
+</div>
+</div>
+<p>执行成功后，查看数据表，即可以看到 id=6 的数据已被删除：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2017/03/27BEB36A-0DCE-4C75-961F-93D55CBECC54.jpg"/></p>
+</p></div>

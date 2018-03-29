@@ -1,0 +1,110 @@
+<div class="article-intro" id="content">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzE9xAESye6Kde-3hT-6B90nfwUkcS8Yw&amp;sensor=false">
+</script>
+<script>
+var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+
+function initialize()
+{
+var mapProp = {
+  center: myCenter,
+  zoom:5,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+  position: myCenter,
+  title:'Click to zoom'
+  });
+
+marker.setMap(map);
+
+// Zoom to 9 when clicking on marker
+google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(9);
+  map.setCenter(marker.getPosition());
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<style>a.menu_google_maps_events{font-weight:bold;}</style>
+<h1>Google 地图<span class="color_h1">事件</span>
+</h1>
+<hr/>
+<p class="intro">点击标记缩放地图 - 绑定在google地图上的事件。</p>
+<div id="googleMap" style="width:100%;height:380px"></div>
+<hr/>
+<h2>点击标记缩放地图</h2>
+<p>我们仍然使用上一遍文章使用的英国伦敦的地图。</p>
+<p>点用户点击标记时实现缩放地图的功能(点击标记时绑定地图缩放事件)。</p>
+<p>代码如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">//</span><span class="hl-comment"> Zoom to 9 when clicking on marker</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">addListener</span><span class="hl-brackets">(</span><span class="hl-identifier">marker</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">click</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">map</span><span class="hl-code">.</span><span class="hl-identifier">setZoom</span><span class="hl-brackets">(</span><span class="hl-number">9</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">map</span><span class="hl-code">.</span><span class="hl-identifier">setCenter</span><span class="hl-brackets">(</span><span class="hl-identifier">marker</span><span class="hl-code">.</span><span class="hl-identifier">getPosition</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_marker_click" target="_blank">尝试一下 »</a>
+</div>
+<p>使用 addListener() 事件处理程序来注册事件的监听。该方法使用一个对象，一个事件来监听，当指定的事件发生时
+函数将被调用。</p>
+<hr/>
+<h2>重置标记</h2>
+<p>我们通过给地图添加事件处理程序来改变 'center' 属性，以下代码使用 center_changed 事件在3秒后标记移会中心点:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">addListener</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-code">,</span><span class="hl-quotes">'</span><span class="hl-string">center_changed</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">window</span><span class="hl-code">.</span><span class="hl-identifier">setTimeout</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">map</span><span class="hl-code">.</span><span class="hl-identifier">panTo</span><span class="hl-brackets">(</span><span class="hl-identifier">marker</span><span class="hl-code">.</span><span class="hl-identifier">getPosition</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">,</span><span class="hl-number">3000</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_marker_pan" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>点击标记时打开信息窗口。</h2>
+<p>点击标记在信息窗口显示一些文本信息：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">infowindow</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">InfoWindow</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">content</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">Hello World!</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">addListener</span><span class="hl-brackets">(</span><span class="hl-identifier">marker</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">click</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">infowindow</span><span class="hl-code">.</span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-code">,</span><span class="hl-identifier">marker</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_marker_infowindow" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>设置标记及打开每个标记的信息窗口</h2>
+<p>当用户点击地图时执行一个窗口</p>
+<p>用户点击地图某个位置时使用 placeMarker() 函数在指定位置上放置一个标记，并弹出信息窗口：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">addListener</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">click</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">placeMarker</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">latLng</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">placeMarker</span><span class="hl-brackets">(</span><span class="hl-identifier">location</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">marker</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">Marker</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">position</span><span class="hl-code">: </span><span class="hl-identifier">location</span><span class="hl-code">,
+    </span><span class="hl-identifier">map</span><span class="hl-code">: </span><span class="hl-identifier">map</span><span class="hl-code">,
+  </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">infowindow</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">google</span><span class="hl-code">.</span><span class="hl-identifier">maps</span><span class="hl-code">.</span><span class="hl-identifier">InfoWindow</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">content</span><span class="hl-code">: </span><span class="hl-quotes">'</span><span class="hl-string">Latitude: </span><span class="hl-quotes">'</span><span class="hl-code"> + </span><span class="hl-identifier">location</span><span class="hl-code">.</span><span class="hl-identifier">lat</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> +
+    </span><span class="hl-quotes">'</span><span class="hl-string">&lt;br&gt;Longitude: </span><span class="hl-quotes">'</span><span class="hl-code"> + </span><span class="hl-identifier">location</span><span class="hl-code">.</span><span class="hl-identifier">lng</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">infowindow</span><span class="hl-code">.</span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-identifier">map</span><span class="hl-code">,</span><span class="hl-identifier">marker</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryhtml_map_marker_infowindow2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>Google 地图 - 事件参考手册</h2>
+<p><a href="google-maps-ref.html">Google Maps API 参考手册</a>。<br/></p>
+</div>

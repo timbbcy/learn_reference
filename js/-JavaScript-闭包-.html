@@ -1,0 +1,139 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">闭包</span>
+</h1>
+<hr/>
+<p class="intro">JavaScript 变量可以是局部变量或全局变量。</p>
+<p class="intro">私有变量可以用到闭包。</p>
+<hr/>
+<h2>全局变量</h2>
+<p>函数可以访问由函数内部定义的变量，如：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">4</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">a</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_scope2" target="_blank">尝试一下 »</a>
+</div>
+<p>函数也可以访问函数外部定义的变量，如：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">4</span><span class="hl-code">;
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">a</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_scope1" target="_blank">尝试一下 »</a>
+</div>
+<p>后面一个实例中， <strong>a</strong> 是一个 <strong>全局</strong> 
+变量。 </p>
+<p>在web页面中全局变量属于 window 对象。</p>
+<p>全局变量可应用于页面上的所有脚本。</p>
+<p>在第一个实例中， <strong>a</strong> 是一个 <strong>局部</strong> 
+变量。</p>
+<p>局部变量只能用于定义它函数内部。对于其他的函数或脚本代码是不可用的。</p>
+<p>全局和局部变量即便名称相同，它们也是两个不同的变量。修改其中一个，不会影响另一个的值。 </p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>变量声明时如果不使用 <strong>var</strong> 关键字，那么它就是一个全局变量，即便它在函数内定义。</td>
+</tr></table>
+<br/><hr/>
+<h2>变量生命周期</h2>
+<p>全局变量的作用域是全局性的，即在整个JavaScript程序中，全局变量处处都在。</p>
+<p>而在函数内部声明的变量，只在函数内部起作用。这些变量是局部变量，作用域是局部性的；函数的参数也是局部性的，只在函数内部起作用。</p>
+<hr/>
+<h2>计数器困境</h2>
+<p>设想下如果你想统计一些数值，且该计数器在所有函数中都是可用的。</p>
+<p>你可以使用全局变量，函数设置计数器递增：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 计数器现在为 3</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_counter" target="_blank">尝试一下 »</a>
+</div>
+<p>计数器数值在执行 add() 函数时发生变化。</p>
+<p>但问题来了，页面上的任何脚本都能改变计数器，即便没有调用 add() 函数。</p>
+<p>如果我在函数内声明计数器，如果没有调用函数将无法修改计数器的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 本意是想输出 3, 但事与愿违，输出的都是 1 !</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_counter2" target="_blank">尝试一下 »</a>
+</div>
+<p>以上代码将无法正确输出，每次我调用 add() 函数，计数器都会设置为 1。</p>
+<p><strong> JavaScript 内嵌函数可以解决该问题。</strong></p>
+<hr/>
+<h2>JavaScript 内嵌函数</h2>
+<p>所有函数都能访问全局变量。   </p>
+<p>实际上，在 JavaScript 中，所有函数都能访问它们上一层的作用域。</p>
+<p>JavaScript 支持嵌套函数。嵌套函数可以访问上一层的函数变量。 </p>
+<p>该实例中，内嵌函数 <strong>plus()</strong> 可以访问父函数的 <strong>counter</strong> 变量：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">plus</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-identifier">counter</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">plus</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;    
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_counter1" target="_blank">尝试一下 »</a>
+</div>
+<p>如果我们能在外部访问  <strong>plus()</strong> 函数，这样就能解决计数器的困境。
+</p>
+<p>我们同样需要确保 <strong>counter = 0</strong> 只执行一次。</p>
+<p><strong>我们需要闭包。</strong></p>
+<hr/>
+<h2>JavaScript 闭包</h2>
+<p>还记得函数自我调用吗？该函数会做什么？</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">add</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">counter</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">add</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 计数器为 3</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_function_counter3" target="_blank">尝试一下 »</a>
+</div>
+<h2>实例解析</h2>
+<p>变量 <strong>add</strong> 指定了函数自我调用的返回字值。 </p>
+<p>自我调用函数只执行一次。设置计数器为 0。并返回函数表达式。</p>
+<p>add变量可以作为一个函数使用。非常棒的部分是它可以访问函数上一层作用域的计数器。 </p>
+<p>这个叫作 JavaScript <strong>闭包。</strong>它使得函数拥有私有变量变成可能。</p>
+<p>计数器受匿名函数的作用域保护，只能通过 add 方法修改。</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+闭包是可访问上一层函数作用域里变量的函数，即便上一层函数已经关闭。
+</td>
+</tr></table>
+</div>

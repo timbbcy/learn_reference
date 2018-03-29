@@ -1,0 +1,45 @@
+<div class="article-intro" id="content">
+<h1>XSL-FO <span class="color_h1">区域</span>
+</h1>
+<hr/>
+<p class="intro">XSL-FO 使用矩形框（区域）来显示输出。</p>
+<hr/>
+<h2>XSL-FO 区域</h2>
+<p>XSL 格式化模型定义了一系列的矩形区域（框）来显示输出。</p>
+<p>所有的输出（文本、图片，等等）都会被格式化到这些框中，然后会被显示或打印到某个目标媒介。</p>
+<p>让我们研究一下下面这些区域：</p>
+<ul>
+<li>Pages（页面）</li>
+<li>Regions（区）</li>
+<li>Block areas（块区域）</li>
+<li>Line areas（行区域）</li>
+<li>Inline areas（行内区域）</li>
+</ul>
+<hr/>
+<h2>XSL-FO Pages（页面）</h2>
+<p>XSL-FO 输出会被格式化到页面中。打印输出通常会分为许多分割的页面。浏览器输出经常会成为一个长的页面。</p>
+<p>XSL-FO Pages（页面）包含区（Region）。</p>
+<hr/>
+<h2>XSL-FO Regions（区）</h2>
+<p>每个 XSL-FO 页面均包含一系列的 Regions（区）：</p>
+<ul>
+<li>region-body（页面的主体）</li>
+<li>region-before（页面的页眉）</li>
+<li>region-after（页面的页脚）</li>
+<li>region-start（左侧栏）</li>
+<li>region-end（右侧栏）</li>
+</ul>
+<p>XSL-FO Regions（区）包含块区域（Block Area）。</p>
+<hr/>
+<h2>XSL-FO Block Areas（块区域）</h2>
+<p>XSL-FO Block Areas（块区域）定义了小的块元素（通常由一个新行开始），比如段落、表格以及列表。</p>
+<p>XSL-FO Block Areas（块区域）包含其他的块区域，不过大多数时候它们包含的是行区域（Line Area）。</p>
+<hr/>
+<h2>XSL-FO Line Areas（行区域）</h2>
+<p>XSL-FO Line Areas（行区域）定义了块区域内部的文本行。</p>
+<p>XSL-FO Line Areas（行区域）包含行内区域（Inline Area）。</p>
+<hr/>
+<h2>XSL-FO Inline Areas（行内区域）</h2>
+<p>XSL-FO Inline Areas（行内区域）定义了行内部的文本（着重号、单字符、图像，等等）。</p>
+<br/>
+</div>

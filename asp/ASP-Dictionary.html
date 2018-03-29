@@ -1,0 +1,104 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">Dictionary</span> 对象</h1>
+<hr/>
+<p class="intro">Dictionary 对象用于在名称/值对中存储信息。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_exists" target="_blank">指定的键存在吗？</a><br/>
+本例演示如何创建一个 Dictionary 对象，然后使用 Exists 方法来检查指定的键是否存在。</p>
+<p><a href="/try/showasp.php?filename=demo_items" target="_blank">返回一个所有项目的数组</a><br/>
+本例演示如何使用 Items 方法来返回一个所有项目的数组。</p>
+<p><a href="/try/showasp.php?filename=demo_keys" target="_blank">返回一个所有键的数组</a><br/>
+本例演示如何使用 Keys 方法来返回一个所有键的数组。</p>
+<p><a href="/try/showasp.php?filename=demo_item" target="_blank">返回一个项目的值</a><br/>
+本例演示如何使用 Item 属性来返回一个项目的值。</p>
+<p><a href="/try/showasp.php?filename=demo_key" target="_blank">设置一个键</a><br/>
+本例演示如何使用 Key 属性来在 Dictionary 对象中设置一个键。</p>
+<p><a href="/try/showasp.php?filename=demo_count" target="_blank">返回键/项目对的数量</a><br/>
+本例演示如何使用 Count 属性来返回键/项目对的数量。</p>
+<hr/>
+<h2>Dictionary 对象</h2>
+<p>Dictionary 对象用于在名称/值对（等同于键和项目）中存储信息。Dictionary 对象看似比数组更为简单，然而，Dictionary 对象却是更令人满意的处理关联数据的解决方案。</p>
+<p>比较 Dictionaries 和数组：</p>
+<ul>
+<li>键用于识别 Dictionary 对象中的项目</li>
+<li>您无需调用 ReDim 来改变 Dictionary 对象的尺寸</li>
+<li>当从 Dictionary 中删除一个项目时，其余的项目会自动上移</li>
+<li>Dictionary 不是多维，而数组是多维</li>
+<li>Dictionary 比数组带有更多的内建函数</li>
+<li>Dictionary 在频繁地访问随机元素时，比数组工作得更好</li>
+<li>Dictionary 在根据它们的内容定位项目时，比数组工作得更好</li>
+</ul>
+<p>下面的实例创建了一个 Dictionary 对象，并向对象添加了一些键/项目对，然后取回了键 gr 的项目值：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+Dim d<br/>
+Set d=Server.CreateObject("Scripting.Dictionary")<br/>
+d.Add "re","Red"<br/>
+d.Add "gr","Green"<br/>
+d.Add "bl","Blue"<br/>
+d.Add "pi","Pink"<br/>
+Response.Write("The value of key gr is: " &amp; d.Item("gr"))<br/>
+%&gt;<br/><br/>
+输出：<br/><br/>
+The value of key gr is: Green</div></div>
+<p>Dictionary 对象的属性和方法描述如下：</p>
+<h3>属性</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="22%">属性</th>
+<th align="left" width="78%">描述</th>
+</tr>
+<tr valign="top">
+<td><a href="prop-comparemode.html">CompareMode</a></td>
+<td>设置或返回用于在 Dictionary 对象中比较键的比较模式。</td>
+</tr>
+<tr valign="top">
+<td><a href="prop-count.html">Count</a></td>
+<td>返回 Dictionary 对象中键/项目对的数目。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-item.html">Item</a></td>
+<td valign="top">设置或返回 Dictionary 对象中一个项目的值。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-key.html">Key</a></td>
+<td valign="top">为 Dictionary 对象中已有的键值设置新的键值。</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="22%">方法</th>
+<th align="left" width="78%">描述</th>
+</tr>
+<tr valign="top">
+<td><a href="met-add.html">Add</a></td>
+<td>向 Dictionary 对象添加新的键/项目对。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-exists.html">Exists</a></td>
+<td>返回一个布尔值，这个值指示指定的键是否存在于 Dictionary 对象中。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-items.html">Items</a></td>
+<td valign="top">返回 Dictionary 对象中所有项目的一个数组。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-keys.html">Keys</a></td>
+<td valign="top">返回 Dictionary 对象中所有键的一个数组。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-remove.html">Remove</a></td>
+<td valign="top">从 Dictionary 对象中删除指定的键/项目对。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-removeall.html">RemoveAll</a></td>
+<td valign="top">删除 Dictionary 对象中所有的键/项目对。</td>
+</tr>
+</table>
+<br/>
+</div>

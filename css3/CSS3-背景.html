@@ -1,0 +1,201 @@
+<div class="article-intro" id="content">
+<h1>CSS3 <span class="color_h1">背景</span>
+</h1>
+<hr/>
+<h2>CSS3 背景</h2>
+<p>CSS3中包含几个新的背景属性，提供更大背景元素控制。</p>
+<p>在本章您将了解以下背景属性：</p>
+<ul>
+<li>background-image</li>
+<li>background-size</li>
+<li>background-origin</li>
+<li>background-clip</li>
+</ul>
+<p>您还将学习如何使用多重背景图像。</p>
+<hr/>
+<h2>浏览器支持</h2>
+<p>表格中的数字表示支持该属性的第一个浏览器版本号。</p>
+<p>紧跟在 -webkit-, -ms- 或 -moz- 前的数字为支持该前缀属性的第一个浏览器版本号。</p>
+<table class="browserref">
+<tbody><tr>
+<th style="width:25%;font-size:16px;text-align:left">属性</th>
+<th class="bsChrome" style="width:15%" title="Chrome"></th>
+<th class="bsEdge" style="width:15%" title="Internet Explorer / Edge"></th>
+<th class="bsFirefox" style="width:15%" title="Firefox"></th>
+<th class="bsSafari" style="width:15%" title="Safari"></th>
+<th class="bsOpera" style="width:15%" title="Opera"></th>
+</tr>
+<tr>
+<td style="text-align:left">background-image<br/>(with multiple backgrounds)</td>
+<td>4.0</td>
+<td>9.0</td>
+<td>3.6</td>
+<td>3.1</td>
+<td>11.5</td>
+</tr>
+<tr>
+<td style="text-align:left">background-size</td>
+<td>4.0<br/>1.0 -webkit-</td>
+<td>9.0</td>
+<td>4.0<br/>3.6 -moz-</td>
+<td>4.1<br/>3.0 -webkit-</td>
+<td>10.5<br/>10.0 -o-</td>
+</tr>
+<tr>
+<td style="text-align:left">background-origin</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>10.5</td>
+</tr>
+<tr>
+<td style="text-align:left">background-clip</td>
+<td>4.0</td>
+<td>9.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>10.5</td>
+</tr>
+</tbody></table>
+<hr/>
+<h2>CSS3 background-image属性</h2>
+<div></div>
+<p>CSS3中可以通过background-image属性添加背景图片。</p>
+<p>不同的背景图像和图像用逗号隔开，所有的图片中显示在最顶端的为第一张。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">#example1</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">flwr</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">), </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">paper</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">background-position:</span><span class="hl-code"> </span><span class="hl-string">right</span><span class="hl-code"> </span><span class="hl-string">bottom</span><span class="hl-code">, </span><span class="hl-string">left</span><span class="hl-code"> </span><span class="hl-string">top</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">background-repeat:</span><span class="hl-code"> </span><span class="hl-string">no-repeat</span><span class="hl-code">, </span><span class="hl-string">repeat</span><span class="hl-reserved"></span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_background_multiple" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<p>可以给不同的图片设置多个不同的属性</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">#example1</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">flwr</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">) </span><span class="hl-string">right</span><span class="hl-code"> </span><span class="hl-string">bottom</span><span class="hl-code"> </span><span class="hl-string">no-repeat</span><span class="hl-code">, </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">paper</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">) </span><span class="hl-string">left</span><span class="hl-code"> </span><span class="hl-string">top</span><span class="hl-code"> </span><span class="hl-string">repeat</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_background_multiple2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3 background-size 属性</h2>
+<p>background-size指定背景图像的大小。CSS3以前，背景图像大小由图像的实际大小决定。 </p>
+<p>CSS3中可以指定背景图片，让我们重新在不同的环境中指定背景图片的大小。您可以指定像素或百分比大小。</p>
+<p>你指定的大小是相对于父元素的宽度和高度的百分比的大小。</p>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例 1</h2>
+<p>重置背景图像：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background:</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">flwr</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-size:</span><span class="hl-number">80</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">60</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-repeat:</span><span class="hl-string">no-repeat</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_background-size" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例 2</h2>
+<p>伸展背景图像完全填充内容区域：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background:</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">flwr</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-size:</span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-repeat:</span><span class="hl-string">no-repeat</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_background-size2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3的background-Origin属性</h2>
+<p>background-Origin属性指定了背景图像的位置区域。</p>
+<p>content-box, padding-box,和 border-box区域内可以放置背景图像。 </p>
+<img src="/images/background-origin.gif"/><br/><br/><div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>在 content-box 中定位背景图片：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">div</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background:</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">flwr</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-repeat:</span><span class="hl-string">no-repeat</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-size:</span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-origin:</span><span class="hl-code">content-box</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_background-origin" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<table>
+<tr>
+<td><h2>CSS3 多个背景图像</h2></td>
+<td rowspan="2">
+<div></div>
+</td>
+</tr>
+<tr>
+<td>
+<p>CSS3 允许你在元素上添加多个背景图像。</p>
+</td>
+</tr>
+</table>
+<div class="example">
+<img align="middle" alt="Opera" height="20" src="/images/compatible_opera2020.gif" style="float:right" title="Opera" width="20"/><img align="middle" alt="Safari" height="20" src="/images/compatible_safari2020.gif" style="float:right" title="Safari" width="20"/><img align="middle" alt="Chrome" height="20" src="/images/compatible_chrome2020.gif" style="float:right" title="Chrome" width="20"/><img align="middle" alt="Firefox" height="20" src="/images/compatible_firefox2020.gif" style="float:right" title="Firefox" width="20"/><img align="middle" alt="Internet Explorer" height="20" src="/images/compatible_ie2020.gif" style="float:right" title="Internet Explorer" width="20"/><h2 class="example">实例</h2>
+<p>在 body 元素中设置两个背景图像：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">body</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-image:</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">flwr</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">),</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">img</span><span class="hl-code">_</span><span class="hl-code">tree</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss3_background_multiple" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS3 background-clip属性</h2>
+<p>CSS3中background-clip背景剪裁属性是从指定位置开始绘制。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">#example1</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">dotted</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">35</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-var">yellow</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">background-clip:</span><span class="hl-code"> </span><span class="hl-code">content-box</span><span class="hl-reserved"></span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss3_background-clip" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>新的背景属性</h2>
+<table class="reference">
+<tr>
+<th align="left" width="28%">顺序</th>
+<th align="left" width="67%">描述</th>
+<th align="left" width="5%">CSS</th>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-background-clip.html">background-clip</a></td>
+<td>规定背景的绘制区域。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-background-origin.html">background-origin</a></td>
+<td>规定背景图片的定位区域。</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="/cssref/css3-pr-background-size.html">background-size</a></td>
+<td>规定背景图片的尺寸。</td>
+<td>3</td>
+</tr>
+</table>
+</div>

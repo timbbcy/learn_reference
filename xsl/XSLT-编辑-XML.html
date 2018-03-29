@@ -1,0 +1,218 @@
+<div class="article-intro" id="content">
+<h1>XSLT - <span class="color_h1">编辑 XML</span>
+</h1>
+<hr/>
+<p class="intro">存储在 XML 文件中的数据可通过因特网浏览器进行编辑。</p>
+<hr/>
+<h2>打开、编辑并保存 XML</h2>
+<p>现在，我们会为您展示如何打开、编辑及保存存储于服务器上的 XML 文件。</p>
+<p>我们将使用 XSL 把 XML 文档转换到一个 HTML 表单中。XML 元素的值会被写到 HTML 表单中的 HTML 输入域。这个 HTML 表单是可编辑的。在被编辑完成后，数据会被提交回服务器，XML 文件会得到更新（这部分由 ASP 完成）。</p>
+<hr/>
+<h2>XML 文件和 XSL 文件</h2>
+<p>首先，请看将被使用的 XML 文档（"tool.xml"）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;tool&gt;<br/>
+   
+  &lt;field id="prodName"&gt;<br/>
+       
+    &lt;value&gt;HAMMER HG2606&lt;/value&gt;<br/>
+   
+  &lt;/field&gt;<br/>
+   
+  &lt;field id="prodNo"&gt;<br/>
+       
+    &lt;value&gt;32456240&lt;/value&gt;<br/>
+   
+  &lt;/field&gt;<br/>
+   
+  &lt;field id="price"&gt;<br/>
+       
+    &lt;value&gt;$30.00&lt;/value&gt;<br/>
+   
+  &lt;/field&gt;<br/>
+&lt;/tool&gt;
+</div></div>
+<p><a href="/try/xml/tool.xml" target="_blank">查看 XML 文件</a>。</p>
+<p>接着，请看下面的样式表（"tool.xsl"）：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;xsl:stylesheet version="1.0"<br/>
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<br/><br/>
+&lt;xsl:template match="/"&gt;<br/>
+ 
+&lt;html&gt;<br/>
+ 
+&lt;body&gt;<br/>
+ 
+&lt;form method="post" action="edittool.html"&gt;<br/>
+ 
+&lt;h2&gt;Tool Information (edit):&lt;/h2&gt;<br/>
+ 
+&lt;table border="0"&gt;<br/>
+   
+&lt;xsl:for-each select="tool/field"&gt;<br/>
+   
+&lt;tr&gt;<br/>
+     
+&lt;td&gt;&lt;xsl:value-of select="@id"/&gt;&lt;/td&gt;<br/>
+     
+&lt;td&gt;<br/>
+     
+&lt;input type="text"&gt;<br/>
+     
+&lt;xsl:attribute name="id"&gt;<br/>
+        &lt;xsl:value-of select="@id" /&gt;<br/>
+      &lt;/xsl:attribute&gt;<br/>
+     
+&lt;xsl:attribute name="name"&gt;<br/>
+        &lt;xsl:value-of select="@id" /&gt;<br/>
+      &lt;/xsl:attribute&gt;<br/>
+     
+&lt;xsl:attribute name="value"&gt;<br/>
+        &lt;xsl:value-of select="value" /&gt;<br/>
+      &lt;/xsl:attribute&gt;<br/>
+     
+&lt;/input&gt;<br/>
+     
+&lt;/td&gt;<br/>
+   
+&lt;/tr&gt;<br/>
+   
+&lt;/xsl:for-each&gt;<br/>
+ 
+&lt;/table&gt;<br/>
+ 
+&lt;br /&gt;<br/>
+ 
+&lt;input type="submit" id="btn_sub" name="btn_sub" value="Submit" /&gt;<br/>
+ 
+&lt;input type="reset" id="btn_res" name="btn_res" value="Reset" /&gt;<br/>
+ 
+&lt;/form&gt;<br/>
+ 
+&lt;/body&gt;<br/>
+ 
+&lt;/html&gt;<br/>
+&lt;/xsl:template&gt;<br/><br/>
+&lt;/xsl:stylesheet&gt;
+</div></div>
+<p><a href="/try/xml/tool.xsl" target="_blank">查看 XSL 文件</a>。</p>
+<p>上面这个 XSL 文件会循环遍历 XML 文件中的元素，并为每个 XML "field" 元素创建一个输入域。XML "field" 元素的 "id" 属性的值被添加到每个 HTML 输入域的 "id" 和 "name" 属性。每个 XML "value" 元素的值被添加到每个 HTML 输入域的 "value" 属性。结果是，可以得到一个包含 XML 文件中值的可编辑的 HTML 表单。</p>
+<p>然后，我们还有第二个样式表："tool_updated.xsl"。这个 XSL 文件会被用来显示已更新的 XML 数据。这个样式表不会输出可编辑 HTML 表单，而是一个静态的 HTML 表格：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;xsl:stylesheet version="1.0"<br/>
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<br/><br/>
+&lt;xsl:template match="/"&gt;<br/>
+ 
+&lt;html&gt;<br/>
+ 
+&lt;body&gt;<br/>
+ 
+&lt;h2&gt;Updated Tool Information:&lt;/h2&gt;<br/>
+ 
+&lt;table border="1"&gt;<br/>
+   
+&lt;xsl:for-each select="tool/field"&gt;<br/>
+   
+&lt;tr&gt;<br/>
+     
+&lt;td&gt;&lt;xsl:value-of select="@id" /&gt;&lt;/td&gt;<br/>
+     
+&lt;td&gt;&lt;xsl:value-of select="value" /&gt;&lt;/td&gt;<br/>
+   
+&lt;/tr&gt;<br/>
+   
+&lt;/xsl:for-each&gt;<br/>
+ 
+&lt;/table&gt;<br/>
+ 
+&lt;/body&gt;<br/>
+ 
+&lt;/html&gt;<br/>
+&lt;/xsl:template&gt;<br/><br/>
+&lt;/xsl:stylesheet&gt;
+</div></div>
+<p><a href="/try/xml/tool_updated.xsl" target="_blank">查看 XSL 文件</a>。</p>
+<hr/>
+<h2>ASP 文件</h2>
+<p>在上面 "tool.xsl" 文件中，HTML 表单的 action 属性的值是 "edittool.asp" 。</p>
+<p>"edittool.asp" 页面包含两个函数：loadFile() 函数载入并转换 XML 文件，updateFile() 函数更新 XML 文件：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+function loadFile(xmlfile,xslfile)<br/>
+Dim xmlDoc,xslDoc<br/>'Load XML file<br/>
+set xmlDoc = Server.CreateObject("Microsoft.XMLDOM")<br/>
+xmlDoc.async = false<br/>
+xmlDoc.load(xmlfile)<br/>'Load XSL file<br/>
+set xslDoc = Server.CreateObject("Microsoft.XMLDOM")<br/>
+xslDoc.async = false<br/>
+xslDoc.load(xslfile)<br/>'Transform file<br/>
+Response.Write(xmlDoc.transformNode(xslDoc))<br/>
+end function<br/><br/>
+function updateFile(xmlfile)<br/>
+Dim xmlDoc,rootEl,f<br/>
+Dim i<br/>'Load XML file<br/>
+set xmlDoc = Server.CreateObject("Microsoft.XMLDOM")<br/>
+xmlDoc.async = false<br/>
+xmlDoc.load(xmlfile)<br/><br/>
+'Set the rootEl variable equal to the root element<br/>
+Set rootEl = xmlDoc.documentElement<br/><br/>
+'Loop through the form collection<br/>
+for i = 1 To Request.Form.Count<br/>
+ 
+'Eliminate button elements in the form<br/>
+ 
+if instr(1,Request.Form.Key(i),"btn_")=0 then<br/>
+   
+'The selectSingleNode method queries the XML file for a single node<br/>
+   
+'that matches a query. This query requests the value element that is<br/>
+   
+'the child of a field element that has an id attribute which matches<br/>
+   
+'the current key value in the Form Collection. When there is a match -<br/>
+   
+'set the text property equal to the value of the current field in the<br/>
+   
+'Form Collection.<br/>
+   
+set f = rootEl.selectSingleNode("field[@id='" &amp; _<br/>
+   
+Request.Form.Key(i) &amp; "']/value")<br/>
+   
+f.Text = Request.Form(i)<br/>
+ 
+end if<br/>
+next<br/><br/>
+'Save the modified XML file<br/>
+xmlDoc.save xmlfile<br/><br/>
+'Release all object references<br/>
+set xmlDoc=nothing<br/>
+set rootEl=nothing<br/>
+set f=nothing<br/><br/>
+'Load the modified XML file with a style sheet that<br/>
+'allows the client to see the edited information<br/>
+loadFile xmlfile,server.MapPath("tool_updated.xsl")<br/>
+end function<br/><br/>
+'If the form has been submitted update the<br/>
+'XML file and display result - if not,<br/>
+'transform the XML file for editing<br/>
+if Request.Form("btn_sub")="" then<br/>
+ 
+loadFile server.MapPath("tool.xml"),server.MapPath("tool.xsl")<br/>
+else<br/>
+ 
+updateFile server.MapPath("tool.xml")<br/>
+end if<br/>
+%&gt;
+</div></div>
+<p><b>提示：</b>假如您不了解如何编写 ASP，请学习我们的 <a href="/asp/asp-tutorial.html">ASP 教程</a>。</p>
+<p><b>注意：</b>我们正在转换并更新位于服务器上的 XML 文件。这是一个跨平台的解决方案。客户端仅能获得从服务器返回的 HTML - 而 HTML 可运行于任何浏览器。</p>
+<br/>
+</div>

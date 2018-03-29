@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>jQuery 遍历 - <span class="color_h1">后代</span>
+</h1>
+<hr/>
+<p class="intro">后代是子、孙、曾孙等等。
+</p>
+<p class="intro">通过 jQuery，您能够向下遍历 DOM 树，以查找元素的后代。</p>
+<hr/>
+<h2>向下遍历 DOM 树</h2>
+<p>下面是两个用于向下遍历 DOM 树的 jQuery 方法：</p>
+<ul>
+<li>children()</li>
+<li>find()</li>
+</ul>
+<hr/>
+<h2>jQuery children() 方法</h2>
+<p>children() 方法返回被选元素的所有直接子元素。</p>
+<p>该方法只会向下一级对 DOM 树进行遍历。</p>
+<p>下面的例子返回每个 &lt;div&gt; 元素的所有直接子元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">children</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_children" target="_blank">尝试一下 »</a>
+</div>
+<p>您也可以使用可选参数来过滤对子元素的搜索。</p>
+<p>下面的例子返回类名为 "1" 的所有 &lt;p&gt; 元素，并且它们是 &lt;div&gt; 的直接子元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">children</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p.1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_children2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery find() 方法</h2>
+<p>find() 方法返回被选元素的后代元素，一路向下直到最后一个后代。</p>
+<p>下面的例子返回属于 &lt;div&gt; 后代的所有 &lt;span&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">find</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">span</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_find" target="_blank">尝试一下 »</a>
+</div>
+<p>下面的例子返回 &lt;div&gt; 的所有后代：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">div</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">find</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">*</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_find2" target="_blank">尝试一下 »</a>
+</div>
+</div>

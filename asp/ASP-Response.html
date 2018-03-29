@@ -1,0 +1,152 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">Response</span> 对象</h1>
+<hr/>
+<p class="intro">ASP Response 对象用于从服务器向用户发送输出的结果。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>
+<a href="/try/showasp.php?filename=demo_text" target="_blank">使用 ASP 写文本</a><br/>
+本例演示如何使用 ASP 来写文本。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_formatting" target="_blank">在 ASP 中使用 HTML 标签格式化文本</a><br/>
+本例演示如何使用 ASP 将文本和 HTML 标签结合起来。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_redirect" target="_blank">将用户重定向至一个不同的 URL</a><br/>
+本例演示如何将用户重定向至一个不同的 URL。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_randomlink" target="_blank">显示随机的链接</a><br/>
+本例演示如何创建一个随机的链接。</p>
+<p>
+<a href="/try/showasp.php?filename=demo_buffer" target="_blank">控制缓冲区</a><br/>
+本例演示如何控制缓冲区。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_bufferclear" target="_blank">清空缓冲区</a><br/>
+本例演示如何清空缓冲区。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_end" target="_blank">在处理过程中终止脚本并返回结果</a><br/>
+本例演示如何在处理过程中终止脚本。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_expires" target="_blank">设置页面在失效前在浏览器中缓存时间</a><br/>
+本例演示如何规定页面在失效前在浏览器中的缓存时间。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_expiresabs" target="_blank">设置页面缓存在浏览器中的失效日期或时间</a><br/>
+本例演示如何规定页面缓存在浏览器中的失效时间日期或时间。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_isclientconnected" target="_blank">检查用户是否仍然与服务器连接</a><br/>
+本例演示如何检查用户是否已与服务器断开。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_contenttype" target="_blank">设置内容类型</a><br/>
+本例演示如何规定内容的类型。
+</p>
+<p>
+<a href="/try/showasp.php?filename=demo_charset" target="_blank">设置字符集名称</a><br/>
+本例演示如何规定字符集的名称。
+</p>
+<hr/>
+<h2>Response 对象</h2>
+<p>ASP Response 对象用于从服务器向用户发送输出的结果。它的集合、属性和方法描述如下：</p>
+<h3>集合</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">集合</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td><a href="coll-cookies-response.html">Cookies</a></td>
+<td>设置 cookie 的值。如果 cookie 不存在，则创建 cookie ，并设置指定的值。</td>
+</tr>
+</table>
+<h3>属性</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">属性</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr>
+<td valign="top"><a href="prop-buffer.html">Buffer</a></td>
+<td valign="top">规定是否缓冲页面的输出。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-cachecontrol.html">CacheControl</a></td>
+<td valign="top">设置代理服务器是否可以缓存由 ASP 产生的输出。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-charset.html">Charset</a></td>
+<td valign="top">将字符集的名称追加到 Response 对象中的 content-type 报头。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-contenttype.html">ContentType</a></td>
+<td valign="top">设置 Response 对象的 HTTP 内容类型。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-expires.html">Expires</a></td>
+<td valign="top">设置页面在失效前的浏览器缓存时间（分钟）。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-expiresabsolute.html">ExpiresAbsolute</a></td>
+<td valign="top">设置浏览器上页面缓存失效的日期和时间。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-isclientconnected.html">IsClientConnected</a></td>
+<td valign="top">指示客户端是否已从服务器断开。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-pics.html">Pics</a></td>
+<td valign="top">向 response 报头的 PICS 标签追加值。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-status.html">Status</a></td>
+<td valign="top">规定由服务器返回的状态行的值。</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="reference notranslate">
+<tr valign="top">
+<th align="left" width="25%">方法</th>
+<th align="left" width="75%">描述</th>
+</tr>
+<tr valign="top">
+<td><a href="met-addheader.html">AddHeader</a></td>
+<td>向 HTTP 响应添加新的 HTTP 报头和值。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-appendtolog.html">AppendToLog</a></td>
+<td>向服务器日志条目的末端添加字符串。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-binarywrite.html">BinaryWrite</a></td>
+<td>在没有任何字符转换的情况下直接向输出写数据。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-clear.html">Clear</a></td>
+<td>清除已缓冲的 HTML 输出。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-end.html">End</a></td>
+<td>停止处理脚本，并返回当前的结果。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-flush.html">Flush</a></td>
+<td>立即发送已缓冲的 HTML 输出。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-redirect.html">Redirect</a></td>
+<td>把用户重定向到一个不同的 URL。</td>
+</tr>
+<tr valign="top">
+<td><a href="met-write-response.html">Write</a></td>
+<td>向输出写指定的字符串。</td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,52 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">克隆节点</span>
+</h1>
+<hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p>下面的实例使用 XML 文件 <a href="/try/demo_source/books.xml" target="_blank">books.xml</a>。<br/>
+函数 <a href="dom-loadxmldoc.html">loadXMLDoc()</a>，位于外部 JavaScript 中，用于加载 XML 文件。</p>
+<p><a href="/try/try.php?filename=try_dom_clonenode" target="_blank">复制一个节点，并把它追加到已有的节点</a><br/>
+本例使用 cloneNode() 来复制一个节点，并把它追加到 XML 文档的根节点。</p>
+<hr/>
+<h2>复制节点</h2>
+<p>cloneNode() 方法创建指定节点的副本。</p>
+<p>cloneNode() 方法有一个参数（true 或 false）。该参数指示被克隆的节点是否包括原节点的所有属性和子节点。</p>
+<p>下面的代码片段复制第一个 &lt;book&gt; 节点，并把它追加到文档的根节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">xmlDoc</span><span class="hl-code">=</span><span class="hl-identifier">loadXMLDoc</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">books.xml</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">book</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-identifier">cloneNode</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">cloneNode</span><span class="hl-brackets">(</span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">documentElement</span><span class="hl-code">.</span><span class="hl-identifier">appendChild</span><span class="hl-brackets">(</span><span class="hl-identifier">cloneNode</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 输出所有 title 节点文本值</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">y</span><span class="hl-code">=</span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">y</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">y</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<p>输出：</p>
+<div class="example_code notranslate">
+Everyday Italian<br/>
+Harry Potter<br/>
+XQuery Kick Start<br/>
+Learning XML<br/>
+Everyday Italian
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_clonenode" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取要复制的节点</li>
+<li>使用 cloneNode 方法把节点复制到 "newNode" 中</li>
+<li>向 XML 文档的根节点追加新的节点</li>
+<li>输出文档中所有 book 的所有 title</li>
+</ol>
+<br/>
+</div>

@@ -1,0 +1,105 @@
+<div class="article-intro" id="content">
+<h1>响应式 Web 设计 - <span class="color_h1">媒体查询</span></h1>
+<hr/>
+<p>媒体(media)查询在 CSS3 上有介绍：<a href="/cssref/css3-pr-mediaquery.html" target="_blank">CSS3 @media 查询</a>。</p>
+<p>使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<p>如果浏览器窗口小于 500px, 背景将变为浅蓝色：</p>
+<div class="example_code notranslate cssHigh">
+<span class="highELE">@media only screen and (max-width: 500px) </span>{<br/><span class="highELE">    body </span>{<br/>
+	       
+	<span class="highATT">background-color:</span><span class="highVAL"> lightblue;</span><br/>    }<br/>}<br/></div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_mediaquery" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>添加断点</h2>
+<p>在先前的教程中我们使用行和列来制作网页，它是响应式的，但在小屏幕上并不能友好的展示。</p>
+<p>媒体查询可以帮我们解决这个问题。我们可以在设计稿的中间添加断点，不同的断点有不同的效果。</p>
+<h3>桌面设备</h3>
+<img src="/wp-content/uploads/2015/06/rwd_desktop.png"/>
+<h3>手机设备</h3>
+<img src="/wp-content/uploads/2015/06/rwd_phone.png"/>
+<p>使用媒体查询在 768px 添加断点：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<p>当屏幕 (浏览器窗口) 小于 768px, 每一列的宽度是 100%:</p>
+<div class="example_code notranslate cssHigh">
+<span class="highCOM">/* For desktop: */</span><br/><span class="highELE">.col-1 </span>{<span class="highATT">width:</span><span class="highVAL"> 8.33%;</span>}<br/><span class="highELE">.col-2 </span>{<span class="highATT">width:</span><span class="highVAL"> 16.66%;</span>}<br/><span class="highELE">.col-3 </span>{<span class="highATT">width:</span><span class="highVAL"> 25%;</span>}<br/>
+<span class="highELE">.col-4 </span>{<span class="highATT">width:</span><span class="highVAL"> 33.33%;</span>}<br/><span class="highELE">.col-5 </span>{<span class="highATT">width:</span><span class="highVAL"> 41.66%;</span>}<br/><span class="highELE">.col-6 </span>{<span class="highATT">width:</span><span class="highVAL"> 50%;</span>}<br/>
+<span class="highELE">.col-7 </span>{<span class="highATT">width:</span><span class="highVAL"> 58.33%;</span>}<br/><span class="highELE">.col-8 </span>{<span class="highATT">width:</span><span class="highVAL"> 66.66%;</span>}<br/><span class="highELE">.col-9 </span>{<span class="highATT">width:</span><span class="highVAL"> 75%;</span>}<br/>
+<span class="highELE">.col-10 </span>{<span class="highATT">width:</span><span class="highVAL"> 83.33%;</span>}<br/><span class="highELE">.col-11 </span>{<span class="highATT">width:</span><span class="highVAL"> 91.66%;</span>}<br/><span class="highELE">.col-12 </span>{<span class="highATT">width:</span><span class="highVAL"> 
+	100%;</span>}<br/><br/><span class="highELE">@media only screen and (max-width: 768px) </span>{<br/><span class="highELE">    
+	<span class="highCOM">/* For mobile phones: */</span><br/>    
+	[class*="col-"] {<br/>        <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>    
+	}<br/>}<br/></span></div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_breakpoints" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>为移动端优先设计</h2>
+<p>移动端优先意味着在设计桌面和其他设备时优先考虑移动端的设计。</p>
+<p>这就意味着我们必须对 CSS 做一些改变。</p>
+<p>
+我们在屏幕小于 768px 进行样式修改，同样在屏幕宽度大于 768px 时也需要修改样式。以下是移动端优先实例：</p>
+<div class="example_code">
+<span class="highCOM">/* 为移动端设计: */</span><br/><span class="highELE">[class*="col-"] </span>{<br/>    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>}<br/><span class="highELE">@media only screen and (min-width: 
+	768px) </span>{<br/><span class="highELE">    <span class="highCOM">/* For desktop: */</span><br/>    .col-1 {<span class="highATT">width:</span><span class="highVAL"> 8.33%;</span>}<br/><span class="highELE">    .col-2 </span>{<span class="highATT">width:</span><span class="highVAL"> 16.66%;</span>}<br/><span class="highELE">    .col-3 </span>{<span class="highATT">width:</span><span class="highVAL"> 25%;</span>}<br/><span class="highELE">    .col-4 </span>{<span class="highATT">width:</span><span class="highVAL"> 33.33%;</span>}<br/><span class="highELE">    .col-5 </span>{<span class="highATT">width:</span><span class="highVAL"> 41.66%;</span>}<br/><span class="highELE">    .col-6 </span>{<span class="highATT">width:</span><span class="highVAL"> 50%;</span>}<br/><span class="highELE">    .col-7 </span>{<span class="highATT">width:</span><span class="highVAL"> 58.33%;</span>}<br/><span class="highELE">    .col-8 </span>{<span class="highATT">width:</span><span class="highVAL"> 66.66%;</span>}<br/><span class="highELE">    .col-9 </span>{<span class="highATT">width:</span><span class="highVAL"> 75%;</span>}<br/><span class="highELE">    .col-10 </span>{<span class="highATT">width:</span><span class="highVAL"> 83.33%;</span>}<br/><span class="highELE">    .col-11 </span>{<span class="highATT">width:</span><span class="highVAL"> 91.66%;</span>}<br/><span class="highELE">    .col-12 </span>{<span class="highATT">width:</span><span class="highVAL"> 100%;</span>}<br/>}<br/></span></div>
+<hr/>
+<h2>其他断点</h2>
+<p>你可以根据自己的需要添加断点。</p><p>我们同样可以为平板设备和移动手机设备设置断点。</p>
+<h3>桌面设备</h3>
+<img src="/wp-content/uploads/2015/06/rwd_desktop.png"/>
+<h3>平板设备</h3>
+<img src="/wp-content/uploads/2015/06/rwd_tablet.png"/>
+<h3>手机设备</h3>
+<img src="/wp-content/uploads/2015/06/rwd_phone.png"/>
+<p>
+
+在屏幕为 600px 时添加媒体查询，并设置新的样式（屏幕大于600px但小于768px）：</p>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<p>注意两组类样式是相同的，但名称不同 (col- 和 col-m-):</p>
+<div class="example_code notranslate cssHigh">
+<span class="highCOM">/* For mobile phones: */</span><br/><span class="highELE">[class*="col-"] </span>{<br/>    <span class="highATT">width:</span><span class="highVAL"> 100%;</span><br/>}<br/><span class="highELE">@media only screen and (min-width: 600px) </span>{<br/><span class="highELE">    
+	<span class="highCOM">/* For tablets: */</span><br/>    .col-m-1 {<span class="highATT">width:</span><span class="highVAL"> 8.33%;</span>}<br/><span class="highELE">    .col-m-2 </span>{<span class="highATT">width:</span><span class="highVAL"> 16.66%;</span>}<br/><span class="highELE">    .col-m-3 </span>{<span class="highATT">width:</span><span class="highVAL"> 25%;</span>}<br/><span class="highELE">    .col-m-4 </span>{<span class="highATT">width:</span><span class="highVAL"> 33.33%;</span>}<br/><span class="highELE">    .col-m-5 </span>{<span class="highATT">width:</span><span class="highVAL"> 41.66%;</span>}<br/><span class="highELE">    .col-m-6 </span>{<span class="highATT">width:</span><span class="highVAL"> 50%;</span>}<br/><span class="highELE">    .col-m-7 </span>{<span class="highATT">width:</span><span class="highVAL"> 58.33%;</span>}<br/><span class="highELE">    .col-m-8 </span>{<span class="highATT">width:</span><span class="highVAL"> 66.66%;</span>}<br/><span class="highELE">    .col-m-9 </span>{<span class="highATT">width:</span><span class="highVAL"> 75%;</span>}<br/><span class="highELE">    .col-m-10 </span>{<span class="highATT">width:</span><span class="highVAL"> 83.33%;</span>}<br/><span class="highELE">    .col-m-11 </span>{<span class="highATT">width:</span><span class="highVAL"> 91.66%;</span>}<br/><span class="highELE">    .col-m-12 </span>{<span class="highATT">width:</span><span class="highVAL"> 100%;</span>}<br/>}<br/><span class="highELE">@media only screen and (min-width: 
+	768px) </span>{<br/><span class="highELE">    <span class="highCOM">/* For desktop: */</span><br/>    .col-1 {<span class="highATT">width:</span><span class="highVAL"> 8.33%;</span>}<br/><span class="highELE">    .col-2 </span>{<span class="highATT">width:</span><span class="highVAL"> 16.66%;</span>}<br/><span class="highELE">    .col-3 </span>{<span class="highATT">width:</span><span class="highVAL"> 25%;</span>}<br/><span class="highELE">    .col-4 </span>{<span class="highATT">width:</span><span class="highVAL"> 33.33%;</span>}<br/><span class="highELE">    .col-5 </span>{<span class="highATT">width:</span><span class="highVAL"> 41.66%;</span>}<br/><span class="highELE">    .col-6 </span>{<span class="highATT">width:</span><span class="highVAL"> 50%;</span>}<br/><span class="highELE">    .col-7 </span>{<span class="highATT">width:</span><span class="highVAL"> 58.33%;</span>}<br/><span class="highELE">    .col-8 </span>{<span class="highATT">width:</span><span class="highVAL"> 66.66%;</span>}<br/><span class="highELE">    .col-9 </span>{<span class="highATT">width:</span><span class="highVAL"> 75%;</span>}<br/><span class="highELE">    .col-10 </span>{<span class="highATT">width:</span><span class="highVAL"> 83.33%;</span>}<br/><span class="highELE">    .col-11 </span>{<span class="highATT">width:</span><span class="highVAL"> 91.66%;</span>}<br/><span class="highELE">    .col-12 </span>{<span class="highATT">width:</span><span class="highVAL"> 100%;</span>}<br/>}</span></span></div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_col-s" target="_blank">尝试一下 »</a>
+</div>
+<p>
+以上代码看起来很多余，但是他可以根据屏幕大小自动设置不同的样式，所以还是非常必要的。</p>
+<div class="example">
+<h2 class="example_head">HTML 实例</h2>
+<p>针对桌面设备:</p>
+<p>第一和第三部分跨越 3 列。中间部分跨域 6 列。</p>
+<p>针对平板设备:</p>
+<p>第一跨域 3列，第二部分跨越 9 列，第三部分跨域 12 列：</p>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"row"</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">class=</span><span class="highVAL">"col-3 col-m-3"</span><span class="highGT">&gt;</span>...<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"col-6 col-m-9"</span><span class="highGT">&gt;</span>...<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">div</span>
+<span class="highATT">class=</span><span class="highVAL">"col-3 col-m-12"</span><span class="highGT">&gt;</span>...<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span></div>
+</div>
+<hr/>
+<h2>方向：横屏/竖屏</h2>
+<p>
+结合CSS媒体查询,可以创建适应不同设备的方向(横屏landscape、竖屏portrait等)的布局。
+</p>
+<h3>语法：</h3>
+<pre>
+orientation：portrait | landscape
+</pre>
+<ul><li><strong>
+portrait：</strong>指定输出设备中的页面可见区域高度大于或等于宽度</li><li><strong>
+landscape：</strong>
+除portrait值情况外，都是landscape</li>
+</ul>
+<div class="example">
+<h2 class="example_head">实例</h2>
+<p>如果是横屏背景将是浅蓝色：</p>
+<div class="example_code">
+<span class="highELE">@media only screen and (orientation: 
+	landscape) </span>{<br/><span class="highELE">    body </span>{<br/>
+	       
+	<span class="highATT">background-color:</span><span class="highVAL"> lightblue;</span><br/>    }<br/>}</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=tryresponsive_mediaquery_orientation" target="_blank">尝试一下 »</a>
+</div>
+</div>

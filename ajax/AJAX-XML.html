@@ -1,0 +1,92 @@
+<div class="article-intro" id="content">
+<h1>AJAX <span class="color_h1">XML 实例</span>
+</h1>
+<hr/>
+<p class="intro">AJAX 可用来与 XML 文件进行交互式通信。</p>
+<hr/>
+<h2>AJAX XML 实例</h2>
+<p>下面的例子将演示网页如何使用 AJAX 来读取来自 XML 文件的信息：</p>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "/try/demo_source/cd_catalog.xml", true);
+  xhttp.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Artist</th><th>Title</th></tr>";
+  var x = xmlDoc.getElementsByTagName("CD");
+  for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_result">
+<br/>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<button onclick="loadDoc()" type="button">获取我收藏的 CD</button>
+<br/>
+<table id="demo"></table>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryajax_xml2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>实例解析 - loadXMLDoc() 函数</h2>
+<p>当用户点击上面的"获取我收藏的 CD"这个按钮，就会执行 loadXMLDoc() 函数。</p>
+<p>loadXMLDoc() 函数创建 XMLHttpRequest 对象，添加当服务器响应就绪时执行的函数，并将请求发送到服务器。</p>
+<p>当服务器响应就绪时，会构建一个 HTML 表格，从 XML 文件中提取节点（元素），最后使用 XML 数据的 填充 id="demo"  的表格元素：
+</p>
+<div class="example">
+<h2 class="example">LoadXMLDoc()</h2>
+<div class="example_result">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">loadDoc</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">xhttp</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">XMLHttpRequest</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">xhttp</span><span class="hl-code">.</span><span class="hl-identifier">onreadystatechange</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">readyState</span><span class="hl-code"> == </span><span class="hl-number">4</span><span class="hl-code"> &amp;&amp; </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">status</span><span class="hl-code"> == </span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-reserved">this</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+  </span><span class="hl-identifier">xhttp</span><span class="hl-code">.</span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">GET</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">cd_catalog.xml</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">xhttp</span><span class="hl-code">.</span><span class="hl-identifier">send</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">xml</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">;
+  </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">xmlDoc</span><span class="hl-code"> = </span><span class="hl-identifier">xml</span><span class="hl-code">.</span><span class="hl-identifier">responseXML</span><span class="hl-code">;
+  </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">table</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;th&gt;Artist&lt;/th&gt;&lt;th&gt;Title&lt;/th&gt;&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-identifier">xmlDoc</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">CD</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">table</span><span class="hl-code"> += </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> +
+    </span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">ARTIST</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-code"> +
+    </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;&lt;td&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> +
+    </span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">TITLE</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">childNodes</span><span class="hl-brackets">[</span><span class="hl-number">0</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">nodeValue</span><span class="hl-code"> +
+    </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">demo</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code"> = </span><span class="hl-identifier">table</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<br/><hr/>
+<h2>AJAX 服务器页面</h2>
+<p>上面这个例子中使用的服务器页面实际上是一个名为 "<a href="/try/demo_source/cd_catalog.xml" target="_blank">cd_catalog.xml</a>"  XML 文件。</p>
+</div>

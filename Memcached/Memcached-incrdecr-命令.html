@@ -1,0 +1,67 @@
+<div class="article-intro" id="content">
+<h1>Memcached incr 与 decr 命令</h1>
+<p>Memcached incr 与 decr 命令用于对已存在的 key(键) 的数字值进行自增或自减操作。</p>
+<p>incr 与 decr 命令操作的数据必须是十进制的32位无符号整数。</p>
+<p>
+如果 key 不存在返回 <b>NOT_FOUND</b>，如果键的值不为数字，则返回 <b>CLIENT_ERROR</b>，其他错误返回 <b>ERROR</b>。</p>
+<hr/><h2>incr 命令</h2>
+<h3>语法：</h3>
+<p>incr 命令的基本语法格式如下：</p>
+<pre>
+incr key increment_value
+</pre>
+<p>参数说明如下：</p>
+<ul><li><b>key：</b>键值 key-value 结构中的 key，用于查找缓存值。</li>
+<li><b>increment_value</b>： 增加的数值。</li>
+</ul>
+<h3>实例</h3>
+<p>在以下实例中，我们使用 visitors 作为 key，初始值为 10，之后进行加 5 操作。
+</p>
+<pre>
+set visitors 0 900 2
+10
+STORED
+get visitors
+VALUE visitors 0 2
+10
+END
+incr visitors 5
+15
+get visitors
+VALUE visitors 0 2
+15
+END
+</pre>
+<h3>输出</h3>
+<p>输出信息说明：</p>
+<ul><li><b>NOT_FOUND</b>：key 不存在。</li><li><b>CLIENT_ERROR</b>：自增值不是对象。</li> <li><b>ERROR</b>其他错误，如语法错误等。</li> </ul>
+<hr/><h2>decr 命令</h2>
+<p>decr 命令的基本语法格式如下：</p>
+<pre>
+decr key decrement_value
+</pre>
+<p>参数说明如下：</p>
+<ul><li><b>key：</b>键值 key-value 结构中的 key，用于查找缓存值。</li>
+<li><b>decrement_value</b>： 减少的数值。</li>
+</ul>
+<h3>实例</h3>
+<pre>
+set visitors 0 900 2
+10
+STORED
+get visitors
+VALUE visitors 0 2
+10
+END
+decr visitors 5
+5
+get visitors
+VALUE visitors 0 1
+5
+END
+</pre>
+<p>在以下实例中，我们使用 visitors 作为 key，初始值为 10，之后进行减 5 操作。
+<h3>输出</h3>
+<p>输出信息说明：</p>
+<ul><li><b>NOT_FOUND</b>：key 不存在。</li><li><b>CLIENT_ERROR</b>：自增值不是对象。</li> <li><b>ERROR</b>其他错误，如语法错误等。</li> </ul>
+</p></div>

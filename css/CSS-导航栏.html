@@ -1,0 +1,486 @@
+<div class="article-intro" id="content">
+<h1>CSS 导航栏</h1>
+<style>
+ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.horizontal li {
+    float: left;
+   padding: 0; 
+   margin: 0;
+   background-image:none;
+}
+
+ul.horizontal li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.horizontal li a:hover:not(.active) {
+    background-color: #000;
+}
+
+ul.horizontal li a.active {
+    background-color:#4CAF50;
+}
+
+ul.horizontal2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+ul.horizontal2 li {
+    float: left;
+}
+
+ul.horizontal2 li a {
+    display: inline-block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.horizontal2 li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.horizontal2 a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+.width94 {
+width:94%;
+}
+@media screen and (max-width: 600px) {
+    .width94 {
+       width:100%;
+    }
+}
+
+ul.vertical {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+ul.vertical li{
+  padding: 0; 
+   margin: 0;
+   background-image:none;
+}
+ul.vertical li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+ul.vertical li a:hover:not(.active) {
+    background-color: #555;
+    color:white;
+}
+
+ul.vertical a.active {
+    background-color: #4CAF50;
+    color:white;
+}
+
+ul.gray {
+border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+ul.gray li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.gray li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.gray li a.active {
+    color: white;
+    background-color: #008CBA;
+}
+.rightli {
+float:right;
+}
+
+@media screen and (max-width: 408px) {
+    .rightli {
+       display:none;
+    }
+}
+
+ul.ex {
+width:90%;
+}
+@media screen and (max-width: 600px) {
+    ul.ex {
+       width:100%;
+    }
+}
+
+ul.divider li {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+ul.divider li:last-child {
+    border-right: none;
+}
+ul.border {
+    border: 1px solid #555;
+}
+
+ul.border li a {
+    padding: 8px 16px;
+}
+
+ul.border li {
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+ul.border li:last-child {
+    border-bottom: none;
+}
+</style>
+<h3>垂直</h3>
+<ul class="vertical ex">
+<li><a class="active" href="javascript:void(0)">主页</a></li>
+<li><a href="javascript:void(0)">新闻</a></li>
+<li><a href="javascript:void(0)">联系</a></li>
+<li><a href="javascript:void(0)">关于</a></li>
+</ul>
+<h3>水平</h3>
+<ul class="horizontal">
+<li><a class="active" href="javascript:void(0)">主页</a></li>
+<li><a href="javascript:void(0)">新闻</a></li>
+<li><a href="javascript:void(0)">联系</a></li>
+<li class="rightli" style="float:right"><a href="javascript:void(0)">关于</a></li>
+</ul>
+<br/>
+<ul class="horizontal gray">
+<li><a href="javascript:void(0)">主页</a></li>
+<li><a href="javascript:void(0)">新闻</a></li>
+<li><a class="active" href="javascript:void(0)">联系</a></li>
+<li class="rightli" style="float:right"><a href="javascript:void(0)">关于</a></li>
+</ul>
+<hr/>
+<h2>导航栏</h2>
+<p>熟练使用导航栏，对于任何网站都非常重要。</p>
+<p>使用CSS你可以转换成好看的导航栏而不是枯燥的HTML菜单。</p>
+<hr/>
+<h2>导航栏=链接列表</h2>
+<p>作为标准的HTML基础一个导航栏是必须的</p>
+<p>。在我们的例子中我们将建立一个标准的HTML列表导航栏。</p>
+<p>导航条基本上是一个链接列表，所以使用 &lt;ul&gt; 和 &lt;li&gt;元素非常有意义：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#home</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">主页</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#news</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">新闻</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#contact</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">联系</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#about</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">关于</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_basic_html&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<p>现在，让我们从列表中删除边距和填充：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">list-style-type:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_basic_css&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<p>例子解析：</p>
+<ul>
+<li>list-style-type:none - 移除列表前小标志。一个导航栏并不需要列表标记
+</li>
+<li>移除浏览器的默认设置将边距和填充设置为0</li>
+</ul>
+<p>上面的例子中的代码是垂直和水平导航栏使用的标准代码。</p>
+<hr/>
+<h2>垂直导航栏</h2>
+<p>上面的代码，我们只需要 &lt;a&gt;元素的样式，建立一个垂直的导航栏：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">a</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">display:</span><span class="hl-string">block</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-number">60</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_vertical" target="_blank">尝试一下 »</a>
+</div>
+<p>示例说明：</p>
+<ul>
+<li>display:block - 显示块元素的链接，让整体变为可点击链接区域（不只是文本），它允许我们指定宽度
+</li>
+<li>width:60px - 块元素默认情况下是最大宽度。我们要指定一个60像素的宽度</li>
+</ul>
+<p><b>提示：</b>查看
+<a href="/try/try.php?filename=trycss_navbar_vertical_advanced" target="_blank">完整样式的垂直导航栏的示例</a>。</p>
+<p><b>注意：</b> 请务必指定 &lt;a&gt;元素在垂直导航栏的的宽度。如果省略宽度，IE6可能产生意想不到的效果。</p>
+<hr/>
+<h2>垂直导航条实例</h2>
+<p>创建一个简单的垂直导航条实例，在鼠标移动到选项时，修改背景颜色：</p>
+<ul class="vertical">
+<li><a href="javascript:void(0)">主页</a></li>
+<li><a href="javascript:void(0)">新闻</a></li>
+<li><a href="javascript:void(0)">联系</a></li>
+<li><a href="javascript:void(0)">关于</a></li>
+</ul><br/>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">list-style-type:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">200</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#f1f1f1</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">block</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">#000</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">8</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">16</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-decoration:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">/*</span><span class="hl-comment"> 鼠标移动到选项上修改背景颜色 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#555</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">white</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_vertical&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div><hr/>
+<h2>激活/当前导航条实例</h2>
+<p>在点击了选项后，我们可以添加 "active" 类来标准哪个选项被选中：</p>
+<ul class="vertical">
+<li><a class="active" href="javascript:void(0)">主页</a></li>
+<li><a href="javascript:void(0)">新闻</a></li>
+<li><a href="javascript:void(0)">联系</a></li>
+<li><a href="javascript:void(0)">关于</a></li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.active</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#4CAF50</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">white</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_vertical_active&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>创建链接并添加边框</h2>
+<p>可以在  &lt;li&gt; or &lt;a&gt; 上添加<b>text-align:center</b> 样式来让链接居中。</p>
+<p>可以在 <b>border</b>  &lt;ul&gt; 上添加 <b>border</b> 属性来让导航栏有边框。如果要在每个选项上添加边框，可以在每个 &lt;li&gt; 元素上添加<b>border-bottom</b> :</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">#555</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-bottom:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">#555</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-special">:last-child</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">border-bottom:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_vertical_borders&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>全屏高度的固定导航条</h2>
+<p>接下来我们创建一个左边是全屏高度的固定导航条，右边是可滚动的内容。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">list-style-type:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">25</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#f1f1f1</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">height:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 全屏高度 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">fixed</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">overflow:</span><span class="hl-code"> </span><span class="hl-string">auto</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 如果导航栏选项多，允许滚动 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_vertical_fixed&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div><p><strong>注意:</strong> 该实例可以在移动设备上使用。 </p>
+<hr/>
+<h2>水平导航栏</h2>
+<p>有两种方法创建横向导航栏。使用<b>内联(inline)</b>或<b>浮动(float)</b>的列表项。</p>
+<p>这两种方法都很好，但如果你想链接到具有相同的大小，你必须使用浮动的方法。</p>
+<h2>内联列表项</h2>
+<p>建立一个横向导航栏的方法之一是指定元素， 上述代码是标准的内联:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">li</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">display:</span><span class="hl-string">inline</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解析：</p>
+<ul>
+<li>display:inline; -默认情况下，&lt;li&gt;元素是块元素。在这里，我们删除换行符之前和之后每个列表项，以显示一行。</li>
+</ul>
+<p><b>提示:</b> 查看
+<a href="/try/try.php?filename=trycss_navbar_horizontal_advanced" target="_blank">
+完整样式的水平导航栏的示例</a>。</p>
+<h2>浮动列表项</h2>
+<p>在上面的例子中链接有不同的宽度。</p>
+<p>对于所有的链接宽度相等，浮动 &lt;li&gt;元素，并指定为 &lt;a&gt;元素的宽度：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">li</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">float:</span><span class="hl-string">left</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">display:</span><span class="hl-string">block</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-number">60</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_float&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<p>实例解析：</p>
+<ul>
+<li>float:left - 使用浮动块元素的幻灯片彼此相邻</li>
+<li>display:block - 显示块元素的链接，让整体变为可点击链接区域（不只是文本），它允许我们指定宽度</li>
+<li>width:60px - 块元素默认情况下是最大宽度。我们要指定一个60像素的宽度</li>
+</ul>
+<p><b>提示:</b>查看
+<a href="/try/try.php?filename=trycss_navbar_horizontal_float_advanced" target="_blank">
+完全样式的横向导航栏的示例</a>。</p>
+<hr/>
+<h2>水平导航条实例</h2>
+<p>创建一个水平导航条，在鼠标移动到选项后修改背景颜色。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">list-style-type:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">overflow:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#333</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">float:</span><span class="hl-code"> </span><span class="hl-string">left</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">block</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">white</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">14</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">16</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-decoration:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">/*</span><span class="hl-comment">鼠标移动到选项上修改背景颜色 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#111</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_black&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<h3>激活/当前导航条实例</h3>
+<p>在点击了选项后，我们可以添加 "active" 类来标准哪个选项被选中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.active</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#4CAF50</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_black_active&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<h3>链接右对齐</h3>
+<p>将导航条最右边的选项设置右对齐 (float:right;)：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#home</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">主页</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#news</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">新闻</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#contact</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">联系</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">style</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">float:right</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">active</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#about</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">关于</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_black_right&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<h3>添加分割线</h3>
+<p>&lt;li&gt; 通过 <b>border-right</b>  样式来添加分割线:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">/*</span><span class="hl-comment"> 除了最后一个选项(last-child) 其他的都添加分割线 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">border-right:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> </span><span class="hl-var">#bbb</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">li</span><span class="hl-special">:last-child</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">border-right:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_dividers&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<h3>固定导航条</h3>
+<p>可以设置页面的导航条固定在头部或者底部：</p>
+<div class="example">
+<h2 class="example">固定在头部</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">fixed</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">top:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_black_fixed&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div>
+<div class="example">
+<h2 class="example">固定在底部</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">ul</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">fixed</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">bottom:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_navbar_horizontal_black_fixed2&amp;basepath=0" target="_blank">尝试一下 »</a>
+</div><p><strong>注意:</strong> 该实例可以在移动设备上使用。 </p>
+<hr/>
+<h2>灰色水平导航条</h2></div>

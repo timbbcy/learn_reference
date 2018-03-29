@@ -1,0 +1,36 @@
+<div class="article-intro" id="content">
+<h1>XSD <span class="color_h1">日期和时间</span>数据类型</h1>
+<hr/>
+<p class="intro">日期及时间数据类型用于包含日期和时间的值。</p>
+<hr/>
+<h2>日期数据类型（Date Data Type）</h2>
+<p>日期数据类型用于定义日期。</p>
+<p>日期使用此格式进行定义："YYYY-MM-DD"，其中：</p>
+<ul>
+<li>YYYY 表示年份</li>
+<li>MM 表示月份</li>
+<li>DD 表示天数</li>
+</ul>
+<p><b>注意：</b>所有的成分都是必需的</p>
+<p>下面是一个有关 schema 中日期声明的例子：</p>
+<div class="code notranslate"><div>
+&lt;xs:element name="start" type="xs:date"/&gt;
+</div></div>
+<p>文档中的元素看上去应该类似这样：</p>
+<div class="code notranslate"><div>
+&lt;start&gt;2002-09-24&lt;/start&gt;
+</div></div>
+<h3>时区</h3>
+<p>如需规定一个时区，您也可以通过在日期后加一个 "Z" 的方式，使用世界调整时间（UTC time）来输入一个日期 - 比如这样：</p>
+<div class="code notranslate"><div>
+&lt;start&gt;2002-09-24Z&lt;/start&gt;
+</div></div>
+<p>或者也可以通过在日期后添加一个正的或负时间的方法，来规定以世界调整时间为准的偏移量 - 比如这样：</p>
+<div class="code notranslate"><div>
+
+&lt;start&gt;2002-09-24-06:00&lt;/start&gt;<br/><br/>
+或者<br/><br/>
+&lt;start&gt;2002-09-24+06:00&lt;/start&gt;
+</div></div>
+<br/><hr/>
+h2&gt;时间数据类型（Time Data Type）</div>

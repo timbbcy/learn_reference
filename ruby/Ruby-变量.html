@@ -1,0 +1,169 @@
+<div class="article-intro" id="content">
+<h1>Ruby <span class="color_h1">变量</span></h1>
+<p>变量是持有可被任何程序使用的任何数据的存储位置。</p>
+<p>Ruby 支持五种类型的变量。</p>
+<ul>
+<li>一般小写字母、下划线开头：变量（Variable）。</li>
+<li><code>$</code>开头：全局变量（Global variable）。</li>
+<li><code>@</code>开头：实例变量（Instance variable）。</li>
+<li><code>@@</code>开头：类变量（Class variable）类变量被共享在整个继承链中</li>
+<li>大写字母开头：常数（Constant）。</li>
+</ul>
+<p>您已经在前面的章节中大概了解了这些变量，本章节将为您详细讲解这五种类型的变量。</p>
+<h2 class="tutheader">Ruby 全局变量</h2>
+<p>全局变量以 $ 开头。未初始化的全局变量的值为 <i>nil</i>，在使用 -w 选项后，会产生警告。</p>
+<p>给全局变量赋值会改变全局状态，所以不建议使用全局变量。</p>
+<p>下面的实例显示了全局变量的用法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$global_variable</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Class1</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">print_global</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">全局变量在 Class1 中输出为 #$global_variable</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Class2</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">print_global</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">全局变量在 Class2 中输出为 #$global_variable</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-identifier">class1obj</span><span class="hl-code"> = </span><span class="hl-identifier">Class1</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">class1obj</span><span class="hl-code">.</span><span class="hl-identifier">print_global</span><span class="hl-code">
+</span><span class="hl-identifier">class2obj</span><span class="hl-code"> = </span><span class="hl-identifier">Class2</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-code">
+</span><span class="hl-identifier">class2obj</span><span class="hl-code">.</span><span class="hl-identifier">print_global</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=variable_demo&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>在这里，$global_variable 是全局变量。这将产生以下结果：</p>
+<p><b>注意：</b>在 Ruby 中，您可以通过在变量或常量前面放置 # 字符，来访问任何变量或常量的值。</p>
+<pre>
+全局变量在 Class1 中输出为 10
+全局变量在 Class2 中输出为 10
+</pre>
+<h2 class="tutheader">Ruby 实例变量</h2>
+<p>实例变量以 @ 开头。未初始化的实例变量的值为 <i>nil</i>，在使用 -w 选项后，会产生警告。</p>
+<p>下面的实例显示了实例变量的用法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Customer</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">initialize</span><span class="hl-brackets">(</span><span class="hl-identifier">id</span><span class="hl-code">, </span><span class="hl-identifier">name</span><span class="hl-code">, </span><span class="hl-identifier">addr</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">@cust_id</span><span class="hl-code">=</span><span class="hl-identifier">id</span><span class="hl-code">
+</span><span class="hl-var">@cust_name</span><span class="hl-code">=</span><span class="hl-identifier">name</span><span class="hl-code">
+</span><span class="hl-var">@cust_addr</span><span class="hl-code">=</span><span class="hl-identifier">addr</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">display_details</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Customer id #@cust_id</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Customer name #@cust_name</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Customer address #@cust_addr</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 创建对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">cust1</span><span class="hl-code">=</span><span class="hl-identifier">Customer</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">1</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Wisdom Apartments, Ludhiya</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">cust2</span><span class="hl-code">=</span><span class="hl-identifier">Customer</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">2</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Poul</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">New Empire road, Khandala</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 调用方法</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">cust1</span><span class="hl-code">.</span><span class="hl-identifier">display_details</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">cust2</span><span class="hl-code">.</span><span class="hl-identifier">display_details</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=variable_demo2&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>在这里，@cust_id、@cust_name 和 @cust_addr 是实例变量。这将产生以下结果：</p>
+<pre>
+Customer id 1
+Customer name John
+Customer address Wisdom Apartments, Ludhiya
+Customer id 2
+Customer name Poul
+Customer address New Empire road, Khandala
+</pre>
+<h2 class="tutheader">Ruby 类变量</h2>
+<p>类变量以 @@ 开头，且必须初始化后才能在方法定义中使用。</p>
+<p>引用一个未初始化的类变量会产生错误。类变量在定义它的类或模块的子类或子模块中可共享使用。</p>
+<p>在使用 -w 选项后，重载类变量会产生警告。</p>
+<p>下面的实例显示了类变量的用法。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Customer</span><span class="hl-code">
+</span><span class="hl-var">@@no_of_customers</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">initialize</span><span class="hl-brackets">(</span><span class="hl-identifier">id</span><span class="hl-code">, </span><span class="hl-identifier">name</span><span class="hl-code">, </span><span class="hl-identifier">addr</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">@cust_id</span><span class="hl-code">=</span><span class="hl-identifier">id</span><span class="hl-code">
+</span><span class="hl-var">@cust_name</span><span class="hl-code">=</span><span class="hl-identifier">name</span><span class="hl-code">
+</span><span class="hl-var">@cust_addr</span><span class="hl-code">=</span><span class="hl-identifier">addr</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">display_details</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Customer id #@cust_id</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Customer name #@cust_name</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Customer address #@cust_addr</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">total_no_of_customers</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-var">@@no_of_customers</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Total number of customers: #@@no_of_customers</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 创建对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">cust1</span><span class="hl-code">=</span><span class="hl-identifier">Customer</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">1</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Wisdom Apartments, Ludhiya</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">cust2</span><span class="hl-code">=</span><span class="hl-identifier">Customer</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">2</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">Poul</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">New Empire road, Khandala</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 调用方法</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">cust1</span><span class="hl-code">.</span><span class="hl-identifier">total_no_of_customers</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">cust2</span><span class="hl-code">.</span><span class="hl-identifier">total_no_of_customers</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=variable_demo3&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>在这里，@@no_of_customers 是类变量。这将产生以下结果：</p>
+<pre class="prettyprint">
+Total number of customers: 1
+Total number of customers: 2
+</pre>
+<h2 class="tutheader">Ruby 局部变量</h2>
+<p>局部变量以小写字母或下划线 _ 开头。局部变量的作用域从 class、module、def 或 do 到相对应的结尾或者从左大括号到右大括号 {}。</p>
+<p>当调用一个未初始化的局部变量时，它被解释为调用一个不带参数的方法。</p>
+<p>对未初始化的局部变量赋值也可以当作是变量声明。变量会一直存在，直到当前域结束为止。局部变量的生命周期在 Ruby 解析程序时确定。</p>
+<p>在上面的实例中，局部变量是 id、name 和 addr。</p>
+<h2 class="tutheader">Ruby 常量</h2>
+<p>常量以大写字母开头。定义在类或模块内的常量可以从类或模块的内部访问，定义在类或模块外的常量可以被全局访问。</p>
+<p>常量不能定义在方法内。引用一个未初始化的常量会产生错误。对已经初始化的常量赋值会产生警告。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#</span><span class="hl-comment">!/usr/bin/ruby</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> -*- coding: UTF-8 -*-</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Example</span><span class="hl-code">
+</span><span class="hl-identifier">VAR1</span><span class="hl-code"> = </span><span class="hl-number">100</span><span class="hl-code">
+</span><span class="hl-identifier">VAR2</span><span class="hl-code"> = </span><span class="hl-number">200</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">show</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">第一个常量的值为 #{VAR1}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-identifier">puts</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">第二个常量的值为 #{VAR2}</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-reserved">end</span><span class="hl-code">
+</span><span class="hl-comment">#</span><span class="hl-comment"> 创建对象</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">object</span><span class="hl-code">=</span><span class="hl-identifier">Example</span><span class="hl-code">.</span><span class="hl-identifier">new</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-identifier">object</span><span class="hl-code">.</span><span class="hl-identifier">show</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/runcode.php?filename=variable_demo4&amp;type=ruby" target="_blank">尝试一下 »</a>
+</div>
+<p>在这里，VAR1 和 VAR2 是常量。这将产生以下结果：</p>
+<pre class="prettyprint">
+第一个常量的值为 100
+第二个常量的值为 200
+</pre>
+<h2 class="tutheader">Ruby 伪变量</h2>
+<p>它们是特殊的变量，有着局部变量的外观，但行为却像常量。您不能给这些变量赋任何值。</p>
+<ul class="list">
+<li><b>self:</b> 当前方法的接收器对象。</li>
+<li><b>true:</b> 代表 true 的值。</li>
+<li><b>false:</b> 代表 false 的值。</li>
+<li><b>nil:</b> 代表 undefined 的值。</li>
+<li><b>__FILE__:</b> 当前源文件的名称。</li>
+<li><b>__LINE__:</b> 当前行在源文件中的编号。</li>
+</ul>
+</div>

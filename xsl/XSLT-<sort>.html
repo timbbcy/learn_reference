@@ -1,0 +1,40 @@
+<div class="article-intro" id="content">
+<h1>XSLT <span class="color_h1">&lt;xsl:sort&gt;</span> 元素</h1>
+<hr/>
+<p class="intro">&lt;xsl:sort&gt; 元素用于对输出结果进行排序。</p>
+<hr/>
+<h2>在何处放置排序信息</h2>
+<p>如需对输出结果进行排序，只要简单地在 XSL 文件中的 &lt;xsl:for-each&gt; 元素内部添加一个 &lt;xsl:sort&gt; 元素：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;?</span><span class="hl-reserved">xml</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">encoding</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">UTF-8</span><span class="hl-quotes">"</span><span class="hl-brackets">?&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:stylesheet</span><span class="hl-code"> </span><span class="hl-var">version</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1.0</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">xmlns:xsl</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://www.w3.org/1999/XSL/Transform</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:template</span><span class="hl-code"> </span><span class="hl-var">match</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">/</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">My CD Collection</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h2</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-code"> </span><span class="hl-var">border</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">bgcolor</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#9acd32</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Title</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">Artist</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:for-each</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">catalog/cd</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:sort</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">artist</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:value-of</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">title</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">xsl:value-of</span><span class="hl-code"> </span><span class="hl-var">select</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">artist</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:for-each</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:template</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">xsl:stylesheet</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/tryxslt.php?xmlfile=cdcatalog&amp;xsltfile=cdcatalog_sort" target="_blank">尝试一下 »</a>
+</div>
+<p><b>注意：</b><b>select</b> 属性指示需要排序的 XML 元素。</p>
+<br/>
+</div>

@@ -1,0 +1,103 @@
+<div class="article-intro" id="content">
+<h1>AngularJS <span class="color_h1">控制器</span>
+</h1>
+<hr/>
+<p class="intro"> AngularJS 控制器 <strong>控制</strong> AngularJS 应用程序的数据。</p>
+<p class="intro"> AngularJS 控制器是常规的 <strong>JavaScript 对象</strong>。</p>
+<hr/>
+<h2>AngularJS 控制器</h2>
+<p>AngularJS 应用程序被控制器控制。</p>
+<p><strong>ng-controller</strong> 指令定义了应用程序控制器。</p>
+<p>控制器是 <strong>JavaScript 对象</strong>，由标准的 JavaScript <strong>对象的构造函数</strong> 创建。</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span> <span class="highATT">ng-controller=</span><span class="highVAL">"myCtrl"</span><span class="highGT">&gt;</span><br/>
+<br/>名: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">ng-model=</span><span class="highVAL">"firstName"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+	姓: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">ng-model=</span><span class="highVAL">"lastName"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+	姓名: <span class="highATT">{{firstName + " " + lastName}}</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>var app = angular.module('myApp', 
+    []);<br/>app.controller('myCtrl', function($scope) {<br/>    $scope.firstName 
+    = "John";<br/>    $scope.lastName = "Doe";<br/>});<br/><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span>
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=try_ng_controller" target="_blank">尝试一下 »</a>
+</div>
+<p>应用解析：</p><p>AngularJS 应用程序由 <strong>ng-app</strong> 定义。应用程序在 &lt;div&gt; 内运行。</p>
+<p><strong>ng-controller="myCtrl"</strong> 属性是一个 AngularJS 指令。用于定义一个控制器。</p>
+<p><strong>myCtrl</strong> 函数是一个 JavaScript 函数。</p>
+<p>AngularJS 使用<strong>$scope</strong> 对象来调用控制器。</p>
+<p>在 AngularJS 中， $scope 是一个应用对象(属于应用变量和函数)。</p>
+<p>控制器的 <strong>$scope</strong> （相当于作用域、控制范围）用来保存AngularJS Model(模型)的对象。</p>
+<p>控制器在作用域中创建了两个属性
+(<strong>firstName</strong> 和
+<strong>lastName</strong>)。</p>
+<p><strong>ng-model</strong> 指令绑定输入域到控制器的属性（firstName 和 lastName）。</p>
+<hr/>
+<h2>控制器方法</h2>
+<p>上面的实例演示了一个带有 lastName 和 firstName 这两个属性的控制器对象。</p>
+<p>控制器也可以有方法（变量和函数）：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span> <span class="highATT">ng-controller=</span><span class="highVAL">"personCtrl"</span><span class="highGT">&gt;</span><br/><br/>
+名: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">ng-model=</span><span class="highVAL">"firstName"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+姓: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">ng-model=</span><span class="highVAL">"lastName"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+姓名: <span class="highATT">{{fullName()}}</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>var app = angular.module('myApp', []);<br/>app.controller('personCtrl', 
+ function($scope) {<br/>
+    $scope.firstName = "John";<br/>    $scope.lastName 
+ = "Doe";<br/>    $scope.fullName = function() {<br/>        
+ return $scope.firstName + " " + $scope.lastName;<br/>    }<br/>});<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=try_ng_controller_property" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>外部文件中的控制器</h2>
+<p>在大型的应用程序中，通常是把控制器存储在外部文件中。</p>
+<p>只需要把 &lt;script&gt; 标签中的代码复制到名为 <a href="/try/demo_source/personController.js" target="_blank">personController.js</a> 的外部文件中即可：</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span> <span class="highATT">ng-controller=</span><span class="highVAL">"personCtrl"</span><span class="highGT">&gt;</span><br/>
+<br/>First Name: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">ng-model=</span><span class="highVAL">"firstName"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+	Last Name: <span class="highLT">&lt;</span><span class="highELE">input</span> <span class="highATT">type=</span><span class="highVAL">"text"</span> <span class="highATT">ng-model=</span><span class="highVAL">"lastName"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">br</span><span class="highGT">&gt;</span><br/>
+	Full Name: <span class="highATT">{{firstName + " " + lastName}}</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">script</span> <span class="highATT">src=</span><span class="highVAL">"personController.js"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span>
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=try_ng_controller_js" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>其他实例</h2>
+<p>以下实例创建一个新的控制器文件:</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">angular</span><span class="hl-code">.</span><span class="hl-identifier">module</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">myApp</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">controller</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">namesCtrl</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-code">$</span><span class="hl-identifier">scope</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-identifier">scope</span><span class="hl-code">.</span><span class="hl-identifier">names</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-identifier">name</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">Jani</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">country</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">Norway</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">,
+        </span><span class="hl-brackets">{</span><span class="hl-identifier">name</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">Hege</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">country</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">Sweden</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">,
+        </span><span class="hl-brackets">{</span><span class="hl-identifier">name</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">Kai</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-identifier">country</span><span class="hl-code">:</span><span class="hl-quotes">'</span><span class="hl-string">Denmark</span><span class="hl-quotes">'</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>保存文件为  <a href="/try/demo_source/namesController.js" target="_blank">namesController.js</a>:</p>
+<p>然后，在应用中使用控制器文件:</p>
+<div class="example">
+<h2 class="example">AngularJS 实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">div</span> <span class="highATT">ng-app=</span><span class="highVAL">"myApp"</span> <span class="highATT">ng-controller=</span><span class="highVAL">"namesCtrl"</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">ul</span><span class="highGT">&gt;</span><br/>
+ 
+<span class="highLT">&lt;</span><span class="highELE">li</span> <span class="highATT">ng-repeat=</span><span class="highVAL">"x in names"</span><span class="highGT">&gt;</span><br/>
+	    <span class="highATT">{{ x.name + ', ' + x.country }}</span><br/>  <span class="highLT">&lt;</span><span class="highELE">/li</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/ul</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">/div</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span> <span class="highATT">src=</span><span class="highVAL">"namesController.js"</span><span class="highGT">&gt;</span><span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span>
+</div>
+<br/><a class="tryitbtn" href="/try/tryit.php?filename=try_ng_controller_names" target="_blank">尝试一下 »</a>
+</div>
+</div>

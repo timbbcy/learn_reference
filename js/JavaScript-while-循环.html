@@ -1,0 +1,88 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">while 循环</span>
+</h1>
+<hr/>
+<p class="intro">只要指定条件为 true，循环就可以一直执行代码块。</p>
+<hr/>
+<h2>while 循环</h2>
+<p>while 循环会在指定条件为真时循环执行代码块。</p>
+<h3>语法</h3>
+<div class="code"><div>
+while (<em>条件</em>)<br/>
+{<br/><i>    需要执行的代码</i><br/>
+}</div></div>
+<h3>实例</h3>
+<p>本例中的循环将继续运行，只要变量 i 小于 5：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">The number is </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-identifier">i</span><span class="hl-code">++;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_while" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+如果您忘记增加条件中所用变量的值，该循环永远不会结束。这可能导致浏览器崩溃。</td>
+</tr></table>
+<br/><hr/>
+<h2>do/while 循环</h2>
+<p>do/while 循环是 while 循环的变体。该循环会在检查条件是否为真之前执行一次代码块，然后如果条件为真的话，就会重复这个循环。</p>
+<h3>语法</h3>
+<div class="code"><div>
+
+do<br/>
+
+{<br/><i>    需要执行的代码<br/>
+</i>}<br/>
+while (<em>条件</em>);</div></div>
+<h3>实例</h3>
+<p>下面的例子使用 do/while 循环。该循环至少会执行一次，即使条件为 false 它也会执行一次，因为代码块会在条件被测试前执行：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">do</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">The number is </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-identifier">i</span><span class="hl-code">++;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-number">5</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_dowhile" target="_blank">尝试一下 »</a>
+</div>
+<p>别忘记增加条件中所用变量的值，否则循环永远不会结束！</p>
+<hr/>
+<h2>比较 for 和 while</h2>
+<p>如果您已经阅读了前面那一章关于 for 循环的内容，您会发现 while 循环与 for 循环很像。</p>
+<p>本例中的循环使用 <strong>for 循环</strong>来显示 cars 数组中的所有值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">cars</span><span class="hl-code">=</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">BMW</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Volvo</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Saab</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Ford</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">;</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">;</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">i</span><span class="hl-code">++;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_loop_for_cars" target="_blank">尝试一下 »</a>
+</div>
+<p>本例中的循环使用 <strong>while 循环</strong>来显示 cars 数组中的所有值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">cars</span><span class="hl-code">=</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">BMW</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Volvo</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Saab</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Ford</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">cars</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">i</span><span class="hl-code">++;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_loop_while_cars" target="_blank">尝试一下 »</a>
+</div>
+</div>

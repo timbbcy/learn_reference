@@ -1,0 +1,34 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">创建列组合</span></h1>
+<p>easyui 的数据网格（DataGrid）可以创建列组合，如下所示：</p>
+<img src="/wp-content/uploads/2013/12/datagrid9_1.png"/>
+<p>在本实例中，我们使用平面数据来填充数据网格（DataGrid）的数据，并把 listprice、unitcost、addr1、status 列组合在一个单一的列下。</p>
+<p>为了创建列组合，您应该定义数据网格（datagrid）插件的 columns 数据。列的每个元素是定义一组可使用 rowspan 或 colspan 属性来进行组合的单元格。</p>
+<p>下面的代码实现了上面的实例：</p>
+<pre style="color:#006600">
+    &lt;table id="tt" title="Column Group" class="easyui-datagrid" style="width:550px;height:250px"
+            url="data/datagrid_data.json"
+            singleSelect="true" iconCls="icon-save" rownumbers="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th rowspan="2" field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th rowspan="2" field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th colspan="4"&gt;Item Details&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="100"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid9.zip">jeasyui-datagrid-datagrid9.zip</a></p>
+</div>

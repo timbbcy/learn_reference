@@ -1,0 +1,225 @@
+<div class="article-intro" id="content">
+<h1>JSP <span class="color_h1">自定义标签</span></h1>
+<p>自定义标签是用户定义的JSP语言元素。当JSP页面包含一个自定义标签时将被转化为servlet，标签转化为对被
+    称为tag handler的对象的操作，即当servlet执行时Web container调用那些操作。</p>
+<p>JSP标签扩展可以让你创建新的标签并且可以直接插入到一个JSP页面。 JSP 2.0规范中引入Simple Tag Handlers来编写这些自定义标记。</p>
+<p>你可以继承SimpleTagSupport类并重写的doTag()方法来开发一个最简单的自定义标签。</p>
+<hr/>
+<h2>创建"Hello"标签</h2>
+<p>接下来，我们想创建一个自定义标签叫作&lt;ex:Hello&gt;，标签格式为：</p>
+<pre>
+&lt;ex:Hello /&gt;
+</pre>
+<p>要创建自定义的JSP标签，你首先必须创建处理标签的Java类。所以，让我们创建一个HelloTag类，如下所示：</p>
+<pre>
+package com.runoob;
+
+import javax.servlet.jsp.tagext.*;
+import javax.servlet.jsp.*;
+import java.io.*;
+
+public class HelloTag extends SimpleTagSupport {
+
+  public void doTag() throws JspException, IOException {
+    JspWriter out = getJspContext().getOut();
+    out.println("Hello Custom Tag!");
+  }
+}
+</pre>
+<p>以下代码重写了doTag()方法，方法中使用了getJspContext()方法来获取当前的JspContext对象，并将"Hello Custom Tag!"传递给JspWriter对象。</p>
+<p>编译以上类，并将其复制到环境变量CLASSPATH目录中。最后创建如下标签库：&lt;Tomcat安装目录&gt;webapps\ROOT\WEB-INF\custom.tld。</p>
+<pre>
+&lt;taglib&gt;
+  &lt;tlib-version&gt;1.0&lt;/tlib-version&gt;
+  &lt;jsp-version&gt;2.0&lt;/jsp-version&gt;
+  &lt;short-name&gt;Example TLD&lt;/short-name&gt;
+  &lt;tag&gt;
+    &lt;name&gt;Hello&lt;/name&gt;
+    &lt;tag-class&gt;com.runoob.HelloTag&lt;/tag-class&gt;
+    &lt;body-content&gt;empty&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+<p>接下来，我们就可以在JSP文件中使用Hello标签：</p>
+<pre>
+&lt;%@ taglib prefix="ex" uri="WEB-INF/custom.tld"%&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;A sample custom tag&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ex:Hello/&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>以上程序输出结果为：</p>
+<pre>
+Hello Custom Tag!
+</pre>
+<hr/>
+<h2>访问标签体</h2>
+<p>你可以像标准标签库一样在标签中包含消息内容。如我们要在我们自定义的Hello中包含内容，格式如下：</p>
+<pre>
+&lt;ex:Hello&gt;
+   This is message body
+&lt;/ex:Hello&gt;
+</pre>
+<p>我们可以修改标签处理类文件，代码如下：</p>
+<pre>
+package com.runoob;
+
+import javax.servlet.jsp.tagext.*;
+import javax.servlet.jsp.*;
+import java.io.*;
+
+public class HelloTag extends SimpleTagSupport {
+
+   StringWriter sw = new StringWriter();
+   public void doTag()
+      throws JspException, IOException
+    {
+       getJspBody().invoke(sw);
+       getJspContext().getOut().println(sw.toString());
+    }
+
+}
+</pre>
+<p>接下来我们需要修改TLD文件，如下所示：
+</p>
+<pre>
+&lt;taglib&gt;
+  &lt;tlib-version&gt;1.0&lt;/tlib-version&gt;
+  &lt;jsp-version&gt;2.0&lt;/jsp-version&gt;
+  &lt;short-name&gt;Example TLD with Body&lt;/short-name&gt;
+  &lt;tag&gt;
+    &lt;name&gt;Hello&lt;/name&gt;
+    &lt;tag-class&gt;com.runoob.HelloTag&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+<p>现在我们可以在JSP使用修改后的标签，如下所示:</p>
+<pre>
+&lt;%@ taglib prefix="ex" uri="WEB-INF/custom.tld"%&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;A sample custom tag&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ex:Hello&gt;
+        This is message body
+    &lt;/ex:Hello&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>以上程序输出结果如下所示：</p>
+<pre>
+This is message body
+</pre>
+<hr/>
+<h2>自定义标签属性</h2>
+<p>你可以在自定义标准中设置各种属性，要接收属性，值自定义标签类必须实现setter方法， JavaBean 中的setter方法如下所示：</p>
+<pre>
+package com.runoob;
+
+import javax.servlet.jsp.tagext.*;
+import javax.servlet.jsp.*;
+import java.io.*;
+
+public class HelloTag extends SimpleTagSupport {
+
+   private String message;
+
+   public void setMessage(String msg) {
+      this.message = msg;
+   }
+
+   StringWriter sw = new StringWriter();
+
+   public void doTag()
+      throws JspException, IOException
+    {
+       if (message != null) {
+          /* 从属性中使用消息 */
+          JspWriter out = getJspContext().getOut();
+          out.println( message );
+       }
+       else {
+          /* 从内容体中使用消息 */
+          getJspBody().invoke(sw);
+          getJspContext().getOut().println(sw.toString());
+       }
+   }
+
+}
+</pre>
+<p>属性的名称是"message"，所以setter方法​​是的setMessage()。现在让我们在TLD文件中使用的&lt;attribute&gt;元素添加此属性：</p>
+<pre>
+&lt;taglib&gt;
+  &lt;tlib-version&gt;1.0&lt;/tlib-version&gt;
+  &lt;jsp-version&gt;2.0&lt;/jsp-version&gt;
+  &lt;short-name&gt;Example TLD with Body&lt;/short-name&gt;
+  &lt;tag&gt;
+    &lt;name&gt;Hello&lt;/name&gt;
+    &lt;tag-class&gt;com.runoob.HelloTag&lt;/tag-class&gt;
+    &lt;body-content&gt;scriptless&lt;/body-content&gt;
+    &lt;attribute&gt;
+       &lt;name&gt;message&lt;/name&gt;
+    &lt;/attribute&gt;
+  &lt;/tag&gt;
+&lt;/taglib&gt;
+</pre>
+<p>现在我们就可以在JSP文件中使用message属性了，如下所示：</p>
+<pre>
+&lt;%@ taglib prefix="ex" uri="WEB-INF/custom.tld"%&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;A sample custom tag&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ex:Hello message="This is custom tag" /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>以上实例数据输出结果为：</p>
+<pre>
+This is custom tag
+</pre>
+<p>你还可以包含以下属性：</p>
+<table class="reference">
+<tbody><tr><th style="width:30%">属性 </th><th>描述</th></tr>
+<tr><td>name</td><td>定义属性的名称。每个标签的是属性名称必须是唯一的。</td></tr>
+<tr><td>required</td><td>指定属性是否是必须的或者可选的,如果设置为false为可选。</td></tr>
+<tr><td>rtexprvalue</td><td>声明在运行表达式时，标签属性是否有效。</td></tr>
+<tr><td>type</td><td>定义该属性的Java类类型 。默认指定为 <b>String</b></td></tr>
+<tr><td>description</td><td>描述信息</td></tr>
+<tr><td>fragment</td><td>如果声明了该属性,属性值将被视为一个 <b>JspFragment</b>。</td></tr>
+</tbody></table>
+<p>以下是指定相关的属性实例：</p>
+<pre>
+.....
+    &lt;attribute&gt;
+      &lt;name&gt;attribute_name&lt;/name&gt;
+      &lt;required&gt;false&lt;/required&gt;
+      &lt;type&gt;java.util.Date&lt;/type&gt;
+      &lt;fragment&gt;false&lt;/fragment&gt;
+    &lt;/attribute&gt;
+.....
+</pre>
+<p>如果你使用了两个属性，修改TLD文件，如下所示：</p>
+<pre>
+.....
+    &lt;attribute&gt;
+      &lt;name&gt;attribute_name1&lt;/name&gt;
+      &lt;required&gt;false&lt;/required&gt;
+      &lt;type&gt;java.util.Boolean&lt;/type&gt;
+      &lt;fragment&gt;false&lt;/fragment&gt;
+    &lt;/attribute&gt;
+    &lt;attribute&gt;
+      &lt;name&gt;attribute_name2&lt;/name&gt;
+      &lt;required&gt;true&lt;/required&gt;
+      &lt;type&gt;java.util.Date&lt;/type&gt;
+    &lt;/attribute&gt;
+.....
+</pre>
+</div>

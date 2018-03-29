@@ -1,0 +1,46 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 窗口 - <span class="color_h1">自定义窗口工具栏</span></h1>
+<p>默认情况下，窗口（window）有四个工具：collapsible、minimizable、maximizable 和 closable。比如我们定义以下窗口（window）：</p>
+<pre style="color:#006600">
+    &lt;div id="win" class="easyui-window" title="My Window" style="padding:10px;width:200px;height:100px;"&gt;
+        window content
+    &lt;/div&gt;
+</pre>
+<img src="/wp-content/uploads/2013/12/win2_1.png"/>
+<p>如需自定义工具，设置该工具为 true 或者 false。比如我们希望定义一个窗口（window），仅仅拥有一个可关闭的工具。您应该设置任何其他工具为 false。我们可以在标记中或者通过 jQuery 代码定义 tools 属性。现在我们使用 jQuery 代码来定义窗口（window）：</p>
+<pre style="color:#006600">
+    $('#win').window({
+        collapsible:false,
+        minimizable:false,
+        maximizable:false
+    });
+</pre>
+<img src="/wp-content/uploads/2013/12/win2_2.png"/>
+<p>如果我们希望添加自定义的工具到窗口（window），我们可以使用 tools 属性。作为实例演示，我们添加两个工具到窗口（window）：</p>
+<pre style="color:#006600">
+    $('#win').window({
+        collapsible:false,
+        minimizable:false,
+        maximizable:false,
+        tools:[{
+            iconCls:'icon-add',
+            handler:function(){
+                alert('add');
+            }
+        },{
+            iconCls:'icon-remove',
+            handler:function(){
+                alert('remove');
+            }
+        }]
+    });
+</pre>
+<img src="/wp-content/uploads/2013/12/win2_3.png"/>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-win-win2.zip">jeasyui-win-win2.zip</a></p>
+</div>

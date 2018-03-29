@@ -1,0 +1,42 @@
+<div class="article-intro" id="content">
+<h1><span class="color_h1">Linux </span> 忘记密码解决方法</h1>
+<p>很多朋友经常会忘记Linux系统的root密码，linux系统忘记root密码的情况该怎么办呢？重新安装系统吗？当然不用！进入单用户模式更改一下root密码即可。
+</p><p>
+步骤如下：</p>
+<h3>重启linux系统</h3>
+<p><img alt="4_21" class="attachment-full" height="371" src="http://www.runoob.com/wp-content/uploads/2014/06/4_21.png" width="644"/></p>
+<p>3 秒之内要按一下回车，出现如下界面</p>
+<p><img alt="4_22" class="attachment-full" height="483" src="http://www.runoob.com/wp-content/uploads/2014/06/4_22.png" width="644"/></p>
+<p>然后输入e</p>
+<p><img alt="4_23" class="attachment-full" height="220" src="http://www.runoob.com/wp-content/uploads/2014/06/4_23.png" width="602"/></p>
+<p>在 第二行最后边输入 single，有一个空格。具体方法为按向下尖头移动到第二行，按"e"进入编辑模式</p>
+<p><img alt="4_24" class="attachment-full" height="127" src="http://www.runoob.com/wp-content/uploads/2014/06/4_24.png" width="642"/>在后边加上single 回车</p>
+<p><img alt="4_25" class="attachment-full" height="57" src="http://www.runoob.com/wp-content/uploads/2014/06/4_25.png" width="584"/></p>
+<p>最后按"b"启动，启动后就进入了单用户模式了</p>
+<p><img alt="4_26" class="attachment-full" height="400" src="http://www.runoob.com/wp-content/uploads/2014/06/4_26.png" width="720"/></p>
+<p>此时已经进入到单用户模式了，你可以更改root密码了。更密码的命令为 passwd</p>
+<p><img alt="4_27" class="attachment-full" height="82" src="http://www.runoob.com/wp-content/uploads/2014/06/4_27.png" width="720"/></p>
+<p></p>
+<p>【<b>使用系统安装光盘的救援模式</b>】</p>
+<p>救援模式即rescue ，这个模式主要是应用于，系统无法进入的情况。如，grub损坏或者某一个配置文件修改出错。如何使用rescue模式呢？</p>
+<p>光盘启动，按F5 进入rescue模式</p>
+<p><img alt="4_28" class="attachment-full" height="159" src="http://www.runoob.com/wp-content/uploads/2014/06/4_28.png" width="650"/></p>
+<p>输入linux rescue 回车</p>
+<p><img alt="4_29" class="attachment-full" height="81" src="http://www.runoob.com/wp-content/uploads/2014/06/4_29.png" width="649"/></p>
+<p>选择语言，笔者建议你选择英语</p>
+<p><img alt="4_30" class="attachment-full" height="401" src="http://www.runoob.com/wp-content/uploads/2014/06/4_30.png" width="724"/></p>
+<p>选择us 键盘</p>
+<p><img alt="4_31" class="attachment-full" height="333" src="http://www.runoob.com/wp-content/uploads/2014/06/4_31.png" width="400"/></p>
+<p><img alt="4_32" class="attachment-full" height="202" src="http://www.runoob.com/wp-content/uploads/2014/06/4_32.png" width="371"/></p>
+<p>这里问你是否启动网络，有时候可能会联网调试。我们选no</p>
+<p><img alt="4_33" class="attachment-full" height="356" src="http://www.runoob.com/wp-content/uploads/2014/06/4_33.png" width="480"/></p>
+<p>这里告诉我们，接下来会把系统挂载在/mnt/sysimage 中。</p><p>其中有三个选项:</p>
+<ul><li>Continue 就是挂载后继续下一步。 </li><li>Read-Only 挂载成只读，这样更安全，有时文件系统损坏时，只读模式会防止文件系统近一步损坏。</li><li>Skip就是不挂载，进入一个命令窗口模式。 </li></ul><p>这里我们选择Continue。</p>
+<p><img alt="4_34" class="attachment-full" height="329" src="http://www.runoob.com/wp-content/uploads/2014/06/4_34.png" width="395"/></p>
+<p>至此，系统已经挂载到了/mnt/sysimage中。接下来回车，输入chroot /mnt/sysimage 进入管理员环境。</p>
+<p><img alt="4_35" class="attachment-full" height="96" src="http://www.runoob.com/wp-content/uploads/2014/06/4_35.png" width="623"/></p>
+<p><b>提示：</b> 其实也可以到rescue模式下更改root的密码的。这个rescue模式和windows PE系统很相近。</p>
+<p>当运行了chroot /mnt/sysimage/ 后，再ls 看到目录结构和原来系统中的目录结构是一样的。</p><p>没错！现在的环境和原来系统的环境是一模一样的。你可以输入exit 或者按Ctrl + D退出这个环境。然后你再ls 看一下</p>
+<p><img alt="4_36" class="attachment-full" height="98" src="http://www.runoob.com/wp-content/uploads/2014/06/4_36.png" width="459"/></p>
+<p>这个目录其实就是rescue模式下的目录结构，而我们的系统文件全部在 /mnt/sysimage目录下。</p>
+</div>

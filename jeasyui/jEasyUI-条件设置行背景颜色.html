@@ -1,0 +1,39 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">条件设置行背景颜色</span></h1>
+<p>本教程将向您展示如何根据一些条件改变数据网格（datagrid）组件的行样式。当 listprice 值大于 50 时，我们将为该行设置不同的颜色。</p>
+<img src="/wp-content/uploads/2013/12/datagrid18_1.png"/>
+<p>数据网格（datagrid）的 rowStyler 函数的设计目的是允许您自定义行样式。以下代码展示如何改变行样式：</p>
+<pre style="color:#006600">
+    &lt;table id="tt" title="DataGrid" style="width:600px;height:250px"
+            url="data/datagrid_data.json"
+            singleSelect="true" fitColumns="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="80"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" width="80" align="right"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" width="80" align="right"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="150"&gt;Attribute&lt;/th&gt;
+                &lt;th field="status" width="60" align="center"&gt;Stauts&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<pre style="color:#006600">
+    $('#tt').datagrid({
+        rowStyler:function(index,row){
+            if (row.listprice&gt;50){
+                return 'background-color:pink;color:blue;font-weight:bold;';
+            }
+        }
+    });
+</pre>
+<p>正如您所看到的，我们根据一些条件设置 background-color（背景色）为 pink（粉红色），设置文本颜色为 blue（蓝色）。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid18.zip">jeasyui-datagrid-datagrid18.zip</a></p>
+</div>

@@ -1,0 +1,144 @@
+<div class="article-intro" id="content">
+<h1>ionic 列表</h1>
+<p>列表是一个应用广泛的界面元素，在所有移动app中几乎都会使用到。</p>
+<p>列表可以是基本文字、按钮，开关，图标和缩略图等。</p>
+<p>列表项可以是任何的HTML元素。容器元素需要list类，每个列表项需要使用item类。</p>
+<p>ionList和ionItem可以很容易的支持各种交互方式，比如，滑动编辑，拖动排序，以及删除项。</p>
+<h3>基本用法:</h3>
+<pre>
+&lt;ul class="list"&gt;
+    &lt;li class="item"&gt;
+      ...
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<h3>列表分隔符</h3>
+<p>我们可以使用 item-divider 类来为列表创建分隔符，默认情况下，列表项以不同的背景颜色和字体加粗来区分，但你也可以很容易的定制他。</p>
+<pre>
+&lt;div class="list"&gt;
+
+  &lt;div class="item item-divider"&gt;
+    Candy Bars
+  &lt;/div&gt;
+
+  &lt;a class="item" href="#"&gt;
+    Butterfinger
+  &lt;/a&gt;
+
+  ...
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list_item-divider&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>带图标列表</h2>
+<p>我们可以在列表项的左侧或右侧指定图标。</p>
+<p>使用 item-icon-left 图标在左侧， item-icon-right 设置图标在右侧。如果你需要在两边都有图标，则两个类都添加上即可。</p>
+<p>以下实例中，我们在列表项中使用了 &lt;a&gt; 标签，使得每个列表项可点击。</p>
+<p>列表项在使用 &lt;a&gt;或&lt;button&gt; 元素时，如果右侧未添加图标，则会自动添加上箭头号。</p>
+<p>实例中，第一项只有左侧图标，第二项左右均有图标，第三项有右侧图标（还有注释 item-note），第四项有badge（标记）元素。</p>
+<pre>
+&lt;div class="list"&gt;
+
+  &lt;a class="item item-icon-left" href="#"&gt;
+    &lt;i class="icon ion-email"&gt;&lt;/i&gt;
+    Check mail
+  &lt;/a&gt;
+
+  &lt;a class="item item-icon-left item-icon-right" href="#"&gt;
+    &lt;i class="icon ion-chatbubble-working"&gt;&lt;/i&gt;
+    Call Ma
+    &lt;i class="icon ion-ios-telephone-outline"&gt;&lt;/i&gt;
+  &lt;/a&gt;
+
+  &lt;a class="item item-icon-left" href="#"&gt;
+    &lt;i class="icon ion-mic-a"&gt;&lt;/i&gt;
+    Record album
+    &lt;span class="item-note"&gt;
+      Grammy
+    &lt;/span&gt;
+  &lt;/a&gt;
+
+  &lt;a class="item item-icon-left" href="#"&gt;
+    &lt;i class="icon ion-person-stalker"&gt;&lt;/i&gt;
+    Friends
+    &lt;span class="badge badge-assertive"&gt;0&lt;/span&gt;
+  &lt;/a&gt;
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list_item-icon&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>按钮列表</h2>
+<p>
+使用 item-button-right 或 item-button-left 类将按钮放在列表项中。</p>
+<pre>
+&lt;div class="list"&gt;
+
+  &lt;div class="item item-button-right"&gt;
+    Call Ma
+    &lt;button class="button button-positive"&gt;
+      &lt;i class="icon ion-ios-telephone"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  ...
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list_item-button&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>带头像列表</h2>
+<p>使用 item-avatar 来创建一个带头像的列表：</p>
+<pre>
+&lt;div class="list"&gt;
+
+    &lt;a class="item item-avatar" href="#"&gt;
+      &lt;img src="venkman.jpg"&gt;
+      &lt;h2&gt;Venkman&lt;/h2&gt;
+      &lt;p&gt;Back off, man. I'm a scientist.&lt;/p&gt;
+    &lt;/a&gt;
+
+    ...
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list_item-avatar&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>缩略图列表</h2>
+<p>
+item-thumbnail-left 类用于添加左侧对齐的缩略图， item-thumbnail-right 类用于添加右侧对齐的缩略图。</p>
+<pre>
+&lt;div class="list"&gt;
+
+    &lt;a class="item item-thumbnail-left" href="#"&gt;
+      &lt;img src="cover.jpg"&gt;
+      &lt;h2&gt;Pretty Hate Machine&lt;/h2&gt;
+      &lt;p&gt;Nine Inch Nails&lt;/p&gt;
+    &lt;/a&gt;
+
+    ...
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list_item-thumbnail&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+<hr/>
+<h2>内嵌列表(inset list)
+</h2>
+<p>我们可以在容器当中内嵌列表，列表不会显示完整的宽度。</p>
+<p>内嵌列表的样式为：list list-inset，与常规列表区别是，它设置了外边距（marign）,类似于选项卡。</p>
+<p>内嵌列表是没有阴影效果的，滚动时效果会更好。</p>
+<pre>
+&lt;div class="list list-inset"&gt;
+
+    &lt;div class="item"&gt;
+      Raiders of the Lost Ark
+    &lt;/div&gt;
+
+    ...
+
+&lt;/div&gt;
+</pre>
+<p><a class="tryitbtn" href="/try/tryit.php?filename=ionic_list_inset&amp;basepath=0" target="_blank">尝试一下 »</a></p>
+</div>

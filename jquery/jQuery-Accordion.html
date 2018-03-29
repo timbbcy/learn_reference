@@ -1,0 +1,45 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">Accordion</span></h1>
+<div class="tutintro">
+<p>jQuery Accordion 插件用于创建折叠菜单。它通常与嵌套的列表、定义列表或嵌套的 div 一起使用。选项用于指定结构、激活的元素和定制的动画。</p>
+</div>
+<p>该插件现在是 <a href="http://www.runoob.com/jqueryui/example-accordion.html">jQuery UI</a> 的一部分，独立的版本不会再更新了。目前版本是 1.6。</p>
+<p><a href="http://bassistance.de/jquery-plugins/jquery-plugin-accordion/" target="_blank">jQuery Accordion 官网</a>，jQuery Accordion 插件下载：<a href="http://www.w3cschool.cc/try/download/jquery-accordion.zip">http://www.runoob.com/try/download/jquery-accordion.zip</a>。</p>
+<p>如需了解更多有关 Accordion 的细节，请查看 API 文档 <a href="http://www.runoob.com/jqueryui/api-accordion.html">折叠面板部件（Accordion Widget）</a>。</p>
+<h2>标准</h2>
+<p>标准代码如下:</p>
+<pre>
+jQuery('#list1a').accordion(); 
+jQuery('#list1b').accordion({ 
+    autoheight: false 
+});
+</pre>
+<h2>导航</h2>
+<p>带有锚和嵌套列表的无序列表</p>
+<pre>
+jQuery('#navigation').accordion({ 
+    active: false, 
+    header: '.head', 
+    navigation: true, 
+    event: 'mouseover', 
+    fillSpace: true, 
+    animated: 'easeslide' 
+});
+</pre>
+<h2>带选项</h2>
+<p>容器是一个定义列表，标题是 dt，内容是 dd。</p>
+<pre>
+jQuery('#list2').accordion({ 
+    event: 'mouseover', 
+    active: '.selected', 
+    selectedClass: 'active', 
+    animated: "bounceslide", 
+    header: "dt" 
+}).bind("change.ui-accordion", function(event, ui) { 
+    jQuery('&lt;div&gt;' + ui.oldHeader.text() + ' hidden, ' + ui.newHeader.text() + ' shown&lt;/div&gt;').appendTo('#log'); 
+});
+</pre>
+<p><a href="/try/jquery/jquery-accordion/demo/index.html" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a>
+<a href="http://www.runoob.com/try/download/jquery-accordion.zip" target="_blank"><button class="btn btn-info btn-lg">源码下载</button></a>
+</p>
+</div>

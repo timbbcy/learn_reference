@@ -1,0 +1,46 @@
+<div class="article-intro" id="content">
+<h1>Swift 数据类型</h1>
+<p>
+在我们使用任何程序语言编程时，需要使用各种数据类型来存储不同的信息。</p><p>变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。</p><p>所有变量都具有数据类型，以决定能够存储哪种数据。</p>
+<hr/>
+<h2>内置数据类型</h2>
+<p>Swift 提供了非常丰富的数据类型，以下列出了常用了几种数据类型：</p>
+<h3>Int</h3>
+<p>一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型<code>Int</code>，长度与当前平台的原生字长相同：</p>
+<ul>
+<li>在32位平台上，<code>Int</code>和<code>Int32</code>长度相同。</li>
+<li>在64位平台上，<code>Int</code>和<code>Int64</code>长度相同。</li>
+</ul>
+<p>除非你需要特定长度的整数，一般来说使用<code>Int</code>就够了。这可以提高代码一致性和可复用性。即使是在32位平台上，<code>Int</code>可以存储的整数范围也可以达到<code>-2,147,483,648</code>~<code>2,147,483,647</code>，大多数时候这已经足够大了。</p>
+<p><a name="UInt"></a></p>
+<h3>UInt</h3>
+<p>Swift 也提供了一个特殊的无符号类型<code>UInt</code>，长度与当前平台的原生字长相同：</p>
+<ul>
+<li>在32位平台上，<code>UInt</code>和<code>UInt32</code>长度相同。</li>
+<li>在64位平台上，<code>UInt</code>和<code>UInt64</code>长度相同。</li>
+</ul>
+<blockquote>
+<p>注意：<br/>
+尽量不要使用<code>UInt</code>，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用<code>Int</code>，即使你要存储的值已知是非负的。统一使用<code>Int</code>可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断，请参考<a href="#type_safety_and_type_inference">类型安全和类型推断</a>。</p>
+</blockquote>
+<h3>浮点数</h3>
+<p>浮点数是有小数部分的数字，比如<code>3.14159</code>，<code>0.1</code>和<code>-273.15</code>。</p>
+<p>浮点类型比整数类型表示的范围更大，可以存储比<code>Int</code>类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：</p>
+<ul>
+<li><code>Double</code>表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。</li>
+<li><code>Float</code>表示32位浮点数。精度要求不高的话可以使用此类型。</li>
+</ul>
+<blockquote>
+<p>注意：<br/>
+<code>Double</code>精确度很高，至少有15位数字，而<code>Float</code>最少只有6位数字。选择哪个类型取决于你的代码需要处理的值的范围。</p>
+</blockquote>
+<h3>布尔值</h3>
+<p>Swift 有一个基本的布尔（Boolean）类型，叫做Bool。布尔值指逻辑上的值，因为它们只能是真或者假。Swift 有两个布尔常量，true和false。</p>
+<h3>
+字符串</h3>
+<p>字符串是字符的序列集合，例如：</p><pre>"Hello, World!"</pre>
+<h3>
+字符</h3>
+<p>字符指的是单个字母，例如：</p><pre>"C"</pre>
+<h3>可选类型</h3>
+使用可选类型（optionals）来处理值可能缺失的情况。可选类型表示有值或没有值。</div>

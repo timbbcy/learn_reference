@@ -1,0 +1,92 @@
+<div class="article-intro" id="content">
+<h1>Python3 迭代器与生成器</h1>
+<hr/>
+<h2>迭代器</h2>
+<p>迭代是Python最强大的功能之一，是访问集合元素的一种方式。</p>
+<p>迭代器是一个可以记住遍历的位置的对象。</p>
+<p>迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。</p>
+<p>
+迭代器有两个基本的方法：<strong>iter()</strong> 和 <strong>next()</strong>。
+</p>
+<p>字符串，列表或元组对象都可用于创建迭代器：</p>
+<div class="example">
+<h2 class="example">实例(Python 3.0+)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">&gt;&gt;&gt;</span><span class="hl-identifier">list</span><span class="hl-code">=</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span><span class="hl-code">,</span><span class="hl-number">4</span><span class="hl-brackets">]</span><span class="hl-code">
+&gt;&gt;&gt; </span><span class="hl-identifier">it</span><span class="hl-code"> = </span><span class="hl-builtin">iter</span><span class="hl-brackets">(</span><span class="hl-identifier">list</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment"># 创建迭代器对象</span><span class="hl-code">
+&gt;&gt;&gt; </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">next</span><span class="hl-brackets">(</span><span class="hl-identifier">it</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment"># 输出迭代器的下一个元素</span><span class="hl-code">
+</span><span class="hl-number">1</span><span class="hl-code">
+&gt;&gt;&gt; </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">next</span><span class="hl-brackets">(</span><span class="hl-identifier">it</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-number">2</span><span class="hl-code">
+&gt;&gt;&gt;</span></div>
+</div>
+</div>
+<p>迭代器对象可以使用常规for语句进行遍历：</p>
+<div class="example">
+<h2 class="example">实例(Python 3.0+)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-identifier">list</span><span class="hl-code">=</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span><span class="hl-code">,</span><span class="hl-number">4</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">it</span><span class="hl-code"> = </span><span class="hl-builtin">iter</span><span class="hl-brackets">(</span><span class="hl-identifier">list</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment"># 创建迭代器对象</span><span class="hl-code">
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">it</span><span class="hl-code">:
+    </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-code">, </span><span class="hl-identifier">end</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果如下：</p>
+<pre>
+1 2 3 4
+</pre>
+<p>也可以使用  next() 函数：</p>
+<div class="example">
+<h2 class="example">实例(Python 3.0+)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">sys</span><span class="hl-code"> </span><span class="hl-comment"># 引入 sys 模块</span><span class="hl-code">
+</span><span class="hl-identifier">list</span><span class="hl-code">=</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-code">,</span><span class="hl-number">2</span><span class="hl-code">,</span><span class="hl-number">3</span><span class="hl-code">,</span><span class="hl-number">4</span><span class="hl-brackets">]</span><span class="hl-code">
+</span><span class="hl-identifier">it</span><span class="hl-code"> = </span><span class="hl-builtin">iter</span><span class="hl-brackets">(</span><span class="hl-identifier">list</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment"># 创建迭代器对象</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-reserved">True</span><span class="hl-code">:
+    </span><span class="hl-reserved">try</span><span class="hl-code">:
+        </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">next</span><span class="hl-brackets">(</span><span class="hl-identifier">it</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">except</span><span class="hl-code"> </span><span class="hl-reserved">StopIteration</span><span class="hl-code">:
+        </span><span class="hl-identifier">sys</span><span class="hl-code">.</span><span class="hl-identifier">exit</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果如下：</p>
+<pre>
+1
+2
+3
+4
+</pre>
+<hr/>
+<h2>生成器</h2><p>
+<p>在 Python 中，使用了 yield 的函数被称为生成器（generator）。</p>
+<p>跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。 </p>
+<p>在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。</p>
+<p>调用一个生成器函数，返回的是一个迭代器对象。</p>
+<p>以下实例使用 yield 实现斐波那契数列：</p>
+<div class="example">
+<h2 class="example">实例(Python 3.0+)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">#!/usr/bin/python3</span><span class="hl-code">
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">sys</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">fibonacci</span><span class="hl-brackets">(</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code">: </span><span class="hl-comment"># 生成器函数 - 斐波那契</span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-code">, </span><span class="hl-identifier">counter</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-reserved">True</span><span class="hl-code">:
+        </span><span class="hl-identifier">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">counter</span><span class="hl-code"> &gt; </span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code">: 
+            </span><span class="hl-reserved">return</span><span class="hl-code">
+</span><span class="hl-reserved">yield</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code">
+</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-identifier">b</span><span class="hl-code">, </span><span class="hl-identifier">a</span><span class="hl-code"> + </span><span class="hl-identifier">b</span><span class="hl-code">
+</span><span class="hl-identifier">counter</span><span class="hl-code"> += </span><span class="hl-number">1</span><span class="hl-code">
+</span><span class="hl-identifier">f</span><span class="hl-code"> = </span><span class="hl-identifier">fibonacci</span><span class="hl-brackets">(</span><span class="hl-number">10</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment"># f 是一个迭代器，由生成器返回生成</span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-reserved">True</span><span class="hl-code">:
+    </span><span class="hl-reserved">try</span><span class="hl-code">:
+        </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">next</span><span class="hl-brackets">(</span><span class="hl-identifier">f</span><span class="hl-brackets">)</span><span class="hl-code">, </span><span class="hl-identifier">end</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-reserved">except</span><span class="hl-code"> </span><span class="hl-reserved">StopIteration</span><span class="hl-code">:
+        </span><span class="hl-identifier">sys</span><span class="hl-code">.</span><span class="hl-identifier">exit</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span></div>
+</div>
+</div><p>执行以上程序，输出结果如下：</p>
+<pre>
+0 1 1 2 3 5 8 13 21 34 55
+</pre>
+</p></div>

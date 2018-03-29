@@ -1,0 +1,134 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">Filter</span> 函数</h1>
+<hr/>
+<h2>PHP Filter 简介</h2>
+<p>PHP 过滤器用于对来自非安全来源的数据（比如用户输入）进行验证和过滤。</p>
+<hr/>
+<h2>安装</h2>
+<p>Filter 函数是 PHP 核心的组成部分。无需安装即可使用这些函数。</p>
+<hr/>
+<h2>PHP Filter 函数</h2>
+<p><b>PHP</b>：指示支持该函数的最早的 PHP 版本。</p>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="30%">函数</th>
+<th align="left" width="65%">描述</th>
+<th align="left" width="5%">PHP</th>
+</tr>
+<tr>
+<td><a href="func-filter-has-var.html">filter_has_var()</a></td>
+<td>检查是否存在指定输入类型的变量。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-filter-id.html">filter_id()</a></td>
+<td>返回指定过滤器的 ID 号。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-filter-input.html">filter_input()</a></td>
+<td>从脚本外部获取输入，并进行过滤。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-filter-input-array.html">filter_input_array()</a></td>
+<td>从脚本外部获取多项输入，并进行过滤。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-filter-list.html">filter_list()</a></td>
+<td>返回包含所有得到支持的过滤器的一个数组。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-filter-var-array.html">filter_var_array()</a></td>
+<td>获取多个变量，并进行过滤。</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="func-filter-var.html">filter_var()</a></td>
+<td>获取一个变量，并进行过滤。</td>
+<td>5</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>PHP Filters</h2>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="50%">ID 名称</th>
+<th align="left" width="50%">描述</th>
+</tr>
+<tr>
+<td><a href="filter-callback.html">FILTER_CALLBACK</a></td>
+<td>调用用户自定义函数来过滤数据。</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-string.html">FILTER_SANITIZE_STRING</a></td>
+<td>去除标签，去除或编码特殊字符。</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-stripped.html">FILTER_SANITIZE_STRIPPED</a></td>
+<td>"string" 过滤器的别名。</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-encoded.html">FILTER_SANITIZE_ENCODED</a></td>
+<td>URL-encode 字符串，去除或编码特殊字符。</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-special-chars.html">FILTER_SANITIZE_SPECIAL_CHARS</a></td>
+<td>HTML 转义字符 '"&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-email.html">FILTER_SANITIZE_EMAIL</a></td>
+<td>删除所有字符，除了字母、数字以及 !#$%&amp;'*+-/=?^_`{|}~@.[]</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-url.html">FILTER_SANITIZE_URL</a></td>
+<td>删除所有字符，除了字母、数字以及 $-_.+!*'(),{}|\^~[]`&lt;&gt;#%";/?:@&amp;=</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-number-int.html">FILTER_SANITIZE_NUMBER_INT</a></td>
+<td>删除所有字符，除了数字和 +-</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-number-float.html">FILTER_SANITIZE_NUMBER_FLOAT</a></td>
+<td>删除所有字符，除了数字、+- 以及 .,eE</td>
+</tr>
+<tr>
+<td><a href="filter-sanitize-magic-quotes.html">FILTER_SANITIZE_MAGIC_QUOTES</a></td>
+<td>应用 addslashes()。</td>
+</tr>
+<tr>
+<td><a href="filter-unsafe-raw.html">FILTER_UNSAFE_RAW</a></td>
+<td>不进行任何过滤，去除或编码特殊字符。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-int.html">FILTER_VALIDATE_INT</a></td>
+<td>把值作为整数来验证。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-boolean.html">FILTER_VALIDATE_BOOLEAN</a></td>
+<td>把值作为布尔选项来验证。如果是 "1"、"true"、"on" 和 "yes"，则返回 TRUE。如果是 "0"、"false"、"off"、"no" 和 ""，则返回 FALSE。否则返回 NULL。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-float.html">FILTER_VALIDATE_FLOAT</a></td>
+<td>把值作为浮点数来验证。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-regexp.html">FILTER_VALIDATE_REGEXP</a></td>
+<td>根据 regexp（一种兼容 Perl 的正则表达式）来验证值。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-url.html">FILTER_VALIDATE_URL</a></td>
+<td>把值作为 URL 来验证。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-email.html">FILTER_VALIDATE_EMAIL</a></td>
+<td>把值作为 e-mail 地址来验证。</td>
+</tr>
+<tr>
+<td><a href="filter-validate-ip.html">FILTER_VALIDATE_IP</a></td>
+<td>把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。</td>
+</tr>
+</table>
+</div>

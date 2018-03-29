@@ -1,0 +1,351 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">类型转换</span></h1>
+<hr/>
+<p>Number() 转换为数字， String() 转换为字符串， Boolean() 转化为布尔值。 </p>
+<hr/>
+<h2>JavaScript 数据类型</h2>
+<p>在 JavaScript 中有 5 种不同的数据类型：</p>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>object</li>
+<li>function</li>
+</ul>
+<p>3 种对象类型：</p>
+<ul>
+<li>Object</li>
+<li>Date</li>
+<li>Array</li>
+</ul>
+<p> 2 个不包含任何值的数据类型：</p>
+<ul>
+<li>null</li>
+<li>undefined</li>
+</ul>
+<hr/>
+<h2>typeof 操作符</h2>
+<p>你可以使用 <strong>typeof</strong> 操作符来查看 JavaScript 变量的数据类型。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">typeof</span> <span class="highVAL">"John"</span>                 
+<span class="highCOM">// 返回 string <br/></span>
+<span class="highELE">typeof</span> <span class="highVAL">3.14</span>                   
+<span class="highCOM">// 返回 number<br/></span>
+<span class="highELE">typeof</span> NaN                    
+<span class="highCOM">// 返回 number<br/></span><span class="highELE">typeof</span> <span class="highVAL">false</span>                  <span class="highCOM">// 返回 boolean<br/></span><span class="highELE">typeof</span> [<span class="highVAL">1</span>,<span class="highVAL">2</span>,<span class="highVAL">3</span>,<span class="highVAL">4</span>]              <span class="highCOM">// 返回 object<br/></span>
+<span class="highELE">typeof</span> {name:<span class="highVAL">'John'</span>, age:34} 
+<span class="highCOM">// 返回 object<br/></span><span class="highELE">typeof</span> <span class="highELE">new</span> Date()             
+<span class="highCOM">// 返回 object<br/></span><span class="highELE">typeof</span> <span class="highELE">function</span> () {}         <span class="highCOM">// 返回 function<br/></span>
+<span class="highELE">typeof</span> myCar                  
+<span class="highCOM">// 返回 undefined (如果 myCar 没有声明)<br/></span>
+<span class="highELE">typeof</span> <span class="highVAL">null</span>                   
+<span class="highCOM">// 返回 object
+</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof_all" target="_blank">尝试一下 »</a>
+</div>
+<p>请注意：</p>
+<ul>
+<li> NaN 的数据类型是 number</li>
+<li> 数组(Array)的数据类型是 object</li>
+<li> 日期(Date)的数据类型为 object</li>
+<li> null 的数据类型是 object</li>
+<li> 未定义变量的数据类型为 undefined</li>
+</ul>
+<p>如果对象是 JavaScript Array 或 JavaScript Date ，我们就无法通过 <strong>typeof</strong> 来判断他们的类型，因为都是 返回 Object。</p>
+<hr/>
+<h2>constructor 属性</h2>
+<p> <strong>constructor</strong> 属性返回所有 JavaScript 变量的构造函数。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highVAL">"John"</span>.constructor                 
+<span class="highCOM">// 返回函数 String()  { [native code] }<br/></span>
+(<span class="highVAL">3.14</span>).constructor                 
+<span class="highCOM">// 返回函数 Number()  { [native code] }<br/></span>
+false.constructor                 
+<span class="highCOM">// 返回函数 Boolean() { [native code] }<br/></span>
+[<span class="highVAL">1</span>,<span class="highVAL">2</span>,<span class="highVAL">3</span>,<span class="highVAL">4</span>].constructor             
+<span class="highCOM">// 返回函数 Array()   { [native code] }<br/></span>
+{name:<span class="highVAL">'John'</span>, age:34}.constructor 
+<span class="highCOM">// 返回函数 Object()  { [native code] }<br/></span>
+<span class="highELE">new</span> Date().constructor            
+<span class="highCOM">// 返回函数 Date()    { [native code] }<br/></span>
+<span class="highELE">function</span> () {}.constructor        
+<span class="highCOM">// 返回函数 Function(){ [native code] }
+</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_constructor_all" target="_blank">尝试一下 »</a>
+</div>
+<p>
+你可以使用 constructor 属性来查看对象是否为数组
+(包含字符串 "Array"):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">function</span> isArray(myArray) {<br/>
+    <span class="highELE">return</span> myArray.constructor.toString().indexOf(<span class="highVAL">"Array"</span>) &gt; <span class="highVAL">-1</span>;<br/>
+}
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_array_isarray" target="_blank">尝试一下 »</a>
+</div>
+<p>你可以使用 constructor 属性来查看对象是否为日期
+(包含字符串 "Date"):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">function</span> isDate(myDate) {<br/>
+    <span class="highELE">return</span> myDate.constructor.toString().indexOf(<span class="highVAL">"Date"</span>) &gt; <span class="highVAL">-1</span>;<br/>
+}
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_date_isdate" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>JavaScript 类型转换</h2>
+<p>JavaScript 变量可以转换为新变量或其他数据类型：</p>
+<ul>
+<li>通过使用 JavaScript 函数</li>
+<li>通过 JavaScript 自身自动转换</li>
+</ul>
+<hr/>
+<h2>将数字转换为字符串</h2>
+<p>全局方法 <strong>String()</strong> 可以将数字转换为字符串。</p>
+<p>该方法可用于任何类型的数字，字母，变量，表达式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+	String(x)         <span class="highCOM">// 将变量 x 转换为字符串并返回<br/></span>
+	String(<span class="highVAL">123</span>)       <span class="highCOM">// 将数字 123 转换为字符串并返回<br/></span>
+	String(<span class="highVAL">100</span> + <span class="highVAL">23</span>)  <span class="highCOM">// 将数字表达式转换为字符串并返回</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_number_string" target="_blank">尝试一下 »</a>
+</div>
+<p> Number 方法 <strong>toString()</strong> 也是有同样的效果。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+x.toString()<br/>(<span class="highVAL">123</span>).toString()<br/>(<span class="highVAL">100</span> + <span class="highVAL">23</span>).toString()</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_number_tostring" target="_blank">尝试一下 »</a>
+</div>
+<p>在 <a href="/jsref/jsref-obj-number.html">Number 方法</a> 章节中，你可以找到更多数字转换为字符串的方法：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>toExponential()</td>
+<td>把对象的值转换为指数计数法。</td>
+</tr>
+<tr>
+<td>toFixed()</td>
+<td>把数字转换为字符串，结果的小数点后有指定位数的数字。</td>
+</tr>
+<tr>
+<td>toPrecision()</td>
+<td>把数字格式化为指定的长度。</td>
+</tr>
+</tbody></table>
+<br/>
+<hr/>
+<h2>将布尔值转换为字符串</h2>
+<p>全局方法 <strong>String()</strong> 可以将布尔值转换为字符串。 </p>
+<div class="example">
+<div class="example_code">
+String(<span class="highVAL">false</span>)        <span class="highCOM">// 返回 "false"<br/></span>
+String(<span class="highVAL">true</span>)         <span class="highCOM">// 返回 "true"
+</span></div>
+</div>
+<p>Boolean 方法 <strong>toString()</strong> 也有相同的效果。</p>
+<div class="example">
+<div class="example_code">
+false.toString()     <span class="highCOM">// 返回 "false"<br/></span>
+true.toString()      <span class="highCOM">// 返回 "true"
+</span></div>
+</div>
+<br/>
+<hr/>
+<h2>将日期转换为字符串</h2>
+<p>Date() 返回字符串。</p>
+<div class="example">
+<div class="example_code">
+	Date()      <span class="highCOM">// 返回 Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)</span></div>
+</div>
+<p>
+全局方法 String() 可以将日期对象转换为字符串。</p>
+<div class="example">
+<div class="example_code">
+	String(new Date())      <span class="highCOM">// 返回 Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)</span></div>
+</div>
+<p> Date 方法 <strong>toString()</strong> 也有相同的效果。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">obj = new Date()<br/>
+		obj.toString()   <span class="highCOM">// 返回 Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)</span></div>
+</div>
+<p>在 <a href="/jsref/jsref-obj-date.html">Date 方法</a> 章节中，你可以查看更多关于日期转换为字符串的函数：</p>
+<table class="reference">
+<tbody><tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>getDate()</td>
+<td>从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td>getDay()</td>
+<td>从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
+</tr>
+<tr>
+<td>getFullYear()</td>
+<td>从 Date 对象以四位数字返回年份。</td>
+</tr>
+<tr>
+<td>getHours()</td>
+<td>返回 Date 对象的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td>getMilliseconds()</td>
+<td>返回 Date 对象的毫秒(0 ~ 999)。</td>
+</tr>
+<tr>
+<td>getMinutes()</td>
+<td>返回 Date 对象的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td>getMonth()</td>
+<td>从 Date 对象返回月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td>getSeconds()</td>
+<td>返回 Date 对象的秒数 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td>getTime()</td>
+<td>返回 1970 年 1 月 1 日至今的毫秒数。</td>
+</tr>
+</tbody></table>
+<br/>
+<hr/>
+<h2>将字符串转换为数字</h2>
+<p>全局方法 <strong>Number()</strong> 可以将字符串转换为数字。</p>
+<p>字符串包含数字(如 "3.14") 转换为数字 (如 3.14).</p>
+<p>空字符串转换为 0。</p>
+<p>其他的字符串会转换为 NaN (不是个数字)。</p>
+<div class="example">
+<div class="example_code">
+Number(<span class="highVAL">"3.14"</span>)    <span class="highCOM">// 返回 3.14<br/></span>
+Number(<span class="highVAL">" "</span>)       <span class="highCOM">// 返回 0 <br/></span>
+Number(<span class="highVAL">""</span>)        	<span class="highCOM">// 返回 0<br/></span>
+Number(<span class="highVAL">"99 88"</span>)   <span class="highCOM">// 返回 NaN
+</span></div>
+</div>
+<p>在 <a href="/jsref/jsref-obj-number.html">Number 方法</a> 章节中，你可以查看到更多关于字符串转为数字的方法：</p>
+<table class="reference">
+<tbody><tr>
+<th style="width:25%">方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>parseFloat()</td>
+<td>解析一个字符串，并返回一个浮点数。</td>
+</tr>
+<tr>
+<td>parseInt()</td>
+<td>解析一个字符串，并返回一个整数。</td>
+</tr>
+</tbody></table>
+<br/>
+<hr/>
+<h2>一元运算符 + </h2>
+<p> <strong>Operator + </strong> 可用于将变量转换为数字：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span> y = <span class="highVAL">"5"</span>;     
+<span class="highCOM">// y 是一个字符串<br/></span>
+<span class="highELE">var</span> x = + y;      
+<span class="highCOM">// x 是一个数字
+</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof3" target="_blank">尝试一下 »</a>
+</div>
+<p>如果变量不能转换，它仍然会是一个数字，但值为 NaN 
+(不是一个数字):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highELE">var</span> y = <span class="highVAL">"John"</span>;  
+<span class="highCOM">// y 是一个字符串<br/></span>
+<span class="highELE">var</span> x = + y;      <span class="highCOM">// x 是一个数字 (NaN)</span></div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_typeof4" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>将布尔值转换为数字</h2>
+<p>全局方法 <strong>Number()</strong> 可将布尔值转换为数字。</p>
+<div class="example">
+<div class="example_code">
+Number(<span class="highVAL">false</span>)     <span class="highCOM">// 返回 0<br/></span>
+Number(<span class="highVAL">true</span>)      <span class="highCOM">// 返回 1
+</span></div>
+</div>
+<br/>
+<hr/>
+<h2>将日期转换为数字</h2>
+<p>全局方法 <strong>Number()</strong> 可将日期转换为数字。</p>
+<div class="example">
+<div class="example_code">
+d = <span class="highELE">new</span> Date();<br/>Number(d)          <span class="highCOM">// 返回 1404568027739
+</span></div>
+</div>
+<p>日期方法 <strong>getTime()</strong>   也有相同的效果。</p>
+<div class="example">
+<div class="example_code">
+d = <span class="highELE">new</span> Date();<br/>d.getTime()        <span class="highCOM">// 返回 1404568027739
+</span></div>
+</div>
+<br/>
+<hr/>
+<h2>自动转换类型</h2>
+<p>当 JavaScript 尝试操作一个 "错误" 的数据类型时，会自动转换为 "正确" 的数据类型。</p>
+<p>以下输出结果不是你所期望的：</p>
+<div class="example">
+<div class="example_code">
+<span class="highVAL">5</span> + <span class="highVAL">null</span>    <span class="highCOM">// 返回 5         
+ null 转换为 0<br/></span><span class="highVAL">"5"</span> + <span class="highVAL">null</span>  <span class="highCOM">// 返回"5null"   
+	 null 转换为 "null"<br/></span>
+<span class="highVAL">"5"</span> + <span class="highVAL">1</span>     <span class="highCOM">// 返回 "51"      
+ 1 转换为 "1"  <br/></span>
+<span class="highVAL">"5"</span> - <span class="highVAL">1</span>     <span class="highCOM">// 返回 4         
+ "5" 转换为 5</span></div>
+</div>
+<br/>
+<hr/>
+<h2>自动转换为字符串</h2>
+<p>当你尝试输出一个对象或一个变量时 JavaScript 会自动调用变量的 toString() 方法：</p>
+<div class="example">
+<div class="example_code">
+document.getElementById(<span class="highVAL">"demo"</span>).innerHTML = myVar;<br/><br/>
+<span class="highCOM">// if myVar = {name:"Fjohn"}  // toString 转换为 "[object Object]"<br/></span>
+<span class="highCOM">// if myVar = [1,2,3,4]       // toString 转换为 "1,2,3,4"<br/></span>
+<span class="highCOM">// if myVar = new Date()      // toString 转换为 "Fri Jul 18 2014 09:08:55 GMT+0200"<br/></span>
+</div>
+</div>
+<p>数字和布尔值也经常相互转换：</p>
+<div class="example">
+<div class="example_code">
+<span class="highCOM">// if myVar = 123             // toString 转换为 "123"<br/></span>
+<span class="highCOM">// if myVar = true            // toString 转换为 "true"<br/></span>
+<span class="highCOM">// if myVar = false           // toString 转换为 "false"
+</span></div>
+</div>
+</div>

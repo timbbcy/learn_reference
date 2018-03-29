@@ -1,0 +1,139 @@
+<div class="article-intro" id="content">
+<h1><span class="color_h1">服务器上的 XML</span>
+</h1>
+<hr/>
+<p class="intro">XML 文件是类似 HTML 文件的纯文本文件。</p>
+<p class="intro">XML 能够通过标准的 Web 服务器轻松地存储和生成。</p>
+<hr/>
+<h2>在服务器上存储 XML 文件</h2>
+<p>XML 文件在 Internet 服务器上进行存储的方式与 HTML 文件完全相同。</p>
+<p>启动 Windows 记事本，并写入以下行：</p>
+<div class="code notranslate"><div>
+
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br/>
+&lt;note&gt;<br/>
+   
+  &lt;from&gt;Jani&lt;/from&gt;<br/>
+   
+  &lt;to&gt;Tove&lt;/to&gt;<br/>
+   
+  &lt;message&gt;Remember me this weekend&lt;/message&gt;<br/>
+&lt;/note&gt;<br/>
+</div></div>
+<p>然后用适当的文件名，比如 "note.xml"，在 Web 服务器上保存这个文件。</p>
+<hr/>
+<h2>通过 ASP 生成 XML</h2>
+<p>XML 可在不安装任何 XML 软件的情况下在服务器端生成。</p>
+<p>如需从服务器生成 XML 响应 - 只需简单地编写以下代码并在 Web 服务器上把它保存为一个 ASP 文件：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+response.ContentType="text/xml"<br/>
+response.Write("&lt;?xml version='1.0' encoding='ISO-8859-1'?&gt;")<br/>
+response.Write("&lt;note&gt;")<br/>
+response.Write("&lt;from&gt;Jani&lt;/from&gt;")<br/>
+response.Write("&lt;to&gt;Tove&lt;/to&gt;")<br/>
+response.Write("&lt;message&gt;Remember me this weekend&lt;/message&gt;")<br/>
+response.Write("&lt;/note&gt;")<br/>
+%&gt;
+</div></div>
+<p>请注意，此响应的内容类型必须设置为 "text/xml"。</p>
+<p><a href="/try/xml/note.asp.xml" target="_blank">查看这个 ASP 文件如何从服务器返回</a>。</p>
+<p>如果您想要学习 ASP，请在我们的<a href="/">首页</a>查找 ASP 教程。</p>
+<hr/>
+<h2>通过 PHP 生成 XML</h2>
+<p>如需使用 PHP 从服务器上生成 XML 响应，请使用下面的代码：</p>
+<div class="code notranslate"><div>
+
+&lt;?php<br/>
+header("Content-type: text/xml");<br/>
+echo "&lt;?xml version='1.0' encoding='ISO-8859-1'?&gt;";<br/>
+echo "&lt;note&gt;";<br/>
+echo "&lt;from&gt;Jani&lt;/from&gt;";<br/>
+echo "&lt;to&gt;Tove&lt;/to&gt;";<br/>
+echo "&lt;message&gt;Remember me this weekend&lt;/message&gt;";<br/>
+echo "&lt;/note&gt;";<br/>
+?&gt;
+</div></div>
+<p>请注意，响应头部的内容类型必须设置为 "text/xml"。</p>
+<p><a href="/try/xml/note.php.xml" target="_blank">查看这个 PHP 文件如何从服务器返回</a>。</p>
+<p>如果您想要学习 PHP，请在我们的<a href="/">首页</a>查找 PHP 教程。</p>
+<hr/>
+<h2>从数据库生成 XML</h2>
+<p>XML 可在不安装任何 XML 软件的情况下从数据库生成。</p>
+<p>如需从服务器生成 XML 数据库响应，只需简单地编写以下代码，并把它在 Web 服务器上保存为 ASP 文件：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+response.ContentType = "text/xml"<br/>
+set conn=Server.CreateObject("ADODB.Connection")<br/>
+conn.provider="Microsoft.Jet.OLEDB.4.0;"<br/>
+conn.open server.mappath("/db/database.mdb")<br/><br/>
+sql="select fname,lname from tblGuestBook"<br/>
+set rs=Conn.Execute(sql)<br/><br/>
+response.write("&lt;?xml version='1.0' encoding='ISO-8859-1'?&gt;")<br/>
+response.write("&lt;guestbook&gt;")<br/>
+while (not rs.EOF)<br/>
+  response.write("&lt;guest&gt;")<br/>
+  response.write("&lt;fname&gt;" &amp; rs("fname") &amp; "&lt;/fname&gt;")<br/>
+  response.write("&lt;lname&gt;" &amp; rs("lname") &amp; "&lt;/lname&gt;")<br/>
+  response.write("&lt;/guest&gt;")<br/>
+  rs.MoveNext()<br/>
+wend<br/><br/>
+rs.close()<br/>
+conn.close()<br/>
+response.write("&lt;/guestbook&gt;")<br/>
+%&gt;<br/>
+</div></div>
+<p><a href="/try/xml/guestbook.asp.xml" target="_blank">查看以上 ASP 文件的实际数据库输出</a>。</p>
+<p>上面的实例使用了带有 ADO 的 ASP。</p>
+<p>如果您想要学习 ASP 和 ADO，请在我们的<a href="/">首页</a>查找相关教程。</p>
+<hr/>
+<h2>在服务器上通过 XSLT 转换 XML</h2>
+<p>下面的 ASP 代码在服务器上把 XML 文件转换为 XHTML：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+'Load XML<br/>
+set xml = Server.CreateObject("Microsoft.XMLDOM")<br/>
+xml.async = false<br/>
+xml.load(Server.MapPath("simple.xml"))<br/><br/>
+'Load XSL<br/>
+set xsl = Server.CreateObject("Microsoft.XMLDOM")<br/>
+xsl.async = false<br/>
+xsl.load(Server.MapPath("simple.xsl"))<br/><br/>
+'Transform file<br/>
+Response.Write(xml.transformNode(xsl))<br/>
+%&gt;
+
+
+</div></div>
+<p>实例解释</p>
+<ul>
+<li>第一个代码块创建微软 XML 解析器的实例（XMLDOM），并把 XML 文件载入内存。</li>
+<li>第二个代码块创建解析器的另一个实例，并把 XSL 文件载入内存。</li>
+<li>最后一个代码使用 XSL 文档来转换 XML 文档，并把结果以 XHTML 发送到您的浏览器。</li>
+</ul>
+<p><a href="/try/xml/simple.php" target="_blank">看看上面的代码怎么运行</a>。</p>
+<hr/>
+<h2>通过 ASP 把 XML 保存为文件</h2>
+<p>这个 ASP 实例会创建一个简单的 XML 文档，并把该文档保存到服务器上：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+text="&lt;note&gt;"<br/>
+text=text &amp; "&lt;to&gt;Tove&lt;/to&gt;"<br/>
+text=text &amp; "&lt;from&gt;Jani&lt;/from&gt;"<br/>
+text=text &amp; "&lt;heading&gt;Reminder&lt;/heading&gt;"<br/>
+text=text &amp; "&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;"<br/>
+text=text &amp; "&lt;/note&gt;"<br/><br/>
+set xmlDoc=Server.CreateObject("Microsoft.XMLDOM")<br/>
+xmlDoc.async=false<br/>
+xmlDoc.loadXML(text)<br/><br/>
+xmlDoc.Save("test.xml")<br/>
+%&gt;
+
+
+</div></div>
+<br/>
+</div>

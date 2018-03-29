@@ -1,0 +1,59 @@
+<div class="article-intro" id="content">
+<h1>CSS <span class="color_h1">分组</span> 和 <span class="color_h1">嵌套</span> 选择器</h1>
+<hr/>
+<h2>Grouping Selectors</h2>
+<p>在样式表中有很多具有相同样式的元素。</p>
+<div class="code"><div>
+
+h1<br/>
+{<br/>
+color:green;<br/>
+}<br/>
+h2<br/>
+{<br/>
+color:green;<br/>
+}<br/>
+p<br/>
+{<br/>
+color:green;<br/>
+}</div></div>
+<p>为了尽量减少代码，你可以使用分组选择器。</p>
+<p>每个选择器用逗号分隔.</p>
+<p>在下面的例子中，我们对以上代码使用分组选择器：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+h1,h2,p<br/>
+{<br/>
+color:green;<br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_grouping" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>嵌套选择器</h2>
+<p>它可能适用于选择器内部的选择器的样式。</p>
+<p>在下面的例子设置了三个样式：</p>
+<ul><li>为所有p元素指定一个样式</li>
+<li>为所有class="marked"的元素指定一个样式</li>
+<li>为所有class="marked"元素内的p元素指定一个样式</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+p<br/>
+{<br/>
+color:blue;<br/>
+text-align:center;<br/>
+}<br/>
+.marked<br/>
+{<br/>
+background-color:red;<br/>
+}<br/>
+.marked p<br/>
+{<br/>
+color:white;<br/>
+}</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_nesting" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+</div>

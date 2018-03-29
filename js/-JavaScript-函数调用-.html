@@ -1,0 +1,180 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">函数调用</span>
+</h1>
+<hr/>
+<p class="intro">JavaScript 函数有 4 种调用方式。</p>
+<p class="intro">每种方式的不同在于 <strong>this</strong> 的初始化。 </p>
+<hr/>
+<h2> <em><strong>this</strong></em> 关键字</h2>
+<p>一般而言，在Javascript中，this指向函数执行时的当前对象。</p>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>注意 <strong>this</strong> 是保留关键字，你不能修改 <strong>this</strong> 的值。</td>
+</tr></table>
+<hr/>
+<h2>调用 JavaScript 函数</h2>
+<p>在之前的章节中我们已经学会了如何创建函数。 </p>
+<p>函数中的代码在函数被调用后执行。</p>
+<hr/>
+<h2>作为一个函数调用</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-code">;           </span><span class="hl-comment">//</span><span class="hl-comment"> myFunction(10, 2) 返回 20</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_function" target="_blank">尝试一下 »</a>
+</div>
+<p>以上函数不属于任何对象。但是在 JavaScript 中它始终是默认的全局对象。</p>
+<p>在 HTML 中默认的全局对象是 HTML 页面本身，所以函数是属于 HTML 页面。</p>
+<p>在浏览器中的页面对象是浏览器窗口(window 对象)。以上函数会自动变为 window 对象的函数。</p>
+<p>myFunction() 和 window.myFunction() 是一样的：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-builtin">window</span><span class="hl-code">.</span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-code">;    </span><span class="hl-comment">//</span><span class="hl-comment"> window.myFunction(10, 2) 返回 20</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_function_2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>这是调用 JavaScript 函数常用的方法， 但不是良好的编程习惯
+<br/>全局变量，方法或函数容易造成命名冲突的bug。 </td>
+</tr></table>
+<hr/>
+<h2>全局对象</h2>
+<p>当函数没有被自身的对象调用时 <strong>this</strong> 的值就会变成全局对象。</p>
+<p>在 web 浏览器中全局对象是浏览器窗口（window 对象）。</p>
+<p>该实例返回 <strong>this</strong> 的值是 window 对象:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">this</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;                </span><span class="hl-comment">//</span><span class="hl-comment"> 返回 window 对象</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_function_3" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>函数作为全局对象调用，会使 <strong>this</strong> 的值成为全局对象。<br/>使用 window 对象作为一个变量容易造成程序崩溃。</td>
+</tr></table>
+<hr/>
+<h2>函数作为方法调用</h2>
+<p>在 JavaScript 中你可以将函数定义为对象的方法。</p>
+<p>以下实例创建了一个对象 (<strong>myObject</strong>), 对象有两个属性 (<strong>firstName</strong> 和 <strong>lastName</strong>), 及一个方法 (<strong>fullName</strong>):</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myObject</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">firstName</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-identifier">lastName</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">Doe</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-identifier">fullName</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">firstName</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">lastName</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">myObject</span><span class="hl-code">.</span><span class="hl-identifier">fullName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;         </span><span class="hl-comment">//</span><span class="hl-comment"> 返回 "John Doe"</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_method" target="_blank">尝试一下 »</a>
+</div>
+<p><strong>fullName</strong> 方法是一个函数。函数属于对象。 <strong>myObject</strong> 是函数的所有者。</p>
+<p> <strong>this</strong>对象，拥有 JavaScript 代码。实例中 <strong>this</strong> 的值为 <strong>myObject</strong> 对象。 </p>
+<p>测试以下！修改 <strong>fullName</strong> 方法并返回 <strong>this</strong> 值:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">myObject</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">firstName</span><span class="hl-code">:</span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-identifier">lastName</span><span class="hl-code">: </span><span class="hl-quotes">"</span><span class="hl-string">Doe</span><span class="hl-quotes">"</span><span class="hl-code">,
+    </span><span class="hl-identifier">fullName</span><span class="hl-code">: </span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">this</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">myObject</span><span class="hl-code">.</span><span class="hl-identifier">fullName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;          </span><span class="hl-comment">//</span><span class="hl-comment"> 返回 [object Object] (所有者对象)</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_method_2" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>函数作为对象方法调用，会使得 <strong>this</strong> 的值成为对象本身。</td>
+</tr></table>
+<hr/>
+<h2>使用构造函数调用函数</h2>
+<p>如果函数调用前使用了 <strong>new</strong> 关键字, 则是调用了构造函数。</p>
+<p>这看起来就像创建了新的函数，但实际上 JavaScript 函数是重新创建的对象：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code"><div class="hl-main"><span class="hl-comment">//</span><span class="hl-comment"> 构造函数:</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">arg1</span><span class="hl-code">, </span><span class="hl-identifier">arg2</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">firstName</span><span class="hl-code"> = </span><span class="hl-identifier">arg1</span><span class="hl-code">;
+    </span><span class="hl-reserved">this</span><span class="hl-code">.</span><span class="hl-identifier">lastName</span><span class="hl-code">  = </span><span class="hl-identifier">arg2</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> This    creates a new object</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">,</span><span class="hl-quotes">"</span><span class="hl-string">Doe</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">firstName</span><span class="hl-code">;                             </span><span class="hl-comment">//</span><span class="hl-comment"> 返回 "John"</span><span class="hl-comment"></span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_constructor" target="_blank">尝试一下 »</a>
+</div>
+<p>
+构造函数的调用会创建一个新的对象。新对象会继承构造函数的属性和方法。 </p>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>构造函数中 <strong>this</strong> 关键字没有任何的值。<br/>
+<strong>this</strong> 的值在函数调用实例化对象(new object)时创建。</td>
+</tr></table>
+<hr/>
+<h2>作为函数方法调用函数</h2>
+<p>在 JavaScript 中, 函数是对象。JavaScript 函数有它的属性和方法。</p>
+<p><strong>call()</strong> 和 <strong>apply()</strong> 是预定义的函数方法。
+两个方法可用于调用函数，两个方法的第一个参数必须是对象本身。 </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">myObject</span><span class="hl-code"> = </span><span class="hl-identifier">myFunction</span><span class="hl-code">.</span><span class="hl-identifier">call</span><span class="hl-brackets">(</span><span class="hl-identifier">myObject</span><span class="hl-code">, </span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-code">;     </span><span class="hl-comment">//</span><span class="hl-comment"> 返回 20</span><span class="hl-comment"></span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_call" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">myFunction</span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">, </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">myArray</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-number">10</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-brackets">]</span><span class="hl-code">;
+</span><span class="hl-identifier">myObject</span><span class="hl-code"> = </span><span class="hl-identifier">myFunction</span><span class="hl-code">.</span><span class="hl-identifier">apply</span><span class="hl-brackets">(</span><span class="hl-identifier">myObject</span><span class="hl-code">, </span><span class="hl-identifier">myArray</span><span class="hl-brackets">)</span><span class="hl-code">;  </span><span class="hl-comment">//</span><span class="hl-comment"> 返回 20</span><span class="hl-comment"></span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=tryjs_invoke_apply" target="_blank">尝试一下 »</a>
+</div>
+<p>
+
+两个方法都使用了对象本身作为第一个参数。
+两者的区别在于第二个参数：
+apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。 
+</p>
+<p>
+
+在 JavaScript 严格模式(strict mode)下, 在调用函数时第一个参数会成为 <strong>this</strong> 的值， 即使该参数不是一个对象。</p>
+<p>在 JavaScript 非严格模式(non-strict mode)下, 如果第一个参数的值是 null 或 undefined, 它将使用全局对象替代。 </p>
+<p>
+</p>
+<table class="lamp"><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>通过 call() 或 apply() 方法你可以设置 <strong>this</strong> 的值, 且作为已存在对象的新方法调用。</td>
+</tr></table>
+</div>

@@ -1,0 +1,163 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">选择器</span>
+</h1>
+<hr/>
+<p class="intro">jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。</p>
+<hr/>
+<h2>jQuery 选择器</h2>
+<p>jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。</p>
+<p>jQuery 选择器基于元素的 id、类、类型、属性、属性值等"查找"（或选择）HTML 元素。
+它基于已经存在的 <a href="/cssref/css-selectors.html">CSS 选择器</a>，除此之外，它还有一些自定义的选择器。</p>
+<p>jQuery 中所有选择器都以美元符号开头：$()。</p>
+<hr/>
+<h2>元素选择器</h2>
+<p> jQuery 元素选择器基于元素名选取元素。</p>
+<p>在页面中选取所有 &lt;p&gt; 元素:</p>
+<div class="code">
+<div>
+$("p")
+</div>
+</div>
+<p><b>实例</b></p>
+<p>用户点击按钮后，所有 &lt;p&gt; 元素都隐藏： </p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_p" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2> #id 选择器</h2>
+<p>jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素。</p>
+<p>页面中元素的 id 应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器。</p>
+<p>通过 id 选取元素语法如下：</p>
+<div class="code">
+<div>
+$("#test")
+</div>
+</div>
+<p><b>实例</b></p>
+<p>当用户点击按钮后，有 id="test" 属性的元素将被隐藏：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#test</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_id" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2> .class 选择器</h2>
+<p>jQuery 类选择器可以通过指定的 class 查找元素。</p>
+<p>语法如下：</p>
+<div class="code">
+<div>
+$(".test")
+</div>
+</div>
+<p><b>实例</b></p>
+<p>用户点击按钮后所有带有 class="test" 属性的元素都隐藏：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-builtin">document</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">ready</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">.test</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">hide</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_hide_class" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>更多实例</h2>
+<table class="reference">
+<tr>
+<th align="left" width="25%">语法</th>
+<th align="left" width="65%">描述</th>
+<th align="left" width="10%">实例</th>
+</tr>
+<tr>
+<td>$("*")</td>
+<td>选取所有元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_all2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$(this)</td>
+<td>选取当前 HTML 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_this" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("p.intro")</td>
+<td>选取 class 为 intro 的 &lt;p&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_pclass" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("p:first")</td>
+<td>选取第一个 &lt;p&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_pfirst" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("ul li:first")</td>
+<td>选取第一个 &lt;ul&gt; 元素的第一个 &lt;li&gt; 元素 </td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_ullifirst" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("ul li:first-child")</td>
+<td>选取每个 &lt;ul&gt; 元素的第一个 &lt;li&gt; 元素 </td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_ullifirstchild" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("[href]")</td>
+<td>选取带有 href 属性的元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_hrefattr" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("a[target='_blank']")</td>
+<td>选取所有 target 属性值等于 "_blank" 的 &lt;a&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_hrefattrblank" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("a[target!='_blank']")</td>
+<td>选取所有 target 属性值不等于 "_blank" 的 &lt;a&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_hrefattrnotblank" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$(":button")</td>
+<td>选取所有 type="button" 的 &lt;input&gt; 元素 和 &lt;button&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_button2" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("tr:even")</td>
+<td>选取偶数位置的 &lt;tr&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_even" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+<tr>
+<td>$("tr:odd")</td>
+<td>选取奇数位置的 &lt;tr&gt; 元素</td>
+<td><a class="tryitbtn" href="/try/try.php?filename=tryjquery_sel_odd" style="width:55px;padding-top:0px;padding-bottom:1px" target="_blank">在线实例</a></td>
+</tr>
+</table>
+<hr/>
+<h2>独立文件中使用 jQuery 函数</h2>
+<p>如果您的网站包含许多页面，并且您希望您的 jQuery 函数易于维护，那么请把您的 jQuery 函数放到独立的 .js 文件中。</p>
+<p>当我们在教程中演示 jQuery 时，会将函数直接添加到 &lt;head&gt; 部分中。不过，把它们放到一个单独的文件中会更好，就像这样（通过 src 属性来引用文件）：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">my_jquery_functions.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+</div>
+</div>

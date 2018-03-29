@@ -1,0 +1,115 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 拖放 - <span class="color_h1">创建拖放的购物车</span></h1>
+<p>如果您能够通过您的 Web 应用简单地实现拖动和放置，您就会知道一些特别的东西。通过 jQuery EasyUI，我们在 Web 应用中可以简单地实现拖放功能。
+</p>
+<p>在本教程中，我们将向您展示如何创建一个启用用户拖动和放置用户想买的商品的购物车页面。购物篮中的物品和价格将更新。
+</p>
+<img src="/wp-content/uploads/2013/12/shopping.jpg"/>
+<h4>显示页面上的商品</h4>
+<pre style="color:#006600">
+    &lt;ul class="products"&gt;
+        &lt;li&gt;
+            &lt;a href="#" class="item"&gt;
+                &lt;img src="images/shirt1.gif"/&gt;
+                &lt;div&gt;
+                    &lt;p&gt;Balloon&lt;/p&gt;
+                    &lt;p&gt;Price:$25&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href="#" class="item"&gt;
+                &lt;img src="images/shirt2.gif"/&gt;
+                &lt;div&gt;
+                    &lt;p&gt;Feeling&lt;/p&gt;
+                    &lt;p&gt;Price:$25&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;!-- other products --&gt;
+    &lt;/ul&gt;
+</pre>
+<p>
+正如您所看到的上面的代码，我们添加一个包含一些 &lt;li&gt; 元素的 &lt;ul&gt; 元素来显示商品。所有商品都有名字和价格属性，它们包含在 &lt;p&gt; 元素中。
+</p>
+<h4>创建购物车</h4>
+<pre style="color:#006600">
+    &lt;div class="cart"&gt;
+        &lt;h1&gt;Shopping Cart&lt;/h1&gt;
+        &lt;table id="cartcontent" style="width:300px;height:auto;"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th field="name" width=140&gt;Name&lt;/th&gt;
+                    &lt;th field="quantity" width=60 align="right"&gt;Quantity&lt;/th&gt;
+                    &lt;th field="price" width=60 align="right"&gt;Price&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+        &lt;/table&gt;
+        &lt;p class="total"&gt;Total: $0&lt;/p&gt;
+        &lt;h2&gt;Drop here to add to cart&lt;/h2&gt;
+    &lt;/div&gt;
+</pre>
+<p>我们使用数据网格（datagrid）来显示购物篮中的物品。</p>
+<h4>拖动克隆的商品</h4>
+<pre style="color:#006600">
+    $('.item').draggable({
+        revert:true,
+        proxy:'clone',
+        onStartDrag:function(){
+            $(this).draggable('options').cursor = 'not-allowed';
+            $(this).draggable('proxy').css('z-index',10);
+        },
+        onStopDrag:function(){
+            $(this).draggable('options').cursor='move';
+        }
+    });
+</pre>
+<p>请注意，我们把 draggable 属性的值从 'proxy' 设置为 'clone'，所以拖动元素将由克隆产生。</p>
+<h4>放置选择商品到购物车中</h4>
+<pre style="color:#006600">
+    $('.cart').droppable({
+        onDragEnter:function(e,source){
+            $(source).draggable('options').cursor='auto';
+        },
+        onDragLeave:function(e,source){
+            $(source).draggable('options').cursor='not-allowed';
+        },
+        onDrop:function(e,source){
+            var name = $(source).find('p:eq(0)').html();
+            var price = $(source).find('p:eq(1)').html();
+            addProduct(name, parseFloat(price.split('$')[1]));
+        }
+    });
+    var data = {"total":0,"rows":[]};
+    var totalCost = 0;
+    function addProduct(name,price){
+        function add(){
+            for(var i=0; i&lt;data.total; i++){
+                var row = data.rows[i];
+                if (row.name == name){
+                    row.quantity += 1;
+                    return;
+                }
+            }
+            data.total += 1;
+            data.rows.push({
+                name:name,
+                quantity:1,
+                price:price
+            });
+        }
+        add();
+        totalCost += price;
+        $('#cartcontent').datagrid('loadData', data);
+        $('div.cart .total').html('Total: $'+totalCost);
+    }    
+</pre>
+<p>每当放置商品的时候，我们首先得到商品名称和价格，然后调用 'addProduct' 函数来更新购物篮。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-dd-shopping.zip">jeasyui-dd-shopping.zip</a></p>
+</div>

@@ -1,0 +1,151 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">输出</span></h1>
+<hr/>
+<p class="intro">JavaScript 没有任何打印或者输出的函数。</p>
+<h2>JavaScript 显示数据</h2>
+<p>JavaScript 可以通过不同的方式来输出数据：</p>
+<ul>
+<li>使用 <strong>window.alert()</strong> 弹出警告框。</li>
+<li>使用  <strong>document.write()</strong> 方法将内容写到 HTML 文档中。</li>
+<li>使用 <strong>innerHTML</strong> 写入到 HTML 元素。</li>
+<li>使用 <strong>console.log()</strong> 写入到浏览器的控制台。</li>
+</ul>
+<hr/>
+<h2>使用 window.alert()</h2>
+<p>你可以弹出警告框来显示数据：</p>
+<div class="example">
+<h3>实例</h3>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">!DOCTYPE</span> <span class="highATT">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">body</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>我的第一个页面<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>我的第一个段落。<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>window.alert(5 + 6);<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/html</span><span class="highGT">&gt;</span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_output_alert" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>操作 HTML 元素</h2>
+<p>如需从 JavaScript 访问某个 HTML 元素，您可以使用 document.getElementById(<i>id</i>) 方法。 </p>
+<p><p>请使用 "id" 属性来标识 HTML 元素，并 innerHTML 来获取或插入元素内容：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">!DOCTYPE</span> <span class="highATT">html</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">body</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>我的第一个 Web 页面<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">p</span> <span class="highATT">id=</span><span class="highVAL">"demo"</span><span class="highGT">&gt;</span>我的第一个段落<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+	document.getElementById("demo").innerHTML = "段落已修改。";<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/html</span><span class="highGT">&gt;</span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_dom" target="_blank">尝试一下 »</a>
+</div>
+<p>以上 JavaScript 语句（在 &lt;script&gt; 标签中）可以在 web 浏览器中执行：</p>
+<p><strong>document.getElementById("demo")</strong>  是使用 id 属性来查找 HTML 元素的 JavaScript 代码 
+。</p>
+<p><strong>innerHTML = "段落已修改。"</strong> 是用于修改元素的 HTML 内容(innerHTML)的
+JavaScript 代码。 </p>
+<hr/>
+<h2>在本教程中</h2>
+<p>
+在大多数情况下，在本教程中，我们将使用上面描述的方法来输出：</p>
+<p>下面的例子直接把 id="demo" 的 &lt;p&gt; 元素写到 HTML 文档输出中：</p>
+<hr/>
+<h2>写到 HTML 文档</h2>
+<p>出于测试目的，您可以将JavaScript直接写在HTML 
+文档中：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">!DOCTYPE</span> <span class="highATT">html</span><span class="highGT">&gt;</span><br/><span class="highLT">&lt;</span><span class="highELE">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">body</span><span class="highGT">&gt;</span><br/><br/><span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>我的第一个 Web 页面<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>我的第一个段落。<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>document.write(Date());<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/html</span><span class="highGT">&gt;</span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_write" target="_blank">尝试一下 »</a>
+</div>
+<p>
+</p><table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>
+<p>请使用 document.write() 仅仅向文档输出写内容。 </p>
+<p>如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖。</p>
+</td>
+</tr></tbody></table>
+<br/>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">!DOCTYPE</span> <span class="highATT">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">body</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>我的第一个 Web 页面<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/>
+<br/><span class="highLT">&lt;</span><span class="highELE">p</span><span class="highGT">&gt;</span>我的第一个段落。<span class="highLT">&lt;</span><span class="highELE">/p</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">button</span> <span class="highATT">onclick=</span><span class="highVAL">"myFunction()"</span><span class="highGT">&gt;</span>点我<span class="highLT">&lt;</span><span class="highELE">/button</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+function myFunction() {<br/>
+   	document.write(Date());<br/>
+}<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/html</span><span class="highGT">&gt;</span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_write_over" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<hr/>
+<h2>写到控制台</h2>
+<p>如果您的浏览器支持调试，你可以使用 <strong>console.log()</strong> 
+方法在浏览器中显示 JavaScript 值。 </p>
+<p>浏览器中使用 F12 来启用调试模式， 在调试窗口中点击
+"Console" 菜单。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">!DOCTYPE</span> <span class="highATT">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">html</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">body</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">h1</span><span class="highGT">&gt;</span>我的第一个 Web 页面<span class="highLT">&lt;</span><span class="highELE">/h1</span><span class="highGT">&gt;</span><br/><br/>
+<span class="highLT">&lt;</span><span class="highELE">script</span><span class="highGT">&gt;</span><br/>
+a = 5;<br/>
+b = 6;<br/>
+c = a + b;<br/>
+console.log(c);<br/>
+<span class="highLT">&lt;</span><span class="highELE">/script</span><span class="highGT">&gt;</span><br/>
+<br/>
+<span class="highLT">&lt;</span><span class="highELE">/body</span><span class="highGT">&gt;</span><br/>
+<span class="highLT">&lt;</span><span class="highELE">/html</span><span class="highGT">&gt;</span>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=tryjs_console" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<p>实例 console 截图：</p><p>
+<img src="https://www.runoob.com/wp-content/uploads/2013/08/console-log.jpg"/></p>
+<hr/>
+<h2>您知道吗?</h2>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td>程序中调试是测试，查找及减少bug(错误)的过程。</td>
+</tr></tbody></table>
+</p></div>

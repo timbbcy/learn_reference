@@ -1,0 +1,156 @@
+<div class="article-intro" id="content">
+<h1>Java 运算符</h1>
+<p>计算机的最基本用途之一就是执行数学运算，作为一门计算机语言，Java也提供了一套丰富的运算符来操纵变量。我们可以把运算符分成以下几组：</p>
+<ul>
+<li>
+		算术运算符</li>
+<li>
+		关系运算符</li>
+<li>
+		位运算符</li>
+<li>
+		逻辑运算符</li>
+<li>
+		赋值运算符</li>
+<li>
+		其他运算符</li>
+</ul>
+<h2>算术运算符</h2>
+<p>算术运算符用在数学表达式中，它们的作用和在数学中的作用一样。下表列出了所有的算术运算符。</p>
+<p>表格中的实例假设整数变量A的值为10，变量B的值为20：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th style="width:64px;">
+			操作符</th>
+<th style="width:273px;">
+			描述</th>
+<th style="width:111px;">
+			例子</th>
+</tr>
+<tr>
+<td style="width:64px;">
+				+</td>
+<td style="width:273px;">
+				加法 - 相加运算符两侧的值</td>
+<td style="width:111px;">
+				A + B 等于 30</td>
+</tr>
+<tr>
+<td style="width:64px;">
+				-</td>
+<td style="width:273px;">
+				减法 - 左操作数减去右操作数</td>
+<td style="width:111px;">
+				A – B 等于 -10</td>
+</tr>
+<tr>
+<td style="width:64px;">
+				*</td>
+<td style="width:273px;">
+				乘法 - 相乘操作符两侧的值</td>
+<td style="width:111px;">
+				A * B等于200</td>
+</tr>
+<tr>
+<td style="width:64px;">
+				/</td>
+<td style="width:273px;">
+				除法 - 左操作数除以右操作数</td>
+<td style="width:111px;">
+				B / A等于2</td>
+</tr>
+<tr>
+<td style="width:64px;">
+				％</td>
+<td style="width:273px;">
+				取模 - 左操作数除以右操作数的余数</td>
+<td style="width:111px;">
+				B%A等于0</td>
+</tr>
+<tr>
+<td style="width:64px;">
+				++</td>
+<td style="width:273px;">
+				自增: 操作数的值增加1</td>
+<td style="width:111px;">
+				B++ 或 ++B 等于 21（区别详见下文）</td>
+</tr>
+<tr>
+<td style="width:64px;">
+				--</td>
+<td style="width:273px;">
+				自减: 操作数的值减少1</td>
+<td style="width:111px;">
+				B-- 或 --B 等于 19（区别详见下文）</td>
+</tr>
+</tbody>
+</table>
+<h3>实例</h3>
+<p>下面的简单示例程序演示了算术运算符。复制并粘贴下面的 Java 程序并保存为 Test.java 文件，然后编译并运行这个程序：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">10</span><span class="hl-code">;
+     </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-number">20</span><span class="hl-code">;
+     </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">c</span><span class="hl-code"> = </span><span class="hl-number">25</span><span class="hl-code">;
+     </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">d</span><span class="hl-code"> = </span><span class="hl-number">25</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">a + b = </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code"> + </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">a - b = </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code"> - </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">a * b = </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code"> * </span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">b / a = </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">b</span><span class="hl-code"> / </span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">b % a = </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">b</span><span class="hl-code"> % </span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">c % a = </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-brackets">(</span><span class="hl-identifier">c</span><span class="hl-code"> % </span><span class="hl-identifier">a</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">a++   = </span><span class="hl-quotes">"</span><span class="hl-code"> +  </span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">a--   = </span><span class="hl-quotes">"</span><span class="hl-code"> +  </span><span class="hl-brackets">(</span><span class="hl-identifier">a</span><span class="hl-code">--</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-comment">//</span><span class="hl-comment"> 查看  d++ 与 ++d 的不同</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">d++   = </span><span class="hl-quotes">"</span><span class="hl-code"> +  </span><span class="hl-brackets">(</span><span class="hl-identifier">d</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+     </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">++d   = </span><span class="hl-quotes">"</span><span class="hl-code"> +  </span><span class="hl-brackets">(</span><span class="hl-code">++</span><span class="hl-identifier">d</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div><br/>
+<a class="showbtn" href="/try/showjava.php?filename=test_operator" target="_blank">运行实例 »</a>
+</div>
+<p>以上实例编译运行结果如下：</p>
+<pre>
+a + b = 30
+a - b = -10
+a * b = 200
+b / a = 2
+b % a = 0
+c % a = 5
+a++   = 10
+a--   = 11
+d++   = 25
+++d   = 27
+</pre>
+<h3>自增自减运算符</h3>
+<p><strong>1、自增（++）自减（--）运算符</strong>是一种特殊的算术运算符，在算术运算符中需要两个操作数来进行运算，而自增自减运算符是一个操作数。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">selfAddMinus</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">3</span><span class="hl-code">;</span><span class="hl-comment">//</span><span class="hl-comment">定义一个变量；</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> = ++</span><span class="hl-identifier">a</span><span class="hl-code">;</span><span class="hl-comment">//</span><span class="hl-comment">自增运算</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">c</span><span class="hl-code"> = </span><span class="hl-number">3</span><span class="hl-code">;
+        </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">d</span><span class="hl-code"> = --</span><span class="hl-identifier">c</span><span class="hl-code">;</span><span class="hl-comment">//</span><span class="hl-comment">自减运算</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">进行自增运算后的值等于</span><span class="hl-quotes">"</span><span class="hl-code">+</span><span class="hl-identifier">b</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">进行自减运算后的值等于</span><span class="hl-quotes">"</span><span class="hl-code">+</span><span class="hl-identifier">d</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>运行结果为：</p>
+<pre>
+进行自增运算后的值等于4
+进行自减运算后的值等于2</pre>
+<p>解析：</p>
+<ul>
+<li><p>int b = ++a; 拆分运算过程为: a=a+1=4; b=a=4, 最后结果为b=4,a=4</p>
+</li><li><p>
+int d = --c; 拆分运算过程为: c=c-1=2; d=c=2, 最后结果为d=2,c=2</p></li>
+</ul>
+<p><strong>2、前缀自增自减法(++a,--a): </strong>先进行自增或者自减运算，再进行表达式运算。</p></div>

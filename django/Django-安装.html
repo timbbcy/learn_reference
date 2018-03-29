@@ -1,0 +1,88 @@
+<div class="article-intro" id="content">
+<h1>Django 安装</h1>
+<p>在安装 Django 前，系统需要已经安装了Python的开发环境。接下来我们来具体看下不同系统下Django的安装。
+</p>
+<hr/>
+<h2>Window 下安装 Django</h2>
+<p>如果你还未安装Python环境需要先下载Python安装包。</p>
+<p>1、Python 下载地址：<a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></p>
+<p>2、Django 下载地址：<a href="https://www.djangoproject.com/download/" target="_blank">https://www.djangoproject.com/download/</a></p>
+<p><b>注意：</b>目前Django 1.6.x以上版本已经完全兼容Python 3.x。</p>
+<h3>Python 安装(已安装的可跳过)</h3>
+<p>安装Python你只需要下载python-x.x.x.msi文件，然后一直点击"Next"按钮即可。</p>
+<img alt="install1" class="alignnone size-full wp-image-11103" height="426" sizes="(max-width: 503px) 100vw, 503px" src="http://www.runoob.com/wp-content/uploads/2015/01/install1.png" srcset="http://www.runoob.com/wp-content/uploads/2015/01/install1.png 503w, http://www.runoob.com/wp-content/uploads/2015/01/install1-300x254.png 300w" width="503"/>
+<p>安装完成后你需要设置Python环境变量。
+右击计算机-&gt;属性-&gt;高级-&gt;环境变量-&gt;修改系统变量path，添加Python安装地址，本文实例使用的是C:\Python33，你需要根据你实际情况来安装。</p>
+<img alt="install2" class="alignnone size-full wp-image-11104" height="624" sizes="(max-width: 925px) 100vw, 925px" src="http://www.runoob.com/wp-content/uploads/2015/01/install2.png" srcset="http://www.runoob.com/wp-content/uploads/2015/01/install2.png 925w, http://www.runoob.com/wp-content/uploads/2015/01/install2-300x202.png 300w" width="925"/>
+<h3>Django 安装</h3>
+<p>
+下载 Django 压缩包，解压并和Python安装目录放在同一个根目录，进入 Django 目录，执行python setup.py install，然后开始安装，Django将要被安装到Python的Lib下site-packages。
+</p>
+<img alt="install3" class="alignnone size-full wp-image-11105" height="268" sizes="(max-width: 493px) 100vw, 493px" src="http://www.runoob.com/wp-content/uploads/2015/01/install3.jpg" srcset="http://www.runoob.com/wp-content/uploads/2015/01/install3.jpg 493w, http://www.runoob.com/wp-content/uploads/2015/01/install3-300x163.jpg 300w" width="493"/>
+<p>然后是配置环境变量，将这几个目录添加到系统环境变量中：
+C:\Python33\Lib\site-packages\django;C:\Python33\Scripts。
+添加完成后就可以使用Django的django-admin.py命令新建工程了。</p>
+<img alt="install4" class="alignnone size-full wp-image-11106" height="390" sizes="(max-width: 407px) 100vw, 407px" src="http://www.runoob.com/wp-content/uploads/2015/01/install4.jpg" srcset="http://www.runoob.com/wp-content/uploads/2015/01/install4.jpg 407w, http://www.runoob.com/wp-content/uploads/2015/01/install4-300x287.jpg 300w" width="407"/>
+<hr/>
+<h2>检查是否安装成功</h2>
+<p>输入以下命令进行检查:</p>
+<pre>
+&gt;&gt;&gt; import django
+&gt;&gt;&gt; django.get_version()
+</pre>
+<img alt="install5" class="alignnone size-full wp-image-11107" height="253" sizes="(max-width: 498px) 100vw, 498px" src="http://www.runoob.com/wp-content/uploads/2015/01/install5.jpg" srcset="http://www.runoob.com/wp-content/uploads/2015/01/install5.jpg 498w, http://www.runoob.com/wp-content/uploads/2015/01/install5-300x152.jpg 300w" width="498"/>
+<p>如果输出了Django的版本号说明安装正确。</p>
+<hr/>
+<h2>Linux 上安装 Django</h2>
+<h3>yum 安装方法</h3>
+<p>以下安装位于 Centos Linux 环境下安装，如果是你的 Linux 系统是 ubuntu 请使用 apt-get 命令。</p>
+<p>默认情况下 Linux 环境已经支持了Python。你可以在终端输入Python命令来查看是否已经安装。</p>
+<pre>
+Python 2.7.3 (default, Aug  1 2012, 05:14:39) 
+[GCC 4.6.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; 
+</pre>
+<h3>安装 setuptools</h3>
+<p>命令：</p>
+<pre>yum install python-setuptools</pre>
+<p>
+完成之后，就可以使用 easy_install 命令安装 django
+</p>
+<p>
+<pre>easy_install django</pre>
+<p>之后我们在python解释器输入以下代码：</p>
+<pre>
+[root@solar django]# python
+Python 2.7.3 (default, May 15 2014, 14:49:08)
+[GCC 4.8.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import django
+&gt;&gt;&gt; django.VERSION
+(1, 6, 5, 'final', 0)
+&gt;&gt;&gt;
+</pre>
+<p>我们可以看到输出了Django的版本号，说明安装成功。</p>
+<h3>pip 命令安装方法</h3>
+<pre>
+pip install Django
+</pre>
+<p>如果 pip &lt; 1.4，安装方法如下：</p>
+<pre>
+pip install https://www.djangoproject.com/download/1.11a1/tarball/
+</pre>
+<h3>源码安装方法</h3>
+<p>下载源码包：<a class="reference external" href="https://www.djangoproject.com/download/">https://www.djangoproject.com/download/</a></p>
+<p>输入以下命令并安装：</p>
+<pre>
+tar xzvf Django-X.Y.tar.gz    # 解压下载包
+cd Django-X.Y                 # 进入 Django 目录
+python setup.py install       # 执行安装命令
+</pre>
+<p>安装成功后 Django 位于 Python 安装目录的 site-packages  目录下。</p>
+<hr/>
+<h2>Mac 下安装</h2>
+<h3>下载</h3>
+从<a href="https://www.djangoproject.com/download" target="_blank" title="点这里下载DJango">这里</a>下载最新的稳定版本：DJango-1.x.y.tar.gz，在页面右侧列表下载，如下图：</p>
+<img src="http://www.runoob.com/wp-content/uploads/2015/01/71DA508B-8018-4C76-9D5A-946B518B7A4D.jpg"/>
+</div>

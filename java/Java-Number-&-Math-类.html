@@ -1,0 +1,357 @@
+<div class="article-intro" id="content">
+<h1>Java Number &amp; Math 类</h1>
+<p>一般地，当需要使用数字的时候，我们通常使用内置数据类型，如：<strong>byte、int、long、double</strong> 等。
+</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> = </span><span class="hl-number">5000</span><span class="hl-code">;
+</span><span class="hl-types">float</span><span class="hl-code"> </span><span class="hl-identifier">b</span><span class="hl-code"> = </span><span class="hl-number">13</span><span class="hl-number">.65</span><span class="hl-identifier">f</span><span class="hl-code">;
+</span><span class="hl-types">byte</span><span class="hl-code"> </span><span class="hl-identifier">c</span><span class="hl-code"> = </span><span class="hl-number">0x4a</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>
+然而，在实际开发过程中，我们经常会遇到需要使用对象，而不是内置数据类型的情形。为了解决这个问题，Java 语言为每一个内置数据类型提供了对应的包装类。
+</p><p>所有的包装类<strong>（Integer、Long、Byte、Double、Float、Short）</strong>都是抽象类 Number 的子类。
+</p>
+<p>
+<img alt="Java Number类" src="http://www.runoob.com/wp-content/uploads/2013/12/number1.png"/>
+</p>
+<p>这种由编译器特别支持的包装称为装箱，所以当内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。相似的，编译器也可以把一个对象拆箱为内置类型。Number 类属于 java.lang 包。
+</p>
+<p>
+下面是一个使用 Integer 对象的实例：</p>
+<div class="example">
+<h2 class="example">Test.java 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Test</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">Integer</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code"> = </span><span class="hl-number">5</span><span class="hl-code">;
+      </span><span class="hl-identifier">x</span><span class="hl-code"> =  </span><span class="hl-identifier">x</span><span class="hl-code"> + </span><span class="hl-number">10</span><span class="hl-code">;
+      </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">)</span><span class="hl-code">; 
+   </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以上实例编译运行结果如下：</p>
+<pre>
+15
+</pre>
+<p>当 x 被赋为整型值时，由于x是一个对象，所以编译器要对x进行装箱。然后，为了使x能进行加运算，所以要对x进行拆箱。
+</p>
+<hr/><h2>Java Math 类</h2>
+<p>Java 的 Math 包含了用于执行基本数学运算的属性和方法，如初等指数、对数、平方根和三角函数。</p>
+<p>Math 的方法都被定义为 static 形式，通过 Math 类可以在主函数中直接调用。</p>
+<div class="example">
+<h2 class="example">Test.java 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-code"> </span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">90 度的正弦值：</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">sin</span><span class="hl-brackets">(</span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">PI</span><span class="hl-code">/</span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;  
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">0度的余弦值：</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">cos</span><span class="hl-brackets">(</span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;  
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">60度的正切值：</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">tan</span><span class="hl-brackets">(</span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">PI</span><span class="hl-code">/</span><span class="hl-number">3</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;  
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">1的反正切值： </span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">atan</span><span class="hl-brackets">(</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;  
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">π/2的角度值：</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">toDegrees</span><span class="hl-brackets">(</span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">PI</span><span class="hl-code">/</span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;  
+        </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">PI</span><span class="hl-brackets">)</span><span class="hl-code">;  
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>以上实例编译运行结果如下：</p>
+<pre>
+90 度的正弦值：1.0
+0度的余弦值：1.0
+60度的正切值：1.7320508075688767
+1的反正切值： 0.7853981633974483
+π/2的角度值：90.0
+3.141592653589793
+</pre>
+<hr/>
+<h2>Number &amp; Math 类方法</h2>
+<p>下面的表中列出的是 Number &amp; Math 类常用的一些方法：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>
+				序号</th>
+<th>
+				方法与描述</th>
+</tr>
+<tr>
+<td>
+				1</td>
+<td>
+<a href="number-xxxvalue.html" target="_blank">xxxValue()</a><br/>
+				将 Number 对象转换为xxx数据类型的值并返回。</td>
+</tr>
+<tr>
+<td>
+				2</td>
+<td>
+<a href="number-compareto.html" target="_blank">compareTo()</a><br/>
+				将number对象与参数比较。</td>
+</tr>
+<tr>
+<td>
+				3</td>
+<td>
+<a href="number-equals.html" target="_blank">equals()</a><br/>
+				判断number对象是否与参数相等。</td>
+</tr>
+<tr>
+<td>
+				4</td>
+<td>
+<a href="number-valueof.html" target="_blank">valueOf()</a><br/>
+				返回一个 Number 对象指定的内置数据类型</td>
+</tr>
+<tr>
+<td>
+				5</td>
+<td>
+<a href="number-tostring.html" target="_blank">toString()</a><br/>
+				以字符串形式返回值。</td>
+</tr>
+<tr>
+<td>
+				6</td>
+<td>
+<a href="number-parseInt.html" target="_blank">parseInt()</a><br/>
+				将字符串解析为int类型。</td>
+</tr>
+<tr>
+<td>
+				7</td>
+<td>
+<a href="number-abs.html" target="_blank">abs()</a><br/>
+				返回参数的绝对值。</td>
+</tr>
+<tr>
+<td>
+				8</td>
+<td>
+<a href="number-ceil.html" target="_blank">ceil()</a><br/>
+				返回大于等于( &gt;= )给定参数的的最小整数。</td>
+</tr>
+<tr>
+<td>
+				9</td>
+<td>
+<a href="number-floor.html" target="_blank">floor()</a><br/>
+				返回小于等于（&lt;=）给定参数的最大整数 。</td>
+</tr>
+<tr>
+<td>
+				10</td>
+<td>
+<a href="number-rint.html" target="_blank">rint()</a><br/>
+				返回与参数最接近的整数。返回类型为double。</td>
+</tr>
+<tr>
+<td>
+				11</td>
+<td>
+<a href="number-round.html" target="_blank">round()</a><br/>
+				它表示<strong>四舍五入</strong>，算法为 <span class="marked">Math.floor(x+0.5)</span>，即将原来的数字加上 0.5 后再向下取整，所以，Math.round(11.5) 的结果为12，Math.round(-11.5) 的结果为-11。</td>
+</tr>
+<tr>
+<td>
+				12</td>
+<td>
+<a href="number-min.html" target="_blank">min()</a><br/>
+				返回两个参数中的最小值。</td>
+</tr>
+<tr>
+<td>
+				13</td>
+<td>
+<a href="number-max.html" target="_blank">max()</a><br/>
+				返回两个参数中的最大值。</td>
+</tr>
+<tr>
+<td>
+				14</td>
+<td>
+<a href="number-exp.html" target="_blank">exp()</a><br/>
+				返回自然数底数e的参数次方。</td>
+</tr>
+<tr>
+<td>
+				15</td>
+<td>
+<a href="number-log.html" target="_blank">log()</a><br/>
+				返回参数的自然数底数的对数值。</td>
+</tr>
+<tr>
+<td>
+				16</td>
+<td>
+<a href="number-pow.html" target="_blank">pow()</a><br/>
+				返回第一个参数的第二个参数次方。</td>
+</tr>
+<tr>
+<td>
+				17</td>
+<td>
+<a href="number-sqrt.html" target="_blank">sqrt()</a><br/>
+				求参数的算术平方根。</td>
+</tr>
+<tr>
+<td>
+				18</td>
+<td>
+<a href="number-sin.html" target="_blank">sin()</a><br/>
+				求指定double类型参数的正弦值。</td>
+</tr>
+<tr>
+<td>
+				19</td>
+<td>
+<a href="number-cos.html" target="_blank">cos()</a><br/>
+				求指定double类型参数的余弦值。</td>
+</tr>
+<tr>
+<td>
+				20</td>
+<td>
+<a href="number-tan.html" target="_blank">tan()</a><br/>
+				求指定double类型参数的正切值。</td>
+</tr>
+<tr>
+<td>
+				21</td>
+<td>
+<a href="number-asin.html" target="_blank">asin()</a><br/>
+				求指定double类型参数的反正弦值。</td>
+</tr>
+<tr>
+<td>
+				22</td>
+<td>
+<a href="number-acos.html" target="_blank">acos()</a><br/>
+				求指定double类型参数的反余弦值。</td>
+</tr>
+<tr>
+<td>
+				23</td>
+<td>
+<a href="number-atan.html" target="_blank">atan()</a><br/>
+				求指定double类型参数的反正切值。</td>
+</tr>
+<tr>
+<td>
+				24</td>
+<td>
+<a href="number-atan2.html" target="_blank">atan2()</a><br/>
+				将笛卡尔坐标转换为极坐标，并返回极坐标的角度值。</td>
+</tr>
+<tr>
+<td>
+				25</td>
+<td>
+<a href="number-todegrees.html" target="_blank">toDegrees()</a><br/>
+				将参数转化为角度。</td>
+</tr>
+<tr>
+<td>
+				26</td>
+<td>
+<a href="number-toradians.html" target="_blank">toRadians()</a><br/>
+				将角度转换为弧度。</td>
+</tr>
+<tr>
+<td>
+				27</td>
+<td>
+<a href="number-random.html" target="_blank">random()</a><br/>
+				返回一个随机数。</td>
+</tr>
+</tbody>
+</table><hr/>
+<h2>Math 的 floor,round 和 ceil 方法实例比较</h2>
+<table class="reference">
+<tbody>
+<tr>
+<th>参数</th>
+<th>Math.floor</th>
+<th>Math.round</th>
+<th>Math.ceil</th>
+</tr>
+<tr>
+<td>1.4</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-1.4</td>
+<td>-2</td>
+<td>-1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>-1.5</td>
+<td>-2</td>
+<td>-1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>-1.6</td>
+<td>-2</td>
+<td>-2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<div class="example">
+<h2 class="example">floor,round 和 ceil 实例：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Main</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-types">double</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">nums</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-number">.4</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-number">.5</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-number">.6</span><span class="hl-code">, -</span><span class="hl-number">1</span><span class="hl-number">.4</span><span class="hl-code">, -</span><span class="hl-number">1</span><span class="hl-number">.5</span><span class="hl-code">, -</span><span class="hl-number">1</span><span class="hl-number">.6</span><span class="hl-code"> </span><span class="hl-brackets">}</span><span class="hl-code">;   
+    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-types">double</span><span class="hl-code"> </span><span class="hl-identifier">num</span><span class="hl-code"> : </span><span class="hl-identifier">nums</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-identifier">num</span><span class="hl-brackets">)</span><span class="hl-code">;   
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">private</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-types">double</span><span class="hl-code"> </span><span class="hl-identifier">num</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Math.floor(</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">num</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">)=</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">floor</span><span class="hl-brackets">(</span><span class="hl-identifier">num</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;   
+    </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Math.round(</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">num</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">)=</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">round</span><span class="hl-brackets">(</span><span class="hl-identifier">num</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;   
+    </span><span class="hl-identifier">System</span><span class="hl-code">.</span><span class="hl-identifier">out</span><span class="hl-code">.</span><span class="hl-identifier">println</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">Math.ceil(</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">num</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">)=</span><span class="hl-quotes">"</span><span class="hl-code"> + </span><span class="hl-identifier">Math</span><span class="hl-code">.</span><span class="hl-identifier">ceil</span><span class="hl-brackets">(</span><span class="hl-identifier">num</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;   
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div><p>以上实例执行输出结果为：</p>
+<pre>
+Math.floor(1.4)=1.0
+Math.round(1.4)=1
+Math.ceil(1.4)=2.0
+Math.floor(1.5)=1.0
+Math.round(1.5)=2
+Math.ceil(1.5)=2.0
+Math.floor(1.6)=1.0
+Math.round(1.6)=2
+Math.ceil(1.6)=2.0
+Math.floor(-1.4)=-2.0
+Math.round(-1.4)=-1
+Math.ceil(-1.4)=-1.0
+Math.floor(-1.5)=-2.0
+Math.round(-1.5)=-1
+Math.ceil(-1.5)=-1.0
+Math.floor(-1.6)=-2.0
+Math.round(-1.6)=-2
+Math.ceil(-1.6)=-1.0
+</pre>
+</div>

@@ -1,0 +1,95 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">RegExp</span> 对象</h1>
+<hr/>
+<p class="intro">RegExp：是正则表达式（regular expression）的简写。 </p>
+<hr/>
+<h2>完整 RegExp 对象参考手册</h2>
+<p>
+请查看我们的  <a href="/jsref/jsref-obj-regexp.html">JavaScript RegExp 对象的参考手册</a>，其中提供了可以与字符串对象一同使用的所有的属性和方法。</p>
+<p>这个手册包含的关于每个属性和方法的用法的详细描述和实例。</p>
+<hr/>
+<h2>什么是 RegExp？</h2>
+<p>正则表达式描述了字符的模式对象。</p>
+<p>当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。</p>
+<p>简单的模式可以是一个单独的字符。</p>
+<p>更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。</p>
+<p>您可以规定字符串中的检索位置，以及要检索的字符类型，等等。</p>
+<h2>语法</h2>
+<div class="code notranslate"><div>
+
+var patt=new RegExp(pattern,modifiers);<br/><br/>
+或更简单的方法<br/><br/>
+var patt=/pattern/modifiers;
+</div></div>
+<ul>
+<li>模式描述了一个表达式模型。</li>
+<li>修饰符(modifiers)描述了检索是否是全局，区分大小写等。</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong>当使用构造函数创造正则对象时，需要常规的字符转义规则（在前面加反斜杠 \）。比如，以下是等价的：
+</p>
+<pre>
+var re = new RegExp("\\w+");
+var re = /\w+/;
+</pre>
+</blockquote>
+<hr/>
+<h2>RegExp 修饰符</h2>
+<p>修饰符用于执行不区分大小写和全文的搜索。</p>
+<p><strong>i</strong> - 修饰符是用来执行不区分大小写的匹配。</p>
+<p><strong>g</strong> - 修饰符是用于执行全文的搜索（而不是在找到第一个就停止查找,而是找到所有的匹配）。</p>
+<div class="example">
+<h2 class="example">实例 1</h2>
+<p>在字符串中不区分大小写找"runoob"</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Visit RUnoob</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">patt1</span><span class="hl-code"> = /</span><span class="hl-identifier">runoob</span><span class="hl-code">/</span><span class="hl-identifier">i</span><span class="hl-code">;</span></div>
+</div>
+<p>以下<span class="marked">标记</span>的文本是获得的匹配的表达式：</p>
+<div class="example_code ">
+Visit <span class="marked"> RUnoob </span>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjsref_regexp_i" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<h2 class="example">实例 2</h2>
+<p>全文查找 "is"</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Is this all there is?</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">patt1</span><span class="hl-code">=/</span><span class="hl-identifier">is</span><span class="hl-code">/</span><span class="hl-identifier">g</span><span class="hl-code">;</span></div>
+</div>
+<p>以下<span class="marked">标记</span>的文本是获得的匹配的表达式：</p>
+<div class="example_code">
+Is th<span class="marked">is</span> all there <span class="marked">is</span>?
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjsref_regexp_g" target="_blank">尝试一下 »</a>
+</div>
+<br/><div class="example">
+<h2 class="example">实例 3</h2>
+<p>全文查找和不区分大小写搜索 "is"</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">str</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">Is this all there is?</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">patt1</span><span class="hl-code">=/</span><span class="hl-identifier">is</span><span class="hl-code">/</span><span class="hl-identifier">gi</span><span class="hl-code">;</span></div></div>
+<p>以下 <span class="marked">标记</span>的文本是获得的匹配的表达式： </p>
+<div class="example_code">
+<span class="marked">Is</span> th<span class="marked">is</span> all there <span class="marked">is</span>?
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjsref_regexp_g_2" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>test()</h2>
+<p>test()方法搜索字符串指定的值，根据结果并返回真或假。</p>
+<p>下面的示例是从字符串中搜索字符 "e" ：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code "><div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">patt1</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-builtin">RegExp</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">e</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">patt1</span><span class="hl-code">.</span><span class="hl-identifier">test</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">The best things in life are free</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>由于该字符串中存在字母 "e"，以上代码的输出将是：</p>
+<div class="example_code notranslate">
+true
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjs_regexp_test" target="_blank">尝试一下 »</a>
+</div>
+<p>
+当使用构造函数创造正则对象时，需要常规的字符转义规则（在前面加反斜杠 \）</p></div>

@@ -1,0 +1,112 @@
+<div class="article-intro" id="content">
+<h1>AngularJS <span class="color_h1">包含</span></h1>
+<hr/>
+<p class="intro">在 AngularJS 中，你可以在 HTML 中包含 HTML 文件。</p>
+<hr/>
+<h2>在 HTML 中包含 HTML 文件</h2>
+<p>在 HTML 中，目前还不支持包含 HTML 文件的功能。</p>
+<hr/>
+<h2>服务端包含</h2>
+<p>大多服务端脚本都支持包含文件功能 (<strong>SSI</strong>： Server Side Includes)。</p>
+<p>使用 SSI, 你可在 HTML 中包含 HTML 文件，并发送到客户端浏览器。</p>
+<div class="example">
+<h2 class="example">PHP 实例</h2>
+<div class="example_code">
+<span class="highLT">&lt;</span><span class="highELE">?php</span> <span class="highATT">require("navigation.php"); ?</span><span class="highGT">&gt;</span>
+</div>
+</div>
+<hr/>
+<h2>客户端包含</h2>
+<p>通过 JavaScript 有很多种方式可以在 HTML 中包含 HTML 文件。</p>
+<p>通常我们使用 http 请求 (<strong>AJAX</strong>) 从服务端获取数据，返回的数据我们可以通过
+使用  <strong>innerHTML</strong> 写入到 HTML 元素中。 </p>
+<hr/>
+<h2>AngularJS 包含</h2>
+<p>使用 AngularJS, 你可以使用 <strong>ng-include</strong> 
+指令来包含 HTML 内容:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-include</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">'runoob.htm'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_include" target="_blank">尝试一下 »</a>
+</div>
+<p>步骤如下：<br/> </p>
+<hr/>
+<div class="example">
+<h2 class="example">runoob.htm 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是一个被包含的 HTML 页面，使用 ng-include 指令来实现！</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<hr/>
+<h2>包含 AngularJS 代码</h2>
+<p>ng-include 指令除了可以包含 HTML 文件外，还可以包含 AngularJS 代码:</p>
+<div class="example">
+<h2 class="example">sites.htm 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">tr</span><span class="hl-code"> </span><span class="hl-var">ng-repeat</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">x in names</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ x.Name }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ x.Url }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">table</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>包含的文件 "sites.htm" 中有 AngularJS 代码，它将被正常执行：</p>
+<div class="example">
+<h2 class="example">sites.htm 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myApp</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">ng-controller</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">sitesCtrl</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-include</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">'sites.htm'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+var app = angular.module('myApp', []);
+app.controller('sitesCtrl', function($scope, $http) {
+    $http.get("sites.php").then(function (response) {
+        $scope.names = response.data.records;
+    });
+});
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_include_table" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>跨域包含</h2>
+<p>
+默认情况下， ng-include 指令不允许包含其他域名的文件。</p><p>
+如果你需要包含其他域名的文件，你需要设置域名访问白名单：</p>
+<div class="example">
+<h2 class="example">sites.htm 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-code"> </span><span class="hl-var">ng-app</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myApp</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">ng-include</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">'http://c.runoob.com/runoobtest/angular_include.php'</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+var app = angular.module('myApp', [])
+app.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'http://c.runoob.com/runoobtest/**'
+    ]);
+});
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/try.php?filename=try_ng_include_crossdomain" target="_blank">尝试一下 »</a>
+</div>
+<p>此外，你还需要设置服务端允许跨域访问，设置方法可参考：<a href="/w3cnote/php-ajax-cross-border.html" target="_blank">PHP Ajax 跨域问题最佳解决方案。</a></p>
+<div class="example">
+<h2 class="example">angular_include.php 文件代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 允许所有域名可以访问</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-identifier">header</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Access-Control-Allow-Origin:*</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;b style="color:red"&gt;我是跨域的内容&lt;/b&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+</div>
+</div>

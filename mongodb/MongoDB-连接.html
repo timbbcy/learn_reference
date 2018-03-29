@@ -1,0 +1,132 @@
+<div class="article-intro" id="content">
+<h1>MongoDB - <span class="color_h1">连接</span></h1>
+<p>在本教程我们将讨论 MongoDB 的不同连接方式。</p>
+<h3>启动 MongoDB 服务</h3>
+<p>在前面的教程中，我们已经讨论了<a href="/mongodb/mongodb-window-install.html" target="_blank">如何启动 MongoDB 服务</a>，你只需要在 MongoDB 安装目录的 bin 目录下执行 <strong>mongod</strong> 即可。</p>
+<p>执行启动操作后，mongodb 在输出一些必要信息后不会输出任何信息，之后就等待连接的建立，当连接被建立后，就会开始打印日志信息。</p>
+<p>你可以使用 MongoDB shell 来连接 MongoDB 服务器。你也可以使用 PHP 来连接 MongoDB。本教程我们会使用 MongoDB shell 来连接 Mongodb 服务，之后的章节我们将会介绍如何通过php 来连接MongoDB服务。</p>
+<p>标准 URI 连接语法：</p>
+<pre>
+mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+</pre><ul><li>
+<p><strong>mongodb://</strong> 这是固定的格式，必须要指定。</p></li><li><p><strong>username:password@</strong> 可选项，如果设置，在连接数据库服务器之后，驱动都会尝试登陆这个数据库</p></li><li><p> <strong>host1</strong> 必须的指定至少一个host, host1 是这个URI唯一要填写的。它指定了要连接服务器的地址。如果要连接复制集，请指定多个主机地址。</p></li><li><p><strong>portX</strong> 可选的指定端口，如果不填，默认为27017</p></li><li><p>
+<strong>/database </strong>如果指定username:password@，连接并验证登陆指定数据库。若不指定，默认打开 test 数据库。
+
+</p></li><li><p> <strong>?options</strong> 是连接选项。如果不使用/database，则前面需要加上/。所有连接选项都是键值对name=value，键值对之间通过&amp;或;（分号）隔开
+</p></li></ul>
+<p>标准的连接格式包含了多个选项(options)，如下所示：</p>
+<table class="reference">
+<tbody>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>replicaSet=name</td>
+<td>验证replica set的名称。 Impliesconnect=replicaSet.</td>
+</tr>
+<tr>
+<td>slaveOk=true|false</td>
+<td>
+<ul>
+<li>true:在connect=direct模式下，驱动会连接第一台机器，即使这台服务器不是主。在connect=replicaSet模式下，驱动会发送所有的写请求到主并且把读取操作分布在其他从服务器。</li>
+<li>false: 在 connect=direct模式下，驱动会自动找寻主服务器. 在connect=replicaSet 模式下，驱动仅仅连接主服务器，并且所有的读写命令都连接到主服务器。</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>safe=true|false</td>
+<td>
+<ul>
+<ul>
+<li>true: 在执行更新操作之后，驱动都会发送getLastError命令来确保更新成功。(还要参考 wtimeoutMS).</li>
+</ul>
+</ul>
+false: 在每次更新之后，驱动不会发送getLastError来确保更新成功。</td>
+</tr>
+<tr>
+<td>w=n</td>
+<td>驱动添加 { w : n } 到getLastError命令. 应用于safe=true。</td>
+</tr>
+<tr>
+<td>wtimeoutMS=ms</td>
+<td>驱动添加 { wtimeout : ms } 到 getlasterror 命令. 应用于 safe=true.</td>
+</tr>
+<tr>
+<td>fsync=true|false</td>
+<td>
+<ul>
+<li>true: 驱动添加 { fsync : true } 到 getlasterror 命令.应用于 safe=true.</li>
+<li>false: 驱动不会添加到getLastError命令中。</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>journal=true|false</td>
+<td>如果设置为 true, 同步到 journal (在提交到数据库前写入到实体中). 应用于 safe=true</td>
+</tr>
+<tr>
+<td>connectTimeoutMS=ms</td>
+<td>可以打开连接的时间。</td>
+</tr>
+<tr>
+<td>socketTimeoutMS=ms</td>
+<td>发送和接受sockets的时间。</td>
+</tr>
+</tbody>
+</table>
+<h3>实例</h3>
+<p>使用默认端口来连接 MongoDB 的服务。</p>
+<pre>mongodb://localhost</pre>
+<p>通过 shell 连接 MongoDB 服务：</p>
+<pre>
+$ ./mongo
+MongoDB shell version: 3.0.6
+connecting to: test
+... 
+</pre>
+<p>这时候你返回查看运行 <strong>./mongod</strong> 命令的窗口，可以看到是从哪里连接到MongoDB的服务器，您可以看到如下信息：</p>
+<pre>
+……省略信息……
+2015-09-25T17:22:27.336+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2015-09-25T17:22:27.336+0800 I CONTROL  [initandlisten] options: { storage: { dbPath: "/data/db" } }
+2015-09-25T17:22:27.350+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2015-09-25T17:22:36.012+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:37310 #1 (1 connection now open)  # 该行表明一个来自本机的连接
+
+……省略信息……
+</pre><hr/><h2>MongoDB 连接命令格式</h2>
+<p>使用用户名和密码连接到 MongoDB 服务器，你必须使用 '<strong>username:password@hostname/dbname</strong>' 格式，'username'为用户名，'password' 为密码。</p>
+<p>使用用户名和密码连接登陆到默认数据库：</p>
+<pre>
+$ ./mongo
+MongoDB shell version: 3.0.6
+connecting to: test
+</pre>
+<p>使用用户 admin 使用密码 123456 连接到本地的 MongoDB 服务上。输出结果如下所示：</p>
+<pre>
+&gt; mongodb://admin:123456@localhost/
+... 
+</pre>
+<p>使用用户名和密码连接登陆到指定数据库，格式如下：</p>
+<pre>mongodb://admin:123456@localhost/test</pre>
+<h3>更多连接实例</h3>
+<p>连接本地数据库服务器，端口是默认的。</p>
+<pre>mongodb://localhost</pre>
+<p>使用用户名fred，密码foobar登录localhost的admin数据库。</p>
+<pre>mongodb://fred:foobar@localhost</pre>
+<p>使用用户名fred，密码foobar登录localhost的baz数据库。</p>
+<pre>mongodb://fred:foobar@localhost/baz</pre>
+<p>连接 replica pair, 服务器1为example1.com服务器2为example2。</p>
+<pre>mongodb://example1.com:27017,example2.com:27017</pre>
+<p>连接 replica set 三台服务器 (端口 27017, 27018, 和27019):</p>
+<pre>mongodb://localhost,localhost:27018,localhost:27019</pre>
+<p>连接 replica set 三台服务器, 写入操作应用在主服务器 并且分布查询到从服务器。</p>
+<pre>mongodb://host1,host2,host3/?slaveOk=true</pre>
+<p>直接连接第一个服务器，无论是replica set一部分或者主服务器或者从服务器。</p>
+<pre>mongodb://host1,host2,host3/?connect=direct;slaveOk=true</pre>
+<p>当你的连接服务器有优先级，还需要列出所有服务器，你可以使用上述连接方式。</p>
+<p>安全模式连接到localhost:</p>
+<pre>mongodb://localhost/?safe=true</pre>
+<p>以安全模式连接到replica set，并且等待至少两个复制服务器成功写入，超时时间设置为2秒。</p>
+<pre>mongodb://host1,host2,host3/?safe=true;w=2;wtimeoutMS=2000</pre>
+</div>

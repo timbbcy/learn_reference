@@ -1,0 +1,90 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap4 <span class="color_h1">安装使用</span></h1>
+<p>我们可以通过以下两种方式来安装 Bootstrap4：</p>
+<ul>
+<li>使用 Bootstrap 4  CDN。</li>
+<li>从官网 getbootstrap.com 下载 Bootstrap 4。</li>
+</ul>
+<h3>Bootstrap 4 CDN</h3>
+<p>国内推荐使用 BootCDN 上的库：</p>
+<div class="example">
+<h2 class="example_head">Bootstrap4 CDN</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 新 Bootstrap4 核心 CSS 文件 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">link</span><span class="hl-code"> </span><span class="hl-var">rel</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">stylesheet</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> jQuery文件。务必在bootstrap.min.js 之前引入 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> popper.min.js 用于弹窗、提示、下拉菜单 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-comment">&lt;!--</span><span class="hl-comment"> 最新的 Bootstrap4 核心 JavaScript 文件 </span><span class="hl-comment">--&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>此外，你还可以使用以下的 CDN 服务：</p>
+<ul>
+<li>国内推荐使用 : <a href="https://www.staticfile.org/" rel="nofollow" target="_blank">https://www.staticfile.org/</a></li>
+<li>国际推荐使用：<a href="https://cdnjs.com/" rel="nofollow" target="_blank">https://cdnjs.com/</a></li></ul>
+<h3>
+下载 Bootstrap 4</h3>
+<p>你可以去官网 <a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a> 下载 Bootstrap4 资源库。</p>
+<blockquote>
+<p><strong>注：</strong>此外你还可以通过包的管理工具 npm、 gem、 composer 等来安装：</p>
+<pre>npm install bootstrap@4.0.0-beta.2
+gem 'bootstrap', '~&gt; 4.0.0.beta2'
+composer require twbs/bootstrap:4.0.0-beta.2</pre></blockquote>
+<hr/>
+<h2>创建第一个 Bootstrap 4 页面</h2>
+<h3>1、添加 HTML5 doctype</h3>
+<p>Bootstrap 要求使用 HTML5 文件类型，所以需要添加 HTML5 doctype 声明。</p>
+<p>HTML5 doctype 在文档头部声明，并设置对应编码:</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">DOCTYPE</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<h3>移动设备优先</h3>
+<p>为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放，需要在网页的 head 之中添加 viewport meta 标签，如下所示：</p>
+<pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+</pre>
+<p><code>width=device-width</code> 表示宽度是设备屏幕的宽度。</p>
+<p><code>initial-scale=1</code> 表示初始的缩放比例。</p>
+<p>shrink-to-fit=no 自动适应手机屏幕的宽度。</p>
+<hr/>
+<h2>容器类</h2>
+<p>Bootstrap 4 需要一个容器元素来包裹网站的内容。 </p>
+<p>我们可以使用以下两个容器类：</p>
+<ul><li>
+.container 类用于固定宽度并支持响应式布局的容器。
+</li><li>
+.container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器。
+</li></ul>
+<p><img src="//www.runoob.com/wp-content/uploads/2017/10/176B67B9-013C-429C-8FD0-BC2409011545.jpg"/></p>
+<hr/><h2>
+两个 Bootstrap 4 页面
+</h2>
+<div class="example">
+<h2 class="example_head">Bootstrap4 .container 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">我的第一个 Bootstrap 页面</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">这是一些文本。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_gs_container" target="_blank">尝试一下 »</a></div>
+<p>以下实例展示了占据全部视口（viewport）的容器。</p>
+<div class="example">
+<h2 class="example_head">Bootstrap4 .container-fluid 实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">container-fluid</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">我的第一个 Bootstrap 页面</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">使用了 .container-fluid，100% 宽度，占据全部视口（viewport）的容器。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trybs4_gs_container-fluid" target="_blank">尝试一下 »</a></div>
+</div>

@@ -1,0 +1,33 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Forms <span class="color_h1">- HTML 表单</span>
+</h1>
+<hr/>
+<p class="intro">所有的服务器控件都必须出现在 &lt;form&gt; 标签中，&lt;form&gt; 标签必须包含 runat="server" 属性。</p>
+<hr/>
+<h2>ASP.NET Web 表单</h2>
+<p>所有的服务器控件都必须出现在 &lt;form&gt; 标签中，&lt;form&gt; 标签必须包含 runat="server" 属性。runat="server" 属性表明该表单必须在服务器上进行处理。同时也表明了包含在它内部的控件可被服务器脚本访问：</p>
+<div class="code"><div>
+
+&lt;form runat="server"&gt;<br/><br/>
+...HTML + server controls<br/><br/>
+&lt;/form&gt;
+</div></div>
+<p>
+<b>注释：</b>该表单总是被提交到自身页面。如果您指定了一个 action 属性，它会被忽略。如果您省略了 method 属性，它将会默认设置 method="post"。同时，如果您没有指定 name 和 id 属性，它们会由 ASP.NET 自动分配。</p>
+<p><b>注释：</b>一个 .aspx 页面只能包含一个 &lt;form runat="server"&gt; 控件！</p>
+<p>如果您在一个包含不带有 name、method、action 或 id 属性的表单的 .aspx 页面中选择查看源代码，您会看到 ASP.NET 添加这些属性到表单上了，如下所示：</p>
+<div class="code notranslate"><div>
+
+&lt;form name="_ctl0" method="post" action="page.aspx" id="_ctl0"&gt;<br/><br/>
+...some code<br/><br/>
+&lt;/form&gt;</div></div>
+<br/><hr/>
+<h2>提交表单</h2>
+<p>表单通常通过点击按钮来提交。ASP.NET 中的 Button 服务器控件的格式如下：</p>
+<div class="code notranslate"><div>
+&lt;asp:Button id="id" text="label" OnClick="sub" runat="server" /&gt;</div></div>
+<p>id 属性为按钮定义了一个唯一的名称，text 属性为按钮分配了一个标签。onClick 事件句柄规定了一个要执行的已命名的子例程。</p>
+<p>在下面的实例中，我们在 .aspx 文件中声明了一个 Button 控件。点击按钮运行改变按钮上文本的子例程：</p>
+<p><a href="#" target="_blank">实例</a></p>
+<br/>
+</div>

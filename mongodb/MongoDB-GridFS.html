@@ -1,0 +1,7 @@
+<div class="article-intro" id="content">
+<h1>MongoDB GridFS</h1>
+<p>GridFS 用于存储和恢复那些超过16M（BSON文件限制）的文件(如：图片、音频、视频等)。</p>
+<p>GridFS 也是文件存储的一种方式，但是它是存储在MonoDB的集合中。</p>
+<p>GridFS 可以更好的存储大于16M的文件。</p>
+<p>GridFS 会将大文件对象分割成多个小的chunk(文件片段),一般为256k/个,每个chunk将作为MongoDB的一个文档(document)被存储在chunks集合中。</p>
+</div>

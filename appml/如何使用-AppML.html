@@ -1,0 +1,171 @@
+<div class="article-intro" id="content">
+<h1>如何使用 
+<span class="color_h1">&lt;AppML&gt;</span></h1>
+<hr/>
+<p class="intro">本章节将通过以下4个简单的步骤演示如何创建&lt;AppML&gt;的应用程序。</p>
+<p class="intro">下一章将介绍如何下载&lt;AppML&gt;，并开始在你自己的电脑上开发Web应用程序。</p>
+<hr/>
+<h2>1.创建模型（Model）</h2>
+<p>使用以下内容创建文件</p>
+<div class="code notranslate">
+<div>
+&lt;appml&gt;<br/><br/>
+&lt;datasource&gt;<br/>
+&lt;database&gt;<br/>
+ 
+&lt;connection&gt;Demo&lt;/connection&gt;<br/>  &lt;sql&gt;SELECT CustomerName,ContactName,City,Country FROM Customers&lt;/sql&gt;<br/>
+	  &lt;orderby&gt;CustomerName&lt;/orderby&gt;<br/>&lt;/database&gt;<br/>
+&lt;/datasource&gt;<br/><br/>
+	&lt;filters&gt;<br/>  
+	&lt;query&gt;<br/>  &lt;field&gt;CustomerName&lt;/field&gt;<br/>  
+	&lt;/query&gt;<br/>&lt;/filters&gt;<br/><br/>
+&lt;/appml&gt; 
+</div>
+</div>
+<p>在子目录中Models（我们建议）将该文件保存为 Customers.xml。</p>
+<hr/>
+<h2>模型解析</h2>
+<p> &lt;appml&gt; 标签定义了模型。</p>
+<p> &lt;datasource&gt;标签定义模型的数据源。</p>
+<p>&lt;database&gt;标签定义数据库。</p>
+<p>&lt;connection&gt;标签定义数据库的链接。 </p>
+<p>&lt;sql&gt;标签定义数据查询</p>
+<p>&lt;orderby&gt;标签定义默认排序。</p>
+<p>&lt;query&gt;标签定义合法的查询过滤器。 </p>
+<hr/>
+<h2>2. 创建 WEB 页面</h2>
+<p>在第一个 &lt;AppML&gt; app中,创建一个 HTML页面:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>&lt;body&gt;<br/><br/>
+&lt;h1&gt;My First Web Application&lt;/h1&gt;<br/><br/>&lt;table&gt;<br/>&lt;tr&gt;<br/>  &lt;th&gt;Customer&lt;/th&gt;<br/>  &lt;th&gt;City&lt;/th&gt;<br/>  &lt;th&gt;Country&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr&gt;<br/>  
+	&lt;td&gt;Alfreds Futterkiste&lt;/td&gt;<br/>  &lt;td&gt;Berlin&lt;/td&gt;<br/>  
+	&lt;td&gt;Germany&lt;/td&gt;<br/>&lt;/tr&gt;<br/>&lt;/table&gt; <br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryappml_tut_01" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>3. 添加样式</h2>
+<p>
+在你的web页面中添加层叠样式在执行e &lt;AppML&gt; app:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/><strong><br/>&lt;head&gt;<br/>
+&lt;link rel="stylesheet" href="appml.css"&gt;<br/>
+&lt;/head&gt;
+<br/></strong>
+<br/>
+&lt;body&gt;<br/>&lt;h1&gt;My First Web Application&lt;/h1&gt;<br/><br/>&lt;table <strong>class="appmltable"</strong>&gt;<br/>&lt;tr&gt;<br/>  &lt;th&gt;Customer&lt;/th&gt;<br/>
+ 
+&lt;th&gt;City&lt;/th&gt;<br/>  &lt;th&gt;Country&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr&gt;<br/>
+	  &lt;td&gt;Alfreds Futterkiste&lt;/td&gt;<br/>  &lt;td&gt;Berlin&lt;/td&gt;<br/>  
+	&lt;td&gt;Germany&lt;/td&gt;<br/>&lt;/tr&gt;<br/>
+&lt;/table&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryappml_tut_02" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>4. 添加脚本, 然后执行应用</h2>
+<p>
+在你的web页面中添加脚本来运行 &lt;AppML&gt; app:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/><strong><br/></strong>
+	&lt;head&gt;<br/>
+&lt;link rel="stylesheet" href="appml.css"&gt;<br/>
+&lt;/head&gt;
+<br/><br/>
+&lt;body&gt;<br/>&lt;h1&gt;My First Web Application&lt;/h1&gt;<br/><br/><strong>&lt;div id="Place01"&gt;<br/><br/></strong>&lt;table <strong>id="Template01"</strong> class="appmltable"&gt;<br/>&lt;tr&gt;<br/>  &lt;th&gt;Customer&lt;/th&gt;<br/>
+ 
+&lt;th&gt;City&lt;/th&gt;<br/>  &lt;th&gt;Country&lt;/th&gt;<br/>&lt;/tr&gt;<br/>&lt;tr 
+	<strong>id="appml_row"</strong>&gt;<br/>
+ 
+&lt;td&gt;<strong>#CustomerName#</strong>&lt;/td&gt;<br/>  &lt;td&gt;<strong>#City#</strong>&lt;/td&gt;<br/>  &lt;td&gt;<strong>#Country#</strong>&lt;/td&gt;<br/>&lt;/tr&gt;<br/>
+&lt;/table&gt; <br/><strong>&lt;/div&gt;<br/></strong><br/><strong>&lt;script src="appml.js"&gt;&lt;/script&gt;<br/>
+	&lt;script&gt;<br/>
+app=new
+	AppML("appml.htmlx","Models/Customers.xml");<br/>
+app.run("Place01","Template01");<br/>
+&lt;/script&gt;</strong><br/><br/>&lt;/body&gt;<br/>
+&lt;/html&gt;</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryappml_tut_03" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>实例解析</h2>
+<p> &lt;AppML&gt; 库中含有大量的函数。这些函数可以再你的web页面中调用。</p>
+<p><strong>&lt;script src="appml.js"&gt;</strong> 加载了 &lt;AppML&gt; 库。</p>
+<p>
+ JavaScript 语句: <strong>app=new AppML("appml.htmlx","Models/Customers.xml");</strong> 创建 AppML 应用对象, 
+ 然后执行web服务端脚本 "appml.htmlx" 来加载 "Customers.xml"文件的数据。 </p>
+<p>
+ JavaScript 语句 <strong>app.run("Place01","Template01");</strong> 将数据插入到 id="Place01" 的HTML元素中, 
+使用 id="Template01" 属性元素作为模板。</p>
+<p>
+属性 <strong>id="appml_row"</strong> 定义了每条数据插入到HTML元素中。</p>
+<p># 标记中的数据会使用模型的数据替换。</p>
+<p>以上所有，你可以想象到更快的原型吗？</p>
+<hr/>
+<h2>它是如何工作的？</h2>
+<ul class="auto-style1">
+<li>当web页面加载时, 你可以再页面中加载 &lt;AppML&gt; 控制器。</li>
+<li>使用 &lt;AppML&gt; 控制器, 你可以再页面创建 &lt;AppML&gt; 对象。</li>
+<li>当你在页面中运行 &lt;AppML&gt; 对象, 它会请求服务端数据控制器。</li>
+<li> &lt;AppML&gt; 对象从服务器接收数据 (使用数据模型)。</li>
+<li> &lt;AppML&gt; 对象 (或者你的代码) 在页面中显示数据。</li>
+<li>(可选) web用户可以改变数据。</li>
+<li>(可选) &lt;AppML&gt; 可以在服务器后台发送数据。</li>
+<li>(可选) 服务器控制器可以在服务端存储数据。</li>
+</ul>
+<hr/>
+<h2>典型的 Web 文件和文件夹：</h2>
+<table><tr>
+<td>
+<p><img alt="Folders" border="0" src="/images/pic_web.png"/></p>
+</td>
+<td width="30px"></td>
+<td valign="top">
+<p><br/>web文件夹: <strong>Demo</strong></p>
+<p>数据文件夹: <strong>Data</strong></p>
+<p>图片文件夹: <strong>Images</strong></p>
+<p>模型文件夹:<strong> Models</strong></p>
+<p>应用: <strong>Demo.htm</strong></p>
+<p>样式: <strong>Demo.css</strong></p>
+<p> </p>
+<p>&lt;AppML&gt; 配置文件: <strong>appml_config.php </strong>(或者 .htmlx)</p>
+<p>&lt;AppML&gt; 样式文件: <strong>appml.css</strong></p>
+<p>&lt;AppML&gt; 浏览器控制器: <strong>appml.js</strong></p>
+<p>&lt;AppML&gt; 服务器控制器: <strong>appml.php</strong> (or .htmlx)</p>
+</td>
+</tr></table>
+<hr/>
+<h2>没有限制</h2>
+<p>可以将 &lt;AppML&gt; 对象放在 HTML 页面。 &lt;AppML&gt; 不影响页面的其他部分。</p>
+<p>&lt;AppML&gt; 在方案页面不存在时默认为标准的显示页面。
+这是完美的快速原型。</p>
+<p>但是 &lt;AppML&gt; 主要功能不是用于页面的显示。 &lt;AppML&gt; 主要是读取
+应用程序数据. 它带来的数据可以通过自由的使用 HTML, CSS, 和 JavaScript 来设计它们的显示效果。你可以： </p>
+<ul type="square">
+<li>自己编写HTML，让AppML处理数据。</li>
+<li>调用模型，并处理所有的显示。</li>
+<li>使用AppML的属性和方法,创建其它的组合。  </li>
+</ul>
+<p>你很快会发现 &lt;AppML&gt;具备了强大的功能，它可以为你的web应用提供数据和数据模型。你可以：</p>
+<ul type="square">
+<li>为用户或用户组定义数据安全</li>
+<li>连接所有类型数据库, 如 Access, MySQL, SQL, 和 Oracle</li>
+<li>连接 XML 文件和 Text 文件 </li>
+<li>定义数据类型，数据格式，数据限制。</li>
+<li>给模型添加任何新元素。</li>
+</ul>
+<p><a href="appml-reference.html">阅读&lt;AppML&gt; 参考手册</a> </p>
+</div>

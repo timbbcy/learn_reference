@@ -1,0 +1,121 @@
+<div class="article-intro" id="content">
+<h1>ionic tab(选项卡)</h1>
+<p>
+ionic tab(选项卡) 是水平排列的按钮或者链接，用以页面间导航的切换。它可以包含文字和图标的组合，是一种移动设备上流行的导航方法。</p>
+<p>以下选项卡容器使用了 tabs 类，每个选项卡使用 tab-item 类。默认情况下，选项卡是文本的，并没有图标。</p>
+<h3>实例</h3>
+<pre>
+&lt;div class="tabs"&gt;
+  &lt;a class="tab-item"&gt;
+    主页
+  &lt;/a&gt;
+  &lt;a class="tab-item"&gt;
+    收藏
+  &lt;/a&gt;
+  &lt;a class="tab-item"&gt;
+    设置
+  &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_tab-item" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>默认情况，选项卡颜色为默认，你可以设置以下不同颜色样式：tabs-default ，tabs-light ，tabs-stable ，tabs-positive ，tabs-calm ，tabs-balanced ，tabs-energized ，tabs-assertive ，tabs-royal ，tabs-dark。
+</p>
+<p>要隐藏选项卡栏，可使用 tabs-item-hide 类。
+</p>
+<h3>图标选项卡</h3>
+<p>在 tabs 类后添加 tabs-icon-only 类可设置只显示图标选项卡。</p>
+<pre>
+&lt;div class="tabs tabs-icon-only"&gt;
+  &lt;a class="tab-item"&gt;
+    &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+  &lt;/a&gt;
+  &lt;a class="tab-item"&gt;
+    &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+  &lt;/a&gt;
+  &lt;a class="tab-item"&gt;
+    &lt;i class="icon ion-gear-a"&gt;&lt;/i&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_tabs-icon-only" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<h3>顶部图标+文字选项卡</h3>
+<p>在 tabs 类后添加 tabs-icon-top 类可设置顶部图标+文字选项卡。</p>
+<pre>
+&lt;div class="tabs tabs-icon-top"&gt;
+  &lt;a class="tab-item" href="#"&gt;
+    &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+    主页
+  &lt;/a&gt;
+  &lt;a class="tab-item" href="#"&gt;
+    &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+    收藏
+  &lt;/a&gt;
+  &lt;a class="tab-item" href="#"&gt;
+    &lt;i class="icon ion-gear-a"&gt;&lt;/i&gt;
+    设置
+  &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_tabs-icon-top" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<h3>左侧图标+文字选项卡</h3>
+<p>在 tabs 类后添加 tabs-icon-left 类可设置左侧图标+文字选项卡。</p><pre>
+&lt;div class="tabs tabs-icon-left"&gt;
+  &lt;a class="tab-item"&gt;
+    &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+    主页
+  &lt;/a&gt;
+  &lt;a class="tab-item"&gt;
+    &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+    收藏
+  &lt;/a&gt;
+  &lt;a class="tab-item"&gt;
+    &lt;i class="icon ion-gear-a"&gt;&lt;/i&gt;
+    设置
+  &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_tabs-icon-left" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<h3>条纹样式选项卡</h3>
+<p>
+可以在带有 tabs 的样式名的元素上添加 tabs-striped 来实现像 Android 风格的 tabs。也可以添加 tabs-top 来实现选项卡在页面顶部。
+</p><p>条纹选项卡颜色可通过 tabs-background-{color} 和 tabs-color-{color} 来控制，
+{color} 值可以是：default, light, stable, positive, calm, balanced, energized, assertive, royal, 或 dark。</p>
+<p>注意：如果要再选项卡上设置头部标题，需要使用 has-tabs-top 类。</p>
+<pre>
+&lt;div class="tabs-striped tabs-top tabs-background-positive tabs-color-light"&gt;
+    &lt;div class="tabs"&gt;
+      &lt;a class="tab-item active" href="#"&gt;
+        &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+        Test
+      &lt;/a&gt;
+      &lt;a class="tab-item" href="#"&gt;
+        &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+        Favorites
+      &lt;/a&gt;
+      &lt;a class="tab-item" href="#"&gt;
+        &lt;i class="icon ion-gear-a"&gt;&lt;/i&gt;
+        Settings
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="tabs-striped tabs-color-assertive"&gt;
+    &lt;div class="tabs"&gt;
+      &lt;a class="tab-item active" href="#"&gt;
+        &lt;i class="icon ion-home"&gt;&lt;/i&gt;
+        Test
+      &lt;/a&gt;
+      &lt;a class="tab-item" href="#"&gt;
+        &lt;i class="icon ion-star"&gt;&lt;/i&gt;
+        Favorites
+      &lt;/a&gt;
+      &lt;a class="tab-item" href="#"&gt;
+        &lt;i class="icon ion-gear-a"&gt;&lt;/i&gt;
+        Settings
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=ionic_tabs-striped" target="_blank"><button class="btn example-btn">尝试一下 »</button></a></p>
+<p>运行效果如下：</p>
+<iframe frameborder="0" height="400" src="/try/demo_source/ionic_tabs-striped.htm"></iframe>
+</div>

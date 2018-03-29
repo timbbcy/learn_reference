@@ -1,0 +1,69 @@
+<div class="article-intro" id="content">
+<h1>jQuery <span class="color_h1">尺寸</span>
+</h1>
+<hr/>
+<p class="intro">通过 jQuery，很容易处理元素和浏览器窗口的尺寸。</p>
+<hr/>
+<h2>jQuery 尺寸方法</h2>
+<p>jQuery 提供多个处理尺寸的重要方法：</p>
+<ul>
+<li>width()</li>
+<li>height()</li>
+<li>innerWidth()</li>
+<li>innerHeight()</li>
+<li>outerWidth()</li>
+<li>outerHeight()</li>
+</ul>
+<hr/>
+<h2>jQuery 尺寸</h2>
+<p style="text-align:center">
+<img alt="jQuery Dimensions" border="0" height="340" src="/images/img_jquerydim.gif" width="488"/></p>
+<hr/>
+<h2>jQuery width() 和 height() 方法</h2>
+<p>width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。</p>
+<p>height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。</p>
+<p>下面的例子返回指定的 &lt;div&gt; 元素的宽度和高度：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">div 的宽度是: </span><span class="hl-quotes">"</span><span class="hl-code"> + $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">width</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">div 的高度是: </span><span class="hl-quotes">"</span><span class="hl-code"> + $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">height</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">html</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dim_width_height" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery innerWidth() 和 innerHeight() 方法</h2>
+<p>innerWidth() 方法返回元素的宽度（包括内边距）。</p>
+<p>innerHeight() 方法返回元素的高度（包括内边距）。</p>
+<p>下面的例子返回指定的 &lt;div&gt; 元素的 inner-width/height：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">div 宽度，包含内边距: </span><span class="hl-quotes">"</span><span class="hl-code"> + $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerWidth</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">div 高度，包含内边距: </span><span class="hl-quotes">"</span><span class="hl-code"> + $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHeight</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">html</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dim_innerwidth_height" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>jQuery outerWidth() 和 outerHeight() 方法</h2>
+<p>outerWidth() 方法返回元素的宽度（包括内边距和边框）。</p>
+<p>outerHeight() 方法返回元素的高度（包括内边距和边框）。</p>
+<p>下面的例子返回指定的 &lt;div&gt; 元素的 outer-width/height：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-code">$</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">button</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">click</span><span class="hl-brackets">(</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">txt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">div 宽度，包含内边距和边框: </span><span class="hl-quotes">"</span><span class="hl-code"> + $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">outerWidth</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> + </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+  </span><span class="hl-identifier">txt</span><span class="hl-code">+=</span><span class="hl-quotes">"</span><span class="hl-string">div 高度，包含内边距和边框: </span><span class="hl-quotes">"</span><span class="hl-code"> + $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">outerHeight</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+  $</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">#div1</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">html</span><span class="hl-brackets">(</span><span class="hl-identifier">txt</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjquery_dim_outerwidth_height" target="_blank">
+尝试一下 </a></div>
+</div>

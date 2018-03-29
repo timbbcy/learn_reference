@@ -1,0 +1,118 @@
+<div class="article-intro" id="content">
+<h1>jQuery UI 实例 - <span class="color_h1">菜单（Menu）</span></h1>
+<div class="tutintro">
+<p>带有鼠标和键盘交互的用于导航的可主题化菜单。</p>
+<p>如需了解更多有关 menu 部件的细节，请查看 API 文档 <a href="/jqueryui/api-menu.html">菜单部件（Menu Widget）</a>。</p>
+</div>
+<h2>默认功能</h2>
+<p>一个带有默认配置、禁用条目和嵌套菜单的菜单。由一个列表转化成的，添加了主题，并支持鼠标和键盘交互。尝试使用光标键导航菜单。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 菜单（Menu） - 默认功能&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#menu" ).menu();
+  });
+  &lt;/script&gt;
+  &lt;style&gt;
+  .ui-menu { width: 150px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;ul id="menu"&gt;
+  &lt;li class="ui-state-disabled"&gt;&lt;a href="#"&gt;Aberdeen&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Ada&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Adamsville&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Addyston&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Delphi&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li class="ui-state-disabled"&gt;&lt;a href="#"&gt;Ada&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Saarland&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Salzburg&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Saarland&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Salzburg&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;a href="#"&gt;Delphi&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Ada&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Saarland&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Salzburg&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href="#"&gt;Delphi&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Ada&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Saarland&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Salzburg&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Perch&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class="ui-state-disabled"&gt;&lt;a href="#"&gt;Amesville&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-menu" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+<h2>图标</h2>
+<p>一个带有默认配置的菜单，显示如何使用带有图标的菜单。</p>
+<pre style="white-space: pre-wrap;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;jQuery UI 菜单（Menu） - 图标&lt;/title&gt;
+  &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"&gt;
+  &lt;script src="//code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+  &lt;script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"&gt;
+  &lt;script&gt;
+  $(function() {
+    $( "#menu" ).menu();
+  });
+  &lt;/script&gt;
+  &lt;style&gt;
+  .ui-menu { width: 150px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;ul id="menu"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-disk"&gt;&lt;/span&gt;保存&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-zoomin"&gt;&lt;/span&gt;放大&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-zoomout"&gt;&lt;/span&gt;缩小&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="ui-state-disabled"&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-print"&gt;&lt;/span&gt;打印...&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;播放&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-seek-start"&gt;&lt;/span&gt;上一个&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-stop"&gt;&lt;/span&gt;停止&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-play"&gt;&lt;/span&gt;播放&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;span class="ui-icon ui-icon-seek-end"&gt;&lt;/span&gt;下一个&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+ 
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/try/tryit.php?filename=jqueryui-example-menu-icons" target="_blank"><button class="btn btn-info btn-lg">查看演示</button></a></p>
+</div>

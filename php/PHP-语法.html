@@ -1,0 +1,43 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">语法</span>
+</h1>
+<hr/>
+<p class="intro">PHP 脚本在服务器上执行，然后将纯 HTML 结果发送回浏览器。</p>
+<hr/>
+<h2>基本的 PHP 语法</h2>
+<p>PHP 脚本可以放在文档中的任何位置。</p>
+<p>PHP 脚本以 <b>&lt;?php</b> 开始，以 <b>?&gt;</b> 结束：</p>
+<div class="code"><div>
+&lt;?php<br/>
+// PHP 代码<br/>
+?&gt;
+</div></div>
+<p>PHP 文件的默认文件扩展名是 ".php"。</p>
+<p>PHP 文件通常包含 HTML 标签和一些 PHP 脚本代码。</p>
+<p>下面，我们提供了一个简单的 PHP 文件实例，它可以向浏览器输出文本 "Hello World!"：</p>
+<div class="example"><h2 class="example">实例</h2><div class="example_code"><span style="color: #000000">
+&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;body&gt;<br> <br>&lt;h1&gt;My first PHP page&lt;/h1&gt;<br> <br><span style="color: #0000BB">&lt;?php<br/></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Hello World!"</span><span style="color: #007700">;<br/></span><span style="color: #0000BB">?&gt;<br/></span> <br/>&lt;/body&gt;<br/>&lt;/html&gt;</br></br></br></br></br></br></span>
+</div><br/><a class="showbtn" href="/try/runcode.php?filename=demo_syntax&amp;type=php" target="_blank">运行实例 »</a></div>
+<p>PHP 中的每个代码行都必须以分号结束。分号是一种分隔符，用于把指令集区分开来。</p>
+<p>通过 PHP，有两种在浏览器输出文本的基础指令：<b>echo</b> 和 <b>print</b>。</p>
+<hr/>
+<h2>PHP 中的注释</h2>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/><span class="marked">&lt;?php<br/>
+// 这是 PHP 单行注释<br/><br/>
+/*<br/>
+这是 <br/>
+PHP 多行<br/>
+注释<br/>
+*/<br/>
+?&gt;</span><br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showphp2.php?filename=demo_syntax_comments" target="_blank">运行实例 »</a>
+</div>
+</div>

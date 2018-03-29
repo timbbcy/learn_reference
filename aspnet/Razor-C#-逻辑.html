@@ -1,0 +1,81 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Razor <span class="color_h1">- C# 逻辑条件</span>
+</h1>
+<hr/>
+<p class="intro">编程逻辑：根据条件执行代码。</p>
+<hr/>
+<h2>If 条件</h2>
+<p>C# 允许根据条件执行代码。</p>
+<p>使用 <strong>if 语句</strong>来判断条件。根据判断结果，if 语句返回 true 或者 false：</p>
+<ul>
+<li>if 语句开始一个代码块</li>
+<li>条件写在括号里</li>
+<li>如果条件为真，大括号内的代码被执行</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{var 
+	price=50;}<br/></span>&lt;html&gt;<br/>&lt;body&gt;<br/><span class="marked">@if (price&gt;30)<br/>    {<br/>    &lt;p&gt;The price is too high.&lt;/p&gt;<br/>    
+	}<br/></span>&lt;/body&gt;<br/>&lt;/html&gt;
+</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_razor_cs_010" target="_blank">运行实例 »</a>
+</div>
+<br/><hr/>
+<h2>Else 条件</h2>
+<p>if 语句可以包含 <strong>else 条件</strong>。</p>
+<p>else 条件定义了当条件为假时被执行的代码。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{var 
+	price=20;}<br/></span>&lt;html&gt;<br/>&lt;body&gt;<br/><span class="marked">@if (price&gt;30)<br/>  {<br/>
+	  &lt;p&gt;The price is too high.&lt;/p&gt;<br/>
+	  }<br/>else<br/>  {<br/>  &lt;p&gt;The price is OK.&lt;/p&gt;<br/>  } <br/></span>&lt;/body&gt;<br/>&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_razor_cs_011" target="_blank">运行实例 »</a>
+</div>
+<p><strong>注释：</strong>在上面的实例中，如果第一个条件为真，if 块的代码将会被执行。else 条件覆盖了除 if 条件之外的"其他所有情况"。</p>
+<hr/>
+<h2>Else If 条件</h2>
+<p>多个条件判断可以使用 <strong>else if 条件</strong>：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">@{var 
+	price=25;}<br/></span>&lt;html&gt;<br/>&lt;body&gt;<br/><span class="marked">@if (price&gt;=30)<br/>
+  {<br/>  &lt;p&gt;The price is 
+	high.&lt;/p&gt;<br/>
+	  
+	}<br/>else if (price&gt;20 &amp;&amp; price&lt;30) <br/>
+	  {<br/>  &lt;p&gt;The price is OK.&lt;/p&gt;<br/>  }<br/>
+	else<br/>
+	  {<br/>  &lt;p&gt;The price is low.&lt;/p&gt;<br/>  }    <br/></span>&lt;/body&gt;<br/>&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_razor_cs_012" target="_blank">运行实例 »</a>
+</div>
+<p>在上面的实例中，如果第一个条件为真，if 块的代码将会被执行。</p>
+<p>如果第一个条件不为真且第二个条件为真，else if 块的代码将会被执行。</p>
+<p>else if 条件的数量不受限制。</p>
+<p>如果 if 和 else if 条件都不为真，最后的 else 块（不带条件）覆盖了"其他所有情况"。</p>
+<hr/>
+<h2>Switch 条件</h2>
+<p><strong>switch 块</strong>可以用来测试一些单独的条件：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+<span class="marked">
+	@{<br/>var weekday=DateTime.Now.DayOfWeek;<br/>var day=weekday.ToString();<br/>var message="";<br/>}<br/></span>&lt;html&gt;<br/>&lt;body&gt;<br/><span class="marked">
+	@switch(day)<br/>{<br/>case "Monday":<br/>    
+	message="This is the first weekday.";<br/>    break;<br/>case 
+	"Thursday":<br/>    message="Only one day before weekend.";<br/>    
+	break;<br/>case "Friday":<br/>    message="Tomorrow is 
+	weekend!";<br/>    break;<br/>default:<br/>    
+	message="Today is " + day;<br/>    break;<br/>}<br/></span>&lt;p&gt;<span class="marked">@message</span>&lt;/p&gt;<br/>&lt;/body&gt;<br/>&lt;/html&gt;</div>
+<br/><a class="showbtn" href="/try/showfile_c.php?filename=try_razor_cs_013" target="_blank">运行实例 »</a>
+</div>
+<p>
+测试值（day）是写在括号中。每个单独的测试条件都有一个以分号结束的 case 值和以 break 语句结束的任意数量的代码行。如果测试值与 case 值相匹配，相应的代码行被执行。
+</p>
+<p>
+switch 块有一个默认的情况（default:），当所有的指定的情况都不匹配时，它覆盖了"其他所有情况"。
+</p>
+</div>

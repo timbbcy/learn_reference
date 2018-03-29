@@ -1,0 +1,191 @@
+<div class="article-intro" id="content">
+<h1>CSS <span class="color_h1"> 伪元素</span>
+</h1>
+<hr/>
+<p class="intro">CSS伪元素是用来添加一些选择器的特殊效果。</p>
+<hr/>
+<h2>语法</h2>
+<p>伪元素的语法：</p>
+<div class="code notranslate"><div>
+selector:pseudo-element {property:value;}</div></div>
+<p>CSS类也可以使用伪元素：</p>
+<div class="code"><div>
+selector.class:pseudo-element {property:value;}</div></div>
+<br/><hr/>
+<h2>:first-line 伪元素</h2>
+<p>"first-line" 伪元素用于向文本的首行设置特殊样式。</p>
+<p>在下面的例子中，浏览器会根据 "first-line" 伪元素中的样式对 p 元素的第一行文本进行格式化：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-special">:first-line</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">#ff0000</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">font-variant:</span><span class="hl-string">small-caps</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_firstline" target="_blank">尝试一下 »</a>
+</div>
+<p><b>注意：</b>"first-line" 伪元素只能用于块级元素。</p>
+<p><b>注意：</b>  下面的属性可应用于 "first-line" 伪元素：</p>
+<ul>
+<li> font properties</li>
+<li>color properties </li>
+<li> background properties</li>
+<li>word-spacing</li>
+<li>letter-spacing</li>
+<li>text-decoration</li>
+<li>vertical-align</li>
+<li>text-transform</li>
+<li>line-height</li>
+<li>clear</li>
+</ul>
+<hr/>
+<h2>:first-letter 伪元素</h2>
+<p>"first-letter" 伪元素用于向文本的首字母设置特殊样式：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-special">:first-letter</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">#ff0000</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">font-size:</span><span class="hl-string">xx-large</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_firstletter" target="_blank">尝试一下 »</a>
+</div>
+<p><b>注意：</b> "first-letter" 伪元素只能用于块级元素。</p>
+<p><b>注意：</b> 下面的属性可应用于 "first-letter" 伪元素： </p>
+<ul>
+<li> font properties</li>
+<li> color properties </li>
+<li> background properties</li>
+<li>margin properties</li>
+<li>padding properties</li>
+<li>border properties</li>
+<li>text-decoration</li>
+<li>vertical-align (only if "float" is "none")</li>
+<li>text-transform</li>
+<li>line-height</li>
+<li>float</li>
+<li>clear</li>
+</ul>
+<hr/>
+<h2>伪元素和CSS类</h2>
+<p>伪元素可以结合CSS类： </p>
+<pre>
+p.article:first-letter {color:#ff0000;}
+
+&lt;p class="article"&gt;文章段落&lt;/p&gt;</pre>
+<p>上面的例子会使所有 class 为 article 的段落的首字母变为红色。</p>
+<hr/>
+<h2>多个伪元素</h2>
+<p>可以结合多个伪元素来使用。</p>
+<p>在下面的例子中，段落的第一个字母将显示为红色，其字体大小为 xx-large。第一行中的其余文本将为蓝色，并以小型大写字母显示。</p>
+<p>段落中的其余文本将以默认字体大小和颜色来显示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">p</span><span class="hl-special">:first-letter</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">#ff0000</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">font-size:</span><span class="hl-string">xx-large</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">p</span><span class="hl-special">:first-line</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">color:</span><span class="hl-var">#0000ff</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">font-variant:</span><span class="hl-string">small-caps</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_firstline_letter" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS - :before 伪元素</h2>
+<p>":before" 伪元素可以在元素的内容前面插入新内容。</p>
+<p>下面的例子在每个 &lt;h1&gt;元素前面插入一幅图片：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">h1</span><span class="hl-special">:before</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">smiley</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div></div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_before" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>CSS - :after 伪元素</h2>
+<p>":after" 伪元素可以在元素的内容之后插入新内容。</p>
+<p>下面的例子在每个  &lt;h1&gt; 元素后面插入一幅图片：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">h1</span><span class="hl-special">:after</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">smiley</span><span class="hl-code">.</span><span class="hl-code">gif</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=trycss_after" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>所有CSS伪类/元素</h2>
+<table border="1" cellpadding="0" cellspacing="0" class="reference" id="table13" width="100%">
+<tbody><tr>
+<th align="left" width="20%">选择器</th>
+<th align="left" width="17%">示例</th>
+<th align="left" width="63%">示例说明</th>
+</tr>
+<tr>
+<td><a href="/cssref/sel-link.html">:link</a></td>
+<td class="notranslate">a:link</td>
+<td>选择所有未访问链接</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-visited.html">:visited</a></td>
+<td class="notranslate">a:visited</td>
+<td>选择所有访问过的链接</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-active.html">:active</a></td>
+<td class="notranslate">a:active</td>
+<td>选择正在活动链接</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-hover.html">:hover</a></td>
+<td class="notranslate">a:hover</td>
+<td>把鼠标放在链接上的状态</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-focus.html">:focus</a></td>
+<td class="notranslate">input:focus</td>
+<td>选择元素输入后具有焦点</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-firstletter.html">:first-letter</a></td>
+<td class="notranslate">p:first-letter</td>
+<td>选择每个&lt;p&gt; 元素的第一个字母</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-firstline.html">:first-line</a></td>
+<td class="notranslate">p:first-line</td>
+<td>选择每个&lt;p&gt; 元素的第一行</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-firstchild.html">:first-child</a></td>
+<td class="notranslate">p:first-child</td>
+<td>选择器匹配属于任意元素的第一个子元素的 &lt;]p&gt; 元素</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-before.html">:before</a></td>
+<td class="notranslate">p:before</td>
+<td>在每个&lt;p&gt;元素之前插入内容</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-after.html">:after</a></td>
+<td class="notranslate">p:after</td>
+<td>在每个&lt;p&gt;元素之后插入内容</td>
+</tr>
+<tr>
+<td><a href="/cssref/sel-lang.html">:lang(<i>language</i>)</a></td>
+<td class="notranslate">p:lang(it)</td>
+<td>为&lt;p&gt;元素的lang属性选择一个开始值</td>
+</tr>
+</tbody></table>
+</div>

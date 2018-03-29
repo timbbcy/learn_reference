@@ -1,0 +1,77 @@
+<div class="article-intro" id="content">
+<h1>jQuery Mobile <span class="color_h1">可折叠块</span>
+</h1>
+<hr/>
+<h2>可折叠内容块</h2>
+<p>可折叠块允许您隐藏或显示内容 - 对于存储部分信息很有用。</p>
+<iframe frameborder="0" height="150px" scrolling="no" seamless="" src="/try/demo_source/tryjqmob_collapsible_app.htm" width="100%"></iframe>
+<p>如需创建一个可折叠的内容块，需要为容器添加 data-role="collapsible" 属性。在容器（div）内，添加一个标题元素（H1-H6），后跟您想要进行扩展的 HTML 标记：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;div <span class="marked">data-role="collapsible"</span>&gt;<br/>  
+		&lt;h1&gt;点击我 - 我可以折叠!&lt;/h1&gt;<br/>  &lt;p&gt;我是可折叠的内容。&lt;/p&gt;<br/>
+		&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_collapsible" target="_blank">尝试一下 »</a>
+</div>
+<p>默认情况下，内容是被折叠起来的。如需在页面加载时展开内容，请使用 data-collapsed="false"：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;div <span class="marked">data-role="collapsible" data-collapsed="false"</span>&gt;<br/>  
+		&lt;h1&gt;点击我 - 我可以折叠!&lt;/h1&gt;<br/>  &lt;p&gt;I'm 
+		现在我默认是展开的。&lt;/p&gt;<br/>
+		&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_collapsible_false" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>嵌套可折叠块</h2>
+<p>可折叠的内容块是可以彼此嵌套的：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;div <span class="marked">data-role="collapsible"</span>&gt;<br/>  &lt;h1&gt;点击我 - 我可以折叠!&lt;/h1&gt;<br/>
+		  &lt;p&gt;我是被展开的内容。&lt;/p&gt;<br/>  &lt;div 
+		<span class="marked">data-role="collapsible"</span>&gt;<br/>    &lt;h1&gt;点击我 - 我是嵌套的可折叠块！&lt;/h1&gt;<br/>    &lt;p&gt;我是嵌套的可折叠块中被展开的内容。&lt;/p&gt;<br/>  &lt;/div&gt;<br/>&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_collapsible_nested" target="_blank">尝试一下 »</a>
+</div>
+<br/><table class="lamp" id="table2"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>可折叠的内容块可以根据您的需要进行多次嵌套。</td>
+</tr></table>
+<br/><hr/>
+<h2>可折叠集合</h2>
+<p>可折叠集合是将可折叠块组合在一起（就像手风琴一样）。当一个新的块被展开时，所有其他的块都会被折叠起来。</p>
+<p>创建若干个可折叠的内容块，然后把可折叠内容块用带有 data-role="collapsible-set" 的新容器包围起来：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+		&lt;div <span class="marked">data-role="collapsible-set"</span>&gt;<br/>  &lt;div 
+		data-role="collapsible"&gt;<br/>    &lt;h1&gt;点击我 - 我可以折叠！&lt;/h1&gt;<br/>    &lt;p&gt;我是被展开的内容。&lt;/p&gt;<br/>  
+		&lt;/div&gt;<br/>  &lt;div data-role="collapsible"&gt;<br/>    
+		&lt;h1&gt;点击我 - 我可以折叠!&lt;/h1&gt;<br/>    &lt;p&gt;我是被展开的内容。&lt;/p&gt;<br/>  &lt;/div&gt;<br/>&lt;/div&gt;<br/>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=tryjqmob_collapsible_sets" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<div class="tryit_ex">
+<img alt="实例" height="46px" src="/images/tryitimg.gif" width="40"/><h2>更多实例</h2>
+</div>
+<p><a href="/try/try.php?filename=tryjqmob_collapsible_inset" target="_blank">通过 data-inset 属性取消圆角与外边距</a><br/>
+如何取消可折叠块上的圆角与外边距。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_collapsible_mini" target="_blank">通过 data-mini 属性迷你化可折叠块</a><br/>
+如何让可折叠块更小。</p>
+<p>
+<a href="/try/try.php?filename=tryjqmob_collapsible_icons" target="_blank">
+通过 data-collapsed-icon 和 data-expanded-icon 改变图标</a><br/>
+如何改变可折叠块的图标（默认是 + 和 -）。</p>
+<p><a href="/try/tryit.php?filename=tryjqmob_collapsible_popup" target="_blank">弹窗中使用折叠</a><br/>
+在弹窗中创建折叠项。</p>
+<p>
+<a href="/try/tryit.php?filename=tryjqmob_collapsible_iconpos" target="_blank">修改图标位置</a><br/>
+在折叠项中如何修改图标的位置 (默认为在左边)。</p>
+</div>

@@ -1,0 +1,118 @@
+<div class="article-intro" id="content">
+<h1>HTML DOM <span class="color_h1">导航</span>
+</h1>
+<hr/>
+<p class="intro">通过 HTML DOM，您能够使用节点关系在节点树中导航。</p>
+<hr/>
+<h2>HTML DOM 节点列表</h2>
+<p>getElementsByTagName() 方法返回<em>节点列表</em>。节点列表是一个节点数组。</p>
+<p>下面的代码选取文档中的所有 &lt;p&gt; 节点：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;</span></div>
+</div>
+<p>可以通过下标号访问这些节点。如需访问第二个 &lt;p&gt;，您可以这么写：</p>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">y</span><span class="hl-code">=</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code">;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_nodelist" target="_blank">尝试一下 »</a>
+</div>
+<p><b>注意：</b> <p>下标号从 0 开始。</p>
+<hr/>
+<h2>HTML DOM 节点列表长度</h2>
+<p>length 属性定义节点列表中节点的数量。</p>
+<p>您可以使用 length 属性来循环节点列表：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">x</span><span class="hl-code">=</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByTagName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">p</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">x</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">;</span><span class="hl-identifier">i</span><span class="hl-code">++</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-identifier">x</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">write</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_nodelist_length" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析：</h3>
+<ul>
+<li>获取所有 &lt;p&gt; 元素节点</li>
+<li>输出每个 &lt;p&gt; 元素的文本节点的值</li>
+</ul>
+<hr/>
+<h2>导航节点关系</h2>
+<p>您能够使用三个节点属性：parentNode、firstChild 以及 lastChild ，在文档结构中进行导航。</p>
+<p>请看下面的 HTML 片段：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">DOM 是非常有用的!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">这个实例演示了节点的关系。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<ul>
+<li>首个 &lt;p&gt; 元素是 &lt;body&gt; 元素的首个子元素（firstChild）</li>
+<li>&lt;div&gt; 元素是 &lt;body&gt; 元素的最后一个子元素（lastChild）</li>
+<li>&lt;body&gt; 元素是首个 &lt;p&gt; 元素和 &lt;div&gt; 元素的父节点（parentNode）</li>
+</ul>
+<p>firstChild 属性可用于访问元素的文本：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">intro</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+x=document.getElementById("intro");
+document.write(x.firstChild.nodeValue);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_firstchild" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>DOM 根节点</h2>
+<p>这里有两个特殊的属性，可以访问全部文档：</p>
+<ul>
+<li>document.documentElement - 全部文档</li>
+<li>document.body - 文档的主体</li>
+</ul>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">DOM 是非常有用的!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">这个实例演示了 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-code">document.body</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-code"> 属性。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+alert(document.body.innerHTML);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_root" target="_blank">尝试一下 »</a>
+</div>
+<br/><hr/>
+<h2>childNodes 和 nodeValue</h2>
+<p>除了 innerHTML 属性，您也可以使用 childNodes 和 nodeValue 属性来获取元素的内容。</p>
+<p>下面的代码获取 id="intro" 的 &lt;p&gt; 元素的值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">intro</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+txt=document.getElementById("intro").childNodes[0].nodeValue;
+document.write(txt);
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_methods2" target="_blank">尝试一下 »</a>
+</div>
+<p>在上面的例子中，getElementById 是一个方法，而 childNodes 和 nodeValue 是属性。</p>
+<p>在本教程中，我们将使用 innerHTML 属性。不过，学习上面的方法有助于对 DOM 树结构和导航的理解。</p>
+</p></div>

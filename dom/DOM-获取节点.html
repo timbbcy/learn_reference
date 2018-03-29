@@ -1,0 +1,91 @@
+<div class="article-intro" id="content">
+<h1>XML DOM <span class="color_h1">获取节点值</span>
+</h1>
+<hr/>
+<p class="intro">nodeValue 属性用于获取节点的文本值。</p>
+<p class="intro">getAttribute() 方法返回属性的值。</p>
+<hr/>
+<h2>获取元素的值</h2>
+<p>在 DOM 中，每种成分都是节点。元素节点没有文本值。</p>
+<p>元素节点的文本存储在子节点中。该节点称为文本节点。</p>
+<p>获取元素文本的方法，就是获取这个子节点（文本节点）的值。</p>
+<hr/>
+<h2>获取元素值</h2>
+<p>getElementsByTagName() 方法返回包含拥有指定标签名的所有元素的节点列表，其中的元素的顺序是它们在源文档中出现的顺序。</p>
+<p>下面的代码通过使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中并检索第一个 &lt;title&gt; 元素：</p>
+<div class="code notranslate"><div>
+
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0];
+</div></div>
+<p>childNodes 属性返回子节点的列表。&lt;title&gt; 元素只有一个子节点。它是一个文本节点。</p>
+<p>下面的代码检索 &lt;title&gt; 元素的文本节点：</p>
+<div class="code notranslate"><div>
+
+x=xmlDoc.getElementsByTagName("title")[0];<br/>
+y=x.childNodes[0];
+</div></div>
+<p>nodeValue 属性返回文本节点的文本值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+x=xmlDoc.getElementsByTagName("title")[0];<br/>
+y=x.childNodes[0];<br/>
+txt=y.nodeValue;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getelementsbytagname" target="_blank">尝试一下 »</a>
+</div>
+<p>结果：txt = "Everyday Italian"</p>
+<p>遍历所有 &lt;title&gt; 元素：
+<a href="/try/try.php?filename=try_dom_getelementsbytagname1" target="_blank">尝试一下</a></p>
+<hr/>
+<h2>获取属性的值</h2>
+<p>在 DOM 中，属性也是节点。与元素节点不同，属性节点拥有文本值。</p>
+<p>获取属性的值的方法，就是获取它的文本值。</p>
+<p>可以通过使用 getAttribute() 方法或属性节点的 nodeValue 属性来完成这个任务。</p>
+<hr/>
+<h2>获取属性值 - getAttribute()</h2>
+<p>getAttribute() 方法返回属性<b>值</b>。</p>
+<p>
+下面的代码检索第一个 &lt;title&gt; 元素的 "lang" 属性的文本值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+txt=xmlDoc.getElementsByTagName("title")[0].getAttribute("lang");
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getattribute" target="_blank">尝试一下 »</a>
+</div>
+<p>结果：txt = "en"</p>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>把 txt 变量设置为第一个 title 元素节点的 "lang" 属性的值</li>
+</ol>
+<p>遍历所有的 &lt;book&gt; 元素，并获取它们的 "category" 属性：
+<a href="/try/try.php?filename=try_dom_getattribute1" target="_blank">尝试一下</a><br/></p>
+<hr/>
+<h2>获取属性值 - getAttributeNode()</h2>
+<p>getAttributeNode() 方法返回属性<b>节点</b>。</p>
+<p>
+下面代码检索第一个 &lt;title&gt; 元素的 "lang" 属性的文本值：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+xmlDoc=loadXMLDoc("books.xml");<br/><br/>
+x=xmlDoc.getElementsByTagName("title")[0].getAttributeNode("lang");<br/>
+txt=x.nodeValue;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=try_dom_getattributenode" target="_blank">尝试一下 »</a>
+</div>
+<p>结果：Result:  txt = "en"</p>
+<p>实例解释：</p>
+<ol>
+<li>使用 <a href="dom-loadxmldoc.html">loadXMLDoc()</a> 把 "<a href="/try/demo_source/books.xml" target="_blank">books.xml</a>" 载入 xmlDoc 中</li>
+<li>获取第一个 &lt;title&gt; 元素节点的 "lang" 属性节点</li>
+<li>把 txt 变量设置为属性的值</li>
+</ol>
+<p>遍历所有的 &lt;book&gt; 元素并获取它们的 "category" 属性：
+<a href="/try/try.php?filename=try_dom_getattributenode2" target="_blank">尝试一下</a></p>
+<br/>
+</div>

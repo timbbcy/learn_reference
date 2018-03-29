@@ -1,0 +1,42 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 树形菜单 - <span class="color_h1">创建异步树形菜单</span></h1>
+<p>为了创建异步的树形菜单（Tree），每一个树节点必须要有一个 'id' 属性，这个将提交回服务器去检索子节点数据。</p>
+<img src="/wp-content/uploads/2013/12/tree2.png"/>
+<h4>创建树形菜单（Tree）</h4>
+<pre style="color:#006600">
+    &lt;ul id="tt" class="easyui-tree"
+            url="tree2_getdata.php"&gt;
+    &lt;/ul&gt;
+</pre>
+<h4>服务器端代码</h4>
+<pre style="color:#006600">
+    $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+
+    include 'conn.php';
+
+    $result = array();
+    $rs = mysql_query("select * from nodes where parentId=$id");
+    while($row = mysql_fetch_array($rs)){
+        $node = array();
+        $node['id'] = $row['id'];
+        $node['text'] = $row['name'];
+        $node['state'] = has_child($row['id']) ? 'closed' : 'open';
+        array_push($result,$node);
+    }
+
+    echo json_encode($result);
+
+    function has_child($id){
+        $rs = mysql_query("select count(*) from nodes where parentId=$id");
+        $row = mysql_fetch_array($rs);
+        return $row[0] &gt; 0 ? true : false;
+    }
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-tree-tree2.zip">jeasyui-tree-tree2.zip</a></p>
+</div>

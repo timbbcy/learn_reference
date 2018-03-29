@@ -1,0 +1,56 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">创建复杂工具栏</span></h1>
+<p>
+数据网格（datagrid）的工具栏（toolbar）可以包含按钮及其他组件。
+您可以通个一个已存在的 DIV 标签来简单地定义工具栏布局，该 DIV 标签将成为数据网格（datagrid）工具栏的内容。
+本教程将向您展示如何创建数据网格（datagrid）组件的复杂工具栏。
+</p>
+<img src="/wp-content/uploads/2013/12/datagrid19_1.png"/>
+<h4>创建工具栏（Toolbar）</h4>
+<pre style="color:#006600">
+    &lt;div id="tb" style="padding:5px;height:auto"&gt;
+        &lt;div style="margin-bottom:5px"&gt;
+            &lt;a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"&gt;&lt;/a&gt;
+            &lt;a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"&gt;&lt;/a&gt;
+            &lt;a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"&gt;&lt;/a&gt;
+            &lt;a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"&gt;&lt;/a&gt;
+            &lt;a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            Date From: &lt;input class="easyui-datebox" style="width:80px"&gt;
+            To: &lt;input class="easyui-datebox" style="width:80px"&gt;
+            Language: 
+            &lt;input class="easyui-combobox" style="width:100px"
+                    url="data/combobox_data.json"
+                    valueField="id" textField="text"&gt;
+            &lt;a href="#" class="easyui-linkbutton" iconCls="icon-search"&gt;Search&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table class="easyui-datagrid" style="width:600px;height:250px"
+            url="data/datagrid_data.json" 
+            title="DataGrid - Complex Toolbar" toolbar="#tb"
+            singleSelect="true" fitColumns="true"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th field="itemid" width="60"&gt;Item ID&lt;/th&gt;
+                &lt;th field="productid" width="80"&gt;Product ID&lt;/th&gt;
+                &lt;th field="listprice" align="right" width="70"&gt;List Price&lt;/th&gt;
+                &lt;th field="unitcost" align="right" width="70"&gt;Unit Cost&lt;/th&gt;
+                &lt;th field="attr1" width="200"&gt;Address&lt;/th&gt;
+                &lt;th field="status" width="50"&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+    &lt;/table&gt;
+</pre>
+<p>正如您所看到的，数据网格（datagrid）的工具栏域对话框（dialog）相似。我们不需要写任何的 javascript 代码，就能创建带有复杂工具栏的数据网格（datagrid）。</p>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid19.zip">jeasyui-datagrid-datagrid19.zip</a></p>
+</div>

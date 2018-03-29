@@ -1,0 +1,463 @@
+<div class="article-intro" id="content">
+<h1>CSS 提示工具(Tooltip)
+</h1>
+<p>本文我们为大家介绍如何使用 HTML 与 CSS 来创建提示工具。</p>
+<p>提示工具在鼠标移动到指定元素后触发，先看以下四个实例：</p>
+<style>
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #ccc;
+    zcursor: help;
+    color: #006080;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .6s;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip .tooltiptext2 {
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+}
+.tooltip:hover .tooltiptext2 {
+    visibility: visible;
+}
+.tooltip-right {
+  top: -5px;
+  left: 125%;  
+}
+.tooltip-right2 {
+  top: -5px;
+  left: 105%;  
+}
+
+.tooltip-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+.tooltip-bottom {
+  top: 135%;
+  left: 50%;  
+  margin-left: -60px;
+}
+
+.tooltip-bottom2 {
+  top: 125%;
+  left: 50%;  
+  margin-left: -60px;
+}
+
+.tooltip-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.tooltip-top {
+  bottom: 125%;
+  left: 50%;  
+  margin-left: -60px;
+}
+.tooltip-top2 {
+  bottom: 115%;
+  left: 50%;  
+  margin-left: -60px;
+}
+
+.tooltip-top::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip-left {
+  top: -5px;
+  bottom:auto;
+  right: 128%;  
+}
+
+.tooltip-left2 {
+  top: -5px;
+  bottom:auto;
+  right: 105%;  
+}
+
+.tooltip-left::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #555;
+}
+
+.tooltip .tooltiptext-bottomarrow {
+    visibility: hidden;
+    width: 120px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 130%;
+    left: 50%;
+    margin-left: -60px;
+}
+.tooltip .tooltiptext-bottomarrow::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext-bottomarrow {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext-toparrow {
+    visibility: hidden;
+    width: 120px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+.tooltip .tooltiptext-toparrow::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+.tooltip:hover .tooltiptext-toparrow {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext-leftarrow {
+    visibility: hidden;
+    width: 120px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+.tooltip .tooltiptext-leftarrow::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext-leftarrow {
+    visibility: visible;
+}
+.tooltip .tooltiptext-rightarrow {
+    visibility: hidden;
+    width: 120px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 110%;
+}
+.tooltip .tooltiptext-rightarrow::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+.tooltip:hover .tooltiptext-rightarrow {
+    visibility: visible;
+}
+</style>
+<table class="reference">
+<tr><td>
+<div class="tooltip">头部显示
+    <span class="tooltiptext tooltip-top">提示框文本</span>
+</div>
+</td><td>
+<div class="tooltip">右边显示
+    <span class="tooltiptext tooltip-right">提示框文本</span>
+</div>
+</td><td>
+<div class="tooltip">底部显示
+    <span class="tooltiptext tooltip-bottom">提示框文本</span>
+</div>
+</td><td>
+<div class="tooltip">左边显示
+    <span class="tooltiptext tooltip-left">提示框文本</span>
+</div>
+</td></tr></table>
+<hr/>
+<h2>基础提示框(Tooltip)</h2>
+<p>提示框在鼠标移动到指定元素上显示：</p>
+<div class="example">
+<h2 class="example">HTML 代码：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">style</span><span class="hl-brackets">&gt;</span></div><div class="hl-main"><span class="hl-comment">/*</span><span class="hl-comment"> Tooltip 容器 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">relative</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">inline-block</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-bottom:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">dotted</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 悬停元素上显示点线 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">/*</span><span class="hl-comment"> Tooltip 文本 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">visibility:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">120</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">#fff</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-radius:</span><span class="hl-code"> </span><span class="hl-number">6</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">/*</span><span class="hl-comment"> 定位 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">z-index:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">/*</span><span class="hl-comment"> 鼠标移动上去后显示提示框 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.tooltip</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">visibility:</span><span class="hl-code"> </span><span class="hl-string">visible</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div><div class="hl-main"><span class="hl-brackets">&lt;/</span><span class="hl-reserved">style</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltip</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">鼠标移动到这
+  </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tooltiptext</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">提示文本</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析</h3>
+<p><strong>HTML)</strong> 使用容器元素 (like &lt;div&gt;) 并添加
+<b>"tooltip"</b> 类。在鼠标移动到 &lt;div&gt; 上时显示提示信息。</p>
+<p>提示文本放在内联元素上(如 &lt;span&gt;) 并使用<b>class="tooltiptext"</b>。</p>
+<p><strong>CSS)</strong><b>tooltip</b> 类使用 <b>position:relative</b>, 提示文本需要设置定位值 <b>position:absolute</b>。
+<strong>注意: </strong> 接下来的实例会显示更多的定位效果。</p>
+<p><b>tooltiptext</b> 类用于实际的提示文本。模式是隐藏的，在鼠标移动到元素显示 。设置了一些宽度、背景色、字体色等样式。
+</p>
+<p>CSS3 <b>border-radius</b> 属性用于为提示框添加圆角。</p>
+<p><b>:hover</b> 选择器用于在鼠标移动到到指定元素 &lt;div&gt; 上时显示的提示。</p>
+<hr/>
+<h2>定位提示工具</h2>
+<p>以下实例中，提示工具显示在指定元素的右侧(<b>left:105%</b>) 。</p><p>
+注意 <b>top:-5px</b> 同于定位在容器元素的中间。使用数字 <strong>5</strong> 因为提示文本的顶部和底部的内边距（padding）是 5px。
+</p><p>
+如果你修改 padding 的值，top 值也要对应修改，这样才可以确保它是居中对齐的。</p><p>在提示框显示在左边的情况也是这个原理。</p>
+<div class="example">
+<h2 class="example">显示在右侧：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">top:</span><span class="hl-code"> -</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">105</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_right" target="_blank">尝试一下 »</a>
+</div><br/>
+<div class="example">
+<h2 class="example">显示在左侧：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">top:</span><span class="hl-code"> -</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">right:</span><span class="hl-code"> </span><span class="hl-number">105</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_left" target="_blank">尝试一下 »</a>
+</div>
+<p>如果你想要提示工具显示在头部和底部。我们需要使用 <b>margin-left</b> 属性，并设置为 -60px。
+这个数字计算来源是使用宽度的一半来居中对齐，即： width/2 (120/2 = 60)。</p>
+<div class="example">
+<h2 class="example">显示在头部：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">120</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">bottom:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">margin-left:</span><span class="hl-code"> -</span><span class="hl-number">60</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 使用一半宽度 (120/2 = 60) 来居中提示工具 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_top" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">显示在底部：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">120</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">top:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; 
+    </span><span class="hl-reserved">margin-left:</span><span class="hl-code"> -</span><span class="hl-number">60</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 使用一半宽度 (120/2 = 60) 来居中提示工具 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_bottom" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>添加箭头</h2>
+<p>我们可以用CSS 伪元素 ::after 及 content 属性为提示工具创建一个小箭头标志，箭头是由边框组成的，但组合起来后提示工具像个语音信息框。</p>
+<p>以下实例演示了如何为显示在顶部的提示工具添加底部箭头：</p>
+<div class="example">
+<h2 class="example">顶部提示框/底部箭头：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code">:</span><span class="hl-special">:after</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code"> " "</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">top:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 提示工具底部 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin-left:</span><span class="hl-code"> -</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-width:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-style:</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-color:</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_arrow_bottom" target="_blank">尝试一下 »</a>
+</div>
+<h3>实例解析</h3>
+<p>在提示工具内定位箭头: <b>top: 100%</b> , 箭头将显示在提示工具的底部。<b>left: 50%</b> 用于居中对齐箭头。</p>
+<p><strong>注意：</strong><b>border-width</b> 属性指定了箭头的大小。如果你修改它，也要修改 <b>margin-left</b> 值。这样箭头在能居中显示。</p>
+<p><b>border-color</b> 用于将内容转换为箭头。设置顶部边框为黑色，其他是透明的。如果设置了其他的也是黑色则会显示为一个黑色的四边形。</p>
+<p>以下实例演示了如何在提示工具的头部添加箭头，注意设置边框颜色：</p>
+<div class="example">
+<h2 class="example">底部提示框/顶部箭头：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code">:</span><span class="hl-special">:after</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code"> " "</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">bottom:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;  </span><span class="hl-comment">/*</span><span class="hl-comment"> 提示工具头部 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">margin-left:</span><span class="hl-code"> -</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-width:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-style:</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-color:</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_arrow_top" target="_blank">尝试一下 »</a>
+</div>
+<p>以下两个实例是左右两边的箭头实例：</p>
+<div class="example">
+<h2 class="example">右侧提示框/左侧箭头：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code">:</span><span class="hl-special">:after</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code"> " "</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">top:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">right:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 提示工具左侧 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">margin-top:</span><span class="hl-code"> -</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-width:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-style:</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-color:</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_arrow_left" target="_blank">尝试一下 »</a>
+</div>
+<br/>
+<div class="example">
+<h2 class="example">左侧提示框/右侧箭头：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code">:</span><span class="hl-special">:after</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">content:</span><span class="hl-code"> " "</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">top:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-comment">/*</span><span class="hl-comment"> 提示工具右侧 </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-reserved">margin-top:</span><span class="hl-code"> -</span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-width:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-style:</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">border-color:</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_arrow_right" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>淡入效果</h2>
+<p>我们可以使用 CSS3 transition 属性及 opacity 属性来实现提示工具的淡入效果:</p>
+<div class="example">
+<h2 class="example">左侧提示框/右侧箭头：</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-identifier">.tooltip</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">opacity:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-code">;
+    </span><span class="hl-reserved">transition:</span><span class="hl-code"> </span><span class="hl-code">opacity</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">s</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.tooltip</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-identifier">.tooltiptext</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">opacity:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+<br/>
+<a class="tryitbtn" href="/try/try.php?filename=trycss_tooltip_transition" target="_blank">尝试一下 »</a>
+</div>
+<hr/>
+<h2>更多实例</h2>
+<p><a href="https://c.runoob.com/codedemo/2747" target="_blank">漂亮的 CSS 提示框</a></p>
+</div>

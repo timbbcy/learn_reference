@@ -1,0 +1,83 @@
+<div class="article-intro" id="content">
+<h1>JavaScript <span class="color_h1">Date（日期）</span> 对象</h1>
+<hr/>
+<p class="intro">日期对象用于处理日期和时间。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>在线实例</h2>
+</div>
+<p><a a="" href="/try/try.php?filename=tryjsref_date" target="_blank" 返回当日的日期和时间<=""><br/>
+如何使用 Date() 方法获得当日的日期。</a></p>
+<p><a href="/try/try.php?filename=tryjsref_getfullyear" target="_blank">getFullYear()</a><br/>
+使用 getFullYear() 获取年份。</p>
+<p><a href="/try/try.php?filename=tryjsref_gettime" target="_blank">getTime()</a><br/>
+getTime() 返回从 1970 年 1 月 1 日至今的毫秒数。</p>
+<p><a href="/try/try.php?filename=tryjsref_setfullyear2" target="_blank">setFullYear()</a><br/>
+如何使用 setFullYear() 设置具体的日期。</p>
+<p><a href="/try/try.php?filename=tryjsref_toutcstring" target="_blank">toUTCString()</a><br/>
+如何使用 toUTCString() 将当日的日期（根据 UTC）转换为字符串。</p>
+<p><a href="/try/try.php?filename=tryjsref_date_weekday" target="_blank">getDay()</a><br/>
+如何使用 getDay() 和数组来显示星期，而不仅仅是数字。</p>
+<p><a href="/try/try.php?filename=tryjs_timing_clock" target="_blank">Display a clock</a><br/>
+如何在网页上显示一个钟表。</p>
+<hr/>
+<h2>完整的 Date 对象参考手册</h2>
+<p>我们提供 JavaScript Date 对象参考手册，其中包括所有可用于日期对象的属性和方法。<a href="jsref-obj-date.html">JavaScript Date 对象参考手册</a>。</p>
+<p>该手册包含了对每个属性和方法的详细描述以及相关实例。</p>
+<hr/>
+<h2>创建日期</h2>
+<p>Date 对象用于处理日期和时间。 </p>
+<p>可以通过 new 关键词来定义 Date 对象。以下代码定义了名为 myDate 的 Date 对象：</p>
+<p>有四种方式初始化日期:</p>
+<div class="code notranslate"><div>
+
+new Date() // 当前日期和时间<br/>
+new Date(milliseconds) //返回从 1970 年 1 月 1 日至今的毫秒数<br/>
+new Date(dateString)<br/>
+new Date(year, month, day, hours, minutes, seconds, milliseconds)</div></div>
+<p>上面的参数大多数都是可选的，在不指定的情况下，默认参数是0。</p>
+<p从 1="" 1970="" p="" 年="" 日通用一天计算为86,400,000毫秒<="" 月="">
+<p>实例化一个日期的一些例子：</p>
+<div class="code notranslate"><div>
+
+var
+today = new Date()<br/>
+var
+d1 = new Date("October 13, 1975 11:13:00")<br/>
+var
+d2 = new Date(79,5,24)<br/>
+var
+d3 = new Date(79,5,24,11,33,0)</div></div>
+<br/><hr/>
+<h2>设置日期</h2>
+<p>通过使用针对日期对象的方法，我们可以很容易地对日期进行操作。</p>
+<p>在下面的例子中，我们为日期对象设置了一个特定的日期 (2010 年 1 月 14 日)：</p>
+<div class="code notranslate"><div>
+
+var myDate=new Date();<br/>
+myDate.setFullYear(2010,0,14);</div></div>
+<p>在下面的例子中，我们将日期对象设置为 5 天后的日期：</p>
+<div class="code"><div>
+
+var myDate=new Date();<br/>
+myDate.setDate(myDate.getDate()+5);</div></div>
+<p><b>注意:</b> 如果增加天数会改变月份或者年份，那么日期对象会自动完成这种转换。</p>
+<hr/>
+<h2>两个日期比较</h2>
+<p>日期对象也可用于比较两个日期。</p>
+<p>下面的代码将当前日期与 2100 年 1 月 14 日做了比较：</p>
+<pre>
+var x=new Date();
+x.setFullYear(2100,0,14);
+var today = new Date();
+
+if (x&gt;today)
+{
+    alert("今天是2100年1月14日之前");
+}
+else
+{
+    alert("今天是2100年1月14日之后");
+}
+</pre>
+</p从></div>

@@ -1,0 +1,137 @@
+<div class="article-intro" id="content">
+<h1>拦截过滤器模式</h1>
+<p>拦截过滤器模式（Intercepting Filter Pattern）用于对应用程序的请求或响应做一些预处理/后处理。定义过滤器，并在把请求传给实际目标应用程序之前应用在请求上。过滤器可以做认证/授权/记录日志，或者跟踪请求，然后把请求传给相应的处理程序。以下是这种设计模式的实体。</p>
+<ul class="list">
+<li><b>过滤器（Filter）</b> - 过滤器在请求处理程序执行请求之前或之后，执行某些任务。</li>
+<li><b>过滤器链（Filter Chain）</b> - 过滤器链带有多个过滤器，并在 Target 上按照定义的顺序执行这些过滤器。</li>
+<li><b>Target</b> - Target 对象是请求处理程序。</li>
+<li><b>过滤管理器（Filter Manager）</b> - 过滤管理器管理过滤器和过滤器链。</li>
+<li><b>客户端（Client）</b> - Client 是向 Target 对象发送请求的对象。</li>
+</ul>
+<h2>实现</h2>
+<p>我们将创建 <i>FilterChain</i>、<i>FilterManager</i>、<i>Target</i>、<i>Client</i> 作为表示实体的各种对象。<i>AuthenticationFilter</i> 和 <i>DebugFilter</i> 表示实体过滤器。</p>
+<p><i>InterceptingFilterDemo</i>，我们的演示类使用 <i>Client</i> 来演示拦截过滤器设计模式。</p>
+<img alt="拦截过滤器模式的 UML 图" src="/wp-content/uploads/2014/08/interceptingfilter_pattern_uml_diagram.jpg"/>
+<h2>步骤 1</h2>
+<p>创建过滤器接口 Filter。</p>
+<p><i>Filter.java</i></p>
+<pre class="prettyprint">
+public interface Filter {
+   public void execute(String request);
+}
+</pre>
+<h2>步骤 2</h2>
+<p>创建实体过滤器。</p>
+<p><i>AuthenticationFilter.java</i></p>
+<pre class="prettyprint">
+public class AuthenticationFilter implements Filter {
+   public void execute(String request){
+      System.out.println("Authenticating request: " + request);
+   }
+}
+</pre>
+<p><i>DebugFilter.java</i></p>
+<pre class="prettyprint">
+public class DebugFilter implements Filter {
+   public void execute(String request){
+      System.out.println("request log: " + request);
+   }
+}
+</pre>
+<h2>步骤 3</h2>
+<p>创建 Target。</p>
+<p><i>Target.java</i></p>
+<pre class="prettyprint">
+public class Target {
+   public void execute(String request){
+      System.out.println("Executing request: " + request);
+   }
+}
+</pre>
+<h2>步骤 4</h2>
+<p>创建过滤器链。</p>
+<p><i>FilterChain.java</i></p>
+<pre class="prettyprint">
+import java.util.ArrayList;
+import java.util.List;
+
+public class FilterChain {
+   private List&lt;Filter&gt; filters = new ArrayList&lt;Filter&gt;();
+   private Target target;
+
+   public void addFilter(Filter filter){
+      filters.add(filter);
+   }
+
+   public void execute(String request){
+      for (Filter filter : filters) {
+         filter.execute(request);
+      }
+      target.execute(request);
+   }
+
+   public void setTarget(Target target){
+      this.target = target;
+   }
+}
+</pre>
+<h2>步骤 5</h2>
+<p>创建过滤管理器。</p>
+<p><i>FilterManager.java</i></p>
+<pre class="prettyprint">
+public class FilterManager {
+   FilterChain filterChain;
+
+   public FilterManager(Target target){
+      filterChain = new FilterChain();
+      filterChain.setTarget(target);
+   }
+   public void setFilter(Filter filter){
+      filterChain.addFilter(filter);
+   }
+
+   public void filterRequest(String request){
+      filterChain.execute(request);
+   }
+}
+</pre>
+<h2>步骤 6</h2>
+<p>创建客户端 Client。</p>
+<p><i>Client.java</i></p>
+<pre class="prettyprint">
+public class Client {
+   FilterManager filterManager;
+
+   public void setFilterManager(FilterManager filterManager){
+      this.filterManager = filterManager;
+   }
+
+   public void sendRequest(String request){
+      filterManager.filterRequest(request);
+   }
+}
+</pre>
+<h2>步骤 7</h2>
+<p>使用 <i>Client</i> 来演示拦截过滤器设计模式。</p>
+<p><i>InterceptingFilterDemo.java</i></p>
+<pre class="prettyprint">
+public class InterceptingFilterDemo {
+   public static void main(String[] args) {
+      FilterManager filterManager = new FilterManager(new Target());
+      filterManager.setFilter(new AuthenticationFilter());
+      filterManager.setFilter(new DebugFilter());
+
+      Client client = new Client();
+      client.setFilterManager(filterManager);
+      client.sendRequest("HOME");
+   }
+}
+</pre>
+<h2>步骤 8</h2>
+<p>验证输出。</p>
+<pre class="result">
+Authenticating request: HOME
+request log: HOME
+Executing request: HOME
+</pre>
+</div>

@@ -1,0 +1,261 @@
+<div class="article-intro">
+<h2>本节引言：</h2>
+<blockquote><p>本节我们来把剩下的四种Drawable也学完，他们分别是：
+<strong>LayerDrawable</strong>,<strong>TransitionDrawable</strong>,<strong>LevelListDrawable和StateListDrawable</strong>,
+依旧贴下13种Drawable的导图：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/59216860.jpg"/></p></blockquote>
+<hr/>
+<h2>1.LayerDrawable</h2>
+<blockquote><p>层图形对象，包含一个Drawable数组，然后按照数组对应的顺序来绘制他们，索引
+值最大的Drawable会被绘制在最上层！虽然这些Drawable会有交叉或者重叠的区域，但
+他们位于不同的层，所以并不会相互影响，以&lt;<strong>layer-list</strong>&gt;作为根节点！</p></blockquote>
+<p><strong>相关属性如下</strong>：</p>
+<blockquote><ul>
+<li><strong>drawable</strong>:引用的位图资源,如果为空徐璈有一个Drawable类型的子节点</li>
+<li><strong>left</strong>:层相对于容器的左边距</li>
+<li><strong>right</strong>:层相对于容器的右边距</li>
+<li><strong>top</strong>:层相对于容器的上边距</li>
+<li><strong>bottom</strong>:层相对于容器的下边距</li>
+<li><strong>id</strong>:层的id</li>
+</ul>
+</blockquote>
+<p><strong>使用示例</strong>：</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/33659494.jpg"/></p>
+<p><strong>代码实现</strong>：</p>
+<p>非常简单，结合前面学习的shapeDrawable和ClipDrawable：</p>
+<p><strong>layerList_one.xml</strong></p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:id="@android:id/background"&gt;
+        &lt;shape android:shape="rectangle"&gt;
+            &lt;solid android:color="#C2C2C1" /&gt;
+            &lt;corners android:radius="50dp" /&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+    &lt;item android:id="@android:id/progress"&gt;
+        &lt;clip&gt;
+            &lt;shape android:shape="rectangle"&gt;
+                &lt;solid android:color="#BCDA73" /&gt;
+                &lt;corners android:radius="50dp" /&gt;
+            &lt;/shape&gt;
+        &lt;/clip&gt;
+    &lt;/item&gt;
+&lt;/layer-list&gt; 
+</pre>
+<p>然后在布局文件中添加一个Seekbar，内容如下：</p>
+<pre>
+&lt;SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@android:drawable/progress_indeterminate_horizontal"
+        android:indeterminateOnly="false"
+        android:maxHeight="10dp"
+        android:minHeight="5dp"
+        android:progressDrawable="@drawable/layerlist_one"
+        android:thumb="@drawable/shape_slider" /&gt;
+</pre>
+<p>卧槽，没了？对的，就是这么点东西~说了是层图形对象，我们还可以弄个<strong>层叠图片</strong>的效果：</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/80416467.jpg"/></p>
+<p><strong>实现代码</strong>：</p>
+<p><strong>层叠图片的layerlist_two.xml</strong>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item&gt;
+        &lt;bitmap
+            android:gravity="center"
+            android:src="@mipmap/ic_bg_ciwei" /&gt;
+    &lt;/item&gt;
+    &lt;item
+        android:left="25dp"
+        android:top="25dp"&gt;
+        &lt;bitmap
+            android:gravity="center"
+            android:src="@mipmap/ic_bg_ciwei" /&gt;
+    &lt;/item&gt;
+    &lt;item
+        android:left="50dp"
+        android:top="50dp"&gt;
+        &lt;bitmap
+            android:gravity="center"
+            android:src="@mipmap/ic_bg_ciwei" /&gt;
+    &lt;/item&gt;
+&lt;/layer-list&gt; 
+</pre>
+<p>然后在activity_main.xml里加个ImageView，内容如下：</p>
+<pre>
+&lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/layerlist_two"/&gt;
+</pre>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/84078589.jpg"/> 简单好用，还等什么，快快应用到你的项目中吧~</p>
+<hr/>
+<h2>2.TransitionDrawable</h2>
+<blockquote><p>LayerDrawable的一个子类，TransitionDrawable只管理两层的Drawable！两层！两层！
+并且提供了透明度变化的动画，可以控制一层Drawable过度到另一层Drawable的动画效果。
+根节点为&lt;<strong>transition</strong>&gt;，记住只有两个Item，多了也没用，属性和LayerDrawable差不多，
+我们需要调用<strong>startTransition</strong>方法才能启动两层间的切换动画；
+也可以调用<strong>reverseTransition()</strong>方法反过来播放：</p></blockquote>
+<p><strong>使用示例</strong>：</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/85899256.jpg"/></p>
+<p><strong>实现代码</strong>：</p>
+<p>在res/drawable创建一个TransitionDrawable的xml文件</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;transition xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+    &lt;item android:drawable="@mipmap/ic_bg_meizi1"/&gt;
+    &lt;item android:drawable="@mipmap/ic_bg_meizi2"/&gt;
+&lt;/transition&gt;
+</pre>
+<p>然后布局文件里加个ImageView，然后把src设置成上面的这个drawable
+然后MainActivity.java内容如下：</p>
+<pre>
+public class MainActivity extends AppCompatActivity {
+    private ImageView img_show;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img_show = (ImageView) findViewById(R.id.img_show);
+        TransitionDrawable td = (TransitionDrawable) img_show.getDrawable();
+        td.startTransition(3000);
+        //你可以可以反过来播放，使用reverseTransition即可~
+        //td.reverseTransition(3000);
+    }
+}
+</pre>
+<p>另外，如果你想实现：多张图片循环的淡入淡出的效果
+可参考：<a href="http://blog.csdn.net/lonelyroamer/article/details/8243606" target="_blank">Android Drawable Resource学习（七）、TransitionDrawable</a>中的示例
+很简单，核心原理就是：handler定时修改Transition中两个图片！</p>
+<hr/>
+<h2>3.LevelListDrawable</h2>
+<blockquote><p>用来管理一组Drawable的,我们可以为里面的drawable设置不同的level，
+当他们绘制的时候，会根据level属性值获取对应的drawable绘制到画布上，根节点
+为:&lt;<strong>level-list</strong>&gt;他并没有可以设置的属性，我们能做的只是设置每个&lt;<strong>item</strong>&gt;
+的属性！</p></blockquote>
+<p><strong>item可供设置的属性如下</strong>：</p>
+<blockquote><ul>
+<li><strong>drawable</strong>:引用的位图资源,如果为空徐璈有一个Drawable类型的子节点</li>
+<li><strong>minlevel:level</strong>对应的最小值</li>
+<li><strong>maxlevel:level</strong>对应的最大值</li>
+</ul>
+</blockquote>
+<p><strong>使用示例</strong>：</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/65455566.jpg"/></p>
+<p><strong>代码实现</strong>：</p>
+<p>通过shapeDrawable画圆，一式五份，改下宽高即可：</p>
+<p><strong>shape_cir1.xml</strong>：</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"&gt;
+    &lt;solid android:color="#2C96ED"/&gt;
+    &lt;size android:height="20dp" android:width="20dp"/&gt;
+&lt;/shape&gt;
+</pre>
+<p>接着到LevelListDrawable，这里我们设置五层：</p>
+<p><strong>level_cir.xml</strong>：</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;level-list xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+    &lt;item android:drawable="@drawable/shape_cir1" android:maxLevel="2000"/&gt;
+    &lt;item android:drawable="@drawable/shape_cir2" android:maxLevel="4000"/&gt;
+    &lt;item android:drawable="@drawable/shape_cir3" android:maxLevel="6000"/&gt;
+    &lt;item android:drawable="@drawable/shape_cir4" android:maxLevel="8000"/&gt;
+    &lt;item android:drawable="@drawable/shape_cir5" android:maxLevel="10000"/&gt;
+&lt;/level-list&gt; 
+</pre>
+<p>最后MainActivity写如下代码：</p>
+<pre>
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView img_show;
+
+    private LevelListDrawable ld;
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x123) {
+                if (ld.getLevel() &gt; 10000) ld.setLevel(0);
+                img_show.setImageLevel(ld.getLevel() + 2000);
+            }
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img_show = (ImageView) findViewById(R.id.img_show);
+        ld = (LevelListDrawable) img_show.getDrawable();
+        img_show.setImageLevel(0);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(0x123);
+            }
+        }, 0, 100);
+    }
+}
+</pre>
+<p>也很简单，一个Timer定时器,handler修改level值~</p>
+<hr/>
+<h2>4.StateListDrawable</h2>
+<blockquote><p>好了终于迎来了最后一个drawable：StateListDrawable，这个名字看上去模式，其实我们
+以前就用到了，还记得为按钮设置不同状态的drawable的&lt;<strong>selctor</strong>&gt;吗？没错，用到的
+就是这个StateListDrawable！</p></blockquote>
+<p><strong>可供设置的属性如下</strong>：</p>
+<blockquote><ul>
+<li><strong>drawable</strong>:引用的Drawable位图,我们可以把他放到最前面,就表示组件的正常状态~</li>
+<li><strong>state_focused</strong>:是否获得焦点</li>
+<li><strong>state_window_focused</strong>:是否获得窗口焦点</li>
+<li><strong>state_enabled</strong>:控件是否可用</li>
+<li><strong>state_checkable</strong>:控件可否被勾选,eg:checkbox</li>
+<li><strong>state_checked</strong>:控件是否被勾选</li>
+<li><strong>state_selected</strong>:控件是否被选择,针对有滚轮的情况</li>
+<li><strong>state_pressed</strong>:控件是否被按下</li>
+<li><strong>state_active</strong>:控件是否处于活动状态,eg:slidingTab</li>
+<li><strong>state_single</strong>:控件包含多个子控件时,确定是否只显示一个子控件</li>
+<li><strong>state_first</strong>:控件包含多个子控件时,确定第一个子控件是否处于显示状态</li>
+<li><strong>state_middle</strong>:控件包含多个子控件时,确定中间一个子控件是否处于显示状态</li>
+<li><strong>state_last</strong>:控件包含多个子控件时,确定最后一个子控件是否处于显示状态</li>
+</ul>
+</blockquote>
+<p><strong>使用示例</strong>：</p>
+<p>那就来写个简单的圆角按钮吧！</p>
+<p><strong>运行效果图</strong>：</p>
+<p><img alt="" src="http://www.runoob.com/wp-content/uploads/2015/10/32015507.jpg"/></p>
+<p><strong>代码实现</strong>：</p>
+<p>那就先通过shapeDrawable来画两个圆角矩形，只是颜色不一样而已：</p>
+<p><strong>shape_btn_normal.xml</strong>：</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"&gt;
+    &lt;solid android:color="#DD788A"/&gt;
+    &lt;corners android:radius="5dp"/&gt;
+    &lt;padding android:top="2dp" android:bottom="2dp"/&gt;
+&lt;/shape&gt;
+</pre>
+<p>接着我们来写个selctor：<strong>selctor_btn.xml</strong>：</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:state_pressed="true" android:drawable="@drawable/shape_btn_pressed"/&gt;
+    &lt;item android:drawable="@drawable/shape_btn_normal"/&gt;
+&lt;/selector&gt;
+</pre>
+<p>然后按钮设置android:background="@drawable/selctor_btn"就可以了~
+你可以根据自己需求改成矩形或者椭圆，圆形等！</p>
+<hr/>
+<h2>本节小结：</h2>
+<blockquote><p>好的，关于Android中的13种不同类型的Drawable已经讲解完毕了，当然，这只是基础，实际
+开发中肯定还有各种高逼格的用法，这就要靠大家去扩展了，这里只是给大家一个引导！</p><p>
+嗯，时间关系，上述的例子都是一个个试的，所以最后的demo乱七八糟哈，可能
+你对这些素材又需要，还是贴下，有需要的自行下载：<a href="http://static.runoob.com/download/DrawableDemo.zip">DrawableDemo.zip</a>
+嗯，谢谢~祝周末愉快</p></blockquote> </div>

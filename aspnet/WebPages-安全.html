@@ -1,0 +1,212 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Web Pages <span class="color_h1">- WebSecurity 对象</span>
+</h1>
+<hr/>
+<h2>描述</h2>
+<p><strong>WebSecurity 对象</strong>提供 ASP.NET Web Pages 应用程序的安全性和认证。</p>
+<p>通过 WebSecurity 对象，您可以创建用户帐户，登录和注销用户，重置或者更改密码，以及其他更多与安全性相关的功能。</p>
+<hr/>
+<h2>WebSecurity 对象参考手册 - 属性</h2>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="40%">属性</th>
+<th align="left" width="60%">描述</th>
+</tr>
+<tr>
+<td valign="top"><a href="prop-websecurity-currentuserid.html">CurrentUserId</a></td>
+<td valign="top">
+	获取当前登录用户的 ID。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-websecurity-currentusername.html">CurrentUserName</a></td>
+<td valign="top">获取当前登录用户的名称。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-websecurity-hasuserid.html">HasUserId</a></td>
+<td valign="top">
+如果当前有用户 ID，则返回 true。</td>
+</tr>
+<tr>
+<td valign="top"><a href="prop-websecurity-isauthenticated.html">IsAuthenticated</a></td>
+<td valign="top">
+如果当前用户是登录的，则返回 true。</td>
+</tr>
+</table>
+<br/><h2>WebSecurity 对象参考手册 - 方法</h2>
+<table class="reference notranslate">
+<tr>
+<th align="left" width="40%">方法</th>
+<th align="left" width="60%">描述</th>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-changepassword.html">ChangePassword()</a></td>
+<td valign="top">为指定的用户更改密码。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-confirmaccount.html">ConfirmAccount()</a></td>
+<td valign="top">使用帐户确认令牌确认帐户。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-createaccount.html">CreateAccount()</a></td>
+<td valign="top">创建一个新的用户帐户。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-createuserandaccount.html">CreateUserAndAccount()</a></td>
+<td valign="top">创建一个新的用户帐户。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-generatepasswordresettoken.html">GeneratePasswordResetToken()</a></td>
+<td valign="top">生成一个密码重置令牌，可以在电子邮件中发送给用户以便用户可以重设密码。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-getcreatedate.html">GetCreateDate()</a></td>
+<td valign="top">获取指定会员创建的时间。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-getpasswordchangedate.html">GetPasswordChangeDate()</a></td>
+<td valign="top">获取密码变更的日期和时间。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-getuserid.html">GetUserId()</a></td>
+<td valign="top">根据用户名称获取用户 ID。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-initializedatabaseconnection.html">InitializeDatabaseConnection()</a></td>
+<td valign="top">初始化 WebSecurity 系统（数据库）。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-isconfirmed.html">IsConfirmed()</a></td>
+<td valign="top">检查用户是否已被确认。如果已确认，则返回 true。（例如，可通过电子邮件进行确认。）</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-iscurrentuser.html">IsCurrentUser()</a></td>
+<td valign="top">检查当前用户的名称是否与指定用户名匹配。如果匹配，则返回 true。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-login.html">Login()</a></td>
+<td valign="top">设置身份验证令牌，登录用户。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-logout.html">Logout()</a></td>
+<td valign="top">移除身份验证令牌，注销用户。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-requireauthenticateduser.html">RequireAuthenticatedUser()</a></td>
+<td valign="top">如果用户未通过身份验证，则设置 HTTP 状态为 401（未经授权）。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-requireroles.html">RequireRoles()</a></td>
+<td valign="top">如果当前用户不是指定角色的成员，则设置 HTTP 状态为 401（未经授权）。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-requireuser.html">RequireUser()</a></td>
+<td valign="top">如果当前用户不是指定用户名的用户，则设置 HTTP 状态为 401（未经授权）。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-resetpassword.html">ResetPassword()</a></td>
+<td valign="top">如果密码重置令牌是有效的，改变用户的密码为新密码。</td>
+</tr>
+<tr>
+<td valign="top"><a href="met-websecurity-userexists.html">UserExists()</a></td>
+<td valign="top">检查指定的用户是否存在。</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>技术数据</h2>
+<table class="reference notranslate">
+<tr>
+<th style="width:25%">名称</th>
+<th>值</th>
+</tr>
+<tr>
+<td>Class</td>
+<td>WebMatrix.WebData.WebSecurity</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>WebMatrix.WebData</td>
+</tr>
+<tr>
+<td>Assembly</td>
+<td>WebMatrix.WebData.dll</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>初始化 WebSecurity 数据库</h2>
+<p>如果您想在您的代码中使用 WebSecurity 对象，首先您必须创建或者初始化 WebSecurity 数据库。</p>
+<p>在您的 Web 根目录下，创建一个名为 <strong>_AppStart.cshtml</strong> 的页面（如果已存在，则直接编辑页面）。</p>
+<p>将下面的代码复制到文件中：</p>
+<div class="example">
+<h2 class="example">_AppStart.cshtml</h2>
+<div class="example_code notranslate">
+@{<br/>WebSecurity.InitializeDatabaseConnection("Users", "UserProfile", 
+"UserId", "Email", true);<br/>}
+</div>
+</div>
+<p>上面的代码将在每次网站（应用程序）启动时运行。它初始化了 WebSecurity 数据库。</p>
+<p><strong>"Users"</strong> 是 WebSecurity 数据库（Users.sdf）的名称。</p>
+<p><strong>"UserProfile"</strong> 是包含用户配置信息的数据库表的名称。</p>
+<p><strong>"UserId"</strong> 是包含用户 ID（主键）的列的名称。</p>
+<p><strong>"Email"</strong> 是包含用户名的列的名称。</p>
+<p>最后一个参数 <strong>true</strong> 是一个布尔值，表示如果用户配置表和会员表不存在，则会自动创建表。如果不想自动创建表，应设置参数为 <strong>false</strong>。</p>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>
+虽然 <strong>true</strong> 表示自动创建数据库 <strong>表</strong>，但是数据库不会被自动创建。所以数据库必须存在。</td>
+</tr></table>
+<br/><hr/>
+<h2>WebSecurity 数据库</h2>
+<p><strong>UserProfile</strong> 表为每个用户创建保存一条记录，用户 ID（主键）和用户名字（email）：</p>
+<table class="reference notranslate">
+<tr>
+<th>UserId</th>
+<th>Email</th>
+</tr>
+<tr>
+<td>1</td>
+<td>john@johnson.net</td>
+</tr>
+<tr>
+<td>2 </td>
+<td>peter@peterson.com</td>
+</tr>
+<tr>
+<td>3</td>
+<td>lars@larson.eut</td>
+</tr>
+</table>
+<p><strong>Membership</strong> 表包含会员信息，比如用户是什么时候创建的，该会员是否已认证，会员是什么时候认证的，等等。</p>
+<p>具体如下所示（一些列不显示）：</p>
+<table class="reference notranslate">
+<tr>
+<th>User<br/>Id</th>
+<th>Create<br/>Date</th>
+<th>Confirmation<br/>Token</th>
+<th>Is<br/>Confirmed</th>
+<th>Last<br/>Password<br/>Failure</th>
+<th>Password</th>
+<th>Password<br/>Change</th>
+</tr>
+<tr>
+<td>1</td>
+<td>12.04.2012 16:12:17</td>
+<td>NULL</td>
+<td>True</td>
+<td>NULL</td>
+<td>AFNQhWfy....</td>
+<td>12.04.2012 16:12:17</td>
+</tr>
+</table>
+<p>注释：如果您想看到所有的列和内容，请打开数据库，看看里边的每个表。</p>
+<hr/>
+<h2>简单的会员配置</h2>
+<p>在您使用 WebSecurity 对象时，如果您的站点没有配置使用 ASP.NET Web Pages 会员系统 <strong>SimpleMembership</strong>，可能会报错。</p>
+<p>如果托管服务提供商的服务器的配置与您本地服务器的配置不同，也可能会报错。为了解决这个问题，请在网站的 Web.config 文件中添加以下元素：</p>
+<div class="code notranslate">
+<div>
+&lt;appSettings&gt; <br/>&lt;add key="enableSimpleMembership" value="true" /&gt; <br/>
+&lt;/appSettings&gt;
+</div>
+</div>
+<br/><br/>
+</div>

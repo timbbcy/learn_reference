@@ -1,0 +1,50 @@
+<div class="article-intro" id="content">
+<h1>MongoDB 删除数据库</h1>
+<h3>语法</h3>
+<p>MongoDB 删除数据库的语法格式如下：</p>
+<pre>db.dropDatabase()</pre>
+<p>删除当前数据库，默认为 test，你可以使用 db 命令查看当前数据库名。</p>
+<h3>实例</h3>
+<p>以下实例我们删除了数据库 runoob。</p>
+<p>首先，查看所有数据库：</p>
+<pre>
+&gt; show dbs
+local   0.078GB
+runoob  0.078GB
+test    0.078GB
+</pre>
+<p>接下来我们切换到数据库 runoob：</p>
+<pre>
+&gt; use runoob
+switched to db runoob
+&gt; 
+</pre>
+<p>执行删除命令：</p>
+<pre>
+&gt; db.dropDatabase()
+{ "dropped" : "runoob", "ok" : 1 }
+</pre>
+<p>最后，我们再通过 show dbs 命令数据库是否删除成功：</p>
+<pre>
+&gt; show dbs
+local  0.078GB
+test   0.078GB
+&gt; 
+</pre>
+<h3>删除集合</h3>
+<p>集合删除语法格式如下：</p>
+<pre>
+db.collection.drop()
+</pre>
+<p>以下实例删除了 runoob 数据库中的集合 site：</p>
+<pre>
+&gt; use runoob
+switched to db runoob
+&gt; show tables
+site
+&gt; db.site.drop()
+true
+&gt; show tables
+&gt; 
+</pre>
+</div>

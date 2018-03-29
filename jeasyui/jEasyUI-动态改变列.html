@@ -1,0 +1,47 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">动态改变列</span></h1>
+<p>
+数据网格（DataGrid）列可以使用 'columns' 属性简单地定义。如果您想动态地改变列，那根本没有问题。为了改变列，您可以重新调用datagrid 方法，并传递一个新的 columns 属性。
+</p>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    &lt;table id="tt" title="Frozen Columns" class="easyui-datagrid" style="width:550px;height:250px"
+            url="data/datagrid_data.json"
+            singleSelect="true" iconCls="icon-save"&gt;
+    &lt;/table&gt;
+</pre>
+<pre style="color:#006600">
+    $('#tt').datagrid({
+        columns:[[
+            {field:'itemid',title:'Item ID',width:80},
+            {field:'productid',title:'Product ID',width:80},
+            {field:'attr1',title:'Attribute',width:200},
+            {field:'status',title:'Status',width:80}
+        ]]
+    });
+</pre>
+<p>运行网页，您将看见：</p>
+<img src="/wp-content/uploads/2013/12/datagrid6_1.png"/>
+<p>可是有时候您想改变列，所以您需要写一些代码：</p>
+<pre style="color:#006600">
+    $('#tt').datagrid({
+        columns:[[
+            {field:'itemid',title:'Item ID',width:80},
+            {field:'productid',title:'Product ID',width:80},
+            {field:'listprice',title:'List Price',width:80,align:'right'},
+            {field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+            {field:'attr1',title:'Attribute',width:100},
+            {field:'status',title:'Status',width:60}
+        ]]
+    });
+</pre>
+<p>请记住，我们已经定义了其他属性，比如：url、width、height 等等。我们不需要再一次定义它们，我们定义那些我们需要改变的。</p>
+<img src="/wp-content/uploads/2013/12/datagrid6_2.png"/>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid6.zip">jeasyui-datagrid-datagrid6.zip</a></p>
+</div>

@@ -1,0 +1,28 @@
+<div class="article-intro" id="content">
+<h1>DTD <span class="color_h1">教程</span>
+</h1>
+<br/><div class="tutintro">
+<p>DTD（文档类型定义）的作用是定义 XML 文档的合法构建模块。</p>
+<p>DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。</p>
+<p><b><a href="/dtd/dtd-intro.html" target="_blank">现在开始学习DTD!</a></b></p>
+</div>
+<div class="example">
+<h2 class="example_head">DTD 新闻实例</h2>
+<div class="example_code notranslate">
+&lt;!DOCTYPE NEWSPAPER [<br/><br/>
+&lt;!ELEMENT NEWSPAPER (ARTICLE+)&gt;<br/>
+&lt;!ELEMENT ARTICLE (HEADLINE,BYLINE,LEAD,BODY,NOTES)&gt;<br/>
+&lt;!ELEMENT HEADLINE (#PCDATA)&gt;<br/>
+&lt;!ELEMENT BYLINE (#PCDATA)&gt;<br/>
+&lt;!ELEMENT LEAD (#PCDATA)&gt;<br/>
+&lt;!ELEMENT BODY (#PCDATA)&gt;<br/>
+&lt;!ELEMENT NOTES (#PCDATA)&gt; <br/><br/>
+&lt;!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED&gt;<br/>
+&lt;!ATTLIST ARTICLE EDITOR CDATA #IMPLIED&gt;<br/>
+&lt;!ATTLIST ARTICLE DATE CDATA #IMPLIED&gt;<br/>
+&lt;!ATTLIST ARTICLE EDITION CDATA #IMPLIED&gt;<br/><br/>
+]&gt;
+</div>
+<br/>
+</div>
+</div>

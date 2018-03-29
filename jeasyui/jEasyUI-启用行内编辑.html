@@ -1,0 +1,113 @@
+<div class="article-intro" id="content">
+<style>
+pre {
+white-space: pre-wrap;
+}
+</style>
+<h1>jQuery EasyUI 数据网格 - <span class="color_h1">启用行内编辑</span></h1>
+<p>可编辑的功能是最近添加到数据网格（datagrid）的。它可以使用户添加一个新行到数据网格（datagrid）。用户也可以更新一个或多个行。</p>
+<p>本教程向您展示如何创建一个数据网格（datagrid）和内联编辑器。</p>
+<img src="/wp-content/uploads/2013/12/datagrid12_1.png"/>
+<h4>创建数据网格（DataGrid）</h4>
+<pre style="color:#006600">
+    $(function(){
+        $('#tt').datagrid({
+            title:'Editable DataGrid',
+            iconCls:'icon-edit',
+            width:660,
+            height:250,
+            singleSelect:true,
+            idField:'itemid',
+            url:'datagrid_data.json',
+            columns:[[
+                {field:'itemid',title:'Item ID',width:60},
+                {field:'productid',title:'Product',width:100,
+                    formatter:function(value){
+                        for(var i=0; i&lt;products.length; i++){
+                            if (products[i].productid == value) return products[i].name;
+                        }
+                        return value;
+                    },
+                    editor:{
+                        type:'combobox',
+                        options:{
+                            valueField:'productid',
+                            textField:'name',
+                            data:products,
+                            required:true
+                        }
+                    }
+                },
+                {field:'listprice',title:'List Price',width:80,align:'right',editor:{type:'numberbox',options:{precision:1}}},
+                {field:'unitcost',title:'Unit Cost',width:80,align:'right',editor:'numberbox'},
+                {field:'attr1',title:'Attribute',width:150,editor:'text'},
+                {field:'status',title:'Status',width:50,align:'center',
+                    editor:{
+                        type:'checkbox',
+                        options:{
+                            on: 'P',
+                            off: ''
+                        }
+                    }
+                },
+                {field:'action',title:'Action',width:70,align:'center',
+                    formatter:function(value,row,index){
+                        if (row.editing){
+                            var s = '&lt;a href="#" onclick="saverow(this)"&gt;Save&lt;/a&gt; ';
+                            var c = '&lt;a href="#" onclick="cancelrow(this)"&gt;Cancel&lt;/a&gt;';
+                            return s+c;
+                        } else {
+                            var e = '&lt;a href="#" onclick="editrow(this)"&gt;Edit&lt;/a&gt; ';
+                            var d = '&lt;a href="#" onclick="deleterow(this)"&gt;Delete&lt;/a&gt;';
+                            return e+d;
+                        }
+                    }
+                }
+            ]],
+            onBeforeEdit:function(index,row){
+                row.editing = true;
+                updateActions(index);
+            },
+            onAfterEdit:function(index,row){
+                row.editing = false;
+                updateActions(index);
+            },
+            onCancelEdit:function(index,row){
+                row.editing = false;
+                updateActions(index);
+            }
+        });
+    });
+    function updateActions(index){
+        $('#tt').datagrid('updateRow',{
+            index: index,
+            row:{}
+        });
+    }
+</pre>
+<p>为了启用数据网格行内编辑，您应该添加一个 editor 属性到列中。编辑器（editor）会告诉数据网格（datagrid）如何编辑字段及如何保存字段值。正如您所看到的，我们定义的三个编辑器（editor）：text、combobox 和 checkbox。</p>
+<pre style="color:#006600">
+    function getRowIndex(target){
+        var tr = $(target).closest('tr.datagrid-row');
+        return parseInt(tr.attr('datagrid-row-index'));
+    }
+    function editrow(target){
+        $('#tt').datagrid('beginEdit', getRowIndex(target));
+    }
+    function deleterow(target){
+        $.messager.confirm('Confirm','Are you sure?',function(r){
+            if (r){
+                $('#tt').datagrid('deleteRow', getRowIndex(target));
+            }
+        });
+    }
+    function saverow(target){
+        $('#tt').datagrid('endEdit', getRowIndex(target));
+    }
+    function cancelrow(target){
+        $('#tt').datagrid('cancelEdit', getRowIndex(target));
+    }
+</pre>
+<h2>下载 jQuery EasyUI 实例</h2>
+<p><a href="/try/jeasyui/download/jeasyui-datagrid-datagrid12.zip">jeasyui-datagrid-datagrid12.zip</a></p>
+</div>

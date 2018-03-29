@@ -1,0 +1,175 @@
+<div class="article-intro" id="content">
+<h1>ASP.NET Razor <span class="color_h1">- C# 变量</span>
+</h1>
+<hr/>
+<p class="intro">变量是用来存储数据的命名实体。</p>
+<hr/>
+<h2>变量</h2>
+<p>变量是用来存储数据的。</p>
+<p>一个变量的名称必须以字母字符开头，并且不能包含空格或者保留字符。<br/><br/>一个变量可以是一个指定的类型，表示它所存储的数据类型。string 变量存储字符串值（"Welcome to RUNOOB.COM"），integer 变量存储数字值（103），date 变量存储日期值，等等。<br/><br/>变量使用 var 关键字声明，或通过使用类型（如果您想声明类型）声明，但是 ASP.NET 通常能自动确定数据类型。</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code notranslate">
+	// 
+	Using the var keyword:<br/>var greeting = "Welcome to RUNOOB.COM";<br/>var 
+	counter = 103;<br/>var today = DateTime.Today;<br/><br/>// Using data types:<br/>
+	string greeting = "Welcome to RUNOOB.COM";<br/>int counter = 103;<br/>DateTime 
+	today = DateTime.Today;
+</div>
+</div>
+<br/><hr/>
+<h2>数据类型</h2>
+<p>下面列出了常用的数据类型：</p>
+<table class="reference notranslate" style="width: 100%">
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+<tr>
+<td>int</td>
+<td>整数（全数字）</td>
+<td>103, 12, 5168</td>
+</tr>
+<tr>
+<td>float</td>
+<td>浮点数</td>
+<td>3.14, 3.4e38</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>十进制数字（高精度）</td>
+<td>1037.196543</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>布尔值</td>
+<td>true, false</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符串</td>
+<td>"Hello RUNOOB.COM", "John"</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>运算符</h2>
+<p>运算符告诉 ASP.NET 在表达式中执行什么样的命令。</p>
+<p>C# 语言支持多种运算符。下面列出了常用的运算符：</p>
+<table class="reference notranslate" style="width: 100%">
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+<tr>
+<td>=</td>
+<td>给一个变量赋值。</td>
+<td>i=6</td>
+</tr>
+<tr>
+<td>+<br/>-<br/>*<br/>/<br/>
+</td>
+<td>加上一个值或者一个变量。<br/>减去一个值或者一个变量。<br/>乘以一个值或者一个变量。<br/>除以一个值或者一个变量。</td>
+<td>i=5+5<br/>i=5-5<br/>i=5*5<br/>i=5/5</td>
+</tr>
+<tr>
+<td>+=<br/>-=</td>
+<td>变量递增。<br/>变量递减。</td>
+<td>i += 1<br/>i -= 1</td>
+</tr>
+<tr>
+<td>==</td>
+<td>相等。如果值相等则返回 true。</td>
+<td>if (i==10)</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等。如果值不等则返回 true。</td>
+<td>if (i!=10) </td>
+</tr>
+<tr>
+<td>&lt;<br/>&gt;<br/>&lt;=<br/>&gt;=</td>
+<td>小于。<br/>大于。<br/>小于等于。<br/>大于等于。</td>
+<td>if (i&lt;10)<br/>if (i&gt;10)<br/>if (i&lt;=10)<br/>if (i&gt;=10)</td>
+</tr>
+<tr>
+<td>+</td>
+<td>连接字符串（一系列互相关联的事物）。</td>
+<td>"run" + "oob"</td>
+</tr>
+<tr>
+<td>.</td>
+<td>点号。分隔对象和方法。</td>
+<td>DateTime.Hour</td>
+</tr>
+<tr>
+<td>()</td>
+<td>圆括号。将值进行分组。</td>
+<td>(i+5)</td>
+</tr>
+<tr>
+<td>()</td>
+<td>圆括号。传递参数。</td>
+<td>x=Add(i,5)</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>中括号。访问数组或者集合的值。</td>
+<td>name[3]</td>
+</tr>
+<tr>
+<td>!</td>
+<td>非。真/假取反。</td>
+<td>if (!ready)</td>
+</tr>
+<tr>
+<td>&amp;&amp;<br/>||</td>
+<td>逻辑与。<br/>逻辑或。</td>
+<td>if (ready &amp;&amp; clear)<br/>if (ready || clear)</td>
+</tr>
+</table>
+<br/><hr/>
+<h2>转换数据类型</h2>
+<p>从一种数据类型转换到另一种数据类型，有时候是很有用的。<br/><br/>最常见的例子是将字符串输入转换为另一种类型，如整数或者日期。</p>
+<p>一般规则下，都是将用户输入看做字符串处理，即使用户输入了数字。因此数值输入必须被转换成数字，然后才能将其用于计算。</p>
+<p>下面列出了常用的转换方法：</p>
+<table class="reference notranslate" style="width: 100%">
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+<tr>
+<td>AsInt()<br/>IsInt()</td>
+<td>转换字符串为整数。</td>
+<td>if (myString.IsInt())<br/>  {myInt=myString.AsInt();}</td>
+</tr>
+<tr>
+<td>AsFloat()<br/>IsFloat()</td>
+<td>转换字符串为浮点数。</td>
+<td>if (myString.IsFloat())<br/>  {myFloat=myString.AsFloat();}</td>
+</tr>
+<tr>
+<td>AsDecimal()<br/>IsDecimal()</td>
+<td>转换字符串为十进制数。</td>
+<td>if (myString.IsDecimal())<br/>  {myDec=myString.AsDecimal();}</td>
+</tr>
+<tr>
+<td>AsDateTime()<br/>IsDateTime()</td>
+<td>转换字符串为 ASP.NET DateTime 类型。</td>
+<td>myString="10/10/2012";<br/>myDate=myString.AsDateTime();</td>
+</tr>
+<tr>
+<td>AsBool()<br/>IsBool()</td>
+<td>转换字符串为布尔值。</td>
+<td>myString="True";<br/>myBool=myString.AsBool();</td>
+</tr>
+<tr>
+<td>ToString()</td>
+<td>转换任何数据类型为字符串。</td>
+<td>myInt=1234;<br/>myString=myInt.ToString();</td>
+</tr>
+</table>
+<br/>
+</div>

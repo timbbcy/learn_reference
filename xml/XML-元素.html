@@ -1,0 +1,93 @@
+<div class="article-intro" id="content">
+<h1>XML <span class="color_h1">元素</span>
+</h1>
+<hr/>
+<p class="intro">XML 文档包含 XML 元素。</p>
+<hr/>
+<h2>什么是 XML 元素？</h2>
+<p>XML 元素指的是从（且包括）开始标签直到（且包括）结束标签的部分。</p>
+<p>一个元素可以包含：</p>
+<ul>
+<li>其他元素</li>
+<li>文本</li>
+<li>属性</li>
+<li>或混合以上所有...</li>
+</ul>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">CHILDREN</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">Harry Potter</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">J K. Rowling</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2005</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">29.99</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">book</span><span class="hl-code"> </span><span class="hl-var">category</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">WEB</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">Learning XML</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">Erik T. Ray</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">author</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">2003</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">year</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">39.95</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">price</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">book</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">bookstore</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>在上面的实例中，&lt;bookstore&gt; 和 &lt;book&gt; 都有 <b>元素内容</b>，因为他们包含其他元素。&lt;book&gt; 元素也有<b>属性</b>（category="CHILDREN"）。&lt;title&gt;、&lt;author&gt;、&lt;year&gt; 和 &lt;price&gt; 有<b>文本内容</b>，因为他们包含文本。</p>
+<hr/>
+<h2>XML 命名规则</h2>
+<p>XML 元素必须遵循以下命名规则：</p>
+<ul>
+<li>名称可以包含字母、数字以及其他的字符</li>
+<li>名称不能以数字或者标点符号开始</li>
+<li>名称不能以字母 xml（或者 XML、Xml 等等）开始</li>
+<li>名称不能包含空格</li>
+</ul>
+<p>可使用任何名称，没有保留的字词。</p>
+<hr/>
+<h2>最佳命名习惯</h2>
+<p>使名称具有描述性。使用下划线的名称也很不错：&lt;first_name&gt;、&lt;last_name&gt;。</p>
+<p>名称应简短和简单，比如：&lt;book_title&gt;，而不是：&lt;the_title_of_the_book&gt;。</p>
+<p>避免 "-" 字符。如果您按照这样的方式进行命名："first-name"，一些软件会认为您想要从 first 里边减去 name。</p>
+<p>避免 "." 字符。如果您按照这样的方式进行命名："first.name"，一些软件会认为 "name" 是对象 "first" 的属性。</p>
+<p>避免 ":" 字符。冒号会被转换为命名空间来使用（稍后介绍）。</p>
+<p>XML 文档经常有一个对应的数据库，其中的字段会对应 XML 文档中的元素。有一个实用的经验，即使用数据库的命名规则来命名 XML 文档中的元素。</p>
+<p>在 XML 中，éòá 等非英语字母是完全合法的，不过需要留意，您的软件供应商不支持这些字符时可能出现的问题。</p>
+<hr/>
+<h2>XML 元素是可扩展的</h2>
+<p>XML 元素是可扩展，以携带更多的信息。</p>
+<p>请看下面的 XML 实例：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tove</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">Jani</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">Don't forget me this weekend!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>让我们设想一下，我们创建了一个应用程序，可将 &lt;to&gt;、&lt;from&gt; 以及 &lt;body&gt; 元素从 XML 文档中提取出来，并产生以下的输出：</p>
+<table bgcolor="#FFFF00" border="1" cellpadding="10" cellspacing="0" width="100%">
+<tr>
+<td>
+<b>MESSAGE</b>
+<p><b>To:</b> Tove<br/>
+<b>From:</b> Jani</p>
+<p>Don't forget me this weekend!</p>
+</td>
+</tr>
+</table>
+<p>想象一下，XML 文档的作者添加的一些额外信息：</p>
+<div class="example">
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">date</span><span class="hl-brackets">&gt;</span><span class="hl-code">2008-01-10</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">date</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">Tove</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">to</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">Jani</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">from</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">Reminder</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">heading</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">Don't forget me this weekend!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">note</span><span class="hl-brackets">&gt;</span></div>
+</div>
+</div>
+<p>那么这个应用程序会中断或崩溃吗？</p>
+<p>不会。这个应用程序仍然可以找到 XML 文档中的 &lt;to&gt;、&lt;from&gt; 以及 &lt;body&gt; 元素，并产生同样的输出。</p>
+<p>XML 的优势之一，就是可以在不中断应用程序的情况下进行扩展。</p>
+</div>

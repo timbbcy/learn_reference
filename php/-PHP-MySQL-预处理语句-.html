@@ -1,0 +1,151 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1">MySQL 预处理语句</span></h1>
+<hr/>
+<p class="intro">预处理语句对于防止 MySQL 注入是非常有用的。</p>
+<hr/>
+<h2>预处理语句及绑定参数</h2>
+<p>预处理语句用于执行多个相同的 SQL 语句，并且执行效率更高。</p>
+<p>预处理语句的工作原理如下：</p>
+<ol>
+<li><p>预处理：创建 SQL 语句模板并发送到数据库。预留的值使用参数 "?" 标记 。例如：</p><pre>INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)</pre></li>
+<li><p>数据库解析，编译，对SQL语句模板执行查询优化，并存储结果不输出。</p></li>
+<li><p>执行：最后，将应用绑定的值传递给参数（"?" 标记），数据库执行语句。应用可以多次执行语句，如果参数的值不一样。</p></li>
+</ol>
+<p>相比于直接执行SQL语句，预处理语句有两个主要优点： </p>
+<ul>
+<li><p>预处理语句大大减少了分析时间，只做了一次查询（虽然语句多次执行）。</p></li>
+<li>
+<p>绑定参数减少了服务器带宽，你只需要发送查询的参数，而不是整个语句。</p></li>
+<li>
+<p>预处理语句针对SQL注入是非常有用的，因为参数值发送后使用不同的协议，保证了数据的合法性。</p></li>
+</ul>
+<hr/>
+<h2> MySQLi 预处理语句</h2>
+<p>以下实例在 MySQLi 中使用了预处理语句，并绑定了相应的参数:</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi 使用预处理语句)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDB</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">mysqli</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code">, </span><span class="hl-var">$dbname</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 检测连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 预处理及绑定</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$stmt</span><span class="hl-code"> = </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">prepare</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">bind_param</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">sss</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$firstname</span><span class="hl-code">, </span><span class="hl-var">$lastname</span><span class="hl-code">, </span><span class="hl-var">$email</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 设置参数并执行</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Doe</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">john@example.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Mary</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Moe</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">mary@example.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Julie</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Dooley</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">julie@example.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">新记录插入成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">close</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">close</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>解析以下实例的每行代码:</p>
+<div class="example">
+<div class="example_code">
+	"INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)"</div>
+</div>
+<p>在 SQL 语句中，我们使用了问号 (?)，在此我们可以将问号替换为整型，字符串，双精度浮点型和布尔值。</p>
+<p>接下来，让我们来看下 bind_param() 函数：</p>
+<div class="example">
+<div class="example_code">
+	$stmt-&gt;bind_param("sss", $firstname, $lastname, $email);
+</div>
+</div>
+<p>该函数绑定了 SQL 的参数，且告诉数据库参数的值。 "sss" 参数列处理其余参数的数据类型。s 字符告诉数据库该参数为字符串。</p>
+<p>参数有以下四种类型:</p>
+<ul>
+<li>i - integer（整型）</li>
+<li>d - double（双精度浮点型）</li>
+<li>s - 
+string（字符串）</li>
+<li>b - BLOB（binary large object:二进制大对象）
+</li>
+</ul>
+<p>每个参数都需要指定类型。</p>
+<p>通过告诉数据库参数的数据类型，可以降低 SQL 注入的风险。</p>
+<table class="lamp"><tbody><tr>
+<th style="width:34px"><img alt="Note" src="/images/lamp.jpg" style="height:32px;width:32px"/></th>
+<td><strong>注意：</strong> 如果你想插入其他数据（用户输入），对数据的验证是非常重要的。</td>
+</tr></tbody></table>
+<br/>
+<hr/>
+<h2>PDO 中的预处理语句</h2>
+<p>以下实例我们在 PDO 中使用了预处理语句并绑定参数:</p>
+<div class="example">
+<h2 class="example">实例 (PDO 使用预处理语句)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDBPDO</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">PDO</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">mysql:host=</span><span class="hl-var">$servername</span><span class="hl-string">;dbname=</span><span class="hl-var">$dbname</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 设置 PDO 错误模式为异常</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">ATTR_ERRMODE</span><span class="hl-code">, </span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">ERRMODE_EXCEPTION</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 预处理 SQL 并绑定参数</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$stmt</span><span class="hl-code"> = </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">prepare</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO MyGuests (firstname, lastname, email) 
+    VALUES (:firstname, :lastname, :email)</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">bindParam</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">:firstname</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">$firstname</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">bindParam</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">:lastname</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">$lastname</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">bindParam</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">:email</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">$email</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 插入行</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">John</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Doe</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">john@example.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 插入其他行</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Mary</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Moe</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">mary@example.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 插入其他行</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$firstname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Julie</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$lastname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">Dooley</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$email</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">julie@example.com</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">新记录插入成功</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">PDOException</span><span class="hl-code"> </span><span class="hl-var">$e</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Error: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$e</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getMessage</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">null</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+</div>

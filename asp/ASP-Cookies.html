@@ -1,0 +1,141 @@
+<div class="article-intro" id="content">
+<h1>ASP <span class="color_h1">Cookies</span>
+</h1>
+<hr/>
+<p class="intro">cookie 常用于识别用户。</p>
+<hr/>
+<div class="tryit_ex">
+<img alt="Examples" height="46px" src="/images/tryitimg.gif" width="40"/><h2>尝试一下 - 实例</h2>
+</div>
+<p><a href="/try/showasp.php?filename=demo_cookies" target="_blank">Welcome cookie</a><br/>
+本例演示如何创建 Welcome cookie。</p>
+<hr/>
+<h2>Cookie 是什么？</h2>
+<p>cookie 常用用于识别用户。cookie 是一种服务器留在用户计算机上的小文件。每当同一台计算机通过浏览器请求页面时，这台计算机将会发送 cookie。通过 ASP，您能够创建并取回 cookie 的值。</p>
+<hr/>
+<h2>如何创建 Cookie？</h2>
+<p>"Response.Cookies" 命令用于创建 cookie。</p>
+<p><b>注释：</b>Response.Cookies 命令必须出现在 &lt;html&gt; 标签之前。</p>
+<p>在下面的实例中，我们将创建一个名为 "firstname" 的 cookie，并将其赋值为 "Alex"：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+Response.Cookies("firstname")="Alex"<br/>
+%&gt;</div></div>
+<p>向 cookie 分配属性也是可以的，比如设置 cookie 的失效时间：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+Response.Cookies("firstname")="Alex"<br/>
+Response.Cookies("firstname").Expires=#May 10,2012#<br/>
+%&gt;</div></div>
+<br/><hr/>
+<h2>如何取回 Cookie 的值？</h2>
+<p>"Request.Cookies" 命令用于取回 cookie 的值。</p>
+<p>在下面的实例中，我们取回了名为 "firstname" 的 cookie 的值，并把值显示到了页面上：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+fname=Request.Cookies("firstname")<br/>
+response.write("Firstname=" &amp; fname)<br/>
+%&gt;</div></div>
+<p><b>输出：</b> Firstname=Alex</p>
+<hr/>
+<h2>带有键的 Cookie</h2>
+<p>如果一个 cookie 包含多个值的集合，我们就可以说 cookie 带有键（Keys）。</p>
+<p>在下面的实例中，我们将创建一个名为 "user" 的 cookie 集合。"user" cookie 带有包含用户信息的键：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+Response.Cookies("user")("firstname")="John"<br/>
+Response.Cookies("user")("lastname")="Smith"<br/>
+Response.Cookies("user")("country")="Norway"<br/>
+Response.Cookies("user")("age")="25"<br/>
+%&gt;</div></div>
+<br/><hr/>
+<h2>读取所有的 Cookie</h2>
+<p>请阅读下面的代码：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+Response.Cookies("firstname")="Alex"<br/>
+Response.Cookies("user")("firstname")="John"<br/>
+Response.Cookies("user")("lastname")="Smith"<br/>
+Response.Cookies("user")("country")="Norway"<br/>
+Response.Cookies("user")("age")="25"<br/>
+%&gt;</div></div>
+<p>假设您的服务器将上面所有的 cookie 传给了某个用户。</p>
+<p>现在，我们需要读取这些传给某个用户的所有的 cookie。下面的实例向您演示了如何做到这一点（请注意，下面的代码通过 HasKeys 属性检查 cookie 是否带有键）：</p>
+<div class="code notranslate"><div>
+
+	&lt;!DOCTYPE html&gt;<br/>&lt;html&gt;<br/>
+&lt;body&gt;<br/><br/>
+&lt;%<br/>
+dim x,y<br/>
+for each x in Request.Cookies<br/>
+   
+  response.write("&lt;p&gt;")<br/>
+   
+  if Request.Cookies(x).HasKeys then<br/>
+       
+    for each y in Request.Cookies(x)<br/>
+           
+      response.write(x &amp; ":" &amp; y &amp; "=" &amp; Request.Cookies(x)(y))<br/>
+           
+      response.write("&lt;br&gt;")<br/>
+       
+    next<br/>
+   
+  else<br/>
+       
+    Response.Write(x &amp; "=" &amp; Request.Cookies(x) &amp; "&lt;br&gt;")<br/>
+   
+  end if<br/>
+   
+  response.write "&lt;/p&gt;"<br/>
+next<br/>
+%&gt;<br/><br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p><b>输出：</b></p>
+<p>firstname=Alex</p>
+<p>user:firstname=John<br/>
+user:lastname=Smith<br/>
+user:country=Norway<br/>
+user:age=25</p>
+<hr/>
+<h2>如果浏览器不支持 Cookie 该怎么办？</h2>
+<p>如果您的应用程序需要与不支持 cookie 的浏览器打交道，那么您不得不使用其他的办法在您的应用程序中的页面之间传递信息。这里有两种办法：</p>
+<h3>1. 向 URL 添加参数</h3>
+<p>您可以向 URL 添加参数：</p>
+<div class="code notranslate"><div>
+&lt;a href="welcome.asp?fname=John&amp;lname=Smith"&gt;Go to Welcome Page&lt;/a&gt;</div></div>
+<p>然后在 "welcome.asp" 文件中取回这些值，如下所示：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+fname=Request.querystring("fname")<br/>
+lname=Request.querystring("lname")<br/>
+response.write("&lt;p&gt;Hello " &amp; fname &amp; " " &amp; lname &amp; "!&lt;/p&gt;")<br/>
+response.write("&lt;p&gt;Welcome to my Web site!&lt;/p&gt;")<br/>
+%&gt;</div></div>
+<h3>2. 使用表单</h3>
+<p>您可以使用表单。当用户点击 Submit 按钮时，表单会把用户输入传给 "welcome.asp" ：</p>
+<div class="code notranslate"><div>
+
+&lt;form method="post" action="welcome.asp"&gt;<br/>
+First Name:  &lt;input type="text" name="fname" value=""&gt;<br/>
+Last Name: &lt;input type="text" name="lname" value=""&gt;<br/>
+&lt;input type="submit" value="Submit"&gt;<br/>
+&lt;/form&gt;</div></div>
+<p>然后在 "welcome.asp" 文件中取回这些值，如下所示：</p>
+<div class="code notranslate"><div>
+
+&lt;%<br/>
+fname=Request.form("fname")<br/>
+lname=Request.form("lname")<br/>
+response.write("&lt;p&gt;Hello " &amp; fname &amp; " " &amp; lname &amp; "!&lt;/p&gt;")<br/>
+response.write("&lt;p&gt;Welcome to my Web site!&lt;/p&gt;")<br/>
+%&gt;</div></div>
+<br/>
+</div>

@@ -1,0 +1,209 @@
+<div class="article-intro" id="content">
+<h1>
+<span class="color_h1">&lt;AppML&gt; </span>案例研究 - 简介</h1>
+<hr/>
+<p class="intro">此案例研究演示了如何构建一个完整的 &lt;AppML&gt; 互联网应用程序，具有针对数据库中的若干表进行信息列举、编辑和搜索的功能。</p>
+<hr/>
+<h2>我们将创建什么</h2>
+<p>我们将使用已有的数据库，名为 Demo。</p>
+<p>对于数据库中的每个表，我们将：</p>
+<ul>
+<li>创建原型模型</li>
+<li>创建原型 HTML 页面</li>
+<li>创建应用程序模型</li>
+<li>创建 HTML 模板</li>
+<li>创建完整的应用程序</li>
+</ul>
+<hr/>
+<h2>Demo 数据库</h2>
+<p>对于案例研究，我们使用 MS Office 预装的 Northwind 数据库的一个子集。</p>
+<p>这个数据库是众所周知的，不论是使用 PHP 还是经典 ASP 抑或是 ASP.NET，都易于测试。</p>
+<p>Demo 数据库包含了若干带有数据的表，如下所示：</p>
+<h2>Customers</h2>
+<table class="reference notranslate">
+<tr>
+<th>Customer</th>
+<th>Address</th>
+<th>City</th>
+<th>Country</th>
+</tr>
+<tr>
+<td>Around the Horn</td>
+<td>120 Hanover Sq.</td>
+<td>London</td>
+<td>UK</td>
+</tr>
+<tr>
+<td>Berglunds snabbkjøp</td>
+<td>Berguvsvägen 8</td>
+<td>Luleå </td>
+<td>Sweden</td>
+</tr>
+<tr>
+<td>Blauer See Delikatessen</td>
+<td>Forsterstr. 57</td>
+<td>Mannheim</td>
+<td>Germany</td>
+</tr>
+<tr>
+<td>Blondel père et fils</td>
+<td>24, place Kléber</td>
+<td>Strasbourg</td>
+<td>France</td>
+</tr>
+<tr>
+<td>Bólido Comidas preparadas</td>
+<td>C/ Araquil, 67</td>
+<td>Madrid</td>
+<td>Spain</td>
+</tr>
+<tr>
+<td>Bottom-Dollar Markets</td>
+<td>23 Tsawassen Blvd.</td>
+<td>Tsawassen</td>
+<td>Canada</td>
+</tr>
+</table>
+<br/>
+<h2>Suppliers</h2>
+<table class="reference notranslate">
+<tr>
+<th class="db">Supplier</th>
+<th class="db">Address</th>
+<th class="db">City</th>
+<th class="db">Country</th>
+</tr>
+<tr>
+<td>Exotic Liquid</td>
+<td>49 Gilbert St.</td>
+<td>London</td>
+<td>UK</td>
+</tr>
+<tr>
+<td>New Orleans Cajun Delights</td>
+<td>P.O. Box 78934</td>
+<td>New Orleans</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>Grandma Kelly's Homestead</td>
+<td>707 Oxford Rd.</td>
+<td>Ann Arbor</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>Tokyo Traders</td>
+<td>9-8 SekimaiMusashino-shi</td>
+<td>Tokyo</td>
+<td>Japan</td>
+</tr>
+<tr>
+<td>Cooperativa de Quesos 'Las Cabras'</td>
+<td>Calle del Rosal 4</td>
+<td>Oviedo</td>
+<td>Spain</td>
+</tr>
+<tr>
+<td>Mayumi's</td>
+<td>92 Setsuko Chuo-ku</td>
+<td>Osaka</td>
+<td>Japan</td>
+</tr>
+<tr>
+<td>Pavlova, Ltd.</td>
+<td>74 Rose St. Moonie Ponds</td>
+<td>Melbourne</td>
+<td>Australia</td>
+</tr>
+<tr>
+<td>Specialty Biscuits, Ltd.</td>
+<td>29 King's Way</td>
+<td>Manchester</td>
+<td>UK</td>
+</tr>
+<tr>
+<td>PB Kn ckebr d AB</td>
+<td>Kaloadagatan 13</td>
+<td>G teborg</td>
+<td>Sweden</td>
+</tr>
+<tr>
+<td>Refrescos Americanas LTDA</td>
+<td>Av. das Americanas 12.890</td>
+<td>S o Paulo</td>
+<td>Brazil</td>
+</tr>
+</table>
+<br/>
+<h2>Products
+</h2>
+<table class="reference notranslate">
+<tr>
+<th class="db">Produc</th>
+<th class="db">QuantityPerUnit</th>
+<th class="db">UnitPrice</th>
+<th class="db">UnitsInStock</th>
+</tr>
+<tr>
+<td>Chai</td>
+<td>10 boxes x 20 bags</td>
+<td>18</td>
+<td>39</td>
+</tr>
+<tr>
+<td>Chang</td>
+<td>24 - 12 oz bottles</td>
+<td>19</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Aniseed Syrup</td>
+<td>12 - 550 ml bottles</td>
+<td>10</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Chai</td>
+<td>10 boxes x 20 bags</td>
+<td>18</td>
+<td>39</td>
+</tr>
+<tr>
+<td>Chef Anton's Gumbo Mix</td>
+<td>36 boxes</td>
+<td>21</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Grandma's Boysenberry Spread</td>
+<td>12 - 8 oz jars</td>
+<td>25</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Uncle Bob's Organic Dried Pears</td>
+<td>12 - 1 lb pkgs.</td>
+<td>30</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Northwoods Cranberry Sauce</td>
+<td>12 - 12 oz jars</td>
+<td>40</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Mishi Kobe Niku</td>
+<td>18 - 500 g pkgs.</td>
+<td>97</td>
+<td>29</td>
+</tr>
+<tr>
+<td>Ikura</td>
+<td>12 - 200 ml jars</td>
+<td>31</td>
+<td>31</td>
+</tr>
+</table>
+<br/><br/>
+</div>

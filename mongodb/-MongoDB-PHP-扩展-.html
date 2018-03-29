@@ -1,0 +1,63 @@
+<div class="article-intro" id="content">
+<h1>MongoDB<span class="color_h1"> PHP 扩展</span></h1>
+<p>本教程将向大家介绍如何在Linux、window、Mac平台上安装MongoDB扩展。</p>
+<hr/><h2>Linux上安装 MongoDB PHP扩展</h2>
+<h3>在终端上安装</h3>
+<p>你可以在linux中执行以下命令来安装MongoDB 的 PHP 扩展驱动</p>
+<pre>
+$ sudo pecl install mongo
+</pre>
+<p>使用php的pecl安装命令必须保证网络连接可用以及root权限。</p>
+<h3>安装手册</h3>
+<p>如果你想通过源码来编译扩展驱动。你必须手动编译源码包，这样做的好是最新修正的bug包含在源码包中。</p>
+<p>你可以在Github上下载MongoDB PHP驱动包。访问github网站然后搜索"mongo php driver"(下载地址：<a href="https://github.com/mongodb/mongo-php-driver" target="_blank">https://github.com/mongodb/mongo-php-driver</a>)，下载该源码包，然后执行以下命令：</p>
+<pre>
+$ git clone https://github.com/mongodb/mongo-php-driver.git
+$ cd mongo-php-driver
+$ git submodule sync &amp;&amp; git submodule update --init
+$ phpize
+$ ./configure
+$ make all -j 5
+$ sudo make install
+</pre>
+<p>如果你的php是自己编译的，则安装方法如下(假设是编译在/usr/local/php目录中)：</p>
+<pre>
+$ git clone https://github.com/mongodb/mongo-php-driver.git
+$ cd mongo-php-driver
+$ git submodule sync &amp;&amp; git submodule update --init
+$ /usr/local/php/bin/phpize
+$ ./configure --with-php-config=/usr/local/php/bin/php-config
+$ make all -j 5
+$ sudo make install
+</pre>
+<p>执行以上命令后，你需要修改php.ini文件，在php.ini文件中添加mongo配置，配置如下：</p>
+<pre>
+extension=mongo.so
+</pre>
+<p><strong>注意：</strong>你需要指明 extension_dir 配置项的路径。</p>
+<hr/>
+<h2>Window 上安装 MongoDB PHP扩展</h2>
+<p>PECL 上已经提供了用于 Window 平台的预编译 php mongodb 驱动二进制包(下载地址： <a href="https://pecl.php.net/package/mongodb" target="_blank">https://pecl.php.net/package/mongodb</a>)，你可以下载与你php对应的版本，但是你需要注意以下几点问题：</p>
+<ul>
+<li>VC6 是运行于 Apache 服务器</li>
+<li>'Thread safe'（线程安全）是运行在Apache上以模块的PHP上，如果你以CGI的模式运行PHP，请选择非线程安全模式（' non-thread safe'）。</li>
+<li>VC9是运行于 IIS 服务器上。</li>
+<li>下载完你需要的二进制包后，解压压缩包，将'php_mongo.dll'文件添加到你的PHP扩展目录中（ext）。ext目录通常在PHP安装目录下的ext目录。</li>
+</ul>
+<p>打开php配置文件 php.ini 添加以下配置：</p>
+<pre>
+extension=php_mongo.dll
+</pre>
+<p>重启服务器。</p>
+<p>通过浏览器访问phpinfo，如果安装成功，就会看到类型以下的信息：</p>
+<img data-pinit="registered" height="384" src="http://www.runoob.com/wp-content/uploads/2013/10/mongo-php-driver-installed-windows.png" width="618"/>
+<hr/><h2>MAC中安装MongoDB PHP扩展驱动</h2>
+<p>你可以使用'autoconf'安装MongoDB PHP扩展驱动。</p>
+<p>你可以使用'Xcode'安装MongoDB PHP扩展驱动。</p>
+<p>如果你使用 XAMPP，你可以使用以下命令安装MongoDB PHP扩展驱动：</p>
+<pre>
+sudo /Applications/XAMPP/xamppfiles/bin/pecl install mongo
+</pre>
+<p>如果以上命令在XMPP或者MAMP中不起作用，你需要在Github上下载兼容的预编译包。</p>
+<p>然后添加 'extension=mongo.so' 配置到你的php.ini文件中。</p>
+</div>

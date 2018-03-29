@@ -1,0 +1,55 @@
+<div class="article-intro" id="content">
+<h1>Redis 客户端连接</h1>
+<p>Redis 通过监听一个 TCP 端口或者 Unix socket 的方式来接收来自客户端的连接，当一个连接建立后，Redis 内部会进行以下一些操作：</p>
+<ul>
+<li>首先，客户端 socket 会被设置为非阻塞模式，因为 Redis 在网络事件处理上采用的是非阻塞多路复用模型。</li>
+<li>然后为这个 socket 设置 TCP_NODELAY 属性，禁用 Nagle 算法</li>
+<li>然后创建一个可读的文件事件用于监听这个客户端 socket 的数据发送</li>
+</ul>
+<hr/>
+<h2>最大连接数</h2>
+<p>在 Redis2.4 中，最大连接数是被直接硬编码在代码里面的，而在2.6版本中这个值变成可配置的。
+</p><p>maxclients 的默认值是 10000，你也可以在 redis.conf 中对这个值进行修改。
+</p>
+<pre>
+config get maxclients
+
+1) "maxclients"
+2) "10000"
+</pre>
+<h3>实例</h3>
+<p>以下实例我们在服务启动时设置最大连接数为 100000：</p>
+<pre>
+redis-server --maxclients 100000
+</pre>
+<hr/>
+<h2>客户端命令</h2>
+<table class="reference">
+<tbody><tr><th style="width:5%">S.N.</th><th style="width:10%">命令</th><th>描述</th></tr>
+<tr>
+<td>1</td>
+<td><b>CLIENT LIST</b></td>
+<td>返回连接到 redis 服务的客户端列表</td>
+</tr>
+<tr>
+<td>2</td>
+<td><b>CLIENT SETNAME</b></td>
+<td>设置当前连接的名称</td>
+</tr>
+<tr>
+<td>3</td>
+<td><b>CLIENT GETNAME</b></td>
+<td>获取通过 CLIENT SETNAME 命令设置的服务名称</td>
+</tr>
+<tr>
+<td>4</td>
+<td><b>CLIENT PAUSE</b></td>
+<td>挂起客户端连接，指定挂起的时间以毫秒计</td>
+</tr>
+<tr>
+<td>5</td>
+<td><b>CLIENT KILL</b></td>
+<td>关闭客户端连接</td>
+</tr>
+</tbody></table>
+</div>

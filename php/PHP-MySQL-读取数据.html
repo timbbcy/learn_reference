@@ -1,0 +1,133 @@
+<div class="article-intro" id="content">
+<h1>PHP <span class="color_h1"> MySQL 读取数据</span></h1>
+<h2>从 MySQL 数据库读取数据</h2>
+<p> SELECT 语句用于从数据表中读取数据:</p>
+<pre>
+SELECT column_name(s) FROM table_name</pre>
+<p>我们可以使用 * 号来读取所有数据表中的字段：</p>
+<pre>
+SELECT * FROM table_name
+</pre>
+<p>如需学习更多关于 SQL 的知识，请访问我们的 <a href="/sql/sql-tutorial.html" target="_blank">SQL 教程</a>。</p>
+<hr/>
+<h2>使用 MySQLi</h2>
+<p>以下实例中我们从 myDB 数据库的  MyGuests 表读取了 id, firstname 和 lastname 列的数据并显示在页面上：</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向对象)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDB</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">mysqli</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code">, </span><span class="hl-var">$dbname</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> Check connection</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">connect_error</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">SELECT id, firstname, lastname FROM MyGuests</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$result</span><span class="hl-code"> = </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">query</span><span class="hl-brackets">(</span><span class="hl-var">$sql</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$result</span><span class="hl-code">-&gt;</span><span class="hl-identifier">num_rows</span><span class="hl-code"> &gt; </span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 输出数据</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-var">$result</span><span class="hl-code">-&gt;</span><span class="hl-identifier">fetch_assoc</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">id: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">id</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string"> - Name: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">firstname</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">lastname</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">0 结果</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">close</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<p>以上代码解析如下:</p>
+<p>首先，我们设置了 SQL 语句从 MyGuests数据表中读取 id, firstname 和 lastname 三个字段。之后我们使用改 SQL 语句从数据库中取出结果集并赋给复制给变量 $result。</p>
+<p>函数 num_rows() 判断返回的数据。</p>
+<p>如果返回的是多条数据，函数 fetch_assoc()  将结合集放入到关联数组并循环输出。 while() 循环出结果集，并输出 id, firstname 和 lastname 三个字段值。</p>
+<p>以下实例使用 MySQLi 面向过程的方式，效果类似以上代码:</p>
+<div class="example">
+<h2 class="example">实例 (MySQLi - 面向过程)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDB</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment">//</span><span class="hl-comment"> 创建连接</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_connect</span><span class="hl-brackets">(</span><span class="hl-var">$servername</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-code">, </span><span class="hl-var">$dbname</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> Check connection</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code">!</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">连接失败: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_connect_error</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">SELECT id, firstname, lastname FROM MyGuests</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$result</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-identifier">mysqli_num_rows</span><span class="hl-brackets">(</span><span class="hl-var">$result</span><span class="hl-brackets">)</span><span class="hl-code"> &gt; </span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-comment">//</span><span class="hl-comment"> 输出数据</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_assoc</span><span class="hl-brackets">(</span><span class="hl-var">$result</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">id: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">id</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string"> - Name: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">firstname</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string"> </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$row</span><span class="hl-brackets">[</span><span class="hl-quotes">"</span><span class="hl-string">lastname</span><span class="hl-quotes">"</span><span class="hl-brackets">]</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string">&lt;br&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">0 结果</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+<hr/>
+<h2>使用 PDO (+ 预处理)</h2>
+<p>以下实例使用了预处理语句。</p>
+<p>选取了 MyGuests 表中的 id, firstname 和 lastname 字段，并放到 HTML 表格中：</p>
+<div class="example">
+<h2 class="example">实例 (PDO)</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;table style='border: solid 1px black;'&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Firstname&lt;/th&gt;&lt;th&gt;Lastname&lt;/th&gt;&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">TableRows</span><span class="hl-code"> </span><span class="hl-reserved">extends</span><span class="hl-code"> </span><span class="hl-identifier">RecursiveIteratorIterator</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">__construct</span><span class="hl-brackets">(</span><span class="hl-var">$it</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">parent</span><span class="hl-code">::</span><span class="hl-identifier">__construct</span><span class="hl-brackets">(</span><span class="hl-var">$it</span><span class="hl-code">, </span><span class="hl-identifier">self</span><span class="hl-code">::</span><span class="hl-identifier">LEAVES_ONLY</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">current</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td style='width:150px;border:1px solid black;'&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-identifier">parent</span><span class="hl-code">::</span><span class="hl-identifier">current</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">. </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/td&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">beginChildren</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">; 
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">endChildren</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-quotes">"</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$servername</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$username</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">username</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$password</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">password</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$dbname</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">myDBPDO</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">try</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">PDO</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">mysql:host=</span><span class="hl-var">$servername</span><span class="hl-string">;dbname=</span><span class="hl-var">$dbname</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-var">$username</span><span class="hl-code">, </span><span class="hl-var">$password</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">ATTR_ERRMODE</span><span class="hl-code">, </span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">ERRMODE_EXCEPTION</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-var">$stmt</span><span class="hl-code"> = </span><span class="hl-var">$conn</span><span class="hl-code">-&gt;</span><span class="hl-identifier">prepare</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">SELECT id, firstname, lastname FROM MyGuests</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">execute</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment">//</span><span class="hl-comment"> 设置结果集为关联数组</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-var">$result</span><span class="hl-code"> = </span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setFetchMode</span><span class="hl-brackets">(</span><span class="hl-identifier">PDO</span><span class="hl-code">::</span><span class="hl-identifier">FETCH_ASSOC</span><span class="hl-brackets">)</span><span class="hl-code">; 
+    </span><span class="hl-reserved">foreach</span><span class="hl-brackets">(</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">TableRows</span><span class="hl-brackets">(</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">RecursiveArrayIterator</span><span class="hl-brackets">(</span><span class="hl-var">$stmt</span><span class="hl-code">-&gt;</span><span class="hl-identifier">fetchAll</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-reserved">as</span><span class="hl-code"> </span><span class="hl-var">$k</span><span class="hl-code">=&gt;</span><span class="hl-var">$v</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-var">$v</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">catch</span><span class="hl-brackets">(</span><span class="hl-identifier">PDOException</span><span class="hl-code"> </span><span class="hl-var">$e</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">Error: </span><span class="hl-quotes">"</span><span class="hl-code"> . </span><span class="hl-var">$e</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getMessage</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">$conn</span><span class="hl-code"> = </span><span class="hl-reserved">null</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/table&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-inlinetags">?&gt;</span></div>
+</div>
+<br/>
+</div>
+</div>

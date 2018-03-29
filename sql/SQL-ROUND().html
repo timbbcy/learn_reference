@@ -1,0 +1,47 @@
+<div class="article-intro" id="content">
+<h1>SQL <span class="color_h1">ROUND()</span> 函数</h1>
+<hr/>
+<h2>ROUND() 函数</h2>
+<p>ROUND() 函数用于把数值字段舍入为指定的小数位数。</p>
+<h3>SQL ROUND() 语法</h3>
+<div class="code notranslate"><div>
+SELECT ROUND(column_name,decimals) FROM table_name;</div></div>
+<br/><table class="reference notranslate">
+<tr>
+<th align="left" valign="top" width="20%">参数</th>
+<th align="left" valign="top" width="80%">描述</th>
+</tr>
+<tr>
+<td valign="top">column_name</td>
+<td valign="top">必需。要舍入的字段。</td>
+</tr>
+<tr>
+<td valign="top">decimals</td>
+<td valign="top">必需。规定要返回的小数位数。</td>
+</tr>
+</table>
+<br/><hr/>
+<br/><hr/>
+<h2>SQL ROUND() 实例</h2>
+<p><strong>ROUND(X)：</strong>
+返回参数X的四舍五入的一个整数。 </p>
+<pre>
+mysql&gt; select ROUND(-1.23);
+        -&gt; -1
+mysql&gt; select ROUND(-1.58);
+        -&gt; -2
+mysql&gt; select ROUND(1.58);
+        -&gt; 2
+</pre>
+<p>
+<strong>ROUND(X,D)：</strong>
+返回参数X的四舍五入的有 D 位小数的一个数字。如果D为0，结果将没有小数点或小数部分。 </p>
+<pre>
+mysql&gt; select ROUND(1.298, 1);
+        -&gt; 1.3
+mysql&gt; select ROUND(1.298, 0);
+        -&gt; 1
+</pre>
+<p>
+ 注意：ROUND 返回值被变换为一个BIGINT! </p>
+</div>

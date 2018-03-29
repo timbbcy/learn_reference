@@ -1,0 +1,387 @@
+<div class="article-intro" id="content">
+<h1>Perl 面向对象</h1>
+<p>Perl 中有两种不同地面向对象编程的实现：
+</p><ul>
+<li><p>一是基于匿名哈希表的方式，每个对象实例的实质就是一个指向匿名哈希表的引用。在这个匿名哈希表中，存储来所有的实例属性。</p></li>
+<li><p>二是基于数组的方式，在定义一个类的时候，我们将为每一个实例属性创建一个数组，而每一个对象实例的实质就是一个指向这些数组中某一行索引的引用。在这些数组中，存储着所有的实例属性。</p></li></ul>
+<hr/>
+<h2>面向对象基础概念</h2>
+<p>面向对象有很多基础概念，这里我们接收三个：对象、类和方法。</p>
+<ul class="list">
+<li><p><b>对象</b>：对象是对类中数据项的引用。.</p></li>
+<li><p><b>类</b>：类是个Perl包，其中含提供对象方法的类。</p></li>
+<li><p><b>方法</b>：方法是个Perl子程序，类名是其第一个参数。</p></li>
+</ul>
+<p>Perl 提供了  bless()  函数，bless 是用来构造对象的， 通过 bless 把一个引用和这个类名相关联，返回这个引用就构造出一个对象。</p>
+<hr/>
+<h2>类的定义</h2>
+<p>一个类只是一个简单的包。</p>
+<p>可以把一个包当作一个类用，并且把包里的函数当作类的方法来用。</p>
+<p>Perl 的包提供了独立的命名空间，所以不同包的方法与变量名不会冲突。</p>
+<p>Perl 类的文件后缀为 .pm。</p>
+<p>接下来我们创建一个 Person 类：</p>
+<pre>
+package Person;
+</pre>
+<p>类的代码范围到脚本文件的最后一行，或者到下一个 package 关键字前。</p>
+<hr/>
+<h2>创建和使用对象</h2>
+<p>创建一个类的实例 (对象) 我们需要定义一个构造函数，大多数程序使用类名作为构造函数，Perl 中可以使用任何名字。</p>
+<p>你可以使用多种 Perl 的变量作为 Perl 的对象。大多数情况下我们会使用引用数组或哈希。</p>
+<p>
+接下来我们为 Person 类创建一个构造函数，使用了 Perl 的哈希引用。</p>
+<p>在创建对象时，你需要提供一个构造函数，它是一个子程序，返回对象的引用。</p>
+<p>实例如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">Person</span><span class="hl-code">;
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-reserved">new</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$class</span><span class="hl-code"> = </span><span class="hl-reserved">shift</span><span class="hl-code">;
+    </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">_firstName</span><span class="hl-code"> =&gt; </span><span class="hl-reserved">shift</span><span class="hl-code">,
+        </span><span class="hl-identifier">_lastName</span><span class="hl-code">  =&gt; </span><span class="hl-reserved">shift</span><span class="hl-code">,
+        </span><span class="hl-identifier">_ssn</span><span class="hl-code">       =&gt; </span><span class="hl-reserved">shift</span><span class="hl-code">,
+    </span><span class="hl-brackets">}</span><span class="hl-code">;
+    </span><span class="hl-comment"># 输出用户信息</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">名字：</span><span class="hl-var">$self</span><span class="hl-string">-&gt;{_firstName}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">姓氏：</span><span class="hl-var">$self</span><span class="hl-string">-&gt;{_lastName}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">编号：</span><span class="hl-var">$self</span><span class="hl-string">-&gt;{_ssn}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">bless</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$class</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></div>
+</div>
+</div>
+<p>接下来我们创建一个对象：</p>
+<pre>
+$object = new Person( "小明", "王", 23234345);
+</pre>
+<hr/>
+<h2>定义方法</h2>
+<p>Perl类的方法只但是是个Perl子程序而已，也即通常所说的成员函数。</p>
+<p>Perl面向对象中Perl的方法定义不提供任何特别语法，但规定方法的第一个参数为对象或其被引用的包。</p>
+<p>Perl 没有提供私有变量，但我们可以通过辅助的方式来管理对象数据。</p>
+<p>接下来我们定义一个获取名字的方法：</p>
+<pre>
+sub getFirstName {
+    return $self-&gt;{_firstName};
+}
+</pre>
+<p>同样也可以这么写：</p>
+<pre>
+sub setFirstName {
+    my ( $self, $firstName ) = @_;
+    $self-&gt;{_firstName} = $firstName if defined($firstName);
+    return $self-&gt;{_firstName};
+}
+</pre>
+<p>接下来我们修改 Person.pm 文件的代码，如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl </span><span class="hl-code">
+</span><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">Person</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-reserved">new</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$class</span><span class="hl-code"> = </span><span class="hl-reserved">shift</span><span class="hl-code">;
+    </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-identifier">_firstName</span><span class="hl-code"> =&gt; </span><span class="hl-reserved">shift</span><span class="hl-code">,
+        </span><span class="hl-identifier">_lastName</span><span class="hl-code">  =&gt; </span><span class="hl-reserved">shift</span><span class="hl-code">,
+        </span><span class="hl-identifier">_ssn</span><span class="hl-code">       =&gt; </span><span class="hl-reserved">shift</span><span class="hl-code">,
+    </span><span class="hl-brackets">}</span><span class="hl-code">;
+    </span><span class="hl-comment"># 输出用户信息</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">名字：</span><span class="hl-var">$self</span><span class="hl-string">-&gt;{_firstName}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">姓氏：</span><span class="hl-var">$self</span><span class="hl-string">-&gt;{_lastName}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">编号：</span><span class="hl-var">$self</span><span class="hl-string">-&gt;{_ssn}</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">bless</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$class</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">setFirstName</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$firstName</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+    </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_firstName</span><span class="hl-brackets">}</span><span class="hl-code"> = </span><span class="hl-var">$firstName</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-reserved">defined</span><span class="hl-brackets">(</span><span class="hl-var">$firstName</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_firstName</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">getFirstName</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_firstName</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-number">1</span><span class="hl-code">;</span></div>
+</div>
+</div><p>employee.pl 脚本代码如下：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use Person</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$object</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Person</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">小明</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">王</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-number">23234345</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment"># 获取姓名</span><span class="hl-code">
+</span><span class="hl-var">$firstName</span><span class="hl-code"> = </span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getFirstName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">设置前姓名为 : </span><span class="hl-var">$firstName</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 使用辅助函数设置姓名</span><span class="hl-code">
+</span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setFirstName</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">小强</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 通过辅助函数获取姓名</span><span class="hl-code">
+</span><span class="hl-var">$firstName</span><span class="hl-code"> = </span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getFirstName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">设置后姓名为 : </span><span class="hl-var">$firstName</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序后，输出结果为：</p>
+<pre>
+$ perl employee.pl
+名字：小明
+姓氏：王
+编号：23234345
+设置前姓名为 : 小明
+设置后姓名为 : 小强
+</pre>
+<hr/>
+<h2>继承</h2>
+<p>Perl 里 类方法通过@ISA数组继承，这个数组里面包含其他包（类）的名字，变量的继承必须明确设定。</p>
+<p>多继承就是这个@ISA数组包含多个类（包）名字。</p>
+<p>通过@ISA只能继承方法，不能继承数据。</p>
+<p>接下来我们创建一个 Employee 类继承 Person 类。</p>
+<p>Employee.pm 文件代码如下所示：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">Employee</span><span class="hl-code">;
+</span><span class="hl-special">use Person</span><span class="hl-code">;
+</span><span class="hl-special">use strict</span><span class="hl-code">;
+</span><span class="hl-reserved">our</span><span class="hl-code"> </span><span class="hl-var">@ISA</span><span class="hl-code"> = </span><span class="hl-quotes">qw(</span><span class="hl-string">Person</span><span class="hl-quotes">)</span><span class="hl-code">;    </span><span class="hl-comment"># 从 Person 继承</span></div>
+</div>
+</div>
+<p>现在 Employee 类包含了 Person 类的所有方法和属性，我们在 main.pl  文件中输入以下代码，并执行:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use Employee</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$object</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Employee</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">小明</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">王</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-number">23234345</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment"># 获取姓名</span><span class="hl-code">
+</span><span class="hl-var">$firstName</span><span class="hl-code"> = </span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getFirstName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">设置前姓名为 : </span><span class="hl-var">$firstName</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 使用辅助函数设置姓名</span><span class="hl-code">
+</span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setFirstName</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">小强</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 通过辅助函数获取姓名</span><span class="hl-code">
+</span><span class="hl-var">$firstName</span><span class="hl-code"> = </span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getFirstName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">设置后姓名为 : </span><span class="hl-var">$firstName</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序后，输出结果为：</p>
+<pre>
+$ perl main.pl
+名字：小明
+姓氏：王
+编号：23234345
+设置前姓名为 : 小明
+设置后姓名为 : 小强
+</pre>
+<hr/>
+<h2>方法重写</h2>
+<p>上面实例中，Employee 类继承了 Person 类，但如果 Person 类的方法无法满足需求，就需要对其方法进行重写。</p>
+<p>接下来我们在 Employee 类中添加一些新方法，并重写了 Person 类的方法：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">Employee</span><span class="hl-code">;
+</span><span class="hl-special">use Person</span><span class="hl-code">;
+</span><span class="hl-special">use strict</span><span class="hl-code">;
+</span><span class="hl-reserved">our</span><span class="hl-code"> </span><span class="hl-var">@ISA</span><span class="hl-code"> = </span><span class="hl-quotes">qw(</span><span class="hl-string">Person</span><span class="hl-quotes">)</span><span class="hl-code">;    </span><span class="hl-comment"># 从 Person 继承</span><span class="hl-code">
+</span><span class="hl-comment"># 重写构造函数</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-var">$class</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+ 
+    </span><span class="hl-comment"># 调用父类的构造函数</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> = </span><span class="hl-var">$class</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SUPER</span><span class="hl-code">::</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$_</span><span class="hl-brackets">[</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code">, </span><span class="hl-var">$_</span><span class="hl-brackets">[</span><span class="hl-number">2</span><span class="hl-brackets">]</span><span class="hl-code">, </span><span class="hl-var">$_</span><span class="hl-brackets">[</span><span class="hl-number">3</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-comment"># 添加更多属性</span><span class="hl-code">
+</span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_id</span><span class="hl-brackets">}</span><span class="hl-code">   = </span><span class="hl-reserved">undef</span><span class="hl-code">;
+    </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_title</span><span class="hl-brackets">}</span><span class="hl-code"> = </span><span class="hl-reserved">undef</span><span class="hl-code">;
+    </span><span class="hl-reserved">bless</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$class</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 重写方法</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">getFirstName</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+    </span><span class="hl-comment"># 这是子类函数</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">这是子类函数</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_firstName</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 添加方法</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">setLastName</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$lastName</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+    </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_lastName</span><span class="hl-brackets">}</span><span class="hl-code"> = </span><span class="hl-var">$lastName</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-reserved">defined</span><span class="hl-brackets">(</span><span class="hl-var">$lastName</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_lastName</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">getLastName</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-var">@_</span><span class="hl-code">;
+    </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-brackets">{</span><span class="hl-identifier">_lastName</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-number">1</span><span class="hl-code">;</span></div>
+</div>
+</div>
+<p>我们在 main.pl  文件中输入以下代码，并执行:</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-special">use Employee</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$object</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Employee</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">小明</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">王</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-number">23234345</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment"># 获取姓名，使用修改后的构造函数</span><span class="hl-code">
+</span><span class="hl-var">$firstName</span><span class="hl-code"> = </span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getFirstName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">设置前姓名为 : </span><span class="hl-var">$firstName</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 使用辅助函数设置姓名</span><span class="hl-code">
+</span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">setFirstName</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">小强</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-comment"># 通过辅助函数获取姓名</span><span class="hl-code">
+</span><span class="hl-var">$firstName</span><span class="hl-code"> = </span><span class="hl-var">$object</span><span class="hl-code">-&gt;</span><span class="hl-identifier">getFirstName</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">设置后姓名为 : </span><span class="hl-var">$firstName</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;</span></div>
+</div>
+</div><p>执行以上程序后，输出结果为：</p>
+<pre>
+$ perl main.pl
+名字：小明
+姓氏：王
+编号：23234345
+这是子类函数
+设置前姓名为 : 小明
+这是子类函数
+设置后姓名为 : 小强
+</pre>
+<hr/>
+<h2>默认载入</h2>
+<p>如果在当前类、当前类所有的基类、还有 UNIVERSAL 类中都找不到请求的方法，
+这时会再次查找名为 AUTOLOAD() 的一个方法。如果找到了 AUTOLOAD，那么就会
+调用，同时设定全局变量 $AUTOLOAD 的值为缺失的方法的全限定名称。
+</p><p>
+如果还不行，那么 Perl 就宣告失败并出错。
+</p><p>
+如果你不想继承基类的 AUTOLOAD，很简单，只需要一句：</p>
+<pre>
+sub AUTOLOAD;
+</pre>
+<hr/>
+<h2>析构函数及垃圾回收</h2>
+<p>
+当对象的最后一个引用释放时，对象会自动析构。</p>
+<p>如果你想在析构的时候做些什么，那么你可以在类中定义一个名为"DESTROY"的方法。它将在适合的时机自动调用，并且按照你的意思执行额外的清理动作。</p>
+<pre>
+package MyClass;
+...
+sub DESTROY
+{
+    print "MyClass::DESTROY called\n";
+}
+</pre>
+<p>Perl 会把对象的引用作为
+唯一的参数传递给 DESTROY。注意这个引用是只读的，也就是说你不能通过访问$_[0] 来修改它。（译者注：参见 perlsub）但是对象自身（比如 "${$_[0]"
+或者 "@{$_[0]}" 还有 "%{$_[0]}" 等等）还是可写的。
+</p>
+<p>如果你在析构器返回之前重新 bless 了对象引用，那么 Perl 会在析构器返回之后接着调用你重新 bless 的那个对象的 DESTROY 方法。这可以让你有机会调用基类或者你指定的其它类的析构器。需要说明的是，DESTROY 也可以手工调用，但是通常没有必要这么做。
+</p><p>
+在当前对象释放后，包含在当前对象中的其它对象会自动释放。</p>
+<hr/>
+<h2>Perl 面向对象实例</h2>
+<p>我们可以通过以下实例来进一步理解Perl面向对象的应用：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-special">#!/usr/bin/perl</span><span class="hl-code">
+</span><span class="hl-comment"># 下面是简单的类实现</span><span class="hl-code">
+</span><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">MyClass</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-reserved">new</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">MyClass::new called</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+   </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$type</span><span class="hl-code"> = </span><span class="hl-reserved">shift</span><span class="hl-code">;            </span><span class="hl-comment"># 包名</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-brackets">}</span><span class="hl-code">;               </span><span class="hl-comment"># 引用空哈希</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">bless</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$type</span><span class="hl-code">;   
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">DESTROY</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">MyClass::DESTROY called</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">MyMethod</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">MyClass::MyMethod called!</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 继承实现</span><span class="hl-code">
+</span><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">MySubClass</span><span class="hl-code">;
+ 
+</span><span class="hl-var">@ISA</span><span class="hl-code"> = </span><span class="hl-quotes">qw(</span><span class="hl-string"> MyClass </span><span class="hl-quotes">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-reserved">new</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">MySubClass::new called</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+   </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$type</span><span class="hl-code"> = </span><span class="hl-reserved">shift</span><span class="hl-code">;            </span><span class="hl-comment"># 包名</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> = </span><span class="hl-identifier">MyClass</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-code">;     </span><span class="hl-comment"># 引用空哈希</span><span class="hl-code">
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">bless</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code">, </span><span class="hl-var">$type</span><span class="hl-code">;  
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">DESTROY</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">MySubClass::DESTROY called</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">sub</span><span class="hl-code"> </span><span class="hl-identifier">MyMethod</span><span class="hl-code">
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$self</span><span class="hl-code"> = </span><span class="hl-reserved">shift</span><span class="hl-code">;
+   </span><span class="hl-var">$self</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SUPER</span><span class="hl-code">::</span><span class="hl-identifier">MyMethod</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">   MySubClass::MyMethod called!</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 调用以上类的主程序</span><span class="hl-code">
+</span><span class="hl-reserved">package</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">调用 MyClass 方法</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$myObject</span><span class="hl-code"> = </span><span class="hl-identifier">MyClass</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$myObject</span><span class="hl-code">-&gt;</span><span class="hl-identifier">MyMethod</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">调用 MySubClass 方法</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-var">$myObject2</span><span class="hl-code"> = </span><span class="hl-identifier">MySubClass</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$myObject2</span><span class="hl-code">-&gt;</span><span class="hl-identifier">MyMethod</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">创建一个作用域对象</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-brackets">{</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$myObject2</span><span class="hl-code"> = </span><span class="hl-identifier">MyClass</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-comment"># 自动调用析构函数</span><span class="hl-code">
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">创建对象</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-var">$myObject3</span><span class="hl-code"> = </span><span class="hl-identifier">MyClass</span><span class="hl-code">-&gt;</span><span class="hl-reserved">new</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-reserved">undef</span><span class="hl-code"> </span><span class="hl-var">$myObject3</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">print</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">脚本执行结束...</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-comment"># 自动执行析构函数</span></div>
+</div>
+</div>
+<p>执行以上程序，输出结果为：</p>
+<pre>
+调用 MyClass 方法
+MyClass::new called
+MyClass::MyMethod called!
+调用 MySubClass 方法
+MySubClass::new called
+MyClass::new called
+MyClass::MyMethod called!
+   MySubClass::MyMethod called!
+创建一个作用域对象
+MyClass::new called
+MyClass::DESTROY called
+创建对象
+MyClass::new called
+MyClass::DESTROY called
+脚本执行结束...
+MyClass::DESTROY called
+MySubClass::DESTROY called
+</pre>
+</div>

@@ -1,0 +1,97 @@
+<div class="article-intro" id="content">
+<h1>Bootstrap <span class="color_h1">标签页（Tab）插件</span></h1>
+<p>标签页（Tab）在 <a href="/bootstrap/bootstrap-navigation-elements.html">Bootstrap 导航元素</a> 一章中介绍过。通过结合一些 data 属性，您可以轻松地创建一个标签页界面。通过这个插件您可以把内容放置在标签页或者是胶囊式标签页甚至是下拉菜单标签页中。</p>
+<blockquote><img src="/images/quote.png"/>如果您想要单独引用该插件的功能，那么您需要引用 <b>tab.js</b>。或者，正如 <a href="/bootstrap/bootstrap-plugins-overview.html" target="_top">Bootstrap 插件概览</a> 一章中所提到，您可以引用 <i>bootstrap.js</i> 或压缩版的 <i>bootstrap.min.js</i>。</blockquote>
+<h2>用法</h2>
+<p>您可以通过以下两种方式启用标签页：</p>
+<ul class="list">
+<li><b>通过 data 属性</b>：您需要添加 <b>data-toggle="tab"</b> 或 <b>data-toggle="pill"</b> 到锚文本链接中。
+		<p>添加 <b>nav</b> 和 <b>nav-tabs</b> 类到 <b>ul</b> 中，将会应用 Bootstrap <a href="/bootstrap/bootstrap-navigation-elements.html">标签样式</a>，添加 <b>nav</b> 和 <b>nav-pills</b> 类到 <b>ul</b> 中，将会应用 Bootstrap <a href="/bootstrap/bootstrap-navigation-elements.html">胶囊式样式</a>。</p>
+<pre class="prettyprint">
+&lt;ul class="nav nav-tabs"&gt;
+    &lt;li&gt;&lt;a href="#identifier" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    ...
+&lt;/ul&gt;
+</pre>
+</li>
+<li><b>通过 JavaScript</b>：您可以使用 Javascript 来启用标签页，如下所示：
+<pre class="prettyprint">
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</pre>
+<p>下面的实例演示了以不同的方式来激活各个标签页：</p>
+<pre class="prettyprint">
+// 通过名称选取标签页
+$('#myTab a[href="#profile"]').tab('show')
+
+// 选取第一个标签页
+$('#myTab a:first').tab('show')
+
+// 选取最后一个标签页
+$('#myTab a:last').tab('show')
+
+// 选取第三个标签页（从 0 开始索引）
+$('#myTab li:eq(2) a').tab('show')
+</pre>
+</li>
+</ul>
+<h2>淡入淡出效果</h2>
+<p>如果需要为标签页设置淡入淡出效果，请添加 <b>.fade</b> 到每个 <b>.tab-pane</b> 后面。第一个标签页必须添加 <b>.in</b> 类，以便淡入显示初始内容，如下面实例所示：</p>
+<pre class="prettyprint">
+&lt;div class="tab-content"&gt;
+    &lt;div class="tab-pane fade in active" id="home"&gt;...&lt;/div&gt;
+    &lt;div class="tab-pane fade" id="svn"&gt;...&lt;/div&gt;
+    &lt;div class="tab-pane fade" id="ios"&gt;...&lt;/div&gt;
+    &lt;div class="tab-pane fade" id="java"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<h3>实例</h3>
+<p>下面的实例演示了使用 data 属性的标签页（Tab）插件及其淡入淡出的效果：</p>
+<div class="example">
+<h2 class="example">实例</h2>
+<div class="example_code">
+<div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myTab</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">nav nav-tabs</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">active</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#home</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+            菜鸟教程
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#ios</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">iOS</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">dropdown</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myTabDrop1</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">dropdown-toggle</span><span class="hl-quotes">"</span><span class="hl-code">
+</span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">dropdown</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">Java
+            </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">b</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">caret</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">b</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">ul</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">dropdown-menu</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">role</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">menu</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">aria-labelledby</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myTabDrop1</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#jmeter</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">tabindex</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">-1</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">jmeter</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">#ejb</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">tabindex</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">-1</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">data-toggle</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">ejb</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">a</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">ul</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">myTabContent</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab-content</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab-pane fade in active</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">home</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab-pane fade</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ios</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+            TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab-pane fade</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">jmeter</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">tab-pane fade</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">ejb</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+        </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span></div>
+</div><br/>
+<a class="tryitbtn" href="/try/tryit.php?filename=bootstrap3-plugin-tab" target="_blank">尝试一下 »</a>
+</div>
+<p>结果如下所示：</p>
+<div class="cover" style="border: 1px solid #D6D6D6;padding: 5px;">
+<img alt="标签页（Tab）插件" src="/wp-content/uploads/2014/07/2E32FAFC-5106-454B-84BB-509D47E39252.jpg">
+</img></div>
+<h2>方法</h2>
+<b>.$().tab</b>：该方法可以激活标签页元素和内容容器。标签页需要用一个 <b>data-target</b> 或者一个指向 DOM 中容器节点的 <b>href</b>。</div>

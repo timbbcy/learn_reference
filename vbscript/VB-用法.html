@@ -1,0 +1,40 @@
+<div class="article-intro" id="content">
+<h1>VBScript <span class="color_h1">用法</span>
+</h1>
+<hr/>
+<p class="intro">HTML &lt;script&gt; 标签被用来向 HTML 中插入 VBScript。</p>
+<hr/>
+<!-- standard for navigering bunn --><h2>HTML 中的 VBScript</h2>
+<p>如需在 HTML 中插入 VBScript，脚本必须写在标准的 &lt;script&gt; 和 &lt;/script&gt; 标签之间。</p>
+<p>在 &lt;script&gt; 标签中，请使用 type 属性来定义脚本语言 "text/vbscript"：</p>
+<div class="code notranslate"><div>
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><span class="marked">&lt;script type="text/vbscript"&gt;<br/>
+...<br/>
+&lt;/script&gt;<br/></span>&lt;/body&gt;<br/>
+&lt;/html&gt;</div></div>
+<p>IE 将解释和执行 &lt;script&gt; 和 &lt;/script&gt; 之间的 VBScript 代码。
+<br/></p>
+<table class="lamp"><tr>
+<th width="34"><img alt="lamp" height="32" src="/images/lamp.jpg" width="32"/></th>
+<td>VBScript 不应该被用作客户端脚本语言！<br/>
+在这里，我们使用仅适用于 IE 的 VBScript 的用于学习。</td>
+</tr></table>
+<br/><hr/>
+<h2>VBScript 输出</h2>
+<p>当 VBScript 被用在 Web 服务器上的 ASP 页面时，语句 <b>response.write()</b> 产生输出。</p>
+<p>当我们使用 Internet Explorer 来测试 VBScript，我们使用 <b>document.write()</b> 来产生输出：</p>
+<div class="example">
+<h2 class="example">实例（仅适用于 Internet Explorer）</h2>
+<div class="example_code notranslate">
+&lt;html&gt;<br/>
+&lt;body&gt;<br/><span class="marked">&lt;script type="text/vbscript"&gt;<br/>
+document.write("Hello World!")<br/>
+&lt;/script&gt;<br/></span>&lt;/body&gt;<br/>
+&lt;/html&gt;
+</div>
+<br/><a class="tryitbtn" href="/try/try.php?filename=vbdemo_text" target="_blank">尝试一下 »</a>
+</div>
+<p>在上面的实例中，浏览器输出 "Hello World!" 到 HTML 页面。</p>
+<br/><br/>
+</div>

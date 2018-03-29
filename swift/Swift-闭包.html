@@ -1,0 +1,24 @@
+<div class="article-intro" id="content">
+<h1>Swift 闭包</h1>
+<p>闭包(Closures)是自包含的功能代码块，可以在代码中使用或者用来作为参数传值。</p>
+<p>Swift 中的闭包与 C 和 Objective-C 中的代码块（blocks）以及其他一些编程语言中的 匿名函数比较相似。</p>
+<p>全局函数和嵌套函数其实就是特殊的闭包。 </p>
+<p>闭包的形式有：</p>
+<table class="reference">
+<tbody><tr>
+<td>全局函数</td>
+<td>嵌套函数</td>
+<td>闭包表达式</td>
+</tr>
+<tr>
+<td>有名字但不能捕获任何值。 </td>
+<td>有名字，也能捕获封闭函数内的值。 </td>
+<td>无名闭包，使用轻量级语法，可以根据上下文环境捕获值。</td>
+</tr>
+</tbody></table>
+<p>Swift中的闭包有很多优化的地方: </p>
+<ol><li>
+根据上下文推断参数和返回值类型</li><li>
+从单行表达式闭包中隐式返回（也就是闭包体只有一行代码，可以省略return）</li><li>
+可以使用简化参数名，如$0, $1(从0开始，表示第i个参数...)</li><li>
+提供了尾随闭包语法(Trailing closure syntax)</li></ol></div>

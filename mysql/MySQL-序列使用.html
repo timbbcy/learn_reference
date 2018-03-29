@@ -1,0 +1,52 @@
+<div class="article-intro" id="content">
+<h1>MySQL 序列使用</h1>
+<p>MySQL序列是一组整数：1, 2, 3, ...，由于一张数据表只能有一个字段自增主键，
+如果你想实现其他字段也实现自动增加，就可以使用MySQL序列来实现。</p>
+<p>本章我们将介绍如何使用MySQL的序列。</p>
+<hr/>
+<h2>使用AUTO_INCREMENT</h2>
+<p>MySQL中最简单使用序列的方法就是使用 MySQL AUTO_INCREMENT 来定义列。</p>
+<h3>实例</h3>
+<p>以下实例中创建了数据表insect，
+insect中id无需指定值可实现自动增长。</p>
+<pre>
+mysql&gt; CREATE TABLE insect
+    -&gt; (
+    -&gt; id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -&gt; PRIMARY KEY (id),
+    -&gt; name VARCHAR(30) NOT NULL, # type of insect
+    -&gt; date DATE NOT NULL, # date collected
+    -&gt; origin VARCHAR(30) NOT NULL # where collected
+);
+Query OK, 0 rows affected (0.02 sec)
+mysql&gt; INSERT INTO insect (id,name,date,origin) VALUES
+    -&gt; (NULL,'housefly','2001-09-10','kitchen'),
+    -&gt; (NULL,'millipede','2001-09-10','driveway'),
+    -&gt; (NULL,'grasshopper','2001-09-10','front yard');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+mysql&gt; SELECT * FROM insect ORDER BY id;
++----+-------------+------------+------------+
+| id | name        | date       | origin     |
++----+-------------+------------+------------+
+|  1 | housefly    | 2001-09-10 | kitchen    |
+|  2 | millipede   | 2001-09-10 | driveway   |
+|  3 | grasshopper | 2001-09-10 | front yard |
++----+-------------+------------+------------+
+3 rows in set (0.00 sec)
+</pre>
+<hr/>
+<h2>获取AUTO_INCREMENT值</h2>
+<p>在MySQL的客户端中你可以使用
+SQL中的LAST_INSERT_ID( ) 函数来获取最后的插入表中的自增列的值。</p>
+<p>在PHP或PERL脚本中也提供了相应的函数来获取最后的插入表中的自增列的值。</p>
+<h3>PERL实例</h3><p>
+使用 mysql_insertid  属性来获取 AUTO_INCREMENT 的值。
+实例如下：</p>
+<pre>
+$dbh-&gt;do ("INSERT INTO insect (name,date,origin)
+VALUES('moth','2001-09-14','windowsill')");
+my $seq = $dbh-&gt;{mysql_insertid};
+</pre>
+<h3>PHP实例</h3>
+<p>PHP 通过 mysql_insert_id ()函数来获取执行的插入SQL语句中 AUTO_INCREMENT列的值。</p></div>
